@@ -31,6 +31,15 @@ Der Kurs ist derzeit in vier Kapitel unterteilt, deren detaillierte Skripte und 
 4. **[Kapitel 4: Audio-Nachbearbeitung & Szenenanalyse](file:///home/thorsten/RustKurs/4.md)**
    - Erklärung und Analyse eines Demovideos (`Video/4.mp4`).
    - Rauschfilterung der Tonspur und Vertonung durch den Sprecher.
+5. **[Kapitel 5: Variablen & Konstanten](file:///home/thorsten/RustKurs/5.md)**
+   - Variablen als Boxen-Metapher im Arbeitsspeicher.
+   - Warnungen (unused variable) vs. kritische Fehler im Editor.
+   - Das `println!` Makro (Direkt-Interpolation vs. Argumentplatzhalter) und Positionsargumente.
+   - Stummschalten von Compiler-Warnungen mit dem Unterstrich `_`.
+   - Mutability (Veränderlichkeit) mit `let mut` vs. standardmäßig unveränderlichen Variablen.
+   - Fehleranalyse mit `rustc --explain`.
+   - Variablen-Shadowing (Überschattung) und Scopes (Gültigkeitsbereiche) mit den 3 goldenen Scope-Regeln.
+   - Konstanten (`const`) im Vergleich zu Variablen (`let`).
 
 ---
 
