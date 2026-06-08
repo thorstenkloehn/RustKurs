@@ -1,0 +1,4 @@
+manim
+kokoro-onnx
+soundfile
+numpy
