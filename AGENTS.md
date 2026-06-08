@@ -11,3 +11,4 @@ Erstelle einen Videokurs über Rust für Anfänger
 * [4](4.md)
 * [5](5.md)
 * [6](6.md)
+* [7](7.md)

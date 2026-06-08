@@ -377,6 +377,12 @@ Rendere deine Animations-Skripte und verbinde sie mit der Tonspur bzw. mische ex
   ```bash
   manim -pql video_scene_ch6.py RustDatatypesVideo
   ```
+* **Kapitel 7 (Übungsprojekt):**
+  *Dieses Video basiert auf einer Bildschirmaufnahme ([Video/7.mp4](file:///home/thorsten/RustKurs/Video/7.mp4)). Die verrauschte Tonspur wurde durch ein getimtes Kokoro-Voiceover ersetzt:*
+  ```bash
+  python generate_audio_ch7.py
+  ffmpeg -y -i Video/7.mp4 -i audio/ch7_voiceover.wav -map 0:v -map 1:a -c:v copy -c:a aac -shortest 7.mp4
+  ```
 
 > [!TIP]
 > Der Schalter `-pql` rendert das Video schnell in niedriger Vorschauqualität (480p/15fps oder 720p/30fps, je nach Konfiguration). Benutze `-pqh` für Full-HD-Produktionsqualität (1080p/60fps).
@@ -398,4 +404,5 @@ Die fertigen Videodateien liegen im Hauptverzeichnis bereit zur Wiedergabe oder 
 * 🎥 **Kapitel 4:** [4.mp4](file:///home/thorsten/RustKurs/4.mp4) (Erstes Cargo-Projekt & VS Code)
 * 🎥 **Kapitel 5:** [5.mp4](file:///home/thorsten/RustKurs/5.mp4) (Variablen & Scopes)
 * 🎥 **Kapitel 6:** [6.mp4](file:///home/thorsten/RustKurs/6.mp4) (Skalare & Zusammengesetzte Datentypen)
+* 🎥 **Kapitel 7:** [7.mp4](file:///home/thorsten/RustKurs/7.mp4) (Übungsprojekt zu Variablen & Datentypen)
 
