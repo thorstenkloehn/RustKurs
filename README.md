@@ -389,6 +389,12 @@ Rendere deine Animations-Skripte und verbinde sie mit der Tonspur bzw. mische ex
   manim -pqm video_scene_ch8.py RustCompoundDatatypesVideo
   cp media/videos/video_scene_ch8/720p30/RustCompoundDatatypesVideo.mp4 8.mp4
   ```
+* **Kapitel 9 (Zusammenfassung):**
+  ```bash
+  python generate_audio_ch9.py
+  manim -pqm video_scene_ch9.py RustSummaryVideo
+  cp media/videos/video_scene_ch9/720p30/RustSummaryVideo.mp4 9.mp4
+  ```
 
 > [!TIP]
 > Der Schalter `-pql` rendert das Video schnell in niedriger Vorschauqualität (480p/15fps oder 720p/30fps, je nach Konfiguration). Benutze `-pqh` für Full-HD-Produktionsqualität (1080p/60fps).
@@ -412,4 +418,5 @@ Die fertigen Videodateien liegen im Hauptverzeichnis bereit zur Wiedergabe oder 
 * 🎥 **Kapitel 6:** [6.mp4](file:///home/thorsten/RustKurs/6.mp4) (Skalare & Zusammengesetzte Datentypen)
 * 🎥 **Kapitel 7:** [7.mp4](file:///home/thorsten/RustKurs/7.mp4) (Übungsprojekt zu Variablen & Datentypen)
 * 🎥 **Kapitel 8:** [8.mp4](file:///home/thorsten/RustKurs/8.mp4) (Arrays & Tupel)
+* 🎥 **Kapitel 9:** [9.mp4](file:///home/thorsten/RustKurs/9.mp4) (Zusammenfassung Variablen & Datentypen)
 

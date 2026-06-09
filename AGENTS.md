@@ -13,6 +13,7 @@ Erstelle einen Videokurs über Rust für Anfänger
 * [6](6.md)
 * [7](7.md)
 * [8](8.md)
+* [9](9.md)
 
 ## Status der Videoproduktion
 - [x] **Kapitel 1 (Was ist Rust?):** [1.mp4](1.mp4) (Video und Audio fertig)
@@ -23,3 +24,4 @@ Erstelle einen Videokurs über Rust für Anfänger
 - [x] **Kapitel 6 (Skalare & Zusammengesetzte Datentypen):** [6.mp4](6.mp4) (Video und Audio fertig)
 - [x] **Kapitel 7 (Übungsprojekt):** [7.mp4](7.mp4) (Bildschirmaufnahme + Audio fertig)
 - [x] **Kapitel 8 (Arrays & Tupel):** [8.mp4](8.mp4) (Video und Audio fertig)
+- [x] **Kapitel 9 (Zusammenfassung: Variablen & Datentypen):** [9.mp4](9.mp4) (Video und Audio fertig)
