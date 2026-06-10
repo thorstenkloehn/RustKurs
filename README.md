@@ -419,4 +419,7 @@ Die fertigen Videodateien liegen im Hauptverzeichnis bereit zur Wiedergabe oder 
 * 🎥 **Kapitel 7:** [7.mp4](file:///home/thorsten/RustKurs/7.mp4) (Übungsprojekt zu Variablen & Datentypen)
 * 🎥 **Kapitel 8:** [8.mp4](file:///home/thorsten/RustKurs/8.mp4) (Arrays & Tupel)
 * 🎥 **Kapitel 9:** [9.mp4](file:///home/thorsten/RustKurs/9.mp4) (Zusammenfassung Variablen & Datentypen)
+* 🎥 **Kapitel 10:** [10.mp4](file:///home/thorsten/RustKurs/10.mp4) (Funktionen)
+* 🎥 **Kapitel 11:** [11.mp4](file:///home/thorsten/RustKurs/11.mp4) (Funktionen - Details)
+* 🎥 **Kapitel 12:** [12.mp4](file:///home/thorsten/RustKurs/12.mp4) (Operatoren)
 
