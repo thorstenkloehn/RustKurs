@@ -1,6 +1,6 @@
 # 🎬 Media- & Grafik-Tools Installationsanleitung (Linux/Ubuntu)
 
-Dieses Dokument beschreibt die Installation und Konfiguration von **VLC Media Player**, **OBS Studio**, **Kdenlive**, **Inkscape**, **GIMP**, **Gromit-MPX**, **Flameshot**, **Glaxnimate**, **OpenBoard**, **Xournal++**, **Audacity**, **mdBook** und **Blender 3D** auf einem Ubuntu- bzw. Linux-System. Diese Tools bilden die Grundlage für die Wiedergabe, Aufnahme, den Schnitt, die grafische Gestaltung, 3D-Modellierung, die Live-Präsentation, handschriftliche Erklärungen sowie das Audio-Mastering und das Hosten deines Rust-Videokurses.
+Dieses Dokument beschreibt die Installation und Konfiguration von **VLC Media Player**, **OBS Studio**, **Kdenlive**, **Inkscape**, **GIMP**, **Gromit-MPX**, **Flameshot**, **Glaxnimate**, **OpenBoard**, **Xournal++**, **Audacity**, **mdBook**, **Blender 3D** und dem **Model Context Protocol (MCP) VS Code Command Server** auf einem Ubuntu- bzw. Linux-System. Diese Tools bilden die Grundlage für die Wiedergabe, Aufnahme, den Schnitt, die grafische Gestaltung, 3D-Modellierung, die Live-Präsentation, handschriftliche Erklärungen, das Audio-Mastering, das Hosten und die KI-gestützte Steuerung deines Rust-Videokurses.
 
 ---
 
@@ -395,6 +395,30 @@ Rendere deine Animations-Skripte und verbinde sie mit der Tonspur bzw. mische ex
   manim -pqm video_scene_ch9.py RustSummaryVideo
   cp media/videos/video_scene_ch9/720p30/RustSummaryVideo.mp4 9.mp4
   ```
+* **Kapitel 10 (Funktionen):**
+  ```bash
+  python generate_audio_ch10.py
+  manim -pqm video_scene_ch10.py RustFunctionsVideo
+  cp media/videos/video_scene_ch10/720p30/RustFunctionsVideo.mp4 10.mp4
+  ```
+* **Kapitel 11 (Funktionen - Details):**
+  ```bash
+  python generate_audio_ch11.py
+  manim -pqm video_scene_ch11.py RustFunctionsDetailsVideo
+  cp media/videos/video_scene_ch11/720p30/RustFunctionsDetailsVideo.mp4 11.mp4
+  ```
+* **Kapitel 12 (Operatoren):**
+  ```bash
+  python generate_audio_ch12.py
+  manim -pqm video_scene_ch12.py RustOperatorsVideo
+  cp media/videos/video_scene_ch12/720p30/RustOperatorsVideo.mp4 12.mp4
+  ```
+* **Kapitel 13 (Übungen zu Operatoren):**
+  ```bash
+  python generate_audio_ch13.py
+  manim -pqm video_scene_ch13.py RustExercisesVideo
+  cp media/videos/video_scene_ch13/720p30/RustExercisesVideo.mp4 13.mp4
+  ```
 
 > [!TIP]
 > Der Schalter `-pql` rendert das Video schnell in niedriger Vorschauqualität (480p/15fps oder 720p/30fps, je nach Konfiguration). Benutze `-pqh` für Full-HD-Produktionsqualität (1080p/60fps).
@@ -403,6 +427,35 @@ Rendere deine Animations-Skripte und verbinde sie mit der Tonspur bzw. mische ex
 Wenn du fertig bist, kannst du die Umgebung wieder verlassen:
 ```bash
 deactivate
+```
+
+---
+
+## 🌐 12. Model Context Protocol (MCP) VS Code Command Server
+
+Der **Model Context Protocol (MCP) VS Code Command Server** ermöglicht es KI-Assistenten, Befehle direkt innerhalb deiner laufenden VS Code-Instanz auszuführen. Dies verbessert die Integration von KI-Tools in deinen Entwicklungs- und Aufnahmeworkflow erheblich.
+
+### 🛠️ Global installieren
+Der Server wird global über Node.js (NPM) auf deinem Linux-System installiert:
+```bash
+npm install -g @modelcontextprotocol/server-vscode-command
+```
+
+### 🚀 Konfiguration & Einbindung
+Füge den Server in die globale Konfigurationsdatei deines MCP-Clients (z. B. Claude Desktop unter `~/.config/Claude/claude_desktop_config.json` oder in den Einstellungen deines jeweiligen Agenten) ein:
+
+```json
+{
+  "mcpServers": {
+    "vscode-command": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-vscode-command"
+      ]
+    }
+  }
+}
 ```
 
 ---
@@ -422,4 +475,5 @@ Die fertigen Videodateien liegen im Hauptverzeichnis bereit zur Wiedergabe oder 
 * 🎥 **Kapitel 10:** [10.mp4](file:///home/thorsten/RustKurs/10.mp4) (Funktionen)
 * 🎥 **Kapitel 11:** [11.mp4](file:///home/thorsten/RustKurs/11.mp4) (Funktionen - Details)
 * 🎥 **Kapitel 12:** [12.mp4](file:///home/thorsten/RustKurs/12.mp4) (Operatoren)
+* 🎥 **Kapitel 13:** [13.mp4](file:///home/thorsten/RustKurs/13.mp4) (Übungen zu Operatoren)
 
