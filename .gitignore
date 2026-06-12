@@ -1,0 +1,29 @@
+# Python virtual environments
+.venv/
+venv/
+env/
+/bin/
+/lib/
+/share/
+
+# Python cache & build files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+.mypy_cache/
+
+# Manim media and output directories
+media/
+Video/
+audio/
+
+# Video and audio files (large binaries)
+*.mp4
+*.mp3
+*.wav
+
+# OS files
+.DS_Store
+Thumbs.db
