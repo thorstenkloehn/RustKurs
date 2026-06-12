@@ -1,0 +1,545 @@
+<!DOCTYPE HTML>
+<html lang="de" class="light sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Kapitel 12: Operatoren - Rust-Videokurs für Anfänger</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" id="highlight-css" href="highlight.css">
+        <link rel="stylesheet" id="tomorrow-night-css" href="tomorrow-night.css">
+        <link rel="stylesheet" id="ayu-highlight-css" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+
+        <!-- Provide site root and default themes to javascript -->
+        <script>
+            const path_to_root = "";
+            const default_light_theme = "light";
+            const default_dark_theme = "navy";
+            window.path_to_searchindex_js = "searchindex.js";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="toc.js"></script>
+    </head>
+    <body>
+    <div id="mdbook-help-container">
+        <div id="mdbook-help-popup">
+            <h2 class="mdbook-help-title">Keyboard shortcuts</h2>
+            <div>
+                <p>Press <kbd>←</kbd> or <kbd>→</kbd> to navigate between chapters</p>
+                <p>Press <kbd>S</kbd> or <kbd>/</kbd> to search in the book</p>
+                <p>Press <kbd>?</kbd> to show this help</p>
+                <p>Press <kbd>Esc</kbd> to hide this help</p>
+            </div>
+        </div>
+    </div>
+    <div id="body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                let theme = localStorage.getItem('mdbook-theme');
+                let sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            const default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? default_dark_theme : default_light_theme;
+            let theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            let sidebar = null;
+            const sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+                sidebar_toggle.checked = false;
+            }
+            if (sidebar === 'visible') {
+                sidebar_toggle.checked = true;
+            } else {
+                html.classList.remove('sidebar-visible');
+            }
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="toc.html"></iframe>
+            </noscript>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="default_theme">Auto</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search (`/`)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="/ s" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Rust-Videokurs für Anfänger</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <div class="search-wrapper">
+                            <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                            <div class="spinner-wrapper">
+                                <i class="fa fa-spinner fa-spin"></i>
+                            </div>
+                        </div>
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="operatoren-in-rust"><a class="header" href="#operatoren-in-rust">Operatoren in Rust</a></h1>
+<p>In Rust sind Operatoren Symbole, die dem Compiler mitteilen, eine bestimmte mathematische, logische oder speicherbezogene Operation durchzuführen. Da Rust großen Wert auf Sicherheit und Effizienz legt, verhalten sich manche Operatoren etwas anders als in Sprachen wie C, C++ oder Java.</p>
+<p>In diesem Kapitel schauen wir uns alle wichtigen Operatoren im Detail an. Zu jeder Gruppe findest du verständliche Erklärungen, Codebeispiele und eine genaue Beschreibung davon, was im Hintergrund passiert.</p>
+<hr />
+<h2 id="1-arithmetische-operatoren"><a class="header" href="#1-arithmetische-operatoren">1. Arithmetische Operatoren</a></h2>
+<p>Arithmetische Operatoren werden für grundlegende mathematische Berechnungen verwendet.</p>
+<div class="table-wrapper"><table><thead><tr><th>Operator</th><th>Bedeutung</th><th>Beispiel</th></tr></thead><tbody>
+<tr><td><code>+</code></td><td>Addition</td><td><code>x + y</code></td></tr>
+<tr><td><code>-</code></td><td>Subtraktion</td><td><code>x - y</code></td></tr>
+<tr><td><code>*</code></td><td>Multiplikation</td><td><code>x * y</code></td></tr>
+<tr><td><code>/</code></td><td>Division</td><td><code>x / y</code></td></tr>
+<tr><td><code>%</code></td><td>Modulo (Restwert)</td><td><code>x % y</code></td></tr>
+</tbody></table>
+</div>
+<h3 id="beispielcode"><a class="header" href="#beispielcode">Beispielcode</a></h3>
+<p>Dateiname: src/main.rs</p>
+<pre><code class="language-rust">fn main() {
+    let a = 10;
+    let b = 3;
+
+    // Ganzzahl-Operationen
+    let summe = a + b;
+    let differenz = a - b;
+    let produkt = a * b;
+    let quotient = a / b; // Ganzzahldivision schneidet den Rest ab!
+    let rest = a % b;      // Modulo liefert den Rest der Division
+
+    println!("Summe: {summe}");         // Ausgabe: 13
+    println!("Differenz: {differenz}"); // Ausgabe: 7
+    println!("Produkt: {produkt}");     // Ausgabe: 30
+    println!("Quotient: {quotient}");   // Ausgabe: 3
+    println!("Rest: {rest}");           // Ausgabe: 1
+
+    // Fließkomma-Division für exakte Ergebnisse
+    let x = 10.0;
+    let y = 3.0;
+    let exakter_quotient = x / y;
+    println!("Exakter Quotient: {exakter_quotient}"); // Ausgabe: 3.3333333333333335
+}</code></pre>
+<h3 id="was-passiert-hier"><a class="header" href="#was-passiert-hier">Was passiert hier?</a></h3>
+<ol>
+<li><strong>Ganzzahldivision (<code>a / b</code>)</strong>: Da <code>a</code> und <code>b</code> vom Typ Ganzzahl (standardmäßig <code>i32</code>) sind, führt Rust eine Ganzzahldivision durch. Das Ergebnis ist <code>3</code>, der Nachkommateil (<code>0.333...</code>) wird komplett abgeschnitten (Trunkierung).</li>
+<li><strong>Modulo (<code>a % b</code>)</strong>: Gibt den verbleibenden Rest zurück. Da 10 geteilt durch 3 gleich 3 Rest 1 ist, ist <code>rest</code> gleich <code>1</code>.</li>
+<li><strong>Fließkomma-Division</strong>: Um Nachkommastellen zu erhalten, müssen die Operanden Fließkommazahlen (z. B. <code>f64</code>) sein. Rust verlangt hier strikte Typübereinstimmung; du kannst keine Ganzzahl direkt durch eine Fließkommazahl teilen, ohne sie vorher umzuwandeln (dazu später mehr bei <code>as</code>).</li>
+<li><strong>Überlauf-Schutz (Overflow)</strong>: In Rust führt ein arithmetischer Überlauf (z.B. wenn eine <code>u8</code>-Variable den Wert 255 überschreitet) im Debug-Modus (<code>cargo run</code>) zu einem Programmabsturz (Panic). Im Release-Modus (<code>cargo run --release</code>) hingegen "wickelt" sich der Wert ohne Absturz um (Modulo-Arithmetik auf Hardwareebene).</li>
+</ol>
+<hr />
+<h2 id="2-vergleichsoperatoren"><a class="header" href="#2-vergleichsoperatoren">2. Vergleichsoperatoren</a></h2>
+<p>Vergleichsoperatoren vergleichen zwei Werte und geben immer einen booleschen Wert (<code>true</code> oder <code>false</code>) zurück.</p>
+<div class="table-wrapper"><table><thead><tr><th>Operator</th><th>Bedeutung</th><th>Beispiel</th></tr></thead><tbody>
+<tr><td><code>==</code></td><td>Gleichheit</td><td><code>x == y</code></td></tr>
+<tr><td><code>!=</code></td><td>Ungleichheit</td><td><code>x != y</code></td></tr>
+<tr><td><code>&lt;</code></td><td>Kleiner als</td><td><code>x &lt; y</code></td></tr>
+<tr><td><code>&gt;</code></td><td>Größer als</td><td><code>x &gt; y</code></td></tr>
+<tr><td><code>&lt;=</code></td><td>Kleiner oder gleich</td><td><code>x &lt;= y</code></td></tr>
+<tr><td><code>&gt;=</code></td><td>Größer oder gleich</td><td><code>x &gt;= y</code></td></tr>
+</tbody></table>
+</div>
+<h3 id="beispielcode-1"><a class="header" href="#beispielcode-1">Beispielcode</a></h3>
+<p>Dateiname: src/main.rs</p>
+<pre><code class="language-rust">fn main() {
+    let alter = 18;
+    let mindestalter = 18;
+
+    let ist_volljaehrig = alter &gt;= mindestalter;
+    let ist_identisch = alter == mindestalter;
+    let ist_ungleich = alter != 20;
+
+    println!("Ist volljährig? {ist_volljaehrig}"); // Ausgabe: true
+    println!("Ist identisch? {ist_identisch}");   // Ausgabe: true
+    println!("Ist ungleich 20? {ist_ungleich}");  // Ausgabe: true
+}</code></pre>
+<h3 id="was-passiert-hier-1"><a class="header" href="#was-passiert-hier-1">Was passiert hier?</a></h3>
+<ul>
+<li>Rust wertet die Ausdrücke von links nach rechts aus. <code>alter &gt;= mindestalter</code> prüft, ob <code>alter</code> entweder größer oder genau gleich <code>mindestalter</code> ist. Da <code>18 &gt;= 18</code> wahr ist, wird der Variable <code>ist_volljaehrig</code> der Wert <code>true</code> zugewiesen.</li>
+<li>Rust erlaubt Vergleiche nur zwischen Variablen des exakt gleichen Typs. Ein Vergleich von einem <code>i32</code> mit einem <code>u8</code> oder einer Fließkommazahl führt zu einem Compilerfehler.</li>
+</ul>
+<hr />
+<h2 id="3-logische-operatoren"><a class="header" href="#3-logische-operatoren">3. Logische Operatoren</a></h2>
+<p>Logische Operatoren verbinden boolesche Ausdrücke. Sie werden meist in <code>if</code>-Bedingungen und Schleifen eingesetzt.</p>
+<div class="table-wrapper"><table><thead><tr><th>Operator</th><th>Bedeutung</th><th>Beispiel</th></tr></thead><tbody>
+<tr><td><code>&amp;&amp;</code></td><td>Logisches UND (beide müssen wahr sein)</td><td><code>cond1 &amp;&amp; cond2</code></td></tr>
+<tr><td>`</td><td></td><td>`</td></tr>
+<tr><td><code>!</code></td><td>Logisches NICHT (Invertierung)</td><td><code>!cond</code></td></tr>
+</tbody></table>
+</div>
+<h3 id="beispielcode-2"><a class="header" href="#beispielcode-2">Beispielcode</a></h3>
+<p>Dateiname: src/main.rs</p>
+<pre><code class="language-rust">fn main() {
+    let hat_ticket = true;
+    let hat_ausweis = false;
+    let ist_mitarbeiter = true;
+
+    // Logisches UND (&amp;&amp;)
+    let darf_rein_standard = hat_ticket &amp;&amp; hat_ausweis;
+
+    // Logisches ODER (||)
+    let darf_rein_vip = darf_rein_standard || ist_mitarbeiter;
+
+    // Logisches NICHT (!)
+    let zutritt_verweigert = !darf_rein_vip;
+
+    println!("Standard-Zutritt: {darf_rein_standard}"); // Ausgabe: false
+    println!("VIP/Mitarbeiter-Zutritt: {darf_rein_vip}"); // Ausgabe: true
+    println!("Zutritt verweigert? {zutritt_verweigert}");  // Ausgabe: false
+}</code></pre>
+<h3 id="was-passiert-hier-2"><a class="header" href="#was-passiert-hier-2">Was passiert hier?</a></h3>
+<ol>
+<li><strong>Short-Circuit-Evaluierung (Kurzschluss-Auswertung)</strong>: Rust wertet logische Operatoren effizient aus.
+<ul>
+<li>Bei <code>&amp;&amp;</code> (UND): Wenn die linke Seite <code>false</code> ist, kann das Gesamtergebnis niemals <code>true</code> werden. Rust spart sich daher die Auswertung der rechten Seite.</li>
+<li>Bei <code>||</code> (ODER): Wenn die linke Seite <code>true</code> ist, steht das Gesamtergebnis (<code>true</code>) bereits fest. Rust wertet die rechte Seite nicht mehr aus.</li>
+</ul>
+</li>
+<li><strong>Invertierung (<code>!</code>)</strong>: Dreht den Wahrheitswert um. Aus <code>true</code> wird <code>false</code>, aus <code>false</code> wird <code>true</code>.</li>
+</ol>
+<hr />
+<h2 id="4-bitweise-operatoren"><a class="header" href="#4-bitweise-operatoren">4. Bitweise Operatoren</a></h2>
+<p>Bitweise Operatoren arbeiten direkt auf der binären Repräsentation (Bits 0 und 1) von Ganzzahlen.</p>
+<div class="table-wrapper"><table><thead><tr><th>Operator</th><th>Bedeutung</th><th>Beispiel</th></tr></thead><tbody>
+<tr><td><code>&amp;</code></td><td>Bitweises UND (AND)</td><td><code>a &amp; b</code></td></tr>
+<tr><td>`</td><td>`</td><td>Bitweises ODER (OR)</td></tr>
+<tr><td><code>^</code></td><td>Bitweises XOR (Exklusiv-Oder)</td><td><code>a ^ b</code></td></tr>
+<tr><td><code>!</code></td><td>Bitweises NICHT (Komplement / Invertierung)</td><td><code>!a</code></td></tr>
+<tr><td><code>&lt;&lt;</code></td><td>Links-Shift (Bits nach links verschieben)</td><td><code>a &lt;&lt; 1</code></td></tr>
+<tr><td><code>&gt;&gt;</code></td><td>Rechts-Shift (Bits nach rechts verschieben)</td><td><code>a &gt;&gt; 1</code></td></tr>
+</tbody></table>
+</div>
+<h3 id="beispielcode-3"><a class="header" href="#beispielcode-3">Beispielcode</a></h3>
+<p>Dateiname: src/main.rs</p>
+<pre><code class="language-rust">fn main() {
+    // Binär: 0b1100 (Dezimal: 12)
+    let a: u8 = 0b1100;
+    // Binär: 0b1010 (Dezimal: 10)
+    let b: u8 = 0b1010;
+
+    println!("a &amp; b: {:04b} (Dezimal: {})", a &amp; b, a &amp; b); // UND: 0b1000 (8)
+    println!("a | b: {:04b} (Dezimal: {})", a | b, a | b); // ODER: 0b1110 (14)
+    println!("a ^ b: {:04b} (Dezimal: {})", a ^ b, a ^ b); // XOR: 0b0110 (6)
+    println!("!a:    {:08b} (Dezimal: {})", !a, !a);       // NICHT: 0b11110011 (243)
+
+    // Bit-Shifts
+    println!("a &lt;&lt; 1: {:04b} (Dezimal: {})", a &lt;&lt; 1, a &lt;&lt; 1); // Links-Shift: 0b11000 (24)
+    println!("a &gt;&gt; 1: {:04b} (Dezimal: {})", a &gt;&gt; 1, a &gt;&gt; 1); // Rechts-Shift: 0b0110 (6)
+}</code></pre>
+<h3 id="was-passiert-hier-3"><a class="header" href="#was-passiert-hier-3">Was passiert hier?</a></h3>
+<ul>
+<li><strong>Bitweises UND (<code>&amp;</code>)</strong>: Vergleicht die Bits an jeder Position. Nur wenn beide Bits 1 sind, ist das Ergebnis-Bit 1 (z. B. <code>1100 &amp; 1010 = 1000</code>).</li>
+<li><strong>Bitweises ODER (<code>|</code>)</strong>: Das Ergebnis-Bit ist 1, wenn mindestens eines der beiden Bits 1 ist (z. B. <code>1100 | 1010 = 1110</code>).</li>
+<li><strong>Bitweises XOR (<code>^</code>)</strong>: Das Ergebnis-Bit ist 1, wenn die Bits unterschiedlich sind (z. B. <code>1100 ^ 1010 = 0110</code>).</li>
+<li><strong>Bitweises NICHT (<code>!</code>)</strong>: Invertiert jedes einzelne Bit einer Zahl (aus 0 wird 1, aus 1 wird 0).</li>
+<li><strong>Links-Shift (<code>&lt;&lt;</code>)</strong>: Verschiebt alle Bits nach links. Die leeren Stellen rechts werden mit 0 aufgefüllt. Mathematisch entspricht <code>a &lt;&lt; 1</code> einer Multiplikation mit 2 (aus 12 wird 24).</li>
+<li><strong>Rechts-Shift (<code>&gt;&gt;</code>)</strong>: Verschiebt alle Bits nach rechts. Mathematisch entspricht <code>a &gt;&gt; 1</code> einer Ganzzahldivision durch 2 (aus 12 wird 6).</li>
+</ul>
+<hr />
+<h2 id="5-zuweisungsoperatoren"><a class="header" href="#5-zuweisungsoperatoren">5. Zuweisungsoperatoren</a></h2>
+<p>Der grundlegende Zuweisungsoperator ist <code>=</code>. Rust bietet zudem Abkürzungen für mathematische und bitweise Operationen kombiniert mit einer Zuweisung (Compound Assignments).</p>
+<div class="table-wrapper"><table><thead><tr><th>Operator</th><th>Bedeutung</th><th>Entspricht</th></tr></thead><tbody>
+<tr><td><code>=</code></td><td>Zuweisung</td><td><code>x = y</code></td></tr>
+<tr><td><code>+=</code></td><td>Addition &amp; Zuweisung</td><td><code>x = x + y</code></td></tr>
+<tr><td><code>-=</code></td><td>Subtraktion &amp; Zuweisung</td><td><code>x = x - y</code></td></tr>
+<tr><td><code>*=</code></td><td>Multiplikation &amp; Zuweisung</td><td><code>x = x * y</code></td></tr>
+<tr><td><code>/=</code></td><td>Division &amp; Zuweisung</td><td><code>x = x / y</code></td></tr>
+<tr><td><code>%=</code></td><td>Modulo &amp; Zuweisung</td><td><code>x = x % y</code></td></tr>
+<tr><td><code>&amp;=</code>, `</td><td>=<code>, </code>^=`</td><td>Bitweise Operation &amp; Zuweisung</td></tr>
+<tr><td><code>&lt;&lt;=</code>, <code>&gt;&gt;=</code></td><td>Shift &amp; Zuweisung</td><td><code>x = x &lt;&lt; y</code> usw.</td></tr>
+</tbody></table>
+</div>
+<h3 id="beispielcode-4"><a class="header" href="#beispielcode-4">Beispielcode</a></h3>
+<p>Dateiname: src/main.rs</p>
+<pre><code class="language-rust">fn main() {
+    let mut x = 5; // Muss als 'mut' deklariert werden!
+
+    x += 10; // Gleichbedeutend mit: x = x + 10;
+    println!("x nach += : {x}"); // Ausgabe: 15
+
+    x *= 2; // Gleichbedeutend mit: x = x * 2;
+    println!("x nach *= : {x}"); // Ausgabe: 30
+}</code></pre>
+<h3 id="was-passiert-hier-4"><a class="header" href="#was-passiert-hier-4">Was passiert hier?</a></h3>
+<ul>
+<li>Der Compound-Zuweisungsoperator liest den aktuellen Wert der Variablen aus, führt die Operation mit dem rechten Operanden aus und schreibt das Ergebnis wieder in die Variable zurück.</li>
+<li><strong>Wichtig</strong>: Dies erfordert immer, dass die Variable mit dem Schlüsselwort <code>mut</code> (veränderlich) deklariert wurde.</li>
+<li><strong>Wichtiger Unterschied zu C/C++/Java</strong>: In Rust gibt es <strong>keine</strong> Inkrement- (<code>++</code>) oder Dekrement-Operatoren (<code>--</code>). Du musst stattdessen immer <code>x += 1</code> oder <code>x -= 1</code> schreiben. Dies verhindert Mehrdeutigkeiten bei der Auswertungsreihenfolge im Code.</li>
+</ul>
+<hr />
+<h2 id="6-referenz--und-pointer-operatoren"><a class="header" href="#6-referenz--und-pointer-operatoren">6. Referenz- und Pointer-Operatoren</a></h2>
+<p>Rust hat ein einzigartiges Speichersicherheitskonzept (Ownership und Borrowing). Daher spielen Referenzoperatoren eine zentrale Rolle.</p>
+<div class="table-wrapper"><table><thead><tr><th>Operator</th><th>Bedeutung</th><th>Beispiel</th></tr></thead><tbody>
+<tr><td><code>&amp;</code></td><td>Erstellt eine unveränderliche Referenz (Leihen/Borrowing)</td><td><code>let r = &amp;x;</code></td></tr>
+<tr><td><code>&amp;mut</code></td><td>Erstellt eine veränderliche Referenz</td><td><code>let r = &amp;mut x;</code></td></tr>
+<tr><td><code>*</code></td><td>Dereferenzierung (Zugriff auf den Wert hinter der Referenz)</td><td><code>let y = *r;</code></td></tr>
+</tbody></table>
+</div>
+<h3 id="beispielcode-5"><a class="header" href="#beispielcode-5">Beispielcode</a></h3>
+<p>Dateiname: src/main.rs</p>
+<pre><code class="language-rust">fn main() {
+    let mut zahl = 42;
+
+    // 1. Unveränderliche Referenz (&amp;) erstellen
+    let ref1 = &amp;zahl;
+    println!("Wert über ref1 gelesen: {ref1}"); // Ausgabe: 42 (Rust dereferenziert hier automatisch)
+    
+    // 2. Dereferenzierung (*) zum Lesen
+    let kopie = *ref1; // Kopiert den Wert 42 aus der Speicherstelle, auf die ref1 zeigt
+    println!("Kopie: {kopie}"); // Ausgabe: 42
+
+    // 3. Veränderliche Referenz (&amp;mut) erstellen
+    // Hinweis: Wir dürfen ref1 nicht mehr benutzen, da zeitgleich keine unveränderlichen 
+    // und veränderlichen Referenzen existieren dürfen.
+    let ref_mut = &amp;mut zahl;
+
+    // 4. Dereferenzierung (*) zum Schreiben
+    *ref_mut += 8; // Ändert den Wert in der originalen Speicherstelle von 'zahl'
+    
+    println!("Zahl nach Änderung: {zahl}"); // Ausgabe: 50
+}</code></pre>
+<h3 id="was-passiert-hier-5"><a class="header" href="#was-passiert-hier-5">Was passiert hier?</a></h3>
+<ol>
+<li><strong><code>&amp;zahl</code></strong>: Erstellt einen Zeiger (eine Referenz), der auf die Speicheradresse zeigt, in der <code>zahl</code> liegt. Das ist eine "Leihgabe". Die Referenz <code>ref1</code> besitzt die Daten nicht, darf sie aber lesen.</li>
+<li><strong><code>*ref1</code></strong>: Der Dereferenzierungs-Operator <code>*</code> folgt dem Zeiger zur tatsächlichen Speicheradresse und greift auf den dort liegenden Wert (<code>42</code>) zu.</li>
+<li><strong><code>&amp;mut zahl</code></strong>: Erstellt eine veränderliche Referenz. Dies erlaubt uns, den Wert an der Speicheradresse direkt zu modifizieren.</li>
+<li><strong><code>*ref_mut += 8</code></strong>: Wir greifen über <code>*</code> auf den eigentlichen Wert der Speicherstelle zu und addieren 8. Der Originalwert von <code>zahl</code> ändert sich dadurch von 42 auf 50.</li>
+</ol>
+<hr />
+<h2 id="7-typumwandlung-und-fehlerbehandlung-spezialoperatoren"><a class="header" href="#7-typumwandlung-und-fehlerbehandlung-spezialoperatoren">7. Typumwandlung und Fehlerbehandlung (Spezialoperatoren)</a></h2>
+<p>Diese Operatoren sind spezifische Rust-Besonderheiten für die Typkonvertierung und das Fehlermanagement.</p>
+<div class="table-wrapper"><table><thead><tr><th>Operator</th><th>Bedeutung</th><th>Beispiel</th></tr></thead><tbody>
+<tr><td><code>as</code></td><td>Typumwandlung (Type Casting)</td><td><code>x as f64</code></td></tr>
+<tr><td><code>?</code></td><td>Fehler-Propagierung (Fehlerweiterleitung)</td><td><code>funktion()?</code></td></tr>
+</tbody></table>
+</div>
+<h3 id="beispielcode-für-as-typumwandlung"><a class="header" href="#beispielcode-für-as-typumwandlung">Beispielcode für <code>as</code> (Typumwandlung)</a></h3>
+<p>Dateiname: src/main.rs</p>
+<pre><code class="language-rust">fn main() {
+    let ganzzahl: i32 = 100;
+    let komma: f64 = 5.5;
+
+    // let ergebnis = ganzzahl + komma; // FEHLER! Rust erlaubt keine implizite Typkonvertierung.
+    
+    // Explizite Konvertierung mit 'as'
+    let ergebnis = (ganzzahl as f64) + komma;
+    println!("Ergebnis: {ergebnis}"); // Ausgabe: 105.5
+}</code></pre>
+<h3 id="beispielcode-für--fehler-propagierung"><a class="header" href="#beispielcode-für--fehler-propagierung">Beispielcode für <code>?</code> (Fehler-Propagierung)</a></h3>
+<p>Dateiname: src/main.rs</p>
+<pre><code class="language-rust">use std::fs::File;
+use std::io::{self, Read};
+
+fn lese_datei_inhalt() -&gt; Result&lt;String, io::Error&gt; {
+    // Der ?-Operator versucht die Datei zu öffnen. 
+    // Wenn erfolgreich, wird das File-Objekt entpackt.
+    // Wenn ein Fehler auftritt (z.B. Datei nicht vorhanden), bricht die 
+    // Funktion sofort ab und gibt den Fehler als Rückgabewert zurück.
+    let mut datei = File::open("info.txt")?;
+    
+    let mut inhalt = String::new();
+    // Auch hier: Wenn read_to_string fehlschlägt, wird der Fehler sofort zurückgegeben.
+    datei.read_to_string(&amp;mut inhalt)?;
+    
+    Ok(inhalt) // Erfolgsfall
+}
+
+fn main() {
+    match lese_datei_inhalt() {
+        Ok(text) =&gt; println!("Dateiinhalt: {text}"),
+        Err(e) =&gt; println!("Fehler aufgetreten: {e}"),
+    }
+}</code></pre>
+<h3 id="was-passiert-hier-6"><a class="header" href="#was-passiert-hier-6">Was passiert hier?</a></h3>
+<ul>
+<li><strong><code>as</code></strong>: Rust führt im Gegensatz zu vielen anderen Sprachen niemals automatische (implizite) Typumwandlungen bei Berechnungen durch. Mit <code>ganzzahl as f64</code> teilen wir dem Compiler explizit mit, dass wir den Wert der Ganzzahl im Fließkommaformat interpretieren möchten, damit die Addition durchgeführt werden kann.</li>
+<li><strong><code>?</code></strong>: Dieser Operator wird an Ausdrücke angehängt, die ein <code>Result</code> (oder <code>Option</code>) zurückgeben. Er verkürzt den Code massiv:
+<ul>
+<li>Wenn das Ergebnis <code>Ok(wert)</code> ist, entpackt der Operator den <code>wert</code> und das Programm läuft in derselben Zeile weiter.</li>
+<li>Wenn das Ergebnis <code>Err(fehler)</code> ist, entspricht das Verhalten einem vorzeitigen <code>return Err(fehler)</code> aus der aktuellen Funktion. Daher kann <code>?</code> nur in Funktionen verwendet werden, deren Rückgabetyp mit dem zurückgegebenen Fehlertyp kompatibel ist.</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h2 id="8-range-operatoren-bereiche"><a class="header" href="#8-range-operatoren-bereiche">8. Range-Operatoren (Bereiche)</a></h2>
+<p>Range-Operatoren erzeugen Sequenzen von Werten. Sie werden primär in <code>for</code>-Schleifen und beim Slicing (Zugriff auf Teilbereiche von Arrays/Vektoren) verwendet.</p>
+<div class="table-wrapper"><table><thead><tr><th>Operator</th><th>Bedeutung</th><th>Bereich</th></tr></thead><tbody>
+<tr><td><code>..</code></td><td>Exklusiver Bereich</td><td><code>start..ende</code> (ohne <code>ende</code>)</td></tr>
+<tr><td><code>..=</code></td><td>Inklusiver Bereich</td><td><code>start..=ende</code> (inklusive <code>ende</code>)</td></tr>
+</tbody></table>
+</div>
+<h3 id="beispielcode-6"><a class="header" href="#beispielcode-6">Beispielcode</a></h3>
+<p>Dateiname: src/main.rs</p>
+<pre><code class="language-rust">fn main() {
+    println!("Exklusive Range (1..5):");
+    // Schleife läuft für: 1, 2, 3, 4 (5 ist exkludiert)
+    for i in 1..5 {
+        print!("{i} ");
+    }
+    println!();
+
+    println!("Inklusive Range (1..=5):");
+    // Schleife läuft für: 1, 2, 3, 4, 5 (5 ist inkludiert)
+    for i in 1..=5 {
+        print!("{i} ");
+    }
+    println!();
+
+    // Verwendung beim Slicing
+    let array = [10, 20, 30, 40, 50];
+    let slice = &amp;array[1..4]; // Holt die Elemente an Index 1, 2 und 3
+    println!("Slice: {:?}", slice); // Ausgabe: [20, 30, 40]
+}</code></pre>
+<h3 id="was-passiert-hier-7"><a class="header" href="#was-passiert-hier-7">Was passiert hier?</a></h3>
+<ul>
+<li><strong><code>1..5</code></strong>: Erstellt einen Iterator, der bei <code>1</code> beginnt und stoppt, sobald der Wert <code>5</code> erreicht wird, <em>bevor</em> dieser Wert ausgegeben wird. Daher werden nur 1, 2, 3 und 4 durchlaufen.</li>
+<li><strong><code>1..=5</code></strong>: Verhält sich analog, schließt jedoch die obere Grenze <code>5</code> mit ein.</li>
+<li><strong>Slicing (<code>&amp;array[1..4]</code>)</strong>: Wir nutzen die Range als Index-Auswahl. Das Slice enthält die Elemente ab Index 1 (inklusive) bis Index 4 (exklusive) – also die Indizes 1, 2 und 3 des Arrays.</li>
+</ul>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="11.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="13.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="11.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="13.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr.min.js"></script>
+        <script src="mark.min.js"></script>
+        <script src="searcher.js"></script>
+
+        <script src="clipboard.min.js"></script>
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+
+    </div>
+    </body>
+</html>

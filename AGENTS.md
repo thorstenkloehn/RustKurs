@@ -1,5 +1,5 @@
 # Rust-Videokurs für Anfänger (Manim & Kokoro-onnx TTS)
-Status: Kapitel 1-13 vollständig abgeschlossen (Video & Audio fertig).
+Status: Kapitel 1-14 vollständig abgeschlossen (Video & Audio fertig).
 
 ## Kapitel & Dateien
 - [Ch1: Was ist Rust?](1.md) -> [1.mp4](1.mp4)
@@ -15,3 +15,8 @@ Status: Kapitel 1-13 vollständig abgeschlossen (Video & Audio fertig).
 - [Ch11: Funktionen Details](11.md) -> [11.mp4](11.mp4)
 - [Ch12: Operatoren](12.md) -> [12.mp4](12.mp4)
 - [Ch13: Übungen zu Operatoren](13.md) -> [13.mp4](13.mp4)
+- [Ch14: Antigravity CLI](14.md) -> [14.mp4](14.mp4)
+
+## Rust Lehrbuch erstellen mdBook auf verzeichnis doc/
+
+* Alle Kapitel abgeschlossen mit mdBook als Lehrbuch (erfolgreich unter [doc/](file:///home/thorsten/RustKurs/doc/) erstellt, grammatikalisch geprüft und gebaut)

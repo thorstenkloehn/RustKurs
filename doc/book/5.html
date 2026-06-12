@@ -1,0 +1,296 @@
+<!DOCTYPE HTML>
+<html lang="de" class="light sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Kapitel 5: Variablen &amp; Scopes - Rust-Videokurs für Anfänger</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" id="highlight-css" href="highlight.css">
+        <link rel="stylesheet" id="tomorrow-night-css" href="tomorrow-night.css">
+        <link rel="stylesheet" id="ayu-highlight-css" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+
+        <!-- Provide site root and default themes to javascript -->
+        <script>
+            const path_to_root = "";
+            const default_light_theme = "light";
+            const default_dark_theme = "navy";
+            window.path_to_searchindex_js = "searchindex.js";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="toc.js"></script>
+    </head>
+    <body>
+    <div id="mdbook-help-container">
+        <div id="mdbook-help-popup">
+            <h2 class="mdbook-help-title">Keyboard shortcuts</h2>
+            <div>
+                <p>Press <kbd>←</kbd> or <kbd>→</kbd> to navigate between chapters</p>
+                <p>Press <kbd>S</kbd> or <kbd>/</kbd> to search in the book</p>
+                <p>Press <kbd>?</kbd> to show this help</p>
+                <p>Press <kbd>Esc</kbd> to hide this help</p>
+            </div>
+        </div>
+    </div>
+    <div id="body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                let theme = localStorage.getItem('mdbook-theme');
+                let sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            const default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? default_dark_theme : default_light_theme;
+            let theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            let sidebar = null;
+            const sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+                sidebar_toggle.checked = false;
+            }
+            if (sidebar === 'visible') {
+                sidebar_toggle.checked = true;
+            } else {
+                html.classList.remove('sidebar-visible');
+            }
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="toc.html"></iframe>
+            </noscript>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="default_theme">Auto</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search (`/`)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="/ s" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Rust-Videokurs für Anfänger</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <div class="search-wrapper">
+                            <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                            <div class="spinner-wrapper">
+                                <i class="fa fa-spinner fa-spin"></i>
+                            </div>
+                        </div>
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h2 id="variable-genau-alles-erklären-und-vele-beispiele"><a class="header" href="#variable-genau-alles-erklären-und-vele-beispiele">Variable genau alles Erklären und vele Beispiele</a></h2>
+<p>Variablen in Rust: Funktionen und Aufgaben genau erklärt</p>
+<ul>
+<li>Eine Variable ist wie eine beschriftete Box im Computer, in der wir einen Wert (z. B. eine Zahl) speichern, um ihn später wiederzuverwenden.</li>
+<li>Wie man eine Variable in Rust erstellt</li>
+<li>Warnungen vs. Fehler (Gelbe vs. Rote Linien)
+Warnung (Gelbe Wellenlinie): Rust gibt dir einen freundlichen Hinweis. Wenn dort steht unused variable: apples, heißt das nur: "Du hast die Box 'apples' erstellt, aber benutzt sie nirgendwo." Das Programm funktioniert trotzdem!</li>
+</ul>
+<p>Fehler (Rote Wellenlinie): Das Programm ist fehlerhaft und kann nicht gestartet werden. Du musst den Fehler erst beheben. Eine detaillierte Beschreibung folgt:</p>
+<h2 id="das-println-makro-text-ausgeben"><a class="header" href="#das-println-makro-text-ausgeben">Das println! Makro: Text ausgeben</a></h2>
+<ul>
+<li>Genau Beschreibung wie das Funktion</li>
+</ul>
+<h3 id="variablen-einfügen-interpolation-genau-erklären-und-beschreibung"><a class="header" href="#variablen-einfügen-interpolation-genau-erklären-und-beschreibung">Variablen einfügen (Interpolation) genau erklären und Beschreibung</a></h3>
+<ul>
+<li>Methode A: Direkt in der Klammer (Ab Rust 1.58)</li>
+<li>Methode B: Als Argument hinten anstellen</li>
+</ul>
+<h2 id="das-prinzip-in-kürze"><a class="header" href="#das-prinzip-in-kürze">Das Prinzip in Kürze</a></h2>
+<p>Wenn du Argumente an println! übergibst, zählt Rust im Hintergrund ab 0:</p>
+<p>Rust
+println!("Ich mag {0} und {1}. Ja, wirklich {0}!", äpfel, orangen);
+//                  ^       ^                 ^      ^       ^
+//                  |       |                 |      |       |
+//              Position 0  Position 1    Position 0 |       |
+//                                                Argument 0 |
+//                                                        Argument 1</p>
+<h2 id="das-problem-ungenutzte-variablen"><a class="header" href="#das-problem-ungenutzte-variablen">Das Problem: Ungenutzte Variablen</a></h2>
+<p>Wenn du eine Variable erstellst, sie aber nirgends im Code benutzt (kein println!, keine Berechnung), meckert der Rust-Compiler mit einer Warnung (warning: unused variable). Das Programm läuft zwar, aber Rust mag keinen unaufgeräumten Code.</p>
+<h2 id="die-lösung-der-unterstrich-_"><a class="header" href="#die-lösung-der-unterstrich-_">Die Lösung: Der Unterstrich (_)</a></h2>
+<p>Wenn eine Variable absichtlich (oder vorübergehend beim Testen) ungenutzt bleiben soll, setzt du einfach einen Unterstrich vor den Namen.</p>
+<h2 id="standard-unveränderlich-immutable"><a class="header" href="#standard-unveränderlich-immutable">Standard: Unveränderlich (Immutable)</a></h2>
+<p>In Rust ist jede normale Variable wie in Stein gemeißelt. Einmal zugewiesen, darfst du den Wert nicht mehr ändern.</p>
+<h2 id="der-trick-das-schlüsselwort-mut-mutable"><a class="header" href="#der-trick-das-schlüsselwort-mut-mutable">Der Trick: Das Schlüsselwort mut (Mutable)</a></h2>
+<p>Wenn sich ein Wert im Laufe des Programms ändern muss, musst du Rust explizit um Erlaubnis bitten. Das machst du mit mut (kurz für mutable = veränderlich).</p>
+<h2 id="mini-merkmerkmale"><a class="header" href="#mini-merkmerkmale">Mini-Merkmerkmale:</a></h2>
+<ul>
+<li>Ohne mut = Konstant/Gesperrt</li>
+<li>Mit mut = Veränderbar</li>
+</ul>
+<h2 id="mini-merkmerkmale-1"><a class="header" href="#mini-merkmerkmale-1">Mini-Merkmerkmale:</a></h2>
+<ul>
+<li>rustc = Die Abkürzung für den Rust-Compiler.</li>
+<li>--explain = Der Befehl, der dir den Fehler haarklein erklärt.</li>
+<li>Keine Panik bei Fehlern: Code eingeben, Erklärung lesen, Fix anwenden. Du musst den Editor dafür nicht mal verlassen!</li>
+</ul>
+<h2 id="variablen-shadowing-beschattung"><a class="header" href="#variablen-shadowing-beschattung">Variablen-Shadowing (Beschattung)</a></h2>
+<h3 id="normalerweise-darf-eine-variable-ihren-datentyp-niemals-ändern-mit-let-shadowing-darfst-du-es-weil-die-alte-variable-quasi-gelöscht-überschattet-und-eine-komplett-neue-gebaut-wird"><a class="header" href="#normalerweise-darf-eine-variable-ihren-datentyp-niemals-ändern-mit-let-shadowing-darfst-du-es-weil-die-alte-variable-quasi-gelöscht-überschattet-und-eine-komplett-neue-gebaut-wird">Normalerweise darf eine Variable ihren Datentyp niemals ändern. Mit let (Shadowing) darfst du es, weil die alte Variable quasi gelöscht (überschattet) und eine komplett neue gebaut wird.</a></h3>
+<h3 id="shadowing--altes-buch-wegschmeißen-neues-buch-mit-demselben-titel-aber-völlig-anderem-inhalt-ins-regal-stellen"><a class="header" href="#shadowing--altes-buch-wegschmeißen-neues-buch-mit-demselben-titel-aber-völlig-anderem-inhalt-ins-regal-stellen">Shadowing = Altes Buch wegschmeißen, neues Buch mit demselben Titel, aber völlig anderem Inhalt ins Regal stellen.</a></h3>
+<h2 id="die-3-goldenen-scope-regeln"><a class="header" href="#die-3-goldenen-scope-regeln">Die 3 goldenen Scope-Regeln</a></h2>
+<ul>
+<li>Von außen nach innen (Ja): Ein innerer Block kann alles sehen und nutzen, was im äußeren Block darüber deklariert wurde.</li>
+<li>Von innen nach außen (Nein): Ein äußerer Block kann nicht sehen, was in einem inneren Block eingesperrt ist.</li>
+<li>Das Lebensende (Drop): Sobald der Code die schließende Klammer } eines Blocks erreicht, „stirbt“ die Variable (sie geht out of scope) und Rust löscht sie sofort aus dem Arbeitsspeicher.</li>
+</ul>
+<h2 id="namens-doppelgänger-kein-shadowing"><a class="header" href="#namens-doppelgänger-kein-shadowing">Namens-Doppelgänger (Kein Shadowing!)</a></h2>
+<p>Wenn du im inneren Block eine Variable mit demselben Namen wie außen erstellst, überdeckt sie die äußere Variable – aber nur solange der innere Block läuft!</p>
+<h2 id="mini-merkmerkmal"><a class="header" href="#mini-merkmerkmal">Mini-Merkmerkmal</a></h2>
+<p>Scope ist wie ein Haus mit Einwegspiegeln: Wer im Haus (innerer Block) steht, kann durch die Fenster nach draußen (äußerer Block) sehen. Wer draußen steht, kann aber nicht reinschauen. Und zieht man das Haus ab (}), ist alles darin weg.</p>
+<h2 id="konstanten-const-in-rust"><a class="header" href="#konstanten-const-in-rust">Konstanten (const) in Rust</a></h2>
+<p>Eine Konstante ist ein Name für einen Wert, der sich niemals ändern kann. Sie ist noch strenger als eine normale, unveränderliche Variable.</p>
+<ul>
+<li>Variable (let): Ein beschreibbares Whiteboard im Zimmer.</li>
+<li>Konstante (const): Ein Schild aus Stein, das draußen an der Hauswand für alle sichtbar eingemeißelt ist.</li>
+</ul>
+<p>Nächste Lektion lernen wir Datentypen in Rust</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="4.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="6.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="4.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="6.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr.min.js"></script>
+        <script src="mark.min.js"></script>
+        <script src="searcher.js"></script>
+
+        <script src="clipboard.min.js"></script>
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+
+    </div>
+    </body>
+</html>

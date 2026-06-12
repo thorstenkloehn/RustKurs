@@ -1,0 +1,1889 @@
+<!DOCTYPE HTML>
+<html lang="de" class="light sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Rust-Videokurs für Anfänger</title>
+        <meta name="robots" content="noindex">
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" id="highlight-css" href="highlight.css">
+        <link rel="stylesheet" id="tomorrow-night-css" href="tomorrow-night.css">
+        <link rel="stylesheet" id="ayu-highlight-css" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+
+        <!-- Provide site root and default themes to javascript -->
+        <script>
+            const path_to_root = "";
+            const default_light_theme = "light";
+            const default_dark_theme = "navy";
+            window.path_to_searchindex_js = "searchindex.js";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="toc.js"></script>
+    </head>
+    <body>
+    <div id="mdbook-help-container">
+        <div id="mdbook-help-popup">
+            <h2 class="mdbook-help-title">Keyboard shortcuts</h2>
+            <div>
+                <p>Press <kbd>←</kbd> or <kbd>→</kbd> to navigate between chapters</p>
+                <p>Press <kbd>S</kbd> or <kbd>/</kbd> to search in the book</p>
+                <p>Press <kbd>?</kbd> to show this help</p>
+                <p>Press <kbd>Esc</kbd> to hide this help</p>
+            </div>
+        </div>
+    </div>
+    <div id="body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                let theme = localStorage.getItem('mdbook-theme');
+                let sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            const default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? default_dark_theme : default_light_theme;
+            let theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            let sidebar = null;
+            const sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+                sidebar_toggle.checked = false;
+            }
+            if (sidebar === 'visible') {
+                sidebar_toggle.checked = true;
+            } else {
+                html.classList.remove('sidebar-visible');
+            }
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="toc.html"></iframe>
+            </noscript>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="default_theme">Auto</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search (`/`)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="/ s" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Rust-Videokurs für Anfänger</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <div class="search-wrapper">
+                            <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                            <div class="spinner-wrapper">
+                                <i class="fa fa-spinner fa-spin"></i>
+                            </div>
+                        </div>
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="rust-videokurs-für-anfänger"><a class="header" href="#rust-videokurs-für-anfänger">Rust-Videokurs für Anfänger</a></h1>
+<p>Willkommen beim begleitenden Lehrbuch für den <strong>Rust-Videokurs für Anfänger</strong>!</p>
+<p>Dieses Lehrbuch führt dich Schritt für Schritt durch alle grundlegenden Konzepte der Programmiersprache Rust. Die Inhalte sind auf maximale Verständlichkeit ausgelegt und begleiten die videobasierten Lektionen.</p>
+<h2 id="inhaltsübersicht"><a class="header" href="#inhaltsübersicht">Inhaltsübersicht</a></h2>
+<p>Dieses Lehrbuch ist in 14 praxisnahe Lektionen aufgeteilt:</p>
+<ol>
+<li><strong>Was ist Rust?</strong>: Einführung in die Konzepte und Vorteile von Rust (Ownership, Speichersicherheit).</li>
+<li><strong>Installation &amp; Systemkonfiguration</strong>: Schritt-für-Schritt-Anleitung zur Einrichtung unter Linux/Windows sowie VS Code.</li>
+<li><strong>KI-Assistenten &amp; Tools</strong>: Nutzung moderner Assistenten (GitHub Copilot, Gemini Code Assist).</li>
+<li><strong>Erstes Projekt</strong>: Erstellung und Ausführung deines ersten "Hello World"-Programms.</li>
+<li><strong>Variablen &amp; Scopes</strong>: Deklarationen, Mutabilität, Scopes und Shadowing.</li>
+<li><strong>Skalare &amp; zusammengesetzte Typen</strong>: Alles über Integers, Floats, Chars, Booleans und Zeichenketten.</li>
+<li><strong>Übungsprojekt</strong>: Erste praktische Anwendung der gelernten Grundlagen.</li>
+<li><strong>Arrays &amp; Tupel</strong>: Strukturierte Speicherung mehrerer Werte.</li>
+<li><strong>Zusammenfassung Variablen &amp; Typen</strong>: Wiederholung und Merkzettel der ersten Lektionen.</li>
+<li><strong>Funktionen</strong>: Definitionen, Parameter und Rückgabewerte.</li>
+<li><strong>Funktionen Details</strong>: Ausdrücke (Expressions) vs. Anweisungen (Statements) und fortgeschrittene Signaturen.</li>
+<li><strong>Operatoren</strong>: Arithmetische, logische und bitweise Berechnungen sowie Typsicherheit.</li>
+<li><strong>Übungen zu Operatoren</strong>: Fünf praktische Rechenübungen inklusive Zinseszins.</li>
+<li><strong>Antigravity CLI</strong>: Arbeiten mit dem terminalbasierten Entwicklungsagenten von Google.</li>
+</ol>
+<hr />
+<p>Viel Erfolg und Spaß beim Lernen von Rust!</p>
+<div style="break-before: page; page-break-before: always;"></div><p>Erkläre, was Rust ist, vergleiche es mit anderen Programmiersprachen und nenne die Vor- und Nachteile für Anfänger.</p>
+<ul>
+<li>Wo genau wird Rust im IT-Sektor eingesetzt? Bitte erkläre dies ausführlich und gib Beispiele.</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="kapitel-2-installation--systemkonfiguration"><a class="header" href="#kapitel-2-installation--systemkonfiguration">Kapitel 2: Installation &amp; Systemkonfiguration</a></h1>
+<p>Um mit der Programmierung in Rust unter Ubuntu Linux zu beginnen, müssen wir unser System vorbereiten und die notwendigen Entwicklungswerkzeuge installieren. Dieses Kapitel führt dich Schritt für Schritt durch die Installation aller Voraussetzungen, der Entwicklungsumgebung (IDE) und von Rust selbst.</p>
+<hr />
+<h2 id="1-voraussetzungen-build-essential"><a class="header" href="#1-voraussetzungen-build-essential">1. Voraussetzungen: <code>build-essential</code></a></h2>
+<p>Bevor wir Rust installieren können, benötigt unser System grundlegende Werkzeuge zum Übersetzen und Linken von Software. Rust-Programme greifen beim Kompilieren auf Systembibliotheken und den System-Linker zu.</p>
+<h3 id="was-ist-build-essential"><a class="header" href="#was-ist-build-essential">Was ist <code>build-essential</code>?</a></h3>
+<p>Das Paket <code>build-essential</code> ist ein Meta-Paket in Ubuntu, das eine Sammlung der wichtigsten Werkzeuge für die C/C++-Entwicklung enthält. Dazu gehören:</p>
+<ul>
+<li><strong><code>gcc</code> / <code>g++</code></strong>: Die GNU Compiler Collection zum Übersetzen von C- und C++-Code.</li>
+<li><strong><code>make</code></strong>: Ein Werkzeug zur Automatisierung von Kompilierungsvorgängen.</li>
+<li><strong><code>libc-dev</code></strong>: Die Standard-C-Bibliotheken, die für Systemaufrufe benötigt werden.</li>
+<li><strong><code>dpkg-dev</code></strong>: Werkzeuge zur Paketierung.</li>
+</ul>
+<p>Rust benötigt den in diesem Paket enthaltenen C-Linker, um den generierten Maschinencode zu lauffähigen Binärdateien zusammenzufügen.</p>
+<h3 id="installation"><a class="header" href="#installation">Installation</a></h3>
+<p>Öffne dein Terminal und führe die folgenden Befehle aus:</p>
+<pre><code class="language-bash"># Paketquellen aktualisieren
+sudo apt update
+
+# build-essential installieren
+sudo apt install -y build-essential
+</code></pre>
+<hr />
+<h2 id="2-editor--ide-visual-studio-code"><a class="header" href="#2-editor--ide-visual-studio-code">2. Editor &amp; IDE: Visual Studio Code</a></h2>
+<p>Als Entwicklungsumgebung verwenden wir <strong>Visual Studio Code (VS Code)</strong>. Es ist ein moderner, performanter und erweiterbarer Editor von Microsoft, der sich in der Entwickler-Community großer Beliebtheit erfreut.</p>
+<h3 id="vs-code-auf-ubuntu-installieren"><a class="header" href="#vs-code-auf-ubuntu-installieren">VS Code auf Ubuntu installieren</a></h3>
+<p>Unter Ubuntu lässt sich VS Code am einfachsten und sichersten als klassisches Snap-Paket über das Terminal installieren:</p>
+<pre><code class="language-bash">sudo snap install --classic code
+</code></pre>
+<h3 id="die-erweiterung-rust-analyzer"><a class="header" href="#die-erweiterung-rust-analyzer">Die Erweiterung <code>rust-analyzer</code></a></h3>
+<p>VS Code selbst besitzt standardmäßig keine tiefe Integration für Rust. Um komfortabel arbeiten zu können, installieren wir das offizielle Rust-Plugin: <strong><code>rust-analyzer</code></strong>.</p>
+<ol>
+<li>Öffne VS Code.</li>
+<li>Drücke <code>Strg + Umschalt + X</code>, um die Extensions-Ansicht zu öffnen.</li>
+<li>Suche nach <strong><code>rust-analyzer</code></strong> (von der <em>Rust Programming Language</em> Organisation).</li>
+<li>Klicke auf <strong>Install</strong>.</li>
+</ol>
+<h4 id="was-bietet-rust-analyzer"><a class="header" href="#was-bietet-rust-analyzer">Was bietet <code>rust-analyzer</code>?</a></h4>
+<ul>
+<li><strong>Intelligente Codevervollständigung</strong>: Vorschläge beim Tippen.</li>
+<li><strong>Syntaxhervorhebung &amp; Formatierung</strong>: Automatisches Formatieren nach dem Rust-Standard <code>rustfmt</code>.</li>
+<li><strong>Echtzeit-Diagnose</strong>: Fehler und Warnungen werden direkt beim Schreiben im Code rot unterstrichen, bevor du überhaupt kompilierst.</li>
+<li><strong>Typen-Inferenz</strong>: Anzeige von automatisch erkannten Datentypen direkt im Editor.</li>
+</ul>
+<hr />
+<h2 id="3-rust-installation-via-rustup"><a class="header" href="#3-rust-installation-via-rustup">3. Rust-Installation via <code>rustup</code></a></h2>
+<p>Der offizielle, empfohlene und flexibelste Weg, Rust auf Unix-ähnlichen Systemen wie Linux zu installieren, ist <strong><code>rustup</code></strong>.</p>
+<h3 id="was-ist-rustup"><a class="header" href="#was-ist-rustup">Was ist <code>rustup</code>?</a></h3>
+<p><code>rustup</code> is der Versionsmanager für Rust. Ähnlich wie <code>nvm</code> für Node.js verwaltet es verschiedene Rust-Versionen (z. B. Stable, Beta, Nightly) und sorgt dafür, dass Tools wie der Compiler (<code>rustc</code>) und der Paketmanager (<code>Cargo</code>) immer auf dem neuesten Stand sind.</p>
+<h3 id="installation-1"><a class="header" href="#installation-1">Installation</a></h3>
+<p>Kopiere das offizielle Installationsskript in dein Terminal und führe es aus:</p>
+<pre><code class="language-bash">curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+</code></pre>
+<p>Während des Installationsprozesses wird im Terminal ein Auswahlmenü angezeigt:</p>
+<pre><code class="language-text">1) Proceed with installation (default)
+2) Customize installation
+3) Cancel installation
+</code></pre>
+<p>Drücke einfach <strong><code>1</code></strong> und dann <strong><code>Enter</code></strong>, um die Standardinstallation fortzusetzen.</p>
+<h3 id="systempfad-aktualisieren"><a class="header" href="#systempfad-aktualisieren">Systempfad aktualisieren</a></h3>
+<p>Nachdem die Installation abgeschlossen ist, müssen die Rust-Tools zu den Umgebungsvariablen deines Terminals hinzugefügt werden. Führe dazu entweder den folgenden Befehl aus oder starte dein Terminal einfach neu:</p>
+<pre><code class="language-bash">source "$HOME/.cargo/env"
+</code></pre>
+<h3 id="Überprüfung-der-installation"><a class="header" href="#Überprüfung-der-installation">Überprüfung der Installation</a></h3>
+<p>Um zu verifizieren, dass Rust erfolgreich installiert wurde und einsatzbereit ist, kannst du die Version des Compilers abfragen:</p>
+<pre><code class="language-bash">rustc --version
+</code></pre>
+<p>Die Ausgabe sollte der folgenden ähneln (Version und Datum können abweichen):
+<code>rustc 1.80.0 (sha 2026-06-06)</code></p>
+<p>Dein System ist jetzt vollständig eingerichtet und bereit für dein erstes Rust-Projekt!</p>
+<div style="break-before: page; page-break-before: always;"></div><p>Beschreibung für Anfänger: KI-Assistenten nutzen Tools, erledigen Aufgaben und suchen im Internet nach weiteren Informationen, um zu zeigen, wie diese Tools funktionieren.</p>
+<ul>
+<li>Cline ist ein KI-Assistent, der Entwicklern hilft, Code schneller zu schreiben und zu verstehen.</li>
+<li>Gemini Code Assist ist ein KI-gestütztes Tool von Google, das bei der Code-Vervollständigung, Fehlererkennung und Refactoring unterstützt.</li>
+<li>Github Copilot ist ein KI-Paarprogrammierer, der Code basierend auf Kommentaren und umgebendem Code vorschlägt.</li>
+</ul>
+<p>Das sind meine Favoriten: GitHub Copilot und Gemini Code Assist.</p>
+<p>Warum sollte man nicht alles von KI-Agenten erledigen lassen? Man lernt nichts dabei.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="-kapitel-4-das-erste-rust-projekt-video-analyse--tonspur-bereinigung"><a class="header" href="#-kapitel-4-das-erste-rust-projekt-video-analyse--tonspur-bereinigung">🎬 Kapitel 4: Das erste Rust-Projekt (Video-Analyse &amp; Tonspur-Bereinigung)</a></h1>
+<p>In diesem Kapitel erstellen wir unser erstes Rust-Projekt mit Cargo und VS Code. Um eine optimale Videoqualität zu gewährleisten, wurde die verrauschte Original-Tonspur des Videos <code>Video/4.mp4</code> komplett durch eine glasklare, präzise getimte Sprachspur (TTS mit dem Kokoro-ONNX-Modell, Sprecher "Martin") ersetzt.</p>
+<p>Das fertige Video mit der rauschfreien Tonspur ist unter <a href="file:///home/thorsten/RustKurs/4.mp4">4.mp4</a> gespeichert.</p>
+<hr />
+<h2 id="-technische-details-des-videos"><a class="header" href="#-technische-details-des-videos">📊 Technische Details des Videos</a></h2>
+<ul>
+<li><strong>Dateiname:</strong> <code>Video/4.mp4</code> (Original) / <code>4.mp4</code> (Bereinigt mit Sprecher)</li>
+<li><strong>Auflösung:</strong> 1280x720 (720p)</li>
+<li><strong>Bildwiederholrate (FPS):</strong> 30 fps</li>
+<li><strong>Dauer:</strong> 01:43.38 (103,38 Sekunden)</li>
+<li><strong>Audio-Format (Neu):</strong> AAC Mono, 48 kHz (Rauschfrei)</li>
+</ul>
+<hr />
+<h2 id="-szenenübersicht-und-zeitstempel"><a class="header" href="#-szenenübersicht-und-zeitstempel">🎥 Szenenübersicht und Zeitstempel</a></h2>
+<p>Hier ist eine detaillierte Aufschlüsselung der Ereignisse im Video und der zugehörigen Sprachsegmente:</p>
+<h3 id="1-intro--cargo-initialisierung-0000---0016"><a class="header" href="#1-intro--cargo-initialisierung-0000---0016">1. Intro &amp; Cargo-Initialisierung (00:00 - 00:16)</a></h3>
+<ul>
+<li><strong>Visueller Inhalt:</strong> Das Ubuntu-Terminal ist geöffnet. Der Benutzer tippt den Befehl <code>cargo new hallowelt</code> ein und führt ihn aus. Cargo erstellt ein neues Verzeichnis <code>hallowelt</code> mit den Standard-Projektdateien.</li>
+<li><strong>Sprechertext (Start: 00:01):</strong>
+<blockquote>
+<p><em>"Willkommen zu Kapitel vier. Hier erstellen wir unser erstes Rust-Projekt. Im Ubuntu-Terminal nutzen wir das Tool Cargo, den offiziellen Paketmanager. Mit dem Befehl cargo new hallowelt legen wir ein neues Verzeichnis mit allen benötigten Projektdateien an."</em></p>
+</blockquote>
+</li>
+</ul>
+<h3 id="2-vs-code-öffnen-0016---0030"><a class="header" href="#2-vs-code-öffnen-0016---0030">2. VS Code öffnen (00:16 - 00:30)</a></h3>
+<ul>
+<li><strong>Visueller Inhalt:</strong> Der Benutzer wechselt mit <code>cd hallowelt</code> (implizit) bzw. öffnet das neu erstellte Verzeichnis direkt im Editor Visual Studio Code über den Befehl <code>code hallowelt</code>.</li>
+<li><strong>Sprechertext (Start: 00:16.5):</strong>
+<blockquote>
+<p><em>"Um den Quellcode zu bearbeiten, öffnen wir das Verzeichnis anschließend in Visual Studio Code mit dem Befehl code hallowelt."</em></p>
+</blockquote>
+</li>
+</ul>
+<h3 id="3-projektstruktur-erkunden-0030---0046"><a class="header" href="#3-projektstruktur-erkunden-0030---0046">3. Projektstruktur erkunden (00:30 - 00:46)</a></h3>
+<ul>
+<li><strong>Visueller Inhalt:</strong> Visual Studio Code öffnet sich. Der Explorer auf der linken Seite wird sichtbar. Er zeigt die Struktur des frisch generierten Rust-Projekts: Die Konfigurationsdatei <code>Cargo.toml</code> sowie den Quellcode-Ordner <code>src/</code>.</li>
+<li><strong>Sprechertext (Start: 00:30):</strong>
+<blockquote>
+<p><em>"Visual Studio Code öffnet sich nun. Auf der linken Seite im Explorer sehen wir die Struktur unseres Rust-Projekts. Neben der Konfigurationsdatei Cargo.toml finden wir den Quellcode-Ordner src, in dem sich unsere Programme befinden."</em></p>
+</blockquote>
+</li>
+</ul>
+<h3 id="4-quellcode-editieren-0046---0107"><a class="header" href="#4-quellcode-editieren-0046---0107">4. Quellcode editieren (00:46 - 01:07)</a></h3>
+<ul>
+<li><strong>Visueller Inhalt:</strong> Der Benutzer klickt auf <code>src/main.rs</code>. Der Editor zeigt das standardmäßig generierte <code>Hello, world!</code>-Programm in englischer Sprache. Der Text <code>"Hello, world!"</code> wird in <code>"Hallo Welt"</code> geändert. Die Datei wird gespeichert.</li>
+<li><strong>Sprechertext (Start: 00:46):</strong>
+<blockquote>
+<p><em>"Wir öffnen die Quellcodedatei main.rs im src-Ordner. Standardmäßig hat Cargo hier bereits ein einfaches Hallo-Welt-Programm in englischer Sprache generiert. Wir ändern den Text in Hallo Welt ab, um unser Programm zu personalisieren, und speichern die Datei."</em></p>
+</blockquote>
+</li>
+</ul>
+<h3 id="5-kompilieren-und-ausführen-0107---0122"><a class="header" href="#5-kompilieren-und-ausführen-0107---0122">5. Kompilieren und Ausführen (01:07 - 01:22)</a></h3>
+<ul>
+<li><strong>Visueller Inhalt:</strong> Der Benutzer bewegt den Cursor auf den <code>Run</code>-Button (den Code Lens-Link direkt über der Funktion <code>fn main()</code>). Ein Terminal öffnet sich am unteren Fensterrand von VS Code, und der Build-Prozess wird gestartet.</li>
+<li><strong>Sprechertext (Start: 01:07):</strong>
+<blockquote>
+<p><em>"Um das Programm auszuführen, klicken wir auf die kleine Run-Schaltfläche direkt über der Hauptfunktion. Visual Studio Code öffnet daraufhin am unteren Bildschirmrand ein Terminal und startet den Compiler."</em></p>
+</blockquote>
+</li>
+</ul>
+<h3 id="6-outro--ausblick-auf-kapitel-5-0122---014338"><a class="header" href="#6-outro--ausblick-auf-kapitel-5-0122---014338">6. Outro &amp; Ausblick auf Kapitel 5 (01:22 - 01:43.38)</a></h3>
+<ul>
+<li><strong>Visueller Inhalt:</strong> Das Terminal zeigt die Ausgabe des Compilers und schließlich das Ergebnis: <code>Hallo Welt</code>. Die Lektion wird beendet.</li>
+<li><strong>Sprechertext (Start: 01:22):</strong>
+<blockquote>
+<p><em>"Der Compiler übersetzt unseren Code in kürzester Zeit und führt das Programm aus. Im Terminal sehen wir die Ausgabe Hallo Welt. Herzlichen Glückwunsch, du hast dein erstes Rust-Programm erfolgreich gestartet! Im nächsten Kapitel beschäftigen wir uns mit Variablen."</em></p>
+</blockquote>
+</li>
+</ul>
+<hr />
+<h2 id="-wie-die-tonspur-bereinigt-wurde"><a class="header" href="#-wie-die-tonspur-bereinigt-wurde">🛠️ Wie die Tonspur bereinigt wurde</a></h2>
+<ol>
+<li><strong>Sprachspur-Generierung:</strong> Mithilfe des Python-Skripts <a href="file:///home/thorsten/RustKurs/generate_audio_ch4.py">generate_audio_ch4.py</a> wurde über das deutsche TTS-Modell <code>Kokoro</code> (Stimme "Martin") ein rauschfreier, hochqualitativer Begleittext erzeugt.</li>
+<li><strong>Timing-Synchronisation:</strong> Die einzelnen Sprachblöcke wurden präzise auf die visuellen Ereignisse im Video abgestimmt (siehe Startzeitstempel in <code>generate_audio_ch4.py</code>).</li>
+<li><strong>Mischen mit dem Video:</strong> Per <code>ffmpeg</code> wurde die verrauschte Original-Tonspur entfernt und die neu generierte Audiodatei (<code>audio/ch4_voiceover.wav</code>) lippensynchron und rauschfrei mit dem Video gemountet:
+<pre><code class="language-bash">ffmpeg -y -i Video/4.mp4 -i audio/ch4_voiceover.wav -map 0:v -map 1:a -c:v copy -c:a aac -shortest 4.mp4
+</code></pre>
+</li>
+</ol>
+<div style="break-before: page; page-break-before: always;"></div><h2 id="variable-genau-alles-erklären-und-vele-beispiele"><a class="header" href="#variable-genau-alles-erklären-und-vele-beispiele">Variable genau alles Erklären und vele Beispiele</a></h2>
+<p>Variablen in Rust: Funktionen und Aufgaben genau erklärt</p>
+<ul>
+<li>Eine Variable ist wie eine beschriftete Box im Computer, in der wir einen Wert (z. B. eine Zahl) speichern, um ihn später wiederzuverwenden.</li>
+<li>Wie man eine Variable in Rust erstellt</li>
+<li>Warnungen vs. Fehler (Gelbe vs. Rote Linien)
+Warnung (Gelbe Wellenlinie): Rust gibt dir einen freundlichen Hinweis. Wenn dort steht unused variable: apples, heißt das nur: "Du hast die Box 'apples' erstellt, aber benutzt sie nirgendwo." Das Programm funktioniert trotzdem!</li>
+</ul>
+<p>Fehler (Rote Wellenlinie): Das Programm ist fehlerhaft und kann nicht gestartet werden. Du musst den Fehler erst beheben. Eine detaillierte Beschreibung folgt:</p>
+<h2 id="das-println-makro-text-ausgeben"><a class="header" href="#das-println-makro-text-ausgeben">Das println! Makro: Text ausgeben</a></h2>
+<ul>
+<li>Genau Beschreibung wie das Funktion</li>
+</ul>
+<h3 id="variablen-einfügen-interpolation-genau-erklären-und-beschreibung"><a class="header" href="#variablen-einfügen-interpolation-genau-erklären-und-beschreibung">Variablen einfügen (Interpolation) genau erklären und Beschreibung</a></h3>
+<ul>
+<li>Methode A: Direkt in der Klammer (Ab Rust 1.58)</li>
+<li>Methode B: Als Argument hinten anstellen</li>
+</ul>
+<h2 id="das-prinzip-in-kürze"><a class="header" href="#das-prinzip-in-kürze">Das Prinzip in Kürze</a></h2>
+<p>Wenn du Argumente an println! übergibst, zählt Rust im Hintergrund ab 0:</p>
+<p>Rust
+println!("Ich mag {0} und {1}. Ja, wirklich {0}!", äpfel, orangen);
+//                  ^       ^                 ^      ^       ^
+//                  |       |                 |      |       |
+//              Position 0  Position 1    Position 0 |       |
+//                                                Argument 0 |
+//                                                        Argument 1</p>
+<h2 id="das-problem-ungenutzte-variablen"><a class="header" href="#das-problem-ungenutzte-variablen">Das Problem: Ungenutzte Variablen</a></h2>
+<p>Wenn du eine Variable erstellst, sie aber nirgends im Code benutzt (kein println!, keine Berechnung), meckert der Rust-Compiler mit einer Warnung (warning: unused variable). Das Programm läuft zwar, aber Rust mag keinen unaufgeräumten Code.</p>
+<h2 id="die-lösung-der-unterstrich-_"><a class="header" href="#die-lösung-der-unterstrich-_">Die Lösung: Der Unterstrich (_)</a></h2>
+<p>Wenn eine Variable absichtlich (oder vorübergehend beim Testen) ungenutzt bleiben soll, setzt du einfach einen Unterstrich vor den Namen.</p>
+<h2 id="standard-unveränderlich-immutable"><a class="header" href="#standard-unveränderlich-immutable">Standard: Unveränderlich (Immutable)</a></h2>
+<p>In Rust ist jede normale Variable wie in Stein gemeißelt. Einmal zugewiesen, darfst du den Wert nicht mehr ändern.</p>
+<h2 id="der-trick-das-schlüsselwort-mut-mutable"><a class="header" href="#der-trick-das-schlüsselwort-mut-mutable">Der Trick: Das Schlüsselwort mut (Mutable)</a></h2>
+<p>Wenn sich ein Wert im Laufe des Programms ändern muss, musst du Rust explizit um Erlaubnis bitten. Das machst du mit mut (kurz für mutable = veränderlich).</p>
+<h2 id="mini-merkmerkmale"><a class="header" href="#mini-merkmerkmale">Mini-Merkmerkmale:</a></h2>
+<ul>
+<li>Ohne mut = Konstant/Gesperrt</li>
+<li>Mit mut = Veränderbar</li>
+</ul>
+<h2 id="mini-merkmerkmale-1"><a class="header" href="#mini-merkmerkmale-1">Mini-Merkmerkmale:</a></h2>
+<ul>
+<li>rustc = Die Abkürzung für den Rust-Compiler.</li>
+<li>--explain = Der Befehl, der dir den Fehler haarklein erklärt.</li>
+<li>Keine Panik bei Fehlern: Code eingeben, Erklärung lesen, Fix anwenden. Du musst den Editor dafür nicht mal verlassen!</li>
+</ul>
+<h2 id="variablen-shadowing-beschattung"><a class="header" href="#variablen-shadowing-beschattung">Variablen-Shadowing (Beschattung)</a></h2>
+<h3 id="normalerweise-darf-eine-variable-ihren-datentyp-niemals-ändern-mit-let-shadowing-darfst-du-es-weil-die-alte-variable-quasi-gelöscht-überschattet-und-eine-komplett-neue-gebaut-wird"><a class="header" href="#normalerweise-darf-eine-variable-ihren-datentyp-niemals-ändern-mit-let-shadowing-darfst-du-es-weil-die-alte-variable-quasi-gelöscht-überschattet-und-eine-komplett-neue-gebaut-wird">Normalerweise darf eine Variable ihren Datentyp niemals ändern. Mit let (Shadowing) darfst du es, weil die alte Variable quasi gelöscht (überschattet) und eine komplett neue gebaut wird.</a></h3>
+<h3 id="shadowing--altes-buch-wegschmeißen-neues-buch-mit-demselben-titel-aber-völlig-anderem-inhalt-ins-regal-stellen"><a class="header" href="#shadowing--altes-buch-wegschmeißen-neues-buch-mit-demselben-titel-aber-völlig-anderem-inhalt-ins-regal-stellen">Shadowing = Altes Buch wegschmeißen, neues Buch mit demselben Titel, aber völlig anderem Inhalt ins Regal stellen.</a></h3>
+<h2 id="die-3-goldenen-scope-regeln"><a class="header" href="#die-3-goldenen-scope-regeln">Die 3 goldenen Scope-Regeln</a></h2>
+<ul>
+<li>Von außen nach innen (Ja): Ein innerer Block kann alles sehen und nutzen, was im äußeren Block darüber deklariert wurde.</li>
+<li>Von innen nach außen (Nein): Ein äußerer Block kann nicht sehen, was in einem inneren Block eingesperrt ist.</li>
+<li>Das Lebensende (Drop): Sobald der Code die schließende Klammer } eines Blocks erreicht, „stirbt“ die Variable (sie geht out of scope) und Rust löscht sie sofort aus dem Arbeitsspeicher.</li>
+</ul>
+<h2 id="namens-doppelgänger-kein-shadowing"><a class="header" href="#namens-doppelgänger-kein-shadowing">Namens-Doppelgänger (Kein Shadowing!)</a></h2>
+<p>Wenn du im inneren Block eine Variable mit demselben Namen wie außen erstellst, überdeckt sie die äußere Variable – aber nur solange der innere Block läuft!</p>
+<h2 id="mini-merkmerkmal"><a class="header" href="#mini-merkmerkmal">Mini-Merkmerkmal</a></h2>
+<p>Scope ist wie ein Haus mit Einwegspiegeln: Wer im Haus (innerer Block) steht, kann durch die Fenster nach draußen (äußerer Block) sehen. Wer draußen steht, kann aber nicht reinschauen. Und zieht man das Haus ab (}), ist alles darin weg.</p>
+<h2 id="konstanten-const-in-rust"><a class="header" href="#konstanten-const-in-rust">Konstanten (const) in Rust</a></h2>
+<p>Eine Konstante ist ein Name für einen Wert, der sich niemals ändern kann. Sie ist noch strenger als eine normale, unveränderliche Variable.</p>
+<ul>
+<li>Variable (let): Ein beschreibbares Whiteboard im Zimmer.</li>
+<li>Konstante (const): Ein Schild aus Stein, das draußen an der Hauswand für alle sichtbar eingemeißelt ist.</li>
+</ul>
+<p>Nächste Lektion lernen wir Datentypen in Rust</p>
+<div style="break-before: page; page-break-before: always;"></div><h2 id="rust-datentypen-einfach-erklärt"><a class="header" href="#rust-datentypen-einfach-erklärt">Rust Datentypen einfach erklärt</a></h2>
+<ul>
+<li>Rust ist eine statisch typisierte Sprache</li>
+</ul>
+<h2 id="skalare-typen"><a class="header" href="#skalare-typen">Skalare Typen</a></h2>
+<h3 id="ein-skalarer-typ-repräsentiert-einen-einzigen-wert-die-wichtigsten-numerischen-typen-sind"><a class="header" href="#ein-skalarer-typ-repräsentiert-einen-einzigen-wert-die-wichtigsten-numerischen-typen-sind">Ein skalarer Typ repräsentiert einen einzigen Wert. Die wichtigsten numerischen Typen sind:</a></h3>
+<h4 id="ganzzahlen-integers-zahlen-ohne-komma"><a class="header" href="#ganzzahlen-integers-zahlen-ohne-komma">Ganzzahlen (Integers): Zahlen ohne Komma.</a></h4>
+<h5 id="ganzzahlen-integers-zahlen-ohne-komma-1"><a class="header" href="#ganzzahlen-integers-zahlen-ohne-komma-1">Ganzzahlen (Integers): Zahlen ohne Komma.</a></h5>
+<ul>
+<li>Mit Vorzeichen (i für signed): Können positiv und negativ sein (z. B. -5, 12). Standard ist i32.</li>
+<li>Ohne Vorzeichen (u für unsigned): Können nur 0 oder positiv sein (z. B. 5). Weil sie kein Minuszeichen speichern müssen, passen größere positive Zahlen hinein.</li>
+</ul>
+<h4 id="fließkommazahlen-floats-zahlen-mit-nachkommastellen-dezimalzahlen-standard-ist"><a class="header" href="#fließkommazahlen-floats-zahlen-mit-nachkommastellen-dezimalzahlen-standard-ist">Fließkommazahlen (Floats): Zahlen mit Nachkommastellen (Dezimalzahlen). Standard ist</a></h4>
+<ul>
+<li>f64</li>
+</ul>
+<h3 id="was-bedeuten-die-zahlen-z-b-8-32-64"><a class="header" href="#was-bedeuten-die-zahlen-z-b-8-32-64">Was bedeuten die Zahlen (z. B. 8, 32, 64)?</a></h3>
+<p>Wichtig für Anfänger: Verschwende am Anfang keine Zeit mit "Mikro-Optimierung" des Speichers. Nutze einfach die * * * * Rust-Standards (i32 und f64). Heutige Computer haben mehr als genug Speicher.</p>
+<ul>
+<li>
+<p>Statische Typisierung: Rust muss jeden Datentyp vor dem Start des Programms kennen.</p>
+</li>
+<li>
+<p>Typinferenz: Rust erkennt den Typ oft automatisch anhand des zugewiesenen Wertes.</p>
+</li>
+<li>
+<p>Zusammengesetzte Typen (Vorschau): Können im Gegensatz zu skalaren Typen mehrere Werte wie ein "Behälter" aufnehmen.</p>
+</li>
+</ul>
+<p>Speicher-Eselsbrücke</p>
+<ul>
+<li>
+<p>i = Integer (Ganzzahl mit Vorzeichen, kann ins Ins Negative gehen).</p>
+</li>
+<li>
+<p>u = Unsigned (Vorzeichenlos, Unmöglich negativ).</p>
+</li>
+<li>
+<p>Standard-Regel: Wenn du eine normale Zahl brauchst, nimm einfach i32. Wenn du eine Kommazahl brauchst, nimm f64.</p>
+</li>
+</ul>
+<p>Das Wichtigste in Kürze</p>
+<ul>
+<li>Explizite Typisierung: Standardmäßig macht Rust aus ganzen Zahlen ein i32. Willst du das ändern, hängst du einen Doppelpunkt und den Typ an den Variablennamen (z. B. let x: i8 = -100;).</li>
+<li>Wertebereich beachten: Jeder Typ hat Grenzen. Passt eine Zahl nicht in den Speicherplatz (z. B. 400 in ein u8), streikt der Compiler und das Programm startet erst gar nicht.</li>
+<li>Alternative Schreibweise (Suffix): Du kannst den Typ auch direkt ohne Leerzeichen an die Zahl klatschen (z. B. let x = 20i8;). Das bewirkt genau dasselbe, wird aber seltener genutzt.</li>
+</ul>
+<h2 id="merkzettel-rust-integer-ganzzahlen-im-Überblick"><a class="header" href="#merkzettel-rust-integer-ganzzahlen-im-Überblick">Merkzettel: Rust Integer (Ganzzahlen) im Überblick</a></h2>
+<ul>
+<li>i (signed / mit Vorzeichen): Kann negative und positive Zahlen speichern.</li>
+<li>u (unsigned / ohne Vorzeichen): Kann nur positive Zahlen und 0 speichern. Vorteil: Da kein Minuszeichen gespeichert werden muss, verdoppelt sich die Reichweite im positiven Bereich.</li>
+</ul>
+<h2 id="typen-speicherplatz-und-ihre-grenzen"><a class="header" href="#typen-speicherplatz-und-ihre-grenzen">Typen, Speicherplatz und ihre Grenzen</a></h2>
+<p>SpeichergrößeGültiger Zahlenbereich (Grenzen)Beispiel für Fehleri81 Byte (8 Bit)-128 bis 127let x: i8 = -210; (zu klein)u81 Byte (8 Bit)0 bis 255let x: u8 = -15; (kein Minus erlaubt)i162 Bytes (16 Bit)-32.768 bis 32.767let x: i16 = 64000; (zu groß)u162 Bytes (16 Bit)0 bis 65.535let x: u16 = 66000; (zu groß)i324 Bytes (32 Bit)ca. -2,14 Mrd. bis +2,14 Mrd.(Standardtyp in Rust)u324 Bytes (32 Bit)0 bis ca. 4,29 Mrd.let x: u32 = -1; (kein Minus erlaubt)</p>
+<p>Merke für die Praxis: Wenn eine Zahl den zugewiesenen Bereich sprengt, bricht Rust den Kompiliervorgang sofort mit einer Fehlermeldung ab. Das schützt dich vor Fehlern im fertigen Programm!</p>
+<p>Das Wichtigste in Kürze</p>
+<ul>
+<li>
+<p>Große Zahlen im Code (wie 6000000) sind schwer zu lesen. Rust erlaubt es dir, Unterstriche (_) als visuelle Trennzeichen in Zahlen einzufügen (wie das Tausendertrennzeichen in der Mathematik).</p>
+</li>
+<li>
+<p>Dem Compiler ist es egal: Rust ignoriert die Unterstriche beim Kompilieren komplett.</p>
+</li>
+<li>
+<p>Flexibel: Du kannst so viele Unterstriche setzen, wo du willst.</p>
+</li>
+<li>
+<p>Best Practice: Sinnvoll ist es, Zahlen in 3er-Blöcke aufzuteilen (z. B. 6_000_000).</p>
+</li>
+<li>
+<p>Eselsbrücke: Ersetze das mathematische Tausender-Komma (oder den Punkt) im Code einfach durch einen Unterstrich _. Das erhöht die Lesbarkeit sofort und verhindert Tippfehler bei vielen Nullen!</p>
+</li>
+</ul>
+<h2 id="das-wichtigste-in-kürze"><a class="header" href="#das-wichtigste-in-kürze">Das Wichtigste in Kürze</a></h2>
+<p>Während Typen wie i32 oder u8 auf jedem Computer immer exakt gleich groß sind, passen sich isize und usize automatisch an den Computer an, auf dem das Programm gerade läuft.</p>
+<ul>
+<li>Die Anpassung: Auf einem 64-Bit-Computer werden sie zu 64-Bit-Typen (i64 / u64). Auf einem 32-Bit-Computer werden sie zu 32-Bit-Typen (i32 / u32).</li>
+<li>Der Zweck: Sie dienen als "Spitznamen" (Aliase) für den nativen Typ des Systems. Das macht den Code extrem flexibel und spart automatisch Speicher auf älteren Systemen, während es auf modernen Computern die maximale Leistung herausholt.
+Wofür braucht man das? In der Praxis nutzt man usize vor allem, wenn man Dinge zählt, die mit der Speichergröße des Computers zu tun haben – zum Beispiel, um die Länge von Listen (Arrays/Vektoren) zu bestimmen oder Elemente darin über einen Index anzusprechen.</li>
+</ul>
+<h2 id="was-ist-ein-string-literal"><a class="header" href="#was-ist-ein-string-literal">Was ist ein String-Literal?</a></h2>
+<p>Ein Text in doppelten Anführungszeichen (z. B. "Hello World") ist in Rust technisch gesehen ein String-Literal. Der Compiler kennt diesen Text schon beim Verharmlosen (Kompilieren), weil er fest im Quellcode geschrieben steht. Dynamische Texte (z. B. Benutzereingaben) funktionieren später anders.</p>
+<h2 id="maskierung-escaping--sonderzeichen"><a class="header" href="#maskierung-escaping--sonderzeichen">Maskierung (Escaping) &amp; Sonderzeichen</a></h2>
+<p>Manche Zeichen haben in Rust eine Sonderfunktion. Sie beginnen immer mit einem Backslash (). Möchtest du diese Zeichen wörtlich als Text drucken, musst du sie mit einem zusätzlichen Backslash "maskieren" (escapen).</p>
+<ul>
+<li>
+<p>\n erzeugt eine neue Zeile.</p>
+</li>
+<li>
+<p>\t erzeugt einen Tabulator-Abstand.</p>
+</li>
+<li>
+<p>" druckt ein echtes Anführungszeichen, ohne dass Rust denkt, der String ist vorbei.</p>
+</li>
+<li>
+<p>\ druckt einen einzelnen, echten Backslash (wichtig z. B. bei Windows-Dateipfaden).</p>
+</li>
+</ul>
+<p>Die Rettung: Raw Strings
+Wenn du viele Backslashes oder Pfade hast, wird der Code durch das ständige Maskieren (\) unleserlich. Die Lösung ist ein Raw String (Roh-Zeichenkette). Setze einfach ein r vor die Anführungszeichen. Rust ignoriert dann alle Sonderfunktionen und druckt alles exakt so, wie es da steht.</p>
+<ol>
+<li>Was ist eine Methode?
+Eine Methode ist im Grunde eine Funktion, die fest an einen bestimmten Wert oder Datentyp gebunden ist. Sie ist wie ein Befehl, den man direkt auf eine Variable anwendet.</li>
+</ol>
+<ul>
+<li>
+<p>Funktion / Makro: Steht für sich alleine (z. B. println!(...)).</p>
+</li>
+<li>
+<p>Methode: Klebt immer mit einem Punkt an einer Variablen (z. B. text.trim()).</p>
+</li>
+<li>
+<p>Eingabe (Argument): Was in die Klammern reinwandert.</p>
+</li>
+<li>
+<p>Ausgabe (Rückgabewert): Das Ergebnis, das am Ende rauskommt.</p>
+</li>
+</ul>
+<p>Ein Float (Fließkommazahl) stellt eine Dezimalzahl mit Nachkommastellen dar. In Rust sind Floats immer vorzeichenbehaftet (sie können also positive und negative Werte haben). Es gibt keine "unsigned" (rein positiven) Floats.</p>
+<p>fn main() {
+let pi: f64 = 3.14159;</p>
+<pre><code>// 1. .floor() -&gt; Abrunden (zum "Boden")
+println!("{}", pi.floor()); // Ausgabe: 3.0
+
+// 2. .ceil() -&gt; Aufrunden (zur "Decke" / Ceiling)
+println!("{}", pi.ceil());  // Ausgabe: 4.0
+
+// 3. .round() -&gt; Kaufmännisch runden (zur nächsten ganzen Zahl)
+println!("{}", pi.round()); // Ausgabe: 3.0 (da .14 näher an 3 ist)
+
+let kaffee_preis: f64 = 3.75;
+println!("{}", kaffee_preis.round()); // Ausgabe: 4.0 (da .75 näher an 4 ist)
+</code></pre>
+<p>}</p>
+<p>Wenn du eine Kommazahl mit println! ausgibst, kannst du die Anzahl der angezeigten Nachkommastellen begrenzen. Das Zaubermittel dafür heißt Formatbezeichner (Format Speci)
+Die Syntax: Innerhalb der geschweiften Klammern fügst du einen Doppelpunkt :, einen Punkt . und die gewünschte Anzahl an Stellen ein (z. B. :.2 für 2 Stellen).</p>
+<ul>
+<li>
+<p>Wichtig: Der echte Wert in der Variable ändert sich dadurch nicht. Rust passt nur die optische Darstellung bei der Ausgabe an und rundet die Zahl dabei mathematisch korrekt.</p>
+</li>
+<li>
+<p>Zwei Wege: Das funktioniert sowohl, wenn die Variable direkt in den Klammern steht ({pi:.2}), als auch, wenn sie als Argument hinten dranhängt ({:.2}, pi).</p>
+</li>
+</ul>
+<p>Rust
+fn main() {
+let pi = 3.14159265;</p>
+<pre><code>// ---- Variante 1: Variable direkt in der Klammer (Kompakt) ----
+println!("Pi auf 2 Stellen: {pi:.2}"); // Ausgabe: 3.14
+println!("Pi auf 4 Stellen: {pi:.4}"); // Ausgabe: 3.1416 (automatisch aufgerundet!)
+
+// ---- Variante 2: Variable als Argument hinten dran (Klassisch) ----
+println!("Ausgabe auf 3 Stellen: {:.3}", pi); // Ausgabe: 3.142
+
+// Der Originalwert ist immer noch unverändert:
+println!("Originaler Wert: {}", pi); // Ausgabe: 3.14159265
+</code></pre>
+<p>}
+💡 Eselsbrücke für die Praxis: Denk bei :.2 einfach an ein Gesicht mit Brille, das genau hinsieht: Der Doppelpunkt : startet das Tuning, der Punkt . trennt ab, und die 2 sagt, wie viele Ziffern übrig bleiben!</p>
+<h2 id="was-ist-casting"><a class="header" href="#was-ist-casting">Was ist Casting?</a></h2>
+<ul>
+<li>Casting bedeutet, einen Wert von einem Datentyp in einen anderen umzuwandeln (z. B. eine Kommazahl in eine Ganzzahl). In Rust nutzt man dafür das Schlüsselwort as.</li>
+<li>
+<ol start="2">
+<li>Wie funktioniert es?</li>
+</ol>
+</li>
+<li>Du schreibst die ursprüngliche Variable, gefolgt von as und dem neuen Typ: variable as neuer_typ. Die originale Variable bleibt dabei völlig unverändert!</li>
+</ul>
+<p>Praktische Code-Beispiele
+Rust
+fn main() {
+// ---- 1. Ganzzahl verkleinern (i32 zu i8) ----
+let miles_away = 50; // Rust denkt automatisch: i32
+let miles_i8 = miles_away as i8; // Sicher umgewandelt in i8</p>
+<pre><code>// ---- 2. Float-Präzision ändern (f64 zu f32) ----
+let ungenaues_pi = 3.14159265f64; 
+let pi_f32 = ungenaues_pi as f32; // Jetzt als 32-Bit-Float
+
+// ---- 3. Kommazahl zu Ganzzahl (Achtung: Abschneiden!) ----
+let strecke_float = 100.99; // Standard: f64
+let strecke_int = strecke_float as i32; 
+
+println!("{}", strecke_int); // Ausgabe: 100 (Es wird NICHT gerundet, nur abgeschnitten!)
+</code></pre>
+<p>}
+⚠️ Wichtiger Anfänger-Tipp: Rust rundet beim Casting von Float zu Integer niemals kaufmännisch auf! Selbst aus 99.99 as i32 wird gnadenlos die Ganzzahl 99. Möchtest du echtes Runden, nutze vorher die Methode .round().</p>
+<h2 id="was-ist-ein-boolean"><a class="header" href="#was-ist-ein-boolean">Was ist ein Boolean?</a></h2>
+<ul>
+<li>Ein Boolean (benannt nach George Boole) stellt den Zustand der Wahrheit in der Programmierung dar. Er kennt exakt nur zwei Zustände: true (wahr) oder false (falsch). Damit lassen sich Ja/Nein-, An/Aus- oder Aktiv/Inaktiv-Szenarien perfekt abbilden.</li>
+<li>
+<ol start="2">
+<li>Der Typ bool und sein Speicher
+In Rust heißt dieser Typ kurz bool.</li>
+</ol>
+</li>
+</ul>
+<p>Der Speicher-Trick: Rein mathematisch würde 1 Bit (0 oder 1) reichen. Rust spendiert einem bool im Arbeitsspeicher aber 1 Byte (8 Bits). Warum? Moderne Computer-Architekturen können auf ganze Bytes viel schneller zugreifen als auf einzelne Bits. Das bringt mehr Leistung (Performance).
+3. Wie entstehen Booleans?
+Direkte Zuweisung: let an: bool = true; (Wichtig: ohne Anführungszeichen, sonst wäre es Text!).</p>
+<ul>
+<li>
+<p>Vergleiche: Mathematische Prüfungen wie "kleiner als" (&lt;) oder "größer als" (&gt;) geben automatisch ein true oder false zurück.</p>
+</li>
+<li>
+<p>Typ-Methoden: Zahlen haben eingebaute Werkzeuge, die Fragen beantworten (z. B. .is_positive()).</p>
+</li>
+</ul>
+<p>📌 Merkzettel: Der Datentyp char in Rust
+⚙️ Syntax im Vergleich
+Rust
+let buchstabe: char = 'B'; // ✅ Gültiger char (Einfache Anführungszeichen)
+let emoji: char = '🎧';    // ✅ Gültiger char (Ein Emoji ist EIN Zeichen)</p>
+<p>// let fehler: char = 'AB';  ❌ FEHLER: Mehr als ein Zeichen!
+// let text: char = "B";     ❌ FEHLER: Doppelte Anführungszeichen machen daraus einen String!</p>
+<p>Schnelle Eselsbrücke für Anfänger
+Einfache Striche (') = Einsames Zeichen (char).</p>
+<p>Doppelte Striche (") = Doppelt so viele Zeichen wie du willst (String).</p>
+<p>Da Rust-Zahlen und -Texte vollgepackt mit Methoden sind, kannst du einen char jederzeit ganz einfach prüfen oder manipulieren!</p>
+<p>Nächste Lektion: Projekt für Variablen und Datentypen programmieren  Übungen</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="-kapitel-7-Übungsprojekt-zu-variablen--datentypen-video-analyse--sprachspur-bereinigung"><a class="header" href="#-kapitel-7-Übungsprojekt-zu-variablen--datentypen-video-analyse--sprachspur-bereinigung">🎬 Kapitel 7: Übungsprojekt zu Variablen &amp; Datentypen (Video-Analyse &amp; Sprachspur-Bereinigung)</a></h1>
+<p>In diesem Kapitel festigen wir unser Wissen über Variablen, Datentypen und Formatierungen in Rust durch ein praktisches Übungsprojekt. Um eine optimale Videoqualität zu gewährleisten, wurde die verrauschte Original-Tonspur des Videos <code>Video/7.mp4</code> komplett durch eine glasklare, präzise getimte Sprachspur (TTS mit dem Kokoro-ONNX-Modell, Sprecher "Martin") ersetzt.</p>
+<p>Das fertige Video mit der rauschfreien Tonspur ist unter <a href="file:///home/thorsten/RustKurs/7.mp4">7.mp4</a> gespeichert.</p>
+<hr />
+<h2 id="-technische-details-des-videos-1"><a class="header" href="#-technische-details-des-videos-1">📊 Technische Details des Videos</a></h2>
+<ul>
+<li><strong>Dateiname:</strong> <code>Video/7.mp4</code> (Original) / <code>7.mp4</code> (Bereinigt mit Sprecher)</li>
+<li><strong>Auflösung:</strong> 1920x1080 (1080p Full-HD)</li>
+<li><strong>Bildwiederholrate (FPS):</strong> 60 fps</li>
+<li><strong>Dauer:</strong> 13:58.65 (838,65 Sekunden)</li>
+<li><strong>Audio-Format (Neu):</strong> AAC Mono, 48 kHz (Rauschfrei)</li>
+</ul>
+<hr />
+<h2 id="-szenenübersicht-und-zeitstempel-1"><a class="header" href="#-szenenübersicht-und-zeitstempel-1">🎥 Szenenübersicht und Zeitstempel</a></h2>
+<p>Hier ist eine detaillierte Aufschlüsselung der Ereignisse im Video und der zugehörigen Sprachsegmente:</p>
+<h3 id="1-intro--Übungs-setup-0000---0045"><a class="header" href="#1-intro--Übungs-setup-0000---0045">1. Intro &amp; Übungs-Setup (00:00 - 00:45)</a></h3>
+<ul>
+<li><strong>Visueller Inhalt:</strong> Der Code-Editor Visual Studio Code ist geöffnet und zeigt die Datei <code>main.rs</code>. Im leeren Rumpf der <code>fn main()</code>-Funktion wird der erste Kommentar vorbereitet.</li>
+<li><strong>Sprechertext (Start: 00:02):</strong>
+<blockquote>
+<p><em>"Willkommen zu Kapitel sieben. In dieser Lektion setzen wir unser Wissen in die Praxis um. Wir programmieren gemeinsam ein kleines Übungsprojekt, in dem wir die wichtigsten Datentypen und Variablenkonzepte aus den letzten Kapiteln vertiefen. Wir beginnen in der main-Funktion und legen als erstes eine Ganzzahl an."</em></p>
+</blockquote>
+</li>
+</ul>
+<h3 id="2-ganzzahlen--println-varianten-0045---0210"><a class="header" href="#2-ganzzahlen--println-varianten-0045---0210">2. Ganzzahlen &amp; Println-Varianten (00:45 - 02:10)</a></h3>
+<ul>
+<li><strong>Visueller Inhalt:</strong> Der Entwickler deklariert die unveränderliche Variable <code>ganzzahl: i32 = 10;</code>. Im Anschluss werden zwei <code>println!</code>-Ausgaben geschrieben: Einmal per direkter Interpolation und einmal per Argumentübergabe am Ende.</li>
+<li><strong>Sprechertext (Start: 00:45):</strong>
+<blockquote>
+<p><em>"Wir deklarieren eine unveränderliche Variable ganzzahl vom Typ i32 mit dem Wert zehn. Um diesen Wert im Terminal auszugeben, nutzen wir das println-Makro auf zwei verschiedene Arten. Zuerst verwenden wir die direkte Interpolation mit geschweiften Klammern und dem Variablennamen. Danach nutzen wir die klassische Schreibweise, bei der die geschweiften Klammern als leere Platzhalter dienen und die Variable als Argument übergeben wird."</em></p>
+</blockquote>
+</li>
+</ul>
+<h3 id="3-zeichen--positionsargumente-0210---0410"><a class="header" href="#3-zeichen--positionsargumente-0210---0410">3. Zeichen &amp; Positionsargumente (02:10 - 04:10)</a></h3>
+<ul>
+<li><strong>Visueller Inhalt:</strong> Eine Variable <code>buchstabe: char = 'b';</code> wird deklariert. Darunter wird ein <code>println!</code> mit expliziten Positionsindizes <code>{0}</code> und <code>{1}</code> eingetippt.</li>
+<li><strong>Sprechertext (Start: 02:10):</strong>
+<blockquote>
+<p><em>"Als Nächstes deklarieren wir eine Variable namens buchstabe vom Typ char, der wir den Buchstaben 'b' in einfachen Anführungszeichen zuweisen. Um beide Variablen auszugeben, nutzen wir Positionsargumente im println-Makro. Durch die Angabe von null und eins in den geschweiften Klammern können wir steuern, welches Argument an welcher Stelle im Text eingefügt wird. Das sorgt für maximale Flexibilität."</em></p>
+</blockquote>
+</li>
+</ul>
+<h3 id="4-veränderlichkeit--fehlerbehebung-0410---0650"><a class="header" href="#4-veränderlichkeit--fehlerbehebung-0410---0650">4. Veränderlichkeit &amp; Fehlerbehebung (04:10 - 06:50)</a></h3>
+<ul>
+<li><strong>Visueller Inhalt:</strong> Der Entwickler deklariert <code>let mut ganzahl: i32 = 0;</code> (mit einem 'z' als Tippfehler) und mutiert den Wert danach auf <code>10</code>. Nach kurzen Editor-Fehlermeldungen und Syntaxkorrekturen wird der Wert ausgegeben.</li>
+<li><strong>Sprechertext (Start: 04:10):</strong>
+<blockquote>
+<p><em>"Jetzt demonstrieren wir den Unterschied zwischen veränderlichen und unveränderlichen Variablen. Wir deklarieren eine Variable namens ganzahl, schreiben sie aber absichtlich mit nur einem 'z'. Zunächst machen wir sie veränderbar mit dem Schlüsselwort mut und weisen ihr den Startwert Null zu. Direkt in der nächsten Zeile weisen wir ihr den Wert zehn zu. Im Anschluss geben wir sie auf dem Bildschirm aus."</em></p>
+</blockquote>
+</li>
+</ul>
+<h3 id="5-fließkommazahlen--formatierung-0650---0850"><a class="header" href="#5-fließkommazahlen--formatierung-0650---0850">5. Fließkommazahlen &amp; Formatierung (06:50 - 08:50)</a></h3>
+<ul>
+<li><strong>Visueller Inhalt:</strong> Der Kommentar <code>// FLIESSKOMMAZAHL</code> wird eingefügt. Eine Variable <code>kommazahl: f64 = 3.14344;</code> wird deklariert. Im println-Makro wird versucht, die Stellenbegrenzung einzubauen.</li>
+<li><strong>Sprechertext (Start: 06:50):</strong>
+<blockquote>
+<p><em>"Nun kommen die Fließkommazahlen ins Spiel. Wir erstellen eine Variable kommazahl vom Typ f64 und weisen ihr den Wert drei Komma eins vier drei vier vier zu. Um die Formatierung zu üben, versuchen wir im println-Makro, die Anzeige zu begrenzen. Wir verwenden dazu einen Formatbezeichner, der den Wert strukturiert ausgeben soll."</em></p>
+</blockquote>
+</li>
+</ul>
+<h3 id="6-shadowing-mit-char-0850---1110"><a class="header" href="#6-shadowing-mit-char-0850---1110">6. Shadowing mit char (08:50 - 11:10)</a></h3>
+<ul>
+<li><strong>Visueller Inhalt:</strong> Der Entwickler deklariert unter <code>// EINZELNES ZEICHEN</code> erneut die Variable <code>buchstabe</code> mit dem Wert <code>'B'</code>. Dies demonstriert das Shadowing.</li>
+<li><strong>Sprechertext (Start: 08:50):</strong>
+<blockquote>
+<p><em>"Zuletzt legen wir eine weitere char-Variable namens buchstabe mit dem großen Buchstaben 'B' an. Da in Rust Variablen standardmäßig unveränderlich sind und wir denselben Namen wiederverwenden, nutzen wir hier das Konzept des Shadowings. Die neue Variable überschattet die alte und wird anschließend mit println! ausgegeben."</em></p>
+</blockquote>
+</li>
+</ul>
+<h3 id="7-compiler-warnung--ai-mentor-1110---1250"><a class="header" href="#7-compiler-warnung--ai-mentor-1110---1250">7. Compiler-Warnung &amp; AI-Mentor (11:10 - 12:50)</a></h3>
+<ul>
+<li><strong>Visueller Inhalt:</strong> Im Terminal wird <code>cargo run</code> ausgeführt. Der Code kompiliert und läuft, zeigt aber eine gelbe Warnung über ein <code>unused assignment</code> für <code>ganzahl = 0</code>. Im rechten VS Code Panel öffnet sich der AI-Assistent und erklärt das Problem.</li>
+<li><strong>Sprechertext (Start: 11:10):</strong>
+<blockquote>
+<p><em>"Wir speichern unsere Datei und starten das Projekt im Terminal mit cargo run. Rust kompiliert den Code, aber der Compiler warnt uns. Er zeigt uns eine gelbe Warnung an: Die Variable ganzahl wird zwar als veränderbar deklariert und ihr wird der Wert zehn zugewiesen, aber der ursprüngliche Wert Null wird niemals gelesen. Das ist eine sogenannte ungenutzte Zuweisung, ein unused assignment. Wir schauen uns die Erklärung dazu in der VS Code AI-Hilfe auf der rechten Seite an, die uns detailliert erklärt, was das Problem ist."</em></p>
+</blockquote>
+</li>
+</ul>
+<h3 id="8-refactoring--erfolgreicher-lauf-1250---1358"><a class="header" href="#8-refactoring--erfolgreicher-lauf-1250---1358">8. Refactoring &amp; Erfolgreicher Lauf (12:50 - 13:58)</a></h3>
+<ul>
+<li><strong>Visueller Inhalt:</strong> Der Code wird refaktoriert: Die redundante Mutation und <code>mut</code> werden entfernt, <code>ganzahl</code> wird direkt mit <code>10</code> initialisiert und der Code wird erneut ausgeführt. Die Zuweisungswarnung verschwindet, das Programm gibt alle Werte fehlerfrei aus.</li>
+<li><strong>Sprechertext (Start: 12:50):</strong>
+<blockquote>
+<p><em>"Wir beheben das Problem, indem wir den Code bereinigen. Da die Zuweisung des Wertes Null und die anschließende Mutation redundant sind, initialisieren wir ganzahl direkt mit dem Wert zehn und entfernen das mut-Schlüsselwort sowie die redundante Zuweisung. Die alte Mutation kommentieren wir aus. Wir führen das Programm erneut aus. Die Warnung über das unused assignment ist verschwunden. Der Compiler weist uns lediglich darauf hin, dass ganzahl nicht veränderbar sein muss. Das Programm gibt alle Werte korrekt im Terminal aus. Damit haben wir unser erstes Übungsprojekt erfolgreich abgeschlossen und die Grundlagen der Datentypen und Variablen gefestigt! Bis zum nächsten Kapitel."</em></p>
+</blockquote>
+</li>
+</ul>
+<hr />
+<h2 id="-wie-die-tonspur-bereinigt-wurde-1"><a class="header" href="#-wie-die-tonspur-bereinigt-wurde-1">🛠️ Wie die Tonspur bereinigt wurde</a></h2>
+<ol>
+<li><strong>Sprachspur-Generierung:</strong> Mithilfe des Python-Skripts <a href="file:///home/thorsten/RustKurs/generate_audio_ch7.py">generate_audio_ch7.py</a> wurde über das deutsche TTS-Modell <code>Kokoro</code> (Stimme "Martin") ein rauschfreier, hochqualitativer Begleittext erzeugt.</li>
+<li><strong>Timing-Synchronisation:</strong> Die einzelnen Sprachblöcke wurden präzise auf die visuellen Ereignisse im Video abgestimmt (siehe Startzeitstempel in <code>generate_audio_ch7.py</code>).</li>
+<li><strong>Mischen mit dem Video:</strong> Per <code>ffmpeg</code> wurde die verrauschte Original-Tonspur entfernt und die neu generierte Audiodatei (<code>audio/ch7_voiceover.wav</code>) lippensynchron und rauschfrei mit dem Video gemountet:
+<pre><code class="language-bash">ffmpeg -y -i Video/7.mp4 -i audio/ch7_voiceover.wav -map 0:v -map 1:a -c:v copy -c:a aac -shortest 7.mp4
+</code></pre>
+</li>
+</ol>
+<div style="break-before: page; page-break-before: always;"></div><h2 id="datentypen-skalare-vs-zusammengesetzte-datentypen"><a class="header" href="#datentypen-skalare-vs-zusammengesetzte-datentypen">Datentypen: Skalare vs. zusammengesetzte Datentypen</a></h2>
+<p>Wir haben bereits skalare Datentypen besprochen.
+Jetzt besprechen wir zusammengesetzte (oder strukturierte) Datentypen.
+In Rust gibt es zwei zusammengesetzte Datentypen: Arrays und Tupel. (Dynamische Datentypen werden später besprochen.)</p>
+<h2 id="was-ist-ein-array"><a class="header" href="#was-ist-ein-array">Was ist ein Array?</a></h2>
+<p>Ein Array kannst du dir wie eine Schachtel mit festen Fächern vorstellen. Es hat drei wichtige Eigenschaften:</p>
+<ul>
+<li><strong>Homogen:</strong> Alle Elemente müssen vom selben Datentyp sein (z. B. nur ganze Zahlen).</li>
+<li><strong>Feste Größe:</strong> Die Anzahl der Fächer steht von Anfang an fest. Ein Array kann im Nachhinein weder wachsen noch schrumpfen.</li>
+<li><strong>Geordnet:</strong> Die Elemente liegen in einer festen Reihenfolge vor (von links nach rechts).</li>
+</ul>
+<h2 id="syntax-in-rust"><a class="header" href="#syntax-in-rust">Syntax in Rust</a></h2>
+<p>So schreibt man ein Array in Rust:</p>
+<pre><code class="language-rust">// Rust erkennt den Typ (6 Ganzzahlen) automatisch:
+let numbers = [4, 8, 15, 16, 23, 42];
+
+// Explizite Typschreibweise: [Typ; Anzahl]
+let numbers: [i32; 6] = [4, 8, 15, 16, 23, 42];</code></pre>
+<p><strong>Wichtig:</strong> Wenn du den Typ <code>[i32; 6]</code> (6 Elemente) angibst, musst du auch exakt 6 Elemente in die eckigen Klammern schreiben. Sonst streikt der Compiler!</p>
+<h3 id="nützliche-funktionen-und-sonderfälle"><a class="header" href="#nützliche-funktionen-und-sonderfälle">Nützliche Funktionen und Sonderfälle</a></h3>
+<ul>
+<li><strong>Länge abfragen:</strong> Mit <code>.len()</code> findest du heraus, wie viele Elemente im Array sind.</li>
+</ul>
+<pre><code class="language-rust">let length = numbers.len(); // Ergibt 6</code></pre>
+<ul>
+<li><strong>Leere Arrays:</strong> Ein komplett leeres Array <code>[]</code> erlaubt Rust nur, wenn du den Typ und die Länge 0 ausdrücklich dazuschreibst, da der Compiler sonst nicht weiß, was später hineinsoll:</li>
+</ul>
+<pre><code class="language-rust">let empty_array: [f64; 0] = []; // Gültig</code></pre>
+<h2 id="array-elemente-aufrufen-und-ändern"><a class="header" href="#array-elemente-aufrufen-und-ändern">Array-Elemente aufrufen und ändern</a></h2>
+<h3 id="das-zählen-beginnt-bei-0-index"><a class="header" href="#das-zählen-beginnt-bei-0-index">Das Zählen beginnt bei 0 (Index)</a></h3>
+<p>Menschen zählen ab 1, Programmiersprachen ab 0. Die Position eines Elements nennt man Index.</p>
+<ul>
+<li>Erstes Element = Index 0</li>
+<li>Zweites Element = Index 1</li>
+<li>Der letzte Index ist immer: Länge minus 1</li>
+</ul>
+<h3 id="werte-ändern-Überschreiben"><a class="header" href="#werte-ändern-Überschreiben">Werte ändern (Überschreiben)</a></h3>
+<p>Ein normales Array hat eine feste Größe (du kannst keine neuen Elemente hinzufügen oder löschen). Wenn du das Array mit <code>mut</code> veränderbar machst, kannst du aber bestehende Werte überschreiben:</p>
+<pre><code class="language-rust">let mut seasons = ["Frühling", "Sommer", "Fall", "Winter"];
+seasons[2] = "Herbst"; // Ersetzt "Fall" durch "Herbst"</code></pre>
+<h3 id="das-wichtigste-auf-einen-blick"><a class="header" href="#das-wichtigste-auf-einen-blick">Das Wichtigste auf einen Blick</a></h3>
+<ul>
+<li><strong>Index startet bei 0:</strong> <code>array[0]</code> ist das erste Element.</li>
+<li><strong>Feste Größe:</strong> Elemente können weder gelöscht noch hinzugefügt werden.</li>
+<li><strong>Verändern:</strong> Nur erlaubt, wenn das Array mit <code>let mut</code> deklariert wurde.</li>
+<li><strong>Vorschau:</strong> Wenn du ein Array brauchst, das wachsen oder schrumpfen kann, nutzt man in Rust später einen sogenannten Vektor (<code>Vec&lt;T&gt;</code>).</li>
+</ul>
+<hr />
+<h2 id="das-tupel-der-flexible-mix-container"><a class="header" href="#das-tupel-der-flexible-mix-container">Das Tupel: Der flexible Mix-Container</a></h2>
+<p>Ein Tupel ist (genau wie ein Array) ein zusammengesetzter Datentyp, der mehrere Werte in einer festen Reihenfolge speichert.</p>
+<p>Der riesige Unterschied zum Array: <strong>Ein Tupel darf verschiedene Datentypen mischen!</strong> Du kannst darin gleichzeitig Text, ganze Zahlen und Wahrheitswerte speichern. Es eignet sich perfekt, um zusammengehörige Daten (wie die Informationen zu einer Person) zu bündeln.</p>
+<h3 id="1-ein-tupel-erstellen"><a class="header" href="#1-ein-tupel-erstellen">1. Ein Tupel erstellen</a></h3>
+<p>Ein Tupel wird mit normalen, runden Klammern <code>()</code> geschrieben:</p>
+<pre><code class="language-rust">// Ein Tupel mit: Text (Name), Zahl (Alter), Text (Abteilung)
+let employee = ("Molly", 32, "Marketing");</code></pre>
+<h3 id="2-zugriff-auf-die-werte-die-punkt-notation"><a class="header" href="#2-zugriff-auf-die-werte-die-punkt-notation">2. Zugriff auf die Werte (Die Punkt-Notation)</a></h3>
+<p>Genau wie beim Array startet der Index bei 0. Um an die Werte zu kommen, nutzt man beim Tupel jedoch einen Punkt <code>.</code> statt eckiger Klammern:</p>
+<pre><code class="language-rust">let name = employee.0;       // "Molly"
+let age = employee.1;        // 32
+let department = employee.2; // "Marketing"</code></pre>
+<h3 id="3-der-profi-trick-destrukturieren-musterabgleich"><a class="header" href="#3-der-profi-trick-destrukturieren-musterabgleich">3. Der Profi-Trick: Destrukturieren (Musterabgleich)</a></h3>
+<p>Weil das manuelle Auslesen über <code>.0</code>, <code>.1</code> mühsam ist, gibt es in Rust eine geniale Abkürzung. Du kannst das Tupel in einer einzigen Zeile komplett in einzelne Variablen zerlegen:</p>
+<pre><code class="language-rust">// Rust entpackt das Tupel automatisch von links nach rechts!
+let (name, age, department) = employee;
+
+// Jetzt kannst du die Variablen direkt nutzen:
+println!("Name: {}, Alter: {}", name, age);</code></pre>
+<hr />
+<h2 id="spickzettel-tupel-in-rust"><a class="header" href="#spickzettel-tupel-in-rust">Spickzettel: Tupel in Rust</a></h2>
+<h3 id="-das-wichtigste-auf-einen-blick"><a class="header" href="#-das-wichtigste-auf-einen-blick">💡 Das Wichtigste auf einen Blick</a></h3>
+<ul>
+<li><strong>Typen-Mix:</strong> Erlaubt unterschiedliche Datentypen (z. B. <code>i32</code>, <code>bool</code>, <code>&amp;str</code>) in einem Container.</li>
+<li><strong>Runde Klammern:</strong> Erstellt mit <code>(wert1, wert2)</code>.</li>
+<li><strong>Auslesen mit Punkt:</strong> Zugriff erfolgt über <code>.0</code>, <code>.1</code>, <code>.2</code> etc.</li>
+<li><strong>Feste Größe:</strong> Nach der Erstellung können keine Elemente hinzugefügt oder gelöscht werden.</li>
+<li><strong>Anzeigen/Debuggen:</strong> Ein Tupel kann nicht normal mit <code>{}</code> gedruckt werden. Nutze dafür den Debug-Modus <code>{:?}</code> oder <code>{:#?}</code>.</li>
+</ul>
+<pre><code class="language-rust">fn main() {
+    // 1. Tupel erstellen
+    let person = ("Alex", 28, true); // (Text, Zahl, Bool-Wert)
+
+    // 2. Einzeln auslesen (Punkt-Syntax)
+    let alter = person.1; // 28
+
+    // 3. Komplett entpacken (Destrukturieren)
+    let (name, age, ist_aktiv) = person;
+
+    // 4. Per Debug-Modus das ganze Tupel auf einmal anzeigen
+    println!("{:?}", person); // Gibt aus: ("Alex", 28, true)
+}</code></pre>
+<p><em>Möchtest du sehen, wie man Tupel als Rückgabewert aus einer Funktion nutzt, um mehr als nur einen Wert zurückzugeben?</em></p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="zusammenfassung-variablen--datentypen-in-rust"><a class="header" href="#zusammenfassung-variablen--datentypen-in-rust">Zusammenfassung: Variablen &amp; Datentypen in Rust</a></h1>
+<p>Dieses Kapitel bietet einen kompakten Überblick über die Grundlagen von Variablen und Datentypen in Rust.</p>
+<hr />
+<h2 id="1-variablen-und-veränderlichkeit-mutability"><a class="header" href="#1-variablen-und-veränderlichkeit-mutability">1. Variablen und Veränderlichkeit (Mutability)</a></h2>
+<p>Standardmäßig sind Variablen in Rust <strong>unveränderlich</strong> (immutable). Das sorgt für maximale Sicherheit.</p>
+<ul>
+<li><strong>Unveränderlich (Standard):</strong>
+<pre><code class="language-rust">let x = 5;
+// x = 6; // ✘ FEHLER: Zuweisung an unveränderliche Variable nicht erlaubt!</code></pre>
+</li>
+<li><strong>Veränderlich machen mit <code>mut</code>:</strong>
+<pre><code class="language-rust">let mut x = 5;
+x = 6; // ✔ Erlaubt!</code></pre>
+</li>
+</ul>
+<hr />
+<h2 id="2-konstanten-constants"><a class="header" href="#2-konstanten-constants">2. Konstanten (Constants)</a></h2>
+<p>Konstanten werden mit <code>const</code> definiert. Sie sind <strong>immer</strong> unveränderlich (kein <code>mut</code> erlaubt) und der Datentyp muss zwingend angegeben werden. Sie werden zur Kompilierzeit berechnet.</p>
+<pre><code class="language-rust">const DREI_STUNDEN_IN_SEKUNDEN: u32 = 60 * 60 * 3;</code></pre>
+<hr />
+<h2 id="3-shadowing-Überschatten"><a class="header" href="#3-shadowing-Überschatten">3. Shadowing (Überschatten)</a></h2>
+<p>In Rust kannst du eine Variable neu deklarieren und dabei denselben Namen wiederverwenden. Die neue Variable überschattet die alte.</p>
+<ul>
+<li><strong>Vorteil:</strong> Du kannst den Typ der Variable ändern, ohne einen neuen Namen erfinden zu müssen.</li>
+</ul>
+<pre><code class="language-rust">let x = 5;
+let x = x + 1; // x ist jetzt 6
+
+let spaces = "   "; // Typ: &amp;str
+let spaces = spaces.len(); // Typ: usize (Länge: 3)</code></pre>
+<hr />
+<h2 id="4-datentypen-in-rust"><a class="header" href="#4-datentypen-in-rust">4. Datentypen in Rust</a></h2>
+<p>Rust ist statisch typisiert. Der Compiler muss jeden Typ vor dem Start kennen (oft per Typinferenz automatisch ermittelt).</p>
+<h3 id="a-skalare-datentypen-einzeilige-werte"><a class="header" href="#a-skalare-datentypen-einzeilige-werte">A. Skalare Datentypen (Einzeilige Werte)</a></h3>
+<ol>
+<li><strong>Ganzzahlen (Integers):</strong>
+<ul>
+<li>Mit Vorzeichen (Signed): <code>i8</code>, <code>i16</code>, <code>i32</code>, <code>i64</code>, <code>i128</code>, <code>isize</code></li>
+<li>Ohne Vorzeichen (Unsigned): <code>u8</code>, <code>u16</code>, <code>u32</code>, <code>u64</code>, <code>u128</code>, <code>usize</code></li>
+<li>Standard: <code>i32</code></li>
+</ul>
+</li>
+<li><strong>Fließkommazahlen (Floats):</strong>
+<ul>
+<li><code>f32</code> (einfache Genauigkeit) und <code>f64</code> (doppelte Genauigkeit)</li>
+<li>Standard: <code>f64</code></li>
+</ul>
+</li>
+<li><strong>Wahrheitswerte (Booleans):</strong>
+<ul>
+<li><code>bool</code> (kann nur <code>true</code> oder <code>false</code> sein)</li>
+</ul>
+</li>
+<li><strong>Zeichen (Characters):</strong>
+<ul>
+<li><code>char</code> (4 Bytes, Unicode für Emojis und Sonderzeichen, in einfachen Anführungszeichen: <code>'z'</code>)</li>
+</ul>
+</li>
+</ol>
+<h3 id="b-zusammengesetzte-datentypen-compound-types"><a class="header" href="#b-zusammengesetzte-datentypen-compound-types">B. Zusammengesetzte Datentypen (Compound Types)</a></h3>
+<ol>
+<li><strong>Das Tupel (Tuple):</strong>
+<ul>
+<li>Feste Länge, erlaubt <strong>unterschiedliche</strong> Datentypen.</li>
+<li>Zugriff über Punkt-Notation (<code>.0</code>) oder Entpacken (Destrukturierung).</li>
+<li>Leeres Tupel <code>()</code> wird <em>Unit</em> genannt (stellt leere Rückgabewerte dar).</li>
+</ul>
+<pre><code class="language-rust">let tup: (i32, f64, u8) = (500, 6.4, 1);
+let (x, y, z) = tup; // Destrukturieren
+let fuenfhundert = tup.0; // Direktzugriff</code></pre>
+</li>
+<li><strong>Das Array:</strong>
+<ul>
+<li>Feste Länge, alle Elemente müssen <strong>denselben</strong> Datentyp haben (homogen).</li>
+<li>Zugriff über eckige Klammern (<code>a[0]</code>).</li>
+<li>Bietet eingebaute Laufzeit-Sicherheitsprüfungen (Verhindert ungültigen Speicherzugriff durch sofortigen Abbruch/Panic).</li>
+</ul>
+<pre><code class="language-rust">let a: [i32; 5] = [1, 2, 3, 4, 5];
+let first = a[0];</code></pre>
+</li>
+</ol>
+<hr />
+<h2 id="-merkzettel-variablen--datentypen"><a class="header" href="#-merkzettel-variablen--datentypen">💡 Merkzettel: Variablen &amp; Datentypen</a></h2>
+<ul>
+<li><strong>Standard:</strong> Variablen sind unveränderlich. Nutze <code>mut</code> für Veränderbarkeit.</li>
+<li><strong>Konstanten (<code>const</code>):</strong> Immer unveränderlich, Typangabe Pflicht, Großbuchstaben als Konvention.</li>
+<li><strong>Shadowing:</strong> Wiederverwendung desselben Variablennamens mit <code>let</code>. Typänderungen sind dabei erlaubt.</li>
+<li><strong>Zahlen:</strong> Standard für Ganzzahlen ist <code>i32</code>, für Fließkommazahlen <code>f64</code>.</li>
+<li><strong>Tupel vs. Array:</strong>
+<ul>
+<li><strong>Tupel <code>()</code></strong>: Verschiedene Typen erlaubt, Zugriff mit <code>.index</code> (z. B. <code>.0</code>).</li>
+<li><strong>Array <code>[]</code></strong>: Nur derselbe Typ erlaubt, Zugriff mit <code>[index]</code> (z. B. <code>[0]</code>).</li>
+</ul>
+</li>
+<li><strong>Sicherheit:</strong> Rust bricht bei ungültigen Array-Zugriffen sofort ab (<em>Panic</em>), um Speicherfehler zu verhindern.</li>
+</ul>
+<p>Nächste Lektion ist Funktion</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="funktionen-in-rust"><a class="header" href="#funktionen-in-rust">Funktionen in Rust</a></h1>
+<p>Eine Funktion ist ein wiederverwendbarer Code-Block, der eine bestimmte Aufgabe erledigt. Du definierst sie einmal und kannst sie beliebig oft aufrufen. Das spart doppelten Code und hält dein Programm sauber.</p>
+<hr />
+<h2 id="1-die-main-funktion-und-eigene-funktionen"><a class="header" href="#1-die-main-funktion-und-eigene-funktionen">1. Die <code>main</code>-Funktion und eigene Funktionen</a></h2>
+<p>Jedes Rust-Programm startet in der <code>main</code>-Funktion. Eigene Funktionen werden mit dem Schlüsselwort <code>fn</code> definiert.</p>
+<ul>
+<li><strong>Reihenfolge:</strong> Es ist egal, ob deine eigenen Funktionen vor oder nach der <code>main</code>-Funktion stehen. Rust findet sie überall in derselben Datei.</li>
+<li><strong>Definition vs. Aufruf:</strong> Das bloße Aufschreiben einer Funktion tut noch nichts. Erst wenn du sie mit <code>()</code> aufrufst, wird sie ausgeführt.</li>
+</ul>
+<pre><code class="language-rust">fn main() {
+    gruss_schreiben(); // Aufruf der Funktion
+}
+
+fn gruss_schreiben() {
+    println!("Hallo Welt!");
+}</code></pre>
+<hr />
+<h2 id="2-parameter-und-argumente-eingaben"><a class="header" href="#2-parameter-und-argumente-eingaben">2. Parameter und Argumente (Eingaben)</a></h2>
+<p>Um Funktionen flexibel zu machen, kannst du ihnen Werte übergeben:</p>
+<ul>
+<li><strong>Parameter:</strong> Der Platzhalter in der Funktionsdefinition (z. B. <code>name: &amp;str</code>). In Rust <strong>musst</strong> du für jeden Parameter einen Datentyp angeben.</li>
+<li><strong>Argument:</strong> Der tatsächliche Wert, den du beim Aufruf übergibst (z. B. <code>"Anna"</code>).</li>
+<li><strong>Strikte Kontrolle:</strong> Der Compiler prüft genau, ob die Anzahl und die Typen der Argumente exakt mit den Parametern übereinstimmen.</li>
+</ul>
+<pre><code class="language-rust">fn main() {
+    alter_anzeigen("Anna", 25); // Argumente
+}
+
+fn alter_anzeigen(name: &amp;str, alter: i32) { // Parameter mit Typen
+    println!("{} ist {} Jahre alt.", name, alter);
+}</code></pre>
+<hr />
+<h2 id="3-rückgabewerte-ausgaben"><a class="header" href="#3-rückgabewerte-ausgaben">3. Rückgabewerte (Ausgaben)</a></h2>
+<p>Eine Funktion kann ein Ergebnis an den Aufrufer zurückgeben.</p>
+<ol>
+<li><strong>Der Rückgabetyp (<code>-&gt;</code>):</strong> Wird mit einem Pfeil hinter den Klammern definiert.</li>
+<li><strong>Die Rückgabe:</strong> In Rust gibt es zwei Wege, einen Wert zurückzugeben:
+<ul>
+<li><strong>Mit <code>return</code>:</strong> Das Schlüsselwort <code>return</code> gibt den Wert zurück und beendet die Funktion sofort. Jede Codezeile danach ist unerreichbar.</li>
+<li><strong>Als Ausdruck (Expression):</strong> Wenn du die letzte Zeile einer Funktion ohne <code>return</code> und <strong>ohne</strong> Semikolon <code>;</code> schreibst, wird dieser Wert automatisch zurückgegeben. Dies ist der typische Rust-Stil!</li>
+</ul>
+</li>
+</ol>
+<pre><code class="language-rust">// Weg A: Mit return
+fn addieren_a(a: i32, b: i32) -&gt; i32 {
+    return a + b;
+}
+
+// Weg B: Implizite Rückgabe (typischer Rust-Stil: kein return, kein Semikolon!)
+fn addieren_b(a: i32, b: i32) -&gt; i32 {
+    a + b
+}</code></pre>
+<hr />
+<h2 id="-merkzettel-alles-über-funktionen-in-rust"><a class="header" href="#-merkzettel-alles-über-funktionen-in-rust">💡 Merkzettel: Alles über Funktionen in Rust</a></h2>
+<ul>
+<li><strong>Grundsyntax:</strong>
+<pre><code class="language-rust">fn name(parameter: Typ) -&gt; RueckgabeTyp {
+    // Code
+    ergebnis // ohne Semikolon für automatische Rückgabe
+}</code></pre>
+</li>
+<li><strong>Namenskonvention:</strong> Funktionsnamen werden immer in <code>snake_case</code> geschrieben (z. B. <code>berechne_preis</code>).</li>
+<li><strong>Typzwang:</strong> Jeder Parameter braucht zwingend einen Typ (<code>name: Typ</code>). Der Rückgabetyp wird mit <code>-&gt; Typ</code> definiert (fehlt der Pfeil, gibt die Funktion nichts zurück).</li>
+<li><strong>Return-Verhalten:</strong>
+<ul>
+<li><code>return wert;</code> beendet die Funktion sofort.</li>
+<li>Ein Ausdruck am Ende ohne Semikolon (<code>wert</code>) ist der implizite Rückgabewert (Standard in Rust).</li>
+</ul>
+</li>
+<li><strong>Compiler-Sicherheit:</strong> Falsche Argument-Typen oder eine falsche Anzahl an Argumenten führen zu einem Kompilierfehler (rote Wellenlinie).</li>
+</ul>
+<h2 id="die-nächste-lektion-wird-funktionen-behandeln"><a class="header" href="#die-nächste-lektion-wird-funktionen-behandeln">Die nächste Lektion wird Funktionen behandeln.</a></h2>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="funktionen"><a class="header" href="#funktionen">Funktionen</a></h1>
+<p>Funktionen sind im Rust-Code allgegenwärtig. Du hast bereits eine der wichtigsten Funktionen der Sprache kennengelernt: die <code>main</code>-Funktion, die den Einstiegspunkt vieler Programme darstellt. Du hast auch das Schlüsselwort <code>fn</code> gesehen, mit dem du neue Funktionen deklarieren kannst.</p>
+<p>Rust-Code verwendet <code>snake_case</code> als Konvention für Funktions- und Variablennamen. Dabei sind alle Buchstaben klein und Wörter werden durch Unterstriche getrennt. Hier ist ein Programm, das eine beispielhafte Funktionsdefinition enthält:</p>
+<p>Dateiname: src/main.rs</p>
+<pre><code class="language-rust">fn main() {
+    println!("Hallo Welt!");
+
+    andere_funktion();
+}
+
+fn andere_funktion() {
+    println!("Eine andere Funktion.");
+}</code></pre>
+<p>Wir definieren eine Funktion in Rust, indem wir <code>fn</code> gefolgt von einem Funktionsnamen und einer Reihe von runden Klammern eingeben. Die geschweiften Klammern teilen dem Compiler mit, wo der Funktionskörper beginnt und endet.</p>
+<p>Wir können jede von uns definierte Funktion aufrufen, indem wir ihren Namen gefolgt von einer Reihe von runden Klammern eingeben. Da <code>andere_funktion</code> im Programm definiert ist, kann sie innerhalb der <code>main</code>-Funktion aufgerufen werden. Beachte, dass wir <code>andere_funktion</code> nach der <code>main</code>-Funktion im Quellcode definiert haben; wir hätten sie auch davor definieren können. Rust ist es egal, wo du deine Funktionen definierst, solange sie irgendwo in einem Bereich (Scope) definiert sind, der für den Aufrufer sichtbar ist.</p>
+<p>Lass uns ein neues Binärprojekt namens <code>functions</code> erstellen, um Funktionen weiter zu erforschen. Platziere das Beispiel mit <code>andere_funktion</code> in <code>src/main.rs</code> und führe es aus. Du solltest die folgende Ausgabe sehen:</p>
+<pre><code class="language-text">$ cargo run
+   Compiling functions v0.1.0 (file:///projects/functions)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.28s
+     Running `target/debug/functions`
+Hallo Welt!
+Eine andere Funktion.
+</code></pre>
+<p>Die Zeilen werden in der Reihenfolge ausgeführt, in der sie in der <code>main</code>-Funktion erscheinen. Zuerst wird die Nachricht „Hallo Welt!“ ausgegeben, und dann wird <code>andere_funktion</code> aufgerufen und deren Nachricht ausgegeben.</p>
+<h2 id="parameter"><a class="header" href="#parameter">Parameter</a></h2>
+<p>Wir können Funktionen so definieren, dass sie Parameter haben. Dies sind spezielle Variablen, die Teil der Funktionssignatur sind. Wenn eine Funktion Parameter hat, kannst du ihr konkrete Werte für diese Parameter übergeben. Technisch gesehen heißen diese konkreten Werte <em>Argumente</em>, aber im alltäglichen Sprachgebrauch neigen Entwickler dazu, die Wörter <em>Parameter</em> und <em>Argument</em> synonym zu verwenden – sowohl für die Variablen in der Funktionsdefinition als auch für die konkreten Werte, die beim Aufruf übergeben werden.</p>
+<p>In dieser Version von <code>andere_funktion</code> fügen wir einen Parameter hinzu:</p>
+<p>Dateiname: src/main.rs</p>
+<pre><code class="language-rust">fn main() {
+    andere_funktion(5);
+}
+
+fn andere_funktion(x: i32) {
+    println!("Der Wert von x ist: {x}");
+}</code></pre>
+<p>Führe dieses Programm aus; du solltest die folgende Ausgabe erhalten:</p>
+<pre><code class="language-text">$ cargo run
+   Compiling functions v0.1.0 (file:///projects/functions)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 1.21s
+     Running `target/debug/functions`
+Der Wert von x ist: 5
+</code></pre>
+<p>Die Deklaration von <code>andere_funktion</code> hat einen Parameter namens <code>x</code>. Der Typ von <code>x</code> ist als <code>i32</code> angegeben. Wenn wir <code>5</code> an <code>andere_funktion</code> übergeben, setzt das <code>println!</code>-Makro die <code>5</code> an die Stelle der geschweiften Klammern mit <code>x</code> im Formatstring.</p>
+<p>In Funktionssignaturen musst du den Typ jedes Parameters deklarieren. Dies ist eine bewusste Entscheidung im Design von Rust: Das Vorschreiben von Typannotationen in Funktionsdefinitionen bedeutet, dass der Compiler diese fast nie an anderer Stelle im Code benötigt, um herauszufinden, welchen Typ du meinst. Der Compiler ist außerdem in der Lage, hilfreichere Fehlermeldungen auszugeben, wenn er weiß, welche Typen die Funktion erwartet.</p>
+<p>Wenn du mehrere Parameter definierst, trenne die Parameterdeklarationen durch Kommata, wie hier:</p>
+<p>Dateiname: src/main.rs</p>
+<pre><code class="language-rust">fn main() {
+    print_labeled_measurement(5, 'h');
+}
+
+fn print_labeled_measurement(value: i32, unit_label: char) {
+    println!("Die Messung ist: {value}{unit_label}");
+}</code></pre>
+<p>Dieses Beispiel erstellt eine Funktion namens <code>print_labeled_measurement</code> mit zwei Parametern. Der erste Parameter heißt <code>value</code> und ist vom Typ <code>i32</code>. Der zweite heißt <code>unit_label</code> und ist vom Typ <code>char</code>. Die Funktion gibt dann Text aus, der sowohl den <code>value</code> als auch das <code>unit_label</code> enthält.</p>
+<p>Lass uns versuchen, diesen Code auszuführen. Ersetze das aktuelle Programm in der Datei <code>src/main.rs</code> deines <code>functions</code>-Projekts mit dem obigen Beispiel und führe es mit <code>cargo run</code> aus:</p>
+<pre><code class="language-text">$ cargo run
+   Compiling functions v0.1.0 (file:///projects/functions)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.31s
+     Running `target/debug/functions`
+Die Messung ist: 5h
+</code></pre>
+<p>Da wir die Funktion mit <code>5</code> als Wert for <code>value</code> und <code>'h'</code> als Wert für <code>unit_label</code> aufgerufen haben, enthält die Programmausgabe diese Werte.</p>
+<h2 id="anweisungen-und-ausdrücke-statements-and-expressions"><a class="header" href="#anweisungen-und-ausdrücke-statements-and-expressions">Anweisungen und Ausdrücke (Statements and Expressions)</a></h2>
+<p>Funktionskörper bestehen aus einer Reihe von Anweisungen (Statements), die optional mit einem Ausdruck (Expression) enden. Bisher enthielten die behandelten Funktionen keinen abschließenden Ausdruck, aber du hast einen Ausdruck als Teil einer Anweisung gesehen. Da Rust eine ausdrucksbasierte Sprache ist, ist dies eine wichtige Unterscheidung, die man verstehen muss. Andere Sprachen haben diese Unterscheidung nicht in derselben Weise. Lass uns also ansehen, was Anweisungen und Ausdrücke sind und wie sich ihre Unterschiede auf den Funktionskörper auswirken.</p>
+<ul>
+<li><strong>Anweisungen (Statements)</strong> sind Anweisungen, die eine Aktion ausführen und keinen Wert zurückgeben.</li>
+<li><strong>Ausdrücke (Expressions)</strong> werten zu einem Ergebniswert aus.</li>
+</ul>
+<p>Lass uns einige Beispiele ansehen.</p>
+<p>Wir haben tatsächlich bereits Anweisungen und Ausdrücke verwendet. Das Erstellen einer Variable und das Zuweisen eines Werts mit dem Schlüsselwort <code>let</code> ist eine Anweisung. In Codeblock 3-1 ist <code>let y = 6;</code> eine Anweisung.</p>
+<p>Dateiname: src/main.rs</p>
+<pre><code class="language-rust">fn main() {
+    let y = 6;
+}</code></pre>
+<p><em>Codeblock 3-1: Eine <code>main</code>-Funktionsdeklaration, die eine Anweisung enthält</em></p>
+<p>Auch Funktionsdefinitionen sind Anweisungen; das gesamte vorherige Beispiel ist an sich eine Anweisung. (Wie wir gleich sehen werden, ist der Aufruf einer Funktion jedoch keine Anweisung.)</p>
+<p>Anweisungen geben keine Werte zurück. Daher kannst du eine <code>let</code>-Anweisung nicht einer anderen Variable zuweisen, wie es der folgende Code versucht; du erhältst einen Fehler:</p>
+<p>Dateiname: src/main.rs</p>
+<p><em>Dieser Code kompiliert nicht!</em></p>
+<pre><code class="language-rust">fn main() {
+    let x = (let y = 6);
+}</code></pre>
+<p>Wenn du dieses Programm ausführst, sieht der Fehler so aus:</p>
+<pre><code class="language-text">$ cargo run
+   Compiling functions v0.1.0 (file:///projects/functions)
+error: expected expression, found `let` statement
+ --&gt; src/main.rs:2:14
+  |
+2 |     let x = (let y = 6);
+  |              ^^^
+  |
+  = note: only supported directly in conditions of `if` and `while` expressions
+
+warning: unnecessary parentheses around assigned value
+ --&gt; src/main.rs:2:13
+  |
+2 |     let x = (let y = 6);
+  |             ^         ^
+  |
+  = note: `#[warn(unused_parens)]` on by default
+help: remove these parentheses
+  |
+2 -     let x = (let y = 6);
+2 +     let x = let y = 6;
+  |
+
+warning: `functions` (bin "functions") generated 1 warning
+error: could not compile `functions` (bin "functions") due to 1 previous error; 1 warning emitted
+</code></pre>
+<p>Die Anweisung <code>let y = 6</code> gibt keinen Wert zurück, daher gibt es nichts, woran <code>x</code> gebunden werden könnte. Dies unterscheidet sich von dem Verhalten in anderen Sprachen wie C und Ruby, in denen eine Zuweisung den Wert der Zuweisung zurückgibt. In diesen Sprachen kannst du <code>x = y = 6</code> schreiben, sodass sowohl <code>x</code> als auch <code>y</code> den Wert <code>6</code> haben. In Rust ist das nicht der Fall.</p>
+<p>Ausdrücke werten zu einem Wert aus und machen den größten Teil des restlichen Codes aus, den du in Rust schreiben wirst. Betrachte eine mathematische Operation wie <code>5 + 6</code>, was ein Ausdruck ist, der zum Wert <code>11</code> auswertet. Ausdrücke können Teil von Anweisungen sein: In Codeblock 3-1 ist die <code>6</code> in der Anweisung <code>let y = 6;</code> ein Ausdruck, der zum Wert <code>6</code> auswertet. Der Aufruf einer Funktion ist ein Ausdruck. Der Aufruf eines Makros ist ein Ausdruck. Ein neuer Scope-Block, der mit geschweiften Klammern erstellt wird, ist ein Ausdruck, zum Beispiel:</p>
+<p>Dateiname: src/main.rs</p>
+<pre><code class="language-rust">fn main() {
+    let y = {
+        let x = 3;
+        x + 1
+    };
+
+    println!("Der Wert von y ist: {y}");
+}</code></pre>
+<p>Dieser Ausdruck:</p>
+<pre><code class="language-rust">{
+    let x = 3;
+    x + 1
+}</code></pre>
+<p>ist ein Block, der in diesem Fall zu <code>4</code> auswertet. Dieser Wert wird dann als Teil der <code>let</code>-Anweisung an <code>y</code> gebunden. Beachte die Zeile <code>x + 1</code> ohne ein Semikolon am Ende, was sich von den meisten Zeilen unterscheidet, die du bisher gesehen hast. Ausdrücke enthalten kein abschließendes Semikolon. Wenn du am Ende eines Ausdrucks ein Semikolon hinzufügst, machst du daraus eine Anweisung, und sie gibt dann keinen Wert zurück. Behalte dies im Hinterkopf, wenn wir uns als Nächstes mit Funktionsrückgabewerten und Ausdrücken befassen.</p>
+<h2 id="funktionen-mit-rückgabewerten"><a class="header" href="#funktionen-mit-rückgabewerten">Funktionen mit Rückgabewerten</a></h2>
+<p>Funktionen können Werte an den aufrufenden Code zurückgeben. Wir benennen Rückgabewerte nicht, aber wir müssen ihren Typ nach einem Pfeil (<code>-&gt;</code>) deklarieren. In Rust ist der Rückgabewert einer Funktion gleichbedeutend mit dem Wert des letzten Ausdrucks im Block des Funktionskörpers. Du kannst eine Funktion vorzeitig verlassen, indem du das Schlüsselwort <code>return</code> verwendest und einen Wert angibst, aber die meisten Funktionen geben den letzten Ausdruck implizit zurück. Hier ist ein Beispiel für eine Funktion, die einen Wert zurückgibt:</p>
+<p>Dateiname: src/main.rs</p>
+<pre><code class="language-rust">fn five() -&gt; i32 {
+    5
+}
+
+fn main() {
+    let x = five();
+
+    println!("Der Wert von x ist: {x}");
+}</code></pre>
+<p>In der Funktion <code>five</code> gibt es keine Funktionsaufrufe, Makros oder gar <code>let</code>-Anweisungen – nur die Zahl <code>5</code> für sich allein. Das ist eine vollkommen gültige Funktion in Rust. Beachte, dass auch der Rückgabetyp der Funktion als <code>-&gt; i32</code> angegeben ist. Versuche, diesen Code auszuführen; die Ausgabe sollte so aussehen:</p>
+<pre><code class="language-text">$ cargo run
+   Compiling functions v0.1.0 (file:///projects/functions)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.30s
+     Running `target/debug/functions`
+Der Wert von x ist: 5
+</code></pre>
+<p>Die <code>5</code> in <code>five</code> ist der Rückgabewert der Funktion, weshalb der Rückgabetyp <code>i32</code> ist. Lass uns dies genauer untersuchen. Es gibt zwei wichtige Teile: Erstens zeigt die Zeile <code>let x = five();</code>, dass wir den Rückgabewert einer Funktion verwenden, um eine Variable zu initialisieren. Da die Funktion <code>five</code> eine <code>5</code> zurückgibt, ist diese Zeile dasselbe wie die folgende:</p>
+<pre><code class="language-rust">let x = 5;</code></pre>
+<p>Zweitens hat die Funktion <code>five</code> keine Parameter und definiert den Typ des Rückgabewerts, aber der Körper der Funktion ist eine einsame <code>5</code> ohne Semikolon, da es sich um einen Ausdruck handelt, dessen Wert wir zurückgeben wollen.</p>
+<p>Lass uns ein weiteres Beispiel ansehen:</p>
+<p>Dateiname: src/main.rs</p>
+<pre><code class="language-rust">fn main() {
+    let x = plus_one(5);
+
+    println!("Der Wert von x ist: {x}");
+}
+
+fn plus_one(x: i32) -&gt; i32 {
+    x + 1
+}</code></pre>
+<p>Das Ausführen dieses Codes gibt <code>Der Wert von x ist: 6</code> aus. Aber was passiert, wenn wir ein Semikolon am Ende der Zeile mit <code>x + 1</code> setzen und sie damit von einem Ausdruck in eine Anweisung verwandeln?</p>
+<p>Dateiname: src/main.rs</p>
+<p><em>Dieser Code kompiliert nicht!</em></p>
+<pre><code class="language-rust">fn main() {
+    let x = plus_one(5);
+
+    println!("Der Wert von x ist: {x}");
+}
+
+fn plus_one(x: i32) -&gt; i32 {
+    x + 1;
+}</code></pre>
+<p>Das Kompilieren dieses Codes führt zu folgendem Fehler:</p>
+<pre><code class="language-text">$ cargo run
+   Compiling functions v0.1.0 (file:///projects/functions)
+error[E0308]: mismatched types
+ --&gt; src/main.rs:7:24
+  |
+7 | fn plus_one(x: i32) -&gt; i32 {
+  |    --------            ^^^ expected `i32`, found `()`
+  |    |
+  |    implicitly returns `()` as its body has no tail or `return` expression
+8 |     x + 1;
+  |          - help: remove this semicolon to return this value
+
+For more information about this error, try `rustc --explain E0308`.
+error: could not compile `functions` (bin "functions") due to 1 previous error
+</code></pre>
+<p>Die Hauptfehlermeldung <code>mismatched types</code> (Typkonflikt) offenbart das Kernproblem dieses Codes. Die Definition der Funktion <code>plus_one</code> besagt, dass sie ein <code>i32</code> zurückgeben wird, aber Anweisungen werten nicht zu einem Wert aus, was durch den Unit-Typ <code>()</code> ausgedrückt wird. Daher wird nichts zurückgegeben, was der Funktionsdefinition widerspricht und zu einem Fehler führt. In dieser Ausgabe liefert Rust eine Nachricht, um dieses Problem zu beheben: Es schlägt vor, das Semikolon zu entfernen, was den Fehler beheben würde.</p>
+<hr />
+<p><em>Dieser Inhalt basiert auf dem Buch <a href="https://doc.rust-lang.org/book/">„The Rust Programming Language“</a> von Steve Klabnik und Carol Nichols (gemeinsam mit der Rust-Community), lizenziert unter <a href="https://github.com/rust-lang/book/blob/main/LICENSE-MIT">MIT-Lizenz</a> und <a href="https://github.com/rust-lang/book/blob/main/LICENSE-APACHE">Apache-2.0-Lizenz</a>. Der Text wurde für diesen Kurs übersetzt und modifiziert.</em></p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="operatoren-in-rust"><a class="header" href="#operatoren-in-rust">Operatoren in Rust</a></h1>
+<p>In Rust sind Operatoren Symbole, die dem Compiler mitteilen, eine bestimmte mathematische, logische oder speicherbezogene Operation durchzuführen. Da Rust großen Wert auf Sicherheit und Effizienz legt, verhalten sich manche Operatoren etwas anders als in Sprachen wie C, C++ oder Java.</p>
+<p>In diesem Kapitel schauen wir uns alle wichtigen Operatoren im Detail an. Zu jeder Gruppe findest du verständliche Erklärungen, Codebeispiele und eine genaue Beschreibung davon, was im Hintergrund passiert.</p>
+<hr />
+<h2 id="1-arithmetische-operatoren"><a class="header" href="#1-arithmetische-operatoren">1. Arithmetische Operatoren</a></h2>
+<p>Arithmetische Operatoren werden für grundlegende mathematische Berechnungen verwendet.</p>
+<div class="table-wrapper"><table><thead><tr><th>Operator</th><th>Bedeutung</th><th>Beispiel</th></tr></thead><tbody>
+<tr><td><code>+</code></td><td>Addition</td><td><code>x + y</code></td></tr>
+<tr><td><code>-</code></td><td>Subtraktion</td><td><code>x - y</code></td></tr>
+<tr><td><code>*</code></td><td>Multiplikation</td><td><code>x * y</code></td></tr>
+<tr><td><code>/</code></td><td>Division</td><td><code>x / y</code></td></tr>
+<tr><td><code>%</code></td><td>Modulo (Restwert)</td><td><code>x % y</code></td></tr>
+</tbody></table>
+</div>
+<h3 id="beispielcode"><a class="header" href="#beispielcode">Beispielcode</a></h3>
+<p>Dateiname: src/main.rs</p>
+<pre><code class="language-rust">fn main() {
+    let a = 10;
+    let b = 3;
+
+    // Ganzzahl-Operationen
+    let summe = a + b;
+    let differenz = a - b;
+    let produkt = a * b;
+    let quotient = a / b; // Ganzzahldivision schneidet den Rest ab!
+    let rest = a % b;      // Modulo liefert den Rest der Division
+
+    println!("Summe: {summe}");         // Ausgabe: 13
+    println!("Differenz: {differenz}"); // Ausgabe: 7
+    println!("Produkt: {produkt}");     // Ausgabe: 30
+    println!("Quotient: {quotient}");   // Ausgabe: 3
+    println!("Rest: {rest}");           // Ausgabe: 1
+
+    // Fließkomma-Division für exakte Ergebnisse
+    let x = 10.0;
+    let y = 3.0;
+    let exakter_quotient = x / y;
+    println!("Exakter Quotient: {exakter_quotient}"); // Ausgabe: 3.3333333333333335
+}</code></pre>
+<h3 id="was-passiert-hier"><a class="header" href="#was-passiert-hier">Was passiert hier?</a></h3>
+<ol>
+<li><strong>Ganzzahldivision (<code>a / b</code>)</strong>: Da <code>a</code> und <code>b</code> vom Typ Ganzzahl (standardmäßig <code>i32</code>) sind, führt Rust eine Ganzzahldivision durch. Das Ergebnis ist <code>3</code>, der Nachkommateil (<code>0.333...</code>) wird komplett abgeschnitten (Trunkierung).</li>
+<li><strong>Modulo (<code>a % b</code>)</strong>: Gibt den verbleibenden Rest zurück. Da 10 geteilt durch 3 gleich 3 Rest 1 ist, ist <code>rest</code> gleich <code>1</code>.</li>
+<li><strong>Fließkomma-Division</strong>: Um Nachkommastellen zu erhalten, müssen die Operanden Fließkommazahlen (z. B. <code>f64</code>) sein. Rust verlangt hier strikte Typübereinstimmung; du kannst keine Ganzzahl direkt durch eine Fließkommazahl teilen, ohne sie vorher umzuwandeln (dazu später mehr bei <code>as</code>).</li>
+<li><strong>Überlauf-Schutz (Overflow)</strong>: In Rust führt ein arithmetischer Überlauf (z.B. wenn eine <code>u8</code>-Variable den Wert 255 überschreitet) im Debug-Modus (<code>cargo run</code>) zu einem Programmabsturz (Panic). Im Release-Modus (<code>cargo run --release</code>) hingegen "wickelt" sich der Wert ohne Absturz um (Modulo-Arithmetik auf Hardwareebene).</li>
+</ol>
+<hr />
+<h2 id="2-vergleichsoperatoren"><a class="header" href="#2-vergleichsoperatoren">2. Vergleichsoperatoren</a></h2>
+<p>Vergleichsoperatoren vergleichen zwei Werte und geben immer einen booleschen Wert (<code>true</code> oder <code>false</code>) zurück.</p>
+<div class="table-wrapper"><table><thead><tr><th>Operator</th><th>Bedeutung</th><th>Beispiel</th></tr></thead><tbody>
+<tr><td><code>==</code></td><td>Gleichheit</td><td><code>x == y</code></td></tr>
+<tr><td><code>!=</code></td><td>Ungleichheit</td><td><code>x != y</code></td></tr>
+<tr><td><code>&lt;</code></td><td>Kleiner als</td><td><code>x &lt; y</code></td></tr>
+<tr><td><code>&gt;</code></td><td>Größer als</td><td><code>x &gt; y</code></td></tr>
+<tr><td><code>&lt;=</code></td><td>Kleiner oder gleich</td><td><code>x &lt;= y</code></td></tr>
+<tr><td><code>&gt;=</code></td><td>Größer oder gleich</td><td><code>x &gt;= y</code></td></tr>
+</tbody></table>
+</div>
+<h3 id="beispielcode-1"><a class="header" href="#beispielcode-1">Beispielcode</a></h3>
+<p>Dateiname: src/main.rs</p>
+<pre><code class="language-rust">fn main() {
+    let alter = 18;
+    let mindestalter = 18;
+
+    let ist_volljaehrig = alter &gt;= mindestalter;
+    let ist_identisch = alter == mindestalter;
+    let ist_ungleich = alter != 20;
+
+    println!("Ist volljährig? {ist_volljaehrig}"); // Ausgabe: true
+    println!("Ist identisch? {ist_identisch}");   // Ausgabe: true
+    println!("Ist ungleich 20? {ist_ungleich}");  // Ausgabe: true
+}</code></pre>
+<h3 id="was-passiert-hier-1"><a class="header" href="#was-passiert-hier-1">Was passiert hier?</a></h3>
+<ul>
+<li>Rust wertet die Ausdrücke von links nach rechts aus. <code>alter &gt;= mindestalter</code> prüft, ob <code>alter</code> entweder größer oder genau gleich <code>mindestalter</code> ist. Da <code>18 &gt;= 18</code> wahr ist, wird der Variable <code>ist_volljaehrig</code> der Wert <code>true</code> zugewiesen.</li>
+<li>Rust erlaubt Vergleiche nur zwischen Variablen des exakt gleichen Typs. Ein Vergleich von einem <code>i32</code> mit einem <code>u8</code> oder einer Fließkommazahl führt zu einem Compilerfehler.</li>
+</ul>
+<hr />
+<h2 id="3-logische-operatoren"><a class="header" href="#3-logische-operatoren">3. Logische Operatoren</a></h2>
+<p>Logische Operatoren verbinden boolesche Ausdrücke. Sie werden meist in <code>if</code>-Bedingungen und Schleifen eingesetzt.</p>
+<div class="table-wrapper"><table><thead><tr><th>Operator</th><th>Bedeutung</th><th>Beispiel</th></tr></thead><tbody>
+<tr><td><code>&amp;&amp;</code></td><td>Logisches UND (beide müssen wahr sein)</td><td><code>cond1 &amp;&amp; cond2</code></td></tr>
+<tr><td>`</td><td></td><td>`</td></tr>
+<tr><td><code>!</code></td><td>Logisches NICHT (Invertierung)</td><td><code>!cond</code></td></tr>
+</tbody></table>
+</div>
+<h3 id="beispielcode-2"><a class="header" href="#beispielcode-2">Beispielcode</a></h3>
+<p>Dateiname: src/main.rs</p>
+<pre><code class="language-rust">fn main() {
+    let hat_ticket = true;
+    let hat_ausweis = false;
+    let ist_mitarbeiter = true;
+
+    // Logisches UND (&amp;&amp;)
+    let darf_rein_standard = hat_ticket &amp;&amp; hat_ausweis;
+
+    // Logisches ODER (||)
+    let darf_rein_vip = darf_rein_standard || ist_mitarbeiter;
+
+    // Logisches NICHT (!)
+    let zutritt_verweigert = !darf_rein_vip;
+
+    println!("Standard-Zutritt: {darf_rein_standard}"); // Ausgabe: false
+    println!("VIP/Mitarbeiter-Zutritt: {darf_rein_vip}"); // Ausgabe: true
+    println!("Zutritt verweigert? {zutritt_verweigert}");  // Ausgabe: false
+}</code></pre>
+<h3 id="was-passiert-hier-2"><a class="header" href="#was-passiert-hier-2">Was passiert hier?</a></h3>
+<ol>
+<li><strong>Short-Circuit-Evaluierung (Kurzschluss-Auswertung)</strong>: Rust wertet logische Operatoren effizient aus.
+<ul>
+<li>Bei <code>&amp;&amp;</code> (UND): Wenn die linke Seite <code>false</code> ist, kann das Gesamtergebnis niemals <code>true</code> werden. Rust spart sich daher die Auswertung der rechten Seite.</li>
+<li>Bei <code>||</code> (ODER): Wenn die linke Seite <code>true</code> ist, steht das Gesamtergebnis (<code>true</code>) bereits fest. Rust wertet die rechte Seite nicht mehr aus.</li>
+</ul>
+</li>
+<li><strong>Invertierung (<code>!</code>)</strong>: Dreht den Wahrheitswert um. Aus <code>true</code> wird <code>false</code>, aus <code>false</code> wird <code>true</code>.</li>
+</ol>
+<hr />
+<h2 id="4-bitweise-operatoren"><a class="header" href="#4-bitweise-operatoren">4. Bitweise Operatoren</a></h2>
+<p>Bitweise Operatoren arbeiten direkt auf der binären Repräsentation (Bits 0 und 1) von Ganzzahlen.</p>
+<div class="table-wrapper"><table><thead><tr><th>Operator</th><th>Bedeutung</th><th>Beispiel</th></tr></thead><tbody>
+<tr><td><code>&amp;</code></td><td>Bitweises UND (AND)</td><td><code>a &amp; b</code></td></tr>
+<tr><td>`</td><td>`</td><td>Bitweises ODER (OR)</td></tr>
+<tr><td><code>^</code></td><td>Bitweises XOR (Exklusiv-Oder)</td><td><code>a ^ b</code></td></tr>
+<tr><td><code>!</code></td><td>Bitweises NICHT (Komplement / Invertierung)</td><td><code>!a</code></td></tr>
+<tr><td><code>&lt;&lt;</code></td><td>Links-Shift (Bits nach links verschieben)</td><td><code>a &lt;&lt; 1</code></td></tr>
+<tr><td><code>&gt;&gt;</code></td><td>Rechts-Shift (Bits nach rechts verschieben)</td><td><code>a &gt;&gt; 1</code></td></tr>
+</tbody></table>
+</div>
+<h3 id="beispielcode-3"><a class="header" href="#beispielcode-3">Beispielcode</a></h3>
+<p>Dateiname: src/main.rs</p>
+<pre><code class="language-rust">fn main() {
+    // Binär: 0b1100 (Dezimal: 12)
+    let a: u8 = 0b1100;
+    // Binär: 0b1010 (Dezimal: 10)
+    let b: u8 = 0b1010;
+
+    println!("a &amp; b: {:04b} (Dezimal: {})", a &amp; b, a &amp; b); // UND: 0b1000 (8)
+    println!("a | b: {:04b} (Dezimal: {})", a | b, a | b); // ODER: 0b1110 (14)
+    println!("a ^ b: {:04b} (Dezimal: {})", a ^ b, a ^ b); // XOR: 0b0110 (6)
+    println!("!a:    {:08b} (Dezimal: {})", !a, !a);       // NICHT: 0b11110011 (243)
+
+    // Bit-Shifts
+    println!("a &lt;&lt; 1: {:04b} (Dezimal: {})", a &lt;&lt; 1, a &lt;&lt; 1); // Links-Shift: 0b11000 (24)
+    println!("a &gt;&gt; 1: {:04b} (Dezimal: {})", a &gt;&gt; 1, a &gt;&gt; 1); // Rechts-Shift: 0b0110 (6)
+}</code></pre>
+<h3 id="was-passiert-hier-3"><a class="header" href="#was-passiert-hier-3">Was passiert hier?</a></h3>
+<ul>
+<li><strong>Bitweises UND (<code>&amp;</code>)</strong>: Vergleicht die Bits an jeder Position. Nur wenn beide Bits 1 sind, ist das Ergebnis-Bit 1 (z. B. <code>1100 &amp; 1010 = 1000</code>).</li>
+<li><strong>Bitweises ODER (<code>|</code>)</strong>: Das Ergebnis-Bit ist 1, wenn mindestens eines der beiden Bits 1 ist (z. B. <code>1100 | 1010 = 1110</code>).</li>
+<li><strong>Bitweises XOR (<code>^</code>)</strong>: Das Ergebnis-Bit ist 1, wenn die Bits unterschiedlich sind (z. B. <code>1100 ^ 1010 = 0110</code>).</li>
+<li><strong>Bitweises NICHT (<code>!</code>)</strong>: Invertiert jedes einzelne Bit einer Zahl (aus 0 wird 1, aus 1 wird 0).</li>
+<li><strong>Links-Shift (<code>&lt;&lt;</code>)</strong>: Verschiebt alle Bits nach links. Die leeren Stellen rechts werden mit 0 aufgefüllt. Mathematisch entspricht <code>a &lt;&lt; 1</code> einer Multiplikation mit 2 (aus 12 wird 24).</li>
+<li><strong>Rechts-Shift (<code>&gt;&gt;</code>)</strong>: Verschiebt alle Bits nach rechts. Mathematisch entspricht <code>a &gt;&gt; 1</code> einer Ganzzahldivision durch 2 (aus 12 wird 6).</li>
+</ul>
+<hr />
+<h2 id="5-zuweisungsoperatoren"><a class="header" href="#5-zuweisungsoperatoren">5. Zuweisungsoperatoren</a></h2>
+<p>Der grundlegende Zuweisungsoperator ist <code>=</code>. Rust bietet zudem Abkürzungen für mathematische und bitweise Operationen kombiniert mit einer Zuweisung (Compound Assignments).</p>
+<div class="table-wrapper"><table><thead><tr><th>Operator</th><th>Bedeutung</th><th>Entspricht</th></tr></thead><tbody>
+<tr><td><code>=</code></td><td>Zuweisung</td><td><code>x = y</code></td></tr>
+<tr><td><code>+=</code></td><td>Addition &amp; Zuweisung</td><td><code>x = x + y</code></td></tr>
+<tr><td><code>-=</code></td><td>Subtraktion &amp; Zuweisung</td><td><code>x = x - y</code></td></tr>
+<tr><td><code>*=</code></td><td>Multiplikation &amp; Zuweisung</td><td><code>x = x * y</code></td></tr>
+<tr><td><code>/=</code></td><td>Division &amp; Zuweisung</td><td><code>x = x / y</code></td></tr>
+<tr><td><code>%=</code></td><td>Modulo &amp; Zuweisung</td><td><code>x = x % y</code></td></tr>
+<tr><td><code>&amp;=</code>, `</td><td>=<code>, </code>^=`</td><td>Bitweise Operation &amp; Zuweisung</td></tr>
+<tr><td><code>&lt;&lt;=</code>, <code>&gt;&gt;=</code></td><td>Shift &amp; Zuweisung</td><td><code>x = x &lt;&lt; y</code> usw.</td></tr>
+</tbody></table>
+</div>
+<h3 id="beispielcode-4"><a class="header" href="#beispielcode-4">Beispielcode</a></h3>
+<p>Dateiname: src/main.rs</p>
+<pre><code class="language-rust">fn main() {
+    let mut x = 5; // Muss als 'mut' deklariert werden!
+
+    x += 10; // Gleichbedeutend mit: x = x + 10;
+    println!("x nach += : {x}"); // Ausgabe: 15
+
+    x *= 2; // Gleichbedeutend mit: x = x * 2;
+    println!("x nach *= : {x}"); // Ausgabe: 30
+}</code></pre>
+<h3 id="was-passiert-hier-4"><a class="header" href="#was-passiert-hier-4">Was passiert hier?</a></h3>
+<ul>
+<li>Der Compound-Zuweisungsoperator liest den aktuellen Wert der Variablen aus, führt die Operation mit dem rechten Operanden aus und schreibt das Ergebnis wieder in die Variable zurück.</li>
+<li><strong>Wichtig</strong>: Dies erfordert immer, dass die Variable mit dem Schlüsselwort <code>mut</code> (veränderlich) deklariert wurde.</li>
+<li><strong>Wichtiger Unterschied zu C/C++/Java</strong>: In Rust gibt es <strong>keine</strong> Inkrement- (<code>++</code>) oder Dekrement-Operatoren (<code>--</code>). Du musst stattdessen immer <code>x += 1</code> oder <code>x -= 1</code> schreiben. Dies verhindert Mehrdeutigkeiten bei der Auswertungsreihenfolge im Code.</li>
+</ul>
+<hr />
+<h2 id="6-referenz--und-pointer-operatoren"><a class="header" href="#6-referenz--und-pointer-operatoren">6. Referenz- und Pointer-Operatoren</a></h2>
+<p>Rust hat ein einzigartiges Speichersicherheitskonzept (Ownership und Borrowing). Daher spielen Referenzoperatoren eine zentrale Rolle.</p>
+<div class="table-wrapper"><table><thead><tr><th>Operator</th><th>Bedeutung</th><th>Beispiel</th></tr></thead><tbody>
+<tr><td><code>&amp;</code></td><td>Erstellt eine unveränderliche Referenz (Leihen/Borrowing)</td><td><code>let r = &amp;x;</code></td></tr>
+<tr><td><code>&amp;mut</code></td><td>Erstellt eine veränderliche Referenz</td><td><code>let r = &amp;mut x;</code></td></tr>
+<tr><td><code>*</code></td><td>Dereferenzierung (Zugriff auf den Wert hinter der Referenz)</td><td><code>let y = *r;</code></td></tr>
+</tbody></table>
+</div>
+<h3 id="beispielcode-5"><a class="header" href="#beispielcode-5">Beispielcode</a></h3>
+<p>Dateiname: src/main.rs</p>
+<pre><code class="language-rust">fn main() {
+    let mut zahl = 42;
+
+    // 1. Unveränderliche Referenz (&amp;) erstellen
+    let ref1 = &amp;zahl;
+    println!("Wert über ref1 gelesen: {ref1}"); // Ausgabe: 42 (Rust dereferenziert hier automatisch)
+    
+    // 2. Dereferenzierung (*) zum Lesen
+    let kopie = *ref1; // Kopiert den Wert 42 aus der Speicherstelle, auf die ref1 zeigt
+    println!("Kopie: {kopie}"); // Ausgabe: 42
+
+    // 3. Veränderliche Referenz (&amp;mut) erstellen
+    // Hinweis: Wir dürfen ref1 nicht mehr benutzen, da zeitgleich keine unveränderlichen 
+    // und veränderlichen Referenzen existieren dürfen.
+    let ref_mut = &amp;mut zahl;
+
+    // 4. Dereferenzierung (*) zum Schreiben
+    *ref_mut += 8; // Ändert den Wert in der originalen Speicherstelle von 'zahl'
+    
+    println!("Zahl nach Änderung: {zahl}"); // Ausgabe: 50
+}</code></pre>
+<h3 id="was-passiert-hier-5"><a class="header" href="#was-passiert-hier-5">Was passiert hier?</a></h3>
+<ol>
+<li><strong><code>&amp;zahl</code></strong>: Erstellt einen Zeiger (eine Referenz), der auf die Speicheradresse zeigt, in der <code>zahl</code> liegt. Das ist eine "Leihgabe". Die Referenz <code>ref1</code> besitzt die Daten nicht, darf sie aber lesen.</li>
+<li><strong><code>*ref1</code></strong>: Der Dereferenzierungs-Operator <code>*</code> folgt dem Zeiger zur tatsächlichen Speicheradresse und greift auf den dort liegenden Wert (<code>42</code>) zu.</li>
+<li><strong><code>&amp;mut zahl</code></strong>: Erstellt eine veränderliche Referenz. Dies erlaubt uns, den Wert an der Speicheradresse direkt zu modifizieren.</li>
+<li><strong><code>*ref_mut += 8</code></strong>: Wir greifen über <code>*</code> auf den eigentlichen Wert der Speicherstelle zu und addieren 8. Der Originalwert von <code>zahl</code> ändert sich dadurch von 42 auf 50.</li>
+</ol>
+<hr />
+<h2 id="7-typumwandlung-und-fehlerbehandlung-spezialoperatoren"><a class="header" href="#7-typumwandlung-und-fehlerbehandlung-spezialoperatoren">7. Typumwandlung und Fehlerbehandlung (Spezialoperatoren)</a></h2>
+<p>Diese Operatoren sind spezifische Rust-Besonderheiten für die Typkonvertierung und das Fehlermanagement.</p>
+<div class="table-wrapper"><table><thead><tr><th>Operator</th><th>Bedeutung</th><th>Beispiel</th></tr></thead><tbody>
+<tr><td><code>as</code></td><td>Typumwandlung (Type Casting)</td><td><code>x as f64</code></td></tr>
+<tr><td><code>?</code></td><td>Fehler-Propagierung (Fehlerweiterleitung)</td><td><code>funktion()?</code></td></tr>
+</tbody></table>
+</div>
+<h3 id="beispielcode-für-as-typumwandlung"><a class="header" href="#beispielcode-für-as-typumwandlung">Beispielcode für <code>as</code> (Typumwandlung)</a></h3>
+<p>Dateiname: src/main.rs</p>
+<pre><code class="language-rust">fn main() {
+    let ganzzahl: i32 = 100;
+    let komma: f64 = 5.5;
+
+    // let ergebnis = ganzzahl + komma; // FEHLER! Rust erlaubt keine implizite Typkonvertierung.
+    
+    // Explizite Konvertierung mit 'as'
+    let ergebnis = (ganzzahl as f64) + komma;
+    println!("Ergebnis: {ergebnis}"); // Ausgabe: 105.5
+}</code></pre>
+<h3 id="beispielcode-für--fehler-propagierung"><a class="header" href="#beispielcode-für--fehler-propagierung">Beispielcode für <code>?</code> (Fehler-Propagierung)</a></h3>
+<p>Dateiname: src/main.rs</p>
+<pre><code class="language-rust">use std::fs::File;
+use std::io::{self, Read};
+
+fn lese_datei_inhalt() -&gt; Result&lt;String, io::Error&gt; {
+    // Der ?-Operator versucht die Datei zu öffnen. 
+    // Wenn erfolgreich, wird das File-Objekt entpackt.
+    // Wenn ein Fehler auftritt (z.B. Datei nicht vorhanden), bricht die 
+    // Funktion sofort ab und gibt den Fehler als Rückgabewert zurück.
+    let mut datei = File::open("info.txt")?;
+    
+    let mut inhalt = String::new();
+    // Auch hier: Wenn read_to_string fehlschlägt, wird der Fehler sofort zurückgegeben.
+    datei.read_to_string(&amp;mut inhalt)?;
+    
+    Ok(inhalt) // Erfolgsfall
+}
+
+fn main() {
+    match lese_datei_inhalt() {
+        Ok(text) =&gt; println!("Dateiinhalt: {text}"),
+        Err(e) =&gt; println!("Fehler aufgetreten: {e}"),
+    }
+}</code></pre>
+<h3 id="was-passiert-hier-6"><a class="header" href="#was-passiert-hier-6">Was passiert hier?</a></h3>
+<ul>
+<li><strong><code>as</code></strong>: Rust führt im Gegensatz zu vielen anderen Sprachen niemals automatische (implizite) Typumwandlungen bei Berechnungen durch. Mit <code>ganzzahl as f64</code> teilen wir dem Compiler explizit mit, dass wir den Wert der Ganzzahl im Fließkommaformat interpretieren möchten, damit die Addition durchgeführt werden kann.</li>
+<li><strong><code>?</code></strong>: Dieser Operator wird an Ausdrücke angehängt, die ein <code>Result</code> (oder <code>Option</code>) zurückgeben. Er verkürzt den Code massiv:
+<ul>
+<li>Wenn das Ergebnis <code>Ok(wert)</code> ist, entpackt der Operator den <code>wert</code> und das Programm läuft in derselben Zeile weiter.</li>
+<li>Wenn das Ergebnis <code>Err(fehler)</code> ist, entspricht das Verhalten einem vorzeitigen <code>return Err(fehler)</code> aus der aktuellen Funktion. Daher kann <code>?</code> nur in Funktionen verwendet werden, deren Rückgabetyp mit dem zurückgegebenen Fehlertyp kompatibel ist.</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h2 id="8-range-operatoren-bereiche"><a class="header" href="#8-range-operatoren-bereiche">8. Range-Operatoren (Bereiche)</a></h2>
+<p>Range-Operatoren erzeugen Sequenzen von Werten. Sie werden primär in <code>for</code>-Schleifen und beim Slicing (Zugriff auf Teilbereiche von Arrays/Vektoren) verwendet.</p>
+<div class="table-wrapper"><table><thead><tr><th>Operator</th><th>Bedeutung</th><th>Bereich</th></tr></thead><tbody>
+<tr><td><code>..</code></td><td>Exklusiver Bereich</td><td><code>start..ende</code> (ohne <code>ende</code>)</td></tr>
+<tr><td><code>..=</code></td><td>Inklusiver Bereich</td><td><code>start..=ende</code> (inklusive <code>ende</code>)</td></tr>
+</tbody></table>
+</div>
+<h3 id="beispielcode-6"><a class="header" href="#beispielcode-6">Beispielcode</a></h3>
+<p>Dateiname: src/main.rs</p>
+<pre><code class="language-rust">fn main() {
+    println!("Exklusive Range (1..5):");
+    // Schleife läuft für: 1, 2, 3, 4 (5 ist exkludiert)
+    for i in 1..5 {
+        print!("{i} ");
+    }
+    println!();
+
+    println!("Inklusive Range (1..=5):");
+    // Schleife läuft für: 1, 2, 3, 4, 5 (5 ist inkludiert)
+    for i in 1..=5 {
+        print!("{i} ");
+    }
+    println!();
+
+    // Verwendung beim Slicing
+    let array = [10, 20, 30, 40, 50];
+    let slice = &amp;array[1..4]; // Holt die Elemente an Index 1, 2 und 3
+    println!("Slice: {:?}", slice); // Ausgabe: [20, 30, 40]
+}</code></pre>
+<h3 id="was-passiert-hier-7"><a class="header" href="#was-passiert-hier-7">Was passiert hier?</a></h3>
+<ul>
+<li><strong><code>1..5</code></strong>: Erstellt einen Iterator, der bei <code>1</code> beginnt und stoppt, sobald der Wert <code>5</code> erreicht wird, <em>bevor</em> dieser Wert ausgegeben wird. Daher werden nur 1, 2, 3 und 4 durchlaufen.</li>
+<li><strong><code>1..=5</code></strong>: Verhält sich analog, schließt jedoch die obere Grenze <code>5</code> mit ein.</li>
+<li><strong>Slicing (<code>&amp;array[1..4]</code>)</strong>: Wir nutzen die Range als Index-Auswahl. Das Slice enthält die Elemente ab Index 1 (inklusive) bis Index 4 (exklusive) – also die Indizes 1, 2 und 3 des Arrays.</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="kapitel-13-Übungen-zu-operatoren-und-typumwandlung"><a class="header" href="#kapitel-13-Übungen-zu-operatoren-und-typumwandlung">Kapitel 13: Übungen zu Operatoren und Typumwandlung</a></h1>
+<p>In diesem Kapitel vertiefen wir das Gelernte über Operatoren und Typkonvertierungen in Rust anhand von fünf praktischen Übungen. Zu jeder Übung findest du eine genaue Erklärung der Problemstellung, die zugrundeliegende Theorie, eine ausführliche Schritt-für-Schritt-Erklärung der Lösung sowie den vollständigen Code.</p>
+<p>Diese Übungen simulieren typische Aufgaben aus der Praxis und zeigen dir, wie der Rust-Compiler dich vor Fehlern schützt und wie du mathematische Berechnungen korrekt durchführst.</p>
+<hr />
+<h2 id="Übung-1-grundrechenarten-der-klassiker"><a class="header" href="#Übung-1-grundrechenarten-der-klassiker">Übung 1: Grundrechenarten (Der Klassiker)</a></h2>
+<p><strong>Ziel:</strong> Die Anwendung grundlegender arithmetischer Operatoren (<code>+</code>, <code>-</code>, <code>*</code>, <code>/</code>, <code>%</code>) bei der Arbeit mit Ganzzahlen verstehen und deren Ausgaben formatieren.</p>
+<h3 id="1-problemstellung-und-erklärung"><a class="header" href="#1-problemstellung-und-erklärung">1. Problemstellung und Erklärung</a></h3>
+<p>Du sollst zwei ganzzahlige Variablen <code>a</code> (Wert: 15) und <code>b</code> (Wert: 4) deklarieren. Berechne anschließend:</p>
+<ul>
+<li>Die <strong>Summe</strong> (Addition)</li>
+<li>Die <strong>Differenz</strong> (Subtraktion)</li>
+<li>Das <strong>Produkt</strong> (Multiplikation)</li>
+<li>Den <strong>Quotienten</strong> (Division)</li>
+<li>Den <strong>Modulo-Rest</strong> (Restwert der Division)</li>
+</ul>
+<h3 id="2-was-passiert-im-hintergrund"><a class="header" href="#2-was-passiert-im-hintergrund">2. Was passiert im Hintergrund?</a></h3>
+<p>Wenn Rust Operationen auf Ganzzahlen (standardmäßig <code>i32</code>) ausführt, verarbeitet die CPU diese direkt auf Hardwareebene.</p>
+<ul>
+<li>Bei der Division <code>/</code> von zwei Ganzzahlen wird das Ergebnis automatisch <strong>abgeschnitten</strong> (Trunkierung). Aus <code>15 / 4</code> wird also <code>3</code> und nicht <code>3.75</code>.</li>
+<li>Der Modulo-Operator <code>%</code> gibt den Rest an, der bei dieser Ganzzahldivision übrig bleibt: <code>15</code> geteilt durch <code>4</code> ergibt <code>3</code> mit einem Rest von <code>3</code> (da <code>3 * 4 = 12</code> und <code>15 - 12 = 3</code>).</li>
+</ul>
+<h3 id="3-lösungscode"><a class="header" href="#3-lösungscode">3. Lösungscode</a></h3>
+<p>Dateiname: <code>src/main.rs</code></p>
+<pre><code class="language-rust">fn main() {
+    let a = 15;
+    let b = 4;
+
+    // Addition
+    let summe = a + b;
+    println!("Summe: {}", summe); // Ausgabe: 19
+
+    // Subtraktion
+    let differenz = a - b;
+    println!("Differenz: {}", differenz); // Ausgabe: 11
+
+    // Multiplikation
+    let produkt = a * b;
+    println!("Produkt: {}", produkt); // Ausgabe: 60
+
+    // Ganzzahl-Division (Rest wird abgeschnitten)
+    let quotient = a / b;
+    println!("Quotient: {}", quotient); // Ausgabe: 3
+
+    // Modulo (Restwert der Division)
+    let rest = a % b;
+    println!("Rest der Division (Modulo): {}", rest); // Ausgabe: 3
+}</code></pre>
+<h3 id="4-detaillierte-beschreibung"><a class="header" href="#4-detaillierte-beschreibung">4. Detaillierte Beschreibung</a></h3>
+<ol>
+<li><code>let a = 15;</code> und <code>let b = 4;</code> reservieren Speicherplatz auf dem Stack für zwei vorzeichenbehaftete 32-Bit-Ganzzahlen (<code>i32</code>).</li>
+<li><code>let summe = a + b;</code> addiert die Binärwerte von <code>a</code> und <code>b</code> und speichert das Ergebnis <code>19</code> in der neuen Variable <code>summe</code>.</li>
+<li><code>let quotient = a / b;</code> führt die Division durch. Da beide Operanden Ganzzahlen sind, wird das Ergebnis <code>3.75</code> zur Ganzzahl <code>3</code> abgerundet.</li>
+<li><code>let rest = a % b;</code> berechnet den Restwert. Das ist besonders nützlich, um beispielsweise zu prüfen, ob eine Zahl gerade oder ungerade ist (z.B. <code>zahl % 2 == 0</code>).</li>
+</ol>
+<hr />
+<h2 id="Übung-2-die-ganzzahl-falle-bei-der-division"><a class="header" href="#Übung-2-die-ganzzahl-falle-bei-der-division">Übung 2: Die Ganzzahl-Falle bei der Division</a></h2>
+<p><strong>Ziel:</strong> Verstehen, warum Ganzzahldivisionen Nachkommastellen abschneiden und wie man durch explizites Type-Casting mit <code>as</code> ein exaktes mathematisches Ergebnis erzielt.</p>
+<h3 id="1-problemstellung-und-erklärung-1"><a class="header" href="#1-problemstellung-und-erklärung-1">1. Problemstellung und Erklärung</a></h3>
+<p>Gegeben sind die Variablen <code>let x = 7;</code> und <code>let y = 2;</code>. Wenn du versuchst, <code>x / y</code> zu rechnen, erhältst du das Ergebnis <code>3</code> statt <code>3.5</code>. Modifiziere den Code so, dass die Division ein mathematisch exaktes Ergebnis liefert.</p>
+<h3 id="2-was-passiert-im-hintergrund-1"><a class="header" href="#2-was-passiert-im-hintergrund-1">2. Was passiert im Hintergrund?</a></h3>
+<p>Da <code>x</code> und <code>y</code> als Ganzzahlen deklariert sind, führt der Compiler eine Ganzzahldivision aus. In Rust gibt es <strong>keine implizite (automatische) Typkonvertierung</strong>. Der Compiler wandelt Ganzzahlen nicht heimlich in Fließkommazahlen um.
+Um Nachkommastellen zu berechnen, müssen beide Operanden denselben Fließkommatyp (z. B. <code>f64</code>) besitzen. Wir müssen die Ganzzahlen manuell mit dem Operator <code>as</code> in <code>f64</code> umwandeln (Casting).</p>
+<h3 id="3-lösungscode-1"><a class="header" href="#3-lösungscode-1">3. Lösungscode</a></h3>
+<p>Dateiname: <code>src/main.rs</code></p>
+<pre><code class="language-rust">fn main() {
+    let x = 7;
+    let y = 2;
+
+    // Führt zur Ganzzahldivision
+    let ergebnis_ganzzahl = x / y;
+    println!("Ganzzahliges Ergebnis: {}", ergebnis_ganzzahl); // Ausgabe: 3
+
+    // Lösung: Konvertierung in Gleitkommazahlen (f64)
+    let x_float = x as f64;
+    let y_float = y as f64;
+
+    let ergebnis_exakt = x_float / y_float;
+    println!("Exaktes Ergebnis: {}", ergebnis_exakt); // Ausgabe: 3.5
+}</code></pre>
+<h3 id="4-detaillierte-beschreibung-1"><a class="header" href="#4-detaillierte-beschreibung-1">4. Detaillierte Beschreibung</a></h3>
+<ol>
+<li><code>x as f64</code> konvertiert den ganzzahligen Wert <code>7</code> in den Fließkommawert <code>7.0</code>.</li>
+<li><code>y as f64</code> konvertiert den ganzzahligen Wert <code>2</code> in den Fließkommawert <code>2.0</code>.</li>
+<li>Der Division-Operator <code>/</code> sieht nun zwei Fließkommazahlen (<code>f64</code>) und führt eine Gleitkommadivision durch. Das Ergebnis <code>3.5</code> wird in <code>ergebnis_exakt</code> gespeichert.</li>
+<li>Ohne diese explizite Typumwandlung würde der Versuch, einen Ganzzahl-Typ durch einen Fließkomma-Typ zu teilen (z. B. <code>x / y_float</code>), zu einem Compilerfehler führen. Rust verlangt strikte Typübereinstimmung.</li>
+</ol>
+<hr />
+<h2 id="Übung-3-typen-mischen-und-explizite-typumwandlung"><a class="header" href="#Übung-3-typen-mischen-und-explizite-typumwandlung">Übung 3: Typen mischen und explizite Typumwandlung</a></h2>
+<p><strong>Ziel:</strong> Das Verhalten von Rust bei inkompatiblen Typen verstehen, Fehler gezielt beheben und die Konsequenzen von Datenverlust beim Abrunden (Casting von Float zu Integer) analysieren.</p>
+<h3 id="1-problemstellung-und-erklärung-2"><a class="header" href="#1-problemstellung-und-erklärung-2">1. Problemstellung und Erklärung</a></h3>
+<p>Erstelle ein Programm mit <code>let integer_wert: i32 = 10;</code> und <code>let float_wert: f64 = 3.14;</code>.</p>
+<ol>
+<li>Zeige, dass die direkte Addition der beiden Variablen zu einem Compilerfehler führt.</li>
+<li>Löse den Fehler, indem du <code>integer_wert</code> in ein <code>f64</code> konvertierst und addierst.</li>
+<li>Konvertiere umgekehrt <code>float_wert</code> in ein <code>i32</code> und beschreibe den Effekt auf den Wert.</li>
+</ol>
+<h3 id="2-was-passiert-im-hintergrund-2"><a class="header" href="#2-was-passiert-im-hintergrund-2">2. Was passiert im Hintergrund?</a></h3>
+<p>Der Rust-Compiler weigert sich, unterschiedliche Datentypen miteinander zu verrechnen, um Programmierfehler wie ungenaue Rundungen zu verhindern.</p>
+<ul>
+<li>Das Konvertieren von einer Ganzzahl zu einer Fließkommazahl (<code>i32 as f64</code>) ist verlustfrei, da der Wertebereich vergrößert wird.</li>
+<li>Das Konvertieren von einer Fließkommazahl zu einer Ganzzahl (<code>f64 as i32</code>) führt zu <strong>Datenverlust</strong>, da alle Nachkommastellen einfach abgeschnitten werden (aus <code>3.14</code> wird <code>3</code>).</li>
+</ul>
+<h3 id="3-lösungscode-2"><a class="header" href="#3-lösungscode-2">3. Lösungscode</a></h3>
+<p>Dateiname: <code>src/main.rs</code></p>
+<pre><code class="language-rust">fn main() {
+    let integer_wert: i32 = 10;
+    let float_wert: f64 = 3.14;
+
+    // 1. Dieser Code würde nicht kompilieren:
+    // let fehler = integer_wert + float_wert; 
+
+    // 2. Korrekte Addition (Verlustfreie Konvertierung von i32 zu f64)
+    let summe = (integer_wert as f64) + float_wert;
+    println!("Korrekt berechnete Summe: {}", summe); // Ausgabe: 13.14
+
+    // 3. Konvertierung mit Datenverlust (f64 zu i32)
+    let float_als_integer = float_wert as i32;
+    println!("Fließkommazahl als Ganzzahl: {}", float_als_integer); // Ausgabe: 3
+}</code></pre>
+<h3 id="4-detaillierte-beschreibung-2"><a class="header" href="#4-detaillierte-beschreibung-2">4. Detaillierte Beschreibung</a></h3>
+<ol>
+<li>Der auskommentierte Code <code>integer_wert + float_wert</code> wirft den Compilerfehler <code>E0308: mismatched types</code>. Rust verlangt, dass beide Seiten der Addition denselben Typ haben.</li>
+<li>Mit <code>integer_wert as f64</code> erstellen wir eine temporäre 64-Bit-Fließkommazahl mit dem Wert <code>10.0</code>. Diese wird mit <code>3.14</code> addiert.</li>
+<li>Bei <code>float_wert as i32</code> wird der Wert <code>3.14</code> in eine Ganzzahl umgewandelt. Rust schneidet dabei die <code>.14</code> ab. Das Ergebnis ist <code>3</code>. Es findet keine mathematische Rundung auf den nächsten Ganzzahlwert statt, sondern ein striktes Abschneiden.</li>
+</ol>
+<hr />
+<h2 id="Übung-4-potenzierung-und-wurzelziehen"><a class="header" href="#Übung-4-potenzierung-und-wurzelziehen">Übung 4: Potenzierung und Wurzelziehen</a></h2>
+<p><strong>Ziel:</strong> Nutzen von mathematischen Methoden der Standardbibliothek auf Fließkommazahlen (<code>f64</code>), um Potenzen und Wurzeln zu berechnen.</p>
+<h3 id="1-problemstellung-und-erklärung-3"><a class="header" href="#1-problemstellung-und-erklärung-3">1. Problemstellung und Erklärung</a></h3>
+<p>Erstelle ein Programm, das:</p>
+<ul>
+<li>Eine Basis <code>base</code> (Wert: 2.0 als <code>f64</code>) mit einem Exponenten <code>exp</code> (Wert: 3.0 als <code>f64</code>) potenziert (also $2^3 = 8$).</li>
+<li>Die Quadratwurzel ($\sqrt{x}$) einer Zahl <code>wurzel_zahl</code> (Wert: 16.0) berechnet.</li>
+</ul>
+<h3 id="2-was-passiert-im-hintergrund-3"><a class="header" href="#2-was-passiert-im-hintergrund-3">2. Was passiert im Hintergrund?</a></h3>
+<p>Da Potenzierung und Wurzelziehen komplexere Gleitkommaoperationen sind, stellt Rust hierfür Methoden auf dem Typ <code>f64</code> bereit.</p>
+<ul>
+<li><code>.powf(exponet)</code> berechnet eine Zahl hoch eine andere Fließkommazahl.</li>
+<li><code>.powi(exponent)</code> berechnet eine Zahl hoch eine Ganzzahl (<code>i32</code>). Das ist oft schneller und effizienter, da es intern als wiederholte Multiplikation optimiert wird.</li>
+<li><code>.sqrt()</code> berechnet die Quadratwurzel der Gleitkommazahl unter Verwendung optimierter CPU-Befehle.</li>
+</ul>
+<h3 id="3-lösungscode-3"><a class="header" href="#3-lösungscode-3">3. Lösungscode</a></h3>
+<p>Dateiname: <code>src/main.rs</code></p>
+<pre><code class="language-rust">fn main() {
+    let base: f64 = 2.0;
+    let exp: f64 = 3.0;
+
+    // Potenzierung (2.0 hoch 3.0)
+    let ergebnis_potenz = base.powf(exp);
+    println!("{} hoch {} = {}", base, exp, ergebnis_potenz); // Ausgabe: 2 hoch 3 = 8
+
+    // Wurzelziehen (Quadratwurzel aus 16.0)
+    let wurzel_zahl: f64 = 16.0;
+    let ergebnis_wurzel = wurzel_zahl.sqrt();
+    println!("Quadratwurzel von {} = {}", wurzel_zahl, ergebnis_wurzel); // Ausgabe: 4
+}</code></pre>
+<h3 id="4-detaillierte-beschreibung-3"><a class="header" href="#4-detaillierte-beschreibung-3">4. Detaillierte Beschreibung</a></h3>
+<ol>
+<li><code>base.powf(exp)</code> ruft die Methode <code>powf</code> auf dem Objekt <code>base</code> auf. Sie nimmt als Argument den Exponenten <code>exp</code> entgegen. Da beide <code>f64</code> sind, ist das Ergebnis ebenfalls ein <code>f64</code>.</li>
+<li>Hätten wir einen ganzzahligen Exponenten (z. B. <code>3</code>), könnten wir stattdessen <code>base.powi(3)</code> aufrufen. Das spart Rechenzeit und benötigt weniger CPU-Ressourcen.</li>
+<li><code>wurzel_zahl.sqrt()</code> berechnet die Quadratwurzel. Falls der Wert negativ wäre (z.B. <code>-16.0</code>), würde Rust das Ergebnis <code>NaN</code> (Not a Number) zurückgeben, da Quadratwurzeln aus negativen Zahlen im reellen Zahlenraum nicht definiert sind.</li>
+</ol>
+<hr />
+<h2 id="Übung-5-praktisches-beispiel--zinseszinsrechnung"><a class="header" href="#Übung-5-praktisches-beispiel--zinseszinsrechnung">Übung 5: Praktisches Beispiel – Zinseszinsrechnung</a></h2>
+<p><strong>Ziel:</strong> Die Kombination von arithmetischen Operatoren, Typumwandlung und Potenzierung zur Lösung eines praxisnahen finanzmathematischen Problems.</p>
+<h3 id="1-problemstellung-und-erklärung-4"><a class="header" href="#1-problemstellung-und-erklärung-4">1. Problemstellung und Erklärung</a></h3>
+<p>Wir wollen den Endbetrag einer Zinseszins-Investition berechnen. Verwende folgende Vorgaben:</p>
+<ul>
+<li><strong>Startkapital</strong> (<code>initial_capital</code>): <code>1000.0</code> (als <code>f64</code>)</li>
+<li><strong>Jährlicher Zinssatz</strong> (<code>annual_rate</code>): <code>0.05</code> (entspricht 5% Zinsen, als <code>f64</code>)</li>
+<li><strong>Laufzeit in Jahren</strong> (<code>years</code>): <code>10</code> (als <code>u32</code>)</li>
+</ul>
+<p>Die Formel zur Zinseszinsberechnung lautet:
+$$\text{Endbetrag} = \text{Startkapital} \times (1 + \text{Zinssatz})^{\text{Jahre}}$$</p>
+<h3 id="2-was-passiert-im-hintergrund-4"><a class="header" href="#2-was-passiert-im-hintergrund-4">2. Was passiert im Hintergrund?</a></h3>
+<p>In dieser realen Anwendung müssen wir alle mathematischen Operationen kombinieren.</p>
+<ul>
+<li>Zuerst addieren wir <code>1.0</code> zum Zinssatz (<code>1.0 + annual_rate = 1.05</code>).</li>
+<li>Danach müssen wir dieses Ergebnis mit der Anzahl der Jahre potenzieren. Da <code>years</code> vom Typ <code>u32</code> ist, die Methode <code>powf</code> aber ein <code>f64</code> verlangt, müssen wir <code>years as f64</code> konvertieren.</li>
+<li>Zum Schluss multiplizieren wir das Ergebnis mit dem Startkapital.</li>
+</ul>
+<h3 id="3-lösungscode-4"><a class="header" href="#3-lösungscode-4">3. Lösungscode</a></h3>
+<p>Dateiname: <code>src/main.rs</code></p>
+<pre><code class="language-rust">fn main() {
+    let initial_capital: f64 = 1000.0;
+    let annual_rate: f64 = 0.05;
+    let years: u32 = 10;
+
+    // Zinseszinsberechnung
+    // Zuerst 'years' von u32 in f64 umwandeln, da powf() f64 erwartet.
+    let final_amount = initial_capital * (1.0 + annual_rate).powf(years as f64);
+
+    // Ausgabe mit Formatierung auf zwei Nachkommastellen
+    println!("Startkapital: {:.2} €", initial_capital);
+    println!("Jährlicher Zinssatz: {:.2} %", annual_rate * 100.0);
+    println!("Laufzeit: {} Jahre", years);
+    println!("Endbetrag nach {} Jahren Zinseszins: {:.2} €", years, final_amount);
+}</code></pre>
+<h3 id="4-detaillierte-beschreibung-4"><a class="header" href="#4-detaillierte-beschreibung-4">4. Detaillierte Beschreibung</a></h3>
+<ol>
+<li>Die Laufzeit <code>years</code> ist als <code>u32</code> typisiert (da Jahre immer positive Ganzzahlen sind). Die Potenzfunktion <code>.powf()</code> erwartet jedoch einen <code>f64</code>-Parameter. Wir casten daher <code>years as f64</code>.</li>
+<li><code>(1.0 + annual_rate)</code> ergibt <code>1.05</code>.</li>
+<li><code>1.05.powf(10.0)</code> berechnet $1.05^{10} \approx 1.628894$.</li>
+<li>Das Ergebnis wird mit dem Startkapital <code>1000.0</code> multipliziert, was zu <code>1628.8946</code> führt.</li>
+<li>In <code>println!</code> nutzen wir die Formatierungsoption <code>{:.2}</code>, um den Fließkommawert auf genau zwei Nachkommastellen gerundet auszugeben. Aus <code>1628.8946</code> wird in der Ausgabe <code>1628.89 €</code>.</li>
+</ol>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="kapitel-14-antigravity-cli--einstieg--praxis"><a class="header" href="#kapitel-14-antigravity-cli--einstieg--praxis">Kapitel 14: Antigravity CLI – Einstieg &amp; Praxis</a></h1>
+<p>Das Antigravity CLI (aufrufbar über den Befehl <code>agy</code>) ist das offizielle Terminal-Interface für Googles agentenbasierte Entwicklungsplattform. Es ermöglicht dir, KI-Agenten direkt aus deiner Konsole heraus zu steuern, komplexe mehrstufige Änderungen (Multi-File-Edits) durchzuführen und deine Entwicklungsumgebung tastaturgesteuert zu verwalten.</p>
+<hr />
+<h2 id="1-installation"><a class="header" href="#1-installation">1. Installation</a></h2>
+<p>Die Installation erfolgt über ein kurzes Terminal-Skript, welches das ausführbare Programm lädt:</p>
+<ul>
+<li><strong>Linux / macOS</strong>:
+<pre><code class="language-bash">curl -fsSL https://antigravity.google/cli/install.sh | bash
+</code></pre>
+Das Skript installiert die Binärdatei unter <code>~/.local/bin/agy</code>.</li>
+<li><strong>Windows (PowerShell)</strong>:
+<pre><code class="language-powershell">irm https://antigravity.google/cli/install.ps1 | iex
+</code></pre>
+</li>
+</ul>
+<hr />
+<h2 id="2-erste-schritte-mit-agy"><a class="header" href="#2-erste-schritte-mit-agy">2. Erste Schritte mit <code>agy</code></a></h2>
+<p>Um das CLI zu starten, navigierst du im Terminal in dein Projektverzeichnis und rufst <code>agy</code> auf:</p>
+<pre><code class="language-bash">cd /dein/projektpfad
+agy
+</code></pre>
+<p>Beim ersten Start öffnet sich ein kurzer Einrichtungsassistent für Farbthemen und Darstellungsmodi. Danach befindest du dich im interaktiven Prompt. Hier kannst du Aufgaben in natürlicher Sprache eingeben, wie z. B.:</p>
+<blockquote>
+<p><em>"Erstelle eine neue Rust-Datei unter src/helper.rs und implementiere eine Funktion zum Runden von Fließkommazahlen."</em></p>
+</blockquote>
+<hr />
+<h2 id="3-die-wichtigsten-slash-befehle-agentensteuerung"><a class="header" href="#3-die-wichtigsten-slash-befehle-agentensteuerung">3. Die wichtigsten Slash-Befehle (Agentensteuerung)</a></h2>
+<p>Über Slash-Befehle kannst du das Verhalten des Agenten und des CLI während der Sitzung steuern. Gib dazu einfach <code>/</code> in der Eingabezeile ein:</p>
+<ul>
+<li><strong><code>/settings</code></strong> (oder <code>/config</code>): Öffnet ein interaktives Einstellungsmenü im Terminal.</li>
+<li><strong><code>/keybindings</code></strong>: Öffnet einen Editor für Tastatur-Shortcuts.</li>
+<li><strong><code>/permissions</code></strong>: Zeigt die aktiven Tool- und Dateizugriffsrechte an.</li>
+<li><strong><code>/skills</code></strong>: Zeigt eine Liste aller geladenen Custom Skills an.</li>
+<li><strong><code>/clear</code></strong>: Setzt den aktuellen Kontext und den Chatverlauf zurück.</li>
+<li><strong><code>/exit</code></strong>: Beendet die interaktive TUI-Sitzung.</li>
+</ul>
+<hr />
+<h2 id="4-konfigurationsdateien--pfade"><a class="header" href="#4-konfigurationsdateien--pfade">4. Konfigurationsdateien &amp; Pfade</a></h2>
+<p>Das CLI speichert alle Konfigurationen und Logs in deinem Benutzerverzeichnis unter <code>~/.gemini/antigravity-cli/</code>:</p>
+<ol>
+<li><strong><code>settings.json</code></strong>: Enthält deine persistenten Einstellungen.</li>
+<li><strong><code>brain/&lt;conversation-id&gt;/</code></strong>: Hier werden alle deine Sitzungen, Transkripte und Logdateien gespeichert.</li>
+<li><strong><code>plugins/</code></strong>: Ort für Erweiterungen und MCP-Serverkonfigurationen.</li>
+</ol>
+<hr />
+<h2 id="5-projektkonfiguration-agentsmd--skillsmd"><a class="header" href="#5-projektkonfiguration-agentsmd--skillsmd">5. Projektkonfiguration: <code>AGENTS.md</code> &amp; <code>SKILLS.md</code></a></h2>
+<p>Für eine detaillierte Steuerung der Agenten in deinem Projekt nutzt das CLI zwei wichtige lokale Dateien im Projektverzeichnis:</p>
+<h3 id="agentsmd-projektregeln--kontext"><a class="header" href="#agentsmd-projektregeln--kontext"><code>AGENTS.md</code> (Projektregeln &amp; Kontext)</a></h3>
+<p>Diese Datei enthält projektspezifische Richtlinien, Verzeichniszuweisungen und Designausschlüsse. Der Agent liest diese Datei bei jedem Start automatisch ein. Dadurch weiß er beispielsweise, wo Code hingeschrieben werden darf, und hält sich an deine Programmierstandards.</p>
+<h3 id="skillsmd-custom-skills--playbooks"><a class="header" href="#skillsmd-custom-skills--playbooks"><code>SKILLS.md</code> (Custom Skills &amp; Playbooks)</a></h3>
+<p>Skills sind vordefinierte Arbeitsabläufe oder Playbooks, die dem Agenten beibringen, wie er komplexe, wiederkehrende Aufgaben erledigen soll (z. B. <em>"Kompiliere das Projekt und führe Tests aus"</em>).</p>
+<ul>
+<li>Du kannst diese Skills direkt im Prompt mit dem Präfix <code>@</code> aufrufen (z. B. <code>@run-tests</code>).</li>
+<li>Lokale Skills werden im Projektordner unter <code>.agents/skills/</code> abgelegt.</li>
+</ul>
+<h3 id="subagenten--workspace-verzeichnisse-delegation"><a class="header" href="#subagenten--workspace-verzeichnisse-delegation">Subagenten &amp; Workspace-Verzeichnisse (Delegation)</a></h3>
+<p>Wenn eine Aufgabe zu komplex für einen einzelnen Agenten ist, kann das CLI im Hintergrund <strong>Subagenten</strong> erstellen und aufrufen. Diese führen spezifische Teilaufgaben (z. B. Code-Recherche oder Fehlerbehebung) in eigenen Workspace-Verzeichnissen aus. Es gibt drei Modi, wie das Verzeichnis für einen Subagenten konfiguriert werden kann:</p>
+<ol>
+<li><strong><code>inherit</code> (Standard)</strong>: Der Subagent arbeitet direkt im selben Verzeichnis wie der Hauptagent.</li>
+<li><strong><code>branch</code></strong>: Es wird eine komplette, isolierte Kopie des Projektverzeichnisses erstellt. So kann der Subagent ungestört experimentieren, ohne deinen aktuellen Code zu überschreiben.</li>
+<li><strong><code>share</code></strong>: Erstellt ein geteiltes Verzeichnis (ähnlich wie ein <code>git worktree</code>). Dies erlaubt unabhängiges Arbeiten auf verschiedenen Branches, spart aber Speicherplatz, da die Dateien nicht dupliziert werden.</li>
+</ol>
+<hr />
+<h2 id="6-eigene-regeln-für-subagenten-definieren-agentsmd"><a class="header" href="#6-eigene-regeln-für-subagenten-definieren-agentsmd">6. Eigene Regeln für Subagenten definieren (<code>AGENTS.md</code>)</a></h2>
+<p>Du kannst das Verhalten, die Rechte und die Rollen von Subagenten durch spezielle Abschnitte in deiner lokalen <code>AGENTS.md</code> präzise steuern:</p>
+<ul>
+<li><strong>Einschränkung der Dateirechte</strong>: Du kannst festlegen, welche Subagenten Schreibrechte erhalten. Beispielsweise darf ein Subagent für Code-Review (<code>readonly</code>) nur Dateien analysieren, während ein Refactoring-Subagent (<code>readwrite</code>) im Verzeichnis <code>/src</code> schreiben darf.</li>
+<li><strong>Festlegen von Tool-Verboten</strong>: Du kannst verbieten, dass Subagenten bestimmte Befehle ausführen (z. B. externe Netzwerkanfragen via <code>curl</code> oder System-Updates).</li>
+<li><strong>Vorgabe des Workspace-Modus</strong>: Du kannst erzwingen, dass Subagenten für kritische Code-Änderungen immer im <code>branch</code>-Modus gestartet werden, um die Stabilität des Haupt-Branches zu sichern.</li>
+</ul>
+<h3 id="beispiel-für-subagenten-regeln-in-agentsmd"><a class="header" href="#beispiel-für-subagenten-regeln-in-agentsmd">Beispiel für Subagenten-Regeln in <code>AGENTS.md</code>:</a></h3>
+<pre><code class="language-markdown">## Subagenten-Regeln (Subagent Policies)
+- Alle Subagenten müssen standardmäßig im Modus 'branch' gestartet werden.
+- Subagenten des Typs 'Linter' haben ausschließlich Lesezugriff auf das Projekt.
+- Subagenten des Typs 'Refactoring' dürfen nur im Verzeichnis '/src/helpers' schreiben.
+- Die Ausführung von externen Netzwerkbefehlen (z. B. wget) ist für Subagenten deaktiviert.
+</code></pre>
+<hr />
+<h2 id="7-beispiel-code-subagenten-in-der-praxis"><a class="header" href="#7-beispiel-code-subagenten-in-der-praxis">7. Beispiel-Code: Subagenten in der Praxis</a></h2>
+<p>Es gibt zwei Wege, wie Subagenten gesteuert und deklariert werden:</p>
+<h3 id="a-deklaration-in-skillsmd-tui--playbooks"><a class="header" href="#a-deklaration-in-skillsmd-tui--playbooks">A) Deklaration in <code>SKILLS.md</code> (TUI / Playbooks)</a></h3>
+<p>In deiner <code>SKILLS.md</code> kannst du dem Hauptagenten ein Playbook vorgeben, wie er einen Subagenten für eine bestimmte Aufgabe starten und anweisen soll:</p>
+<pre><code class="language-markdown"># Skill: @code-review
+
+Führe eine automatisierte Code-Review mit einem spezialisierten Subagenten durch:
+1. Starte einen Subagenten vom Typ "Review-Experte" im Modus `branch` (isolierte Kopie).
+2. Weise den Subagenten an, alle Dateien im Ordner `src/` auf Sicherheitslücken zu prüfen.
+3. Lass den Subagenten ein Feedback-Protokoll erstellen.
+4. Schließe den Subagenten und präsentiere das Ergebnis im Hauptchat.
+</code></pre>
+<h3 id="b-programmatisch-mit-dem-python-sdk-google-antigravity"><a class="header" href="#b-programmatisch-mit-dem-python-sdk-google-antigravity">B) Programmatisch mit dem Python SDK (<code>google-antigravity</code>)</a></h3>
+<p>Wenn du eigene Workflows programmierst, kannst du die Agenten und deren Orchestrierung direkt in Python steuern:</p>
+<pre><code class="language-python">import asyncio
+from google.antigravity import Agent, LocalAgentConfig
+
+async def main():
+    # Konfiguration des Haupt-Agenten (Orchestrator)
+    config = LocalAgentConfig(
+        system_instructions=(
+            "Du bist ein Orchestrator-Agent. Delegiere komplexe Aufgaben "
+            "wie Refactoring oder Fehlersuche an spezialisierte Subagenten."
+        ),
+        tools=[]  # Eigene Tools und Hooks definieren
+    )
+
+    # Agent starten
+    async with Agent(config) as main_agent:
+        # Task absenden – der Agent entscheidet selbstständig,
+        # wann er einen Subagenten (START_SUBAGENT) hinzuzieht
+        response = await main_agent.chat(
+            "Analysiere die Rust-Dateien in src/ und führe ein Refactoring durch."
+        )
+        print("Antwort des Agenten:")
+        print(await response.text())
+
+if __name__ == "__main__":
+    asyncio.run(main())
+</code></pre>
+<hr />
+<h2 id="-merkzettel-antigravity-cli"><a class="header" href="#-merkzettel-antigravity-cli">💡 Merkzettel: Antigravity CLI</a></h2>
+<ul>
+<li><strong>Starten</strong>: Im Projektordner mit <code>agy</code> aufrufen.</li>
+<li><strong>Projekt-Regeln</strong>: Über <a href="file:///home/thorsten/RustKurs/AGENTS.md">AGENTS.md</a> im Projektverzeichnis anpassen (einschließlich Rollen und Berechtigungen für Subagenten).</li>
+<li><strong>Custom Skills</strong>: Playbooks in <code>SKILLS.md</code> definieren und mit <code>@skill-name</code> im Prompt starten.</li>
+<li><strong>Subagenten-Verzeichnisse</strong>: Drei Modi für Arbeitsbereiche: <code>inherit</code> (gleicher Ordner), <code>branch</code> (isolierte Kopie) oder <code>share</code> (geteiltes Verzeichnis).</li>
+<li><strong>Sicherheit</strong>: Lokale Shellbefehle laufen in einer abgesicherten <strong>Terminal Sandbox</strong> (z. B. <code>nsjail</code> unter Linux).</li>
+</ul>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr.min.js"></script>
+        <script src="mark.min.js"></script>
+        <script src="searcher.js"></script>
+
+        <script src="clipboard.min.js"></script>
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+        <script>
+        window.addEventListener('load', function() {
+            window.setTimeout(window.print, 100);
+        });
+        </script>
+
+
+    </div>
+    </body>
+</html>

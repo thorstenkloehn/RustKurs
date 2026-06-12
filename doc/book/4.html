@@ -1,0 +1,309 @@
+<!DOCTYPE HTML>
+<html lang="de" class="light sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Kapitel 4: Erstes Projekt - Rust-Videokurs für Anfänger</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" id="highlight-css" href="highlight.css">
+        <link rel="stylesheet" id="tomorrow-night-css" href="tomorrow-night.css">
+        <link rel="stylesheet" id="ayu-highlight-css" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+
+        <!-- Provide site root and default themes to javascript -->
+        <script>
+            const path_to_root = "";
+            const default_light_theme = "light";
+            const default_dark_theme = "navy";
+            window.path_to_searchindex_js = "searchindex.js";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="toc.js"></script>
+    </head>
+    <body>
+    <div id="mdbook-help-container">
+        <div id="mdbook-help-popup">
+            <h2 class="mdbook-help-title">Keyboard shortcuts</h2>
+            <div>
+                <p>Press <kbd>←</kbd> or <kbd>→</kbd> to navigate between chapters</p>
+                <p>Press <kbd>S</kbd> or <kbd>/</kbd> to search in the book</p>
+                <p>Press <kbd>?</kbd> to show this help</p>
+                <p>Press <kbd>Esc</kbd> to hide this help</p>
+            </div>
+        </div>
+    </div>
+    <div id="body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                let theme = localStorage.getItem('mdbook-theme');
+                let sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            const default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? default_dark_theme : default_light_theme;
+            let theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            let sidebar = null;
+            const sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+                sidebar_toggle.checked = false;
+            }
+            if (sidebar === 'visible') {
+                sidebar_toggle.checked = true;
+            } else {
+                html.classList.remove('sidebar-visible');
+            }
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="toc.html"></iframe>
+            </noscript>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="default_theme">Auto</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search (`/`)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="/ s" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Rust-Videokurs für Anfänger</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <div class="search-wrapper">
+                            <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                            <div class="spinner-wrapper">
+                                <i class="fa fa-spinner fa-spin"></i>
+                            </div>
+                        </div>
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="-kapitel-4-das-erste-rust-projekt-video-analyse--tonspur-bereinigung"><a class="header" href="#-kapitel-4-das-erste-rust-projekt-video-analyse--tonspur-bereinigung">🎬 Kapitel 4: Das erste Rust-Projekt (Video-Analyse &amp; Tonspur-Bereinigung)</a></h1>
+<p>In diesem Kapitel erstellen wir unser erstes Rust-Projekt mit Cargo und VS Code. Um eine optimale Videoqualität zu gewährleisten, wurde die verrauschte Original-Tonspur des Videos <code>Video/4.mp4</code> komplett durch eine glasklare, präzise getimte Sprachspur (TTS mit dem Kokoro-ONNX-Modell, Sprecher "Martin") ersetzt.</p>
+<p>Das fertige Video mit der rauschfreien Tonspur ist unter <a href="file:///home/thorsten/RustKurs/4.mp4">4.mp4</a> gespeichert.</p>
+<hr />
+<h2 id="-technische-details-des-videos"><a class="header" href="#-technische-details-des-videos">📊 Technische Details des Videos</a></h2>
+<ul>
+<li><strong>Dateiname:</strong> <code>Video/4.mp4</code> (Original) / <code>4.mp4</code> (Bereinigt mit Sprecher)</li>
+<li><strong>Auflösung:</strong> 1280x720 (720p)</li>
+<li><strong>Bildwiederholrate (FPS):</strong> 30 fps</li>
+<li><strong>Dauer:</strong> 01:43.38 (103,38 Sekunden)</li>
+<li><strong>Audio-Format (Neu):</strong> AAC Mono, 48 kHz (Rauschfrei)</li>
+</ul>
+<hr />
+<h2 id="-szenenübersicht-und-zeitstempel"><a class="header" href="#-szenenübersicht-und-zeitstempel">🎥 Szenenübersicht und Zeitstempel</a></h2>
+<p>Hier ist eine detaillierte Aufschlüsselung der Ereignisse im Video und der zugehörigen Sprachsegmente:</p>
+<h3 id="1-intro--cargo-initialisierung-0000---0016"><a class="header" href="#1-intro--cargo-initialisierung-0000---0016">1. Intro &amp; Cargo-Initialisierung (00:00 - 00:16)</a></h3>
+<ul>
+<li><strong>Visueller Inhalt:</strong> Das Ubuntu-Terminal ist geöffnet. Der Benutzer tippt den Befehl <code>cargo new hallowelt</code> ein und führt ihn aus. Cargo erstellt ein neues Verzeichnis <code>hallowelt</code> mit den Standard-Projektdateien.</li>
+<li><strong>Sprechertext (Start: 00:01):</strong>
+<blockquote>
+<p><em>"Willkommen zu Kapitel vier. Hier erstellen wir unser erstes Rust-Projekt. Im Ubuntu-Terminal nutzen wir das Tool Cargo, den offiziellen Paketmanager. Mit dem Befehl cargo new hallowelt legen wir ein neues Verzeichnis mit allen benötigten Projektdateien an."</em></p>
+</blockquote>
+</li>
+</ul>
+<h3 id="2-vs-code-öffnen-0016---0030"><a class="header" href="#2-vs-code-öffnen-0016---0030">2. VS Code öffnen (00:16 - 00:30)</a></h3>
+<ul>
+<li><strong>Visueller Inhalt:</strong> Der Benutzer wechselt mit <code>cd hallowelt</code> (implizit) bzw. öffnet das neu erstellte Verzeichnis direkt im Editor Visual Studio Code über den Befehl <code>code hallowelt</code>.</li>
+<li><strong>Sprechertext (Start: 00:16.5):</strong>
+<blockquote>
+<p><em>"Um den Quellcode zu bearbeiten, öffnen wir das Verzeichnis anschließend in Visual Studio Code mit dem Befehl code hallowelt."</em></p>
+</blockquote>
+</li>
+</ul>
+<h3 id="3-projektstruktur-erkunden-0030---0046"><a class="header" href="#3-projektstruktur-erkunden-0030---0046">3. Projektstruktur erkunden (00:30 - 00:46)</a></h3>
+<ul>
+<li><strong>Visueller Inhalt:</strong> Visual Studio Code öffnet sich. Der Explorer auf der linken Seite wird sichtbar. Er zeigt die Struktur des frisch generierten Rust-Projekts: Die Konfigurationsdatei <code>Cargo.toml</code> sowie den Quellcode-Ordner <code>src/</code>.</li>
+<li><strong>Sprechertext (Start: 00:30):</strong>
+<blockquote>
+<p><em>"Visual Studio Code öffnet sich nun. Auf der linken Seite im Explorer sehen wir die Struktur unseres Rust-Projekts. Neben der Konfigurationsdatei Cargo.toml finden wir den Quellcode-Ordner src, in dem sich unsere Programme befinden."</em></p>
+</blockquote>
+</li>
+</ul>
+<h3 id="4-quellcode-editieren-0046---0107"><a class="header" href="#4-quellcode-editieren-0046---0107">4. Quellcode editieren (00:46 - 01:07)</a></h3>
+<ul>
+<li><strong>Visueller Inhalt:</strong> Der Benutzer klickt auf <code>src/main.rs</code>. Der Editor zeigt das standardmäßig generierte <code>Hello, world!</code>-Programm in englischer Sprache. Der Text <code>"Hello, world!"</code> wird in <code>"Hallo Welt"</code> geändert. Die Datei wird gespeichert.</li>
+<li><strong>Sprechertext (Start: 00:46):</strong>
+<blockquote>
+<p><em>"Wir öffnen die Quellcodedatei main.rs im src-Ordner. Standardmäßig hat Cargo hier bereits ein einfaches Hallo-Welt-Programm in englischer Sprache generiert. Wir ändern den Text in Hallo Welt ab, um unser Programm zu personalisieren, und speichern die Datei."</em></p>
+</blockquote>
+</li>
+</ul>
+<h3 id="5-kompilieren-und-ausführen-0107---0122"><a class="header" href="#5-kompilieren-und-ausführen-0107---0122">5. Kompilieren und Ausführen (01:07 - 01:22)</a></h3>
+<ul>
+<li><strong>Visueller Inhalt:</strong> Der Benutzer bewegt den Cursor auf den <code>Run</code>-Button (den Code Lens-Link direkt über der Funktion <code>fn main()</code>). Ein Terminal öffnet sich am unteren Fensterrand von VS Code, und der Build-Prozess wird gestartet.</li>
+<li><strong>Sprechertext (Start: 01:07):</strong>
+<blockquote>
+<p><em>"Um das Programm auszuführen, klicken wir auf die kleine Run-Schaltfläche direkt über der Hauptfunktion. Visual Studio Code öffnet daraufhin am unteren Bildschirmrand ein Terminal und startet den Compiler."</em></p>
+</blockquote>
+</li>
+</ul>
+<h3 id="6-outro--ausblick-auf-kapitel-5-0122---014338"><a class="header" href="#6-outro--ausblick-auf-kapitel-5-0122---014338">6. Outro &amp; Ausblick auf Kapitel 5 (01:22 - 01:43.38)</a></h3>
+<ul>
+<li><strong>Visueller Inhalt:</strong> Das Terminal zeigt die Ausgabe des Compilers und schließlich das Ergebnis: <code>Hallo Welt</code>. Die Lektion wird beendet.</li>
+<li><strong>Sprechertext (Start: 01:22):</strong>
+<blockquote>
+<p><em>"Der Compiler übersetzt unseren Code in kürzester Zeit und führt das Programm aus. Im Terminal sehen wir die Ausgabe Hallo Welt. Herzlichen Glückwunsch, du hast dein erstes Rust-Programm erfolgreich gestartet! Im nächsten Kapitel beschäftigen wir uns mit Variablen."</em></p>
+</blockquote>
+</li>
+</ul>
+<hr />
+<h2 id="-wie-die-tonspur-bereinigt-wurde"><a class="header" href="#-wie-die-tonspur-bereinigt-wurde">🛠️ Wie die Tonspur bereinigt wurde</a></h2>
+<ol>
+<li><strong>Sprachspur-Generierung:</strong> Mithilfe des Python-Skripts <a href="file:///home/thorsten/RustKurs/generate_audio_ch4.py">generate_audio_ch4.py</a> wurde über das deutsche TTS-Modell <code>Kokoro</code> (Stimme "Martin") ein rauschfreier, hochqualitativer Begleittext erzeugt.</li>
+<li><strong>Timing-Synchronisation:</strong> Die einzelnen Sprachblöcke wurden präzise auf die visuellen Ereignisse im Video abgestimmt (siehe Startzeitstempel in <code>generate_audio_ch4.py</code>).</li>
+<li><strong>Mischen mit dem Video:</strong> Per <code>ffmpeg</code> wurde die verrauschte Original-Tonspur entfernt und die neu generierte Audiodatei (<code>audio/ch4_voiceover.wav</code>) lippensynchron und rauschfrei mit dem Video gemountet:
+<pre><code class="language-bash">ffmpeg -y -i Video/4.mp4 -i audio/ch4_voiceover.wav -map 0:v -map 1:a -c:v copy -c:a aac -shortest 4.mp4
+</code></pre>
+</li>
+</ol>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="3.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="5.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="3.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="5.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr.min.js"></script>
+        <script src="mark.min.js"></script>
+        <script src="searcher.js"></script>
+
+        <script src="clipboard.min.js"></script>
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+
+    </div>
+    </body>
+</html>

@@ -1,0 +1,450 @@
+<!DOCTYPE HTML>
+<html lang="de" class="light sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Kapitel 6: Skalare &amp; zusammengesetzte Typen - Rust-Videokurs für Anfänger</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" id="highlight-css" href="highlight.css">
+        <link rel="stylesheet" id="tomorrow-night-css" href="tomorrow-night.css">
+        <link rel="stylesheet" id="ayu-highlight-css" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+
+        <!-- Provide site root and default themes to javascript -->
+        <script>
+            const path_to_root = "";
+            const default_light_theme = "light";
+            const default_dark_theme = "navy";
+            window.path_to_searchindex_js = "searchindex.js";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="toc.js"></script>
+    </head>
+    <body>
+    <div id="mdbook-help-container">
+        <div id="mdbook-help-popup">
+            <h2 class="mdbook-help-title">Keyboard shortcuts</h2>
+            <div>
+                <p>Press <kbd>←</kbd> or <kbd>→</kbd> to navigate between chapters</p>
+                <p>Press <kbd>S</kbd> or <kbd>/</kbd> to search in the book</p>
+                <p>Press <kbd>?</kbd> to show this help</p>
+                <p>Press <kbd>Esc</kbd> to hide this help</p>
+            </div>
+        </div>
+    </div>
+    <div id="body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                let theme = localStorage.getItem('mdbook-theme');
+                let sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            const default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? default_dark_theme : default_light_theme;
+            let theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            let sidebar = null;
+            const sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+                sidebar_toggle.checked = false;
+            }
+            if (sidebar === 'visible') {
+                sidebar_toggle.checked = true;
+            } else {
+                html.classList.remove('sidebar-visible');
+            }
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="toc.html"></iframe>
+            </noscript>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="default_theme">Auto</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search (`/`)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="/ s" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Rust-Videokurs für Anfänger</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <div class="search-wrapper">
+                            <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                            <div class="spinner-wrapper">
+                                <i class="fa fa-spinner fa-spin"></i>
+                            </div>
+                        </div>
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h2 id="rust-datentypen-einfach-erklärt"><a class="header" href="#rust-datentypen-einfach-erklärt">Rust Datentypen einfach erklärt</a></h2>
+<ul>
+<li>Rust ist eine statisch typisierte Sprache</li>
+</ul>
+<h2 id="skalare-typen"><a class="header" href="#skalare-typen">Skalare Typen</a></h2>
+<h3 id="ein-skalarer-typ-repräsentiert-einen-einzigen-wert-die-wichtigsten-numerischen-typen-sind"><a class="header" href="#ein-skalarer-typ-repräsentiert-einen-einzigen-wert-die-wichtigsten-numerischen-typen-sind">Ein skalarer Typ repräsentiert einen einzigen Wert. Die wichtigsten numerischen Typen sind:</a></h3>
+<h4 id="ganzzahlen-integers-zahlen-ohne-komma"><a class="header" href="#ganzzahlen-integers-zahlen-ohne-komma">Ganzzahlen (Integers): Zahlen ohne Komma.</a></h4>
+<h5 id="ganzzahlen-integers-zahlen-ohne-komma-1"><a class="header" href="#ganzzahlen-integers-zahlen-ohne-komma-1">Ganzzahlen (Integers): Zahlen ohne Komma.</a></h5>
+<ul>
+<li>Mit Vorzeichen (i für signed): Können positiv und negativ sein (z. B. -5, 12). Standard ist i32.</li>
+<li>Ohne Vorzeichen (u für unsigned): Können nur 0 oder positiv sein (z. B. 5). Weil sie kein Minuszeichen speichern müssen, passen größere positive Zahlen hinein.</li>
+</ul>
+<h4 id="fließkommazahlen-floats-zahlen-mit-nachkommastellen-dezimalzahlen-standard-ist"><a class="header" href="#fließkommazahlen-floats-zahlen-mit-nachkommastellen-dezimalzahlen-standard-ist">Fließkommazahlen (Floats): Zahlen mit Nachkommastellen (Dezimalzahlen). Standard ist</a></h4>
+<ul>
+<li>f64</li>
+</ul>
+<h3 id="was-bedeuten-die-zahlen-z-b-8-32-64"><a class="header" href="#was-bedeuten-die-zahlen-z-b-8-32-64">Was bedeuten die Zahlen (z. B. 8, 32, 64)?</a></h3>
+<p>Wichtig für Anfänger: Verschwende am Anfang keine Zeit mit "Mikro-Optimierung" des Speichers. Nutze einfach die * * * * Rust-Standards (i32 und f64). Heutige Computer haben mehr als genug Speicher.</p>
+<ul>
+<li>
+<p>Statische Typisierung: Rust muss jeden Datentyp vor dem Start des Programms kennen.</p>
+</li>
+<li>
+<p>Typinferenz: Rust erkennt den Typ oft automatisch anhand des zugewiesenen Wertes.</p>
+</li>
+<li>
+<p>Zusammengesetzte Typen (Vorschau): Können im Gegensatz zu skalaren Typen mehrere Werte wie ein "Behälter" aufnehmen.</p>
+</li>
+</ul>
+<p>Speicher-Eselsbrücke</p>
+<ul>
+<li>
+<p>i = Integer (Ganzzahl mit Vorzeichen, kann ins Ins Negative gehen).</p>
+</li>
+<li>
+<p>u = Unsigned (Vorzeichenlos, Unmöglich negativ).</p>
+</li>
+<li>
+<p>Standard-Regel: Wenn du eine normale Zahl brauchst, nimm einfach i32. Wenn du eine Kommazahl brauchst, nimm f64.</p>
+</li>
+</ul>
+<p>Das Wichtigste in Kürze</p>
+<ul>
+<li>Explizite Typisierung: Standardmäßig macht Rust aus ganzen Zahlen ein i32. Willst du das ändern, hängst du einen Doppelpunkt und den Typ an den Variablennamen (z. B. let x: i8 = -100;).</li>
+<li>Wertebereich beachten: Jeder Typ hat Grenzen. Passt eine Zahl nicht in den Speicherplatz (z. B. 400 in ein u8), streikt der Compiler und das Programm startet erst gar nicht.</li>
+<li>Alternative Schreibweise (Suffix): Du kannst den Typ auch direkt ohne Leerzeichen an die Zahl klatschen (z. B. let x = 20i8;). Das bewirkt genau dasselbe, wird aber seltener genutzt.</li>
+</ul>
+<h2 id="merkzettel-rust-integer-ganzzahlen-im-Überblick"><a class="header" href="#merkzettel-rust-integer-ganzzahlen-im-Überblick">Merkzettel: Rust Integer (Ganzzahlen) im Überblick</a></h2>
+<ul>
+<li>i (signed / mit Vorzeichen): Kann negative und positive Zahlen speichern.</li>
+<li>u (unsigned / ohne Vorzeichen): Kann nur positive Zahlen und 0 speichern. Vorteil: Da kein Minuszeichen gespeichert werden muss, verdoppelt sich die Reichweite im positiven Bereich.</li>
+</ul>
+<h2 id="typen-speicherplatz-und-ihre-grenzen"><a class="header" href="#typen-speicherplatz-und-ihre-grenzen">Typen, Speicherplatz und ihre Grenzen</a></h2>
+<p>SpeichergrößeGültiger Zahlenbereich (Grenzen)Beispiel für Fehleri81 Byte (8 Bit)-128 bis 127let x: i8 = -210; (zu klein)u81 Byte (8 Bit)0 bis 255let x: u8 = -15; (kein Minus erlaubt)i162 Bytes (16 Bit)-32.768 bis 32.767let x: i16 = 64000; (zu groß)u162 Bytes (16 Bit)0 bis 65.535let x: u16 = 66000; (zu groß)i324 Bytes (32 Bit)ca. -2,14 Mrd. bis +2,14 Mrd.(Standardtyp in Rust)u324 Bytes (32 Bit)0 bis ca. 4,29 Mrd.let x: u32 = -1; (kein Minus erlaubt)</p>
+<p>Merke für die Praxis: Wenn eine Zahl den zugewiesenen Bereich sprengt, bricht Rust den Kompiliervorgang sofort mit einer Fehlermeldung ab. Das schützt dich vor Fehlern im fertigen Programm!</p>
+<p>Das Wichtigste in Kürze</p>
+<ul>
+<li>
+<p>Große Zahlen im Code (wie 6000000) sind schwer zu lesen. Rust erlaubt es dir, Unterstriche (_) als visuelle Trennzeichen in Zahlen einzufügen (wie das Tausendertrennzeichen in der Mathematik).</p>
+</li>
+<li>
+<p>Dem Compiler ist es egal: Rust ignoriert die Unterstriche beim Kompilieren komplett.</p>
+</li>
+<li>
+<p>Flexibel: Du kannst so viele Unterstriche setzen, wo du willst.</p>
+</li>
+<li>
+<p>Best Practice: Sinnvoll ist es, Zahlen in 3er-Blöcke aufzuteilen (z. B. 6_000_000).</p>
+</li>
+<li>
+<p>Eselsbrücke: Ersetze das mathematische Tausender-Komma (oder den Punkt) im Code einfach durch einen Unterstrich _. Das erhöht die Lesbarkeit sofort und verhindert Tippfehler bei vielen Nullen!</p>
+</li>
+</ul>
+<h2 id="das-wichtigste-in-kürze"><a class="header" href="#das-wichtigste-in-kürze">Das Wichtigste in Kürze</a></h2>
+<p>Während Typen wie i32 oder u8 auf jedem Computer immer exakt gleich groß sind, passen sich isize und usize automatisch an den Computer an, auf dem das Programm gerade läuft.</p>
+<ul>
+<li>Die Anpassung: Auf einem 64-Bit-Computer werden sie zu 64-Bit-Typen (i64 / u64). Auf einem 32-Bit-Computer werden sie zu 32-Bit-Typen (i32 / u32).</li>
+<li>Der Zweck: Sie dienen als "Spitznamen" (Aliase) für den nativen Typ des Systems. Das macht den Code extrem flexibel und spart automatisch Speicher auf älteren Systemen, während es auf modernen Computern die maximale Leistung herausholt.
+Wofür braucht man das? In der Praxis nutzt man usize vor allem, wenn man Dinge zählt, die mit der Speichergröße des Computers zu tun haben – zum Beispiel, um die Länge von Listen (Arrays/Vektoren) zu bestimmen oder Elemente darin über einen Index anzusprechen.</li>
+</ul>
+<h2 id="was-ist-ein-string-literal"><a class="header" href="#was-ist-ein-string-literal">Was ist ein String-Literal?</a></h2>
+<p>Ein Text in doppelten Anführungszeichen (z. B. "Hello World") ist in Rust technisch gesehen ein String-Literal. Der Compiler kennt diesen Text schon beim Verharmlosen (Kompilieren), weil er fest im Quellcode geschrieben steht. Dynamische Texte (z. B. Benutzereingaben) funktionieren später anders.</p>
+<h2 id="maskierung-escaping--sonderzeichen"><a class="header" href="#maskierung-escaping--sonderzeichen">Maskierung (Escaping) &amp; Sonderzeichen</a></h2>
+<p>Manche Zeichen haben in Rust eine Sonderfunktion. Sie beginnen immer mit einem Backslash (). Möchtest du diese Zeichen wörtlich als Text drucken, musst du sie mit einem zusätzlichen Backslash "maskieren" (escapen).</p>
+<ul>
+<li>
+<p>\n erzeugt eine neue Zeile.</p>
+</li>
+<li>
+<p>\t erzeugt einen Tabulator-Abstand.</p>
+</li>
+<li>
+<p>" druckt ein echtes Anführungszeichen, ohne dass Rust denkt, der String ist vorbei.</p>
+</li>
+<li>
+<p>\ druckt einen einzelnen, echten Backslash (wichtig z. B. bei Windows-Dateipfaden).</p>
+</li>
+</ul>
+<p>Die Rettung: Raw Strings
+Wenn du viele Backslashes oder Pfade hast, wird der Code durch das ständige Maskieren (\) unleserlich. Die Lösung ist ein Raw String (Roh-Zeichenkette). Setze einfach ein r vor die Anführungszeichen. Rust ignoriert dann alle Sonderfunktionen und druckt alles exakt so, wie es da steht.</p>
+<ol>
+<li>Was ist eine Methode?
+Eine Methode ist im Grunde eine Funktion, die fest an einen bestimmten Wert oder Datentyp gebunden ist. Sie ist wie ein Befehl, den man direkt auf eine Variable anwendet.</li>
+</ol>
+<ul>
+<li>
+<p>Funktion / Makro: Steht für sich alleine (z. B. println!(...)).</p>
+</li>
+<li>
+<p>Methode: Klebt immer mit einem Punkt an einer Variablen (z. B. text.trim()).</p>
+</li>
+<li>
+<p>Eingabe (Argument): Was in die Klammern reinwandert.</p>
+</li>
+<li>
+<p>Ausgabe (Rückgabewert): Das Ergebnis, das am Ende rauskommt.</p>
+</li>
+</ul>
+<p>Ein Float (Fließkommazahl) stellt eine Dezimalzahl mit Nachkommastellen dar. In Rust sind Floats immer vorzeichenbehaftet (sie können also positive und negative Werte haben). Es gibt keine "unsigned" (rein positiven) Floats.</p>
+<p>fn main() {
+let pi: f64 = 3.14159;</p>
+<pre><code>// 1. .floor() -&gt; Abrunden (zum "Boden")
+println!("{}", pi.floor()); // Ausgabe: 3.0
+
+// 2. .ceil() -&gt; Aufrunden (zur "Decke" / Ceiling)
+println!("{}", pi.ceil());  // Ausgabe: 4.0
+
+// 3. .round() -&gt; Kaufmännisch runden (zur nächsten ganzen Zahl)
+println!("{}", pi.round()); // Ausgabe: 3.0 (da .14 näher an 3 ist)
+
+let kaffee_preis: f64 = 3.75;
+println!("{}", kaffee_preis.round()); // Ausgabe: 4.0 (da .75 näher an 4 ist)
+</code></pre>
+<p>}</p>
+<p>Wenn du eine Kommazahl mit println! ausgibst, kannst du die Anzahl der angezeigten Nachkommastellen begrenzen. Das Zaubermittel dafür heißt Formatbezeichner (Format Speci)
+Die Syntax: Innerhalb der geschweiften Klammern fügst du einen Doppelpunkt :, einen Punkt . und die gewünschte Anzahl an Stellen ein (z. B. :.2 für 2 Stellen).</p>
+<ul>
+<li>
+<p>Wichtig: Der echte Wert in der Variable ändert sich dadurch nicht. Rust passt nur die optische Darstellung bei der Ausgabe an und rundet die Zahl dabei mathematisch korrekt.</p>
+</li>
+<li>
+<p>Zwei Wege: Das funktioniert sowohl, wenn die Variable direkt in den Klammern steht ({pi:.2}), als auch, wenn sie als Argument hinten dranhängt ({:.2}, pi).</p>
+</li>
+</ul>
+<p>Rust
+fn main() {
+let pi = 3.14159265;</p>
+<pre><code>// ---- Variante 1: Variable direkt in der Klammer (Kompakt) ----
+println!("Pi auf 2 Stellen: {pi:.2}"); // Ausgabe: 3.14
+println!("Pi auf 4 Stellen: {pi:.4}"); // Ausgabe: 3.1416 (automatisch aufgerundet!)
+
+// ---- Variante 2: Variable als Argument hinten dran (Klassisch) ----
+println!("Ausgabe auf 3 Stellen: {:.3}", pi); // Ausgabe: 3.142
+
+// Der Originalwert ist immer noch unverändert:
+println!("Originaler Wert: {}", pi); // Ausgabe: 3.14159265
+</code></pre>
+<p>}
+💡 Eselsbrücke für die Praxis: Denk bei :.2 einfach an ein Gesicht mit Brille, das genau hinsieht: Der Doppelpunkt : startet das Tuning, der Punkt . trennt ab, und die 2 sagt, wie viele Ziffern übrig bleiben!</p>
+<h2 id="was-ist-casting"><a class="header" href="#was-ist-casting">Was ist Casting?</a></h2>
+<ul>
+<li>Casting bedeutet, einen Wert von einem Datentyp in einen anderen umzuwandeln (z. B. eine Kommazahl in eine Ganzzahl). In Rust nutzt man dafür das Schlüsselwort as.</li>
+<li>
+<ol start="2">
+<li>Wie funktioniert es?</li>
+</ol>
+</li>
+<li>Du schreibst die ursprüngliche Variable, gefolgt von as und dem neuen Typ: variable as neuer_typ. Die originale Variable bleibt dabei völlig unverändert!</li>
+</ul>
+<p>Praktische Code-Beispiele
+Rust
+fn main() {
+// ---- 1. Ganzzahl verkleinern (i32 zu i8) ----
+let miles_away = 50; // Rust denkt automatisch: i32
+let miles_i8 = miles_away as i8; // Sicher umgewandelt in i8</p>
+<pre><code>// ---- 2. Float-Präzision ändern (f64 zu f32) ----
+let ungenaues_pi = 3.14159265f64; 
+let pi_f32 = ungenaues_pi as f32; // Jetzt als 32-Bit-Float
+
+// ---- 3. Kommazahl zu Ganzzahl (Achtung: Abschneiden!) ----
+let strecke_float = 100.99; // Standard: f64
+let strecke_int = strecke_float as i32; 
+
+println!("{}", strecke_int); // Ausgabe: 100 (Es wird NICHT gerundet, nur abgeschnitten!)
+</code></pre>
+<p>}
+⚠️ Wichtiger Anfänger-Tipp: Rust rundet beim Casting von Float zu Integer niemals kaufmännisch auf! Selbst aus 99.99 as i32 wird gnadenlos die Ganzzahl 99. Möchtest du echtes Runden, nutze vorher die Methode .round().</p>
+<h2 id="was-ist-ein-boolean"><a class="header" href="#was-ist-ein-boolean">Was ist ein Boolean?</a></h2>
+<ul>
+<li>Ein Boolean (benannt nach George Boole) stellt den Zustand der Wahrheit in der Programmierung dar. Er kennt exakt nur zwei Zustände: true (wahr) oder false (falsch). Damit lassen sich Ja/Nein-, An/Aus- oder Aktiv/Inaktiv-Szenarien perfekt abbilden.</li>
+<li>
+<ol start="2">
+<li>Der Typ bool und sein Speicher
+In Rust heißt dieser Typ kurz bool.</li>
+</ol>
+</li>
+</ul>
+<p>Der Speicher-Trick: Rein mathematisch würde 1 Bit (0 oder 1) reichen. Rust spendiert einem bool im Arbeitsspeicher aber 1 Byte (8 Bits). Warum? Moderne Computer-Architekturen können auf ganze Bytes viel schneller zugreifen als auf einzelne Bits. Das bringt mehr Leistung (Performance).
+3. Wie entstehen Booleans?
+Direkte Zuweisung: let an: bool = true; (Wichtig: ohne Anführungszeichen, sonst wäre es Text!).</p>
+<ul>
+<li>
+<p>Vergleiche: Mathematische Prüfungen wie "kleiner als" (&lt;) oder "größer als" (&gt;) geben automatisch ein true oder false zurück.</p>
+</li>
+<li>
+<p>Typ-Methoden: Zahlen haben eingebaute Werkzeuge, die Fragen beantworten (z. B. .is_positive()).</p>
+</li>
+</ul>
+<p>📌 Merkzettel: Der Datentyp char in Rust
+⚙️ Syntax im Vergleich
+Rust
+let buchstabe: char = 'B'; // ✅ Gültiger char (Einfache Anführungszeichen)
+let emoji: char = '🎧';    // ✅ Gültiger char (Ein Emoji ist EIN Zeichen)</p>
+<p>// let fehler: char = 'AB';  ❌ FEHLER: Mehr als ein Zeichen!
+// let text: char = "B";     ❌ FEHLER: Doppelte Anführungszeichen machen daraus einen String!</p>
+<p>Schnelle Eselsbrücke für Anfänger
+Einfache Striche (') = Einsames Zeichen (char).</p>
+<p>Doppelte Striche (") = Doppelt so viele Zeichen wie du willst (String).</p>
+<p>Da Rust-Zahlen und -Texte vollgepackt mit Methoden sind, kannst du einen char jederzeit ganz einfach prüfen oder manipulieren!</p>
+<p>Nächste Lektion: Projekt für Variablen und Datentypen programmieren  Übungen</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="5.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="7.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="5.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="7.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr.min.js"></script>
+        <script src="mark.min.js"></script>
+        <script src="searcher.js"></script>
+
+        <script src="clipboard.min.js"></script>
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+
+    </div>
+    </body>
+</html>

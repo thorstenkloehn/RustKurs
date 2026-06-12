@@ -1,0 +1,436 @@
+<!DOCTYPE HTML>
+<html lang="de" class="light sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Kapitel 13: Übungen zu Operatoren - Rust-Videokurs für Anfänger</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" id="highlight-css" href="highlight.css">
+        <link rel="stylesheet" id="tomorrow-night-css" href="tomorrow-night.css">
+        <link rel="stylesheet" id="ayu-highlight-css" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+
+        <!-- Provide site root and default themes to javascript -->
+        <script>
+            const path_to_root = "";
+            const default_light_theme = "light";
+            const default_dark_theme = "navy";
+            window.path_to_searchindex_js = "searchindex.js";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="toc.js"></script>
+    </head>
+    <body>
+    <div id="mdbook-help-container">
+        <div id="mdbook-help-popup">
+            <h2 class="mdbook-help-title">Keyboard shortcuts</h2>
+            <div>
+                <p>Press <kbd>←</kbd> or <kbd>→</kbd> to navigate between chapters</p>
+                <p>Press <kbd>S</kbd> or <kbd>/</kbd> to search in the book</p>
+                <p>Press <kbd>?</kbd> to show this help</p>
+                <p>Press <kbd>Esc</kbd> to hide this help</p>
+            </div>
+        </div>
+    </div>
+    <div id="body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                let theme = localStorage.getItem('mdbook-theme');
+                let sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            const default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? default_dark_theme : default_light_theme;
+            let theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            let sidebar = null;
+            const sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+                sidebar_toggle.checked = false;
+            }
+            if (sidebar === 'visible') {
+                sidebar_toggle.checked = true;
+            } else {
+                html.classList.remove('sidebar-visible');
+            }
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="toc.html"></iframe>
+            </noscript>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="default_theme">Auto</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search (`/`)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="/ s" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Rust-Videokurs für Anfänger</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <div class="search-wrapper">
+                            <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                            <div class="spinner-wrapper">
+                                <i class="fa fa-spinner fa-spin"></i>
+                            </div>
+                        </div>
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="kapitel-13-Übungen-zu-operatoren-und-typumwandlung"><a class="header" href="#kapitel-13-Übungen-zu-operatoren-und-typumwandlung">Kapitel 13: Übungen zu Operatoren und Typumwandlung</a></h1>
+<p>In diesem Kapitel vertiefen wir das Gelernte über Operatoren und Typkonvertierungen in Rust anhand von fünf praktischen Übungen. Zu jeder Übung findest du eine genaue Erklärung der Problemstellung, die zugrundeliegende Theorie, eine ausführliche Schritt-für-Schritt-Erklärung der Lösung sowie den vollständigen Code.</p>
+<p>Diese Übungen simulieren typische Aufgaben aus der Praxis und zeigen dir, wie der Rust-Compiler dich vor Fehlern schützt und wie du mathematische Berechnungen korrekt durchführst.</p>
+<hr />
+<h2 id="Übung-1-grundrechenarten-der-klassiker"><a class="header" href="#Übung-1-grundrechenarten-der-klassiker">Übung 1: Grundrechenarten (Der Klassiker)</a></h2>
+<p><strong>Ziel:</strong> Die Anwendung grundlegender arithmetischer Operatoren (<code>+</code>, <code>-</code>, <code>*</code>, <code>/</code>, <code>%</code>) bei der Arbeit mit Ganzzahlen verstehen und deren Ausgaben formatieren.</p>
+<h3 id="1-problemstellung-und-erklärung"><a class="header" href="#1-problemstellung-und-erklärung">1. Problemstellung und Erklärung</a></h3>
+<p>Du sollst zwei ganzzahlige Variablen <code>a</code> (Wert: 15) und <code>b</code> (Wert: 4) deklarieren. Berechne anschließend:</p>
+<ul>
+<li>Die <strong>Summe</strong> (Addition)</li>
+<li>Die <strong>Differenz</strong> (Subtraktion)</li>
+<li>Das <strong>Produkt</strong> (Multiplikation)</li>
+<li>Den <strong>Quotienten</strong> (Division)</li>
+<li>Den <strong>Modulo-Rest</strong> (Restwert der Division)</li>
+</ul>
+<h3 id="2-was-passiert-im-hintergrund"><a class="header" href="#2-was-passiert-im-hintergrund">2. Was passiert im Hintergrund?</a></h3>
+<p>Wenn Rust Operationen auf Ganzzahlen (standardmäßig <code>i32</code>) ausführt, verarbeitet die CPU diese direkt auf Hardwareebene.</p>
+<ul>
+<li>Bei der Division <code>/</code> von zwei Ganzzahlen wird das Ergebnis automatisch <strong>abgeschnitten</strong> (Trunkierung). Aus <code>15 / 4</code> wird also <code>3</code> und nicht <code>3.75</code>.</li>
+<li>Der Modulo-Operator <code>%</code> gibt den Rest an, der bei dieser Ganzzahldivision übrig bleibt: <code>15</code> geteilt durch <code>4</code> ergibt <code>3</code> mit einem Rest von <code>3</code> (da <code>3 * 4 = 12</code> und <code>15 - 12 = 3</code>).</li>
+</ul>
+<h3 id="3-lösungscode"><a class="header" href="#3-lösungscode">3. Lösungscode</a></h3>
+<p>Dateiname: <code>src/main.rs</code></p>
+<pre><code class="language-rust">fn main() {
+    let a = 15;
+    let b = 4;
+
+    // Addition
+    let summe = a + b;
+    println!("Summe: {}", summe); // Ausgabe: 19
+
+    // Subtraktion
+    let differenz = a - b;
+    println!("Differenz: {}", differenz); // Ausgabe: 11
+
+    // Multiplikation
+    let produkt = a * b;
+    println!("Produkt: {}", produkt); // Ausgabe: 60
+
+    // Ganzzahl-Division (Rest wird abgeschnitten)
+    let quotient = a / b;
+    println!("Quotient: {}", quotient); // Ausgabe: 3
+
+    // Modulo (Restwert der Division)
+    let rest = a % b;
+    println!("Rest der Division (Modulo): {}", rest); // Ausgabe: 3
+}</code></pre>
+<h3 id="4-detaillierte-beschreibung"><a class="header" href="#4-detaillierte-beschreibung">4. Detaillierte Beschreibung</a></h3>
+<ol>
+<li><code>let a = 15;</code> und <code>let b = 4;</code> reservieren Speicherplatz auf dem Stack für zwei vorzeichenbehaftete 32-Bit-Ganzzahlen (<code>i32</code>).</li>
+<li><code>let summe = a + b;</code> addiert die Binärwerte von <code>a</code> und <code>b</code> und speichert das Ergebnis <code>19</code> in der neuen Variable <code>summe</code>.</li>
+<li><code>let quotient = a / b;</code> führt die Division durch. Da beide Operanden Ganzzahlen sind, wird das Ergebnis <code>3.75</code> zur Ganzzahl <code>3</code> abgerundet.</li>
+<li><code>let rest = a % b;</code> berechnet den Restwert. Das ist besonders nützlich, um beispielsweise zu prüfen, ob eine Zahl gerade oder ungerade ist (z.B. <code>zahl % 2 == 0</code>).</li>
+</ol>
+<hr />
+<h2 id="Übung-2-die-ganzzahl-falle-bei-der-division"><a class="header" href="#Übung-2-die-ganzzahl-falle-bei-der-division">Übung 2: Die Ganzzahl-Falle bei der Division</a></h2>
+<p><strong>Ziel:</strong> Verstehen, warum Ganzzahldivisionen Nachkommastellen abschneiden und wie man durch explizites Type-Casting mit <code>as</code> ein exaktes mathematisches Ergebnis erzielt.</p>
+<h3 id="1-problemstellung-und-erklärung-1"><a class="header" href="#1-problemstellung-und-erklärung-1">1. Problemstellung und Erklärung</a></h3>
+<p>Gegeben sind die Variablen <code>let x = 7;</code> und <code>let y = 2;</code>. Wenn du versuchst, <code>x / y</code> zu rechnen, erhältst du das Ergebnis <code>3</code> statt <code>3.5</code>. Modifiziere den Code so, dass die Division ein mathematisch exaktes Ergebnis liefert.</p>
+<h3 id="2-was-passiert-im-hintergrund-1"><a class="header" href="#2-was-passiert-im-hintergrund-1">2. Was passiert im Hintergrund?</a></h3>
+<p>Da <code>x</code> und <code>y</code> als Ganzzahlen deklariert sind, führt der Compiler eine Ganzzahldivision aus. In Rust gibt es <strong>keine implizite (automatische) Typkonvertierung</strong>. Der Compiler wandelt Ganzzahlen nicht heimlich in Fließkommazahlen um.
+Um Nachkommastellen zu berechnen, müssen beide Operanden denselben Fließkommatyp (z. B. <code>f64</code>) besitzen. Wir müssen die Ganzzahlen manuell mit dem Operator <code>as</code> in <code>f64</code> umwandeln (Casting).</p>
+<h3 id="3-lösungscode-1"><a class="header" href="#3-lösungscode-1">3. Lösungscode</a></h3>
+<p>Dateiname: <code>src/main.rs</code></p>
+<pre><code class="language-rust">fn main() {
+    let x = 7;
+    let y = 2;
+
+    // Führt zur Ganzzahldivision
+    let ergebnis_ganzzahl = x / y;
+    println!("Ganzzahliges Ergebnis: {}", ergebnis_ganzzahl); // Ausgabe: 3
+
+    // Lösung: Konvertierung in Gleitkommazahlen (f64)
+    let x_float = x as f64;
+    let y_float = y as f64;
+
+    let ergebnis_exakt = x_float / y_float;
+    println!("Exaktes Ergebnis: {}", ergebnis_exakt); // Ausgabe: 3.5
+}</code></pre>
+<h3 id="4-detaillierte-beschreibung-1"><a class="header" href="#4-detaillierte-beschreibung-1">4. Detaillierte Beschreibung</a></h3>
+<ol>
+<li><code>x as f64</code> konvertiert den ganzzahligen Wert <code>7</code> in den Fließkommawert <code>7.0</code>.</li>
+<li><code>y as f64</code> konvertiert den ganzzahligen Wert <code>2</code> in den Fließkommawert <code>2.0</code>.</li>
+<li>Der Division-Operator <code>/</code> sieht nun zwei Fließkommazahlen (<code>f64</code>) und führt eine Gleitkommadivision durch. Das Ergebnis <code>3.5</code> wird in <code>ergebnis_exakt</code> gespeichert.</li>
+<li>Ohne diese explizite Typumwandlung würde der Versuch, einen Ganzzahl-Typ durch einen Fließkomma-Typ zu teilen (z. B. <code>x / y_float</code>), zu einem Compilerfehler führen. Rust verlangt strikte Typübereinstimmung.</li>
+</ol>
+<hr />
+<h2 id="Übung-3-typen-mischen-und-explizite-typumwandlung"><a class="header" href="#Übung-3-typen-mischen-und-explizite-typumwandlung">Übung 3: Typen mischen und explizite Typumwandlung</a></h2>
+<p><strong>Ziel:</strong> Das Verhalten von Rust bei inkompatiblen Typen verstehen, Fehler gezielt beheben und die Konsequenzen von Datenverlust beim Abrunden (Casting von Float zu Integer) analysieren.</p>
+<h3 id="1-problemstellung-und-erklärung-2"><a class="header" href="#1-problemstellung-und-erklärung-2">1. Problemstellung und Erklärung</a></h3>
+<p>Erstelle ein Programm mit <code>let integer_wert: i32 = 10;</code> und <code>let float_wert: f64 = 3.14;</code>.</p>
+<ol>
+<li>Zeige, dass die direkte Addition der beiden Variablen zu einem Compilerfehler führt.</li>
+<li>Löse den Fehler, indem du <code>integer_wert</code> in ein <code>f64</code> konvertierst und addierst.</li>
+<li>Konvertiere umgekehrt <code>float_wert</code> in ein <code>i32</code> und beschreibe den Effekt auf den Wert.</li>
+</ol>
+<h3 id="2-was-passiert-im-hintergrund-2"><a class="header" href="#2-was-passiert-im-hintergrund-2">2. Was passiert im Hintergrund?</a></h3>
+<p>Der Rust-Compiler weigert sich, unterschiedliche Datentypen miteinander zu verrechnen, um Programmierfehler wie ungenaue Rundungen zu verhindern.</p>
+<ul>
+<li>Das Konvertieren von einer Ganzzahl zu einer Fließkommazahl (<code>i32 as f64</code>) ist verlustfrei, da der Wertebereich vergrößert wird.</li>
+<li>Das Konvertieren von einer Fließkommazahl zu einer Ganzzahl (<code>f64 as i32</code>) führt zu <strong>Datenverlust</strong>, da alle Nachkommastellen einfach abgeschnitten werden (aus <code>3.14</code> wird <code>3</code>).</li>
+</ul>
+<h3 id="3-lösungscode-2"><a class="header" href="#3-lösungscode-2">3. Lösungscode</a></h3>
+<p>Dateiname: <code>src/main.rs</code></p>
+<pre><code class="language-rust">fn main() {
+    let integer_wert: i32 = 10;
+    let float_wert: f64 = 3.14;
+
+    // 1. Dieser Code würde nicht kompilieren:
+    // let fehler = integer_wert + float_wert; 
+
+    // 2. Korrekte Addition (Verlustfreie Konvertierung von i32 zu f64)
+    let summe = (integer_wert as f64) + float_wert;
+    println!("Korrekt berechnete Summe: {}", summe); // Ausgabe: 13.14
+
+    // 3. Konvertierung mit Datenverlust (f64 zu i32)
+    let float_als_integer = float_wert as i32;
+    println!("Fließkommazahl als Ganzzahl: {}", float_als_integer); // Ausgabe: 3
+}</code></pre>
+<h3 id="4-detaillierte-beschreibung-2"><a class="header" href="#4-detaillierte-beschreibung-2">4. Detaillierte Beschreibung</a></h3>
+<ol>
+<li>Der auskommentierte Code <code>integer_wert + float_wert</code> wirft den Compilerfehler <code>E0308: mismatched types</code>. Rust verlangt, dass beide Seiten der Addition denselben Typ haben.</li>
+<li>Mit <code>integer_wert as f64</code> erstellen wir eine temporäre 64-Bit-Fließkommazahl mit dem Wert <code>10.0</code>. Diese wird mit <code>3.14</code> addiert.</li>
+<li>Bei <code>float_wert as i32</code> wird der Wert <code>3.14</code> in eine Ganzzahl umgewandelt. Rust schneidet dabei die <code>.14</code> ab. Das Ergebnis ist <code>3</code>. Es findet keine mathematische Rundung auf den nächsten Ganzzahlwert statt, sondern ein striktes Abschneiden.</li>
+</ol>
+<hr />
+<h2 id="Übung-4-potenzierung-und-wurzelziehen"><a class="header" href="#Übung-4-potenzierung-und-wurzelziehen">Übung 4: Potenzierung und Wurzelziehen</a></h2>
+<p><strong>Ziel:</strong> Nutzen von mathematischen Methoden der Standardbibliothek auf Fließkommazahlen (<code>f64</code>), um Potenzen und Wurzeln zu berechnen.</p>
+<h3 id="1-problemstellung-und-erklärung-3"><a class="header" href="#1-problemstellung-und-erklärung-3">1. Problemstellung und Erklärung</a></h3>
+<p>Erstelle ein Programm, das:</p>
+<ul>
+<li>Eine Basis <code>base</code> (Wert: 2.0 als <code>f64</code>) mit einem Exponenten <code>exp</code> (Wert: 3.0 als <code>f64</code>) potenziert (also $2^3 = 8$).</li>
+<li>Die Quadratwurzel ($\sqrt{x}$) einer Zahl <code>wurzel_zahl</code> (Wert: 16.0) berechnet.</li>
+</ul>
+<h3 id="2-was-passiert-im-hintergrund-3"><a class="header" href="#2-was-passiert-im-hintergrund-3">2. Was passiert im Hintergrund?</a></h3>
+<p>Da Potenzierung und Wurzelziehen komplexere Gleitkommaoperationen sind, stellt Rust hierfür Methoden auf dem Typ <code>f64</code> bereit.</p>
+<ul>
+<li><code>.powf(exponet)</code> berechnet eine Zahl hoch eine andere Fließkommazahl.</li>
+<li><code>.powi(exponent)</code> berechnet eine Zahl hoch eine Ganzzahl (<code>i32</code>). Das ist oft schneller und effizienter, da es intern als wiederholte Multiplikation optimiert wird.</li>
+<li><code>.sqrt()</code> berechnet die Quadratwurzel der Gleitkommazahl unter Verwendung optimierter CPU-Befehle.</li>
+</ul>
+<h3 id="3-lösungscode-3"><a class="header" href="#3-lösungscode-3">3. Lösungscode</a></h3>
+<p>Dateiname: <code>src/main.rs</code></p>
+<pre><code class="language-rust">fn main() {
+    let base: f64 = 2.0;
+    let exp: f64 = 3.0;
+
+    // Potenzierung (2.0 hoch 3.0)
+    let ergebnis_potenz = base.powf(exp);
+    println!("{} hoch {} = {}", base, exp, ergebnis_potenz); // Ausgabe: 2 hoch 3 = 8
+
+    // Wurzelziehen (Quadratwurzel aus 16.0)
+    let wurzel_zahl: f64 = 16.0;
+    let ergebnis_wurzel = wurzel_zahl.sqrt();
+    println!("Quadratwurzel von {} = {}", wurzel_zahl, ergebnis_wurzel); // Ausgabe: 4
+}</code></pre>
+<h3 id="4-detaillierte-beschreibung-3"><a class="header" href="#4-detaillierte-beschreibung-3">4. Detaillierte Beschreibung</a></h3>
+<ol>
+<li><code>base.powf(exp)</code> ruft die Methode <code>powf</code> auf dem Objekt <code>base</code> auf. Sie nimmt als Argument den Exponenten <code>exp</code> entgegen. Da beide <code>f64</code> sind, ist das Ergebnis ebenfalls ein <code>f64</code>.</li>
+<li>Hätten wir einen ganzzahligen Exponenten (z. B. <code>3</code>), könnten wir stattdessen <code>base.powi(3)</code> aufrufen. Das spart Rechenzeit und benötigt weniger CPU-Ressourcen.</li>
+<li><code>wurzel_zahl.sqrt()</code> berechnet die Quadratwurzel. Falls der Wert negativ wäre (z.B. <code>-16.0</code>), würde Rust das Ergebnis <code>NaN</code> (Not a Number) zurückgeben, da Quadratwurzeln aus negativen Zahlen im reellen Zahlenraum nicht definiert sind.</li>
+</ol>
+<hr />
+<h2 id="Übung-5-praktisches-beispiel--zinseszinsrechnung"><a class="header" href="#Übung-5-praktisches-beispiel--zinseszinsrechnung">Übung 5: Praktisches Beispiel – Zinseszinsrechnung</a></h2>
+<p><strong>Ziel:</strong> Die Kombination von arithmetischen Operatoren, Typumwandlung und Potenzierung zur Lösung eines praxisnahen finanzmathematischen Problems.</p>
+<h3 id="1-problemstellung-und-erklärung-4"><a class="header" href="#1-problemstellung-und-erklärung-4">1. Problemstellung und Erklärung</a></h3>
+<p>Wir wollen den Endbetrag einer Zinseszins-Investition berechnen. Verwende folgende Vorgaben:</p>
+<ul>
+<li><strong>Startkapital</strong> (<code>initial_capital</code>): <code>1000.0</code> (als <code>f64</code>)</li>
+<li><strong>Jährlicher Zinssatz</strong> (<code>annual_rate</code>): <code>0.05</code> (entspricht 5% Zinsen, als <code>f64</code>)</li>
+<li><strong>Laufzeit in Jahren</strong> (<code>years</code>): <code>10</code> (als <code>u32</code>)</li>
+</ul>
+<p>Die Formel zur Zinseszinsberechnung lautet:
+$$\text{Endbetrag} = \text{Startkapital} \times (1 + \text{Zinssatz})^{\text{Jahre}}$$</p>
+<h3 id="2-was-passiert-im-hintergrund-4"><a class="header" href="#2-was-passiert-im-hintergrund-4">2. Was passiert im Hintergrund?</a></h3>
+<p>In dieser realen Anwendung müssen wir alle mathematischen Operationen kombinieren.</p>
+<ul>
+<li>Zuerst addieren wir <code>1.0</code> zum Zinssatz (<code>1.0 + annual_rate = 1.05</code>).</li>
+<li>Danach müssen wir dieses Ergebnis mit der Anzahl der Jahre potenzieren. Da <code>years</code> vom Typ <code>u32</code> ist, die Methode <code>powf</code> aber ein <code>f64</code> verlangt, müssen wir <code>years as f64</code> konvertieren.</li>
+<li>Zum Schluss multiplizieren wir das Ergebnis mit dem Startkapital.</li>
+</ul>
+<h3 id="3-lösungscode-4"><a class="header" href="#3-lösungscode-4">3. Lösungscode</a></h3>
+<p>Dateiname: <code>src/main.rs</code></p>
+<pre><code class="language-rust">fn main() {
+    let initial_capital: f64 = 1000.0;
+    let annual_rate: f64 = 0.05;
+    let years: u32 = 10;
+
+    // Zinseszinsberechnung
+    // Zuerst 'years' von u32 in f64 umwandeln, da powf() f64 erwartet.
+    let final_amount = initial_capital * (1.0 + annual_rate).powf(years as f64);
+
+    // Ausgabe mit Formatierung auf zwei Nachkommastellen
+    println!("Startkapital: {:.2} €", initial_capital);
+    println!("Jährlicher Zinssatz: {:.2} %", annual_rate * 100.0);
+    println!("Laufzeit: {} Jahre", years);
+    println!("Endbetrag nach {} Jahren Zinseszins: {:.2} €", years, final_amount);
+}</code></pre>
+<h3 id="4-detaillierte-beschreibung-4"><a class="header" href="#4-detaillierte-beschreibung-4">4. Detaillierte Beschreibung</a></h3>
+<ol>
+<li>Die Laufzeit <code>years</code> ist als <code>u32</code> typisiert (da Jahre immer positive Ganzzahlen sind). Die Potenzfunktion <code>.powf()</code> erwartet jedoch einen <code>f64</code>-Parameter. Wir casten daher <code>years as f64</code>.</li>
+<li><code>(1.0 + annual_rate)</code> ergibt <code>1.05</code>.</li>
+<li><code>1.05.powf(10.0)</code> berechnet $1.05^{10} \approx 1.628894$.</li>
+<li>Das Ergebnis wird mit dem Startkapital <code>1000.0</code> multipliziert, was zu <code>1628.8946</code> führt.</li>
+<li>In <code>println!</code> nutzen wir die Formatierungsoption <code>{:.2}</code>, um den Fließkommawert auf genau zwei Nachkommastellen gerundet auszugeben. Aus <code>1628.8946</code> wird in der Ausgabe <code>1628.89 €</code>.</li>
+</ol>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="12.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="14.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="12.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="14.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr.min.js"></script>
+        <script src="mark.min.js"></script>
+        <script src="searcher.js"></script>
+
+        <script src="clipboard.min.js"></script>
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+
+    </div>
+    </body>
+</html>

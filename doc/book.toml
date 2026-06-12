@@ -1,0 +1,9 @@
+[book]
+authors = ["Thorsten"]
+language = "de"
+multilingual = false
+src = "src"
+title = "Rust-Videokurs für Anfänger"
+
+[rust]
+edition = "2021"
