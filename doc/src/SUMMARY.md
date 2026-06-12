@@ -17,3 +17,5 @@
 - [Kapitel 13: Übungen zu Operatoren](13.md)
 - [Kapitel 14: Antigravity CLI](14.md)
 - [Kapitel 15: Kontrollstrukturen](15.md)
+- [Kapitel 16: Beste Google KI zum Programmieren nutzen](16.md)
+
