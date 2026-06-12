@@ -1,0 +1,396 @@
+<!DOCTYPE HTML>
+<html lang="de" class="light sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Kapitel 15: Kontrollstrukturen - Rust-Videokurs für Anfänger</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" id="highlight-css" href="highlight.css">
+        <link rel="stylesheet" id="tomorrow-night-css" href="tomorrow-night.css">
+        <link rel="stylesheet" id="ayu-highlight-css" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+
+        <!-- Provide site root and default themes to javascript -->
+        <script>
+            const path_to_root = "";
+            const default_light_theme = "light";
+            const default_dark_theme = "navy";
+            window.path_to_searchindex_js = "searchindex.js";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="toc.js"></script>
+    </head>
+    <body>
+    <div id="mdbook-help-container">
+        <div id="mdbook-help-popup">
+            <h2 class="mdbook-help-title">Keyboard shortcuts</h2>
+            <div>
+                <p>Press <kbd>←</kbd> or <kbd>→</kbd> to navigate between chapters</p>
+                <p>Press <kbd>S</kbd> or <kbd>/</kbd> to search in the book</p>
+                <p>Press <kbd>?</kbd> to show this help</p>
+                <p>Press <kbd>Esc</kbd> to hide this help</p>
+            </div>
+        </div>
+    </div>
+    <div id="body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                let theme = localStorage.getItem('mdbook-theme');
+                let sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            const default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? default_dark_theme : default_light_theme;
+            let theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            let sidebar = null;
+            const sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+                sidebar_toggle.checked = false;
+            }
+            if (sidebar === 'visible') {
+                sidebar_toggle.checked = true;
+            } else {
+                html.classList.remove('sidebar-visible');
+            }
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="toc.html"></iframe>
+            </noscript>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="default_theme">Auto</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search (`/`)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="/ s" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Rust-Videokurs für Anfänger</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <div class="search-wrapper">
+                            <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                            <div class="spinner-wrapper">
+                                <i class="fa fa-spinner fa-spin"></i>
+                            </div>
+                        </div>
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="kapitel-15-kontrollstrukturen--bedingungen-musterabgleich-und-schleifen"><a class="header" href="#kapitel-15-kontrollstrukturen--bedingungen-musterabgleich-und-schleifen">Kapitel 15: Kontrollstrukturen – Bedingungen, Musterabgleich und Schleifen</a></h1>
+<p>Im echten Leben treffen wir ständig Entscheidungen: <em>„Wenn es regnet, nehme ich einen Regenschirm, andernfalls gehe ich ohne.“</em> Oder wir wiederholen eine Tätigkeit: <em>„Solange der Teller nicht leer ist, esse ich weiter.“</em></p>
+<p>In der Programmierung nennen wir diese Mechanismen <strong>Kontrollstrukturen</strong>. Sie steuern den Ablauf deines Programms und sorgen dafür, dass dein Code auf unterschiedliche Situationen reagieren kann.</p>
+<p>In diesem Kapitel gehen wir ganz genau ins Detail und schauen uns an, wie Rust Entscheidungen und Wiederholungen handhabt. Rust hat hier einige Besonderheiten und Sicherheitsgarantien, die sich von anderen Sprachen unterscheiden.</p>
+<hr />
+<h2 id="1-warum-brauchen-wir-kontrollstrukturen-einsatzgebiete"><a class="header" href="#1-warum-brauchen-wir-kontrollstrukturen-einsatzgebiete">1. Warum brauchen wir Kontrollstrukturen? (Einsatzgebiete)</a></h2>
+<p>Ohne Kontrollstrukturen würde ein Computerprogramm stur Zeile für Zeile von oben nach unten ausführen. Es gäbe keine Interaktivität. In der Praxis nutzen wir Kontrollstrukturen für folgende typische Aufgaben:</p>
+<h3 id="einsatzgebiete-für-entscheidungen-if--else-und-match"><a class="header" href="#einsatzgebiete-für-entscheidungen-if--else-und-match">Einsatzgebiete für Entscheidungen (<code>if</code> / <code>else</code> und <code>match</code>)</a></h3>
+<ul>
+<li><strong>Benutzereingaben prüfen</strong>: Ist das eingegebene Passwort lang genug? Wenn ja, logge den Nutzer ein. Wenn nein, zeige eine Fehlermeldung (<code>if-else</code>).</li>
+<li><strong>Sicherheitsprüfungen</strong>: Hat der aktuelle Benutzer Admin-Rechte? Nur dann darf der sensible Lösch-Button gedrückt werden (<code>if</code>).</li>
+<li><strong>Zustandsmaschinen (Status-Steuerung)</strong>: In einem Spiel befindet sich die Spielfigur im Zustand <code>Laufen</code>, <code>Springen</code> oder <code>Fallen</code>. Je nach Zustand werden andere Animationen abgespielt (<code>match</code>).</li>
+<li><strong>API-Antworten verarbeiten</strong>: Ein Webserver antwortet mit verschiedenen Statuscodes (z. B. <code>200 OK</code>, <code>404 Not Found</code>, <code>500 Server Error</code>). Je nach Code reagiert das Programm anders (<code>match</code>).</li>
+</ul>
+<h3 id="einsatzgebiete-für-schleifen-loop-while-und-for"><a class="header" href="#einsatzgebiete-für-schleifen-loop-while-und-for">Einsatzgebiete für Schleifen (<code>loop</code>, <code>while</code> und <code>for</code>)</a></h3>
+<ul>
+<li><strong>Spiele-Schleifen (Game Loops)</strong>: Jedes Computerspiel läuft in einer Endlosschleife. Sie liest die Tasten ein, berechnet die Physik und zeichnet das Bild auf den Monitor – und das 60-mal oder öfter pro Sekunde (<code>loop</code>).</li>
+<li><strong>Dienste im Hintergrund (Server)</strong>: Ein Webserver muss permanent im Hintergrund laufen und auf Anfragen warten. Er darf sich niemals von alleine beenden (<code>loop</code>).</li>
+<li><strong>Dateien einlesen</strong>: Wenn du eine große Textdatei Zeile für Zeile ausliest, nutzt du eine Schleife, die so lange läuft, wie noch Text in der Datei übrig ist (<code>while</code>).</li>
+<li><strong>Datenverarbeitung (Listen &amp; Tabellen)</strong>: Du möchtest alle Preise in einem Warenkorb zusammenrechnen oder die Namen aller Schüler einer Klasse alphabetisch sortieren (<code>for</code>).</li>
+</ul>
+<hr />
+<h2 id="2-ausdrücke-expressions-vs-anweisungen-statements"><a class="header" href="#2-ausdrücke-expressions-vs-anweisungen-statements">2. Ausdrücke (Expressions) vs. Anweisungen (Statements)</a></h2>
+<p>Um Rusts Kontrollstrukturen zu verstehen, müssen wir einen kurzen Blick auf den Unterschied zwischen <strong>Ausdrücken</strong> und <strong>Anweisungen</strong> werfen:</p>
+<ol>
+<li><strong>Anweisungen (Statements)</strong>: Sie führen eine Aktion aus, geben aber keinen Wert zurück. Sie enden in Rust fast immer mit einem Semikolon <code>;</code>.
+<ul>
+<li><em>Beispiel</em>: <code>let x = 5;</code> (weist einen Wert zu, gibt aber selbst nichts zurück).</li>
+</ul>
+</li>
+<li><strong>Ausdrücke (Expressions)</strong>: Sie berechnen ein Ergebnis und geben einen Wert zurück. Sie haben <strong>kein</strong> Semikolon am Ende.
+<ul>
+<li><em>Beispiel</em>: <code>5 + 5</code> (wertet sich zu <code>10</code> aus).</li>
+</ul>
+</li>
+</ol>
+<p>In Rust sind fast alle Kontrollstrukturen (wie <code>if</code> oder <code>loop</code>) Ausdrücke. Das bedeutet, sie liefern uns einen Wert zurück, den wir direkt verwenden können.</p>
+<hr />
+<h2 id="3-entscheidungen-mit-if-und-else"><a class="header" href="#3-entscheidungen-mit-if-und-else">3. Entscheidungen mit <code>if</code> und <code>else</code></a></h2>
+<p>Eine Bedingung prüft, ob eine Aussage wahr (<code>true</code>) oder falsch (<code>false</code>) ist.</p>
+<h3 id="31-die-grundsyntax"><a class="header" href="#31-die-grundsyntax">3.1 Die Grundsyntax</a></h3>
+<pre><code class="language-rust">fn main() {
+    let alter = 18;
+
+    if alter &gt;= 18 {
+        println!("Du bist volljährig!");
+    } else {
+        println!("Du bist noch minderjährig.");
+    }
+}</code></pre>
+<ul>
+<li><strong>Keine Klammern</strong>: Du brauchst in Rust keine runden Klammern <code>()</code> um die Bedingung zu schreiben (also <code>if alter &gt;= 18</code> statt <code>if (alter &gt;= 18)</code>).</li>
+<li><strong>Strikte Typen</strong>: Die Bedingung <strong>muss</strong> ein echter Wahrheitswert (<code>bool</code>) sein. Rust konvertiert Zahlen oder Texte nicht automatisch in Wahrheitswerte (es gibt kein „truthy“ oder „falsy“).</li>
+</ul>
+<h3 id="32-if-als-ausdruck-verwenden"><a class="header" href="#32-if-als-ausdruck-verwenden">3.2 <code>if</code> als Ausdruck verwenden</a></h3>
+<p>Da <code>if</code> ein Ausdruck ist, kannst du das Ergebnis direkt einer Variablen zuweisen:</p>
+<pre><code class="language-rust">fn main() {
+    let bedingung = true;
+
+    // Weist 'nummer' den Wert 5 oder 6 zu
+    let nummer = if bedingung { 5 } else { 6 };
+
+    println!("Der Wert ist: {}", nummer); // Gibt 5 aus
+}</code></pre>
+<blockquote>
+<p>[!IMPORTANT]
+Wenn du <code>if</code> als Ausdruck nutzt, müssen der <code>if</code>- und der <code>else</code>-Zweig <strong>den gleichen Datentyp</strong> zurückgeben! Ein Code wie <code>let x = if bedingung { 5 } else { "Fehler" };</code> führt zu einem Kompilierfehler.</p>
+</blockquote>
+<hr />
+<h2 id="4-musterabgleich-mit-match-die-superkraft-von-rust"><a class="header" href="#4-musterabgleich-mit-match-die-superkraft-von-rust">4. Musterabgleich mit <code>match</code> (Die Superkraft von Rust)</a></h2>
+<p>Wenn du viele verschiedene Fälle prüfen musst, werden <code>if-else</code>-Ketten schnell unübersichtlich. Rust bietet dafür eine der mächtigsten Kontrollstrukturen überhaupt: <strong><code>match</code></strong> (Musterabgleich).</p>
+<p>Man kann sich <code>match</code> wie eine hochentwickelte Version des <code>switch</code>-Befehls aus anderen Sprachen vorstellen.</p>
+<h3 id="41-grundlegender-aufbau-von-match"><a class="header" href="#41-grundlegender-aufbau-von-match">4.1 Grundlegender Aufbau von <code>match</code></a></h3>
+<pre><code class="language-rust">fn main() {
+    let rolle = "Admin";
+
+    match rolle {
+        "Admin" =&gt; println!("Vollzugriff auf alle Systeme."),
+        "Moderator" =&gt; println!("Beiträge bearbeiten und löschen."),
+        "Nutzer" =&gt; println!("Beiträge lesen und schreiben."),
+        _ =&gt; println!("Keine Rechte vorhanden."), // Der Auffang-Fall (Default)
+    }
+}</code></pre>
+<ul>
+<li><strong>Der Zweig-Aufbau</strong>: Jeder Fall (Zweig) besteht aus einem Muster (z. B. <code>"Admin"</code>), gefolgt von dem Pfeil <code>=&gt;</code> und der auszuführenden Aktion. Die einzelnen Zweige werden durch Kommas getrennt.</li>
+<li><strong>Der Platzhalter <code>_</code></strong>: Dies ist der „Auffang-Fall“ (ähnlich wie <code>default</code> in anderen Sprachen). Er fängt alle Werte ab, die nicht explizit darüber aufgelistet sind.</li>
+</ul>
+<h3 id="42-die-wichtigste-regel-vollständigkeit-exhaustiveness"><a class="header" href="#42-die-wichtigste-regel-vollständigkeit-exhaustiveness">4.2 Die wichtigste Regel: Vollständigkeit (Exhaustiveness)</a></h3>
+<p>Der Rust-Compiler zwingt dich dazu, <strong>jeden einzelnen möglichen Fall</strong> abzudecken! Wenn du einen vergisst, kompiliert dein Programm nicht.</p>
+<p>Ein Beispiel mit Zahlen:</p>
+<pre><code class="language-rust">fn main() {
+    let wuerfel = 3;
+
+    match wuerfel {
+        1 =&gt; println!("Eins gewürfelt!"),
+        2 =&gt; println!("Zwei gewürfelt!"),
+        3 =&gt; println!("Drei gewürfelt!"),
+        // Hier würde der Compiler meckern, weil 4, 5, 6 etc. fehlen.
+        _ =&gt; println!("Andere Zahl gewürfelt!"), // Löst das Problem
+    }
+}</code></pre>
+<hr />
+<h2 id="5-schleifen--code-wiederholen"><a class="header" href="#5-schleifen--code-wiederholen">5. Schleifen – Code wiederholen</a></h2>
+<p>Schleifen wiederholen Code. Rust bietet drei Arten: <code>loop</code>, <code>while</code> und <code>for</code>.</p>
+<h3 id="51-loop-und-schleifen-labels-loop-labels"><a class="header" href="#51-loop-und-schleifen-labels-loop-labels">5.1 <code>loop</code> und Schleifen-Labels (Loop Labels)</a></h3>
+<p><code>loop</code> läuft unendlich lange weiter, bis wir <code>break</code> aufrufen.</p>
+<p>Eine Besonderheit in Rust ist, dass wir Schleifen benennen können (<strong>Labels</strong>). Das ist extrem nützlich, wenn du Schleifen ineinander verschachtelst und die <em>äußere</em> Schleife aus der <em>inneren</em> Schleife heraus abbrechen willst:</p>
+<pre><code class="language-rust">fn main() {
+    let mut x = 0;
+
+    // Wir geben der äußeren Schleife den Namen 'aeusserer_kreis
+    'aeusserer_kreis: loop {
+        println!("Äußere Schleife startet");
+        let mut y = 0;
+
+        loop {
+            println!("   Innere Schleife: x={}, y={}", x, y);
+            if y == 2 {
+                break; // Beendet nur die innere Schleife
+            }
+            if x == 2 {
+                break 'aeusserer_kreis; // Beendet die äußere Schleife!
+            }
+            y += 1;
+        }
+        x += 1;
+    }
+    println!("Beide Schleifen beendet!");
+}</code></pre>
+<p><em>Hinweis</em>: Schleifen-Labels beginnen immer mit einem einfachen Anführungszeichen (z. B. <code>'name:</code>).</p>
+<h3 id="52-while--schleife-mit-bedingung"><a class="header" href="#52-while--schleife-mit-bedingung">5.2 <code>while</code> – Schleife mit Bedingung</a></h3>
+<p>Eine <code>while</code>-Schleife läuft so lange, wie eine Bedingung wahr (<code>true</code>) ist.</p>
+<pre><code class="language-rust">fn main() {
+    let mut countdown = 3;
+
+    while countdown &gt; 0 {
+        println!("{}...", countdown);
+        countdown -= 1;
+    }
+    println!("Start!");
+}</code></pre>
+<h3 id="53-for--iterieren-über-sammlungen-ranges--iteratoren"><a class="header" href="#53-for--iterieren-über-sammlungen-ranges--iteratoren">5.3 <code>for</code> – Iterieren über Sammlungen (Ranges &amp; Iteratoren)</a></h3>
+<p>Die <code>for</code>-Schleife ist die sicherste und am häufigsten genutzte Schleife in Rust.</p>
+<h4 id="a-Über-bereiche-laufen-ranges"><a class="header" href="#a-Über-bereiche-laufen-ranges">A) Über Bereiche laufen (Ranges)</a></h4>
+<ul>
+<li><code>1..4</code> läuft von 1 bis 3 (die 4 ist exklusive).</li>
+<li><code>1..=4</code> läuft von 1 bis 4 (die 4 ist inklusive).</li>
+</ul>
+<pre><code class="language-rust">fn main() {
+    // Gibt 1, 2, 3 aus
+    for i in 1..4 {
+        println!("i: {}", i);
+    }
+}</code></pre>
+<h4 id="b-Über-ein-array-laufen-mit-iter"><a class="header" href="#b-Über-ein-array-laufen-mit-iter">B) Über ein Array laufen mit <code>.iter()</code></a></h4>
+<p>Um sicherzustellen, dass wir nicht außerhalb des Arrays zugreifen (Indexfehler), benutzen wir <code>for</code> in Kombination mit <code>.iter()</code>:</p>
+<pre><code class="language-rust">fn main() {
+    let zahlen = [10, 20, 30];
+
+    for zahl in zahlen.iter() {
+        println!("Wert: {}", zahl);
+    }
+}</code></pre>
+<hr />
+<h2 id="-zusammenfassung-für-die-hosentasche"><a class="header" href="#-zusammenfassung-für-die-hosentasche">💡 Zusammenfassung für die Hosentasche</a></h2>
+<div class="table-wrapper"><table><thead><tr><th style="text-align: left">Kontrollstruktur</th><th style="text-align: left">Wann benutzen?</th><th style="text-align: left">Besonderheit in Rust</th></tr></thead><tbody>
+<tr><td style="text-align: left"><strong><code>if</code> / <code>else</code></strong></td><td style="text-align: left">Einfache Ja/Nein-Entscheidungen</td><td style="text-align: left">Ist ein Ausdruck und kann Werte zurückgeben.</td></tr>
+<tr><td style="text-align: left"><strong><code>match</code></strong></td><td style="text-align: left">Komplexe Entscheidungen mit vielen Mustern</td><td style="text-align: left">Compiler prüft zwingend auf Vollständigkeit (Exhaustiveness).</td></tr>
+<tr><td style="text-align: left"><strong><code>loop</code></strong></td><td style="text-align: left">Endlosschleifen oder Rückgabewerte bei Abbruch</td><td style="text-align: left">Kann mit Labels (<code>'label:</code>) gezielt gesteuert werden.</td></tr>
+<tr><td style="text-align: left"><strong><code>while</code></strong></td><td style="text-align: left">Wiederholen, solange Bedingung gilt</td><td style="text-align: left">Prüft Bedingung vor jedem Durchlauf.</td></tr>
+<tr><td style="text-align: left"><strong><code>for</code></strong></td><td style="text-align: left">Durchlaufen von Zahlenbereichen oder Arrays</td><td style="text-align: left">Sicherste Option, da keine Bereichsüberschreitungen möglich sind.</td></tr>
+</tbody></table>
+</div>
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="14.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="14.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr.min.js"></script>
+        <script src="mark.min.js"></script>
+        <script src="searcher.js"></script>
+
+        <script src="clipboard.min.js"></script>
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+
+    </div>
+    </body>
+</html>

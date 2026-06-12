@@ -175,118 +175,151 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="kapitel-14-antigravity-cli--einstieg--praxis"><a class="header" href="#kapitel-14-antigravity-cli--einstieg--praxis">Kapitel 14: Antigravity CLI – Einstieg &amp; Praxis</a></h1>
-<p>Das Antigravity CLI (aufrufbar über den Befehl <code>agy</code>) ist das offizielle Terminal-Interface für Googles agentenbasierte Entwicklungsplattform. Es ermöglicht dir, KI-Agenten direkt aus deiner Konsole heraus zu steuern, komplexe mehrstufige Änderungen (Multi-File-Edits) durchzuführen und deine Entwicklungsumgebung tastaturgesteuert zu verwalten.</p>
+                        <h1 id="kapitel-14-das-antigravity-cli--arbeiten-mit-ki-agenten--subagenten"><a class="header" href="#kapitel-14-das-antigravity-cli--arbeiten-mit-ki-agenten--subagenten">Kapitel 14: Das Antigravity CLI – Arbeiten mit KI-Agenten &amp; Subagenten</a></h1>
+<p>Stell dir vor, du hättest einen virtuellen Co-Entwickler direkt in deiner Konsole sitzen, der auf Knopfdruck Dateien erstellt, Code schreibt und Fehler sucht. Genau das ist das <strong>Antigravity CLI</strong> (aufrufbar über den Befehl <code>agy</code>).</p>
+<p>In diesem Kapitel lernst du Schritt für Schritt, wie du das CLI installierst, es im Terminal steuerst und wie du durch Regeln bestimmst, was die KI-Agenten in deinem Projekt tun dürfen – und was nicht.</p>
 <hr />
-<h2 id="1-installation"><a class="header" href="#1-installation">1. Installation</a></h2>
-<p>Die Installation erfolgt über ein kurzes Terminal-Skript, welches das ausführbare Programm lädt:</p>
+<h2 id="1-was-ist-das-antigravity-cli"><a class="header" href="#1-was-ist-das-antigravity-cli">1. Was ist das Antigravity CLI?</a></h2>
+<p>Bevor wir loslegen, klären wir kurz ein paar grundlegende Begriffe:</p>
 <ul>
-<li><strong>Linux / macOS</strong>:
+<li><strong>CLI (Command Line Interface)</strong>: Ein Programm, das du über Textbefehle im Terminal steuerst (auf Deutsch: Befehlszeilenschnittstelle).</li>
+<li><strong>KI-Agent</strong>: Ein intelligenter Assistent, der nicht nur deine Fragen beantwortet, sondern eigenständig Werkzeuge (Tools) benutzen kann, um z. B. Dateien zu lesen, zu editieren oder Befehle auszuführen.</li>
+<li><strong>Sandbox</strong>: Alle Befehle, die der Agent ausführt, laufen in einer abgesicherten Testumgebung (z. B. <code>nsjail</code> unter Linux). So kann der Agent dein echtes System nicht beschädigen.</li>
+</ul>
+<hr />
+<h2 id="2-installation-wie-bekomme-ich-agy"><a class="header" href="#2-installation-wie-bekomme-ich-agy">2. Installation (Wie bekomme ich <code>agy</code>?)</a></h2>
+<p>Die Installation ist sehr einfach und erfordert nur einen einzigen Befehl in deinem Terminal:</p>
+<ul>
+<li>
+<p><strong>Linux / macOS</strong>:</p>
 <pre><code class="language-bash">curl -fsSL https://antigravity.google/cli/install.sh | bash
 </code></pre>
-Das Skript installiert die Binärdatei unter <code>~/.local/bin/agy</code>.</li>
-<li><strong>Windows (PowerShell)</strong>:
+<p><em>Was passiert hier?</em> Das Skript lädt das Programm herunter und installiert es im Ordner <code>~/.local/bin/agy</code>, damit du es überall im Terminal aufrufen kannst.</p>
+</li>
+<li>
+<p><strong>Windows (PowerShell)</strong>:</p>
 <pre><code class="language-powershell">irm https://antigravity.google/cli/install.ps1 | iex
 </code></pre>
 </li>
 </ul>
 <hr />
-<h2 id="2-erste-schritte-mit-agy"><a class="header" href="#2-erste-schritte-mit-agy">2. Erste Schritte mit <code>agy</code></a></h2>
-<p>Um das CLI zu starten, navigierst du im Terminal in dein Projektverzeichnis und rufst <code>agy</code> auf:</p>
-<pre><code class="language-bash">cd /dein/projektpfad
+<h2 id="3-erste-schritte--dein-erster-prompt"><a class="header" href="#3-erste-schritte--dein-erster-prompt">3. Erste Schritte – Dein erster Prompt</a></h2>
+<p>Um das CLI zu starten, öffnest du dein Terminal, wechselst in dein Projektverzeichnis und tippst einfach <code>agy</code> ein:</p>
+<pre><code class="language-bash">cd /pfad/zu/deinem/projekt
 agy
 </code></pre>
-<p>Beim ersten Start öffnet sich ein kurzer Einrichtungsassistent für Farbthemen und Darstellungsmodi. Danach befindest du dich im interaktiven Prompt. Hier kannst du Aufgaben in natürlicher Sprache eingeben, wie z. B.:</p>
+<h3 id="der-interaktive-modus-tui"><a class="header" href="#der-interaktive-modus-tui">Der interaktive Modus (TUI)</a></h3>
+<p>Beim ersten Start öffnet sich ein kurzer Einrichtungsassistent (für Farben und Tastatursteuerung). Danach landest du in einer interaktiven Benutzeroberfläche direkt im Terminal.
+Du kannst dem Agenten nun Aufgaben in ganz normaler deutscher oder englischer Sprache stellen:</p>
 <blockquote>
-<p><em>"Erstelle eine neue Rust-Datei unter src/helper.rs und implementiere eine Funktion zum Runden von Fließkommazahlen."</em></p>
+<p>💬 <em>"Erstelle eine neue Rust-Datei unter <code>src/helper.rs</code> und schreibe eine Funktion, die Fließkommazahlen rundet."</em></p>
 </blockquote>
+<p>Der Agent wird daraufhin selbstständig die Datei anlegen und den Code hineinschreiben.</p>
 <hr />
-<h2 id="3-die-wichtigsten-slash-befehle-agentensteuerung"><a class="header" href="#3-die-wichtigsten-slash-befehle-agentensteuerung">3. Die wichtigsten Slash-Befehle (Agentensteuerung)</a></h2>
-<p>Über Slash-Befehle kannst du das Verhalten des Agenten und des CLI während der Sitzung steuern. Gib dazu einfach <code>/</code> in der Eingabezeile ein:</p>
-<ul>
-<li><strong><code>/settings</code></strong> (oder <code>/config</code>): Öffnet ein interaktives Einstellungsmenü im Terminal.</li>
-<li><strong><code>/keybindings</code></strong>: Öffnet einen Editor für Tastatur-Shortcuts.</li>
-<li><strong><code>/permissions</code></strong>: Zeigt die aktiven Tool- und Dateizugriffsrechte an.</li>
-<li><strong><code>/skills</code></strong>: Zeigt eine Liste aller geladenen Custom Skills an.</li>
-<li><strong><code>/clear</code></strong>: Setzt den aktuellen Kontext und den Chatverlauf zurück.</li>
-<li><strong><code>/exit</code></strong>: Beendet die interaktive TUI-Sitzung.</li>
-</ul>
+<h2 id="4-die-fernsteuerung-slash-befehle"><a class="header" href="#4-die-fernsteuerung-slash-befehle">4. Die Fernsteuerung: Slash-Befehle</a></h2>
+<p>Slash-Befehle sind wie Kurzwahltasten. Wenn du im Eingabefeld ein <code>/</code> tippst, öffnet sich ein Menü mit nützlichen Steuerungsbefehlen für dich:</p>
+<div class="table-wrapper"><table><thead><tr><th style="text-align: left">Befehl</th><th style="text-align: left">Was er macht</th></tr></thead><tbody>
+<tr><td style="text-align: left"><strong><code>/settings</code></strong> (oder <code>/config</code>)</td><td style="text-align: left">Öffnet die Einstellungen (Farben, Profile etc.).</td></tr>
+<tr><td style="text-align: left"><strong><code>/keybindings</code></strong></td><td style="text-align: left">Öffnet einen Editor für Tastatur-Shortcuts.</td></tr>
+<tr><td style="text-align: left"><strong><code>/permissions</code></strong></td><td style="text-align: left">Zeigt an, welche Rechte der Agent gerade hat (z. B. Schreibrechte).</td></tr>
+<tr><td style="text-align: left"><strong><code>/skills</code></strong></td><td style="text-align: left">Listet alle geladenen Fähigkeiten (Custom Skills) auf.</td></tr>
+<tr><td style="text-align: left"><strong><code>/clear</code></strong></td><td style="text-align: left">Löscht den aktuellen Chat-Verlauf und setzt das Gedächtnis des Agenten zurück.</td></tr>
+<tr><td style="text-align: left"><strong><code>/exit</code></strong></td><td style="text-align: left">Beendet das Programm.</td></tr>
+</tbody></table>
+</div>
 <hr />
-<h2 id="4-konfigurationsdateien--pfade"><a class="header" href="#4-konfigurationsdateien--pfade">4. Konfigurationsdateien &amp; Pfade</a></h2>
-<p>Das CLI speichert alle Konfigurationen und Logs in deinem Benutzerverzeichnis unter <code>~/.gemini/antigravity-cli/</code>:</p>
+<h2 id="5-wo-werden-einstellungen-und-protokolle-gespeichert-pfade"><a class="header" href="#5-wo-werden-einstellungen-und-protokolle-gespeichert-pfade">5. Wo werden Einstellungen und Protokolle gespeichert? (Pfade)</a></h2>
+<p>Das CLI legt alle wichtigen Konfigurationen und Logdaten an einem zentralen Ort in deinem Benutzerverzeichnis ab: <code>~/.gemini/antigravity-cli/</code> (unter Windows <code>C:\Users\DeinName\.gemini\antigravity-cli\</code>).</p>
+<p>Dort findest du:</p>
 <ol>
-<li><strong><code>settings.json</code></strong>: Enthält deine persistenten Einstellungen.</li>
-<li><strong><code>brain/&lt;conversation-id&gt;/</code></strong>: Hier werden alle deine Sitzungen, Transkripte und Logdateien gespeichert.</li>
-<li><strong><code>plugins/</code></strong>: Ort für Erweiterungen und MCP-Serverkonfigurationen.</li>
+<li><strong><code>settings.json</code></strong>: Deine persönlichen Einstellungen (z. B. Farbthema).</li>
+<li><strong><code>brain/&lt;sitzungs-id&gt;/</code></strong>: Die Protokolle (Transkripte) deiner Chats. Sehr nützlich, um später nachzulesen, was der Agent getan hat.</li>
+<li><strong><code>plugins/</code></strong>: Ordner für Erweiterungen und Anbindungen an andere Tools (MCP-Server).</li>
 </ol>
 <hr />
-<h2 id="5-projektkonfiguration-agentsmd--skillsmd"><a class="header" href="#5-projektkonfiguration-agentsmd--skillsmd">5. Projektkonfiguration: <code>AGENTS.md</code> &amp; <code>SKILLS.md</code></a></h2>
-<p>Für eine detaillierte Steuerung der Agenten in deinem Projekt nutzt das CLI zwei wichtige lokale Dateien im Projektverzeichnis:</p>
-<h3 id="agentsmd-projektregeln--kontext"><a class="header" href="#agentsmd-projektregeln--kontext"><code>AGENTS.md</code> (Projektregeln &amp; Kontext)</a></h3>
-<p>Diese Datei enthält projektspezifische Richtlinien, Verzeichniszuweisungen und Designausschlüsse. Der Agent liest diese Datei bei jedem Start automatisch ein. Dadurch weiß er beispielsweise, wo Code hingeschrieben werden darf, und hält sich an deine Programmierstandards.</p>
-<h3 id="skillsmd-custom-skills--playbooks"><a class="header" href="#skillsmd-custom-skills--playbooks"><code>SKILLS.md</code> (Custom Skills &amp; Playbooks)</a></h3>
-<p>Skills sind vordefinierte Arbeitsabläufe oder Playbooks, die dem Agenten beibringen, wie er komplexe, wiederkehrende Aufgaben erledigen soll (z. B. <em>"Kompiliere das Projekt und führe Tests aus"</em>).</p>
+<h2 id="6-leitplanken-setzen-agentsmd--skillsmd"><a class="header" href="#6-leitplanken-setzen-agentsmd--skillsmd">6. Leitplanken setzen: <code>AGENTS.md</code> &amp; <code>SKILLS.md</code></a></h2>
+<p>Damit der Agent nicht unkontrolliert Dateien in deinem Projekt ändert, kannst du ihm über zwei einfache Textdateien in deinem Projektordner feste Regeln und Fähigkeiten vorgeben.</p>
+<h3 id="61-agentsmd--die-hausordnung-für-dein-projekt"><a class="header" href="#61-agentsmd--die-hausordnung-für-dein-projekt">6.1 <code>AGENTS.md</code> – Die Hausordnung für dein Projekt</a></h3>
+<p>Diese Datei legst du direkt im Hauptverzeichnis deines Projekts ab. Der Agent liest sie bei jedem Start automatisch.</p>
 <ul>
-<li>Du kannst diese Skills direkt im Prompt mit dem Präfix <code>@</code> aufrufen (z. B. <code>@run-tests</code>).</li>
-<li>Lokale Skills werden im Projektordner unter <code>.agents/skills/</code> abgelegt.</li>
+<li><strong>Zweck</strong>: Du sagst dem Agenten, wie er Code formatieren soll, wo er schreiben darf und welche Verzeichnisbereiche für ihn tabu sind.</li>
+<li><strong>Vorteil</strong>: Er hält sich automatisch an deine Programmierstandards.</li>
 </ul>
-<h3 id="subagenten--workspace-verzeichnisse-delegation"><a class="header" href="#subagenten--workspace-verzeichnisse-delegation">Subagenten &amp; Workspace-Verzeichnisse (Delegation)</a></h3>
-<p>Wenn eine Aufgabe zu komplex für einen einzelnen Agenten ist, kann das CLI im Hintergrund <strong>Subagenten</strong> erstellen und aufrufen. Diese führen spezifische Teilaufgaben (z. B. Code-Recherche oder Fehlerbehebung) in eigenen Workspace-Verzeichnissen aus. Es gibt drei Modi, wie das Verzeichnis für einen Subagenten konfiguriert werden kann:</p>
-<ol>
-<li><strong><code>inherit</code> (Standard)</strong>: Der Subagent arbeitet direkt im selben Verzeichnis wie der Hauptagent.</li>
-<li><strong><code>branch</code></strong>: Es wird eine komplette, isolierte Kopie des Projektverzeichnisses erstellt. So kann der Subagent ungestört experimentieren, ohne deinen aktuellen Code zu überschreiben.</li>
-<li><strong><code>share</code></strong>: Erstellt ein geteiltes Verzeichnis (ähnlich wie ein <code>git worktree</code>). Dies erlaubt unabhängiges Arbeiten auf verschiedenen Branches, spart aber Speicherplatz, da die Dateien nicht dupliziert werden.</li>
-</ol>
+<h3 id="62-skillsmd--die-arbeitsanweisungen-playbooks"><a class="header" href="#62-skillsmd--die-arbeitsanweisungen-playbooks">6.2 <code>SKILLS.md</code> – Die Arbeitsanweisungen (Playbooks)</a></h3>
+<p>Hier definierst du feste Arbeitsabläufe (sogenannte Skills), die der Agent auf Knopfdruck ausführen kann.</p>
+<ul>
+<li><strong>Beispiel</strong>: Ein Skill namens <code>@run-tests</code>, der erst das Projekt kompiliert und dann die Tests startet.</li>
+<li><em>Tipp</em>: Eigene Skills werden im Projektordner unter <code>.agents/skills/</code> abgelegt und können im Prompt mit <code>@name</code> aufgerufen werden.</li>
+</ul>
 <hr />
-<h2 id="6-eigene-regeln-für-subagenten-definieren-agentsmd"><a class="header" href="#6-eigene-regeln-für-subagenten-definieren-agentsmd">6. Eigene Regeln für Subagenten definieren (<code>AGENTS.md</code>)</a></h2>
-<p>Du kannst das Verhalten, die Rechte und die Rollen von Subagenten durch spezielle Abschnitte in deiner lokalen <code>AGENTS.md</code> präzise steuern:</p>
+<h2 id="7-subagenten-arbeit-im-team-delegieren"><a class="header" href="#7-subagenten-arbeit-im-team-delegieren">7. Subagenten: Arbeit im Team delegieren</a></h2>
+<p>Manche Aufgaben sind zu groß oder riskant für einen einzelnen Agenten. Deshalb kann der Hauptagent im Hintergrund <strong>Subagenten</strong> (Unter-Agenten) starten und ihnen Teilaufgaben übertragen.</p>
+<h3 id="71-die-3-workspace-modi-wo-arbeitet-der-subagent"><a class="header" href="#71-die-3-workspace-modi-wo-arbeitet-der-subagent">7.1 Die 3 Workspace-Modi (Wo arbeitet der Subagent?)</a></h3>
+<p>Damit ein Subagent nicht versehentlich deinen Code überschreibt, während er etwas testet, gibt es drei Modi für seine Arbeitsumgebung:</p>
+<ol>
+<li><strong><code>inherit</code> (Vererben/Teilen)</strong>:
 <ul>
-<li><strong>Einschränkung der Dateirechte</strong>: Du kannst festlegen, welche Subagenten Schreibrechte erhalten. Beispielsweise darf ein Subagent für Code-Review (<code>readonly</code>) nur Dateien analysieren, während ein Refactoring-Subagent (<code>readwrite</code>) im Verzeichnis <code>/src</code> schreiben darf.</li>
-<li><strong>Festlegen von Tool-Verboten</strong>: Du kannst verbieten, dass Subagenten bestimmte Befehle ausführen (z. B. externe Netzwerkanfragen via <code>curl</code> oder System-Updates).</li>
-<li><strong>Vorgabe des Workspace-Modus</strong>: Du kannst erzwingen, dass Subagenten für kritische Code-Änderungen immer im <code>branch</code>-Modus gestartet werden, um die Stabilität des Haupt-Branches zu sichern.</li>
+<li><em>Wie es funktioniert</em>: Der Subagent arbeitet im selben Ordner wie du und der Hauptagent.</li>
+<li><em>Ideal für</em>: Schnelle Suchen oder kleine Dateiänderungen.</li>
 </ul>
-<h3 id="beispiel-für-subagenten-regeln-in-agentsmd"><a class="header" href="#beispiel-für-subagenten-regeln-in-agentsmd">Beispiel für Subagenten-Regeln in <code>AGENTS.md</code>:</a></h3>
-<pre><code class="language-markdown">## Subagenten-Regeln (Subagent Policies)
-- Alle Subagenten müssen standardmäßig im Modus 'branch' gestartet werden.
-- Subagenten des Typs 'Linter' haben ausschließlich Lesezugriff auf das Projekt.
-- Subagenten des Typs 'Refactoring' dürfen nur im Verzeichnis '/src/helpers' schreiben.
+</li>
+<li><strong><code>branch</code> (Kopie erstellen)</strong>:
+<ul>
+<li><em>Wie es funktioniert</em>: Es wird eine komplette, isolierte Kopie deines Projektordners erstellt.</li>
+<li><em>Ideal für</em>: Riskante Experimente. Der Subagent kann dort Code ändern und kompilieren, ohne dass deine Arbeitsdateien verändert werden.</li>
+</ul>
+</li>
+<li><strong><code>share</code> (Geteiltes Arbeiten)</strong>:
+<ul>
+<li><em>Wie es funktioniert</em>: Ähnlich wie ein <code>git worktree</code>. Der Subagent arbeitet auf einem anderen Zweig (Branch) deines Git-Projekts im selben Speicherplatz.</li>
+<li><em>Ideal für</em>: Paralleles Arbeiten an verschiedenen Features ohne Datenmüll oder lange Kopierzeiten.</li>
+</ul>
+</li>
+</ol>
+<h3 id="72-regeln-für-subagenten-in-agentsmd-definieren"><a class="header" href="#72-regeln-für-subagenten-in-agentsmd-definieren">7.2 Regeln für Subagenten in <code>AGENTS.md</code> definieren</a></h3>
+<p>Du kannst in deiner <code>AGENTS.md</code> festlegen, was Subagenten dürfen. Hier ist ein konkretes Beispiel:</p>
+<pre><code class="language-markdown">## Regeln für Subagenten (Subagent Policies)
+- Alle Subagenten müssen standardmäßig im sicheren Modus 'branch' gestartet werden.
+- Subagenten vom Typ 'Linter' dürfen Dateien nur LESEN, nicht schreiben.
+- Subagenten vom Typ 'Refactoring' dürfen nur im Ordner '/src/helpers' schreiben.
 - Die Ausführung von externen Netzwerkbefehlen (z. B. wget) ist für Subagenten deaktiviert.
 </code></pre>
 <hr />
-<h2 id="7-beispiel-code-subagenten-in-der-praxis"><a class="header" href="#7-beispiel-code-subagenten-in-der-praxis">7. Beispiel-Code: Subagenten in der Praxis</a></h2>
-<p>Es gibt zwei Wege, wie Subagenten gesteuert und deklariert werden:</p>
-<h3 id="a-deklaration-in-skillsmd-tui--playbooks"><a class="header" href="#a-deklaration-in-skillsmd-tui--playbooks">A) Deklaration in <code>SKILLS.md</code> (TUI / Playbooks)</a></h3>
-<p>In deiner <code>SKILLS.md</code> kannst du dem Hauptagenten ein Playbook vorgeben, wie er einen Subagenten für eine bestimmte Aufgabe starten und anweisen soll:</p>
+<h2 id="8-praktisches-beispiel-subagenten-steuern"><a class="header" href="#8-praktisches-beispiel-subagenten-steuern">8. Praktisches Beispiel: Subagenten steuern</a></h2>
+<h3 id="a-automatisches-playbook-in-skillsmd"><a class="header" href="#a-automatisches-playbook-in-skillsmd">A) Automatisches Playbook in <code>SKILLS.md</code></a></h3>
+<p>Du kannst in deiner <code>SKILLS.md</code> einen Arbeitsablauf beschreiben, den der Agent Schritt für Schritt ausführen soll:</p>
 <pre><code class="language-markdown"># Skill: @code-review
 
-Führe eine automatisierte Code-Review mit einem spezialisierten Subagenten durch:
-1. Starte einen Subagenten vom Typ "Review-Experte" im Modus `branch` (isolierte Kopie).
-2. Weise den Subagenten an, alle Dateien im Ordner `src/` auf Sicherheitslücken zu prüfen.
-3. Lass den Subagenten ein Feedback-Protokoll erstellen.
-4. Schließe den Subagenten und präsentiere das Ergebnis im Hauptchat.
+Führe eine automatisierte Code-Review durch:
+1. Starte einen Subagenten vom Typ "Review-Experte" im Modus `branch`.
+2. Lasse den Subagenten alle Dateien im Ordner `src/` auf Fehler prüfen.
+3. Lass ihn ein Protokoll erstellen.
+4. Schließe den Subagenten und zeige das Ergebnis im Hauptchat an.
 </code></pre>
-<h3 id="b-programmatisch-mit-dem-python-sdk-google-antigravity"><a class="header" href="#b-programmatisch-mit-dem-python-sdk-google-antigravity">B) Programmatisch mit dem Python SDK (<code>google-antigravity</code>)</a></h3>
-<p>Wenn du eigene Workflows programmierst, kannst du die Agenten und deren Orchestrierung direkt in Python steuern:</p>
+<h3 id="b-steuerung-per-python-code"><a class="header" href="#b-steuerung-per-python-code">B) Steuerung per Python-Code</a></h3>
+<p>Wenn du eigene Skripte schreiben willst, kannst du das offizielle Python-SDK (<code>google-antigravity</code>) nutzen:</p>
 <pre><code class="language-python">import asyncio
 from google.antigravity import Agent, LocalAgentConfig
 
 async def main():
-    # Konfiguration des Haupt-Agenten (Orchestrator)
+    # 1. Konfiguration für den Haupt-Agenten erstellen
     config = LocalAgentConfig(
         system_instructions=(
-            "Du bist ein Orchestrator-Agent. Delegiere komplexe Aufgaben "
-            "wie Refactoring oder Fehlersuche an spezialisierte Subagenten."
+            "Du bist der Chef-Agent. Wenn Aufgaben zu kompliziert werden, "
+            "delegiere sie an spezialisierte Subagenten."
         ),
-        tools=[]  # Eigene Tools und Hooks definieren
+        tools=[]  # Hier könnten eigene Werkzeuge stehen
     )
 
-    # Agent starten
+    # 2. Den Agenten starten
     async with Agent(config) as main_agent:
-        # Task absenden – der Agent entscheidet selbstständig,
-        # wann er einen Subagenten (START_SUBAGENT) hinzuzieht
+        # 3. Dem Agenten eine Aufgabe geben
+        # Der Agent entscheidet selbstständig, wann er Subagenten startet!
         response = await main_agent.chat(
-            "Analysiere die Rust-Dateien in src/ und führe ein Refactoring durch."
+            "Analysiere die Rust-Dateien in src/ und verbessere den Code."
         )
+        
+        # 4. Antwort ausgeben
         print("Antwort des Agenten:")
         print(await response.text())
 
@@ -294,13 +327,13 @@ if __name__ == "__main__":
     asyncio.run(main())
 </code></pre>
 <hr />
-<h2 id="-merkzettel-antigravity-cli"><a class="header" href="#-merkzettel-antigravity-cli">💡 Merkzettel: Antigravity CLI</a></h2>
+<h2 id="-zusammenfassung-für-die-hosentasche"><a class="header" href="#-zusammenfassung-für-die-hosentasche">💡 Zusammenfassung für die Hosentasche</a></h2>
 <ul>
-<li><strong>Starten</strong>: Im Projektordner mit <code>agy</code> aufrufen.</li>
-<li><strong>Projekt-Regeln</strong>: Über <a href="file:///home/thorsten/RustKurs/AGENTS.md">AGENTS.md</a> im Projektverzeichnis anpassen (einschließlich Rollen und Berechtigungen für Subagenten).</li>
-<li><strong>Custom Skills</strong>: Playbooks in <code>SKILLS.md</code> definieren und mit <code>@skill-name</code> im Prompt starten.</li>
-<li><strong>Subagenten-Verzeichnisse</strong>: Drei Modi für Arbeitsbereiche: <code>inherit</code> (gleicher Ordner), <code>branch</code> (isolierte Kopie) oder <code>share</code> (geteiltes Verzeichnis).</li>
-<li><strong>Sicherheit</strong>: Lokale Shellbefehle laufen in einer abgesicherten <strong>Terminal Sandbox</strong> (z. B. <code>nsjail</code> unter Linux).</li>
+<li><strong>Befehl</strong>: Mit <code>agy</code> startest du das CLI im Projektordner.</li>
+<li><strong>Regeln</strong>: In <a href="file:///home/thorsten/RustKurs/AGENTS.md">AGENTS.md</a> legst du fest, was die Agenten tun dürfen.</li>
+<li><strong>Fähigkeiten</strong>: In <code>SKILLS.md</code> hinterlegst du Arbeitsabläufe (z. B. <code>@review</code>).</li>
+<li><strong>Delegieren</strong>: Subagenten teilen sich die Arbeit und nutzen wahlweise den Modus <code>inherit</code>, <code>branch</code> oder <code>share</code>.</li>
+<li><strong>Sicherheit</strong>: Alles läuft sicher verpackt in einer Sandbox.</li>
 </ul>
 
                     </main>
@@ -311,6 +344,9 @@ if __name__ == "__main__":
                                 <i class="fa fa-angle-left"></i>
                             </a>
 
+                            <a rel="next prefetch" href="15.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
 
                         <div style="clear: both"></div>
                     </nav>
@@ -322,6 +358,9 @@ if __name__ == "__main__":
                         <i class="fa fa-angle-left"></i>
                     </a>
 
+                    <a rel="next prefetch" href="15.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
             </nav>
 
         </div>
