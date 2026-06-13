@@ -18,4 +18,6 @@
 - [Kapitel 14: Antigravity CLI](14.md)
 - [Kapitel 15: Kontrollstrukturen](15.md)
 - [Kapitel 16: Beste Google KI zum Programmieren nutzen](16.md)
+- [Kapitel 17: Speicherverwaltung und das Ownership-System](17.md)
+- [Kapitel 18: Was ist Ownership?](18.md)
 

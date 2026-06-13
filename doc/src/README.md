@@ -6,7 +6,7 @@ Dieses Lehrbuch führt dich Schritt für Schritt durch alle grundlegenden Konzep
 
 ## Inhaltsübersicht
 
-Dieses Lehrbuch ist in 14 praxisnahe Lektionen aufgeteilt:
+Dieses Lehrbuch ist in 18 praxisnahe Lektionen aufgeteilt:
 
 1. **Was ist Rust?**: Einführung in die Konzepte und Vorteile von Rust (Ownership, Speichersicherheit).
 2. **Installation & Systemkonfiguration**: Schritt-für-Schritt-Anleitung zur Einrichtung unter Linux/Windows sowie VS Code.
@@ -22,6 +22,10 @@ Dieses Lehrbuch ist in 14 praxisnahe Lektionen aufgeteilt:
 12. **Operatoren**: Arithmetische, logische und bitweise Berechnungen sowie Typsicherheit.
 13. **Übungen zu Operatoren**: Fünf praktische Rechenübungen inklusive Zinseszins.
 14. **Antigravity CLI**: Arbeiten mit dem terminalbasierten Entwicklungsagenten von Google.
+15. **Kontrollstrukturen**: Bedingungen, Musterabgleich (match) und Schleifen.
+16. **Beste Google KI zum Programmieren nutzen**: Vergleich und Nutzung von Antigravity, Gemini Code Assist und AI Studio.
+17. **Speicherverwaltung & Rust Ownership**: Stack vs. Heap, Scopes, der Copy-Trait, Moves, Clones und drops.
+18. **Was ist Ownership?**: Das Eigentums-System in Rust (Stack vs. Heap, Moves, Clones und Scopes).
 
 ---
 

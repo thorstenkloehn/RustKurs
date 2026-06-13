@@ -1,0 +1,604 @@
+<!DOCTYPE HTML>
+<html lang="de" class="light sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Kapitel 17: Speicherverwaltung und das Ownership-System - Rust-Videokurs für Anfänger</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" id="highlight-css" href="highlight.css">
+        <link rel="stylesheet" id="tomorrow-night-css" href="tomorrow-night.css">
+        <link rel="stylesheet" id="ayu-highlight-css" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+
+        <!-- Provide site root and default themes to javascript -->
+        <script>
+            const path_to_root = "";
+            const default_light_theme = "light";
+            const default_dark_theme = "navy";
+            window.path_to_searchindex_js = "searchindex.js";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="toc.js"></script>
+    </head>
+    <body>
+    <div id="mdbook-help-container">
+        <div id="mdbook-help-popup">
+            <h2 class="mdbook-help-title">Keyboard shortcuts</h2>
+            <div>
+                <p>Press <kbd>←</kbd> or <kbd>→</kbd> to navigate between chapters</p>
+                <p>Press <kbd>S</kbd> or <kbd>/</kbd> to search in the book</p>
+                <p>Press <kbd>?</kbd> to show this help</p>
+                <p>Press <kbd>Esc</kbd> to hide this help</p>
+            </div>
+        </div>
+    </div>
+    <div id="body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                let theme = localStorage.getItem('mdbook-theme');
+                let sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            const default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? default_dark_theme : default_light_theme;
+            let theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            let sidebar = null;
+            const sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+                sidebar_toggle.checked = false;
+            }
+            if (sidebar === 'visible') {
+                sidebar_toggle.checked = true;
+            } else {
+                html.classList.remove('sidebar-visible');
+            }
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="toc.html"></iframe>
+            </noscript>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="default_theme">Auto</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search (`/`)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="/ s" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Rust-Videokurs für Anfänger</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <div class="search-wrapper">
+                            <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                            <div class="spinner-wrapper">
+                                <i class="fa fa-spinner fa-spin"></i>
+                            </div>
+                        </div>
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="kapitel-17-speicherverwaltung-und-das-ownership-system-in-rust"><a class="header" href="#kapitel-17-speicherverwaltung-und-das-ownership-system-in-rust">Kapitel 17: Speicherverwaltung und das Ownership-System in Rust</a></h1>
+<p>Jedes laufende Programm benötigt Arbeitsspeicher (RAM), um temporäre Daten zu speichern. Da dieser Speicher begrenzt ist, muss er nach der Nutzung wieder freigegeben werden (Deallokation). Wie eine Programmiersprache diese Aufgabe bewältigt, unterscheidet sich fundamental. Rust nutzt hierfür ein einzigartiges Konzept namens <strong>Ownership</strong> (Eigentum).</p>
+<hr />
+<h2 id="1-die-drei-wege-der-speicherverwaltung"><a class="header" href="#1-die-drei-wege-der-speicherverwaltung">1. Die drei Wege der Speicherverwaltung</a></h2>
+<p>Um zu verstehen, warum Rusts Ansatz so revolutionär ist, vergleichen wir ihn mit anderen bekannten Ansätzen:</p>
+<div class="table-wrapper"><table><thead><tr><th style="text-align: left">Ansatz / Sprache</th><th style="text-align: left">Wie funktioniert es?</th><th style="text-align: left">Vorteil</th><th style="text-align: left">Nachteil</th></tr></thead><tbody>
+<tr><td style="text-align: left"><strong>Manuell</strong><br>(C, C++)</td><td style="text-align: left">Der Entwickler muss Speicher von Hand anfordern (<code>malloc</code>) und explizit wieder freigeben (<code>free</code>).</td><td style="text-align: left">Extrem schnell und effizient, da kein Overhead im Hintergrund läuft.</td><td style="text-align: left">Sehr fehleranfällig. Vergisst man die Freigabe, läuft der Speicher voll (Memory Leak). Gibt man ihn doppelt frei, stürzt das Programm ab (Double Free).</td></tr>
+<tr><td style="text-align: left"><strong>Garbage Collector</strong><br>(Java, Python, Go)</td><td style="text-align: left">Ein im Hintergrund laufendes Programm sucht automatisch nach ungenutzten Daten und räumt sie auf.</td><td style="text-align: left">Sehr sicher und komfortabel für Entwickler, da man sich nicht um den Speicher kümmern muss.</td><td style="text-align: left">Kostet Performance. Der Garbage Collector verbraucht CPU-Leistung und kann das Programm für kurze Momente unvorhersehbar stoppen ("GC Pauses").</td></tr>
+<tr><td style="text-align: left"><strong>Ownership</strong><br>(Rust)</td><td style="text-align: left">Der Compiler prüft den Code anhand strenger Regeln beim Übersetzen. Passt alles, fügt er die Speicherfreigabe exakt dort ein, wo die Daten nicht mehr benötigt werden.</td><td style="text-align: left">Das Beste aus beiden Welten: So schnell und ressourceneffizient wie C, aber so sicher wie Python.</td><td style="text-align: left">Steile Lernkurve. Der Compiler ist sehr streng und zwingt den Entwickler, Speicherwege genau zu planen.</td></tr>
+</tbody></table>
+</div>
+<h3 id="die-drei-goldenen-regeln-des-ownerships"><a class="header" href="#die-drei-goldenen-regeln-des-ownerships">Die drei goldenen Regeln des Ownerships</a></h3>
+<p>Das Ownership-System von Rust basiert auf drei einfachen, aber strikten Regeln:</p>
+<ol>
+<li><strong>Jeder Wert in Rust hat einen Besitzer</strong> (meistens eine Variable).</li>
+<li><strong>Es kann immer nur einen Besitzer gleichzeitig geben.</strong></li>
+<li><strong>Wenn der Besitzer den Gültigkeitsbereich (Scope) verlässt, wird der Wert automatisch gelöscht.</strong></li>
+</ol>
+<blockquote>
+<p>[!TIP]
+<strong>Die Haus-Analogie:</strong>
+Stell dir vor, du besitzt ein Haus. Du trägst die Verantwortung dafür. Du kannst das Haus an jemand anderen verkaufen (Besitzerwechsel/Move). Das Haus gehört jedoch niemals zwei Personen gleichzeitig auf dieselbe Weise. Wenn niemand mehr das Haus besitzt oder bewohnt, wird es sofort abgerissen (freigegeben), um Platz zu sparen.</p>
+</blockquote>
+<p>Auch zusammengesetzte Datentypen wie Arrays oder Tupel funktionieren hierarchisch: Eine Variable besitzt das Array, und das Array wiederum besitzt die darin liegenden Werte.</p>
+<pre><code class="language-mermaid">graph TD
+    A[Speicherverwaltung] --&gt; B[Manuell C/C++]
+    A --&gt; C[Garbage Collector Java/Go]
+    A --&gt; D[Ownership Rust]
+    B --&gt; B1[Schnell, aber unsicher]
+    C --&gt; C1[Sicher, aber Overhead]
+    D --&gt; D1[Schnell &amp; Sicher durch Compiler-Check]
+</code></pre>
+<hr />
+<h2 id="2-stack-vs-heap-wo-liegen-deine-daten"><a class="header" href="#2-stack-vs-heap-wo-liegen-deine-daten">2. Stack vs. Heap: Wo liegen deine Daten?</a></h2>
+<p>Wenn ein Rust-Programm läuft, nutzt es zwei verschiedene Bereiche im Arbeitsspeicher. Wo Daten abgelegt werden, entscheidet über die Geschwindigkeit und Flexibilität deines Programms.</p>
+<h3 id="1-der-stack-der-stapel"><a class="header" href="#1-der-stack-der-stapel">1. Der Stack (Der Stapel)</a></h3>
+<ul>
+<li><strong>Wie er funktioniert:</strong> Wie ein Stapel von Essenstabletts. Das neueste Element kommt oben drauf (<strong>Push</strong>), und das oberste Element wird als erstes heruntergenommen (<strong>Pop</strong>). Das Prinzip heißt <strong>LIFO</strong> (Last In, First Out).</li>
+<li><strong>Die Bedingung:</strong> Daten auf dem Stack müssen eine feste, dem Compiler im Voraus bekannte Größe haben (z. B. einfache Zahlen wie <code>i32</code>, Booleans oder fixierte Arrays).</li>
+<li><strong>Vorteil:</strong> Extrem schnell. Der Prozessor muss nicht nach freiem Speicher suchen, sondern greift einfach immer auf das oberste Element zu.</li>
+</ul>
+<h3 id="2-der-heap-der-haufen"><a class="header" href="#2-der-heap-der-haufen">2. Der Heap (Der Haufen)</a></h3>
+<ul>
+<li><strong>Wie er funktioniert:</strong> Wie ein riesiges Lagerhaus oder ein bewachter Parkplatz.</li>
+<li><strong>Die Bedingung:</strong> Für dynamische Daten, deren Größe sich zur Laufzeit verändern kann oder vorab unbekannt ist (z. B. Usereingaben, wachsende Listen).</li>
+<li><strong>Der Ablauf:</strong> Der Speicher-Manager (Allocator) sucht einen freien Platz auf dem Heap, legt die Daten dort ab und gibt eine Speicheradresse (Referenz/Zeiger) zurück.</li>
+<li><strong>Der Trick:</strong> Die eigentlichen Daten liegen auf dem Heap. Die kleine, feste Speicheradresse (der Zeiger) wird auf dem Stack abgelegt (wie ein Parkticket mit der Parkplatznummer).</li>
+<li><strong>Nachteil:</strong> Langsamer. Das Suchen nach freiem Speicherplatz beim Schreiben (Allokation) und das Verfolgen des Zeigers beim Lesen (Dereferenzierung) kosten Zeit.</li>
+</ul>
+<h3 id="stack-und-heap-im-direkten-vergleich"><a class="header" href="#stack-und-heap-im-direkten-vergleich">Stack und Heap im direkten Vergleich</a></h3>
+<div class="table-wrapper"><table><thead><tr><th style="text-align: left">Eigenschaft</th><th style="text-align: left">Stack (Stapel)</th><th style="text-align: left">Heap (Haufen)</th></tr></thead><tbody>
+<tr><td style="text-align: left"><strong>Datengröße</strong></td><td style="text-align: left">Fest / Bekannt beim Kompilieren</td><td style="text-align: left">Dynamisch / Flexibel zur Laufzeit</td></tr>
+<tr><td style="text-align: left"><strong>Geschwindigkeit</strong></td><td style="text-align: left">Extrem schnell</td><td style="text-align: left">Langsamer (Such- und Zugriffszeiten)</td></tr>
+<tr><td style="text-align: left"><strong>Metapher</strong></td><td style="text-align: left">Tellerstapel</td><td style="text-align: left">Parkplatz mit Parkticket</td></tr>
+<tr><td style="text-align: left"><strong>Zugriff</strong></td><td style="text-align: left">LIFO (Last In, First Out)</td><td style="text-align: left">Über Speicheradressen (Pointer)</td></tr>
+<tr><td style="text-align: left"><strong>Rust-Beispiele</strong></td><td style="text-align: left"><code>i32</code>, <code>f64</code>, <code>bool</code>, <code>char</code>, Tupel (mit Stack-Typen)</td><td style="text-align: left"><code>String</code>, <code>Vec</code> (Vektoren), Dateien</td></tr>
+</tbody></table>
+</div>
+<blockquote>
+<p>[!IMPORTANT]
+<strong>Warum ist das für Rust wichtig?</strong>
+Das Ownership-System existiert hauptsächlich, um Heap-Daten sicher zu verwalten. Da Heap-Daten dynamisch groß sind, müssen sie exakt in dem Moment gelöscht werden, in dem ihre Stack-Variable (das "Parkticket") ungültig wird. So wird verhindert, dass der Heap mit Datenmüll vollgestellt wird.</p>
+</blockquote>
+<hr />
+<h2 id="3-scopes-blöcke-und-das-automatische-löschen"><a class="header" href="#3-scopes-blöcke-und-das-automatische-löschen">3. Scopes, Blöcke und das automatische Löschen</a></h2>
+<p>In Rust steuern geschweifte Klammern <code>{ }</code> die Lebensdauer von Variablen. Dieser Gültigkeitsbereich wird als <strong>Scope</strong> bezeichnet.</p>
+<h3 id="verschachtelte-scopes"><a class="header" href="#verschachtelte-scopes">Verschachtelte Scopes</a></h3>
+<p>Sobald der Programmcode die schließende Klammer <code>}</code> erreicht, verlässt die Variable ihren Scope. In exakt diesem Moment wird ihr Wert automatisch aus dem Speicher gelöscht.</p>
+<pre><code class="language-rust">fn main() { // &lt;-- Scope A startet
+    let age = 33; // 'age' wird auf dem Stack angelegt
+
+    { // &lt;-- Scope B startet (innerer Block)
+        let is_handsome = true; // 'is_handsome' wird auf dem Stack angelegt
+        println!("Innerhalb: {}", is_handsome);
+    } // &lt;-- Scope B endet! 'is_handsome' wird SOFORT gelöscht!
+
+    // println!("{}", is_handsome); // ❌ FEHLER! Variable existiert nicht mehr.
+    println!("Außerhalb: {}", age); // ✅ Funktioniert, 'age' lebt noch.
+} // &lt;-- Scope A endet! 'age' wird gelöscht!</code></pre>
+<h3 id="die-lösch-reihenfolge-lifo"><a class="header" href="#die-lösch-reihenfolge-lifo">Die Lösch-Reihenfolge (LIFO)</a></h3>
+<p>Werden mehrere Variablen im selben Scope erstellt, räumt Rust sie am Ende in umgekehrter Reihenfolge ihrer Erstellung auf:</p>
+<ol>
+<li>Zuletzt erstellte Variable $\rightarrow$ wird als Erstes gelöscht.</li>
+<li>Zuerst erstellte Variable $\rightarrow$ wird als Letztes gelöscht.</li>
+</ol>
+<hr />
+<h2 id="4-der-copy-trait-automatisches-duplizieren-auf-dem-stack"><a class="header" href="#4-der-copy-trait-automatisches-duplizieren-auf-dem-stack">4. Der Copy-Trait: Automatisches Duplizieren auf dem Stack</a></h2>
+<p>In Rust ist ein <strong>Trait</strong> wie eine Schnittstelle oder ein Vertrag: Er garantiert, dass ein Datentyp ein bestimmtes Verhalten beherrscht. Der <strong>Copy-Trait</strong> garantiert, dass ein Typ blitzschnell und automatisch im Speicher kopiert werden kann.</p>
+<ul>
+<li><strong>Wer hat ihn?</strong> Alle einfachen Datentypen mit fester Größe, die komplett auf dem Stack liegen (z. B. Zahlen wie <code>i32</code>, <code>f64</code>, sowie <code>bool</code> und <code>char</code>).</li>
+<li><strong>Was passiert bei einer Zuweisung?</strong> Wenn du den Wert einer Stack-Variablen einer neuen Variablen zuweist, wird der Wert im Speicher dupliziert. Beide Variablen sind danach unabhängig voneinander gültig.</li>
+</ul>
+<pre><code class="language-rust">fn main() {
+    let time = 2026; // i32 liegt auf dem Stack
+    let year = time; // Rust erstellt automatisch eine vollständige Kopie!
+
+    // Beide Variablen sind unabhängig und voll funktionsfähig:
+    println!("Time: {}, Year: {}", time, year); 
+} // Am Ende werden beide Variablen unabhängig voneinander gelöscht.</code></pre>
+<p>Weil Stack-Daten winzig sind und eine feste Größe haben, kostet das Kopieren den Prozessor fast keinen Aufwand. Daher bleibt die ursprüngliche Variable <code>time</code> problemlos weiter nutzbar.</p>
+<hr />
+<h2 id="5-die-zwei-string-typen-in-rust"><a class="header" href="#5-die-zwei-string-typen-in-rust">5. Die zwei String-Typen in Rust</a></h2>
+<p>Rust unterscheidet strikt zwischen Text, der fest im Programmcode eingebrannt ist, und Text, der zur Laufzeit dynamisch wachsen oder schrumpfen kann.</p>
+<h3 id="1-das-string-literal-str"><a class="header" href="#1-das-string-literal-str">1. Das String-Literal: <code>&amp;str</code></a></h3>
+<ul>
+<li><strong>Was es ist:</strong> Text direkt in doppelten Anführungszeichen: <code>let pasta = "pasta";</code>.</li>
+<li><strong>Wo er liegt:</strong> Weder auf dem Stack noch auf dem Heap. Er ist fest in die fertige ausführbare Programmdatei (Binärdatei) eingebettet.</li>
+<li><strong>Eigenschaft:</strong> Unveränderlich und starr. Du kannst nachträglich keine Zeichen anhängen oder ändern.</li>
+</ul>
+<h3 id="2-der-dynamische-string-string"><a class="header" href="#2-der-dynamische-string-string">2. Der dynamische String: <code>String</code></a></h3>
+<ul>
+<li><strong>Was es ist:</strong> Ein flexibler, veränderbarer Text-Typ.</li>
+<li><strong>Wo er liegt:</strong> Die eigentlichen Textdaten liegen auf dem Heap, da ihre Größe flexibel ist.</li>
+<li><strong>Ownership:</strong> Die Variable auf dem Stack besitzt die Daten auf dem Heap. Verlässt die Variable ihren Scope, wird der Heap-Speicher automatisch freigegeben.</li>
+</ul>
+<h3 id="wie-erstellt-man-einen-string-auf-dem-heap"><a class="header" href="#wie-erstellt-man-einen-string-auf-dem-heap">Wie erstellt man einen <code>String</code> auf dem Heap?</a></h3>
+<p>Es gibt zwei gängige Wege, um einen solchen String über den Namensraum <code>String</code> zu erstellen:</p>
+<pre><code class="language-rust">fn main() {
+    // Weg 1: Erstellt einen komplett leeren String
+    let mut text = String::new(); 
+    
+    // Weg 2: Wandelt ein starreres Literal (&amp;str) in einen Heap-String um
+    let candy = String::from("KitKat"); 
+} // &lt;-- Hier werden 'candy' und 'text' ungültig und ihr Heap-Speicher freigegeben!</code></pre>
+<blockquote>
+<p>[!NOTE]
+Die zwei Doppelpunkte <code>::</code> bedeuten: "Suche im Namensraum von <code>String</code> nach der zugehörigen Funktion (<code>new</code> bzw. <code>from</code>)".</p>
+</blockquote>
+<h3 id="str-vs-string-im-Überblick"><a class="header" href="#str-vs-string-im-Überblick">&amp;str vs. String im Überblick</a></h3>
+<div class="table-wrapper"><table><thead><tr><th style="text-align: left">Merkmal</th><th style="text-align: left"><code>&amp;str</code> (String-Literal)</th><th style="text-align: left"><code>String</code> (Heap-String)</th></tr></thead><tbody>
+<tr><td style="text-align: left"><strong>Größe</strong></td><td style="text-align: left">Fest / Unveränderlich</td><td style="text-align: left">Dynamisch / Veränderbar</td></tr>
+<tr><td style="text-align: left"><strong>Speicherort</strong></td><td style="text-align: left">Fest in der Binärdatei</td><td style="text-align: left">Auf dem Heap</td></tr>
+<tr><td style="text-align: left"><strong>Erstellung</strong></td><td style="text-align: left"><code>"Text in Anführungszeichen"</code></td><td style="text-align: left"><code>String::new()</code> oder <code>String::from(...)</code></td></tr>
+<tr><td style="text-align: left"><strong>Anwendung</strong></td><td style="text-align: left">Feste Texte, Fehlermeldungen</td><td style="text-align: left">Benutzereingaben, Laden von Dateien</td></tr>
+</tbody></table>
+</div>
+<hr />
+<h2 id="6-strings-verändern-was-passiert-auf-dem-heap"><a class="header" href="#6-strings-verändern-was-passiert-auf-dem-heap">6. Strings verändern: Was passiert auf dem Heap?</a></h2>
+<p>Um einen <code>String</code> auf dem Heap zu manipulieren, muss die Variable mit <code>mut</code> als veränderbar deklariert werden. Mit der Methode <code>push_str</code> kannst du Text anhängen.</p>
+<h3 id="das-innenleben-eines-strings-auf-dem-stack"><a class="header" href="#das-innenleben-eines-strings-auf-dem-stack">Das Innenleben eines Strings auf dem Stack</a></h3>
+<p>Auf dem Stack liegen für jeden Heap-String immer exakt drei Werte:</p>
+<ol>
+<li><strong>Pointer (Verweis):</strong> Die Speicheradresse, an der der Text auf dem Heap beginnt.</li>
+<li><strong>Len (Länge):</strong> Wie viele Bytes der Text aktuell verbraucht.</li>
+<li><strong>Capacity (Kapazität):</strong> Wie viel Platz der Speicher-Manager auf dem Heap für diesen String insgesamt reserviert hat.</li>
+</ol>
+<pre><code>Stack (Variable: text)                Heap
+┌──────────┬──────────────┐          ┌───────────────────────┐
+│ Pointer  │ 0x01a3f5f8 ──┼─────────►│ H │ a │ l │ l │ o │   │
+├──────────┼──────────────┤          └───────────────────────┘
+│ Len      │ 5            │
+├──────────┼──────────────┤
+│ Capacity │ 5            │
+└──────────┴──────────────┘
+</code></pre>
+<h3 id="what-happens-during-push_str"><a class="header" href="#what-happens-during-push_str">What happens during <code>push_str</code>?</a></h3>
+<pre><code class="language-rust">fn main() {
+    let mut name = String::from("Boris"); // Len: 5, Capacity: 5
+    name.push_str(" Pasker");             // Text anhängen
+}</code></pre>
+<p>Dabei entscheidet Rust im Hintergrund zwischen zwei Szenarien:</p>
+<ul>
+<li><strong>Szenario A (Genug Platz):</strong> Die neuen Zeichen passen in die vorhandene <code>Capacity</code>. Rust schreibt den Text einfach hinten an. <code>Len</code> erhöht sich, <code>Pointer</code> und <code>Capacity</code> bleiben gleich. (Sehr schnell).</li>
+<li><strong>Szenario B (Zu wenig Platz - Reallokation):</strong> Der Text überschreitet die <code>Capacity</code>. Rust sucht einen neuen, größeren Platz auf dem Heap, kopiert den alten Text dorthin, hängt den neuen Text an und gibt den alten Heap-Platz frei. <code>Pointer</code>, <code>Len</code> und <code>Capacity</code> auf dem Stack werden entsprechend aktualisiert.</li>
+</ul>
+<hr />
+<h2 id="7-move-semantik-eigentumswechsel-bei-heap-daten"><a class="header" href="#7-move-semantik-eigentumswechsel-bei-heap-daten">7. Move-Semantik: Eigentumswechsel bei Heap-Daten</a></h2>
+<p>Wenn Daten einer neuen Variablen zugewiesen werden, unterscheidet Rust streng zwischen Stack und Heap:</p>
+<ol>
+<li><strong>Stack-Daten</strong> (z. B. <code>i32</code>): Werden kopiert (<code>Copy</code>-Trait). Die Originalvariable bleibt gültig.</li>
+<li><strong>Heap-Daten</strong> (z. B. <code>String</code>): Da das Kopieren von Heap-Daten teuer ist, kopiert Rust bei einer Zuweisung nur die drei Werte auf dem Stack (Pointer, Len, Capacity). Um zu verhindern, dass am Ende beide Variablen versuchen, denselben Heap-Speicher freizugeben (was zum fatalen <strong>Double-Free-Fehler</strong> führen würde), erklärt Rust die ursprüngliche Variable sofort für ungültig. Das Eigentum zieht um (<strong>Move</strong>).</li>
+</ol>
+<pre><code class="language-rust">fn main() {
+    let person = String::from("Boris");
+    let genius = person; // Eigentum zieht um (Move) von 'person' nach 'genius'
+
+    // println!("{}", person); // ❌ COMPILER-FEHLER: 'person' ist nicht mehr gültig!
+    println!("{}", genius);    // ✅ Erlaubt: 'genius' ist der neue Besitzer.
+}</code></pre>
+<h3 id="visualisierung-des-moves"><a class="header" href="#visualisierung-des-moves">Visualisierung des Moves</a></h3>
+<pre><code>VOR DEM MOVE:
+person (Stack) ─────────► [ "Boris" ] (Heap)
+
+NACH DEM MOVE:
+person (Ungültig!)
+genius (Stack) ─────────► [ "Boris" ] (Heap)
+</code></pre>
+<p>Durch diese Move-Semantik stellt Rust sicher, dass es immer genau <strong>einen</strong> aktiven Besitzer für jeden Speicher block auf dem Heap gibt.</p>
+<hr />
+<h2 id="8-die-drop-funktion-automatisches-und-manuelles-löschen"><a class="header" href="#8-die-drop-funktion-automatisches-und-manuelles-löschen">8. Die Drop-Funktion: Automatisches und manuelles Löschen</a></h2>
+<h3 id="1-das-automatische-drop-der-standard"><a class="header" href="#1-das-automatische-drop-der-standard">1. Das automatische <code>drop</code> (Der Standard)</a></h3>
+<p>Sobald eine Variable ihren Scope verlässt (<code>}</code>), ruft Rust im Hintergrund automatisch die Funktion <code>drop</code> auf. Diese gibt den Heap-Speicher der Variable frei.</p>
+<pre><code class="language-rust">{
+    let person = String::from("Boris"); // Heap-Speicher allokiert
+} // &lt;-- Scope-Ende! Rust ruft automatisch drop(person) auf. Der Heap-Speicher ist frei.</code></pre>
+<h3 id="2-das-manuelle-drop-vorzeitiges-löschen"><a class="header" href="#2-das-manuelle-drop-vorzeitiges-löschen">2. Das manuelle <code>drop</code> (Vorzeitiges Löschen)</a></h3>
+<p>Manchmal möchtest du Speicher oder Ressourcen (wie geöffnete Dateien) vor dem Ende eines Scopes freigeben. Hierzu kannst du die <code>drop</code>-Funktion manuell aufrufen:</p>
+<pre><code class="language-rust">fn main() {
+    let person = String::from("Boris");
+
+    drop(person); // Heap-Speicher wird SOFORT freigegeben.
+
+    // Jede weitere Nutzung der Variable führt zu einem Compiler-Fehler:
+    // println!("{}", person); // ❌ FEHLER!
+}</code></pre>
+<hr />
+<h2 id="9-der-clone-befehl-tiefe-kopien-erzwingen"><a class="header" href="#9-der-clone-befehl-tiefe-kopien-erzwingen">9. Der <code>.clone()</code>-Befehl: Tiefe Kopien erzwingen</a></h2>
+<p>Wenn du Heap-Daten explizit duplizieren möchtest, anstatt sie zu verschieben (moven), musst du das mit der Methode <code>.clone()</code> tun. Dabei wird der gesamte Inhalt auf dem Heap dupliziert.</p>
+<pre><code class="language-rust">fn main() {
+    let person = String::from("Boris");
+    let genius = person.clone(); // Kopiert die tatsächlichen Daten auf dem Heap!
+
+    println!("{}", person); // ✅ Erlaubt! 'person' behält ihr Eigentum.
+    println!("{}", genius); // ✅ Erlaubt! 'genius' besitzt die neue Kopie.
+}</code></pre>
+<h3 id="zuweisungen-und-ihre-kosten-im-vergleich"><a class="header" href="#zuweisungen-und-ihre-kosten-im-vergleich">Zuweisungen und ihre Kosten im Vergleich</a></h3>
+<div class="table-wrapper"><table><thead><tr><th style="text-align: left">Typ</th><th style="text-align: left">Zuweisung (<code>let b = a;</code>)</th><th style="text-align: left">Kosten</th></tr></thead><tbody>
+<tr><td style="text-align: left"><strong>Stack-Typen</strong> (z. B. <code>i32</code>)</td><td style="text-align: left">Automatische Kopie (<code>Copy</code>)</td><td style="text-align: left">Extrem schnell und günstig</td></tr>
+<tr><td style="text-align: left"><strong>Heap-Typen</strong> (z. B. <code>String</code>)</td><td style="text-align: left"><strong>Move</strong> (Besitz zieht um, Altwert ungültig)</td><td style="text-align: left">Keine CPU-Kosten (nur Stack-Kopie)</td></tr>
+<tr><td style="text-align: left"><strong>Heap mit <code>.clone()</code></strong></td><td style="text-align: left"><strong>Deep Copy</strong> (Tiefe Kopie auf dem Heap)</td><td style="text-align: left">Teuer (verdoppelt den Heap-Speicher)</td></tr>
+</tbody></table>
+</div>
+<blockquote>
+<p>[!TIP]
+<strong>Goldene Regel für Anfänger:</strong>
+Keine Angst vor <code>.clone()</code>! Es ist am Anfang völlig in Ordnung, <code>.clone()</code> zu nutzen, um den Compiler glücklich zu machen. Später lernst du mit Referenzen, wie du diese Kopien vermeidest. Hauptsache, dein Code läuft erst einmal!</p>
+</blockquote>
+<hr />
+<h2 id="10-exkurs-referenzen-der-dereferenzierungsoperator--und-das-ausleihen"><a class="header" href="#10-exkurs-referenzen-der-dereferenzierungsoperator--und-das-ausleihen">10. Exkurs: Referenzen, der Dereferenzierungsoperator <code>*</code> und das Ausleihen</a></h2>
+<p>Um Daten nicht ständig klonen oder verschieben zu müssen, nutzt man <strong>Referenzen</strong> (<code>&amp;</code>). Eine Referenz speichert lediglich die Speicheradresse eines Wertes (ein Verweis).</p>
+<h3 id="der-dereferenzierungsoperator-"><a class="header" href="#der-dereferenzierungsoperator-">Der Dereferenzierungsoperator <code>*</code></a></h3>
+<p>Der Dereferenzierungsoperator <code>*</code> ist das Gegenstück zur Referenz <code>&amp;</code>. Er folgt der Adresse und holt den eigentlichen Wert hervor.</p>
+<blockquote>
+<p>[!NOTE]
+<strong>Die Zettel-Analogie:</strong>
+Eine Referenz <code>&amp;</code> ist wie ein Zettel, auf dem eine Hausadresse steht. Der Dereferenzierungsoperator <code>*</code> ist der Postbote, der physisch zu diesem Haus geht, um nachzusehen, wer dort wohnt.</p>
+</blockquote>
+<pre><code class="language-rust">fn main() {
+    let wert = 2;
+    let mein_verweis = &amp;wert; // Referenz auf den Wert 2
+
+    println!("{}", *mein_verweis); // ✅ Gibt 2 aus (folgt dem Zeiger)
+}</code></pre>
+<h3 id="automatische-dereferenzierung"><a class="header" href="#automatische-dereferenzierung">Automatische Dereferenzierung</a></h3>
+<p>In der Praxis musst du das <code>*</code> selten schreiben. Rust dereferenziert Referenzen bei Operationen wie <code>println!</code> oder Methodenaufrufen oft automatisch im Hintergrund, da es weiß, dass du den eigentlichen Inhalt und nicht die Speicheradresse sehen möchtest.</p>
+<h3 id="referenzen-kopieren-sich-selbst"><a class="header" href="#referenzen-kopieren-sich-selbst">Referenzen kopieren sich selbst</a></h3>
+<p>Da eine Referenz (<code>&amp;</code>) nur eine kleine Adresse auf dem Stack ist, implementiert sie das <code>Copy</code>-Trait. Weist du eine Referenz einer neuen Variable zu, wird nur die Adresse kopiert, und das Eigentum der Daten bleibt unberührt.</p>
+<pre><code class="language-rust">fn main() {
+    let ice_cream = "Cookies and Cream"; // Typ &amp;str (eine Referenz)
+    let dessert = ice_cream;             // Die Adresse wird kopiert
+
+    // Beide Variablen zeigen auf denselben schreibgeschützten Text:
+    println!("{}", ice_cream); 
+    println!("{}", dessert);   
+}</code></pre>
+<hr />
+<h2 id="11-die-vier-text-varianten-im-vergleich-deep-dive"><a class="header" href="#11-die-vier-text-varianten-im-vergleich-deep-dive">11. Die vier Text-Varianten im Vergleich (Deep Dive)</a></h2>
+<p>Für Anfänger ist die Unterscheidung der String-Typen oft verwirrend. Hier ist eine Übersicht der vier Varianten:</p>
+<ol>
+<li><strong><code>String</code> (Heap-String):</strong> Dynamischer, veränderbarer Text auf dem Heap. Besitzt die Daten.</li>
+<li><strong><code>&amp;String</code> (Referenz auf Heap-String):</strong> Ein Zeiger auf einen <code>String</code>. Verhindert das Kopieren und den Move.</li>
+<li><strong><code>str</code> (Binär-Daten):</strong> Der rohe, unsortierte Text im Speicher. Da seine Größe vorab unbekannt ist, arbeitet man in Rust nie direkt damit.</li>
+<li><strong><code>&amp;str</code> (String-Slice):</strong> Ein Zeiger auf einen schreibgeschützten Textbereich (z. B. auf Literale in der Binärdatei oder Ausschnitte eines <code>String</code>).</li>
+</ol>
+<blockquote>
+<p>[!IMPORTANT]
+<strong>Entscheidungshilfe für die Praxis:</strong></p>
+<ul>
+<li>Sollen sich die Daten ändern? $\rightarrow$ Nutze <strong><code>String</code></strong>.</li>
+<li>Sind es feste Texte im Code? $\rightarrow$ Nutze <strong><code>&amp;str</code></strong>.</li>
+<li>Als Funktionsparameter? $\rightarrow$ Nutze fast immer <strong><code>&amp;str</code></strong>. Das macht deine Funktion maximal flexibel, da sie sowohl <code>&amp;str</code> als auch Referenzen auf <code>String</code> (<code>&amp;String</code>) akzeptieren kann.</li>
+</ul>
+</blockquote>
+<hr />
+<h2 id="12-ownership-bei-funktionen-parameterübergabe"><a class="header" href="#12-ownership-bei-funktionen-parameterübergabe">12. Ownership bei Funktionen (Parameterübergabe)</a></h2>
+<p>Für Funktionen gelten dieselben Regeln wie bei Zuweisungen. Die Übergabe an eine Funktion verhält sich wie ein Eigentumsübergang.</p>
+<h3 id="fall-1-stack-daten-i32-f64-bool-rightarrow-copy"><a class="header" href="#fall-1-stack-daten-i32-f64-bool-rightarrow-copy">Fall 1: Stack-Daten (i32, f64, bool) $\rightarrow$ Copy</a></h3>
+<p>Stack-Daten werden beim Funktionsaufruf automatisch kopiert. Die Originalvariable in <code>main</code> bleibt gültig.</p>
+<pre><code class="language-rust">fn print_integer(value: i32) {
+    println!("Wert in Funktion: {}", value);
+} // &lt;-- 'value' verlässt den Scope und wird gelöscht.
+
+fn main() {
+    let apples = 6;
+    print_integer(apples); // Übergibt eine Kopie von 'apples'
+    println!("Äpfel in main: {}", apples); // ✅ Erlaubt!
+}</code></pre>
+<h3 id="fall-2-heap-daten-string-rightarrow-move"><a class="header" href="#fall-2-heap-daten-string-rightarrow-move">Fall 2: Heap-Daten (String) $\rightarrow$ Move</a></h3>
+<p>Da Heap-Kopien teuer sind, wird das Eigentum an die Funktion übergeben. Die Originalvariable in <code>main</code> wird ungültig. Die Funktion "frisst" die Variable auf und löscht sie am Ende ihres Scopes.</p>
+<pre><code class="language-rust">fn print_string(value: String) {
+    println!("Wert in Funktion: {}", value);
+} // &lt;-- 'value' verlässt den Scope. Heap-Speicher wird per 'drop' gelöscht!
+
+fn main() {
+    let oranges = String::from("Orangen");
+    print_string(oranges); // Move! 'value' übernimmt das Eigentum.
+    
+    // println!("{}", oranges); // ❌ COMPILER-FEHLER: Daten wurden gelöscht!
+}</code></pre>
+<hr />
+<h2 id="13-veränderbare-parameter-in-funktionen-mut"><a class="header" href="#13-veränderbare-parameter-in-funktionen-mut">13. Veränderbare Parameter in Funktionen (<code>mut</code>)</a></h2>
+<p>Parameter in Funktionen sind standardmäßig unveränderlich. Soll eine Funktion den übergebenen Wert verändern können, muss der Parameter mit <code>mut</code> markiert werden.</p>
+<p>Dabei ist es egal, ob die Variable beim Aufrufer veränderlich war oder nicht. Durch den Move übernimmt die Funktion das alleinige Eigentum und bestimmt die Veränderbarkeit neu.</p>
+<pre><code class="language-rust">fn add_fries(mut meal: String) { // 'mut' erlaubt der Funktion, 'meal' zu verändern
+    meal.push_str(" und Pommes");
+    println!("Menü: {}", meal); // Ausgabe: "Burger und Pommes"
+}
+
+fn main() {
+    let burger = String::from("Burger"); // Unveränderlich in main!
+    add_fries(burger); // Move! 'meal' wird in der Funktion veränderbar.
+}</code></pre>
+<hr />
+<h2 id="14-eigentum-zurückgeben-return"><a class="header" href="#14-eigentum-zurückgeben-return">14. Eigentum zurückgeben (Return)</a></h2>
+<p>Möchte die aufrufende Funktion den Wert nach dem Funktionsaufruf weiterverwenden, kann die aufgerufene Funktion das Eigentum per <code>return</code> (bzw. als Rückgabewert) wieder zurückgeben.</p>
+<pre><code class="language-rust">fn add_fries(mut meal: String) -&gt; String {
+    meal.push_str(" und Pommes");
+    meal // Gibt das Eigentum am String zurück (kein Semikolon!)
+}
+
+fn main() {
+    let burger = String::from("Burger");
+    
+    // burger zieht in die Funktion um; das Ergebnis wird in 'mein_menue' gespeichert:
+    let mein_menue = add_fries(burger); 
+    
+    println!("{}", mein_menue); // ✅ Erlaubt: "Burger und Pommes"
+    // println!("{}", burger);    // ❌ Verboten: 'burger' ist ungültig.
+}</code></pre>
+<blockquote>
+<p>[!TIP]
+<strong>Variable überschreiben (Shadowing):</strong>
+Du kannst den zurückgegebenen Wert auch direkt wieder in der ursprünglichen Variable speichern, um den Namen wiederzuverwenden:
+<code>let burger = add_fries(burger);</code></p>
+</blockquote>
+<hr />
+<h2 id="15-das-problem-mit-dem-eigentums-ping-pong"><a class="header" href="#15-das-problem-mit-dem-eigentums-ping-pong">15. Das Problem mit dem "Eigentums-Ping-Pong"</a></h2>
+<p>Wenn du Daten ständig hin- und hergeben musst, um den Besitz nicht zu verlieren, führt das schnell zu unübersichtlichem Code.</p>
+<pre><code class="language-rust">fn add_flour(mut meal: String) -&gt; String {
+    meal.push_str("Mehl, ");
+    meal
+}
+
+fn add_sugar(mut meal: String) -&gt; String {
+    meal.push_str("Zucker");
+    meal
+}
+
+fn main() {
+    let mut current_meal = String::new();
+    
+    // Umständliches Ping-Pong, um das Eigentum zu behalten:
+    current_meal = add_flour(current_meal); 
+    current_meal = add_sugar(current_meal); 
+    
+    println!("Rezept: {}", current_meal); // Ausgabe: "Mehl, Zucker"
+}</code></pre>
+<h3 id="warum-dieses-vorgehen-nicht-gut-skalierbar-ist"><a class="header" href="#warum-dieses-vorgehen-nicht-gut-skalierbar-ist">Warum dieses Vorgehen nicht gut skalierbar ist:</a></h3>
+<ol>
+<li><strong>Blockade bei Lese-Funktionen:</strong> Selbst Funktionen, die Daten nur ausgeben (<code>println!</code>) und nicht verändern wollen, müssten die Daten zurückgeben, um sie nicht zu löschen.</li>
+<li><strong>Mühsame Rückgaben:</strong> Müsste eine Funktion mehrere Strings verarbeiten, müsste sie am Ende alle Werte umständlich als Tupel (z. B. <code>return (str1, str2, str3)</code>) zurückgeben.</li>
+</ol>
+<p>Im echten Leben gibst du dein Rezeptbuch auch nicht dauerhaft ab, wenn jemand ein Rezept lesen will – du leihst es ihm lediglich aus.</p>
+<p>Genau dieses Problem löst Rust im nächsten Kapitel mit dem Konzept des <strong>Borrowings</strong> (Ausleihen) über Referenzen (<code>&amp;</code>).</p>
+<hr />
+<h2 id="-zusammenfassung"><a class="header" href="#-zusammenfassung">💡 Zusammenfassung</a></h2>
+<ul>
+<li><strong>Ownership</strong> sorgt für speichersicheren Code zur Compile-Zeit, ohne Laufzeit-Overhead.</li>
+<li><strong>Stack</strong> speichert Daten mit fester Größe extrem schnell. <strong>Heap</strong> speichert dynamisch wachsende Daten über Zeiger (Pointer).</li>
+<li><strong>Move</strong> verschiebt das Eigentum an Heap-Daten bei Zuweisungen oder Funktionsaufrufen, um Double-Free-Fehler zu vermeiden.</li>
+<li><strong>Copy</strong> dupliziert Stack-Daten automatisch bei der Zuweisung.</li>
+<li><strong><code>.clone()</code></strong> erzwingt eine tiefe, manuelle Kopie von Heap-Daten.</li>
+<li><strong>Scopes <code>{ }</code></strong> begrenzen die Lebensdauer von Variablen. Beim Verlassen wird automatisch <code>drop</code> aufgerufen.</li>
+</ul>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="16.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="18.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="16.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="18.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr.min.js"></script>
+        <script src="mark.min.js"></script>
+        <script src="searcher.js"></script>
+
+        <script src="clipboard.min.js"></script>
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+
+    </div>
+    </body>
+</html>
