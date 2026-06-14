@@ -5,6 +5,7 @@ env/
 /bin/
 /lib/
 /share/
+/target/
 
 # Python cache & build files
 __pycache__/
