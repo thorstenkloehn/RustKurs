@@ -20,4 +20,9 @@
 - [Kapitel 16: Beste Google KI zum Programmieren nutzen](16.md)
 - [Kapitel 17: Speicherverwaltung und das Ownership-System](17.md)
 - [Kapitel 18: Was ist Ownership?](18.md)
+- [Kapitel 19: Referenzen & Borrowing (Ausleihen)](19.md)
+- [Kapitel 20: Referenzen & Borrowing (Ausleihen) – Grundlagen und Regeln](20.md)
+- [Kapitel 21: Zusammenfassung & Ausblick](21.md)
+
+
 

@@ -1,9 +1,18 @@
 [book]
 authors = ["Thorsten"]
 language = "de"
-multilingual = false
 src = "src"
 title = "Rust-Videokurs für Anfänger"
 
 [rust]
 edition = "2021"
+
+[preprocessor]
+
+[preprocessor.mermaid]
+command = "mdbook-mermaid"
+
+[output]
+
+[output.html]
+additional-js = ["mermaid.min.js", "mermaid-init.js"]

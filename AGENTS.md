@@ -1,5 +1,5 @@
 # Rust-Videokurs für Anfänger (Manim & Kokoro-onnx TTS)
-Status: Kapitel 1-18 vollständig abgeschlossen (Video & Audio fertig).
+Status: Kapitel 1-21 vollständig abgeschlossen (Video & Audio fertig).
 
 ## Kapitel & Dateien
 - [Ch1: Was ist Rust?](1.md) -> [1.mp4](1.mp4)
@@ -20,6 +20,10 @@ Status: Kapitel 1-18 vollständig abgeschlossen (Video & Audio fertig).
 - [Ch16: Beste Google KI zum Programmieren nutzen](16.md) -> [16.mp4](16.mp4) (Grammatik überprüft)
 - [Ch17: Speicherverwaltung & Rust Ownership](17.md) -> [17.mp4](17.mp4) (Video & Audio fertig)
 - [Ch18: Was ist Ownership?](18.md) -> [18.mp4](18.mp4) (Video & Audio fertig)
+- [Ch19: Referenzen & Borrowing](19.md) -> [19.mp4](19.mp4) (Video & Audio fertig)
+- [Ch20: Referenzen & Borrowing Grundlagen](20.md) -> [20.mp4](20.mp4) (Video & Audio fertig)
+- [Ch21: Zusammenfassung & Ausblick](21.md) -> [21.mp4](21.mp4) (Video & Audio fertig)
+
 
 ## Rust Lehrbuch erstellen mdBook auf verzeichnis doc/
 

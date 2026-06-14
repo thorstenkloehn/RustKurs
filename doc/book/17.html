@@ -7,26 +7,25 @@
 
 
         <!-- Custom HTML head -->
-        
+
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="theme-color" content="#ffffff">
 
-        <link rel="icon" href="favicon.svg">
-        <link rel="shortcut icon" href="favicon.png">
-        <link rel="stylesheet" href="css/variables.css">
-        <link rel="stylesheet" href="css/general.css">
-        <link rel="stylesheet" href="css/chrome.css">
-        <link rel="stylesheet" href="css/print.css" media="print">
+        <link rel="icon" href="favicon-de23e50b.svg">
+        <link rel="shortcut icon" href="favicon-8114d1fc.png">
+        <link rel="stylesheet" href="css/variables-8adf115d.css">
+        <link rel="stylesheet" href="css/general-0392ca55.css">
+        <link rel="stylesheet" href="css/chrome-fc474251.css">
+        <link rel="stylesheet" href="css/print-9e4910d8.css" media="print">
 
         <!-- Fonts -->
-        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
-        <link rel="stylesheet" href="fonts/fonts.css">
+        <link rel="stylesheet" href="fonts/fonts-9644e21d.css">
 
         <!-- Highlight.js Stylesheets -->
-        <link rel="stylesheet" id="highlight-css" href="highlight.css">
-        <link rel="stylesheet" id="tomorrow-night-css" href="tomorrow-night.css">
-        <link rel="stylesheet" id="ayu-highlight-css" href="ayu-highlight.css">
+        <link rel="stylesheet" id="mdbook-highlight-css" href="highlight-493f70e1.css">
+        <link rel="stylesheet" id="mdbook-tomorrow-night-css" href="tomorrow-night-4c0ae647.css">
+        <link rel="stylesheet" id="mdbook-ayu-highlight-css" href="ayu-highlight-3fdfc3ac.css">
 
         <!-- Custom theme stylesheets -->
 
@@ -36,10 +35,10 @@
             const path_to_root = "";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "searchindex.js";
+            window.path_to_searchindex_js = "searchindex-e939b700.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="toc.js"></script>
+        <script src="toc-2c90b8ac.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -53,7 +52,7 @@
             </div>
         </div>
     </div>
-    <div id="body-container">
+    <div id="mdbook-body-container">
         <!-- Work around some values being stored in localStorage wrapped in quotes -->
         <script>
             try {
@@ -82,12 +81,12 @@
             html.classList.add("js");
         </script>
 
-        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+        <input type="checkbox" id="mdbook-sidebar-toggle-anchor" class="hidden">
 
         <!-- Hide / unhide sidebar before it is displayed -->
         <script>
             let sidebar = null;
-            const sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            const sidebar_toggle = document.getElementById("mdbook-sidebar-toggle-anchor");
             if (document.body.clientWidth >= 1080) {
                 try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
                 sidebar = sidebar || 'visible';
@@ -102,39 +101,39 @@
             }
         </script>
 
-        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+        <nav id="mdbook-sidebar" class="sidebar" aria-label="Table of contents">
             <!-- populated by js -->
             <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
             <noscript>
                 <iframe class="sidebar-iframe-outer" src="toc.html"></iframe>
             </noscript>
-            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+            <div id="mdbook-sidebar-resize-handle" class="sidebar-resize-handle">
                 <div class="sidebar-resize-indicator"></div>
             </div>
         </nav>
 
-        <div id="page-wrapper" class="page-wrapper">
+        <div id="mdbook-page-wrapper" class="page-wrapper">
 
             <div class="page">
-                                <div id="menu-bar-hover-placeholder"></div>
-                <div id="menu-bar" class="menu-bar sticky">
+                <div id="mdbook-menu-bar-hover-placeholder"></div>
+                <div id="mdbook-menu-bar" class="menu-bar sticky">
                     <div class="left-buttons">
-                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
-                            <i class="fa fa-bars"></i>
+                        <label id="mdbook-sidebar-toggle" class="icon-button" for="mdbook-sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="mdbook-sidebar">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"/></svg></span>
                         </label>
-                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
-                            <i class="fa fa-paint-brush"></i>
+                        <button id="mdbook-theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="mdbook-theme-list">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M371.3 367.1c27.3-3.9 51.9-19.4 67.2-42.9L600.2 74.1c12.6-19.5 9.4-45.3-7.6-61.2S549.7-4.4 531.1 9.6L294.4 187.2c-24 18-38.2 46.1-38.4 76.1L371.3 367.1zm-19.6 25.4l-116-104.4C175.9 290.3 128 339.6 128 400c0 3.9 .2 7.8 .6 11.6c1.8 17.5-10.2 36.4-27.8 36.4H96c-17.7 0-32 14.3-32 32s14.3 32 32 32H240c61.9 0 112-50.1 112-112c0-2.5-.1-5-.2-7.5z"/></svg></span>
                         </button>
-                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
-                            <li role="none"><button role="menuitem" class="theme" id="default_theme">Auto</button></li>
-                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
-                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
-                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
-                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
-                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        <ul id="mdbook-theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-default_theme">Auto</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-ayu">Ayu</button></li>
                         </ul>
-                        <button id="search-toggle" class="icon-button" type="button" title="Search (`/`)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="/ s" aria-controls="searchbar">
-                            <i class="fa fa-search"></i>
+                        <button id="mdbook-search-toggle" class="icon-button" type="button" title="Search (`/`)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="/ s" aria-controls="mdbook-searchbar">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352c79.5 0 144-64.5 144-144s-64.5-144-144-144S64 128.5 64 208s64.5 144 144 144z"/></svg></span>
                         </button>
                     </div>
 
@@ -142,49 +141,55 @@
 
                     <div class="right-buttons">
                         <a href="print.html" title="Print this book" aria-label="Print this book">
-                            <i id="print-button" class="fa fa-print"></i>
+                            <span class=fa-svg id="print-button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M128 0C92.7 0 64 28.7 64 64v96h64V64H354.7L384 93.3V160h64V93.3c0-17-6.7-33.3-18.7-45.3L400 18.7C388 6.7 371.7 0 354.7 0H128zM384 352v32 64H128V384 368 352H384zm64 32h32c17.7 0 32-14.3 32-32V256c0-35.3-28.7-64-64-64H64c-35.3 0-64 28.7-64 64v96c0 17.7 14.3 32 32 32H64v64c0 35.3 28.7 64 64 64H384c35.3 0 64-28.7 64-64V384zm-16-88c-13.3 0-24-10.7-24-24s10.7-24 24-24s24 10.7 24 24s-10.7 24-24 24z"/></svg></span>
                         </a>
 
                     </div>
                 </div>
 
-                <div id="search-wrapper" class="hidden">
-                    <form id="searchbar-outer" class="searchbar-outer">
+                <div id="mdbook-search-wrapper" class="hidden">
+                    <form id="mdbook-searchbar-outer" class="searchbar-outer">
                         <div class="search-wrapper">
-                            <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                            <input type="search" id="mdbook-searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="mdbook-searchresults-outer" aria-describedby="searchresults-header">
                             <div class="spinner-wrapper">
-                                <i class="fa fa-spinner fa-spin"></i>
+                                <span class=fa-svg id="fa-spin"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M304 48c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zm0 416c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zM48 304c26.5 0 48-21.5 48-48s-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48zm464-48c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zM142.9 437c18.7-18.7 18.7-49.1 0-67.9s-49.1-18.7-67.9 0s-18.7 49.1 0 67.9s49.1 18.7 67.9 0zm0-294.2c18.7-18.7 18.7-49.1 0-67.9S93.7 56.2 75 75s-18.7 49.1 0 67.9s49.1 18.7 67.9 0zM369.1 437c18.7 18.7 49.1 18.7 67.9 0s18.7-49.1 0-67.9s-49.1-18.7-67.9 0s-18.7 49.1 0 67.9z"/></svg></span>
                             </div>
                         </div>
                     </form>
-                    <div id="searchresults-outer" class="searchresults-outer hidden">
-                        <div id="searchresults-header" class="searchresults-header"></div>
-                        <ul id="searchresults">
+                    <div id="mdbook-searchresults-outer" class="searchresults-outer hidden">
+                        <div id="mdbook-searchresults-header" class="searchresults-header"></div>
+                        <ul id="mdbook-searchresults">
                         </ul>
                     </div>
                 </div>
 
                 <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
                 <script>
-                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
-                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
-                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                    document.getElementById('mdbook-sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('mdbook-sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#mdbook-sidebar a')).forEach(function(link) {
                         link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
                     });
                 </script>
 
-                <div id="content" class="content">
+                <div id="mdbook-content" class="content">
                     <main>
                         <h1 id="kapitel-17-speicherverwaltung-und-das-ownership-system-in-rust"><a class="header" href="#kapitel-17-speicherverwaltung-und-das-ownership-system-in-rust">Kapitel 17: Speicherverwaltung und das Ownership-System in Rust</a></h1>
 <p>Jedes laufende Programm benötigt Arbeitsspeicher (RAM), um temporäre Daten zu speichern. Da dieser Speicher begrenzt ist, muss er nach der Nutzung wieder freigegeben werden (Deallokation). Wie eine Programmiersprache diese Aufgabe bewältigt, unterscheidet sich fundamental. Rust nutzt hierfür ein einzigartiges Konzept namens <strong>Ownership</strong> (Eigentum).</p>
-<hr />
+<hr>
 <h2 id="1-die-drei-wege-der-speicherverwaltung"><a class="header" href="#1-die-drei-wege-der-speicherverwaltung">1. Die drei Wege der Speicherverwaltung</a></h2>
 <p>Um zu verstehen, warum Rusts Ansatz so revolutionär ist, vergleichen wir ihn mit anderen bekannten Ansätzen:</p>
-<div class="table-wrapper"><table><thead><tr><th style="text-align: left">Ansatz / Sprache</th><th style="text-align: left">Wie funktioniert es?</th><th style="text-align: left">Vorteil</th><th style="text-align: left">Nachteil</th></tr></thead><tbody>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th style="text-align: left">Ansatz / Sprache</th><th style="text-align: left">Wie funktioniert es?</th><th style="text-align: left">Vorteil</th><th style="text-align: left">Nachteil</th></tr>
+</thead>
+<tbody>
 <tr><td style="text-align: left"><strong>Manuell</strong><br>(C, C++)</td><td style="text-align: left">Der Entwickler muss Speicher von Hand anfordern (<code>malloc</code>) und explizit wieder freigeben (<code>free</code>).</td><td style="text-align: left">Extrem schnell und effizient, da kein Overhead im Hintergrund läuft.</td><td style="text-align: left">Sehr fehleranfällig. Vergisst man die Freigabe, läuft der Speicher voll (Memory Leak). Gibt man ihn doppelt frei, stürzt das Programm ab (Double Free).</td></tr>
-<tr><td style="text-align: left"><strong>Garbage Collector</strong><br>(Java, Python, Go)</td><td style="text-align: left">Ein im Hintergrund laufendes Programm sucht automatisch nach ungenutzten Daten und räumt sie auf.</td><td style="text-align: left">Sehr sicher und komfortabel für Entwickler, da man sich nicht um den Speicher kümmern muss.</td><td style="text-align: left">Kostet Performance. Der Garbage Collector verbraucht CPU-Leistung und kann das Programm für kurze Momente unvorhersehbar stoppen ("GC Pauses").</td></tr>
+<tr><td style="text-align: left"><strong>Garbage Collector</strong><br>(Java, Python, Go)</td><td style="text-align: left">Ein im Hintergrund laufendes Programm sucht automatisch nach ungenutzten Daten und räumt sie auf.</td><td style="text-align: left">Sehr sicher und komfortabel für Entwickler, da man sich nicht um den Speicher kümmern muss.</td><td style="text-align: left">Kostet Performance. Der Garbage Collector verbraucht CPU-Leistung und kann das Programm für kurze Momente unvorhersehbar stoppen (“GC Pauses”).</td></tr>
 <tr><td style="text-align: left"><strong>Ownership</strong><br>(Rust)</td><td style="text-align: left">Der Compiler prüft den Code anhand strenger Regeln beim Übersetzen. Passt alles, fügt er die Speicherfreigabe exakt dort ein, wo die Daten nicht mehr benötigt werden.</td><td style="text-align: left">Das Beste aus beiden Welten: So schnell und ressourceneffizient wie C, aber so sicher wie Python.</td><td style="text-align: left">Steile Lernkurve. Der Compiler ist sehr streng und zwingt den Entwickler, Speicherwege genau zu planen.</td></tr>
-</tbody></table>
+</tbody>
+</table>
 </div>
 <h3 id="die-drei-goldenen-regeln-des-ownerships"><a class="header" href="#die-drei-goldenen-regeln-des-ownerships">Die drei goldenen Regeln des Ownerships</a></h3>
 <p>Das Ownership-System von Rust basiert auf drei einfachen, aber strikten Regeln:</p>
@@ -193,21 +198,22 @@
 <li><strong>Es kann immer nur einen Besitzer gleichzeitig geben.</strong></li>
 <li><strong>Wenn der Besitzer den Gültigkeitsbereich (Scope) verlässt, wird der Wert automatisch gelöscht.</strong></li>
 </ol>
-<blockquote>
-<p>[!TIP]
-<strong>Die Haus-Analogie:</strong>
+<blockquote class="blockquote-tag blockquote-tag-tip">
+<p class="blockquote-tag-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M8 1.5c-2.363 0-4 1.69-4 3.75 0 .984.424 1.625.984 2.304l.214.253c.223.264.47.556.673.848.284.411.537.896.621 1.49a.75.75 0 0 1-1.484.211c-.04-.282-.163-.547-.37-.847a8.456 8.456 0 0 0-.542-.68c-.084-.1-.173-.205-.268-.32C3.201 7.75 2.5 6.766 2.5 5.25 2.5 2.31 4.863 0 8 0s5.5 2.31 5.5 5.25c0 1.516-.701 2.5-1.328 3.259-.095.115-.184.22-.268.319-.207.245-.383.453-.541.681-.208.3-.33.565-.37.847a.751.751 0 0 1-1.485-.212c.084-.593.337-1.078.621-1.489.203-.292.45-.584.673-.848.075-.088.147-.173.213-.253.561-.679.985-1.32.985-2.304 0-2.06-1.637-3.75-4-3.75ZM5.75 12h4.5a.75.75 0 0 1 0 1.5h-4.5a.75.75 0 0 1 0-1.5ZM6 15.25a.75.75 0 0 1 .75-.75h2.5a.75.75 0 0 1 0 1.5h-2.5a.75.75 0 0 1-.75-.75Z"></path></svg>Tip</p>
+<p><strong>Die Haus-Analogie:</strong>
 Stell dir vor, du besitzt ein Haus. Du trägst die Verantwortung dafür. Du kannst das Haus an jemand anderen verkaufen (Besitzerwechsel/Move). Das Haus gehört jedoch niemals zwei Personen gleichzeitig auf dieselbe Weise. Wenn niemand mehr das Haus besitzt oder bewohnt, wird es sofort abgerissen (freigegeben), um Platz zu sparen.</p>
 </blockquote>
 <p>Auch zusammengesetzte Datentypen wie Arrays oder Tupel funktionieren hierarchisch: Eine Variable besitzt das Array, und das Array wiederum besitzt die darin liegenden Werte.</p>
-<pre><code class="language-mermaid">graph TD
+<pre class="mermaid">graph TD
     A[Speicherverwaltung] --&gt; B[Manuell C/C++]
     A --&gt; C[Garbage Collector Java/Go]
     A --&gt; D[Ownership Rust]
     B --&gt; B1[Schnell, aber unsicher]
     C --&gt; C1[Sicher, aber Overhead]
     D --&gt; D1[Schnell &amp; Sicher durch Compiler-Check]
-</code></pre>
-<hr />
+</pre>
+
+<hr>
 <h2 id="2-stack-vs-heap-wo-liegen-deine-daten"><a class="header" href="#2-stack-vs-heap-wo-liegen-deine-daten">2. Stack vs. Heap: Wo liegen deine Daten?</a></h2>
 <p>Wenn ein Rust-Programm läuft, nutzt es zwei verschiedene Bereiche im Arbeitsspeicher. Wo Daten abgelegt werden, entscheidet über die Geschwindigkeit und Flexibilität deines Programms.</p>
 <h3 id="1-der-stack-der-stapel"><a class="header" href="#1-der-stack-der-stapel">1. Der Stack (Der Stapel)</a></h3>
@@ -225,25 +231,31 @@ Stell dir vor, du besitzt ein Haus. Du trägst die Verantwortung dafür. Du kann
 <li><strong>Nachteil:</strong> Langsamer. Das Suchen nach freiem Speicherplatz beim Schreiben (Allokation) und das Verfolgen des Zeigers beim Lesen (Dereferenzierung) kosten Zeit.</li>
 </ul>
 <h3 id="stack-und-heap-im-direkten-vergleich"><a class="header" href="#stack-und-heap-im-direkten-vergleich">Stack und Heap im direkten Vergleich</a></h3>
-<div class="table-wrapper"><table><thead><tr><th style="text-align: left">Eigenschaft</th><th style="text-align: left">Stack (Stapel)</th><th style="text-align: left">Heap (Haufen)</th></tr></thead><tbody>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th style="text-align: left">Eigenschaft</th><th style="text-align: left">Stack (Stapel)</th><th style="text-align: left">Heap (Haufen)</th></tr>
+</thead>
+<tbody>
 <tr><td style="text-align: left"><strong>Datengröße</strong></td><td style="text-align: left">Fest / Bekannt beim Kompilieren</td><td style="text-align: left">Dynamisch / Flexibel zur Laufzeit</td></tr>
 <tr><td style="text-align: left"><strong>Geschwindigkeit</strong></td><td style="text-align: left">Extrem schnell</td><td style="text-align: left">Langsamer (Such- und Zugriffszeiten)</td></tr>
 <tr><td style="text-align: left"><strong>Metapher</strong></td><td style="text-align: left">Tellerstapel</td><td style="text-align: left">Parkplatz mit Parkticket</td></tr>
 <tr><td style="text-align: left"><strong>Zugriff</strong></td><td style="text-align: left">LIFO (Last In, First Out)</td><td style="text-align: left">Über Speicheradressen (Pointer)</td></tr>
 <tr><td style="text-align: left"><strong>Rust-Beispiele</strong></td><td style="text-align: left"><code>i32</code>, <code>f64</code>, <code>bool</code>, <code>char</code>, Tupel (mit Stack-Typen)</td><td style="text-align: left"><code>String</code>, <code>Vec</code> (Vektoren), Dateien</td></tr>
-</tbody></table>
+</tbody>
+</table>
 </div>
-<blockquote>
-<p>[!IMPORTANT]
-<strong>Warum ist das für Rust wichtig?</strong>
-Das Ownership-System existiert hauptsächlich, um Heap-Daten sicher zu verwalten. Da Heap-Daten dynamisch groß sind, müssen sie exakt in dem Moment gelöscht werden, in dem ihre Stack-Variable (das "Parkticket") ungültig wird. So wird verhindert, dass der Heap mit Datenmüll vollgestellt wird.</p>
+<blockquote class="blockquote-tag blockquote-tag-important">
+<p class="blockquote-tag-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 1.75C0 .784.784 0 1.75 0h12.5C15.216 0 16 .784 16 1.75v9.5A1.75 1.75 0 0 1 14.25 13H8.06l-2.573 2.573A1.458 1.458 0 0 1 3 14.543V13H1.75A1.75 1.75 0 0 1 0 11.25Zm1.75-.25a.25.25 0 0 0-.25.25v9.5c0 .138.112.25.25.25h2a.75.75 0 0 1 .75.75v2.19l2.72-2.72a.749.749 0 0 1 .53-.22h6.5a.25.25 0 0 0 .25-.25v-9.5a.25.25 0 0 0-.25-.25Zm7 2.25v2.5a.75.75 0 0 1-1.5 0v-2.5a.75.75 0 0 1 1.5 0ZM9 9a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"></path></svg>Important</p>
+<p><strong>Warum ist das für Rust wichtig?</strong>
+Das Ownership-System existiert hauptsächlich, um Heap-Daten sicher zu verwalten. Da Heap-Daten dynamisch groß sind, müssen sie exakt in dem Moment gelöscht werden, in dem ihre Stack-Variable (das “Parkticket”) ungültig wird. So wird verhindert, dass der Heap mit Datenmüll vollgestellt wird.</p>
 </blockquote>
-<hr />
+<hr>
 <h2 id="3-scopes-blöcke-und-das-automatische-löschen"><a class="header" href="#3-scopes-blöcke-und-das-automatische-löschen">3. Scopes, Blöcke und das automatische Löschen</a></h2>
 <p>In Rust steuern geschweifte Klammern <code>{ }</code> die Lebensdauer von Variablen. Dieser Gültigkeitsbereich wird als <strong>Scope</strong> bezeichnet.</p>
 <h3 id="verschachtelte-scopes"><a class="header" href="#verschachtelte-scopes">Verschachtelte Scopes</a></h3>
 <p>Sobald der Programmcode die schließende Klammer <code>}</code> erreicht, verlässt die Variable ihren Scope. In exakt diesem Moment wird ihr Wert automatisch aus dem Speicher gelöscht.</p>
-<pre><code class="language-rust">fn main() { // &lt;-- Scope A startet
+<pre class="playground"><code class="language-rust edition2021">fn main() { // &lt;-- Scope A startet
     let age = 33; // 'age' wird auf dem Stack angelegt
 
     { // &lt;-- Scope B startet (innerer Block)
@@ -260,14 +272,14 @@ Das Ownership-System existiert hauptsächlich, um Heap-Daten sicher zu verwalten
 <li>Zuletzt erstellte Variable $\rightarrow$ wird als Erstes gelöscht.</li>
 <li>Zuerst erstellte Variable $\rightarrow$ wird als Letztes gelöscht.</li>
 </ol>
-<hr />
+<hr>
 <h2 id="4-der-copy-trait-automatisches-duplizieren-auf-dem-stack"><a class="header" href="#4-der-copy-trait-automatisches-duplizieren-auf-dem-stack">4. Der Copy-Trait: Automatisches Duplizieren auf dem Stack</a></h2>
 <p>In Rust ist ein <strong>Trait</strong> wie eine Schnittstelle oder ein Vertrag: Er garantiert, dass ein Datentyp ein bestimmtes Verhalten beherrscht. Der <strong>Copy-Trait</strong> garantiert, dass ein Typ blitzschnell und automatisch im Speicher kopiert werden kann.</p>
 <ul>
 <li><strong>Wer hat ihn?</strong> Alle einfachen Datentypen mit fester Größe, die komplett auf dem Stack liegen (z. B. Zahlen wie <code>i32</code>, <code>f64</code>, sowie <code>bool</code> und <code>char</code>).</li>
 <li><strong>Was passiert bei einer Zuweisung?</strong> Wenn du den Wert einer Stack-Variablen einer neuen Variablen zuweist, wird der Wert im Speicher dupliziert. Beide Variablen sind danach unabhängig voneinander gültig.</li>
 </ul>
-<pre><code class="language-rust">fn main() {
+<pre class="playground"><code class="language-rust edition2021">fn main() {
     let time = 2026; // i32 liegt auf dem Stack
     let year = time; // Rust erstellt automatisch eine vollständige Kopie!
 
@@ -275,7 +287,7 @@ Das Ownership-System existiert hauptsächlich, um Heap-Daten sicher zu verwalten
     println!("Time: {}, Year: {}", time, year); 
 } // Am Ende werden beide Variablen unabhängig voneinander gelöscht.</code></pre>
 <p>Weil Stack-Daten winzig sind und eine feste Größe haben, kostet das Kopieren den Prozessor fast keinen Aufwand. Daher bleibt die ursprüngliche Variable <code>time</code> problemlos weiter nutzbar.</p>
-<hr />
+<hr>
 <h2 id="5-die-zwei-string-typen-in-rust"><a class="header" href="#5-die-zwei-string-typen-in-rust">5. Die zwei String-Typen in Rust</a></h2>
 <p>Rust unterscheidet strikt zwischen Text, der fest im Programmcode eingebrannt ist, und Text, der zur Laufzeit dynamisch wachsen oder schrumpfen kann.</p>
 <h3 id="1-das-string-literal-str"><a class="header" href="#1-das-string-literal-str">1. Das String-Literal: <code>&amp;str</code></a></h3>
@@ -292,26 +304,32 @@ Das Ownership-System existiert hauptsächlich, um Heap-Daten sicher zu verwalten
 </ul>
 <h3 id="wie-erstellt-man-einen-string-auf-dem-heap"><a class="header" href="#wie-erstellt-man-einen-string-auf-dem-heap">Wie erstellt man einen <code>String</code> auf dem Heap?</a></h3>
 <p>Es gibt zwei gängige Wege, um einen solchen String über den Namensraum <code>String</code> zu erstellen:</p>
-<pre><code class="language-rust">fn main() {
+<pre class="playground"><code class="language-rust edition2021">fn main() {
     // Weg 1: Erstellt einen komplett leeren String
     let mut text = String::new(); 
     
     // Weg 2: Wandelt ein starreres Literal (&amp;str) in einen Heap-String um
     let candy = String::from("KitKat"); 
 } // &lt;-- Hier werden 'candy' und 'text' ungültig und ihr Heap-Speicher freigegeben!</code></pre>
-<blockquote>
-<p>[!NOTE]
-Die zwei Doppelpunkte <code>::</code> bedeuten: "Suche im Namensraum von <code>String</code> nach der zugehörigen Funktion (<code>new</code> bzw. <code>from</code>)".</p>
+<blockquote class="blockquote-tag blockquote-tag-note">
+<p class="blockquote-tag-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>Note</p>
+<p>Die zwei Doppelpunkte <code>::</code> bedeuten: “Suche im Namensraum von <code>String</code> nach der zugehörigen Funktion (<code>new</code> bzw. <code>from</code>)”.</p>
 </blockquote>
-<h3 id="str-vs-string-im-Überblick"><a class="header" href="#str-vs-string-im-Überblick">&amp;str vs. String im Überblick</a></h3>
-<div class="table-wrapper"><table><thead><tr><th style="text-align: left">Merkmal</th><th style="text-align: left"><code>&amp;str</code> (String-Literal)</th><th style="text-align: left"><code>String</code> (Heap-String)</th></tr></thead><tbody>
+<h3 id="str-vs-string-im-überblick"><a class="header" href="#str-vs-string-im-überblick">&amp;str vs. String im Überblick</a></h3>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th style="text-align: left">Merkmal</th><th style="text-align: left"><code>&amp;str</code> (String-Literal)</th><th style="text-align: left"><code>String</code> (Heap-String)</th></tr>
+</thead>
+<tbody>
 <tr><td style="text-align: left"><strong>Größe</strong></td><td style="text-align: left">Fest / Unveränderlich</td><td style="text-align: left">Dynamisch / Veränderbar</td></tr>
 <tr><td style="text-align: left"><strong>Speicherort</strong></td><td style="text-align: left">Fest in der Binärdatei</td><td style="text-align: left">Auf dem Heap</td></tr>
 <tr><td style="text-align: left"><strong>Erstellung</strong></td><td style="text-align: left"><code>"Text in Anführungszeichen"</code></td><td style="text-align: left"><code>String::new()</code> oder <code>String::from(...)</code></td></tr>
 <tr><td style="text-align: left"><strong>Anwendung</strong></td><td style="text-align: left">Feste Texte, Fehlermeldungen</td><td style="text-align: left">Benutzereingaben, Laden von Dateien</td></tr>
-</tbody></table>
+</tbody>
+</table>
 </div>
-<hr />
+<hr>
 <h2 id="6-strings-verändern-was-passiert-auf-dem-heap"><a class="header" href="#6-strings-verändern-was-passiert-auf-dem-heap">6. Strings verändern: Was passiert auf dem Heap?</a></h2>
 <p>Um einen <code>String</code> auf dem Heap zu manipulieren, muss die Variable mit <code>mut</code> als veränderbar deklariert werden. Mit der Methode <code>push_str</code> kannst du Text anhängen.</p>
 <h3 id="das-innenleben-eines-strings-auf-dem-stack"><a class="header" href="#das-innenleben-eines-strings-auf-dem-stack">Das Innenleben eines Strings auf dem Stack</a></h3>
@@ -331,7 +349,7 @@ Die zwei Doppelpunkte <code>::</code> bedeuten: "Suche im Namensraum von <code>S
 └──────────┴──────────────┘
 </code></pre>
 <h3 id="what-happens-during-push_str"><a class="header" href="#what-happens-during-push_str">What happens during <code>push_str</code>?</a></h3>
-<pre><code class="language-rust">fn main() {
+<pre class="playground"><code class="language-rust edition2021">fn main() {
     let mut name = String::from("Boris"); // Len: 5, Capacity: 5
     name.push_str(" Pasker");             // Text anhängen
 }</code></pre>
@@ -340,14 +358,14 @@ Die zwei Doppelpunkte <code>::</code> bedeuten: "Suche im Namensraum von <code>S
 <li><strong>Szenario A (Genug Platz):</strong> Die neuen Zeichen passen in die vorhandene <code>Capacity</code>. Rust schreibt den Text einfach hinten an. <code>Len</code> erhöht sich, <code>Pointer</code> und <code>Capacity</code> bleiben gleich. (Sehr schnell).</li>
 <li><strong>Szenario B (Zu wenig Platz - Reallokation):</strong> Der Text überschreitet die <code>Capacity</code>. Rust sucht einen neuen, größeren Platz auf dem Heap, kopiert den alten Text dorthin, hängt den neuen Text an und gibt den alten Heap-Platz frei. <code>Pointer</code>, <code>Len</code> und <code>Capacity</code> auf dem Stack werden entsprechend aktualisiert.</li>
 </ul>
-<hr />
+<hr>
 <h2 id="7-move-semantik-eigentumswechsel-bei-heap-daten"><a class="header" href="#7-move-semantik-eigentumswechsel-bei-heap-daten">7. Move-Semantik: Eigentumswechsel bei Heap-Daten</a></h2>
 <p>Wenn Daten einer neuen Variablen zugewiesen werden, unterscheidet Rust streng zwischen Stack und Heap:</p>
 <ol>
 <li><strong>Stack-Daten</strong> (z. B. <code>i32</code>): Werden kopiert (<code>Copy</code>-Trait). Die Originalvariable bleibt gültig.</li>
 <li><strong>Heap-Daten</strong> (z. B. <code>String</code>): Da das Kopieren von Heap-Daten teuer ist, kopiert Rust bei einer Zuweisung nur die drei Werte auf dem Stack (Pointer, Len, Capacity). Um zu verhindern, dass am Ende beide Variablen versuchen, denselben Heap-Speicher freizugeben (was zum fatalen <strong>Double-Free-Fehler</strong> führen würde), erklärt Rust die ursprüngliche Variable sofort für ungültig. Das Eigentum zieht um (<strong>Move</strong>).</li>
 </ol>
-<pre><code class="language-rust">fn main() {
+<pre class="playground"><code class="language-rust edition2021">fn main() {
     let person = String::from("Boris");
     let genius = person; // Eigentum zieht um (Move) von 'person' nach 'genius'
 
@@ -363,16 +381,19 @@ person (Ungültig!)
 genius (Stack) ─────────► [ "Boris" ] (Heap)
 </code></pre>
 <p>Durch diese Move-Semantik stellt Rust sicher, dass es immer genau <strong>einen</strong> aktiven Besitzer für jeden Speicher block auf dem Heap gibt.</p>
-<hr />
+<hr>
 <h2 id="8-die-drop-funktion-automatisches-und-manuelles-löschen"><a class="header" href="#8-die-drop-funktion-automatisches-und-manuelles-löschen">8. Die Drop-Funktion: Automatisches und manuelles Löschen</a></h2>
 <h3 id="1-das-automatische-drop-der-standard"><a class="header" href="#1-das-automatische-drop-der-standard">1. Das automatische <code>drop</code> (Der Standard)</a></h3>
 <p>Sobald eine Variable ihren Scope verlässt (<code>}</code>), ruft Rust im Hintergrund automatisch die Funktion <code>drop</code> auf. Diese gibt den Heap-Speicher der Variable frei.</p>
-<pre><code class="language-rust">{
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>{
     let person = String::from("Boris"); // Heap-Speicher allokiert
-} // &lt;-- Scope-Ende! Rust ruft automatisch drop(person) auf. Der Heap-Speicher ist frei.</code></pre>
+} // &lt;-- Scope-Ende! Rust ruft automatisch drop(person) auf. Der Heap-Speicher ist frei.
+<span class="boring">}</span></code></pre>
 <h3 id="2-das-manuelle-drop-vorzeitiges-löschen"><a class="header" href="#2-das-manuelle-drop-vorzeitiges-löschen">2. Das manuelle <code>drop</code> (Vorzeitiges Löschen)</a></h3>
 <p>Manchmal möchtest du Speicher oder Ressourcen (wie geöffnete Dateien) vor dem Ende eines Scopes freigeben. Hierzu kannst du die <code>drop</code>-Funktion manuell aufrufen:</p>
-<pre><code class="language-rust">fn main() {
+<pre class="playground"><code class="language-rust edition2021">fn main() {
     let person = String::from("Boris");
 
     drop(person); // Heap-Speicher wird SOFORT freigegeben.
@@ -380,10 +401,10 @@ genius (Stack) ─────────► [ "Boris" ] (Heap)
     // Jede weitere Nutzung der Variable führt zu einem Compiler-Fehler:
     // println!("{}", person); // ❌ FEHLER!
 }</code></pre>
-<hr />
+<hr>
 <h2 id="9-der-clone-befehl-tiefe-kopien-erzwingen"><a class="header" href="#9-der-clone-befehl-tiefe-kopien-erzwingen">9. Der <code>.clone()</code>-Befehl: Tiefe Kopien erzwingen</a></h2>
 <p>Wenn du Heap-Daten explizit duplizieren möchtest, anstatt sie zu verschieben (moven), musst du das mit der Methode <code>.clone()</code> tun. Dabei wird der gesamte Inhalt auf dem Heap dupliziert.</p>
-<pre><code class="language-rust">fn main() {
+<pre class="playground"><code class="language-rust edition2021">fn main() {
     let person = String::from("Boris");
     let genius = person.clone(); // Kopiert die tatsächlichen Daten auf dem Heap!
 
@@ -391,28 +412,34 @@ genius (Stack) ─────────► [ "Boris" ] (Heap)
     println!("{}", genius); // ✅ Erlaubt! 'genius' besitzt die neue Kopie.
 }</code></pre>
 <h3 id="zuweisungen-und-ihre-kosten-im-vergleich"><a class="header" href="#zuweisungen-und-ihre-kosten-im-vergleich">Zuweisungen und ihre Kosten im Vergleich</a></h3>
-<div class="table-wrapper"><table><thead><tr><th style="text-align: left">Typ</th><th style="text-align: left">Zuweisung (<code>let b = a;</code>)</th><th style="text-align: left">Kosten</th></tr></thead><tbody>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th style="text-align: left">Typ</th><th style="text-align: left">Zuweisung (<code>let b = a;</code>)</th><th style="text-align: left">Kosten</th></tr>
+</thead>
+<tbody>
 <tr><td style="text-align: left"><strong>Stack-Typen</strong> (z. B. <code>i32</code>)</td><td style="text-align: left">Automatische Kopie (<code>Copy</code>)</td><td style="text-align: left">Extrem schnell und günstig</td></tr>
 <tr><td style="text-align: left"><strong>Heap-Typen</strong> (z. B. <code>String</code>)</td><td style="text-align: left"><strong>Move</strong> (Besitz zieht um, Altwert ungültig)</td><td style="text-align: left">Keine CPU-Kosten (nur Stack-Kopie)</td></tr>
 <tr><td style="text-align: left"><strong>Heap mit <code>.clone()</code></strong></td><td style="text-align: left"><strong>Deep Copy</strong> (Tiefe Kopie auf dem Heap)</td><td style="text-align: left">Teuer (verdoppelt den Heap-Speicher)</td></tr>
-</tbody></table>
+</tbody>
+</table>
 </div>
-<blockquote>
-<p>[!TIP]
-<strong>Goldene Regel für Anfänger:</strong>
+<blockquote class="blockquote-tag blockquote-tag-tip">
+<p class="blockquote-tag-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M8 1.5c-2.363 0-4 1.69-4 3.75 0 .984.424 1.625.984 2.304l.214.253c.223.264.47.556.673.848.284.411.537.896.621 1.49a.75.75 0 0 1-1.484.211c-.04-.282-.163-.547-.37-.847a8.456 8.456 0 0 0-.542-.68c-.084-.1-.173-.205-.268-.32C3.201 7.75 2.5 6.766 2.5 5.25 2.5 2.31 4.863 0 8 0s5.5 2.31 5.5 5.25c0 1.516-.701 2.5-1.328 3.259-.095.115-.184.22-.268.319-.207.245-.383.453-.541.681-.208.3-.33.565-.37.847a.751.751 0 0 1-1.485-.212c.084-.593.337-1.078.621-1.489.203-.292.45-.584.673-.848.075-.088.147-.173.213-.253.561-.679.985-1.32.985-2.304 0-2.06-1.637-3.75-4-3.75ZM5.75 12h4.5a.75.75 0 0 1 0 1.5h-4.5a.75.75 0 0 1 0-1.5ZM6 15.25a.75.75 0 0 1 .75-.75h2.5a.75.75 0 0 1 0 1.5h-2.5a.75.75 0 0 1-.75-.75Z"></path></svg>Tip</p>
+<p><strong>Goldene Regel für Anfänger:</strong>
 Keine Angst vor <code>.clone()</code>! Es ist am Anfang völlig in Ordnung, <code>.clone()</code> zu nutzen, um den Compiler glücklich zu machen. Später lernst du mit Referenzen, wie du diese Kopien vermeidest. Hauptsache, dein Code läuft erst einmal!</p>
 </blockquote>
-<hr />
+<hr>
 <h2 id="10-exkurs-referenzen-der-dereferenzierungsoperator--und-das-ausleihen"><a class="header" href="#10-exkurs-referenzen-der-dereferenzierungsoperator--und-das-ausleihen">10. Exkurs: Referenzen, der Dereferenzierungsoperator <code>*</code> und das Ausleihen</a></h2>
 <p>Um Daten nicht ständig klonen oder verschieben zu müssen, nutzt man <strong>Referenzen</strong> (<code>&amp;</code>). Eine Referenz speichert lediglich die Speicheradresse eines Wertes (ein Verweis).</p>
 <h3 id="der-dereferenzierungsoperator-"><a class="header" href="#der-dereferenzierungsoperator-">Der Dereferenzierungsoperator <code>*</code></a></h3>
 <p>Der Dereferenzierungsoperator <code>*</code> ist das Gegenstück zur Referenz <code>&amp;</code>. Er folgt der Adresse und holt den eigentlichen Wert hervor.</p>
-<blockquote>
-<p>[!NOTE]
-<strong>Die Zettel-Analogie:</strong>
+<blockquote class="blockquote-tag blockquote-tag-note">
+<p class="blockquote-tag-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>Note</p>
+<p><strong>Die Zettel-Analogie:</strong>
 Eine Referenz <code>&amp;</code> ist wie ein Zettel, auf dem eine Hausadresse steht. Der Dereferenzierungsoperator <code>*</code> ist der Postbote, der physisch zu diesem Haus geht, um nachzusehen, wer dort wohnt.</p>
 </blockquote>
-<pre><code class="language-rust">fn main() {
+<pre class="playground"><code class="language-rust edition2021">fn main() {
     let wert = 2;
     let mein_verweis = &amp;wert; // Referenz auf den Wert 2
 
@@ -422,7 +449,7 @@ Eine Referenz <code>&amp;</code> ist wie ein Zettel, auf dem eine Hausadresse st
 <p>In der Praxis musst du das <code>*</code> selten schreiben. Rust dereferenziert Referenzen bei Operationen wie <code>println!</code> oder Methodenaufrufen oft automatisch im Hintergrund, da es weiß, dass du den eigentlichen Inhalt und nicht die Speicheradresse sehen möchtest.</p>
 <h3 id="referenzen-kopieren-sich-selbst"><a class="header" href="#referenzen-kopieren-sich-selbst">Referenzen kopieren sich selbst</a></h3>
 <p>Da eine Referenz (<code>&amp;</code>) nur eine kleine Adresse auf dem Stack ist, implementiert sie das <code>Copy</code>-Trait. Weist du eine Referenz einer neuen Variable zu, wird nur die Adresse kopiert, und das Eigentum der Daten bleibt unberührt.</p>
-<pre><code class="language-rust">fn main() {
+<pre class="playground"><code class="language-rust edition2021">fn main() {
     let ice_cream = "Cookies and Cream"; // Typ &amp;str (eine Referenz)
     let dessert = ice_cream;             // Die Adresse wird kopiert
 
@@ -430,7 +457,7 @@ Eine Referenz <code>&amp;</code> ist wie ein Zettel, auf dem eine Hausadresse st
     println!("{}", ice_cream); 
     println!("{}", dessert);   
 }</code></pre>
-<hr />
+<hr>
 <h2 id="11-die-vier-text-varianten-im-vergleich-deep-dive"><a class="header" href="#11-die-vier-text-varianten-im-vergleich-deep-dive">11. Die vier Text-Varianten im Vergleich (Deep Dive)</a></h2>
 <p>Für Anfänger ist die Unterscheidung der String-Typen oft verwirrend. Hier ist eine Übersicht der vier Varianten:</p>
 <ol>
@@ -439,21 +466,21 @@ Eine Referenz <code>&amp;</code> ist wie ein Zettel, auf dem eine Hausadresse st
 <li><strong><code>str</code> (Binär-Daten):</strong> Der rohe, unsortierte Text im Speicher. Da seine Größe vorab unbekannt ist, arbeitet man in Rust nie direkt damit.</li>
 <li><strong><code>&amp;str</code> (String-Slice):</strong> Ein Zeiger auf einen schreibgeschützten Textbereich (z. B. auf Literale in der Binärdatei oder Ausschnitte eines <code>String</code>).</li>
 </ol>
-<blockquote>
-<p>[!IMPORTANT]
-<strong>Entscheidungshilfe für die Praxis:</strong></p>
+<blockquote class="blockquote-tag blockquote-tag-important">
+<p class="blockquote-tag-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 1.75C0 .784.784 0 1.75 0h12.5C15.216 0 16 .784 16 1.75v9.5A1.75 1.75 0 0 1 14.25 13H8.06l-2.573 2.573A1.458 1.458 0 0 1 3 14.543V13H1.75A1.75 1.75 0 0 1 0 11.25Zm1.75-.25a.25.25 0 0 0-.25.25v9.5c0 .138.112.25.25.25h2a.75.75 0 0 1 .75.75v2.19l2.72-2.72a.749.749 0 0 1 .53-.22h6.5a.25.25 0 0 0 .25-.25v-9.5a.25.25 0 0 0-.25-.25Zm7 2.25v2.5a.75.75 0 0 1-1.5 0v-2.5a.75.75 0 0 1 1.5 0ZM9 9a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"></path></svg>Important</p>
+<p><strong>Entscheidungshilfe für die Praxis:</strong></p>
 <ul>
 <li>Sollen sich die Daten ändern? $\rightarrow$ Nutze <strong><code>String</code></strong>.</li>
 <li>Sind es feste Texte im Code? $\rightarrow$ Nutze <strong><code>&amp;str</code></strong>.</li>
 <li>Als Funktionsparameter? $\rightarrow$ Nutze fast immer <strong><code>&amp;str</code></strong>. Das macht deine Funktion maximal flexibel, da sie sowohl <code>&amp;str</code> als auch Referenzen auf <code>String</code> (<code>&amp;String</code>) akzeptieren kann.</li>
 </ul>
 </blockquote>
-<hr />
+<hr>
 <h2 id="12-ownership-bei-funktionen-parameterübergabe"><a class="header" href="#12-ownership-bei-funktionen-parameterübergabe">12. Ownership bei Funktionen (Parameterübergabe)</a></h2>
 <p>Für Funktionen gelten dieselben Regeln wie bei Zuweisungen. Die Übergabe an eine Funktion verhält sich wie ein Eigentumsübergang.</p>
 <h3 id="fall-1-stack-daten-i32-f64-bool-rightarrow-copy"><a class="header" href="#fall-1-stack-daten-i32-f64-bool-rightarrow-copy">Fall 1: Stack-Daten (i32, f64, bool) $\rightarrow$ Copy</a></h3>
 <p>Stack-Daten werden beim Funktionsaufruf automatisch kopiert. Die Originalvariable in <code>main</code> bleibt gültig.</p>
-<pre><code class="language-rust">fn print_integer(value: i32) {
+<pre class="playground"><code class="language-rust edition2021">fn print_integer(value: i32) {
     println!("Wert in Funktion: {}", value);
 } // &lt;-- 'value' verlässt den Scope und wird gelöscht.
 
@@ -463,8 +490,8 @@ fn main() {
     println!("Äpfel in main: {}", apples); // ✅ Erlaubt!
 }</code></pre>
 <h3 id="fall-2-heap-daten-string-rightarrow-move"><a class="header" href="#fall-2-heap-daten-string-rightarrow-move">Fall 2: Heap-Daten (String) $\rightarrow$ Move</a></h3>
-<p>Da Heap-Kopien teuer sind, wird das Eigentum an die Funktion übergeben. Die Originalvariable in <code>main</code> wird ungültig. Die Funktion "frisst" die Variable auf und löscht sie am Ende ihres Scopes.</p>
-<pre><code class="language-rust">fn print_string(value: String) {
+<p>Da Heap-Kopien teuer sind, wird das Eigentum an die Funktion übergeben. Die Originalvariable in <code>main</code> wird ungültig. Die Funktion “frisst” die Variable auf und löscht sie am Ende ihres Scopes.</p>
+<pre class="playground"><code class="language-rust edition2021">fn print_string(value: String) {
     println!("Wert in Funktion: {}", value);
 } // &lt;-- 'value' verlässt den Scope. Heap-Speicher wird per 'drop' gelöscht!
 
@@ -474,11 +501,11 @@ fn main() {
     
     // println!("{}", oranges); // ❌ COMPILER-FEHLER: Daten wurden gelöscht!
 }</code></pre>
-<hr />
+<hr>
 <h2 id="13-veränderbare-parameter-in-funktionen-mut"><a class="header" href="#13-veränderbare-parameter-in-funktionen-mut">13. Veränderbare Parameter in Funktionen (<code>mut</code>)</a></h2>
 <p>Parameter in Funktionen sind standardmäßig unveränderlich. Soll eine Funktion den übergebenen Wert verändern können, muss der Parameter mit <code>mut</code> markiert werden.</p>
 <p>Dabei ist es egal, ob die Variable beim Aufrufer veränderlich war oder nicht. Durch den Move übernimmt die Funktion das alleinige Eigentum und bestimmt die Veränderbarkeit neu.</p>
-<pre><code class="language-rust">fn add_fries(mut meal: String) { // 'mut' erlaubt der Funktion, 'meal' zu verändern
+<pre class="playground"><code class="language-rust edition2021">fn add_fries(mut meal: String) { // 'mut' erlaubt der Funktion, 'meal' zu verändern
     meal.push_str(" und Pommes");
     println!("Menü: {}", meal); // Ausgabe: "Burger und Pommes"
 }
@@ -487,10 +514,10 @@ fn main() {
     let burger = String::from("Burger"); // Unveränderlich in main!
     add_fries(burger); // Move! 'meal' wird in der Funktion veränderbar.
 }</code></pre>
-<hr />
+<hr>
 <h2 id="14-eigentum-zurückgeben-return"><a class="header" href="#14-eigentum-zurückgeben-return">14. Eigentum zurückgeben (Return)</a></h2>
 <p>Möchte die aufrufende Funktion den Wert nach dem Funktionsaufruf weiterverwenden, kann die aufgerufene Funktion das Eigentum per <code>return</code> (bzw. als Rückgabewert) wieder zurückgeben.</p>
-<pre><code class="language-rust">fn add_fries(mut meal: String) -&gt; String {
+<pre class="playground"><code class="language-rust edition2021">fn add_fries(mut meal: String) -&gt; String {
     meal.push_str(" und Pommes");
     meal // Gibt das Eigentum am String zurück (kein Semikolon!)
 }
@@ -504,16 +531,16 @@ fn main() {
     println!("{}", mein_menue); // ✅ Erlaubt: "Burger und Pommes"
     // println!("{}", burger);    // ❌ Verboten: 'burger' ist ungültig.
 }</code></pre>
-<blockquote>
-<p>[!TIP]
-<strong>Variable überschreiben (Shadowing):</strong>
+<blockquote class="blockquote-tag blockquote-tag-tip">
+<p class="blockquote-tag-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M8 1.5c-2.363 0-4 1.69-4 3.75 0 .984.424 1.625.984 2.304l.214.253c.223.264.47.556.673.848.284.411.537.896.621 1.49a.75.75 0 0 1-1.484.211c-.04-.282-.163-.547-.37-.847a8.456 8.456 0 0 0-.542-.68c-.084-.1-.173-.205-.268-.32C3.201 7.75 2.5 6.766 2.5 5.25 2.5 2.31 4.863 0 8 0s5.5 2.31 5.5 5.25c0 1.516-.701 2.5-1.328 3.259-.095.115-.184.22-.268.319-.207.245-.383.453-.541.681-.208.3-.33.565-.37.847a.751.751 0 0 1-1.485-.212c.084-.593.337-1.078.621-1.489.203-.292.45-.584.673-.848.075-.088.147-.173.213-.253.561-.679.985-1.32.985-2.304 0-2.06-1.637-3.75-4-3.75ZM5.75 12h4.5a.75.75 0 0 1 0 1.5h-4.5a.75.75 0 0 1 0-1.5ZM6 15.25a.75.75 0 0 1 .75-.75h2.5a.75.75 0 0 1 0 1.5h-2.5a.75.75 0 0 1-.75-.75Z"></path></svg>Tip</p>
+<p><strong>Variable überschreiben (Shadowing):</strong>
 Du kannst den zurückgegebenen Wert auch direkt wieder in der ursprünglichen Variable speichern, um den Namen wiederzuverwenden:
 <code>let burger = add_fries(burger);</code></p>
 </blockquote>
-<hr />
-<h2 id="15-das-problem-mit-dem-eigentums-ping-pong"><a class="header" href="#15-das-problem-mit-dem-eigentums-ping-pong">15. Das Problem mit dem "Eigentums-Ping-Pong"</a></h2>
+<hr>
+<h2 id="15-das-problem-mit-dem-eigentums-ping-pong"><a class="header" href="#15-das-problem-mit-dem-eigentums-ping-pong">15. Das Problem mit dem “Eigentums-Ping-Pong”</a></h2>
 <p>Wenn du Daten ständig hin- und hergeben musst, um den Besitz nicht zu verlieren, führt das schnell zu unübersichtlichem Code.</p>
-<pre><code class="language-rust">fn add_flour(mut meal: String) -&gt; String {
+<pre class="playground"><code class="language-rust edition2021">fn add_flour(mut meal: String) -&gt; String {
     meal.push_str("Mehl, ");
     meal
 }
@@ -539,7 +566,7 @@ fn main() {
 </ol>
 <p>Im echten Leben gibst du dein Rezeptbuch auch nicht dauerhaft ab, wenn jemand ein Rezept lesen will – du leihst es ihm lediglich aus.</p>
 <p>Genau dieses Problem löst Rust im nächsten Kapitel mit dem Konzept des <strong>Borrowings</strong> (Ausleihen) über Referenzen (<code>&amp;</code>).</p>
-<hr />
+<hr>
 <h2 id="-zusammenfassung"><a class="header" href="#-zusammenfassung">💡 Zusammenfassung</a></h2>
 <ul>
 <li><strong>Ownership</strong> sorgt für speichersicheren Code zur Compile-Zeit, ohne Laufzeit-Overhead.</li>
@@ -555,11 +582,11 @@ fn main() {
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
                             <a rel="prev" href="16.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
-                                <i class="fa fa-angle-left"></i>
+                                <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
                             </a>
 
                             <a rel="next prefetch" href="18.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
-                                <i class="fa fa-angle-right"></i>
+                                <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
                             </a>
 
                         <div style="clear: both"></div>
@@ -569,16 +596,21 @@ fn main() {
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
                     <a rel="prev" href="16.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
-                        <i class="fa fa-angle-left"></i>
+                        <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
                     </a>
 
                     <a rel="next prefetch" href="18.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
-                        <i class="fa fa-angle-right"></i>
+                        <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
                     </a>
             </nav>
 
         </div>
 
+        <template id=fa-eye><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M288 32c-80.8 0-145.5 36.8-192.6 80.6C48.6 156 17.3 208 2.5 243.7c-3.3 7.9-3.3 16.7 0 24.6C17.3 304 48.6 356 95.4 399.4C142.5 443.2 207.2 480 288 480s145.5-36.8 192.6-80.6c46.8-43.5 78.1-95.4 93-131.1c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C433.5 68.8 368.8 32 288 32zM432 256c0 79.5-64.5 144-144 144s-144-64.5-144-144s64.5-144 144-144s144 64.5 144 144zM288 192c0 35.3-28.7 64-64 64c-11.5 0-22.3-3-31.6-8.4c-.2 2.8-.4 5.5-.4 8.4c0 53 43 96 96 96s96-43 96-96s-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6z"/></svg></span></template>
+        <template id=fa-eye-slash><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M38.8 5.1C28.4-3.1 13.3-1.2 5.1 9.2S-1.2 34.7 9.2 42.9l592 464c10.4 8.2 25.5 6.3 33.7-4.1s6.3-25.5-4.1-33.7L525.6 386.7c39.6-40.6 66.4-86.1 79.9-118.4c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C465.5 68.8 400.8 32 320 32c-68.2 0-125 26.3-169.3 60.8L38.8 5.1zM223.1 149.5C248.6 126.2 282.7 112 320 112c79.5 0 144 64.5 144 144c0 24.9-6.3 48.3-17.4 68.7L408 294.5c5.2-11.8 8-24.8 8-38.5c0-53-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6c0 10.2-2.4 19.8-6.6 28.3l-90.3-70.8zm223.1 298L373 389.9c-16.4 6.5-34.3 10.1-53 10.1c-79.5 0-144-64.5-144-144c0-6.9 .5-13.6 1.4-20.2L83.1 161.5C60.3 191.2 44 220.8 34.5 243.7c-3.3 7.9-3.3 16.7 0 24.6c14.9 35.7 46.2 87.7 93 131.1C174.5 443.2 239.2 480 320 480c47.8 0 89.9-12.9 126.2-32.5z"/></svg></span></template>
+        <template id=fa-copy><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M502.6 70.63l-61.25-61.25C435.4 3.371 427.2 0 418.7 0H255.1c-35.35 0-64 28.66-64 64l.0195 256C192 355.4 220.7 384 256 384h192c35.2 0 64-28.8 64-64V93.25C512 84.77 508.6 76.63 502.6 70.63zM464 320c0 8.836-7.164 16-16 16H255.1c-8.838 0-16-7.164-16-16L239.1 64.13c0-8.836 7.164-16 16-16h128L384 96c0 17.67 14.33 32 32 32h47.1V320zM272 448c0 8.836-7.164 16-16 16H63.1c-8.838 0-16-7.164-16-16L47.98 192.1c0-8.836 7.164-16 16-16H160V128H63.99c-35.35 0-64 28.65-64 64l.0098 256C.002 483.3 28.66 512 64 512h192c35.2 0 64-28.8 64-64v-32h-47.1L272 448z"/></svg></span></template>
+        <template id=fa-play><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80V432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"/></svg></span></template>
+        <template id=fa-clock-rotate-left><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M75 75L41 41C25.9 25.9 0 36.6 0 57.9V168c0 13.3 10.7 24 24 24H134.1c21.4 0 32.1-25.9 17-41l-30.8-30.8C155 85.5 203 64 256 64c106 0 192 86 192 192s-86 192-192 192c-40.8 0-78.6-12.7-109.7-34.4c-14.5-10.1-34.4-6.6-44.6 7.9s-6.6 34.4 7.9 44.6C151.2 495 201.7 512 256 512c141.4 0 256-114.6 256-256S397.4 0 256 0C185.3 0 121.3 28.7 75 75zm181 53c-13.3 0-24 10.7-24 24V256c0 6.4 2.5 12.5 7 17l72 72c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-65-65V152c0-13.3-10.7-24-24-24z"/></svg></span></template>
 
 
 
@@ -587,15 +619,17 @@ fn main() {
         </script>
 
 
-        <script src="elasticlunr.min.js"></script>
-        <script src="mark.min.js"></script>
-        <script src="searcher.js"></script>
+        <script src="elasticlunr-ef4e11c1.min.js"></script>
+        <script src="mark-09e88c2c.min.js"></script>
+        <script src="searcher-09f2665d.js"></script>
 
-        <script src="clipboard.min.js"></script>
-        <script src="highlight.js"></script>
-        <script src="book.js"></script>
+        <script src="clipboard-1626706a.min.js"></script>
+        <script src="highlight-abc7f01d.js"></script>
+        <script src="book-c22b7243.js"></script>
 
         <!-- Custom JS scripts -->
+        <script src="mermaid-eefea253.min.js"></script>
+        <script src="mermaid-init-ccf746f1.js"></script>
 
 
 
