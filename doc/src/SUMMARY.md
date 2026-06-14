@@ -23,6 +23,8 @@
 - [Kapitel 19: Referenzen & Borrowing (Ausleihen)](19.md)
 - [Kapitel 20: Referenzen & Borrowing (Ausleihen) – Grundlagen und Regeln](20.md)
 - [Kapitel 21: Zusammenfassung & Ausblick](21.md)
+- [Kapitel 22: Der VS Code Planungs-Workflow](22.md)
+- [Kapitel 23: Lernstrategie, Lernportale & KI-Prompts](23.md)
 
 
 
