@@ -8,7 +8,7 @@
 
 ## Subagent
 * Markdown-Datei bearbeiten: Nutze bitte den Subagent -> [markdown.md](markdown.md)
-
+* Video erstellen : Nutze bitte den Subagent -> [video.md](video.md)
 ---
 
 ## Kapitel & Dateien
@@ -36,7 +36,7 @@
 - [Ch22: Der VS Code Planungs-Workflow](22.md) -> [22.mp4](22.mp4) (Video & Audio fertig)
 - [Ch23: Lernstrategie, Lernportale & KI-Prompts](23.md) -> [23.mp4](23.mp4) (Video & Audio fertig)
 - [Ch24: Projekt-Professionalisierung & das Antigravity CLI](24.md) -> [24.mp4](24.mp4) (Video & Audio fertig)
-- [Ch25: Der Slice-Typ (Slices)](25.md) -> [25.mp4](25.mp4) (Text fertig, Video & Audio noch offen)
+- [Ch25: Der Slice-Typ (Slices)](25.md) -> [25.mp4](25.mp4) (Video & Audio fertig)
 
 ---
 
