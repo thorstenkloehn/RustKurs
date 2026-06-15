@@ -37,6 +37,7 @@
 - [Ch23: Lernstrategie, Lernportale & KI-Prompts](23.md) -> [23.mp4](23.mp4) (Video & Audio fertig)
 - [Ch24: Projekt-Professionalisierung & das Antigravity CLI](24.md) -> [24.mp4](24.mp4) (Video & Audio fertig)
 - [Ch25: Der Slice-Typ (Slices)](25.md) -> [25.mp4](25.mp4) (Video & Audio fertig)
+- [Ch26: KI-Agenten & autonome Software-Ingenieure](26.md) -> [26.mp4](26.mp4) (Video & Audio fertig)
 
 ---
 

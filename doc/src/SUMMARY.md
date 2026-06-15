@@ -27,6 +27,4 @@
 - [Kapitel 23: Lernstrategie, Lernportale & KI-Prompts](23.md)
 - [Kapitel 24: Projekt-Professionalisierung & das Antigravity CLI](24.md)
 - [Kapitel 25: Der Slice-Typ (Slices)](25.md)
-
-
-
+- [Kapitel 26: KI-Agenten & autonome Software-Ingenieure](26.md)
