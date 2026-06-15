@@ -419,6 +419,58 @@ Rendere deine Animations-Skripte und verbinde sie mit der Tonspur bzw. mische ex
   manim -pqm video_scene_ch13.py RustExercisesVideo
   cp media/videos/video_scene_ch13/720p30/RustExercisesVideo.mp4 13.mp4
   ```
+* **Kapitel 14 (Antigravity CLI):**
+  ```bash
+  python generate_audio_ch14.py
+  manim -pqm video_scene_ch14.py RustAntigravityCLIVideo
+  cp media/videos/video_scene_ch14/720p30/RustAntigravityCLIVideo.mp4 14.mp4
+  ```
+* **Kapitel 15 (Kontrollstrukturen):**
+  ```bash
+  python generate_audio_ch15.py
+  manim -pqm video_scene_ch15.py RustControlStructuresVideo
+  cp media/videos/video_scene_ch15/720p30/RustControlStructuresVideo.mp4 15.mp4
+  ```
+* **Kapitel 16 (Beste Google KI zum Programmieren nutzen):**
+  ```bash
+  python generate_audio_ch16.py
+  manim -pqm video_scene_ch16.py RustGoogleAIVideo
+  cp media/videos/video_scene_ch16/720p30/RustGoogleAIVideo.mp4 16.mp4
+  ```
+* **Kapitel 17 (Speicherverwaltung & Rust Ownership):**
+  ```bash
+  python generate_audio_ch17.py
+  manim -pqm video_scene_ch17.py RustOwnershipVideo
+  cp media/videos/video_scene_ch17/720p30/RustOwnershipVideo.mp4 17.mp4
+  ```
+* **Kapitel 18 (Was ist Ownership?):**
+  ```bash
+  python generate_audio_ch18.py
+  manim -pqm video_scene_ch18.py RustOwnershipDetailedVideo
+  cp media/videos/video_scene_ch18/720p30/RustOwnershipDetailedVideo.mp4 18.mp4
+  ```
+* **Kapitel 19 (Referenzen & Borrowing):**
+  ```bash
+  python generate_audio_ch19.py
+  manim -pqm video_scene_ch19.py RustBorrowingVideo
+  cp media/videos/video_scene_ch19/720p30/RustBorrowingVideo.mp4 19.mp4
+  ```
+
+Ab Kapitel 20 wird ein dreistufiger Build-Prozess mit einem FFmpeg-Mischskript (`build_chX_audio.py`) verwendet, um die Audiospuren mit exakt 1.5s Lücke zu synchronisieren und nach EBU R128 zu normalisieren:
+
+* **Kapitel 20 bis 26 (Dreistufiger Build-Prozess):**
+  Führen Sie für das jeweilige Kapitel (z. B. Kapitel 26) nacheinander folgende Befehle aus:
+  ```bash
+  # 1. Audiospuren generieren
+  python generate_audio_ch26.py
+  
+  # 2. Manim-Szenen rendern (High Quality -qh)
+  manim -qh video_scene_ch26.py RustAgentsVideo
+  
+  # 3. Audio & Video mischen & normalisieren
+  python build_ch26_audio.py
+  ```
+  *(Ersetzen Sie 'ch26', 'RustAgentsVideo' und 'build_ch26_audio.py' durch die entsprechenden Dateinamen und Klassennamen des jeweiligen Kapitels. Die Klassennamen lauten: Ch20: RustReferencesVideo, Ch21: RustSummaryVideo, Ch22: RustPlanningVideo, Ch23: RustLearningStrategyVideo, Ch24: RustProfessionalizationVideo, Ch25: RustSlicesVideo, Ch26: RustAgentsVideo)*
 
 > [!TIP]
 > Der Schalter `-pql` rendert das Video schnell in niedriger Vorschauqualität (480p/15fps oder 720p/30fps, je nach Konfiguration). Benutze `-pqh` für Full-HD-Produktionsqualität (1080p/60fps).
@@ -476,4 +528,17 @@ Die fertigen Videodateien liegen im Hauptverzeichnis bereit zur Wiedergabe oder 
 * 🎥 **Kapitel 11:** [11.mp4](file:///home/thorsten/RustKurs/11.mp4) (Funktionen - Details)
 * 🎥 **Kapitel 12:** [12.mp4](file:///home/thorsten/RustKurs/12.mp4) (Operatoren)
 * 🎥 **Kapitel 13:** [13.mp4](file:///home/thorsten/RustKurs/13.mp4) (Übungen zu Operatoren)
+* 🎥 **Kapitel 14:** [14.mp4](file:///home/thorsten/RustKurs/14.mp4) (Antigravity CLI)
+* 🎥 **Kapitel 15:** [15.mp4](file:///home/thorsten/RustKurs/15.mp4) (Kontrollstrukturen)
+* 🎥 **Kapitel 16:** [16.mp4](file:///home/thorsten/RustKurs/16.mp4) (Beste Google KI zum Programmieren nutzen)
+* 🎥 **Kapitel 17:** [17.mp4](file:///home/thorsten/RustKurs/17.mp4) (Speicherverwaltung & Rust Ownership)
+* 🎥 **Kapitel 18:** [18.mp4](file:///home/thorsten/RustKurs/18.mp4) (Was ist Ownership?)
+* 🎥 **Kapitel 19:** [19.mp4](file:///home/thorsten/RustKurs/19.mp4) (Referenzen & Borrowing)
+* 🎥 **Kapitel 20:** [20.mp4](file:///home/thorsten/RustKurs/20.mp4) (Referenzen & Borrowing Grundlagen)
+* 🎥 **Kapitel 21:** [21.mp4](file:///home/thorsten/RustKurs/21.mp4) (Zusammenfassung & Ausblick)
+* 🎥 **Kapitel 22:** [22.mp4](file:///home/thorsten/RustKurs/22.mp4) (Der VS Code Planungs-Workflow)
+* 🎥 **Kapitel 23:** [23.mp4](file:///home/thorsten/RustKurs/23.mp4) (Lernstrategie, Lernportale & KI-Prompts)
+* 🎥 **Kapitel 24:** [24.mp4](file:///home/thorsten/RustKurs/24.mp4) (Projekt-Professionalisierung & das Antigravity CLI)
+* 🎥 **Kapitel 25:** [25.mp4](file:///home/thorsten/RustKurs/25.mp4) (Der Slice-Typ (Slices))
+* 🎥 **Kapitel 26:** [26.mp4](file:///home/thorsten/RustKurs/26.mp4) (KI-Agenten & autonome Software-Ingenieure)
 
