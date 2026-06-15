@@ -1,0 +1,546 @@
+<!DOCTYPE HTML>
+<html lang="de" class="light sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Kapitel 24: Projekt-Professionalisierung &amp; das Antigravity CLI - Rust-Videokurs für Anfänger</title>
+
+
+        <!-- Custom HTML head -->
+
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="favicon-de23e50b.svg">
+        <link rel="shortcut icon" href="favicon-8114d1fc.png">
+        <link rel="stylesheet" href="css/variables-8adf115d.css">
+        <link rel="stylesheet" href="css/general-0392ca55.css">
+        <link rel="stylesheet" href="css/chrome-fc474251.css">
+        <link rel="stylesheet" href="css/print-9e4910d8.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="fonts/fonts-9644e21d.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" id="mdbook-highlight-css" href="highlight-493f70e1.css">
+        <link rel="stylesheet" id="mdbook-tomorrow-night-css" href="tomorrow-night-4c0ae647.css">
+        <link rel="stylesheet" id="mdbook-ayu-highlight-css" href="ayu-highlight-3fdfc3ac.css">
+
+        <!-- Custom theme stylesheets -->
+
+
+        <!-- Provide site root and default themes to javascript -->
+        <script>
+            const path_to_root = "";
+            const default_light_theme = "light";
+            const default_dark_theme = "navy";
+            window.path_to_searchindex_js = "searchindex-413c6cb9.js";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="toc-be9b6f8c.js"></script>
+    </head>
+    <body>
+    <div id="mdbook-help-container">
+        <div id="mdbook-help-popup">
+            <h2 class="mdbook-help-title">Keyboard shortcuts</h2>
+            <div>
+                <p>Press <kbd>←</kbd> or <kbd>→</kbd> to navigate between chapters</p>
+                <p>Press <kbd>S</kbd> or <kbd>/</kbd> to search in the book</p>
+                <p>Press <kbd>?</kbd> to show this help</p>
+                <p>Press <kbd>Esc</kbd> to hide this help</p>
+            </div>
+        </div>
+    </div>
+    <div id="mdbook-body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                let theme = localStorage.getItem('mdbook-theme');
+                let sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            const default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? default_dark_theme : default_light_theme;
+            let theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="mdbook-sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            let sidebar = null;
+            const sidebar_toggle = document.getElementById("mdbook-sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+                sidebar_toggle.checked = false;
+            }
+            if (sidebar === 'visible') {
+                sidebar_toggle.checked = true;
+            } else {
+                html.classList.remove('sidebar-visible');
+            }
+        </script>
+
+        <nav id="mdbook-sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="toc.html"></iframe>
+            </noscript>
+            <div id="mdbook-sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <div id="mdbook-page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="mdbook-menu-bar-hover-placeholder"></div>
+                <div id="mdbook-menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="mdbook-sidebar-toggle" class="icon-button" for="mdbook-sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="mdbook-sidebar">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"/></svg></span>
+                        </label>
+                        <button id="mdbook-theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="mdbook-theme-list">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M371.3 367.1c27.3-3.9 51.9-19.4 67.2-42.9L600.2 74.1c12.6-19.5 9.4-45.3-7.6-61.2S549.7-4.4 531.1 9.6L294.4 187.2c-24 18-38.2 46.1-38.4 76.1L371.3 367.1zm-19.6 25.4l-116-104.4C175.9 290.3 128 339.6 128 400c0 3.9 .2 7.8 .6 11.6c1.8 17.5-10.2 36.4-27.8 36.4H96c-17.7 0-32 14.3-32 32s14.3 32 32 32H240c61.9 0 112-50.1 112-112c0-2.5-.1-5-.2-7.5z"/></svg></span>
+                        </button>
+                        <ul id="mdbook-theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-default_theme">Auto</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-ayu">Ayu</button></li>
+                        </ul>
+                        <button id="mdbook-search-toggle" class="icon-button" type="button" title="Search (`/`)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="/ s" aria-controls="mdbook-searchbar">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352c79.5 0 144-64.5 144-144s-64.5-144-144-144S64 128.5 64 208s64.5 144 144 144z"/></svg></span>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Rust-Videokurs für Anfänger</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <span class=fa-svg id="print-button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M128 0C92.7 0 64 28.7 64 64v96h64V64H354.7L384 93.3V160h64V93.3c0-17-6.7-33.3-18.7-45.3L400 18.7C388 6.7 371.7 0 354.7 0H128zM384 352v32 64H128V384 368 352H384zm64 32h32c17.7 0 32-14.3 32-32V256c0-35.3-28.7-64-64-64H64c-35.3 0-64 28.7-64 64v96c0 17.7 14.3 32 32 32H64v64c0 35.3 28.7 64 64 64H384c35.3 0 64-28.7 64-64V384zm-16-88c-13.3 0-24-10.7-24-24s10.7-24 24-24s24 10.7 24 24s-10.7 24-24 24z"/></svg></span>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="mdbook-search-wrapper" class="hidden">
+                    <form id="mdbook-searchbar-outer" class="searchbar-outer">
+                        <div class="search-wrapper">
+                            <input type="search" id="mdbook-searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="mdbook-searchresults-outer" aria-describedby="searchresults-header">
+                            <div class="spinner-wrapper">
+                                <span class=fa-svg id="fa-spin"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M304 48c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zm0 416c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zM48 304c26.5 0 48-21.5 48-48s-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48zm464-48c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zM142.9 437c18.7-18.7 18.7-49.1 0-67.9s-49.1-18.7-67.9 0s-18.7 49.1 0 67.9s49.1 18.7 67.9 0zm0-294.2c18.7-18.7 18.7-49.1 0-67.9S93.7 56.2 75 75s-18.7 49.1 0 67.9s49.1 18.7 67.9 0zM369.1 437c18.7 18.7 49.1 18.7 67.9 0s18.7-49.1 0-67.9s-49.1-18.7-67.9 0s-18.7 49.1 0 67.9z"/></svg></span>
+                            </div>
+                        </div>
+                    </form>
+                    <div id="mdbook-searchresults-outer" class="searchresults-outer hidden">
+                        <div id="mdbook-searchresults-header" class="searchresults-header"></div>
+                        <ul id="mdbook-searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('mdbook-sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('mdbook-sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#mdbook-sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="mdbook-content" class="content">
+                    <main>
+                        <h1 id="kapitel-24-projekt-professionalisierung--das-antigravity-cli"><a class="header" href="#kapitel-24-projekt-professionalisierung--das-antigravity-cli">Kapitel 24: Projekt-Professionalisierung &amp; das Antigravity CLI</a></h1>
+<p>Herzlichen Glückwunsch! Du hast die theoretischen und praktischen Grundlagen von Rust bis hin zu komplexeren Konzepten wie dem Ownership-System, Referenzen und Borrowing gemeistert. Doch mit wachsendem Wissen und größeren Projekten steigt auch die Komplexität. Um den Überblick nicht zu verlieren und die Zusammenarbeit mit modernen KI-Entwicklungswerkzeugen zu maximieren, ist eine professionelle Projektorganisation unerlässlich.</p>
+<p>In diesem Kapitel lernst du, wie du dein Rust-Projekt auf ein professionelles Niveau hebst. Wir betrachten die vier Säulen der Workspace-Governance (<code>AGENTS.md</code>, <code>skills.md</code>, <code>.agentrules</code> und <code>glossary.md</code>) und steigen tief in die Nutzung des <strong>Antigravity CLI</strong> (<code>agy</code>) ein. Du erfährst Schritt für Schritt, wie du ein neues Unterverzeichnis <code>Tutorial</code> mithilfe der KI-Unterstützung des CLI erstellst, integrierst und verwaltest.</p>
+<hr>
+<h2 id="1-genaue-definitionen-was-ist-das-antigravity-cli-und-was-sind-governance-dateien"><a class="header" href="#1-genaue-definitionen-was-ist-das-antigravity-cli-und-was-sind-governance-dateien">1. Genaue Definitionen: Was ist das Antigravity CLI und was sind Governance-Dateien?</a></h2>
+<p>Bevor wir in die praktische Umsetzung einsteigen, definieren wir die Kernkomponenten dieses Workflows präzise:</p>
+<h3 id="a-das-antigravity-cli-agy"><a class="header" href="#a-das-antigravity-cli-agy">A) Das Antigravity CLI (<code>agy</code>)</a></h3>
+<p>Das <strong>Antigravity CLI</strong> (Befehlszeilenaufruf: <code>agy</code>) ist ein terminalbasiertes KI-Entwicklungswerkzeug von Google. Es unterscheidet sich von klassischen Chat-Assistenten durch drei wesentliche Merkmale:</p>
+<ol>
+<li><strong>Lokaler Dateizugriff</strong>: Es liest und schreibt direkt in deinem Projektordner.</li>
+<li><strong>Sandbox-Umgebung</strong>: Befehle und Ausführungen laufen in einer isolierten Sicherheitsumgebung (Sandbox, z. B. via <code>nsjail</code>), um dein Wirts-System vor fehlerhaften oder schädlichen Operationen zu schützen.</li>
+<li><strong>Agentische Autonomie</strong>: Du stellst eine hochrangige Aufgabe (z. B. <em>“Erstelle ein Tutorial-Projekt”</em>), und das CLI plant eigenständig die Teilschritte, liest Dokumentationen, modifiziert Dateien und korrigiert Linter-Fehler, bis das Ziel erreicht ist.</li>
+</ol>
+<h3 id="b-workspace-governance-dateien"><a class="header" href="#b-workspace-governance-dateien">B) Workspace-Governance-Dateien</a></h3>
+<p>Unter <strong>Workspace Governance</strong> versteht man Richtlinien-Dateien (<code>AGENTS.md</code>, <code>.agentrules</code>, <code>skills.md</code>, <code>glossary.md</code>), die im Hauptverzeichnis des Projekts liegen. Für das CLI wirken diese Dateien wie <strong>permanente System-Instruktionen</strong>:</p>
+<ul>
+<li>Sie werden bei jedem Start von <code>agy</code> eingelesen.</li>
+<li>Sie steuern das Verhalten des Agenten dynamisch (z. B. Programmierstil, erlaubte Befehle, Begriffsdefinitionen).</li>
+<li>Sie verhindern den sogenannten “Kontext-Verfall”, da der Agent immer Zugriff auf die aktuellen Projektregeln und den Projektstatus hat.</li>
+</ul>
+<h3 id="c-das-tutorial-unterverzeichnis"><a class="header" href="#c-das-tutorial-unterverzeichnis">C) Das Tutorial-Unterverzeichnis</a></h3>
+<p>Ein <strong>Tutorial-Unterverzeichnis</strong> (z. B. <code>Tutorial/</code>) ist ein isolierter Bereich innerhalb deines Projektordners. Es dient dazu:</p>
+<ul>
+<li>Dem Nutzer lauffähige, didaktisch reduzierte Minimalbeispiele bereitzustellen.</li>
+<li>Den Hauptcode (<code>src/</code>) sauber von Lehrbeispielen zu trennen.</li>
+<li>Dem KI-Agenten eine abgegrenzte Spielwiese zu bieten, auf der er Codebeispiele für Lernende generieren und verifizieren kann, ohne die Produktivumgebung zu stören.</li>
+</ul>
+<hr>
+<h2 id="2-die-vier-säulen-der-workspace-professionalisierung"><a class="header" href="#2-die-vier-säulen-der-workspace-professionalisierung">2. Die vier Säulen der Workspace-Professionalisierung</a></h2>
+<p>Wenn du dein Projekt maximal professionalisieren willst, reicht es nicht mehr aus, Code ad-hoc zu schreiben. Du benötigst klare Richtlinien für dich und die KI-Agenten, die dich beim Programmieren unterstützen. Eine saubere Ordnerstruktur im Projekt-Root sieht dabei wie folgt aus:</p>
+<pre><code>MeinRustProjekt/
+├── AGENTS.md        # Wer macht was? Wo stehen wir aktuell? (Status &amp; Rollen)
+├── skills.md        # Wie bediene ich Manim, Blender und Kokoro-onnx fehlerfrei? (Spezialwissen)
+├── .agentrules      # Allgemeine Verhaltensregeln für die KI (Sprache, Stil, Editionen)
+├── glossary.md      # Exakte Begriffsdefinitionen für das Rust-Lehrbuch (Fachbegriffe)
+├── Cargo.toml       # Rust Projektkonfiguration
+└── src/             # Quellcode-Verzeichnis
+</code></pre>
+<p>Diese Governance-Dateien werden von modernen KI-Assistenten wie dem Antigravity CLI beim Start automatisch eingelesen. Sie dienen als feste Leitplanken (Guards) und Kontextspeicher.</p>
+<h3 id="21-agentsmd--projektstatus-und-aufgabenteilung"><a class="header" href="#21-agentsmd--projektstatus-und-aufgabenteilung">2.1 <code>AGENTS.md</code> – Projektstatus und Aufgabenteilung</a></h3>
+<p>Diese Datei dokumentiert das “Wer, Was, Wo”. Sie gibt der KI Auskunft über den aktuellen Projektfortschritt und die genaue Rollenverteilung im Team (z. B. welche Kapitel bereits abgeschlossen sind).</p>
+<ul>
+<li><strong>Nutzen</strong>: Sie verhindert, dass die KI veraltete Aufgaben wiederholt oder an der falschen Stelle weiterarbeitet.</li>
+</ul>
+<h3 id="22-skillsmd--spezialwissen-für-tools-und-frameworks"><a class="header" href="#22-skillsmd--spezialwissen-für-tools-und-frameworks">2.2 <code>skills.md</code> – Spezialwissen für Tools und Frameworks</a></h3>
+<p>Hier wird prozedurales Wissen festgehalten, das über die normale Programmiersprache hinausgeht. In unserem Kurs betrifft das z. B. die fehlerfreie Erstellung von Manim-Szenen, die Steuerung von Blender via Python/Geometry-Nodes oder die Generierung von Sprache mit Kokoro-onnx.</p>
+<ul>
+<li><strong>Nutzen</strong>: Verhindert typische Halluzinationen oder Syntaxfehler der KI bei der Nutzung von Bibliotheken und externen Programmen.</li>
+</ul>
+<h3 id="23-agentrules--die-programmierrichtlinien-und-verhaltensregeln"><a class="header" href="#23-agentrules--die-programmierrichtlinien-und-verhaltensregeln">2.3 <code>.agentrules</code> – Die Programmierrichtlinien und Verhaltensregeln</a></h3>
+<p>In dieser Konfigurationsdatei legst du fest, wie die KI agieren soll. Hier definierst du Vorgaben zu Sprache (z. B. Deutsch), Tonfall, Code-Formatierung (z. B. Zeilenlängen, Einrückungen) und Editiermethoden (z. B. “keine vollständigen Dateikopien, sondern präzises Editieren einzelner Zeilen”).</p>
+<ul>
+<li><strong>Nutzen</strong>: Sichert einen konsistenten Code-Stil und schont Token-Limits.</li>
+</ul>
+<h3 id="24-glossarymd--die-begriffliche-wahrheit"><a class="header" href="#24-glossarymd--die-begriffliche-wahrheit">2.4 <code>glossary.md</code> – Die begriffliche Wahrheit</a></h3>
+<p>In dieser Datei werden alle Fachbegriffe exakt definiert. Wenn die KI eine Erklärung für das Lehrbuch schreibt, muss sie sich an die Definitionen im Glossar halten.</p>
+<ul>
+<li><strong>Nutzen</strong>: Verhindert widersprüchliche oder ungenaue Erklärungen komplexer Rust-Begriffe (wie z. B. der Unterschied zwischen <em>Borrowing</em> und <em>Ownership</em>).</li>
+</ul>
+<hr>
+<h2 id="3-das-antigravity-cli-agy-im-schnelldurchlauf"><a class="header" href="#3-das-antigravity-cli-agy-im-schnelldurchlauf">3. Das Antigravity CLI (<code>agy</code>) im Schnelldurchlauf</a></h2>
+<p>Das Antigravity CLI ist Googles Befehlszeilenschnittstelle zur Interaktion mit fortschrittlichen KI-Agenten. Im Gegensatz zu einfachen Chat-Websites arbeitet <code>agy</code> direkt auf deinem lokalen Dateisystem – geschützt in einer sicheren <strong>Sandbox</strong>.</p>
+<h3 id="31-installation"><a class="header" href="#31-installation">3.1 Installation</a></h3>
+<p>Die Installation erfolgt einfach über ein kurzes Skript im Terminal:</p>
+<ul>
+<li><strong>Linux / macOS</strong>:
+<pre><code class="language-bash">curl -fsSL https://antigravity.google/cli/install.sh | bash
+</code></pre>
+</li>
+<li><strong>Windows (PowerShell)</strong>:
+<pre><code class="language-powershell">irm https://antigravity.google/cli/install.ps1 | iex
+</code></pre>
+</li>
+</ul>
+<p>Nach der Installation steht dir das CLI weltweit über den Befehl <code>agy</code> zur Verfügung.</p>
+<h3 id="32-cli-befehlsübersicht-start-optionen"><a class="header" href="#32-cli-befehlsübersicht-start-optionen">3.2 CLI-Befehlsübersicht (Start-Optionen)</a></h3>
+<p>Beim Starten von <code>agy</code> im Terminal kannst du verschiedene Unterbefehle und Parameter nutzen:</p>
+<ul>
+<li><strong><code>agy</code></strong>: Startet die interaktive TUI (Terminal User Interface) im aktuellen Verzeichnis.</li>
+<li><strong><code>agy inspect</code></strong>: Analysiert den aktuellen Projekt-Workspace, listet gefundene Regeln (<code>.agentrules</code>, <code>AGENTS.md</code>) auf und zeigt an, welcher Kontext aktiv geladen ist. Sehr nützlich zur Fehlerdiagnose.</li>
+<li><strong><code>agy plugin import gemini</code></strong>: Importiert Einstellungen, API-Schlüssel und benutzerdefinierte Skripte vom Vorgänger (Gemini CLI) in deine neue Antigravity-Umgebung.</li>
+</ul>
+<h3 id="33-nützliche-slash-befehle-in-der-tui"><a class="header" href="#33-nützliche-slash-befehle-in-der-tui">3.3 Nützliche Slash-Befehle in der TUI</a></h3>
+<p>Wenn du das CLI gestartet hast, kannst du folgende Steuerungsbefehle (Slash-Commands) im Eingabefeld eintippen:</p>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th style="text-align: left">Befehl</th><th style="text-align: left">Beschreibung</th></tr>
+</thead>
+<tbody>
+<tr><td style="text-align: left"><strong><code>/settings</code> / <code>/config</code></strong></td><td style="text-align: left">Konfiguriert das CLI (Farben, Tastenkombinationen, API-Keys).</td></tr>
+<tr><td style="text-align: left"><strong><code>/permissions</code></strong></td><td style="text-align: left">Zeigt an, welche Lese- und Schreibrechte der Agent im aktuellen Ordner besitzt.</td></tr>
+<tr><td style="text-align: left"><strong><code>/skills</code></strong></td><td style="text-align: left">Listet alle geladenen Skills aus der <code>skills.md</code> oder dem Ordner <code>.agents/skills/</code> auf.</td></tr>
+<tr><td style="text-align: left"><strong><code>/clear</code></strong></td><td style="text-align: left">Setzt den aktuellen Kontext und Chatverlauf zurück (Gedächtnis löschen).</td></tr>
+<tr><td style="text-align: left"><strong><code>/rewind</code></strong></td><td style="text-align: left">Ermöglicht es, im Kontext zurückzuspringen, falls die KI einen falschen Pfad eingeschlagen hat.</td></tr>
+<tr><td style="text-align: left"><strong><code>/resume</code></strong></td><td style="text-align: left">Nimmt eine zuvor abgebrochene oder beendete Sitzung wieder auf.</td></tr>
+<tr><td style="text-align: left"><strong><code>/fork</code></strong></td><td style="text-align: left">Erstellt einen neuen Entwicklungs-Zweig der aktuellen Agenten-Sitzung zum Experimentieren.</td></tr>
+<tr><td style="text-align: left"><strong><code>/exit</code></strong></td><td style="text-align: left">Beendet die aktuelle Sitzung des CLI.</td></tr>
+<tr><td style="text-align: left"><strong><code>!</code></strong></td><td style="text-align: left">Führt einen Terminalbefehl direkt aus (z. B. <code>!cargo test</code>).</td></tr>
+<tr><td style="text-align: left"><strong><code>@</code></strong></td><td style="text-align: left">Sucht nach Dateien oder Verzeichnissen im Projekt, um sie der KI als direkten Kontext mitzugeben.</td></tr>
+</tbody>
+</table>
+</div>
+<h3 id="34-der-interaktive-kommentar--und-feedback-workflow"><a class="header" href="#34-der-interaktive-kommentar--und-feedback-workflow">3.4 Der interaktive Kommentar- und Feedback-Workflow</a></h3>
+<p>Ein wesentliches Feature des CLI ist die Möglichkeit, <strong>Kommentare und Feedback zu vorgeschlagenen Änderungen</strong> einzugeben. So kannst du den Agenten präzise steuern:</p>
+<ol>
+<li><strong>Vorgeschlagene Änderungen prüfen (<code>ctrl+r</code>)</strong>:
+Wenn der Agent Dateien ändert oder neu erstellt, siehst du im TUI-Interface die Liste der vorgeschlagenen Modifikationen. Drücke <strong><code>ctrl+r</code></strong>, um das Review-Panel zu öffnen.</li>
+<li><strong>Kommentare eingeben (Feedback Loop)</strong>:
+Statt die Änderungen direkt zu akzeptieren (<code>Proceed</code>) oder komplett abzulehnen, kannst du im Textfeld des Review-Panels <strong>Kommentare und Korrekturwünsche eingeben</strong>.
+<ul>
+<li><em>Beispiel</em>: <em>“Der Code in <code>src/main.rs</code> ist korrekt, aber bitte füge am Anfang der Datei einen doc-comment hinzu, der die Funktionsweise erklärt.”</em></li>
+<li><em>Beispiel</em>: <em>“Die Fehlerbehandlung in Zeile 42 wirft ein Panic. Bitte fange den Fehler ab und gib ein <code>Result::Err</code> zurück.”</em></li>
+</ul>
+</li>
+<li><strong>Iterative Anpassung</strong>:
+Nachdem du den Kommentar abgeschickt hast, analysiert der Agent dein Feedback, passt den Code in der Sandbox an und präsentiert dir eine neue Version der Datei zur Überprüfung.</li>
+<li><strong>Code-Kommentar-Richtlinien (<code>.agentrules</code>)</strong>:
+Über die Konfiguration <code>always_preserve_comments = true</code> in deiner <code>.agentrules</code> stellst du sicher, dass die KI bei ihren Code-Änderungen niemals deine manuell geschriebenen Kommentare oder Dokumentationen löscht.</li>
+</ol>
+<hr>
+<h2 id="4-tutorial-unterverzeichnis-tutorial-erstellen-und-einbauen-mit-agy"><a class="header" href="#4-tutorial-unterverzeichnis-tutorial-erstellen-und-einbauen-mit-agy">4. Tutorial: Unterverzeichnis “Tutorial” erstellen und einbauen mit <code>agy</code></a></h2>
+<p>Jetzt zeigen wir dir praktisch, wie du die Power des Antigravity CLI nutzt, um ein neues Unterverzeichnis namens <code>Tutorial</code> zu erstellen, darin ein Rust-Lernprojekt anzulegen und es in dein mdBook-Lehrbuch zu integrieren.</p>
+<h3 id="schritt-1-das-cli-im-projektordner-starten"><a class="header" href="#schritt-1-das-cli-im-projektordner-starten">Schritt 1: Das CLI im Projektordner starten</a></h3>
+<p>Öffne dein Terminal, navigiere in dein Projektverzeichnis und starte das CLI:</p>
+<pre><code class="language-bash">cd /home/thorsten/RustKurs
+agy
+</code></pre>
+<h3 id="schritt-2-der-prompt-zur-verzeichniserstellung"><a class="header" href="#schritt-2-der-prompt-zur-verzeichniserstellung">Schritt 2: Der Prompt zur Verzeichniserstellung</a></h3>
+<p>Tippe nun den folgenden Prompt in das Eingabefeld des CLI ein:</p>
+<blockquote>
+<p>💬 <em>“Erstelle ein neues Unterverzeichnis <code>Tutorial</code> im Projekt-Root. Initialisiere darin ein neues Cargo-Projekt namens <code>zahlenraten</code>. Schreibe in <code>Tutorial/zahlenraten/src/main.rs</code> ein einfaches, gut kommentiertes Zahlenratespiel in Rust und lege im Ordner <code>Tutorial</code> eine ausführliche <code>README.md</code> an, die erklärt, wie man das Spiel baut und startet.”</em></p>
+</blockquote>
+<h3 id="schritt-3-der-arbeitsablauf-der-ki"><a class="header" href="#schritt-3-der-arbeitsablauf-der-ki">Schritt 3: Der Arbeitsablauf der KI</a></h3>
+<p>Die KI analysiert deine Anfrage und führt im Hintergrund folgende Schritte in ihrer Sandbox aus:</p>
+<ol>
+<li><strong>Verzeichniserstellung</strong>: Sie erstellt den Ordner <code>Tutorial</code>.</li>
+<li><strong>Cargo-Init</strong>: Sie wechselt in den Ordner und ruft <code>cargo new zahlenraten</code> auf.</li>
+<li><strong>Code-Erstellung</strong>: Sie schreibt das Spiel in <code>Tutorial/zahlenraten/src/main.rs</code>.</li>
+<li><strong>Dokumentation</strong>: Sie generiert die Datei <code>Tutorial/README.md</code>.</li>
+</ol>
+<h3 id="schritt-4-überprüfung-der-änderungen-artifact-review"><a class="header" href="#schritt-4-überprüfung-der-änderungen-artifact-review">Schritt 4: Überprüfung der Änderungen (Artifact Review)</a></h3>
+<p>Sobald die KI fertig ist, wird dir im CLI die Option zur Überprüfung der generierten Dateien angeboten.</p>
+<ul>
+<li>Drücke <strong><code>ctrl+r</code></strong>, um das <em>Artifact Review Panel</em> to öffnen.</li>
+<li>Hier siehst du alle neu erstellten Dateien und deren Inhalt.</li>
+<li>Wenn alles passt, bestätige die Änderungen mit <strong>Proceed</strong> (oder <strong>Approve</strong>), um sie aus der Sandbox in dein echtes Dateisystem zu übernehmen.</li>
+</ul>
+<h3 id="schritt-5-das-spiel-testen"><a class="header" href="#schritt-5-das-spiel-testen">Schritt 5: Das Spiel testen</a></h3>
+<p>Du kannst der KI direkt im Chat befehlen, das erstellte Projekt zu testen:</p>
+<blockquote>
+<p>💬 <em>“Wechsle in das Verzeichnis <code>Tutorial/zahlenraten</code>, baue das Projekt und führe die Tests aus.”</em></p>
+</blockquote>
+<p>Die KI führt den Befehl aus (entspricht <code>cargo check</code> und <code>cargo test</code>) und gibt dir das Testergebnis im Chat aus. Alternativ kannst du den Test über das Präfix <code>!</code> selbst triggern:</p>
+<pre><code class="language-bash">!cd Tutorial/zahlenraten &amp;&amp; cargo run
+</code></pre>
+<h3 id="schritt-6-der-generierte-code-und-seine-erläuterung"><a class="header" href="#schritt-6-der-generierte-code-und-seine-erläuterung">Schritt 6: Der generierte Code und seine Erläuterung</a></h3>
+<p>Nachdem der Agent das Cargo-Projekt erstellt hat, enthält die Datei <code>Tutorial/zahlenraten/src/main.rs</code> den folgenden lauffähigen Rust-Code:</p>
+<pre class="playground"><code class="language-rust edition2021">use std::io;
+use std::cmp::Ordering;
+use rand::Rng; // Wichtig: Das rand-Crate muss in Cargo.toml eingetragen sein!
+
+fn main() {
+    println!("Willkommen beim Zahlenratespiel!");
+
+    // Generiere eine geheime Zufallszahl zwischen 1 und 100
+    let geheimzahl = rand::thread_rng().gen_range(1..=100);
+
+    println!("Ich habe an eine Zahl zwischen 1 und 100 gedacht.");
+
+    loop {
+        println!("Bitte gib deinen Tipp ein:");
+
+        let mut tipp = String::new();
+
+        // Lese die Eingabe von der Konsole ein
+        io::stdin()
+            .read_line(&amp;mut tipp)
+            .expect("Fehler beim Lesen der Zeile");
+
+        // Konvertiere die Eingabe in eine Zahl (u32)
+        // Fehlerhafte Eingaben werden durch 'continue' abgefangen
+        let tipp: u32 = match tipp.trim().parse() {
+            Ok(zahl) =&gt; zahl,
+            Err(_) =&gt; {
+                println!("Bitte gib eine gültige Zahl ein!");
+                continue;
+            }
+        };
+
+        println!("Dein Tipp: {}", tipp);
+
+        // Vergleiche den Tipp mit der Geheimzahl
+        match tipp.cmp(&amp;geheimzahl) {
+            Ordering::Less =&gt; println!("Zu klein!"),
+            Ordering::Greater =&gt; println!("Zu groß!"),
+            Ordering::Equal =&gt; {
+                println!("Du hast gewonnen! 🎉");
+                break; // Schleife beenden und Spiel beenden
+            }
+        }
+    }
+}</code></pre>
+<h4 id="beschreibung-der-funktionsweise"><a class="header" href="#beschreibung-der-funktionsweise">Beschreibung der Funktionsweise:</a></h4>
+<ol>
+<li><strong>Bibliotheken einbinden</strong>: Über <code>use std::io</code> binden wir das Standard-Eingabe/Ausgabe-Modul ein. <code>std::cmp::Ordering</code> importiert ein Enum mit den Varianten <code>Less</code>, <code>Greater</code> und <code>Equal</code> für Vergleiche.</li>
+<li><strong>Zufallszahl generieren</strong>: Mit <code>rand::thread_rng().gen_range(1..=100)</code> erzeugt das Programm eine zufällige Ganzzahl zwischen 1 und 100.</li>
+<li><strong>Schleife (<code>loop</code>)</strong>: Ein unendlicher Loop sorgt dafür, dass der Spieler so oft tippen kann, bis er die richtige Zahl errät.</li>
+<li><strong>Fehlertolerante Eingabe</strong>: Die Eingabe wird als String eingelesen und mittels <code>tipp.trim().parse()</code> in eine Ganzzahl (<code>u32</code>) umgewandelt. Durch das Pattern Matching (<code>match</code>) fängt das Programm Konvertierungsfehler (z. B. bei der Eingabe von Buchstaben) ab: Bei einem Fehler (<code>Err(_)</code>) gibt es eine Meldung aus und startet den nächsten Schleifendurchlauf mit <code>continue</code>, statt abzustürzen.</li>
+<li><strong>Vergleich und Spielende</strong>: Mit <code>tipp.cmp(&amp;geheimzahl)</code> vergleichen wir den Tipp mit der Geheimzahl. Stimmt der Wert überein (<code>Ordering::Equal</code>), bricht <code>break</code> die Schleife ab und das Spiel endet.</li>
+</ol>
+<p>Gleichzeitig wurde im Verzeichnis <code>Tutorial/README.md</code> die folgende Dokumentation angelegt:</p>
+<pre><code class="language-markdown"># Zahlenratespiel in Rust
+
+Ein einfaches Konsolenspiel, bei dem der Spieler eine geheime Zahl zwischen 1 und 100 erraten muss.
+
+## Anforderungen
+* Rust &amp; Cargo installiert (siehe Kapitel 2)
+
+## Projekt ausführen
+Wechsle in das Verzeichnis und starte das Spiel:
+```bash
+cd zahlenraten
+cargo run
+</code></pre>
+<pre><code>
+Durch diese saubere Generierung im Unterordner `Tutorial` hast du ein voll funktionsfähiges Übungsbeispiel erstellt, ohne die Quelldateien deines Hauptprojekts zu verändern.
+
+---
+
+## 5. Code-Beispiele für die Governance-Dateien
+
+Damit du direkt siehst, wie die vier Governance-Dateien in der Praxis aufgebaut sind, findest du hier vollständige, gebrauchsfertige Vorlagen.
+
+### 5.1 Vorlage: `AGENTS.md` (Auszug)
+Diese Datei liegt im Projekt-Root und dokumentiert den Zustand.
+
+```markdown
+# Rust-Videokurs: Workspace Governance
+
+**Tech Stack:** Manim (Python), Blender 3D, Kokoro-onnx TTS, Remotion.
+**Status:** 
+- Kapitel 1–23: Abgeschlossen (Video &amp; Audio bereit).
+- Kapitel 24: In Bearbeitung (Professionalisierung &amp; Antigravity CLI).
+
+## Rollen &amp; Zuständigkeiten
+- **Hauptagent**: Koordination, Erstellung der Lehrbuchkapitel (`.md`-Dateien).
+- **Subagent 'Video-Generator'**: Erstellung der Manim- und Blender-Python-Skripte.
+- **Subagent 'Audio-Generator'**: Triggerung des Kokoro-onnx TTS-Systems.
+</code></pre>
+<h3 id="52-vorlage-skillsmd"><a class="header" href="#52-vorlage-skillsmd">5.2 Vorlage: <code>skills.md</code></a></h3>
+<p>Hier wird das fehlerfreie Bedienen unserer Video- und Audio-Tools dokumentiert.</p>
+<pre><code class="language-markdown"># Agent Skills – Tool-Steuerung
+
+## Skill: @generate-manim
+Verwende diesen Ablauf, um fehlerfreie Manim-Skripte zu schreiben:
+1. Verwende immer die Klasse `video_scene.py` als Basisklasse.
+2. Code-Hervorhebungen müssen über die `Pygments`-Bibliothek vorgenommen werden.
+3. Rendere Szenen vorab mit niedriger Auflösung (`manim -ql scene.py`) zum Testen.
+4. **Dynamische Videolänge**: Videos nicht künstlich auf 5 Minuten (300s) strecken. Die Länge richtet sich dynamisch nach der echten Audiozeit plus 1,0–1,5s Übergangspause pro Abschnitt.
+
+## Skill: @generate-audio
+Ablauf zur Erstellung von Audio-Voiceovers mit Kokoro-onnx:
+1. Text in Sätze aufteilen (maximal 150 Zeichen pro Segment für optimalen Flow).
+2. Nutze das Skript `generate_audio.py` mit dem Parameter `--speed 1.0` und `--voice af_bella`.
+3. Speichere das Ergebnis im Ordner `audio/` als `.wav`.
+4. **Dynamische Zusammenführung**: Mische die Audiospuren mit einer festen Lücke von 1,0–1,5s zwischen Abschnitten, ohne künstliches Padding auf 300s.
+</code></pre>
+<h3 id="53-vorlage-agentrules"><a class="header" href="#53-vorlage-agentrules">5.3 Vorlage: <code>.agentrules</code></a></h3>
+<p>Verhaltensregeln für den KI-Assistenten im Projekt.</p>
+<pre><code class="language-ini"># Allgemeine Verhaltensregeln für KI-Agenten
+[behavior]
+language = de
+tone = professional_and_educational
+allow_network = false
+
+[code_edition]
+always_preserve_comments = true
+always_preserve_docstrings = true
+preferred_indentation = spaces_4
+modify_mode = precision_replace # Keine vollständigen Datei-Überschreibungen!
+
+[rust_guidelines]
+idiomatic_rust = true
+clippy_warnings = error
+docs_required = true
+
+[markdown]
+formatting = gfm # GitHub Flavored Markdown
+link_style = standard # Keine Backticks um Linktexte (z.B. [link](url) statt [`link`](url))
+always_use_hierarchical_headers = true
+keep_bullet_points_concise = true
+</code></pre>
+<h3 id="54-vorlage-glossarymd"><a class="header" href="#54-vorlage-glossarymd">5.4 Vorlage: <code>glossary.md</code></a></h3>
+<p>Die zentralen Rust-Begriffsdefinitionen.</p>
+<pre><code class="language-markdown"># Glossar: Rust Kernbegriffe
+
+*   **Ownership (Besitzrecht)**: Das Kernprinzip der Speicherverwaltung in Rust. Jeder Wert hat genau einen Besitzer (Variable). Verlässt der Besitzer den Gültigkeitsbereich (Scope), wird der Wert automatisch gelöscht.
+*   **Borrowing (Ausleihen)**: Das zeitweise Ausleihen eines Wertes über Referenzen (`&amp;` für unveränderlich, `&amp;mut` für veränderlich), ohne das Ownership zu übertragen.
+*   **Borrow Checker**: Die Compiler-Komponente, die zur Kompilierzeit prüft, ob alle Referenz- und Ausleihregeln eingehalten werden (z. B. keine veränderliche Ausleihe neben unveränderlichen Ausleihen).
+*   **Lifetimes (Lebensdauern)**: Die Zeitspanne, in der eine Referenz auf einen Wert gültig ist. Wird vom Compiler geprüft, um "Dangling References" (Verweise auf gelöschten Speicher) zu verhindern.
+</code></pre>
+<hr>
+<h2 id="-zusammenfassung-für-die-hosentasche"><a class="header" href="#-zusammenfassung-für-die-hosentasche">💡 Zusammenfassung für die Hosentasche</a></h2>
+<ul>
+<li><strong>Workspace-Governance</strong>: Ein professionelles Projekt nutzt <code>AGENTS.md</code> (Status), <code>skills.md</code> (Spezialwissen), <code>.agentrules</code> (KI-Verhaltensregeln) und <code>glossary.md</code> (Fachbegriffe), um KI-Agenten optimal zu steuern.</li>
+<li><strong>Antigravity CLI</strong>: Der Befehl <code>agy</code> öffnet ein TUI-Interface zur direkten Entwicklung in einer sicheren Sandbox.</li>
+<li><strong>Slash-Befehle</strong>: Mit <code>/settings</code> oder <code>/permissions</code> steuerst du das CLI, während <code>!</code> Terminalkommandos ausführt.</li>
+<li><strong>Praxis-Workflow</strong>: Erstelle Unterordner (wie <code>Tutorial</code>) direkt über einen TUI-Prompt, überprüfe die generierten Dateien mit <strong><code>ctrl+r</code></strong> (Artifact Review) und teste sie direkt in der Sandbox.</li>
+</ul>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="23.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
+                            </a>
+
+                            <a rel="next prefetch" href="25.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="23.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
+                    </a>
+
+                    <a rel="next prefetch" href="25.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
+                    </a>
+            </nav>
+
+        </div>
+
+        <template id=fa-eye><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M288 32c-80.8 0-145.5 36.8-192.6 80.6C48.6 156 17.3 208 2.5 243.7c-3.3 7.9-3.3 16.7 0 24.6C17.3 304 48.6 356 95.4 399.4C142.5 443.2 207.2 480 288 480s145.5-36.8 192.6-80.6c46.8-43.5 78.1-95.4 93-131.1c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C433.5 68.8 368.8 32 288 32zM432 256c0 79.5-64.5 144-144 144s-144-64.5-144-144s64.5-144 144-144s144 64.5 144 144zM288 192c0 35.3-28.7 64-64 64c-11.5 0-22.3-3-31.6-8.4c-.2 2.8-.4 5.5-.4 8.4c0 53 43 96 96 96s96-43 96-96s-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6z"/></svg></span></template>
+        <template id=fa-eye-slash><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M38.8 5.1C28.4-3.1 13.3-1.2 5.1 9.2S-1.2 34.7 9.2 42.9l592 464c10.4 8.2 25.5 6.3 33.7-4.1s6.3-25.5-4.1-33.7L525.6 386.7c39.6-40.6 66.4-86.1 79.9-118.4c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C465.5 68.8 400.8 32 320 32c-68.2 0-125 26.3-169.3 60.8L38.8 5.1zM223.1 149.5C248.6 126.2 282.7 112 320 112c79.5 0 144 64.5 144 144c0 24.9-6.3 48.3-17.4 68.7L408 294.5c5.2-11.8 8-24.8 8-38.5c0-53-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6c0 10.2-2.4 19.8-6.6 28.3l-90.3-70.8zm223.1 298L373 389.9c-16.4 6.5-34.3 10.1-53 10.1c-79.5 0-144-64.5-144-144c0-6.9 .5-13.6 1.4-20.2L83.1 161.5C60.3 191.2 44 220.8 34.5 243.7c-3.3 7.9-3.3 16.7 0 24.6c14.9 35.7 46.2 87.7 93 131.1C174.5 443.2 239.2 480 320 480c47.8 0 89.9-12.9 126.2-32.5z"/></svg></span></template>
+        <template id=fa-copy><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M502.6 70.63l-61.25-61.25C435.4 3.371 427.2 0 418.7 0H255.1c-35.35 0-64 28.66-64 64l.0195 256C192 355.4 220.7 384 256 384h192c35.2 0 64-28.8 64-64V93.25C512 84.77 508.6 76.63 502.6 70.63zM464 320c0 8.836-7.164 16-16 16H255.1c-8.838 0-16-7.164-16-16L239.1 64.13c0-8.836 7.164-16 16-16h128L384 96c0 17.67 14.33 32 32 32h47.1V320zM272 448c0 8.836-7.164 16-16 16H63.1c-8.838 0-16-7.164-16-16L47.98 192.1c0-8.836 7.164-16 16-16H160V128H63.99c-35.35 0-64 28.65-64 64l.0098 256C.002 483.3 28.66 512 64 512h192c35.2 0 64-28.8 64-64v-32h-47.1L272 448z"/></svg></span></template>
+        <template id=fa-play><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80V432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"/></svg></span></template>
+        <template id=fa-clock-rotate-left><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M75 75L41 41C25.9 25.9 0 36.6 0 57.9V168c0 13.3 10.7 24 24 24H134.1c21.4 0 32.1-25.9 17-41l-30.8-30.8C155 85.5 203 64 256 64c106 0 192 86 192 192s-86 192-192 192c-40.8 0-78.6-12.7-109.7-34.4c-14.5-10.1-34.4-6.6-44.6 7.9s-6.6 34.4 7.9 44.6C151.2 495 201.7 512 256 512c141.4 0 256-114.6 256-256S397.4 0 256 0C185.3 0 121.3 28.7 75 75zm181 53c-13.3 0-24 10.7-24 24V256c0 6.4 2.5 12.5 7 17l72 72c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-65-65V152c0-13.3-10.7-24-24-24z"/></svg></span></template>
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr-ef4e11c1.min.js"></script>
+        <script src="mark-09e88c2c.min.js"></script>
+        <script src="searcher-09f2665d.js"></script>
+
+        <script src="clipboard-1626706a.min.js"></script>
+        <script src="highlight-abc7f01d.js"></script>
+        <script src="book-c22b7243.js"></script>
+
+        <!-- Custom JS scripts -->
+        <script src="mermaid-eefea253.min.js"></script>
+        <script src="mermaid-init-ccf746f1.js"></script>
+
+
+
+    </div>
+    </body>
+</html>

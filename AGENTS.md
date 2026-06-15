@@ -1,5 +1,15 @@
-# Rust-Videokurs für Anfänger (Manim & Kokoro-onnx TTS)
-Status: Kapitel 1-23 vollständig abgeschlossen (Video & Audio fertig).
+# Rust-Videokurs für Anfänger
+
+**Tech Stack:** Manim, Pygments, Kokoro-onnx TTS, Blender 3D (2D-Vektor-Animationen, Grease Pencil & Geometry Nodes), Remotion, gesteuert via MCP.
+
+**Status:** Kapitel 1–24 vollständig abgeschlossen (Video & Audio fertig).
+
+---
+
+## Subagent
+* Markdown-Datei bearbeiten: Nutze bitte den Subagent -> [markdown.md](markdown.md)
+
+---
 
 ## Kapitel & Dateien
 - [Ch1: Was ist Rust?](1.md) -> [1.mp4](1.mp4)
@@ -25,9 +35,10 @@ Status: Kapitel 1-23 vollständig abgeschlossen (Video & Audio fertig).
 - [Ch21: Zusammenfassung & Ausblick](21.md) -> [21.mp4](21.mp4) (Video & Audio fertig)
 - [Ch22: Der VS Code Planungs-Workflow](22.md) -> [22.mp4](22.mp4) (Video & Audio fertig)
 - [Ch23: Lernstrategie, Lernportale & KI-Prompts](23.md) -> [23.mp4](23.mp4) (Video & Audio fertig)
+- [Ch24: Projekt-Professionalisierung & das Antigravity CLI](24.md) -> [24.mp4](24.mp4) (Video & Audio fertig)
+- [Ch25: Der Slice-Typ (Slices)](25.md) -> [25.mp4](25.mp4) (Text fertig, Video & Audio noch offen)
 
+---
 
-
-## Rust Lehrbuch erstellen mdBook auf verzeichnis doc/
-
-* Alle Kapitel abgeschlossen mit mdBook als Lehrbuch (erfolgreich unter [doc/](file:///home/thorsten/RustKurs/doc/) erstellt, grammatikalisch geprüft und gebaut)
+## Rust-Lehrbuch erstellen (mdBook)
+* Alle Kapitel abgeschlossen und als Lehrbuch mit mdBook erfolgreich im Verzeichnis `doc/` erstellt, grammatikalisch geprüft und gebaut.

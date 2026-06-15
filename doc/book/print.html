@@ -36,10 +36,10 @@
             const path_to_root = "";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "searchindex-c31251c9.js";
+            window.path_to_searchindex_js = "searchindex-413c6cb9.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="toc-e9c61c58.js"></script>
+        <script src="toc-be9b6f8c.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -9893,6 +9893,600 @@ Erkläre mir den Fehler und gib mir zwei verschiedene Lösungsansätze.
 <li><strong>Erweiterte Reflexionsfrage 671:</strong> Wie verhinderst du, dass du in die ‘Tutorial-Hölle’ gerätst?</li>
 <li><strong>Erweiterte Reflexionsfrage 672:</strong> Welches kleine Projekt möchtest du als Nächstes mit dem gelernten Wissen umsetzen?</li>
 </ul>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="kapitel-24-projekt-professionalisierung--das-antigravity-cli"><a class="header" href="#kapitel-24-projekt-professionalisierung--das-antigravity-cli">Kapitel 24: Projekt-Professionalisierung &amp; das Antigravity CLI</a></h1>
+<p>Herzlichen Glückwunsch! Du hast die theoretischen und praktischen Grundlagen von Rust bis hin zu komplexeren Konzepten wie dem Ownership-System, Referenzen und Borrowing gemeistert. Doch mit wachsendem Wissen und größeren Projekten steigt auch die Komplexität. Um den Überblick nicht zu verlieren und die Zusammenarbeit mit modernen KI-Entwicklungswerkzeugen zu maximieren, ist eine professionelle Projektorganisation unerlässlich.</p>
+<p>In diesem Kapitel lernst du, wie du dein Rust-Projekt auf ein professionelles Niveau hebst. Wir betrachten die vier Säulen der Workspace-Governance (<code>AGENTS.md</code>, <code>skills.md</code>, <code>.agentrules</code> und <code>glossary.md</code>) und steigen tief in die Nutzung des <strong>Antigravity CLI</strong> (<code>agy</code>) ein. Du erfährst Schritt für Schritt, wie du ein neues Unterverzeichnis <code>Tutorial</code> mithilfe der KI-Unterstützung des CLI erstellst, integrierst und verwaltest.</p>
+<hr>
+<h2 id="1-genaue-definitionen-was-ist-das-antigravity-cli-und-was-sind-governance-dateien"><a class="header" href="#1-genaue-definitionen-was-ist-das-antigravity-cli-und-was-sind-governance-dateien">1. Genaue Definitionen: Was ist das Antigravity CLI und was sind Governance-Dateien?</a></h2>
+<p>Bevor wir in die praktische Umsetzung einsteigen, definieren wir die Kernkomponenten dieses Workflows präzise:</p>
+<h3 id="a-das-antigravity-cli-agy"><a class="header" href="#a-das-antigravity-cli-agy">A) Das Antigravity CLI (<code>agy</code>)</a></h3>
+<p>Das <strong>Antigravity CLI</strong> (Befehlszeilenaufruf: <code>agy</code>) ist ein terminalbasiertes KI-Entwicklungswerkzeug von Google. Es unterscheidet sich von klassischen Chat-Assistenten durch drei wesentliche Merkmale:</p>
+<ol>
+<li><strong>Lokaler Dateizugriff</strong>: Es liest und schreibt direkt in deinem Projektordner.</li>
+<li><strong>Sandbox-Umgebung</strong>: Befehle und Ausführungen laufen in einer isolierten Sicherheitsumgebung (Sandbox, z. B. via <code>nsjail</code>), um dein Wirts-System vor fehlerhaften oder schädlichen Operationen zu schützen.</li>
+<li><strong>Agentische Autonomie</strong>: Du stellst eine hochrangige Aufgabe (z. B. <em>“Erstelle ein Tutorial-Projekt”</em>), und das CLI plant eigenständig die Teilschritte, liest Dokumentationen, modifiziert Dateien und korrigiert Linter-Fehler, bis das Ziel erreicht ist.</li>
+</ol>
+<h3 id="b-workspace-governance-dateien"><a class="header" href="#b-workspace-governance-dateien">B) Workspace-Governance-Dateien</a></h3>
+<p>Unter <strong>Workspace Governance</strong> versteht man Richtlinien-Dateien (<code>AGENTS.md</code>, <code>.agentrules</code>, <code>skills.md</code>, <code>glossary.md</code>), die im Hauptverzeichnis des Projekts liegen. Für das CLI wirken diese Dateien wie <strong>permanente System-Instruktionen</strong>:</p>
+<ul>
+<li>Sie werden bei jedem Start von <code>agy</code> eingelesen.</li>
+<li>Sie steuern das Verhalten des Agenten dynamisch (z. B. Programmierstil, erlaubte Befehle, Begriffsdefinitionen).</li>
+<li>Sie verhindern den sogenannten “Kontext-Verfall”, da der Agent immer Zugriff auf die aktuellen Projektregeln und den Projektstatus hat.</li>
+</ul>
+<h3 id="c-das-tutorial-unterverzeichnis"><a class="header" href="#c-das-tutorial-unterverzeichnis">C) Das Tutorial-Unterverzeichnis</a></h3>
+<p>Ein <strong>Tutorial-Unterverzeichnis</strong> (z. B. <code>Tutorial/</code>) ist ein isolierter Bereich innerhalb deines Projektordners. Es dient dazu:</p>
+<ul>
+<li>Dem Nutzer lauffähige, didaktisch reduzierte Minimalbeispiele bereitzustellen.</li>
+<li>Den Hauptcode (<code>src/</code>) sauber von Lehrbeispielen zu trennen.</li>
+<li>Dem KI-Agenten eine abgegrenzte Spielwiese zu bieten, auf der er Codebeispiele für Lernende generieren und verifizieren kann, ohne die Produktivumgebung zu stören.</li>
+</ul>
+<hr>
+<h2 id="2-die-vier-säulen-der-workspace-professionalisierung"><a class="header" href="#2-die-vier-säulen-der-workspace-professionalisierung">2. Die vier Säulen der Workspace-Professionalisierung</a></h2>
+<p>Wenn du dein Projekt maximal professionalisieren willst, reicht es nicht mehr aus, Code ad-hoc zu schreiben. Du benötigst klare Richtlinien für dich und die KI-Agenten, die dich beim Programmieren unterstützen. Eine saubere Ordnerstruktur im Projekt-Root sieht dabei wie folgt aus:</p>
+<pre><code>MeinRustProjekt/
+├── AGENTS.md        # Wer macht was? Wo stehen wir aktuell? (Status &amp; Rollen)
+├── skills.md        # Wie bediene ich Manim, Blender und Kokoro-onnx fehlerfrei? (Spezialwissen)
+├── .agentrules      # Allgemeine Verhaltensregeln für die KI (Sprache, Stil, Editionen)
+├── glossary.md      # Exakte Begriffsdefinitionen für das Rust-Lehrbuch (Fachbegriffe)
+├── Cargo.toml       # Rust Projektkonfiguration
+└── src/             # Quellcode-Verzeichnis
+</code></pre>
+<p>Diese Governance-Dateien werden von modernen KI-Assistenten wie dem Antigravity CLI beim Start automatisch eingelesen. Sie dienen als feste Leitplanken (Guards) und Kontextspeicher.</p>
+<h3 id="21-agentsmd--projektstatus-und-aufgabenteilung"><a class="header" href="#21-agentsmd--projektstatus-und-aufgabenteilung">2.1 <code>AGENTS.md</code> – Projektstatus und Aufgabenteilung</a></h3>
+<p>Diese Datei dokumentiert das “Wer, Was, Wo”. Sie gibt der KI Auskunft über den aktuellen Projektfortschritt und die genaue Rollenverteilung im Team (z. B. welche Kapitel bereits abgeschlossen sind).</p>
+<ul>
+<li><strong>Nutzen</strong>: Sie verhindert, dass die KI veraltete Aufgaben wiederholt oder an der falschen Stelle weiterarbeitet.</li>
+</ul>
+<h3 id="22-skillsmd--spezialwissen-für-tools-und-frameworks"><a class="header" href="#22-skillsmd--spezialwissen-für-tools-und-frameworks">2.2 <code>skills.md</code> – Spezialwissen für Tools und Frameworks</a></h3>
+<p>Hier wird prozedurales Wissen festgehalten, das über die normale Programmiersprache hinausgeht. In unserem Kurs betrifft das z. B. die fehlerfreie Erstellung von Manim-Szenen, die Steuerung von Blender via Python/Geometry-Nodes oder die Generierung von Sprache mit Kokoro-onnx.</p>
+<ul>
+<li><strong>Nutzen</strong>: Verhindert typische Halluzinationen oder Syntaxfehler der KI bei der Nutzung von Bibliotheken und externen Programmen.</li>
+</ul>
+<h3 id="23-agentrules--die-programmierrichtlinien-und-verhaltensregeln"><a class="header" href="#23-agentrules--die-programmierrichtlinien-und-verhaltensregeln">2.3 <code>.agentrules</code> – Die Programmierrichtlinien und Verhaltensregeln</a></h3>
+<p>In dieser Konfigurationsdatei legst du fest, wie die KI agieren soll. Hier definierst du Vorgaben zu Sprache (z. B. Deutsch), Tonfall, Code-Formatierung (z. B. Zeilenlängen, Einrückungen) und Editiermethoden (z. B. “keine vollständigen Dateikopien, sondern präzises Editieren einzelner Zeilen”).</p>
+<ul>
+<li><strong>Nutzen</strong>: Sichert einen konsistenten Code-Stil und schont Token-Limits.</li>
+</ul>
+<h3 id="24-glossarymd--die-begriffliche-wahrheit"><a class="header" href="#24-glossarymd--die-begriffliche-wahrheit">2.4 <code>glossary.md</code> – Die begriffliche Wahrheit</a></h3>
+<p>In dieser Datei werden alle Fachbegriffe exakt definiert. Wenn die KI eine Erklärung für das Lehrbuch schreibt, muss sie sich an die Definitionen im Glossar halten.</p>
+<ul>
+<li><strong>Nutzen</strong>: Verhindert widersprüchliche oder ungenaue Erklärungen komplexer Rust-Begriffe (wie z. B. der Unterschied zwischen <em>Borrowing</em> und <em>Ownership</em>).</li>
+</ul>
+<hr>
+<h2 id="3-das-antigravity-cli-agy-im-schnelldurchlauf"><a class="header" href="#3-das-antigravity-cli-agy-im-schnelldurchlauf">3. Das Antigravity CLI (<code>agy</code>) im Schnelldurchlauf</a></h2>
+<p>Das Antigravity CLI ist Googles Befehlszeilenschnittstelle zur Interaktion mit fortschrittlichen KI-Agenten. Im Gegensatz zu einfachen Chat-Websites arbeitet <code>agy</code> direkt auf deinem lokalen Dateisystem – geschützt in einer sicheren <strong>Sandbox</strong>.</p>
+<h3 id="31-installation"><a class="header" href="#31-installation">3.1 Installation</a></h3>
+<p>Die Installation erfolgt einfach über ein kurzes Skript im Terminal:</p>
+<ul>
+<li><strong>Linux / macOS</strong>:
+<pre><code class="language-bash">curl -fsSL https://antigravity.google/cli/install.sh | bash
+</code></pre>
+</li>
+<li><strong>Windows (PowerShell)</strong>:
+<pre><code class="language-powershell">irm https://antigravity.google/cli/install.ps1 | iex
+</code></pre>
+</li>
+</ul>
+<p>Nach der Installation steht dir das CLI weltweit über den Befehl <code>agy</code> zur Verfügung.</p>
+<h3 id="32-cli-befehlsübersicht-start-optionen"><a class="header" href="#32-cli-befehlsübersicht-start-optionen">3.2 CLI-Befehlsübersicht (Start-Optionen)</a></h3>
+<p>Beim Starten von <code>agy</code> im Terminal kannst du verschiedene Unterbefehle und Parameter nutzen:</p>
+<ul>
+<li><strong><code>agy</code></strong>: Startet die interaktive TUI (Terminal User Interface) im aktuellen Verzeichnis.</li>
+<li><strong><code>agy inspect</code></strong>: Analysiert den aktuellen Projekt-Workspace, listet gefundene Regeln (<code>.agentrules</code>, <code>AGENTS.md</code>) auf und zeigt an, welcher Kontext aktiv geladen ist. Sehr nützlich zur Fehlerdiagnose.</li>
+<li><strong><code>agy plugin import gemini</code></strong>: Importiert Einstellungen, API-Schlüssel und benutzerdefinierte Skripte vom Vorgänger (Gemini CLI) in deine neue Antigravity-Umgebung.</li>
+</ul>
+<h3 id="33-nützliche-slash-befehle-in-der-tui"><a class="header" href="#33-nützliche-slash-befehle-in-der-tui">3.3 Nützliche Slash-Befehle in der TUI</a></h3>
+<p>Wenn du das CLI gestartet hast, kannst du folgende Steuerungsbefehle (Slash-Commands) im Eingabefeld eintippen:</p>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th style="text-align: left">Befehl</th><th style="text-align: left">Beschreibung</th></tr>
+</thead>
+<tbody>
+<tr><td style="text-align: left"><strong><code>/settings</code> / <code>/config</code></strong></td><td style="text-align: left">Konfiguriert das CLI (Farben, Tastenkombinationen, API-Keys).</td></tr>
+<tr><td style="text-align: left"><strong><code>/permissions</code></strong></td><td style="text-align: left">Zeigt an, welche Lese- und Schreibrechte der Agent im aktuellen Ordner besitzt.</td></tr>
+<tr><td style="text-align: left"><strong><code>/skills</code></strong></td><td style="text-align: left">Listet alle geladenen Skills aus der <code>skills.md</code> oder dem Ordner <code>.agents/skills/</code> auf.</td></tr>
+<tr><td style="text-align: left"><strong><code>/clear</code></strong></td><td style="text-align: left">Setzt den aktuellen Kontext und Chatverlauf zurück (Gedächtnis löschen).</td></tr>
+<tr><td style="text-align: left"><strong><code>/rewind</code></strong></td><td style="text-align: left">Ermöglicht es, im Kontext zurückzuspringen, falls die KI einen falschen Pfad eingeschlagen hat.</td></tr>
+<tr><td style="text-align: left"><strong><code>/resume</code></strong></td><td style="text-align: left">Nimmt eine zuvor abgebrochene oder beendete Sitzung wieder auf.</td></tr>
+<tr><td style="text-align: left"><strong><code>/fork</code></strong></td><td style="text-align: left">Erstellt einen neuen Entwicklungs-Zweig der aktuellen Agenten-Sitzung zum Experimentieren.</td></tr>
+<tr><td style="text-align: left"><strong><code>/exit</code></strong></td><td style="text-align: left">Beendet die aktuelle Sitzung des CLI.</td></tr>
+<tr><td style="text-align: left"><strong><code>!</code></strong></td><td style="text-align: left">Führt einen Terminalbefehl direkt aus (z. B. <code>!cargo test</code>).</td></tr>
+<tr><td style="text-align: left"><strong><code>@</code></strong></td><td style="text-align: left">Sucht nach Dateien oder Verzeichnissen im Projekt, um sie der KI als direkten Kontext mitzugeben.</td></tr>
+</tbody>
+</table>
+</div>
+<h3 id="34-der-interaktive-kommentar--und-feedback-workflow"><a class="header" href="#34-der-interaktive-kommentar--und-feedback-workflow">3.4 Der interaktive Kommentar- und Feedback-Workflow</a></h3>
+<p>Ein wesentliches Feature des CLI ist die Möglichkeit, <strong>Kommentare und Feedback zu vorgeschlagenen Änderungen</strong> einzugeben. So kannst du den Agenten präzise steuern:</p>
+<ol>
+<li><strong>Vorgeschlagene Änderungen prüfen (<code>ctrl+r</code>)</strong>:
+Wenn der Agent Dateien ändert oder neu erstellt, siehst du im TUI-Interface die Liste der vorgeschlagenen Modifikationen. Drücke <strong><code>ctrl+r</code></strong>, um das Review-Panel zu öffnen.</li>
+<li><strong>Kommentare eingeben (Feedback Loop)</strong>:
+Statt die Änderungen direkt zu akzeptieren (<code>Proceed</code>) oder komplett abzulehnen, kannst du im Textfeld des Review-Panels <strong>Kommentare und Korrekturwünsche eingeben</strong>.
+<ul>
+<li><em>Beispiel</em>: <em>“Der Code in <code>src/main.rs</code> ist korrekt, aber bitte füge am Anfang der Datei einen doc-comment hinzu, der die Funktionsweise erklärt.”</em></li>
+<li><em>Beispiel</em>: <em>“Die Fehlerbehandlung in Zeile 42 wirft ein Panic. Bitte fange den Fehler ab und gib ein <code>Result::Err</code> zurück.”</em></li>
+</ul>
+</li>
+<li><strong>Iterative Anpassung</strong>:
+Nachdem du den Kommentar abgeschickt hast, analysiert der Agent dein Feedback, passt den Code in der Sandbox an und präsentiert dir eine neue Version der Datei zur Überprüfung.</li>
+<li><strong>Code-Kommentar-Richtlinien (<code>.agentrules</code>)</strong>:
+Über die Konfiguration <code>always_preserve_comments = true</code> in deiner <code>.agentrules</code> stellst du sicher, dass die KI bei ihren Code-Änderungen niemals deine manuell geschriebenen Kommentare oder Dokumentationen löscht.</li>
+</ol>
+<hr>
+<h2 id="4-tutorial-unterverzeichnis-tutorial-erstellen-und-einbauen-mit-agy"><a class="header" href="#4-tutorial-unterverzeichnis-tutorial-erstellen-und-einbauen-mit-agy">4. Tutorial: Unterverzeichnis “Tutorial” erstellen und einbauen mit <code>agy</code></a></h2>
+<p>Jetzt zeigen wir dir praktisch, wie du die Power des Antigravity CLI nutzt, um ein neues Unterverzeichnis namens <code>Tutorial</code> zu erstellen, darin ein Rust-Lernprojekt anzulegen und es in dein mdBook-Lehrbuch zu integrieren.</p>
+<h3 id="schritt-1-das-cli-im-projektordner-starten"><a class="header" href="#schritt-1-das-cli-im-projektordner-starten">Schritt 1: Das CLI im Projektordner starten</a></h3>
+<p>Öffne dein Terminal, navigiere in dein Projektverzeichnis und starte das CLI:</p>
+<pre><code class="language-bash">cd /home/thorsten/RustKurs
+agy
+</code></pre>
+<h3 id="schritt-2-der-prompt-zur-verzeichniserstellung"><a class="header" href="#schritt-2-der-prompt-zur-verzeichniserstellung">Schritt 2: Der Prompt zur Verzeichniserstellung</a></h3>
+<p>Tippe nun den folgenden Prompt in das Eingabefeld des CLI ein:</p>
+<blockquote>
+<p>💬 <em>“Erstelle ein neues Unterverzeichnis <code>Tutorial</code> im Projekt-Root. Initialisiere darin ein neues Cargo-Projekt namens <code>zahlenraten</code>. Schreibe in <code>Tutorial/zahlenraten/src/main.rs</code> ein einfaches, gut kommentiertes Zahlenratespiel in Rust und lege im Ordner <code>Tutorial</code> eine ausführliche <code>README.md</code> an, die erklärt, wie man das Spiel baut und startet.”</em></p>
+</blockquote>
+<h3 id="schritt-3-der-arbeitsablauf-der-ki"><a class="header" href="#schritt-3-der-arbeitsablauf-der-ki">Schritt 3: Der Arbeitsablauf der KI</a></h3>
+<p>Die KI analysiert deine Anfrage und führt im Hintergrund folgende Schritte in ihrer Sandbox aus:</p>
+<ol>
+<li><strong>Verzeichniserstellung</strong>: Sie erstellt den Ordner <code>Tutorial</code>.</li>
+<li><strong>Cargo-Init</strong>: Sie wechselt in den Ordner und ruft <code>cargo new zahlenraten</code> auf.</li>
+<li><strong>Code-Erstellung</strong>: Sie schreibt das Spiel in <code>Tutorial/zahlenraten/src/main.rs</code>.</li>
+<li><strong>Dokumentation</strong>: Sie generiert die Datei <code>Tutorial/README.md</code>.</li>
+</ol>
+<h3 id="schritt-4-überprüfung-der-änderungen-artifact-review"><a class="header" href="#schritt-4-überprüfung-der-änderungen-artifact-review">Schritt 4: Überprüfung der Änderungen (Artifact Review)</a></h3>
+<p>Sobald die KI fertig ist, wird dir im CLI die Option zur Überprüfung der generierten Dateien angeboten.</p>
+<ul>
+<li>Drücke <strong><code>ctrl+r</code></strong>, um das <em>Artifact Review Panel</em> to öffnen.</li>
+<li>Hier siehst du alle neu erstellten Dateien und deren Inhalt.</li>
+<li>Wenn alles passt, bestätige die Änderungen mit <strong>Proceed</strong> (oder <strong>Approve</strong>), um sie aus der Sandbox in dein echtes Dateisystem zu übernehmen.</li>
+</ul>
+<h3 id="schritt-5-das-spiel-testen"><a class="header" href="#schritt-5-das-spiel-testen">Schritt 5: Das Spiel testen</a></h3>
+<p>Du kannst der KI direkt im Chat befehlen, das erstellte Projekt zu testen:</p>
+<blockquote>
+<p>💬 <em>“Wechsle in das Verzeichnis <code>Tutorial/zahlenraten</code>, baue das Projekt und führe die Tests aus.”</em></p>
+</blockquote>
+<p>Die KI führt den Befehl aus (entspricht <code>cargo check</code> und <code>cargo test</code>) und gibt dir das Testergebnis im Chat aus. Alternativ kannst du den Test über das Präfix <code>!</code> selbst triggern:</p>
+<pre><code class="language-bash">!cd Tutorial/zahlenraten &amp;&amp; cargo run
+</code></pre>
+<h3 id="schritt-6-der-generierte-code-und-seine-erläuterung"><a class="header" href="#schritt-6-der-generierte-code-und-seine-erläuterung">Schritt 6: Der generierte Code und seine Erläuterung</a></h3>
+<p>Nachdem der Agent das Cargo-Projekt erstellt hat, enthält die Datei <code>Tutorial/zahlenraten/src/main.rs</code> den folgenden lauffähigen Rust-Code:</p>
+<pre class="playground"><code class="language-rust edition2021">use std::io;
+use std::cmp::Ordering;
+use rand::Rng; // Wichtig: Das rand-Crate muss in Cargo.toml eingetragen sein!
+
+fn main() {
+    println!("Willkommen beim Zahlenratespiel!");
+
+    // Generiere eine geheime Zufallszahl zwischen 1 und 100
+    let geheimzahl = rand::thread_rng().gen_range(1..=100);
+
+    println!("Ich habe an eine Zahl zwischen 1 und 100 gedacht.");
+
+    loop {
+        println!("Bitte gib deinen Tipp ein:");
+
+        let mut tipp = String::new();
+
+        // Lese die Eingabe von der Konsole ein
+        io::stdin()
+            .read_line(&amp;mut tipp)
+            .expect("Fehler beim Lesen der Zeile");
+
+        // Konvertiere die Eingabe in eine Zahl (u32)
+        // Fehlerhafte Eingaben werden durch 'continue' abgefangen
+        let tipp: u32 = match tipp.trim().parse() {
+            Ok(zahl) =&gt; zahl,
+            Err(_) =&gt; {
+                println!("Bitte gib eine gültige Zahl ein!");
+                continue;
+            }
+        };
+
+        println!("Dein Tipp: {}", tipp);
+
+        // Vergleiche den Tipp mit der Geheimzahl
+        match tipp.cmp(&amp;geheimzahl) {
+            Ordering::Less =&gt; println!("Zu klein!"),
+            Ordering::Greater =&gt; println!("Zu groß!"),
+            Ordering::Equal =&gt; {
+                println!("Du hast gewonnen! 🎉");
+                break; // Schleife beenden und Spiel beenden
+            }
+        }
+    }
+}</code></pre>
+<h4 id="beschreibung-der-funktionsweise"><a class="header" href="#beschreibung-der-funktionsweise">Beschreibung der Funktionsweise:</a></h4>
+<ol>
+<li><strong>Bibliotheken einbinden</strong>: Über <code>use std::io</code> binden wir das Standard-Eingabe/Ausgabe-Modul ein. <code>std::cmp::Ordering</code> importiert ein Enum mit den Varianten <code>Less</code>, <code>Greater</code> und <code>Equal</code> für Vergleiche.</li>
+<li><strong>Zufallszahl generieren</strong>: Mit <code>rand::thread_rng().gen_range(1..=100)</code> erzeugt das Programm eine zufällige Ganzzahl zwischen 1 und 100.</li>
+<li><strong>Schleife (<code>loop</code>)</strong>: Ein unendlicher Loop sorgt dafür, dass der Spieler so oft tippen kann, bis er die richtige Zahl errät.</li>
+<li><strong>Fehlertolerante Eingabe</strong>: Die Eingabe wird als String eingelesen und mittels <code>tipp.trim().parse()</code> in eine Ganzzahl (<code>u32</code>) umgewandelt. Durch das Pattern Matching (<code>match</code>) fängt das Programm Konvertierungsfehler (z. B. bei der Eingabe von Buchstaben) ab: Bei einem Fehler (<code>Err(_)</code>) gibt es eine Meldung aus und startet den nächsten Schleifendurchlauf mit <code>continue</code>, statt abzustürzen.</li>
+<li><strong>Vergleich und Spielende</strong>: Mit <code>tipp.cmp(&amp;geheimzahl)</code> vergleichen wir den Tipp mit der Geheimzahl. Stimmt der Wert überein (<code>Ordering::Equal</code>), bricht <code>break</code> die Schleife ab und das Spiel endet.</li>
+</ol>
+<p>Gleichzeitig wurde im Verzeichnis <code>Tutorial/README.md</code> die folgende Dokumentation angelegt:</p>
+<pre><code class="language-markdown"># Zahlenratespiel in Rust
+
+Ein einfaches Konsolenspiel, bei dem der Spieler eine geheime Zahl zwischen 1 und 100 erraten muss.
+
+## Anforderungen
+* Rust &amp; Cargo installiert (siehe Kapitel 2)
+
+## Projekt ausführen
+Wechsle in das Verzeichnis und starte das Spiel:
+```bash
+cd zahlenraten
+cargo run
+</code></pre>
+<pre><code>
+Durch diese saubere Generierung im Unterordner `Tutorial` hast du ein voll funktionsfähiges Übungsbeispiel erstellt, ohne die Quelldateien deines Hauptprojekts zu verändern.
+
+---
+
+## 5. Code-Beispiele für die Governance-Dateien
+
+Damit du direkt siehst, wie die vier Governance-Dateien in der Praxis aufgebaut sind, findest du hier vollständige, gebrauchsfertige Vorlagen.
+
+### 5.1 Vorlage: `AGENTS.md` (Auszug)
+Diese Datei liegt im Projekt-Root und dokumentiert den Zustand.
+
+```markdown
+# Rust-Videokurs: Workspace Governance
+
+**Tech Stack:** Manim (Python), Blender 3D, Kokoro-onnx TTS, Remotion.
+**Status:** 
+- Kapitel 1–23: Abgeschlossen (Video &amp; Audio bereit).
+- Kapitel 24: In Bearbeitung (Professionalisierung &amp; Antigravity CLI).
+
+## Rollen &amp; Zuständigkeiten
+- **Hauptagent**: Koordination, Erstellung der Lehrbuchkapitel (`.md`-Dateien).
+- **Subagent 'Video-Generator'**: Erstellung der Manim- und Blender-Python-Skripte.
+- **Subagent 'Audio-Generator'**: Triggerung des Kokoro-onnx TTS-Systems.
+</code></pre>
+<h3 id="52-vorlage-skillsmd"><a class="header" href="#52-vorlage-skillsmd">5.2 Vorlage: <code>skills.md</code></a></h3>
+<p>Hier wird das fehlerfreie Bedienen unserer Video- und Audio-Tools dokumentiert.</p>
+<pre><code class="language-markdown"># Agent Skills – Tool-Steuerung
+
+## Skill: @generate-manim
+Verwende diesen Ablauf, um fehlerfreie Manim-Skripte zu schreiben:
+1. Verwende immer die Klasse `video_scene.py` als Basisklasse.
+2. Code-Hervorhebungen müssen über die `Pygments`-Bibliothek vorgenommen werden.
+3. Rendere Szenen vorab mit niedriger Auflösung (`manim -ql scene.py`) zum Testen.
+4. **Dynamische Videolänge**: Videos nicht künstlich auf 5 Minuten (300s) strecken. Die Länge richtet sich dynamisch nach der echten Audiozeit plus 1,0–1,5s Übergangspause pro Abschnitt.
+
+## Skill: @generate-audio
+Ablauf zur Erstellung von Audio-Voiceovers mit Kokoro-onnx:
+1. Text in Sätze aufteilen (maximal 150 Zeichen pro Segment für optimalen Flow).
+2. Nutze das Skript `generate_audio.py` mit dem Parameter `--speed 1.0` und `--voice af_bella`.
+3. Speichere das Ergebnis im Ordner `audio/` als `.wav`.
+4. **Dynamische Zusammenführung**: Mische die Audiospuren mit einer festen Lücke von 1,0–1,5s zwischen Abschnitten, ohne künstliches Padding auf 300s.
+</code></pre>
+<h3 id="53-vorlage-agentrules"><a class="header" href="#53-vorlage-agentrules">5.3 Vorlage: <code>.agentrules</code></a></h3>
+<p>Verhaltensregeln für den KI-Assistenten im Projekt.</p>
+<pre><code class="language-ini"># Allgemeine Verhaltensregeln für KI-Agenten
+[behavior]
+language = de
+tone = professional_and_educational
+allow_network = false
+
+[code_edition]
+always_preserve_comments = true
+always_preserve_docstrings = true
+preferred_indentation = spaces_4
+modify_mode = precision_replace # Keine vollständigen Datei-Überschreibungen!
+
+[rust_guidelines]
+idiomatic_rust = true
+clippy_warnings = error
+docs_required = true
+
+[markdown]
+formatting = gfm # GitHub Flavored Markdown
+link_style = standard # Keine Backticks um Linktexte (z.B. [link](url) statt [`link`](url))
+always_use_hierarchical_headers = true
+keep_bullet_points_concise = true
+</code></pre>
+<h3 id="54-vorlage-glossarymd"><a class="header" href="#54-vorlage-glossarymd">5.4 Vorlage: <code>glossary.md</code></a></h3>
+<p>Die zentralen Rust-Begriffsdefinitionen.</p>
+<pre><code class="language-markdown"># Glossar: Rust Kernbegriffe
+
+*   **Ownership (Besitzrecht)**: Das Kernprinzip der Speicherverwaltung in Rust. Jeder Wert hat genau einen Besitzer (Variable). Verlässt der Besitzer den Gültigkeitsbereich (Scope), wird der Wert automatisch gelöscht.
+*   **Borrowing (Ausleihen)**: Das zeitweise Ausleihen eines Wertes über Referenzen (`&amp;` für unveränderlich, `&amp;mut` für veränderlich), ohne das Ownership zu übertragen.
+*   **Borrow Checker**: Die Compiler-Komponente, die zur Kompilierzeit prüft, ob alle Referenz- und Ausleihregeln eingehalten werden (z. B. keine veränderliche Ausleihe neben unveränderlichen Ausleihen).
+*   **Lifetimes (Lebensdauern)**: Die Zeitspanne, in der eine Referenz auf einen Wert gültig ist. Wird vom Compiler geprüft, um "Dangling References" (Verweise auf gelöschten Speicher) zu verhindern.
+</code></pre>
+<hr>
+<h2 id="-zusammenfassung-für-die-hosentasche-2"><a class="header" href="#-zusammenfassung-für-die-hosentasche-2">💡 Zusammenfassung für die Hosentasche</a></h2>
+<ul>
+<li><strong>Workspace-Governance</strong>: Ein professionelles Projekt nutzt <code>AGENTS.md</code> (Status), <code>skills.md</code> (Spezialwissen), <code>.agentrules</code> (KI-Verhaltensregeln) und <code>glossary.md</code> (Fachbegriffe), um KI-Agenten optimal zu steuern.</li>
+<li><strong>Antigravity CLI</strong>: Der Befehl <code>agy</code> öffnet ein TUI-Interface zur direkten Entwicklung in einer sicheren Sandbox.</li>
+<li><strong>Slash-Befehle</strong>: Mit <code>/settings</code> oder <code>/permissions</code> steuerst du das CLI, während <code>!</code> Terminalkommandos ausführt.</li>
+<li><strong>Praxis-Workflow</strong>: Erstelle Unterordner (wie <code>Tutorial</code>) direkt über einen TUI-Prompt, überprüfe die generierten Dateien mit <strong><code>ctrl+r</code></strong> (Artifact Review) und teste sie direkt in der Sandbox.</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="kapitel-25-der-slice-typ-slices"><a class="header" href="#kapitel-25-der-slice-typ-slices">Kapitel 25: Der Slice-Typ (Slices)</a></h1>
+<p>Slices sind eines der mächtigsten Werkzeuge in Rust, um sicher und ohne zusätzliche Allokationen auf Teilausschnitte von Kollektionen zuzugreifen. Sie ermöglichen es Ihnen, Speicherbereiche effizient zu referenzieren, ohne deren Besitzer zu sein.</p>
+<hr>
+<h2 id="1-lernziele--lernplan"><a class="header" href="#1-lernziele--lernplan">1. Lernziele &amp; Lernplan</a></h2>
+<h3 id="lernziele"><a class="header" href="#lernziele">Lernziele</a></h3>
+<ul>
+<li><strong>Sie können</strong> das Konzept von Slices erklären und den Unterschied im Speicher zwischen einem <code>String</code> (Besitzer) und einem <code>&amp;str</code> (Referenz) auf Stack und Heap skizzieren.</li>
+<li><strong>Sie können</strong> Slices unter Verwendung der Range-Syntax (<code>..</code>, <code>..=</code>, <code>n..</code>, <code>..n</code>) deklarieren und manipulieren.</li>
+<li><strong>Sie können</strong> Funktionen entwerfen, die Slices als Parameter akzeptieren, und den Nutzen von Deref Coercion erklären.</li>
+<li><strong>Sie können</strong> Array-Slices vom Typ <code>&amp;[T]</code> anwenden und gängige Slice-Methoden fehlerfrei einsetzen.</li>
+</ul>
+<h3 id="lernplan"><a class="header" href="#lernplan">Lernplan</a></h3>
+<ol>
+<li><strong>Die Definition</strong>: Der präzise Einstieg in Slices.</li>
+<li><strong>Das Problem</strong>: Die Gefahr von nicht synchronisierten Indizes im Speicher.</li>
+<li><strong>Der naive Versuch</strong>: Ein fehlerhafter Code mit <code>usize</code>.</li>
+<li><strong>Die Anatomie des Fehlers</strong>: Analyse des Speicherzustands und des logischen Bugs.</li>
+<li><strong>Die Lösung</strong>: Korrekter Code unter Verwendung von String-Slices.</li>
+<li><strong>Kleines Tutorial</strong>: Ein logischer Log-Parser mit Schritt-für-Schritt-Praxis.</li>
+<li><strong>Mentale Modelle &amp; Deep Dive</strong>: Stack- vs. Heap-Layout von Fat Pointern.</li>
+<li><strong>Drei praktische Übungen</strong>: Aufgaben mit steigendem Schwierigkeitsgrad.</li>
+<li><strong>Lernstrategie &amp; Merkzettel</strong>: Detaillierte API-Methodenauflistung und Selbsttest.</li>
+<li><strong>Zusammenfassung</strong>: Schnelle Übersicht über die Kernkonzepte.</li>
+</ol>
+<hr>
+<h2 id="2-die-definition-der-präzise-einstieg"><a class="header" href="#2-die-definition-der-präzise-einstieg">2. Die Definition (Der präzise Einstieg)</a></h2>
+<p>Ein <strong>Slice</strong> (Ausschnitt) ist eine Referenz auf eine zusammenhängende Sequenz von Elementen in einer Collection, ohne diese Collection zu besitzen. Da ein Slice eine Referenz ist, unterliegt er den Ausleihregeln (Borrowing) von Rust. Er besitzt keinen eigenen Heap-Speicher, sondern verweist (als sogenannter <em>Fat Pointer</em>) direkt auf einen zusammenhängenden Speicherbereich einer bereits existierenden Kollektion.</p>
+<hr>
+<h2 id="3-das-problem--die-motivation-die-ausgangslage"><a class="header" href="#3-das-problem--die-motivation-die-ausgangslage">3. Das Problem &amp; Die Motivation (Die Ausgangslage)</a></h2>
+<p>Stellen Sie sich vor, Sie sollen eine Funktion schreiben, die einen String mit durch Leerzeichen getrennten Wörtern entgegennimmt und das erste gefundene Wort zurückgibt. Findet die Funktion kein Leerzeichen, soll der gesamte String zurückgegeben werden.</p>
+<p>Ohne Slices müssten wir versuchen, die Position des Leerzeichens als Zahl (<code>usize</code>) zurückzugeben. Das Problem hierbei ist, dass diese Zahl separat vom String gespeichert wird. Wenn sich der ursprüngliche String ändert (z. B. gelöscht oder überschrieben wird), bleibt unsere Index-Variable bestehen. Der Index verliert seine Gültigkeit, ohne dass der Compiler dies bemerkt, was im weiteren Programmverlauf zu Fehlern oder Systemabstürzen führt.</p>
+<hr>
+<h2 id="4-der-naive-versuch-der-fehlerhafte-code"><a class="header" href="#4-der-naive-versuch-der-fehlerhafte-code">4. Der naive Versuch (Der fehlerhafte Code)</a></h2>
+<p>Hier ist ein erster, naiver Entwurf, der versucht, die Endposition des ersten Wortes als Zahl zurückzugeben:</p>
+<pre class="playground"><code class="language-rust edition2021">fn first_word(s: &amp;String) -&gt; usize {
+    let bytes = s.as_bytes(); // Umwandlung in ein Byte-Array zur zeichenweisen Prüfung
+
+    for (i, &amp;item) in bytes.iter().enumerate() {
+        if item == b' ' {
+            return i; // Leerzeichen gefunden -&gt; Index zurückgeben
+        }
+    }
+
+    s.len() // Kein Leerzeichen gefunden -&gt; Gesamtlänge zurückgeben
+}
+
+fn main() {
+    let mut s = String::from("hello world");
+    let word_end = first_word(&amp;s); // word_end erhält den Wert 5
+
+    s.clear(); // Der String wird geleert (""). Seine Länge ist nun 0!
+
+    // word_end ist immer noch 5!
+    // Wenn wir nun versuchen, auf die ersten 5 Zeichen von s zuzugreifen,
+    // stürzt das Programm ab oder liefert ungültige Daten.
+    println!("Das erste Wort endet bei Index: {}", word_end);
+}</code></pre>
+<hr>
+<h2 id="5-die-anatomie-des-fehlers-fehleranalyse--compiler-feedback"><a class="header" href="#5-die-anatomie-des-fehlers-fehleranalyse--compiler-feedback">5. Die Anatomie des Fehlers (Fehleranalyse &amp; Compiler-Feedback)</a></h2>
+<h3 id="was-sagt-das-system"><a class="header" href="#was-sagt-das-system">Was sagt das System?</a></h3>
+<p>Das obige Programm lässt sich problemlos kompilieren! Der Rust-Compiler sieht keinen Fehler, da <code>word_end</code> vom Typ <code>usize</code> ist. <code>usize</code> ist ein primitiver Typ, der das <code>Copy</code>-Trait implementiert und völlig unabhängig vom Zustand der Variable <code>s</code> ist.</p>
+<h3 id="der-blick-hinter-die-kulissen-speicherlayout"><a class="header" href="#der-blick-hinter-die-kulissen-speicherlayout">Der Blick hinter die Kulissen (Speicherlayout)</a></h3>
+<ol>
+<li><strong>Vor dem Leeren (<code>s.clear()</code>)</strong>:
+<ul>
+<li><strong>Stack</strong>: <code>s</code> hält einen Pointer auf den Heap (z. B. <code>0x500</code>), die Länge <code>11</code> und die Kapazität <code>11</code>.</li>
+<li><strong>Heap</strong>: An Adresse <code>0x500</code> liegen die ASCII-Bytes für <code>"hello world"</code>.</li>
+<li><strong>Stack</strong>: <code>word_end</code> enthält die Zahl <code>5</code>.</li>
+</ul>
+</li>
+<li><strong>Nach dem Leeren (<code>s.clear()</code>)</strong>:
+<ul>
+<li><strong>Heap</strong>: Die Daten an Adresse <code>0x500</code> werden ungültig gemacht/gelöscht. Die Länge von <code>s</code> im Stack wird auf <code>0</code> gesetzt.</li>
+<li><strong>Stack</strong>: <code>word_end</code> ist unverändert <code>5</code>.</li>
+</ul>
+</li>
+<li><strong>Die Fehlerquelle</strong>: Wenn wir nun versuchen, auf den Bereich <code>&amp;s[0..word_end]</code> zuzugreifen, stellt Rust zur Laufzeit fest, dass die Länge von <code>s</code> nur <code>0</code> beträgt, der angeforderte Index <code>5</code> jedoch außerhalb liegt. Das Programm bricht sofort mit einer kontrollierten Panik ab (<em>index out of bounds</em>).</li>
+</ol>
+<hr>
+<h2 id="6-die-lösung"><a class="header" href="#6-die-lösung">6. Die Lösung</a></h2>
+<p>Rust bietet mit String-Slices (<code>&amp;str</code>) eine elegante Möglichkeit, Teilausschnitte typsicher zu referenzieren. Der Compiler garantiert, dass die Slices niemals länger existieren als die Daten, auf die sie verweisen.</p>
+<p>Hier ist die korrekte Implementierung:</p>
+<pre class="playground"><code class="language-rust edition2021">fn first_word(s: &amp;str) -&gt; &amp;str {
+    let bytes = s.as_bytes();
+
+    for (i, &amp;item) in bytes.iter().enumerate() {
+        if item == b' ' {
+            return &amp;s[0..i]; // Gibt einen Ausschnitt bis zum Leerzeichen zurück
+        }
+    }
+
+    &amp;s[..] // Gibt den gesamten String als Slice zurück
+}
+
+fn main() {
+    let mut s = String::from("hello world");
+    
+    let word = first_word(&amp;s); // word ist ein Slice (&amp;str), das auf s zeigt
+
+    s.clear(); // FEHLER! Der Compiler blockiert diesen Aufruf.
+
+    println!("Das erste Wort ist: {}", word);
+}</code></pre>
+<h3 id="die-compiler-fehlermeldung"><a class="header" href="#die-compiler-fehlermeldung">Die Compiler-Fehlermeldung</a></h3>
+<p>Wenn wir versuchen, diesen Code zu kompilieren, erhalten wir folgendes Feedback vom Borrow Checker:</p>
+<pre><code class="language-text">error[E0502]: cannot borrow `s` as mutable because it is also borrowed as immutable
+  --&gt; src/main.rs:16:5
+   |
+14 |     let word = first_word(&amp;s);
+   |                           -- immutable borrow occurs here
+15 | 
+16 |     s.clear(); // error!
+   |     ^^^^^^^^^ mutable borrow occurs here
+17 | 
+18 |     println!("Das erste Wort ist: {}", word);
+   |                                        ---- immutable borrow later used here
+</code></pre>
+<p>Da <code>word</code> eine aktive, unveränderbare Referenz (<code>&amp;str</code>) auf einen Teil von <code>s</code> hält, verbietet Rust jede veränderbare Operation (wie <code>s.clear()</code>) auf dem gesamten String, solange diese Referenz noch verwendet wird. Die Speicherintegrität ist gerettet!</p>
+<hr>
+<h2 id="7-kleines-tutorial-schritt-für-schritt-praxis"><a class="header" href="#7-kleines-tutorial-schritt-für-schritt-praxis">7. Kleines Tutorial (Schritt-für-Schritt-Praxis)</a></h2>
+<p>Wir erstellen nun Schritt für Schritt einen einfachen Log-Parser, der Zeilen im Format <code>[LOG_LEVEL] Nachricht</code> einliest und beide Bestandteile sicher als Slices zurückgibt.</p>
+<h3 id="eva-struktur-des-parsers"><a class="header" href="#eva-struktur-des-parsers">EVA-Struktur des Parsers:</a></h3>
+<ul>
+<li><strong>Eingabe (Input)</strong>: Eine Log-Zeile als String-Slice (<code>&amp;str</code>).</li>
+<li><strong>Verarbeitung (Processing)</strong>: Suche nach den eckigen Klammern <code>[</code> und <code>]</code> sowie dem Leerzeichen zur Trennung.</li>
+<li><strong>Ausgabe (Output)</strong>: Ein Tupel bestehend aus dem Log-Level-Slice und dem Nachrichten-Slice <code>(&amp;str, &amp;str)</code>.</li>
+</ul>
+<h3 id="schritt-1-das-grundgerüst-des-parsers-definieren"><a class="header" href="#schritt-1-das-grundgerüst-des-parsers-definieren">Schritt 1: Das Grundgerüst des Parsers definieren</a></h3>
+<p>Wir legen die Funktion fest, die nach den Begrenzungszeichen sucht:</p>
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>fn parse_log_line(line: &amp;str) -&gt; Option&lt;(&amp;str, &amp;str)&gt; {
+    // Schritt 2: Suchen der öffnenden und schließenden eckigen Klammern
+    if !line.starts_with('[') {
+        return None;
+    }
+
+    let end_bracket = line.find(']')?;
+    
+    // Schritt 3: Extrahieren des Log-Levels (ohne die Klammern)
+    let log_level = &amp;line[1..end_bracket];
+
+    // Die Nachricht beginnt nach der schließenden Klammer und einem Leerzeichen
+    let msg_start = end_bracket + 2;
+    if msg_start &gt;= line.len() {
+        return None;
+    }
+    
+    let message = &amp;line[msg_start..];
+
+    Some((log_level, message))
+}
+<span class="boring">}</span></code></pre>
+<h3 id="schritt-4-den-parser-in-der-praxis-nutzen"><a class="header" href="#schritt-4-den-parser-in-der-praxis-nutzen">Schritt 4: Den Parser in der Praxis nutzen</a></h3>
+<pre class="playground"><code class="language-rust edition2021">fn main() {
+    let log_entry = String::from("[ERROR] Verbindung zur Datenbank fehlgeschlagen");
+    
+    if let Some((level, msg)) = parse_log_line(&amp;log_entry) {
+        println!("Log-Level extrahiert: {}", level);
+        println!("Nachricht extrahiert: {}", msg);
+        
+        // log_entry.clear(); // Würde einen Compilerfehler erzeugen, da level und msg noch leben!
+    } else {
+        println!("Ungültiges Log-Format!");
+    }
+}</code></pre>
+<hr>
+<h2 id="8-mentale-modelle--deep-dive-hintergrundwissen"><a class="header" href="#8-mentale-modelle--deep-dive-hintergrundwissen">8. Mentale Modelle &amp; Deep Dive (Hintergrundwissen)</a></h2>
+<h3 id="das-speicherlayout-eines-slices-fat-pointer"><a class="header" href="#das-speicherlayout-eines-slices-fat-pointer">Das Speicherlayout eines Slices (Fat Pointer)</a></h3>
+<p>Ein normaler Referenz-Pointer auf ein Datenobjekt (z. B. <code>&amp;i32</code>) belegt auf einem 64-Bit-System 8 Bytes, da er lediglich eine Speicheradresse speichert.
+Ein Slice hingegen ist ein <strong>Fat Pointer</strong> und belegt <strong>16 Bytes</strong> im Stack:</p>
+<ol>
+<li><strong>Pointer (8 Bytes)</strong>: Zeigt auf das erste Element des Ausschnitts im Speicher.</li>
+<li><strong>Länge (8 Bytes)</strong>: Speichert die Anzahl der Elemente, die zum Slice gehören.</li>
+</ol>
+<pre><code>       String "hello world" im Heap
+       +---+---+---+---+---+---+---+---+---+---+---+
+Heap:  | h | e | l | l | o |   | w | o | r | l | d |
+       +---+---+---+---+---+---+---+---+---+---+---+
+         ^                   ^
+         |                   |
+       +---------+---------+ |
+Stack: | Pointer | Länge:5 |-+ (Slice `world` zeigt ab Index 6 auf 5 Bytes)
+       +---------+---------+
+</code></pre>
+<h3 id="vergleich-string-vs-str-und-vect-vs-t"><a class="header" href="#vergleich-string-vs-str-und-vect-vs-t">Vergleich: <code>String</code> vs <code>&amp;str</code> und <code>Vec&lt;T&gt;</code> vs <code>&amp;[T]</code></a></h3>
+<ul>
+<li><strong>Besitzer-Typen (<code>String</code>, <code>Vec&lt;T&gt;</code>)</strong>: Haben die Hoheit über den Speicher. Sie liegen auf dem Stack mit <strong>24 Bytes</strong> (Pointer auf Heap, Länge, Kapazität) und allozieren dynamischen Speicher auf dem Heap.</li>
+<li><strong>Slice-Typen (<code>&amp;str</code>, <code>&amp;[T]</code>)</strong>: Haben keine Kapazität, da sie nicht wachsen können. Sie belegen auf dem Stack nur <strong>16 Bytes</strong> (Pointer, Länge) und verweisen auf fremden Speicher (der auf dem Stack, Heap oder im statischen Programmcode liegen kann).</li>
+</ul>
+<hr>
+<h2 id="9-drei-praktische-übungen-herausforderungen"><a class="header" href="#9-drei-praktische-übungen-herausforderungen">9. Drei praktische Übungen (Herausforderungen)</a></h2>
+<h3 id="übung-1-leicht---syntax-festigen"><a class="header" href="#übung-1-leicht---syntax-festigen">Übung 1 (Leicht - Syntax festigen)</a></h3>
+<p>Schreiben Sie eine Funktion <code>last_word(s: &amp;str) -&gt; &amp;str</code>, die das letzte Wort in einem String zurückgibt. Wenn kein Leerzeichen vorhanden ist, soll der gesamte String zurückgegeben werden.</p>
+<ul>
+<li><em>Lösungshinweis</em>: Nutzen Sie die Methode <code>.rfind(' ')</code>, um rückwärts nach dem ersten Leerzeichen zu suchen.</li>
+</ul>
+<h3 id="übung-2-mittel---logik-erweitern"><a class="header" href="#übung-2-mittel---logik-erweitern">Übung 2 (Mittel - Logik erweitern)</a></h3>
+<p>Schreiben Sie eine Funktion <code>trim_spaces(s: &amp;str) -&gt; &amp;str</code>, die führende und nachfolgende Leerzeichen aus einem String-Slice abschneidet und den bereinigten Teilausschnitt zurückgibt.</p>
+<ul>
+<li><em>Lösungshinweis</em>: Suchen Sie den ersten Index, der kein Leerzeichen ist, und den letzten Index von hinten. Nutzen Sie dafür eventuell Iteratoren oder Methoden wie <code>.chars()</code>.</li>
+</ul>
+<h3 id="übung-3-schwer---transferleistung"><a class="header" href="#übung-3-schwer---transferleistung">Übung 3 (Schwer - Transferleistung)</a></h3>
+<p>Implementieren Sie eine generische Funktion <code>find_subslice&lt;T: PartialEq&gt;(data: &amp;[T], pattern: &amp;[T]) -&gt; Option&lt;usize&gt;</code>, die das erste Vorkommen eines Musterausschnitts (<code>pattern</code>) in einem größeren Array-Slice (<code>data</code>) sucht und den Startindex zurückgibt.</p>
+<ul>
+<li><em>Lösungshinweis</em>: Verwenden Sie die Methode <code>.windows()</code> auf dem Slice <code>data</code>, um Teilausschnitte der Länge von <code>pattern</code> nacheinander zu vergleichen.</li>
+</ul>
+<hr>
+<h2 id="10-lernstrategie-selbsteinschätzung--merkzettel-verstehen-besser-verstehen"><a class="header" href="#10-lernstrategie-selbsteinschätzung--merkzettel-verstehen-besser-verstehen">10. Lernstrategie, Selbsteinschätzung &amp; Merkzettel („Verstehen besser verstehen“)</a></h2>
+<h3 id="merkzettel-cheat-sheet"><a class="header" href="#merkzettel-cheat-sheet">Merkzettel (Cheat Sheet)</a></h3>
+<h4 id="range-syntax-im-überblick"><a class="header" href="#range-syntax-im-überblick">Range-Syntax im Überblick</a></h4>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th style="text-align: left">Syntax</th><th style="text-align: left">Bedeutung</th><th style="text-align: left">Beispiel (für <code>s = "hello"</code>)</th><th style="text-align: left">Ergebnis</th></tr>
+</thead>
+<tbody>
+<tr><td style="text-align: left"><code>&amp;s[0..2]</code></td><td style="text-align: left">Exklusiv (bis Index 2)</td><td style="text-align: left"><code>&amp;s[0..2]</code></td><td style="text-align: left"><code>"he"</code></td></tr>
+<tr><td style="text-align: left"><code>&amp;s[..2]</code></td><td style="text-align: left">Start weglassen (ab Anfang)</td><td style="text-align: left"><code>&amp;s[..2]</code></td><td style="text-align: left"><code>"he"</code></td></tr>
+<tr><td style="text-align: left"><code>&amp;s[3..5]</code></td><td style="text-align: left">Von Index 3 bis vor Index 5</td><td style="text-align: left"><code>&amp;s[3..5]</code></td><td style="text-align: left"><code>"lo"</code></td></tr>
+<tr><td style="text-align: left"><code>&amp;s[3..]</code></td><td style="text-align: left">Ende weglassen (bis Ende)</td><td style="text-align: left"><code>&amp;s[3..]</code></td><td style="text-align: left"><code>"lo"</code></td></tr>
+<tr><td style="text-align: left"><code>&amp;s[..]</code></td><td style="text-align: left">Komplettes Slice</td><td style="text-align: left"><code>&amp;s[..]</code></td><td style="text-align: left"><code>"hello"</code></td></tr>
+</tbody>
+</table>
+</div>
+<h4 id="wichtige-api-methoden-für-str-string-slices"><a class="header" href="#wichtige-api-methoden-für-str-string-slices">Wichtige API-Methoden für <code>str</code> (String-Slices)</a></h4>
+<ul>
+<li><code>pub const fn len(&amp;self) -&gt; usize</code>: Gibt die Länge des Slices in Bytes zurück.
+<ul>
+<li><em>Beispiel</em>: <code>"hallo".len()</code> liefert <code>5</code>.</li>
+</ul>
+</li>
+<li><code>pub const fn is_empty(&amp;self) -&gt; bool</code>: Prüft, ob das Slice leer ist.
+<ul>
+<li><em>Beispiel</em>: <code>"".is_empty()</code> liefert <code>true</code>.</li>
+</ul>
+</li>
+<li><code>pub const fn as_bytes(&amp;self) -&gt; &amp;[u8]</code>: Gibt eine Byte-Slice-Ansicht des Strings zurück.</li>
+<li><code>pub fn chars(&amp;self) -&gt; Chars&lt;'_&gt;</code>: Liefert einen Iterator über die Unicode-Zeichen (wichtig bei UTF-8).</li>
+<li><code>pub fn contains&lt;'a, P&gt;(&amp;'a self, pat: P) -&gt; bool</code>: Prüft, ob ein Muster enthalten ist.
+<ul>
+<li><em>Beispiel</em>: <code>"rust".contains("us")</code> liefert <code>true</code>.</li>
+</ul>
+</li>
+<li><code>pub fn starts_with&lt;'a, P&gt;(&amp;'a self, pat: P) -&gt; bool</code>: Prüft Präfixe.</li>
+<li><code>pub fn ends_with&lt;'a, P&gt;(&amp;'a self, pat: P) -&gt; bool</code>: Prüft Suffixe.</li>
+<li><code>pub fn find&lt;'a, P&gt;(&amp;'a self, pat: P) -&gt; Option&lt;usize&gt;</code>: Liefert den ersten Byte-Index des Musters.</li>
+<li><code>pub fn trim(&amp;self) -&gt; &amp;str</code>: Entfernt führende und folgende Whitespaces als Slice.</li>
+</ul>
+<h4 id="wichtige-api-methoden-für-t-array-slices"><a class="header" href="#wichtige-api-methoden-für-t-array-slices">Wichtige API-Methoden für <code>[T]</code> (Array-Slices)</a></h4>
+<ul>
+<li><code>pub const fn first(&amp;self) -&gt; Option&lt;&amp;T&gt;</code>: Gibt das erste Element als Referenz zurück.</li>
+<li><code>pub const fn last(&amp;self) -&gt; Option&lt;&amp;T&gt;</code>: Gibt das letzte Element zurück.</li>
+<li><code>pub fn get&lt;I&gt;(&amp;self, index: I) -&gt; Option&lt;&amp;I::Output&gt;</code>: Holt Element sicher (gibt bei Index-Fehlern <code>None</code> statt Panic).</li>
+<li><code>pub fn binary_search(&amp;self, x: &amp;T) -&gt; Result&lt;usize, usize&gt;</code>: Führt Binärsuche auf sortiertem Slice durch.</li>
+<li><code>pub fn sort(&amp;mut self)</code>: Sortiert das Slice (benötigt veränderbare Ausleihe <code>&amp;mut [T]</code>).</li>
+<li><code>pub fn reverse(&amp;mut self)</code>: Kehrt die Elementreihenfolge um.</li>
+<li><code>pub fn chunks(&amp;self, chunk_size: usize) -&gt; Chunks&lt;'_, T&gt;</code>: Teilt Slice in gleich große Stücke.</li>
+<li><code>pub fn windows(&amp;self, size: usize) -&gt; Windows&lt;'_, T&gt;</code>: Erzeugt ein gleitendes Fenster über die Elemente.</li>
+</ul>
+<hr>
+<h3 id="active-recall-selbsttestfragen"><a class="header" href="#active-recall-selbsttestfragen">Active Recall (Selbsttestfragen)</a></h3>
+<ol>
+<li>Warum belegt ein Slice <code>&amp;str</code> auf dem Stack 16 Bytes, während eine normale Referenz wie <code>&amp;i32</code> nur 8 Bytes benötigt?</li>
+<li>Was passiert, wenn Sie versuchen, ein String-Slice mitten in einem Multibyte-UTF-8-Zeichen zu erstellen?</li>
+<li>Warum ist der Parameter-Typ <code>first_word(s: &amp;str)</code> flexibler als <code>first_word(s: &amp;String)</code>?</li>
+</ol>
+<h3 id="die-feynman-methode"><a class="header" href="#die-feynman-methode">Die Feynman-Methode</a></h3>
+<p>Erklären Sie einem Kollegen, warum Slices in Rust Speicherbereinigungsfehler (wie Use-After-Free) verhindern, ohne dass dafür zur Laufzeit ein Garbage Collector benötigt wird.</p>
+<h3 id="gezielte-fehlerprovokation"><a class="header" href="#gezielte-fehlerprovokation">Gezielte Fehlerprovokation</a></h3>
+<p>Schreiben Sie das funktionierende Beispiel aus Schritt 6 ab und entfernen Sie das <code>&amp;</code> vor <code>s[0..i]</code>. Analysieren Sie die Fehlermeldung des Compilers. Warum verlangt Rust hier eine Referenz?</p>
+<hr>
+<h2 id="11-zusammenfassung"><a class="header" href="#11-zusammenfassung">11. Zusammenfassung</a></h2>
+<ul>
+<li><strong>Slices</strong> erlauben den sicheren Zugriff auf zusammenhängende Teilbereiche einer Kollektion ohne Eigentumsanspruch (Ownership).</li>
+<li>Sie werden als <strong>Fat Pointer</strong> (Speicheradresse + Elementanzahl) auf dem Stack repräsentiert und sind stets unveränderliche oder veränderliche Referenzen (<code>&amp;str</code>, <code>&amp;[T]</code>).</li>
+<li>Sie verhindern <strong>Out-of-Sync-Fehler</strong> (ungültige Indizes), da der Borrow Checker sicherstellt, dass die Kollektion nicht verändert oder gelöscht werden kann, solange ein Slice auf sie verweist.</li>
+<li>Funktionen sollten bevorzugt <strong>Slices als Parameter</strong> akzeptieren (z. B. <code>&amp;str</code> statt <code>&amp;String</code>), da dies dank Deref Coercion sowohl Strings als auch Literale abdeckt.</li>
+</ul>
+<hr>
+<p><strong>Lizenz- und Attributionshinweis</strong>:
+Teile dieses Kapitels basieren auf Übersetzungen und didaktischen Anpassungen des offiziellen Buches <a href="https://doc.rust-lang.org/book/">The Rust Programming Language</a> von Steve Klabnik und Carol Nichols (sowie Beiträgen der Rust-Community), lizenziert unter <a href="https://opensource.org/licenses/MIT">MIT</a> und <a href="https://www.apache.org/licenses/LICENSE-2.0">Apache 2.0</a>.</p>
 
                     </main>
 

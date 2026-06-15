@@ -1,0 +1,512 @@
+<!DOCTYPE HTML>
+<html lang="de" class="light sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Kapitel 25: Der Slice-Typ (Slices) - Rust-Videokurs für Anfänger</title>
+
+
+        <!-- Custom HTML head -->
+
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="favicon-de23e50b.svg">
+        <link rel="shortcut icon" href="favicon-8114d1fc.png">
+        <link rel="stylesheet" href="css/variables-8adf115d.css">
+        <link rel="stylesheet" href="css/general-0392ca55.css">
+        <link rel="stylesheet" href="css/chrome-fc474251.css">
+        <link rel="stylesheet" href="css/print-9e4910d8.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="fonts/fonts-9644e21d.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" id="mdbook-highlight-css" href="highlight-493f70e1.css">
+        <link rel="stylesheet" id="mdbook-tomorrow-night-css" href="tomorrow-night-4c0ae647.css">
+        <link rel="stylesheet" id="mdbook-ayu-highlight-css" href="ayu-highlight-3fdfc3ac.css">
+
+        <!-- Custom theme stylesheets -->
+
+
+        <!-- Provide site root and default themes to javascript -->
+        <script>
+            const path_to_root = "";
+            const default_light_theme = "light";
+            const default_dark_theme = "navy";
+            window.path_to_searchindex_js = "searchindex-413c6cb9.js";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="toc-be9b6f8c.js"></script>
+    </head>
+    <body>
+    <div id="mdbook-help-container">
+        <div id="mdbook-help-popup">
+            <h2 class="mdbook-help-title">Keyboard shortcuts</h2>
+            <div>
+                <p>Press <kbd>←</kbd> or <kbd>→</kbd> to navigate between chapters</p>
+                <p>Press <kbd>S</kbd> or <kbd>/</kbd> to search in the book</p>
+                <p>Press <kbd>?</kbd> to show this help</p>
+                <p>Press <kbd>Esc</kbd> to hide this help</p>
+            </div>
+        </div>
+    </div>
+    <div id="mdbook-body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                let theme = localStorage.getItem('mdbook-theme');
+                let sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            const default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? default_dark_theme : default_light_theme;
+            let theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="mdbook-sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            let sidebar = null;
+            const sidebar_toggle = document.getElementById("mdbook-sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+                sidebar_toggle.checked = false;
+            }
+            if (sidebar === 'visible') {
+                sidebar_toggle.checked = true;
+            } else {
+                html.classList.remove('sidebar-visible');
+            }
+        </script>
+
+        <nav id="mdbook-sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="toc.html"></iframe>
+            </noscript>
+            <div id="mdbook-sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <div id="mdbook-page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="mdbook-menu-bar-hover-placeholder"></div>
+                <div id="mdbook-menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="mdbook-sidebar-toggle" class="icon-button" for="mdbook-sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="mdbook-sidebar">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"/></svg></span>
+                        </label>
+                        <button id="mdbook-theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="mdbook-theme-list">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M371.3 367.1c27.3-3.9 51.9-19.4 67.2-42.9L600.2 74.1c12.6-19.5 9.4-45.3-7.6-61.2S549.7-4.4 531.1 9.6L294.4 187.2c-24 18-38.2 46.1-38.4 76.1L371.3 367.1zm-19.6 25.4l-116-104.4C175.9 290.3 128 339.6 128 400c0 3.9 .2 7.8 .6 11.6c1.8 17.5-10.2 36.4-27.8 36.4H96c-17.7 0-32 14.3-32 32s14.3 32 32 32H240c61.9 0 112-50.1 112-112c0-2.5-.1-5-.2-7.5z"/></svg></span>
+                        </button>
+                        <ul id="mdbook-theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-default_theme">Auto</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-ayu">Ayu</button></li>
+                        </ul>
+                        <button id="mdbook-search-toggle" class="icon-button" type="button" title="Search (`/`)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="/ s" aria-controls="mdbook-searchbar">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352c79.5 0 144-64.5 144-144s-64.5-144-144-144S64 128.5 64 208s64.5 144 144 144z"/></svg></span>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Rust-Videokurs für Anfänger</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <span class=fa-svg id="print-button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M128 0C92.7 0 64 28.7 64 64v96h64V64H354.7L384 93.3V160h64V93.3c0-17-6.7-33.3-18.7-45.3L400 18.7C388 6.7 371.7 0 354.7 0H128zM384 352v32 64H128V384 368 352H384zm64 32h32c17.7 0 32-14.3 32-32V256c0-35.3-28.7-64-64-64H64c-35.3 0-64 28.7-64 64v96c0 17.7 14.3 32 32 32H64v64c0 35.3 28.7 64 64 64H384c35.3 0 64-28.7 64-64V384zm-16-88c-13.3 0-24-10.7-24-24s10.7-24 24-24s24 10.7 24 24s-10.7 24-24 24z"/></svg></span>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="mdbook-search-wrapper" class="hidden">
+                    <form id="mdbook-searchbar-outer" class="searchbar-outer">
+                        <div class="search-wrapper">
+                            <input type="search" id="mdbook-searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="mdbook-searchresults-outer" aria-describedby="searchresults-header">
+                            <div class="spinner-wrapper">
+                                <span class=fa-svg id="fa-spin"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M304 48c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zm0 416c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zM48 304c26.5 0 48-21.5 48-48s-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48zm464-48c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zM142.9 437c18.7-18.7 18.7-49.1 0-67.9s-49.1-18.7-67.9 0s-18.7 49.1 0 67.9s49.1 18.7 67.9 0zm0-294.2c18.7-18.7 18.7-49.1 0-67.9S93.7 56.2 75 75s-18.7 49.1 0 67.9s49.1 18.7 67.9 0zM369.1 437c18.7 18.7 49.1 18.7 67.9 0s18.7-49.1 0-67.9s-49.1-18.7-67.9 0s-18.7 49.1 0 67.9z"/></svg></span>
+                            </div>
+                        </div>
+                    </form>
+                    <div id="mdbook-searchresults-outer" class="searchresults-outer hidden">
+                        <div id="mdbook-searchresults-header" class="searchresults-header"></div>
+                        <ul id="mdbook-searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('mdbook-sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('mdbook-sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#mdbook-sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="mdbook-content" class="content">
+                    <main>
+                        <h1 id="kapitel-25-der-slice-typ-slices"><a class="header" href="#kapitel-25-der-slice-typ-slices">Kapitel 25: Der Slice-Typ (Slices)</a></h1>
+<p>Slices sind eines der mächtigsten Werkzeuge in Rust, um sicher und ohne zusätzliche Allokationen auf Teilausschnitte von Kollektionen zuzugreifen. Sie ermöglichen es Ihnen, Speicherbereiche effizient zu referenzieren, ohne deren Besitzer zu sein.</p>
+<hr>
+<h2 id="1-lernziele--lernplan"><a class="header" href="#1-lernziele--lernplan">1. Lernziele &amp; Lernplan</a></h2>
+<h3 id="lernziele"><a class="header" href="#lernziele">Lernziele</a></h3>
+<ul>
+<li><strong>Sie können</strong> das Konzept von Slices erklären und den Unterschied im Speicher zwischen einem <code>String</code> (Besitzer) und einem <code>&amp;str</code> (Referenz) auf Stack und Heap skizzieren.</li>
+<li><strong>Sie können</strong> Slices unter Verwendung der Range-Syntax (<code>..</code>, <code>..=</code>, <code>n..</code>, <code>..n</code>) deklarieren und manipulieren.</li>
+<li><strong>Sie können</strong> Funktionen entwerfen, die Slices als Parameter akzeptieren, und den Nutzen von Deref Coercion erklären.</li>
+<li><strong>Sie können</strong> Array-Slices vom Typ <code>&amp;[T]</code> anwenden und gängige Slice-Methoden fehlerfrei einsetzen.</li>
+</ul>
+<h3 id="lernplan"><a class="header" href="#lernplan">Lernplan</a></h3>
+<ol>
+<li><strong>Die Definition</strong>: Der präzise Einstieg in Slices.</li>
+<li><strong>Das Problem</strong>: Die Gefahr von nicht synchronisierten Indizes im Speicher.</li>
+<li><strong>Der naive Versuch</strong>: Ein fehlerhafter Code mit <code>usize</code>.</li>
+<li><strong>Die Anatomie des Fehlers</strong>: Analyse des Speicherzustands und des logischen Bugs.</li>
+<li><strong>Die Lösung</strong>: Korrekter Code unter Verwendung von String-Slices.</li>
+<li><strong>Kleines Tutorial</strong>: Ein logischer Log-Parser mit Schritt-für-Schritt-Praxis.</li>
+<li><strong>Mentale Modelle &amp; Deep Dive</strong>: Stack- vs. Heap-Layout von Fat Pointern.</li>
+<li><strong>Drei praktische Übungen</strong>: Aufgaben mit steigendem Schwierigkeitsgrad.</li>
+<li><strong>Lernstrategie &amp; Merkzettel</strong>: Detaillierte API-Methodenauflistung und Selbsttest.</li>
+<li><strong>Zusammenfassung</strong>: Schnelle Übersicht über die Kernkonzepte.</li>
+</ol>
+<hr>
+<h2 id="2-die-definition-der-präzise-einstieg"><a class="header" href="#2-die-definition-der-präzise-einstieg">2. Die Definition (Der präzise Einstieg)</a></h2>
+<p>Ein <strong>Slice</strong> (Ausschnitt) ist eine Referenz auf eine zusammenhängende Sequenz von Elementen in einer Collection, ohne diese Collection zu besitzen. Da ein Slice eine Referenz ist, unterliegt er den Ausleihregeln (Borrowing) von Rust. Er besitzt keinen eigenen Heap-Speicher, sondern verweist (als sogenannter <em>Fat Pointer</em>) direkt auf einen zusammenhängenden Speicherbereich einer bereits existierenden Kollektion.</p>
+<hr>
+<h2 id="3-das-problem--die-motivation-die-ausgangslage"><a class="header" href="#3-das-problem--die-motivation-die-ausgangslage">3. Das Problem &amp; Die Motivation (Die Ausgangslage)</a></h2>
+<p>Stellen Sie sich vor, Sie sollen eine Funktion schreiben, die einen String mit durch Leerzeichen getrennten Wörtern entgegennimmt und das erste gefundene Wort zurückgibt. Findet die Funktion kein Leerzeichen, soll der gesamte String zurückgegeben werden.</p>
+<p>Ohne Slices müssten wir versuchen, die Position des Leerzeichens als Zahl (<code>usize</code>) zurückzugeben. Das Problem hierbei ist, dass diese Zahl separat vom String gespeichert wird. Wenn sich der ursprüngliche String ändert (z. B. gelöscht oder überschrieben wird), bleibt unsere Index-Variable bestehen. Der Index verliert seine Gültigkeit, ohne dass der Compiler dies bemerkt, was im weiteren Programmverlauf zu Fehlern oder Systemabstürzen führt.</p>
+<hr>
+<h2 id="4-der-naive-versuch-der-fehlerhafte-code"><a class="header" href="#4-der-naive-versuch-der-fehlerhafte-code">4. Der naive Versuch (Der fehlerhafte Code)</a></h2>
+<p>Hier ist ein erster, naiver Entwurf, der versucht, die Endposition des ersten Wortes als Zahl zurückzugeben:</p>
+<pre class="playground"><code class="language-rust edition2021">fn first_word(s: &amp;String) -&gt; usize {
+    let bytes = s.as_bytes(); // Umwandlung in ein Byte-Array zur zeichenweisen Prüfung
+
+    for (i, &amp;item) in bytes.iter().enumerate() {
+        if item == b' ' {
+            return i; // Leerzeichen gefunden -&gt; Index zurückgeben
+        }
+    }
+
+    s.len() // Kein Leerzeichen gefunden -&gt; Gesamtlänge zurückgeben
+}
+
+fn main() {
+    let mut s = String::from("hello world");
+    let word_end = first_word(&amp;s); // word_end erhält den Wert 5
+
+    s.clear(); // Der String wird geleert (""). Seine Länge ist nun 0!
+
+    // word_end ist immer noch 5!
+    // Wenn wir nun versuchen, auf die ersten 5 Zeichen von s zuzugreifen,
+    // stürzt das Programm ab oder liefert ungültige Daten.
+    println!("Das erste Wort endet bei Index: {}", word_end);
+}</code></pre>
+<hr>
+<h2 id="5-die-anatomie-des-fehlers-fehleranalyse--compiler-feedback"><a class="header" href="#5-die-anatomie-des-fehlers-fehleranalyse--compiler-feedback">5. Die Anatomie des Fehlers (Fehleranalyse &amp; Compiler-Feedback)</a></h2>
+<h3 id="was-sagt-das-system"><a class="header" href="#was-sagt-das-system">Was sagt das System?</a></h3>
+<p>Das obige Programm lässt sich problemlos kompilieren! Der Rust-Compiler sieht keinen Fehler, da <code>word_end</code> vom Typ <code>usize</code> ist. <code>usize</code> ist ein primitiver Typ, der das <code>Copy</code>-Trait implementiert und völlig unabhängig vom Zustand der Variable <code>s</code> ist.</p>
+<h3 id="der-blick-hinter-die-kulissen-speicherlayout"><a class="header" href="#der-blick-hinter-die-kulissen-speicherlayout">Der Blick hinter die Kulissen (Speicherlayout)</a></h3>
+<ol>
+<li><strong>Vor dem Leeren (<code>s.clear()</code>)</strong>:
+<ul>
+<li><strong>Stack</strong>: <code>s</code> hält einen Pointer auf den Heap (z. B. <code>0x500</code>), die Länge <code>11</code> und die Kapazität <code>11</code>.</li>
+<li><strong>Heap</strong>: An Adresse <code>0x500</code> liegen die ASCII-Bytes für <code>"hello world"</code>.</li>
+<li><strong>Stack</strong>: <code>word_end</code> enthält die Zahl <code>5</code>.</li>
+</ul>
+</li>
+<li><strong>Nach dem Leeren (<code>s.clear()</code>)</strong>:
+<ul>
+<li><strong>Heap</strong>: Die Daten an Adresse <code>0x500</code> werden ungültig gemacht/gelöscht. Die Länge von <code>s</code> im Stack wird auf <code>0</code> gesetzt.</li>
+<li><strong>Stack</strong>: <code>word_end</code> ist unverändert <code>5</code>.</li>
+</ul>
+</li>
+<li><strong>Die Fehlerquelle</strong>: Wenn wir nun versuchen, auf den Bereich <code>&amp;s[0..word_end]</code> zuzugreifen, stellt Rust zur Laufzeit fest, dass die Länge von <code>s</code> nur <code>0</code> beträgt, der angeforderte Index <code>5</code> jedoch außerhalb liegt. Das Programm bricht sofort mit einer kontrollierten Panik ab (<em>index out of bounds</em>).</li>
+</ol>
+<hr>
+<h2 id="6-die-lösung"><a class="header" href="#6-die-lösung">6. Die Lösung</a></h2>
+<p>Rust bietet mit String-Slices (<code>&amp;str</code>) eine elegante Möglichkeit, Teilausschnitte typsicher zu referenzieren. Der Compiler garantiert, dass die Slices niemals länger existieren als die Daten, auf die sie verweisen.</p>
+<p>Hier ist die korrekte Implementierung:</p>
+<pre class="playground"><code class="language-rust edition2021">fn first_word(s: &amp;str) -&gt; &amp;str {
+    let bytes = s.as_bytes();
+
+    for (i, &amp;item) in bytes.iter().enumerate() {
+        if item == b' ' {
+            return &amp;s[0..i]; // Gibt einen Ausschnitt bis zum Leerzeichen zurück
+        }
+    }
+
+    &amp;s[..] // Gibt den gesamten String als Slice zurück
+}
+
+fn main() {
+    let mut s = String::from("hello world");
+    
+    let word = first_word(&amp;s); // word ist ein Slice (&amp;str), das auf s zeigt
+
+    s.clear(); // FEHLER! Der Compiler blockiert diesen Aufruf.
+
+    println!("Das erste Wort ist: {}", word);
+}</code></pre>
+<h3 id="die-compiler-fehlermeldung"><a class="header" href="#die-compiler-fehlermeldung">Die Compiler-Fehlermeldung</a></h3>
+<p>Wenn wir versuchen, diesen Code zu kompilieren, erhalten wir folgendes Feedback vom Borrow Checker:</p>
+<pre><code class="language-text">error[E0502]: cannot borrow `s` as mutable because it is also borrowed as immutable
+  --&gt; src/main.rs:16:5
+   |
+14 |     let word = first_word(&amp;s);
+   |                           -- immutable borrow occurs here
+15 | 
+16 |     s.clear(); // error!
+   |     ^^^^^^^^^ mutable borrow occurs here
+17 | 
+18 |     println!("Das erste Wort ist: {}", word);
+   |                                        ---- immutable borrow later used here
+</code></pre>
+<p>Da <code>word</code> eine aktive, unveränderbare Referenz (<code>&amp;str</code>) auf einen Teil von <code>s</code> hält, verbietet Rust jede veränderbare Operation (wie <code>s.clear()</code>) auf dem gesamten String, solange diese Referenz noch verwendet wird. Die Speicherintegrität ist gerettet!</p>
+<hr>
+<h2 id="7-kleines-tutorial-schritt-für-schritt-praxis"><a class="header" href="#7-kleines-tutorial-schritt-für-schritt-praxis">7. Kleines Tutorial (Schritt-für-Schritt-Praxis)</a></h2>
+<p>Wir erstellen nun Schritt für Schritt einen einfachen Log-Parser, der Zeilen im Format <code>[LOG_LEVEL] Nachricht</code> einliest und beide Bestandteile sicher als Slices zurückgibt.</p>
+<h3 id="eva-struktur-des-parsers"><a class="header" href="#eva-struktur-des-parsers">EVA-Struktur des Parsers:</a></h3>
+<ul>
+<li><strong>Eingabe (Input)</strong>: Eine Log-Zeile als String-Slice (<code>&amp;str</code>).</li>
+<li><strong>Verarbeitung (Processing)</strong>: Suche nach den eckigen Klammern <code>[</code> und <code>]</code> sowie dem Leerzeichen zur Trennung.</li>
+<li><strong>Ausgabe (Output)</strong>: Ein Tupel bestehend aus dem Log-Level-Slice und dem Nachrichten-Slice <code>(&amp;str, &amp;str)</code>.</li>
+</ul>
+<h3 id="schritt-1-das-grundgerüst-des-parsers-definieren"><a class="header" href="#schritt-1-das-grundgerüst-des-parsers-definieren">Schritt 1: Das Grundgerüst des Parsers definieren</a></h3>
+<p>Wir legen die Funktion fest, die nach den Begrenzungszeichen sucht:</p>
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>fn parse_log_line(line: &amp;str) -&gt; Option&lt;(&amp;str, &amp;str)&gt; {
+    // Schritt 2: Suchen der öffnenden und schließenden eckigen Klammern
+    if !line.starts_with('[') {
+        return None;
+    }
+
+    let end_bracket = line.find(']')?;
+    
+    // Schritt 3: Extrahieren des Log-Levels (ohne die Klammern)
+    let log_level = &amp;line[1..end_bracket];
+
+    // Die Nachricht beginnt nach der schließenden Klammer und einem Leerzeichen
+    let msg_start = end_bracket + 2;
+    if msg_start &gt;= line.len() {
+        return None;
+    }
+    
+    let message = &amp;line[msg_start..];
+
+    Some((log_level, message))
+}
+<span class="boring">}</span></code></pre>
+<h3 id="schritt-4-den-parser-in-der-praxis-nutzen"><a class="header" href="#schritt-4-den-parser-in-der-praxis-nutzen">Schritt 4: Den Parser in der Praxis nutzen</a></h3>
+<pre class="playground"><code class="language-rust edition2021">fn main() {
+    let log_entry = String::from("[ERROR] Verbindung zur Datenbank fehlgeschlagen");
+    
+    if let Some((level, msg)) = parse_log_line(&amp;log_entry) {
+        println!("Log-Level extrahiert: {}", level);
+        println!("Nachricht extrahiert: {}", msg);
+        
+        // log_entry.clear(); // Würde einen Compilerfehler erzeugen, da level und msg noch leben!
+    } else {
+        println!("Ungültiges Log-Format!");
+    }
+}</code></pre>
+<hr>
+<h2 id="8-mentale-modelle--deep-dive-hintergrundwissen"><a class="header" href="#8-mentale-modelle--deep-dive-hintergrundwissen">8. Mentale Modelle &amp; Deep Dive (Hintergrundwissen)</a></h2>
+<h3 id="das-speicherlayout-eines-slices-fat-pointer"><a class="header" href="#das-speicherlayout-eines-slices-fat-pointer">Das Speicherlayout eines Slices (Fat Pointer)</a></h3>
+<p>Ein normaler Referenz-Pointer auf ein Datenobjekt (z. B. <code>&amp;i32</code>) belegt auf einem 64-Bit-System 8 Bytes, da er lediglich eine Speicheradresse speichert.
+Ein Slice hingegen ist ein <strong>Fat Pointer</strong> und belegt <strong>16 Bytes</strong> im Stack:</p>
+<ol>
+<li><strong>Pointer (8 Bytes)</strong>: Zeigt auf das erste Element des Ausschnitts im Speicher.</li>
+<li><strong>Länge (8 Bytes)</strong>: Speichert die Anzahl der Elemente, die zum Slice gehören.</li>
+</ol>
+<pre><code>       String "hello world" im Heap
+       +---+---+---+---+---+---+---+---+---+---+---+
+Heap:  | h | e | l | l | o |   | w | o | r | l | d |
+       +---+---+---+---+---+---+---+---+---+---+---+
+         ^                   ^
+         |                   |
+       +---------+---------+ |
+Stack: | Pointer | Länge:5 |-+ (Slice `world` zeigt ab Index 6 auf 5 Bytes)
+       +---------+---------+
+</code></pre>
+<h3 id="vergleich-string-vs-str-und-vect-vs-t"><a class="header" href="#vergleich-string-vs-str-und-vect-vs-t">Vergleich: <code>String</code> vs <code>&amp;str</code> und <code>Vec&lt;T&gt;</code> vs <code>&amp;[T]</code></a></h3>
+<ul>
+<li><strong>Besitzer-Typen (<code>String</code>, <code>Vec&lt;T&gt;</code>)</strong>: Haben die Hoheit über den Speicher. Sie liegen auf dem Stack mit <strong>24 Bytes</strong> (Pointer auf Heap, Länge, Kapazität) und allozieren dynamischen Speicher auf dem Heap.</li>
+<li><strong>Slice-Typen (<code>&amp;str</code>, <code>&amp;[T]</code>)</strong>: Haben keine Kapazität, da sie nicht wachsen können. Sie belegen auf dem Stack nur <strong>16 Bytes</strong> (Pointer, Länge) und verweisen auf fremden Speicher (der auf dem Stack, Heap oder im statischen Programmcode liegen kann).</li>
+</ul>
+<hr>
+<h2 id="9-drei-praktische-übungen-herausforderungen"><a class="header" href="#9-drei-praktische-übungen-herausforderungen">9. Drei praktische Übungen (Herausforderungen)</a></h2>
+<h3 id="übung-1-leicht---syntax-festigen"><a class="header" href="#übung-1-leicht---syntax-festigen">Übung 1 (Leicht - Syntax festigen)</a></h3>
+<p>Schreiben Sie eine Funktion <code>last_word(s: &amp;str) -&gt; &amp;str</code>, die das letzte Wort in einem String zurückgibt. Wenn kein Leerzeichen vorhanden ist, soll der gesamte String zurückgegeben werden.</p>
+<ul>
+<li><em>Lösungshinweis</em>: Nutzen Sie die Methode <code>.rfind(' ')</code>, um rückwärts nach dem ersten Leerzeichen zu suchen.</li>
+</ul>
+<h3 id="übung-2-mittel---logik-erweitern"><a class="header" href="#übung-2-mittel---logik-erweitern">Übung 2 (Mittel - Logik erweitern)</a></h3>
+<p>Schreiben Sie eine Funktion <code>trim_spaces(s: &amp;str) -&gt; &amp;str</code>, die führende und nachfolgende Leerzeichen aus einem String-Slice abschneidet und den bereinigten Teilausschnitt zurückgibt.</p>
+<ul>
+<li><em>Lösungshinweis</em>: Suchen Sie den ersten Index, der kein Leerzeichen ist, und den letzten Index von hinten. Nutzen Sie dafür eventuell Iteratoren oder Methoden wie <code>.chars()</code>.</li>
+</ul>
+<h3 id="übung-3-schwer---transferleistung"><a class="header" href="#übung-3-schwer---transferleistung">Übung 3 (Schwer - Transferleistung)</a></h3>
+<p>Implementieren Sie eine generische Funktion <code>find_subslice&lt;T: PartialEq&gt;(data: &amp;[T], pattern: &amp;[T]) -&gt; Option&lt;usize&gt;</code>, die das erste Vorkommen eines Musterausschnitts (<code>pattern</code>) in einem größeren Array-Slice (<code>data</code>) sucht und den Startindex zurückgibt.</p>
+<ul>
+<li><em>Lösungshinweis</em>: Verwenden Sie die Methode <code>.windows()</code> auf dem Slice <code>data</code>, um Teilausschnitte der Länge von <code>pattern</code> nacheinander zu vergleichen.</li>
+</ul>
+<hr>
+<h2 id="10-lernstrategie-selbsteinschätzung--merkzettel-verstehen-besser-verstehen"><a class="header" href="#10-lernstrategie-selbsteinschätzung--merkzettel-verstehen-besser-verstehen">10. Lernstrategie, Selbsteinschätzung &amp; Merkzettel („Verstehen besser verstehen“)</a></h2>
+<h3 id="merkzettel-cheat-sheet"><a class="header" href="#merkzettel-cheat-sheet">Merkzettel (Cheat Sheet)</a></h3>
+<h4 id="range-syntax-im-überblick"><a class="header" href="#range-syntax-im-überblick">Range-Syntax im Überblick</a></h4>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th style="text-align: left">Syntax</th><th style="text-align: left">Bedeutung</th><th style="text-align: left">Beispiel (für <code>s = "hello"</code>)</th><th style="text-align: left">Ergebnis</th></tr>
+</thead>
+<tbody>
+<tr><td style="text-align: left"><code>&amp;s[0..2]</code></td><td style="text-align: left">Exklusiv (bis Index 2)</td><td style="text-align: left"><code>&amp;s[0..2]</code></td><td style="text-align: left"><code>"he"</code></td></tr>
+<tr><td style="text-align: left"><code>&amp;s[..2]</code></td><td style="text-align: left">Start weglassen (ab Anfang)</td><td style="text-align: left"><code>&amp;s[..2]</code></td><td style="text-align: left"><code>"he"</code></td></tr>
+<tr><td style="text-align: left"><code>&amp;s[3..5]</code></td><td style="text-align: left">Von Index 3 bis vor Index 5</td><td style="text-align: left"><code>&amp;s[3..5]</code></td><td style="text-align: left"><code>"lo"</code></td></tr>
+<tr><td style="text-align: left"><code>&amp;s[3..]</code></td><td style="text-align: left">Ende weglassen (bis Ende)</td><td style="text-align: left"><code>&amp;s[3..]</code></td><td style="text-align: left"><code>"lo"</code></td></tr>
+<tr><td style="text-align: left"><code>&amp;s[..]</code></td><td style="text-align: left">Komplettes Slice</td><td style="text-align: left"><code>&amp;s[..]</code></td><td style="text-align: left"><code>"hello"</code></td></tr>
+</tbody>
+</table>
+</div>
+<h4 id="wichtige-api-methoden-für-str-string-slices"><a class="header" href="#wichtige-api-methoden-für-str-string-slices">Wichtige API-Methoden für <code>str</code> (String-Slices)</a></h4>
+<ul>
+<li><code>pub const fn len(&amp;self) -&gt; usize</code>: Gibt die Länge des Slices in Bytes zurück.
+<ul>
+<li><em>Beispiel</em>: <code>"hallo".len()</code> liefert <code>5</code>.</li>
+</ul>
+</li>
+<li><code>pub const fn is_empty(&amp;self) -&gt; bool</code>: Prüft, ob das Slice leer ist.
+<ul>
+<li><em>Beispiel</em>: <code>"".is_empty()</code> liefert <code>true</code>.</li>
+</ul>
+</li>
+<li><code>pub const fn as_bytes(&amp;self) -&gt; &amp;[u8]</code>: Gibt eine Byte-Slice-Ansicht des Strings zurück.</li>
+<li><code>pub fn chars(&amp;self) -&gt; Chars&lt;'_&gt;</code>: Liefert einen Iterator über die Unicode-Zeichen (wichtig bei UTF-8).</li>
+<li><code>pub fn contains&lt;'a, P&gt;(&amp;'a self, pat: P) -&gt; bool</code>: Prüft, ob ein Muster enthalten ist.
+<ul>
+<li><em>Beispiel</em>: <code>"rust".contains("us")</code> liefert <code>true</code>.</li>
+</ul>
+</li>
+<li><code>pub fn starts_with&lt;'a, P&gt;(&amp;'a self, pat: P) -&gt; bool</code>: Prüft Präfixe.</li>
+<li><code>pub fn ends_with&lt;'a, P&gt;(&amp;'a self, pat: P) -&gt; bool</code>: Prüft Suffixe.</li>
+<li><code>pub fn find&lt;'a, P&gt;(&amp;'a self, pat: P) -&gt; Option&lt;usize&gt;</code>: Liefert den ersten Byte-Index des Musters.</li>
+<li><code>pub fn trim(&amp;self) -&gt; &amp;str</code>: Entfernt führende und folgende Whitespaces als Slice.</li>
+</ul>
+<h4 id="wichtige-api-methoden-für-t-array-slices"><a class="header" href="#wichtige-api-methoden-für-t-array-slices">Wichtige API-Methoden für <code>[T]</code> (Array-Slices)</a></h4>
+<ul>
+<li><code>pub const fn first(&amp;self) -&gt; Option&lt;&amp;T&gt;</code>: Gibt das erste Element als Referenz zurück.</li>
+<li><code>pub const fn last(&amp;self) -&gt; Option&lt;&amp;T&gt;</code>: Gibt das letzte Element zurück.</li>
+<li><code>pub fn get&lt;I&gt;(&amp;self, index: I) -&gt; Option&lt;&amp;I::Output&gt;</code>: Holt Element sicher (gibt bei Index-Fehlern <code>None</code> statt Panic).</li>
+<li><code>pub fn binary_search(&amp;self, x: &amp;T) -&gt; Result&lt;usize, usize&gt;</code>: Führt Binärsuche auf sortiertem Slice durch.</li>
+<li><code>pub fn sort(&amp;mut self)</code>: Sortiert das Slice (benötigt veränderbare Ausleihe <code>&amp;mut [T]</code>).</li>
+<li><code>pub fn reverse(&amp;mut self)</code>: Kehrt die Elementreihenfolge um.</li>
+<li><code>pub fn chunks(&amp;self, chunk_size: usize) -&gt; Chunks&lt;'_, T&gt;</code>: Teilt Slice in gleich große Stücke.</li>
+<li><code>pub fn windows(&amp;self, size: usize) -&gt; Windows&lt;'_, T&gt;</code>: Erzeugt ein gleitendes Fenster über die Elemente.</li>
+</ul>
+<hr>
+<h3 id="active-recall-selbsttestfragen"><a class="header" href="#active-recall-selbsttestfragen">Active Recall (Selbsttestfragen)</a></h3>
+<ol>
+<li>Warum belegt ein Slice <code>&amp;str</code> auf dem Stack 16 Bytes, während eine normale Referenz wie <code>&amp;i32</code> nur 8 Bytes benötigt?</li>
+<li>Was passiert, wenn Sie versuchen, ein String-Slice mitten in einem Multibyte-UTF-8-Zeichen zu erstellen?</li>
+<li>Warum ist der Parameter-Typ <code>first_word(s: &amp;str)</code> flexibler als <code>first_word(s: &amp;String)</code>?</li>
+</ol>
+<h3 id="die-feynman-methode"><a class="header" href="#die-feynman-methode">Die Feynman-Methode</a></h3>
+<p>Erklären Sie einem Kollegen, warum Slices in Rust Speicherbereinigungsfehler (wie Use-After-Free) verhindern, ohne dass dafür zur Laufzeit ein Garbage Collector benötigt wird.</p>
+<h3 id="gezielte-fehlerprovokation"><a class="header" href="#gezielte-fehlerprovokation">Gezielte Fehlerprovokation</a></h3>
+<p>Schreiben Sie das funktionierende Beispiel aus Schritt 6 ab und entfernen Sie das <code>&amp;</code> vor <code>s[0..i]</code>. Analysieren Sie die Fehlermeldung des Compilers. Warum verlangt Rust hier eine Referenz?</p>
+<hr>
+<h2 id="11-zusammenfassung"><a class="header" href="#11-zusammenfassung">11. Zusammenfassung</a></h2>
+<ul>
+<li><strong>Slices</strong> erlauben den sicheren Zugriff auf zusammenhängende Teilbereiche einer Kollektion ohne Eigentumsanspruch (Ownership).</li>
+<li>Sie werden als <strong>Fat Pointer</strong> (Speicheradresse + Elementanzahl) auf dem Stack repräsentiert und sind stets unveränderliche oder veränderliche Referenzen (<code>&amp;str</code>, <code>&amp;[T]</code>).</li>
+<li>Sie verhindern <strong>Out-of-Sync-Fehler</strong> (ungültige Indizes), da der Borrow Checker sicherstellt, dass die Kollektion nicht verändert oder gelöscht werden kann, solange ein Slice auf sie verweist.</li>
+<li>Funktionen sollten bevorzugt <strong>Slices als Parameter</strong> akzeptieren (z. B. <code>&amp;str</code> statt <code>&amp;String</code>), da dies dank Deref Coercion sowohl Strings als auch Literale abdeckt.</li>
+</ul>
+<hr>
+<p><strong>Lizenz- und Attributionshinweis</strong>:
+Teile dieses Kapitels basieren auf Übersetzungen und didaktischen Anpassungen des offiziellen Buches <a href="https://doc.rust-lang.org/book/">The Rust Programming Language</a> von Steve Klabnik und Carol Nichols (sowie Beiträgen der Rust-Community), lizenziert unter <a href="https://opensource.org/licenses/MIT">MIT</a> und <a href="https://www.apache.org/licenses/LICENSE-2.0">Apache 2.0</a>.</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="24.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
+                            </a>
+
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="24.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
+                    </a>
+
+            </nav>
+
+        </div>
+
+        <template id=fa-eye><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M288 32c-80.8 0-145.5 36.8-192.6 80.6C48.6 156 17.3 208 2.5 243.7c-3.3 7.9-3.3 16.7 0 24.6C17.3 304 48.6 356 95.4 399.4C142.5 443.2 207.2 480 288 480s145.5-36.8 192.6-80.6c46.8-43.5 78.1-95.4 93-131.1c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C433.5 68.8 368.8 32 288 32zM432 256c0 79.5-64.5 144-144 144s-144-64.5-144-144s64.5-144 144-144s144 64.5 144 144zM288 192c0 35.3-28.7 64-64 64c-11.5 0-22.3-3-31.6-8.4c-.2 2.8-.4 5.5-.4 8.4c0 53 43 96 96 96s96-43 96-96s-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6z"/></svg></span></template>
+        <template id=fa-eye-slash><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M38.8 5.1C28.4-3.1 13.3-1.2 5.1 9.2S-1.2 34.7 9.2 42.9l592 464c10.4 8.2 25.5 6.3 33.7-4.1s6.3-25.5-4.1-33.7L525.6 386.7c39.6-40.6 66.4-86.1 79.9-118.4c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C465.5 68.8 400.8 32 320 32c-68.2 0-125 26.3-169.3 60.8L38.8 5.1zM223.1 149.5C248.6 126.2 282.7 112 320 112c79.5 0 144 64.5 144 144c0 24.9-6.3 48.3-17.4 68.7L408 294.5c5.2-11.8 8-24.8 8-38.5c0-53-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6c0 10.2-2.4 19.8-6.6 28.3l-90.3-70.8zm223.1 298L373 389.9c-16.4 6.5-34.3 10.1-53 10.1c-79.5 0-144-64.5-144-144c0-6.9 .5-13.6 1.4-20.2L83.1 161.5C60.3 191.2 44 220.8 34.5 243.7c-3.3 7.9-3.3 16.7 0 24.6c14.9 35.7 46.2 87.7 93 131.1C174.5 443.2 239.2 480 320 480c47.8 0 89.9-12.9 126.2-32.5z"/></svg></span></template>
+        <template id=fa-copy><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M502.6 70.63l-61.25-61.25C435.4 3.371 427.2 0 418.7 0H255.1c-35.35 0-64 28.66-64 64l.0195 256C192 355.4 220.7 384 256 384h192c35.2 0 64-28.8 64-64V93.25C512 84.77 508.6 76.63 502.6 70.63zM464 320c0 8.836-7.164 16-16 16H255.1c-8.838 0-16-7.164-16-16L239.1 64.13c0-8.836 7.164-16 16-16h128L384 96c0 17.67 14.33 32 32 32h47.1V320zM272 448c0 8.836-7.164 16-16 16H63.1c-8.838 0-16-7.164-16-16L47.98 192.1c0-8.836 7.164-16 16-16H160V128H63.99c-35.35 0-64 28.65-64 64l.0098 256C.002 483.3 28.66 512 64 512h192c35.2 0 64-28.8 64-64v-32h-47.1L272 448z"/></svg></span></template>
+        <template id=fa-play><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80V432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"/></svg></span></template>
+        <template id=fa-clock-rotate-left><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M75 75L41 41C25.9 25.9 0 36.6 0 57.9V168c0 13.3 10.7 24 24 24H134.1c21.4 0 32.1-25.9 17-41l-30.8-30.8C155 85.5 203 64 256 64c106 0 192 86 192 192s-86 192-192 192c-40.8 0-78.6-12.7-109.7-34.4c-14.5-10.1-34.4-6.6-44.6 7.9s-6.6 34.4 7.9 44.6C151.2 495 201.7 512 256 512c141.4 0 256-114.6 256-256S397.4 0 256 0C185.3 0 121.3 28.7 75 75zm181 53c-13.3 0-24 10.7-24 24V256c0 6.4 2.5 12.5 7 17l72 72c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-65-65V152c0-13.3-10.7-24-24-24z"/></svg></span></template>
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr-ef4e11c1.min.js"></script>
+        <script src="mark-09e88c2c.min.js"></script>
+        <script src="searcher-09f2665d.js"></script>
+
+        <script src="clipboard-1626706a.min.js"></script>
+        <script src="highlight-abc7f01d.js"></script>
+        <script src="book-c22b7243.js"></script>
+
+        <!-- Custom JS scripts -->
+        <script src="mermaid-eefea253.min.js"></script>
+        <script src="mermaid-init-ccf746f1.js"></script>
+
+
+
+    </div>
+    </body>
+</html>
