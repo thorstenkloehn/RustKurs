@@ -35,7 +35,7 @@
             const path_to_root = "";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "searchindex-a9440cc5.js";
+            window.path_to_searchindex_js = "searchindex-76719c3e.js";
         </script>
         <!-- Start loading toc.js asap -->
         <script src="toc-dedbbe6e.js"></script>
@@ -174,14 +174,542 @@
 
                 <div id="mdbook-content" class="content">
                     <main>
-                        <p>Beschreibung für Anfänger: KI-Assistenten nutzen Tools, erledigen Aufgaben und suchen im Internet nach weiteren Informationen, um zu zeigen, wie diese Tools funktionieren.</p>
+                        <h1 id="kapitel-3-ki-assistenten--tools"><a class="header" href="#kapitel-3-ki-assistenten--tools">Kapitel 3: KI-Assistenten &amp; Tools</a></h1>
+<p>Die moderne Softwareentwicklung in Rust unterscheidet sich grundlegend von der Arbeit in älteren Sprachen. Da der Rust-Compiler (<code>rustc</code>) durch sein strenges Typ- und Ownership-System extrem präzise Prüfungen durchführt, ist eine enge Verzahnung zwischen dem Programmierer, der integrierten Entwicklungsumgebung (IDE) und modernen KI-Assistenten von unschätzbarem Wert. In diesem Kapitel lernen Sie, wie Sie Ihre Werkzeuge so einrichten und steuern, dass der Compiler nicht als blockierendes Hindernis, sondern als konstruktiver Partner an Ihrer Seite agiert. Die didaktischen und strukturellen Vorgaben für dieses Kapitel wurden gemäß den Richtlinien in <a href="file:///home/thorsten/RustKurs/markdown.md">markdown.md</a> und <a href="file:///home/thorsten/RustKurs/AGENTS.md">AGENTS.md</a> umgesetzt.</p>
+<hr>
+<h2 id="1-lernziele--lernplan"><a class="header" href="#1-lernziele--lernplan">1. Lernziele &amp; Lernplan</a></h2>
+<h3 id="lernziele"><a class="header" href="#lernziele">Lernziele</a></h3>
 <ul>
-<li>Cline ist ein KI-Assistent, der Entwicklern hilft, Code schneller zu schreiben und zu verstehen.</li>
-<li>Gemini Code Assist ist ein KI-gestütztes Tool von Google, das bei der Code-Vervollständigung, Fehlererkennung und Refactoring unterstützt.</li>
-<li>Github Copilot ist ein KI-Paarprogrammierer, der Code basierend auf Kommentaren und umgebendem Code vorschlägt.</li>
+<li><strong>Sie können</strong> eine voll funktionsfähige, professionelle Rust-Entwicklungsumgebung auf Basis von Visual Studio Code (VS Code) und der Erweiterung <code>rust-analyzer</code> installieren und konfigurieren.</li>
+<li><strong>Sie können</strong> Inlay-Hints (Typen, Parameterbezeichnungen, Chaining) in den Einstellungen anpassen und <code>clippy</code> als On-Save-Checker einrichten, um syntaktische und semantische Fehler in Echtzeit visuell im Editor zu lokalisieren.</li>
+<li><strong>Sie können</strong> das concept des Language Server Protocols (LSP) erklären und verstehen, wie <code>rust-analyzer</code> inkrementell Code analysiert, um verzögerungsfreie Rückmeldungen zu liefern.</li>
+<li><strong>Sie können</strong> strukturierte, kontextreiche Prompts (Prompt-Engineering) für Large Language Models (LLMs) gegen typische Rust-Syntaxprobleme entwerfen, um effiziente und sichere Lösungen ohne unnötige Heap-Klone (<code>.clone()</code>) zu generieren.</li>
+<li><strong>Sie können</strong> Compiler-Fehlermeldungen und Backtraces systematisch analysieren und filtern, um sie als strukturierten Input an KI-Assistenten zu übergeben.</li>
 </ul>
-<p>Das sind meine Favoriten: GitHub Copilot und Gemini Code Assist.</p>
-<p>Warum sollte man nicht alles von KI-Agenten erledigen lassen? Man lernt nichts dabei.</p>
+<h3 id="lernplan"><a class="header" href="#lernplan">Lernplan</a></h3>
+<ul>
+<li><input disabled="" type="checkbox"> <strong>2. Die Definition</strong>: Präzise Begriffsbestimmung von IDEs, <code>rust-analyzer</code>, Inlay-Hints, Clippy, LLMs und Prompt-Engineering sowie die Fluglotse-Metapher.</li>
+<li><input disabled="" type="checkbox"> <strong>3. Das Problem &amp; Die Motivation</strong>: Warum manuelle Entwicklung ohne Werkzeuge frustriert und warum naive KI-Prompts zu ineffizientem, fehlerhaftem Code führen.</li>
+<li><input disabled="" type="checkbox"> <strong>4. Der naive Versuch</strong>: Ein typischer Lifetime-Fehler im Code und die unpräzise Fehlerauflösung mittels eines einfachen Prompts.</li>
+<li><input disabled="" type="checkbox"> <strong>5. Die Anatomie des Fehlers</strong>: Analyse der Compiler-Fehlermeldung, Visualisierung des Speicherlayouts (Stack/Heap) bei lokalen Referenzen und die Fehlerursache im KI-generierten Pseudo-Code.</li>
+<li><input disabled="" type="checkbox"> <strong>6. Die Lösung</strong>: Implementierung des korrekten Codes, Analyse der Heap-Auswirkungen nach dem EVA-Prinzip und Erklärung der Compiler-Akzeptanz.</li>
+<li><input disabled="" type="checkbox"> <strong>7. Kleines Tutorial</strong>: Schritt-für-Schritt-Setup von VS Code und <code>rust-analyzer</code> sowie eine exemplarische strukturierte Prompt-Session.</li>
+<li><input disabled="" type="checkbox"> <strong>8. Mentale Modelle &amp; Deep Dive</strong>: Das LSP-Kommunikationsmodell, die Philosophie von Clippy, fortgeschrittene Prompt-Techniken (Chain-of-Thought) und eine exhaustive Konfigurationsreferenz.</li>
+<li><input disabled="" type="checkbox"> <strong>9. Drei praktische Übungen</strong>: Programmieraufgaben mit ansteigendem Schwierigkeitsgrad (Leicht, Mittel, Schwer) inklusive Hilfestellungen.</li>
+<li><input disabled="" type="checkbox"> <strong>10. Lernstrategie, Selbsteinschätzung &amp; Merkzettel</strong>: Cheat Sheet für Shortcuts und Prompts, Active Recall, gezielte Lint-Provokation und Selbsttest.</li>
+<li><input disabled="" type="checkbox"> <strong>11. Zusammenfassung</strong>: Kernpunkte auf einen Blick.</li>
+</ul>
+<hr>
+<h2 id="2-die-definition"><a class="header" href="#2-die-definition">2. Die Definition</a></h2>
+<ul>
+<li><strong>Integrierte Entwicklungsumgebung (IDE)</strong>: Eine Softwareanwendung, die Entwicklern umfassende Einrichtungen für die Softwareentwicklung zur Verfügung stellt. Im Kontext von Rust kombiniert sie einen Texteditor mit Syntaxhervorhebung, automatischer Code-Vervollständigung, Build-Automatisierung und integrierter Fehlerdiagnose.</li>
+<li><strong>rust-analyzer</strong>: Das offizielle, hochperformante Language Server Protocol (LSP) Backend für die Programmiersprache Rust. Es analysiert den Quellcode während des Schreibens inkrementell im Hintergrund, baut einen abstrakten Syntaxbaum (AST) auf und liefert Fehlermeldungen, Autovervollständigung sowie Refactoring-Optionen.</li>
+<li><strong>Inlay Hints (Eingebettete Hinweise)</strong>: Vom Editor generierte, visuelle Textsegmente, die nicht im eigentlichen Quelltext abgespeichert sind, sondern dynamisch eingeblendet werden. Sie zeigen beispielsweise den inferierten Typ einer Variable oder den Namen eines Funktionsparameters an der Aufrufstelle an.</li>
+<li><strong>Clippy</strong>: Das offizielle Linting-Tool des Rust-Projekts. Es analysiert Ihren Code auf Häufigkeiten von Anti-Patterns, ineffizienten Algorithmen, Sicherheitsrisiken oder Verstößen gegen Designrichtlinien und schlägt konkrete, idiomatische Verbesserungen vor.</li>
+<li><strong>KI-gestützte Softwareentwicklung (LLM-Assisted Development)</strong>: Die Integration von Modellen der künstlichen Intelligenz (wie Gemini oder Claude) in den Entwicklungsprozess, um durch Kontextanalyse Codefragmente zu generieren, Fehler zu erklären oder bestehende Implementierungen zu optimieren.</li>
+<li><strong>Prompt-Engineering</strong>: Die systematische Gestaltung von Eingabemustern (Prompts), um ein Large Language Model (LLM) dazu zu bewegen, präzise, korrekte und auf Rust-Sicherheitsgarantien optimierte Antworten zu liefern.</li>
+</ul>
+<h3 id="die-fluglotse-und-co-pilot-metapher"><a class="header" href="#die-fluglotse-und-co-pilot-metapher">Die Fluglotse-und-Co-Pilot-Metapher</a></h3>
+<blockquote class="blockquote-tag blockquote-tag-note">
+<p class="blockquote-tag-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>Note</p>
+<p><strong>Die Fluglotse-und-Co-Pilot-Metapher</strong>: Stellen Sie sich vor, Sie fliegen ein hochmodernes Flugzeug (die Rust-Entwicklung).</p>
+<p>Der <strong>rust-analyzer</strong> ist Ihr <strong>Fluglotse im Tower</strong>. Er überwacht permanent die Flugdaten, warnt Sie vor turbulenten Winden (Borrow-Checker-Konflikten), zeigt Ihnen auf Ihren Instrumenten die genaue Flughöhe und Geschwindigkeit an (Inlay Hints) und markiert Hindernisse auf dem Radar mit roten Warnleuchten (Inline-Fehler). Er greift nicht selbst in die Steuerung ein, sorgt aber dafür, dass Sie niemals die Orientierung verlieren.</p>
+<p>Die <strong>KI (das LLM)</strong> ist Ihr <strong>Co-Pilot auf dem Sitz neben Ihnen</strong>. Wenn Sie eine schwierige Flugroute planen müssen (komplizierte Algorithmen oder Speicherarchitekturen), können Sie diese Aufgabe an den Co-Piloten delegieren. Wenn Sie dem Co-Piloten jedoch nur zurufen: „Flieg uns irgendwohin, wo es warm ist!“, wird er planlos navigieren, veraltete Karten nutzen oder sogar gefährliche Manöver vorschlagen. Nur wenn Sie ihm präzise Navigationsanweisungen geben, den aktuellen Zustand der Triebwerke mitteilen und klare Limits setzen (Prompt-Engineering), steuert er die Maschine sicher durch den Sturm.</p>
+</blockquote>
+<hr>
+<h2 id="3-das-problem--die-motivation"><a class="header" href="#3-das-problem--die-motivation">3. Das Problem &amp; Die Motivation</a></h2>
+<p>Rust unterscheidet sich in einem wesentlichen Aspekt von vielen anderen Programmiersprachen: Die statische Typprüfung und die strikten Ownership-Regeln verschieben die Fehlererkennung fast vollständig von der Laufzeit (Runtime) in die Übersetzungszeit (Compilezeit). Was auf den ersten Blick wie ein Segen wirkt, kann im Entwicklungsalltag ohne die passenden Werkzeuge schnell zu Frustration führen:</p>
+<ol>
+<li><strong>Die Unsichtbarkeit des Typsystems</strong>: Rust nutzt eine starke Typinferenz. Das bedeutet, dass Sie Typen selten explizit hinschreiben müssen – der Compiler leitet sie selbstständig ab. Ohne eine IDE, die diese Typen visuell darstellt, arbeiten Sie im Blindflug. Sie wissen nicht genau, ob eine Variable nun ein <code>String</code>, eine Referenz <code>&amp;str</code>, ein Smart Pointer <code>Rc&lt;String&gt;</code> oder ein Tupel ist.</li>
+<li><strong>Die langsame Feedbackschleife</strong>: Wenn Sie Code in einem simplen Texteditor schreiben, müssen Sie für jede Überprüfung manuell das Terminal öffnen, <code>cargo build</code> oder <code>cargo check</code> eingeben und die Ausgabe durchforsten. Dies unterbricht den kreativen Fluss („Flow-Zustand“) massiv.</li>
+<li><strong>Die Komplexität des Borrow Checkers</strong>: Fehlermeldungen bezüglich Lebensdauern (<code>lifetimes</code>) und Ausleihen (<code>borrowing</code>) sind mathematisch präzise, können aber für Einsteiger extrem kryptisch wirken. Ohne visuelle Führung im Code verliert man leicht den Überblick darüber, welche Variable wie lange gültig ist.</li>
+<li><strong>Das Problem naiver KI-Anfragen</strong>: Large Language Models wurden auf Milliarden von Zeilen Code trainiert – ein Großteil davon in C++, Java oder Python. Wenn Sie ein Rust-Problem mit einem unpräzisen Prompt an eine KI übergeben, neigt das Modell dazu, Konzepte aus diesen GC-basierten (Garbage Collected) oder manuell verwalteten Sprachen zu übertragen. Das Resultat ist Code, der zwar kompiliert, aber das Zero-Cost-Prinzip von Rust durch redundante Kopiervorgänge (<code>.clone()</code>) verletzt oder Sicherheitslücken mittels <code>unsafe</code> aufreißt.</li>
+</ol>
+<p>Die Motivation für das perfekte Zusammenspiel von VS Code, <code>rust-analyzer</code> und strukturiertem KI-Einsatz liegt auf der Hand: Sie transformieren den Compiler von einem unbarmherzigen Richter in einen interaktiven Mentor. Sie sehen Fehler, bevor Sie kompilieren, verstehen das Speicherlayout auf einen Blick und nutzen KI-Assistenten als hochspezialisierte Experten statt als unsichere Raterunden.</p>
+<hr>
+<h2 id="4-der-naive-versuch"><a class="header" href="#4-der-naive-versuch">4. Der naive Versuch</a></h2>
+<p>Betrachten wir das Szenario eines Anfängers, der versucht, eine Funktion zu schreiben, die die erste Hälfte eines Textes verarbeitet und eine Referenz auf diesen Teilbereich zurückgibt. Da der Entwickler weder Inlay-Hints aktiviert hat noch die genauen Lebensdauern versteht, schreibt er folgenden Code:</p>
+<pre class="playground"><code class="language-rust edition2021">// Dieser Code soll die erste Hälfte eines übergebenen Texts ermitteln.
+// Um Speicherallokationen zu vermeiden, soll ein Slice (&amp;str) zurückgegeben werden.
+fn get_first_half(text: &amp;str) -&gt; &amp;str {
+    let temp_string = text.to_string(); // Umwandlung in ein String-Objekt zur Bearbeitung
+    let half_len = temp_string.len() / 2;
+    let result = &amp;temp_string[0..half_len]; // Erstellung des Slices
+    result // Rückgabe des Slices
+}
+
+fn main() {
+    let message = "Systemsteuerung";
+    let first_part = get_first_half(message);
+    println!("Die erste Hälfte lautet: {}", first_part);
+}</code></pre>
+<h3 id="der-unpräzise-ki-prompt"><a class="header" href="#der-unpräzise-ki-prompt">Der unpräzise KI-Prompt</a></h3>
+<p>Da der Code nicht kompiliert, kopiert der Entwickler die Fehlermeldung nicht einmal, sondern tippt einen kurzen, naiven Prompt in seinen KI-Chat:</p>
+<blockquote>
+<p>„Mein Rust-Code wirft einen Fehler, wenn ich eine Referenz auf einen String zurückgeben will. Wie kann ich das beheben? Hier ist die Funktion: [Code]“</p>
+</blockquote>
+<h3 id="die-ungeeignete-antwort-der-ki"><a class="header" href="#die-ungeeignete-antwort-der-ki">Die ungeeignete Antwort der KI</a></h3>
+<p>Das LLM, das keinen Kontext über Speicher- und Performanceanforderungen hat, schlägt folgende typische „Lösung“ vor:</p>
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>// Vorschlag der naiven KI:
+// Verwenden Sie einfach statische Lifetimes oder klonen Sie die Daten.
+fn get_first_half(text: &amp;'static str) -&gt; &amp;'static str {
+    let temp_string = text.to_string();
+    let half_len = temp_string.len() / 2;
+    // Wir leaken den Speicher, damit er 'static wird!
+    let leaked: &amp;'static str = Box::leak(temp_string.into_boxed_str());
+    &amp;leaked[0..half_len]
+}
+<span class="boring">}</span></code></pre>
+<hr>
+<h2 id="5-die-anatomie-des-fehlers"><a class="header" href="#5-die-anatomie-des-fehlers">5. Die Anatomie des Fehlers</a></h2>
+<h3 id="das-compiler-feedback-zum-naiven-versuch"><a class="header" href="#das-compiler-feedback-zum-naiven-versuch">Das Compiler-Feedback zum naiven Versuch</a></h3>
+<p>Wenn wir den ursprünglichen Code aus Schritt 4 kompilieren, meldet der Rust-Compiler eine klare Verletzung der Speichersicherheit:</p>
+<pre><code class="language-text">error[E0515]: cannot return value referencing local variable `temp_string`
+ --&gt; src/main.rs:7:5
+  |
+6 |     let result = &amp;temp_string[0..half_len];
+  |                   ----------- `temp_string` is borrowed here
+7 |     result
+  |     ^^^^^^ returns a value referencing data owned by the current function
+</code></pre>
+<h3 id="speicheranalyse-und-blick-hinter-die-kulissen"><a class="header" href="#speicheranalyse-und-blick-hinter-die-kulissen">Speicheranalyse und Blick hinter die Kulissen</a></h3>
+<p>Warum verweigert der Compiler hier den Dienst? Visualisieren wir die Situation im physischen Speicher (Stack und Heap) beim Verlassen der Funktion <code>get_first_half</code>:</p>
+<pre><code class="language-text">       STACK (Funktionsrahmen von `get_first_half`)
+       +---------------------------------------------+
+       | `text`: &amp;str (Fat Pointer auf "System...")  |
+       | `temp_string`: String (Besitzer auf Heap)    | ---&gt; Zeigt auf Heap-Adresse 0x2000
+       | `half_len`: usize (7)                       |
+       | `result`: &amp;str (Fat Pointer, ptr: 0x2000,   |
+       |                 len: 7)                     |
+       +---------------------------------------------+
+                               |
+                               | (Zeigt auf lokalen Heap-Speicher von temp_string)
+                               v
+       HEAP (Dynamischer Speicher)
+       +---------------------------------------------+
+       | 0x2000: "Systemsteuerung"                   |
+       +---------------------------------------------+
+</code></pre>
+<p>Beim Erreichen des Funktionsendes (Zeile 8) passiert Folgendes:</p>
+<ol>
+<li>Der Gültigkeitsbereich (Scope) von <code>get_first_half</code> endet.</li>
+<li>Gemäß den Ownership-Gesetzen von Rust wird für alle Variablen, die Besitzer von Ressourcen sind, die <code>drop</code>-Funktion aufgerufen. <code>temp_string</code> ist der Besitzer des Heap-Speichers an Adresse <code>0x2000</code>.</li>
+<li>Der Heap-Speicher an Adresse <code>0x2000</code> wird freigegeben (dealloziert) und steht dem Betriebssystem wieder zur Verfügung.</li>
+<li>Die Funktion versucht jedoch, <code>result</code> (einen Fat Pointer, der auf eben diese Adresse <code>0x2000</code> zeigt) an die aufrufende Funktion <code>main</code> zurückzugeben.</li>
+<li>Würde der Compiler dies zulassen, hätte <code>main</code> in der Variable <code>first_part</code> einen sogenannten <strong>Dangling Pointer</strong> (einen hängenden Zeiger). Der Zugriff darauf in <code>println!</code> wäre undefiniertes Verhalten (Undefined Behavior), da der Speicherbereich bereits freigegeben oder durch andere Daten überschrieben wurde.</li>
+</ol>
+<h3 id="die-fehlleistung-des-ki-vorschlags"><a class="header" href="#die-fehlleistung-des-ki-vorschlags">Die Fehlleistung des KI-Vorschlags</a></h3>
+<p>Der von der naiven KI vorgeschlagene Code löst das Kompilierungsproblem auf die denkbar schlechteste Weise:</p>
+<ul>
+<li><code>Box::leak</code> umgeht das Ownership-System, indem es die automatische Freigabe des Speichers deaktiviert. Der Speicher an Adresse <code>0x2000</code> wird niemals freigegeben.</li>
+<li>Bei jedem Funktionsaufruf entsteht ein <strong>Memory Leak</strong> (Speicherleck). Läuft dieses Programm auf einem Server, wird der Arbeitsspeicher über kurz oder lang vollständig gefüllt sein, was zum Absturz des Systems führt. Dies bricht die Rust-Philosophie der sicheren, ressourcenschonenden Programmierung komplett.</li>
+</ul>
+<hr>
+<h2 id="6-die-lösung"><a class="header" href="#6-die-lösung">6. Die Lösung</a></h2>
+<p>Um das Problem sauber, sicher und ohne Speicherlecks oder unnötige Kopien zu lösen, passen wir das Design an. Da wir die erste Hälfte eines bereits existierenden Strings extrahieren möchten, benötigen wir gar keine Zuweisung eines neuen <code>String</code>-Objekts auf dem Heap. Wir können direkt auf dem übergebenen <code>&amp;str</code> arbeiten. Ein String-Slice <code>&amp;str</code> ist bereits eine Referenz auf einen bestehenden String im Speicher. Wir erstellen einfach ein neues Slice auf diesem vorhandenen Speicherbereich:</p>
+<pre class="playground"><code class="language-rust edition2021">// Die saubere, idiomatische Lösung.
+// Die Lebensdauer des Rückgabe-Slices ist an die Lebensdauer des Eingabe-Slices gebunden.
+fn get_first_half(text: &amp;str) -&gt; &amp;str {
+    let half_len = text.len() / 2;
+    
+    // Wir erstellen ein neues Slice direkt auf dem Eingabe-String.
+    // Es wird kein neuer Heap-Speicher alloziiert!
+    &amp;text[0..half_len]
+}
+
+fn main() {
+    let message = "Systemsteuerung";
+    let first_part = get_first_half(message);
+    println!("Die erste Hälfte lautet: {}", first_part);
+}</code></pre>
+<h3 id="zeile-für-zeile-erklärung-nach-dem-eva-prinzip"><a class="header" href="#zeile-für-zeile-erklärung-nach-dem-eva-prinzip">Zeile-für-Zeile-Erklärung nach dem EVA-Prinzip</a></h3>
+<ul>
+<li><strong>Eingabe (Input)</strong>:
+Die Funktion <code>get_first_half</code> akzeptiert einen Parameter <code>text</code> vom Typ <code>&amp;str</code> (ein unveränderliches String-Slice). Dieses Slice besitzt die Daten nicht, sondern referenziert sie nur (z. B. den statischen Text <code>"Systemsteuerung"</code> im Programmspeicher oder einen Heap-String in <code>main</code>).</li>
+<li><strong>Verarbeitung (Processing)</strong>:
+<ol>
+<li><code>let half_len = text.len() / 2;</code>: Wir berechnen die Byte-Länge des halbierten Texts. Bei ASCII-Zeichen entspricht dies genau der halben Zeichenanzahl.</li>
+<li><code>&amp;text[0..half_len]</code>: Wir verwenden die Range-Syntax <code>0..half_len</code>, um eine Teilansicht des übergebenen Slices zu erzeugen.</li>
+</ol>
+</li>
+<li><strong>Ausgabe (Output)</strong>:
+Die Funktion gibt das neu erstellte String-Slice <code>&amp;str</code> zurück. Dank der impliziten Lebensdauer-Regeln von Rust (Lifetime Elision) erkennt der Compiler automatisch, dass das zurückgegebene Slice exakt so lange leben darf wie das übergebene Eingabe-Slice <code>text</code>. Es wird kein temporärer String erzeugt und somit kein Speicher auf dem Heap reserviert oder freigegeben.</li>
+</ul>
+<hr>
+<h2 id="7-kleines-tutorial"><a class="header" href="#7-kleines-tutorial">7. Kleines Tutorial</a></h2>
+<p>In diesem Tutorial richten wir Ihre Entwicklungsumgebung Schritt für Schritt ein und lösen anschließend ein Speicherproblem systematisch über eine strukturierte KI-Sitzung.</p>
+<h3 id="31-die-integrierte-entwicklungsumgebung-ide"><a class="header" href="#31-die-integrierte-entwicklungsumgebung-ide">3.1 Die integrierte Entwicklungsumgebung (IDE)</a></h3>
+<h4 id="311-vs-code-setup"><a class="header" href="#311-vs-code-setup">3.1.1 VS Code Setup</a></h4>
+<h5 id="schritt-1-installation-von-visual-studio-code"><a class="header" href="#schritt-1-installation-von-visual-studio-code">Schritt 1: Installation von Visual Studio Code</a></h5>
+<p>Falls noch nicht geschehen, laden Sie Visual Studio Code für Ihr Betriebssystem herunter und installieren Sie es. Stellen Sie sicher, dass das Terminal-Kommando <code>code</code> in Ihrem Systempfad registriert ist.</p>
+<h5 id="schritt-2-öffnen-des-workspace-verzeichnisses"><a class="header" href="#schritt-2-öffnen-des-workspace-verzeichnisses">Schritt 2: Öffnen des Workspace-Verzeichnisses</a></h5>
+<p>Öffnen Sie Ihr VS-Code-Terminal und navigieren Sie in Ihr Rust-Projektverzeichnis:</p>
+<pre><code class="language-bash">cd /home/thorsten/RustKurs
+code .
+</code></pre>
+<h4 id="312-die-erweiterung-rust-analyzer"><a class="header" href="#312-die-erweiterung-rust-analyzer">3.1.2 Die Erweiterung rust-analyzer</a></h4>
+<h5 id="schritt-3-installation-der-erweiterung"><a class="header" href="#schritt-3-installation-der-erweiterung">Schritt 3: Installation der Erweiterung</a></h5>
+<ol>
+<li>Öffnen Sie in VS Code die Ansicht für Erweiterungen (<code>Ctrl+Shift+X</code> bzw. <code>Cmd+Shift+X</code>).</li>
+<li>Suchen Sie nach <strong>rust-analyzer</strong> (entwickelt von der <em>Rust Programming Language</em> Organisation).</li>
+<li>Klicken Sie auf <strong>Install</strong>.</li>
+<li><em>Wichtig</em>: Deaktivieren Sie eventuell installierte, veraltete Erweiterungen wie die alte “Rust”-Erweiterung, da diese zu Konflikten führen.</li>
+</ol>
+<h5 id="schritt-4-konfiguration-über-die-settingsjson"><a class="header" href="#schritt-4-konfiguration-über-die-settingsjson">Schritt 4: Konfiguration über die <code>settings.json</code></a></h5>
+<p>Um das volle Potenzial von Inlay Hints und On-Save Clippy-Checks auszuschöpfen, legen wir eine projektspezifische Konfiguration an.</p>
+<ol>
+<li>Erstellen Sie im Stammverzeichnis Ihres Projekts (falls nicht vorhanden) einen Ordner <code>.vscode</code> und darin eine Datei <code>settings.json</code>.</li>
+<li>Fügen Sie folgenden Inhalt ein:</li>
+</ol>
+<pre><code class="language-json">{
+    "rust-analyzer.inlayHints.typeHints.enable": true,
+    "rust-analyzer.inlayHints.parameterHints.enable": true,
+    "rust-analyzer.inlayHints.chainingHints.enable": true,
+    "rust-analyzer.check.command": "clippy",
+    "rust-analyzer.check.allTargets": true,
+    "editor.formatOnSave": true
+}
+</code></pre>
+<h3 id="32-ki-unterstützte-softwareentwicklung"><a class="header" href="#32-ki-unterstützte-softwareentwicklung">3.2 KI-unterstützte Softwareentwicklung</a></h3>
+<h4 id="321-prompt-engineering-für-rust"><a class="header" href="#321-prompt-engineering-für-rust">3.2.1 Prompt-Engineering für Rust</a></h4>
+<h5 id="schritt-5-das-strukturierte-system-prompt-template"><a class="header" href="#schritt-5-das-strukturierte-system-prompt-template">Schritt 5: Das strukturierte System-Prompt-Template</a></h5>
+<p>Wenn Sie auf ein Compiler-Problem stoßen, das Sie nicht sofort verstehen, nutzen Sie das folgende strukturierte Prompt-Template. Kopieren Sie es und füllen Sie die markierten Bereiche aus.</p>
+<pre><code class="language-text">Rolle: Du bist ein Senior-Softwarearchitekt und Experte für die Programmiersprache Rust. Dein Fokus liegt auf Speichersicherheit, Zero-Cost-Abstractions und idiomatischem Code.
+
+Kontext: Ich entwickle eine Anwendung in Rust. Ich möchte folgenden logischen Ablauf implementieren:
+[BESCHREIBUNG DES GEPLANTEN ABLAUFS]
+
+Mein aktueller Code:
+```rust
+[FÜGEN SIE HIER IHR CODEBEISPIEL EIN]
+</code></pre>
+<p>Die Fehlermeldung des Compilers (cargo check / rust-analyzer):</p>
+<pre><code class="language-text">[FÜGEN SIE HIER DIE FEHLERMELDUNG IM DETAIL EIN]
+</code></pre>
+<p>Einschränkungen &amp; Anforderungen:</p>
+<ol>
+<li>Verwende KEINE unnötigen <code>.clone()</code> oder <code>.to_owned()</code> Aufrufe auf dem Heap, es sei denn, es ist aus Ownership-Gründen mathematisch unumgänglich.</li>
+<li>Verwende keine unsicheren Blöcke (<code>unsafe</code>).</li>
+<li>Erkläre kurz, was auf Stack und Heap passiert und warum der Borrow Checker meinen Code blockiert hat.</li>
+<li>Gib mir den korrigierten, vollständigen und lauffähigen Code.</li>
+</ol>
+<pre><code>
+#### 3.2.2 Compiler-Fehlermeldungen auflösen
+
+##### Schritt 6: Systematisches Auflösen eines Fehlers in der Praxis
+Angenommen, Sie haben folgenden fehlerhaften Code in `src/main.rs` geschrieben:
+
+```rust
+fn main() {
+    let mut names = vec!["Klaus", "Dieter", "Anna"];
+    let first = names.first();
+    names.push("Sabine"); // Fehler!
+    println!("Erster Name: {:?}", first);
+}
+</code></pre>
+<ol>
+<li>Ihr konfiguriertes VS Code markiert die Zeile <code>names.push(...)</code> sofort rot.</li>
+<li>Führen Sie <code>cargo check</code> im Terminal aus, um die Fehlermeldung zu kopieren:</li>
+</ol>
+<pre><code class="language-text">error[E0502]: cannot borrow `names` as mutable because it is also borrowed as immutable
+ --&gt; src/main.rs:4:5
+  |
+3 |     let first = names.first();
+  |                 ----- immutable borrow occurs here
+4 |     names.push("Sabine");
+  |     ^^^^^^^^^^^^^^^^^^^^ mutable borrow occurs here
+5 |     println!("Erster Name: {:?}", first);
+  |                                   ----- immutable borrow later used here
+</code></pre>
+<ol start="3">
+<li>Kopieren Sie diese Fehlermeldung und Ihren Code in das Prompt-Template aus Schritt 5.</li>
+<li>Die KI wird Ihnen erklären, dass <code>names.first()</code> eine unveränderliche Referenz hält und <code>names.push()</code> eine veränderliche Referenz benötigt, was gegen die Aliasing-Regeln verstößt. Sie schlägt Ihnen vor, die Reihenfolge zu ändern oder den Wert zu kopieren (falls es sich um primitive Typen handelt), oder den Scope der Ausleihe einzugrenzen.</li>
+</ol>
+<hr>
+<h2 id="8-mentale-modelle--deep-dive"><a class="header" href="#8-mentale-modelle--deep-dive">8. Mentale Modelle &amp; Deep Dive</a></h2>
+<h3 id="das-language-server-protocol-lsp-in-der-praxis"><a class="header" href="#das-language-server-protocol-lsp-in-der-praxis">Das Language Server Protocol (LSP) in der Praxis</a></h3>
+<p>Um zu verstehen, wie <code>rust-analyzer</code> so blitzschnell auf jede Tastatureingabe reagieren kann, hilft ein Blick auf die zugrundeliegende Architektur. Traditionelle IDEs kompilierten bei jeder Änderung das gesamte Projekt im Hintergrund neu. Bei großen Rust-Projekten würde dies zu massiven Verzögerungen führen.</p>
+<p><code>rust-analyzer</code> nutzt stattdessen eine client-seitige Erweiterung (VS Code) und ein eigenständiges Server-Programm (das LSP-Backend), die über JSON-RPC-Nachrichten kommunizieren:</p>
+<pre><code class="language-text">+-----------------------+                    +-------------------------+
+|     VS Code (Client)  |                    |  rust-analyzer (Server) |
++-----------------------+                    +-------------------------+
+|                       |                    |                         |
+| User tippt Buchstabe  |                    |                         |
+|                       | -- didChange -----&gt;| Analyse des AST         |
+|                       |                    | (Inkrementeller Parser) |
+|                       |                    |                         |
+| Rote Wellenlinie      | &lt;-- Diagnostics -- | Berechne Typen          |
+|                       |                    |                         |
+| Inlay Hints anzeigen  | &lt;-- Inlay Hints -- | Liefert Typen           |
++-----------------------+                    +-------------------------+
+</code></pre>
+<p>Der Server hält ein internes Modell des Codes im Speicher. Sobald Sie ein Zeichen eintippen, aktualisiert er nur den betroffenen Teil des Syntaxbaums (inkrementelles Parsing). Erst wenn Sie die Datei speichern, wird im Hintergrund ein schneller <code>cargo check</code> oder <code>cargo clippy</code> ausgeführt, um tiefergehende semantische Fehler aufzudecken.</p>
+<h3 id="die-philosophie-von-clippy"><a class="header" href="#die-philosophie-von-clippy">Die Philosophie von Clippy</a></h3>
+<p>Clippy ist kein reiner Compiler-Hilfsdienst, sondern ein didaktisches Werkzeug. Es ist in vier Hauptkategorien (Lints) unterteilt:</p>
+<ol>
+<li><strong>Style</strong>: Code, der zwar korrekt ist, aber nicht den idiomatischen Rust-Konventionen entspricht.</li>
+<li><strong>Correctness</strong>: Code, der sehr wahrscheinlich zu Fehlern zur Laufzeit führt (z. B. Vergleiche von Fließkommazahlen auf exakte Gleichheit).</li>
+<li><strong>Complexity</strong>: Code, der unnötig kompliziert geschrieben ist und einfacher ausgedrückt werden kann (z. B. <code>if let</code> statt eines komplexen <code>match</code>).</li>
+<li><strong>Performance</strong>: Code, der unnötigen Speicher alloziiert oder CPU-Zyklen verschwendet (z. B. das Suchen in einem Vektor statt in einem HashSet).</li>
+</ol>
+<h3 id="detaillierte-konfigurationsreferenz"><a class="header" href="#detaillierte-konfigurationsreferenz">Detaillierte Konfigurationsreferenz</a></h3>
+<p>Im Folgenden sind alle relevanten Einstellungen der Entwicklungswerkzeuge aufgeführt, die Sie in Ihrer <code>settings.json</code> definieren können.</p>
+<h4 id="1-rust-analyzerinlayhintstypehintsenable"><a class="header" href="#1-rust-analyzerinlayhintstypehintsenable">1. <code>rust-analyzer.inlayHints.typeHints.enable</code></a></h4>
+<ul>
+<li><strong>Typ</strong>: <code>boolean</code></li>
+<li><strong>Standardwert</strong>: <code>true</code></li>
+<li><strong>Beschreibung</strong>: Steuert die Anzeige von Typen für Variablenbindungen, bei denen kein Typ explizit angegeben wurde.</li>
+<li><strong>Performance-Auswirkung</strong>: Geringer Speicher- und CPU-Overhead für das Rendering im Editor.</li>
+<li><strong>Beispiel</strong>:
+<pre><code class="language-json">"rust-analyzer.inlayHints.typeHints.enable": true
+</code></pre>
+</li>
+</ul>
+<h4 id="2-rust-analyzerinlayhintsparameterhintsenable"><a class="header" href="#2-rust-analyzerinlayhintsparameterhintsenable">2. <code>rust-analyzer.inlayHints.parameterHints.enable</code></a></h4>
+<ul>
+<li><strong>Typ</strong>: <code>boolean</code></li>
+<li><strong>Standardwert</strong>: <code>true</code></li>
+<li><strong>Beschreibung</strong>: Zeigt die Namen der Argumente an den Aufrufstellen von Funktionen und Methoden an.</li>
+<li><strong>Performance-Auswirkung</strong>: Keine spürbaren Verzögerungen.</li>
+<li><strong>Beispiel</strong>:
+<pre><code class="language-json">"rust-analyzer.inlayHints.parameterHints.enable": true
+</code></pre>
+</li>
+</ul>
+<h4 id="3-rust-analyzerinlayhintschaininghintsenable"><a class="header" href="#3-rust-analyzerinlayhintschaininghintsenable">3. <code>rust-analyzer.inlayHints.chainingHints.enable</code></a></h4>
+<ul>
+<li><strong>Typ</strong>: <code>boolean</code></li>
+<li><strong>Standardwert</strong>: <code>true</code></li>
+<li><strong>Beschreibung</strong>: Zeigt die Typen der Zwischenergebnisse bei verketteten Methodenaufrufen (Method Chaining) an.</li>
+<li><strong>Performance-Auswirkung</strong>: Extrem nützlich bei komplexen Iterator-Ketten, kann bei sehr langen Ketten das Editorbild optisch überladen.</li>
+<li><strong>Beispiel</strong>:
+<pre><code class="language-json">"rust-analyzer.inlayHints.chainingHints.enable": true
+</code></pre>
+</li>
+</ul>
+<h4 id="4-rust-analyzercheckcommand"><a class="header" href="#4-rust-analyzercheckcommand">4. <code>rust-analyzer.check.command</code></a></h4>
+<ul>
+<li><strong>Typ</strong>: <code>string</code></li>
+<li><strong>Standardwert</strong>: <code>"check"</code></li>
+<li><strong>Beschreibung</strong>: Bestimmt das Werkzeug, das beim Speichern einer Datei zur Validierung im Hintergrund aufgerufen wird. Gültige Werte sind <code>"check"</code> (für <code>cargo check</code>) oder <code>"clippy"</code> (für <code>cargo clippy</code>).</li>
+<li><strong>Performance-Auswirkung</strong>: <code>"clippy"</code> benötigt minimal mehr Zeit als <code>"check"</code>, liefert dafür jedoch tiefgehende Qualitätsanalysen.</li>
+<li><strong>Beispiel</strong>:
+<pre><code class="language-json">"rust-analyzer.check.command": "clippy"
+</code></pre>
+</li>
+</ul>
+<h4 id="5-rust-analyzercheckextraargs"><a class="header" href="#5-rust-analyzercheckextraargs">5. <code>rust-analyzer.check.extraArgs</code></a></h4>
+<ul>
+<li><strong>Typ</strong>: <code>array of strings</code></li>
+<li><strong>Standardwert</strong>: <code>[]</code></li>
+<li><strong>Beschreibung</strong>: Zusätzliche Argumente, die an den Prüfbefehl übergeben werden. Oft genutzt, um Clippy-Warnungen als Fehler zu behandeln.</li>
+<li><strong>Performance-Auswirkung</strong>: Keine.</li>
+<li><strong>Beispiel</strong>:
+<pre><code class="language-json">"rust-analyzer.check.extraArgs": ["--", "-D", "warnings"]
+</code></pre>
+</li>
+</ul>
+<h4 id="6-rust-analyzercargobuildscriptsenable"><a class="header" href="#6-rust-analyzercargobuildscriptsenable">6. <code>rust-analyzer.cargo.buildScripts.enable</code></a></h4>
+<ul>
+<li><strong>Typ</strong>: <code>boolean</code></li>
+<li><strong>Standardwert</strong>: <code>true</code></li>
+<li><strong>Beschreibung</strong>: Ermöglicht das Ausführen von Cargo-Build-Skripten (<code>build.rs</code>) zur Generierung von Hilfscode während der Analyse.</li>
+<li><strong>Performance-Auswirkung</strong>: Kann beim ersten Laden eines Projekts mit vielen Abhängigkeiten zu Verzögerungen führen.</li>
+<li><strong>Beispiel</strong>:
+<pre><code class="language-json">"rust-analyzer.cargo.buildScripts.enable": true
+</code></pre>
+</li>
+</ul>
+<h4 id="7-rust-analyzerprocmacroenable"><a class="header" href="#7-rust-analyzerprocmacroenable">7. <code>rust-analyzer.procMacro.enable</code></a></h4>
+<ul>
+<li><strong>Typ</strong>: <code>boolean</code></li>
+<li><strong>Standardwert</strong>: <code>true</code></li>
+<li><strong>Beschreibung</strong>: Aktiviert die Expansion von prozeduralen Makros (wie <code>#[derive(Serialize)]</code>), damit Autovervollständigung und Typerkennung auch für makrogenerierten Code funktionieren.</li>
+<li><strong>Performance-Auswirkung</strong>: Erhöhter CPU-Bedarf bei großen Makro-Bibliotheken.</li>
+<li><strong>Beispiel</strong>:
+<pre><code class="language-json">"rust-analyzer.procMacro.enable": true
+</code></pre>
+</li>
+</ul>
+<h4 id="8-rust-analyzercargofeatures"><a class="header" href="#8-rust-analyzercargofeatures">8. <code>rust-analyzer.cargo.features</code></a></h4>
+<ul>
+<li><strong>Typ</strong>: <code>string</code> oder <code>array</code></li>
+<li><strong>Standardwert</strong>: <code>"all"</code></li>
+<li><strong>Beschreibung</strong>: Definiert, welche Cargo-Features bei der Analyse berücksichtigt werden sollen.</li>
+<li><strong>Performance-Auswirkung</strong>: Bei großen Monorepositories kann das Einschränken der Features die Ladezeit verkürzen.</li>
+<li><strong>Beispiel</strong>:
+<pre><code class="language-json">"rust-analyzer.cargo.features": "all"
+</code></pre>
+</li>
+</ul>
+<h4 id="9-rust-analyzerdiagnosticsdisabled"><a class="header" href="#9-rust-analyzerdiagnosticsdisabled">9. <code>rust-analyzer.diagnostics.disabled</code></a></h4>
+<ul>
+<li><strong>Typ</strong>: <code>array of strings</code></li>
+<li><strong>Standardwert</strong>: <code>[]</code></li>
+<li><strong>Beschreibung</strong>: Erlaubt das gezielte Deaktivieren von spezifischen Fehlern oder Warnungen, die vom rust-analyzer generiert werden.</li>
+<li><strong>Performance-Auswirkung</strong>: Keine.</li>
+<li><strong>Beispiel</strong>:
+<pre><code class="language-json">"rust-analyzer.diagnostics.disabled": ["unresolved-macro-call"]
+</code></pre>
+</li>
+</ul>
+<h4 id="10-rust-analyzerhoveractionsreferencesenable"><a class="header" href="#10-rust-analyzerhoveractionsreferencesenable">10. <code>rust-analyzer.hover.actions.references.enable</code></a></h4>
+<ul>
+<li><strong>Typ</strong>: <code>boolean</code></li>
+<li><strong>Standardwert</strong>: <code>false</code></li>
+<li><strong>Beschreibung</strong>: Zeigt beim Hovern über ein Symbol an, wie oft und wo es im Projekt referenziert wird.</li>
+<li><strong>Performance-Auswirkung</strong>: Kann bei sehr großen Codebasen zu Verzögerungen führen, daher standardmäßig deaktiviert.</li>
+<li><strong>Beispiel</strong>:
+<pre><code class="language-json">"rust-analyzer.hover.actions.references.enable": true
+</code></pre>
+</li>
+</ul>
+<hr>
+<h2 id="9-drei-praktische-übungen"><a class="header" href="#9-drei-praktische-übungen">9. Drei praktische Übungen</a></h2>
+<h3 id="übung-1-leicht---vs-code--rust-analyzer-setup-verifizieren"><a class="header" href="#übung-1-leicht---vs-code--rust-analyzer-setup-verifizieren">Übung 1 (Leicht - VS Code &amp; rust-analyzer Setup verifizieren)</a></h3>
+<ul>
+<li><strong>Ziel</strong>: Sicherstellen, dass das System voll funktionsfähig ist und Typinferenzen visuell dargestellt werden.</li>
+<li><strong>Aufgabe</strong>:
+<ol>
+<li>Öffnen Sie ein neues Cargo-Projekt.</li>
+<li>Kopieren Sie folgenden Code in Ihre <code>src/main.rs</code>:
+<pre class="playground"><code class="language-rust edition2021">fn main() {
+    let number = 42;
+    let text = "Hallo Rust";
+    let values = vec![1.0, 2.0, 3.0];
+    let mut doubled_values = values.iter().map(|x| x * 2.0);
+    let result = doubled_values.next();
+    println!("Wert: {:?}", result);
+}</code></pre>
+</li>
+<li>Prüfen Sie, ob VS Code Ihnen die Typen (<code>i32</code>, <code>&amp;str</code>, <code>Vec&lt;f64&gt;</code>, etc.) in grauem Hilfstext neben den Variablennamen anzeigt.</li>
+<li>Fügen Sie absichtlich ein Semikolon am Ende einer Funktionsdefinition hinzu und beobachten Sie, ob Clippy Ihnen sofort eine Warnung on-save ausgibt.</li>
+</ol>
+</li>
+<li><strong>Lösungshinweis</strong>: Wenn die Typen nicht angezeigt werden, prüfen Sie in Ihrer <code>settings.json</code>, ob <code>"rust-analyzer.inlayHints.typeHints.enable": true</code> korrekt geschrieben ist und starten Sie den Language Server neu (<code>Ctrl+Shift+P</code> -&gt; <code>Rust Analyzer: Restart Server</code>).</li>
+</ul>
+<h3 id="übung-2-mittel---den-borrow-checker-mit-ki-hilfe-zähmen"><a class="header" href="#übung-2-mittel---den-borrow-checker-mit-ki-hilfe-zähmen">Übung 2 (Mittel - Den Borrow Checker mit KI-Hilfe zähmen)</a></h3>
+<ul>
+<li><strong>Ziel</strong>: Systematisches Prompting zur Lösung eines Ownership-Konflikts anwenden.</li>
+<li><strong>Aufgabe</strong>:
+Der folgende Code soll eine Funktion implementieren, die einen Vektor von Zahlen filtert und die verbleibenden Elemente verdoppelt. Der Code kompiliert jedoch aufgrund eines Borrowing-Konflikts nicht:
+<pre class="playground"><code class="language-rust edition2021">fn filter_and_double(data: &amp;mut Vec&lt;i32&gt;) -&gt; Vec&lt;&amp;i32&gt; {
+    let mut result = Vec::new();
+    for val in data.iter() {
+        if *val &gt; 10 {
+            result.push(val);
+        }
+    }
+    data.push(42); // Fehler tritt hier auf!
+    result
+}
+
+fn main() {
+    let mut numbers = vec![5, 12, 8, 20];
+    let filtered = filter_and_double(&amp;mut numbers);
+    println!("Gefiltert: {:?}", filtered);
+}</code></pre>
+<ol>
+<li>Kopieren Sie den Fehlercode aus <code>cargo check</code>.</li>
+<li>Formulieren Sie unter Verwendung des Prompt-Templates aus Schritt 7 eine Anfrage an ein LLM.</li>
+<li>Setzen Sie die vorgeschlagene Lösung um und verifizieren Sie, dass kein <code>.clone()</code> auf den Vektor angewendet wurde.</li>
+</ol>
+</li>
+<li><strong>Lösungshinweis</strong>: Das Problem ist, dass <code>result</code> unveränderliche Referenzen (<code>&amp;i32</code>) auf Elemente in <code>data</code> hält, während <code>data.push(42)</code> eine veränderliche Referenz auf das gesamte Vektorelement erfordert. Eine saubere Lösung ist die Rückgabe von Werten (<code>Vec&lt;i32&gt;</code>) statt Referenzen, was durch Dereferenzierung und Kopieren der Zahlen gelöst wird (da <code>i32</code> das <code>Copy</code>-Trait implementiert).</li>
+</ul>
+<h3 id="übung-3-schwer---zero-cost-refactoring-eines-ki-vorschlags"><a class="header" href="#übung-3-schwer---zero-cost-refactoring-eines-ki-vorschlags">Übung 3 (Schwer - Zero-Cost-Refactoring eines KI-Vorschlags)</a></h3>
+<ul>
+<li><strong>Ziel</strong>: Einen ineffizienten Codevorschlag einer KI manuell in ein Zero-Cost-Design überführen.</li>
+<li><strong>Aufgabe</strong>:
+Sie haben eine KI nach einem Parser gefragt, der den Domain-Namen aus einer E-Mail-Adresse extrahiert. Die KI hat Ihnen folgenden Code geliefert:
+<pre class="playground"><code class="language-rust edition2021">// Dieser Code funktioniert zwar, alloziiert aber bei jedem Aufruf 
+// einen neuen String auf dem Heap, was ineffizient ist.
+fn extract_domain(email: String) -&gt; String {
+    let parts: Vec&lt;String&gt; = email.split('@').map(|s| s.to_string()).collect();
+    if parts.len() == 2 {
+        parts[1].clone()
+    } else {
+        "".to_string()
+    }
+}
+
+fn main() {
+    let email_address = String::from("entwickler@rust-kurs.de");
+    let domain = extract_domain(email_address);
+    println!("Domain: {}", domain);
+}</code></pre>
+<ol>
+<li>Schreiben Sie diesen Code so um, dass er absolut <strong>zero-cost</strong> arbeitet. Das bedeutet:
+<ul>
+<li>Die Funktion <code>extract_domain</code> darf keinen <code>String</code> per Ownership übernehmen, sondern soll ein E-Mail-Slice (<code>&amp;str</code>) als Parameter akzeptieren.</li>
+<li>Sie darf keinen neuen <code>String</code> zurückgeben, sondern ein Slice (<code>Option&lt;&amp;str&gt;</code>), das auf den ursprünglichen Speicherbereich verweist.</li>
+<li>Es darf kein einziger Heap-Allokationsschritt (<code>.to_string()</code>, <code>.clone()</code>) ausgeführt werden.</li>
+</ul>
+</li>
+<li>Erklären Sie das Speicherlayout vor und nach der Optimierung.</li>
+</ol>
+</li>
+<li><strong>Lösungshinweis</strong>: Nutzen Sie die Methode <code>email.split('@').nth(1)</code>, die direkt ein <code>Option&lt;&amp;str&gt;</code> zurückgibt, ohne Speicher auf dem Heap zu reservieren.</li>
+</ul>
+<hr>
+<h2 id="10-lernstrategie-selbsteinschätzung--merkzettel"><a class="header" href="#10-lernstrategie-selbsteinschätzung--merkzettel">10. Lernstrategie, Selbsteinschätzung &amp; Merkzettel</a></h2>
+<h3 id="spickzettel-cheat-sheet"><a class="header" href="#spickzettel-cheat-sheet">Spickzettel (Cheat Sheet)</a></h3>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>VS Code Shortcut</th><th>Aktion</th><th>Beschreibung</th></tr>
+</thead>
+<tbody>
+<tr><td><code>Ctrl + P</code> (bzw. <code>Cmd + P</code>)</td><td>Datei suchen</td><td>Schnelles Wechseln zwischen Projektdateien</td></tr>
+<tr><td><code>Ctrl + Shift + P</code></td><td>Befehlspalette</td><td>Ausführen von Editor- und Server-Kommandos</td></tr>
+<tr><td><code>F12</code></td><td>Go to Definition</td><td>Springt direkt zur Implementierung eines Typs oder einer Funktion</td></tr>
+<tr><td><code>Shift + F12</code></td><td>Find References</td><td>Zeigt alle Stellen an, an denen dieses Symbol genutzt wird</td></tr>
+<tr><td><code>Ctrl + .</code> (bzw. <code>Cmd + .</code>)</td><td>Quick Fix</td><td>Öffnet die Autokorrektur-Vorschläge von rust-analyzer</td></tr>
+<tr><td><code>Alt + Shift + F</code></td><td>Format Document</td><td>Formatiert die aktuelle Datei gemäß <code>rustfmt</code></td></tr>
+</tbody>
+</table>
+</div>
+<h4 id="universelles-rust-system-prompt"><a class="header" href="#universelles-rust-system-prompt">Universelles Rust-System-Prompt</a></h4>
+<pre><code class="language-text">System-Rolle: Du bist ein hochqualifizierter Rust-Compiler und Performance-Analyst.
+Ziel: Hilf mir, Compiler-Fehler zu beheben und gleichzeitig die Zero-Cost-Garantien einzuhalten.
+Regel: Bevorzuge Referenzen (&amp;) und Slices (&amp;str) vor Heap-Kopien (.clone(), .to_owned()).
+</code></pre>
+<h3 id="active-recall-selbsttest-fragen"><a class="header" href="#active-recall-selbsttest-fragen">Active Recall (Selbsttest-Fragen)</a></h3>
+<ol>
+<li>Warum führt die Aktivierung von <code>"rust-analyzer.check.command": "clippy"</code> zu besserem Code als die Standardeinstellung <code>"check"</code>?</li>
+<li>Was unterscheidet die Kommunikation des <code>rust-analyzer</code> über das LSP-Protokoll von einem klassischen Compiler-Durchlauf?</li>
+<li>Warum ist der naive Ratschlag vieler allgemeiner KIs, bei Lifetime-Fehlern einfach <code>.clone()</code> zu nutzen, ein Anti-Pattern in Rust?</li>
+<li>Welche Gefahr droht, wenn man das Speicherleck-Problem mithilfe von <code>Box::leak</code> umgeht, um den Compiler stummzuschalten?</li>
+</ol>
+<h3 id="die-feynman-methode"><a class="header" href="#die-feynman-methode">Die Feynman-Methode</a></h3>
+<p>Versuchen Sie, einem Entwickler, der bisher nur in Python arbeitet, in maximal drei Sätzen zu erklären, warum der Rust-Compiler Inlay-Hints benötigt und wie <code>rust-analyzer</code> diese berechnet.</p>
+<h3 id="gezielte-lint-provokation"><a class="header" href="#gezielte-lint-provokation">Gezielte Lint-Provokation</a></h3>
+<ol>
+<li>Schreiben Sie in VS Code eine Funktion, die ein Argument per Referenz übernimmt, dieses aber im Rumpf nicht verwendet.</li>
+<li>Beobachten Sie, wie sich die rote Wellenlinie oder gelbe Warnlinie verhält.</li>
+<li>Hovern Sie mit der Maus über die Warnung und nutzen Sie den Shortcut <code>Ctrl + .</code>, um den Fehler automatisch durch das Einfügen eines Unterstrichs (z. B. <code>_name</code>) zu beheben.</li>
+</ol>
+<h3 id="metakognitiver-selbsttest"><a class="header" href="#metakognitiver-selbsttest">Metakognitiver Selbsttest</a></h3>
+<p>Wechseln Sie erst zum nächsten Kapitel, wenn Sie:</p>
+<ul>
+<li><input disabled="" type="checkbox"> VS Code mit dem <code>rust-analyzer</code> konfiguriert haben und graue Typ-Hinweise im Editor sehen.</li>
+<li><input disabled="" type="checkbox"> Den Unterschied im Speicherlayout (Stack/Heap) zwischen einer String-Kopie und einer String-Slice-Referenz verstanden haben.</li>
+<li><input disabled="" type="checkbox"> Erfolgreich mindestens einen Compiler-Fehler mithilfe des strukturierten Prompt-Templates gelöst haben.</li>
+</ul>
+<hr>
+<h2 id="11-zusammenfassung"><a class="header" href="#11-zusammenfassung">11. Zusammenfassung</a></h2>
+<ul>
+<li><strong>VS Code Setup</strong>: Durch die Installation von <code>rust-analyzer</code> und die Aktivierung von Inlay Hints in der <code>settings.json</code> wird die implizite Typinferenz von Rust im Editor visuell sichtbar gemacht.</li>
+<li><strong>On-Save-Checks</strong>: Die Umstellung des Analysebefehls auf <code>clippy</code> sorgt dafür, dass Stilfehler und Performance-Bremsen direkt beim Speichern markiert werden, noch bevor das Programm übersetzt wird.</li>
+<li><strong>KI-Kollaboration</strong>: Naive Prompts führen bei LLMs oft zu nicht-idiomatischem Code (wie exzessivem Klonen). Strukturierte Prompts, die dem LLM eine Expertenrolle zuweisen und Speicher-Constraints vorgeben, erzeugen performante und sichere Lösungen.</li>
+<li><strong>Fehleranalyse</strong>: Compiler-Meldungen enthalten wertvolle Traces. Das systematische Übergeben dieser Fehlermeldungen an KI-Assistenten beschleunigt das Lernen und Verstehen des Borrow Checkers.</li>
+<li><strong>Zero-Cost-Prinzip</strong>: Das Beheben von Lifetime-Fehlern sollte primär durch präzises Lebensdauer-Design (z. B. Scopes und Slices) und nicht durch unreflektiertes Kopieren oder Umgehen der Sicherheitsprüfungen via <code>unsafe</code> erfolgen.</li>
+</ul>
+<hr>
+<p><strong>Lizenz- und Attributionshinweis</strong>:
+Teile dieses Kapitels basieren auf Übersetzungen und didaktischen Anpassungen des offiziellen Buches <a href="https://doc.rust-lang.org/book/">The Rust Programming Language</a> von Steve Klabnik und Carol Nichols (sowie Beiträgen der Rust-Community), lizenziert unter <a href="https://opensource.org/licenses/MIT">MIT</a> und <a href="https://www.apache.org/licenses/LICENSE-2.0">Apache 2.0</a>.</p>
 
                     </main>
 

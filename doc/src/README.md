@@ -2,7 +2,7 @@
 
 Willkommen beim begleitenden Lehrbuch für den **Rust-Videokurs für Anfänger**! 
 
-Dieses Lehrbuch führt dich Schritt für Schritt durch alle grundlegenden Konzepte der Programmiersprache Rust. Die Inhalte sind auf maximale Verständlichkeit ausgelegt und begleiten die videobasierten Lektionen.
+Dieses Lehrbuch führt Sie Schritt für Schritt durch alle grundlegenden Konzepte der Programmiersprache Rust. Die Inhalte sind auf maximale Verständlichkeit ausgelegt und begleiten die videobasierten Lektionen.
 
 ## Inhaltsübersicht
 
@@ -11,7 +11,7 @@ Dieses Lehrbuch ist in 18 praxisnahe Lektionen aufgeteilt:
 1. **Was ist Rust?**: Einführung in die Konzepte und Vorteile von Rust (Ownership, Speichersicherheit).
 2. **Installation & Systemkonfiguration**: Schritt-für-Schritt-Anleitung zur Einrichtung unter Linux/Windows sowie VS Code.
 3. **KI-Assistenten & Tools**: Nutzung moderner Assistenten (GitHub Copilot, Gemini Code Assist).
-4. **Erstes Projekt**: Erstellung und Ausführung deines ersten "Hello World"-Programms.
+4. **Erstes Projekt**: Erstellung und Ausführung Ihres ersten "Hello World"-Programms.
 5. **Variablen & Scopes**: Deklarationen, Mutabilität, Scopes und Shadowing.
 6. **Skalare & zusammengesetzte Typen**: Alles über Integers, Floats, Chars, Booleans und Zeichenketten.
 7. **Übungsprojekt**: Erste praktische Anwendung der gelernten Grundlagen.

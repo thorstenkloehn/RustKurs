@@ -35,7 +35,7 @@
             const path_to_root = "";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "searchindex-a9440cc5.js";
+            window.path_to_searchindex_js = "searchindex-76719c3e.js";
         </script>
         <!-- Start loading toc.js asap -->
         <script src="toc-dedbbe6e.js"></script>
@@ -174,121 +174,771 @@
 
                 <div id="mdbook-content" class="content">
                     <main>
-                        <h1 id="zusammenfassung-variablen--datentypen-in-rust"><a class="header" href="#zusammenfassung-variablen--datentypen-in-rust">Zusammenfassung: Variablen &amp; Datentypen in Rust</a></h1>
-<p>Dieses Kapitel bietet einen kompakten Überblick über die Grundlagen von Variablen und Datentypen in Rust.</p>
+                        <h1 id="kapitel-9-zusammenfassung-variablen--typen"><a class="header" href="#kapitel-9-zusammenfassung-variablen--typen">Kapitel 9: Zusammenfassung Variablen &amp; Typen</a></h1>
+<p>Dieses Kapitel bildet die Brücke zwischen den Grundlagen der Variablen deklaration und der tieferen Ebene der Systemarchitektur. Nachdem Sie in den vorangegangenen Kapiteln (siehe <a href="file:///home/thorsten/RustKurs/doc/src/5.md">Kapitel 5</a>, <a href="file:///home/thorsten/RustKurs/doc/src/6.md">Kapitel 6</a>, <a href="file:///home/thorsten/RustKurs/doc/src/7.md">Kapitel 7</a> und <a href="file:///home/thorsten/RustKurs/doc/src/8.md">Kapitel 8</a>) Variablen, Kontrollstrukturen, Skalartypen sowie Arrays und Tupel kennengelernt haben, führen wir dieses Wissen nun zusammen.</p>
+<p>Wir betrachten hierbei nicht nur die syntaktischen Unterschiede im direkten Vergleich, sondern dringen tief in die physische Speicherverwaltung vor. Sie werden lernen, wie der Rust-Compiler Daten auf der Hardware anordnet, warum das CPU-Alignment für die Performance entscheidend ist und wie Sie Speicherverschwendung durch Padding-Bytes vermeiden.</p>
 <hr>
-<h2 id="1-variablen-und-veränderlichkeit-mutability"><a class="header" href="#1-variablen-und-veränderlichkeit-mutability">1. Variablen und Veränderlichkeit (Mutability)</a></h2>
-<p>Standardmäßig sind Variablen in Rust <strong>unveränderlich</strong> (immutable). Das sorgt für maximale Sicherheit.</p>
+<h2 id="1-lernziele--lernplan"><a class="header" href="#1-lernziele--lernplan">1. Lernziele &amp; Lernplan</a></h2>
+<h3 id="lernziele"><a class="header" href="#lernziele">Lernziele</a></h3>
 <ul>
-<li><strong>Unveränderlich (Standard):</strong>
-<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>let x = 5;
-// x = 6; // ✘ FEHLER: Zuweisung an unveränderliche Variable nicht erlaubt!
-<span class="boring">}</span></code></pre>
+<li><strong>Sie können</strong> den physischen Speicherbedarf (Größe in Bytes und Alignment) aller skalaren und zusammengesetzten Datentypen auf 32-Bit- und 64-Bit-CPU-Architekturen exakt berechnen und Speicher-Padding erklären.</li>
+<li><strong>Sie können</strong> die syntaktischen Unterschiede zwischen Arrays, Tupeln und Skalartypen im Code identifizieren und für jede Problemstellung die optimale Datenstruktur auswählen.</li>
+<li><strong>Sie können</strong> Arithmetik-Fehler (wie z. B. Integer-Overflows) zur Laufzeit vorhersagen und durch den gezielten Einsatz von API-Methoden der Standardbibliothek (Checked, Saturating, Wrapping, Overflowing) robust auflösen.</li>
+<li><strong>Sie können</strong> das Verhalten von Variablen bei der Zuweisung (Copy- vs. Move-Semantik) anhand des Speicherlayouts auf dem Stack analysieren und erklären, unter welchen Bedingungen primitive Typen und zusammengesetzte Datenstrukturen den <code>Copy</code>-Trait implementieren.</li>
+</ul>
+<h3 id="lernplan"><a class="header" href="#lernplan">Lernplan</a></h3>
+<ul>
+<li><input disabled="" type="checkbox"> <strong>2. Die Definition</strong>: Formale Begriffsbestimmung von Variablen, Skalartypen, Arrays, Tupeln und dem Unit-Typ.</li>
+<li><input disabled="" type="checkbox"> <strong>9.1 Syntaktisches Cheat-Sheet</strong>:
+<ul>
+<li><input disabled="" type="checkbox"> <strong>9.1.1 Gegenüberstellung</strong>: Direkter Vergleich von Syntax, Eigenschaften und Zuweisungsverhalten im Code.</li>
+</ul>
 </li>
-<li><strong>Veränderlich machen mit <code>mut</code>:</strong>
-<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>let mut x = 5;
-x = 6; // ✔ Erlaubt!
-<span class="boring">}</span></code></pre>
+<li><input disabled="" type="checkbox"> <strong>3. Das Problem &amp; Die Motivation</strong>: Warum ein unzureichendes Verständnis von Datentypen zu ineffizientem Speicherlayout, Cache-Misses und Systemabstürzen führt.</li>
+<li><input disabled="" type="checkbox"> <strong>4. Der naive Versuch</strong>: Ein fehlerhafter Rust-Code, der unsichere Indexierung und arithmetische Überläufe provoziert.</li>
+<li><input disabled="" type="checkbox"> <strong>5. Die Anatomie des Fehlers</strong>: Analyse der Fehlermeldungen und Untersuchung des Fehlverhaltens auf Ebene des Hardwarespeichers.</li>
+<li><input disabled="" type="checkbox"> <strong>6. Die Lösung</strong>: Implementierung eines robusten Codes unter Einhaltung des EVA-Prinzips (Eingabe, Verarbeitung, Ausgabe).</li>
+<li><input disabled="" type="checkbox"> <strong>7. Kleines Tutorial</strong>: Schritt-für-Schritt-Aufbau eines strukturierten GPS- und Telemetrie-Decoders.</li>
+<li><input disabled="" type="checkbox"> <strong>8. Mentale Modelle &amp; Deep Dive</strong>: Visualisierung des Speichers und fortgeschrittene Konzepte (Auto-Traits <code>Send</code> und <code>Sync</code>, LLVM-Optimierungen).</li>
+<li><input disabled="" type="checkbox"> <strong>9.2 Physischer Speicherbedarf</strong>:
+<ul>
+<li><input disabled="" type="checkbox"> <strong>9.2.1 Datengrößen</strong>: Detaillierte Speicherbelegung und umfassender Deep Dive in Speicher-Alignment und Padding mit ASCII-Diagrammen.</li>
+</ul>
 </li>
+<li><input disabled="" type="checkbox"> <strong>Exhaustive API-Reference</strong>: Vollständige Dokumentation wichtiger Standardbibliotheksmethoden für Integers, Floats, Chars und Arrays inklusive Signatur, Panics und Beispielen.</li>
+<li><input disabled="" type="checkbox"> <strong>9. Drei praktische Übungen</strong>: Programmieraufgaben (Leicht, Mittel, Schwer) zur Festigung des Wissens mit ausführlichen Lösungshinweisen.</li>
+<li><input disabled="" type="checkbox"> <strong>10. Lernstrategie, Selbsteinschätzung &amp; Merkzettel</strong>: Feynman-Methode, Fehlerprovokation und Selbsttest.</li>
+<li><input disabled="" type="checkbox"> <strong>11. Zusammenfassung</strong>: Der Kern des Kapitels im kompakten Überblick.</li>
 </ul>
 <hr>
-<h2 id="2-konstanten-constants"><a class="header" href="#2-konstanten-constants">2. Konstanten (Constants)</a></h2>
-<p>Konstanten werden mit <code>const</code> definiert. Sie sind <strong>immer</strong> unveränderlich (kein <code>mut</code> erlaubt) und der Datentyp muss zwingend angegeben werden. Sie werden zur Kompilierzeit berechnet.</p>
-<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>const DREI_STUNDEN_IN_SEKUNDEN: u32 = 60 * 60 * 3;
-<span class="boring">}</span></code></pre>
-<hr>
-<h2 id="3-shadowing-überschatten"><a class="header" href="#3-shadowing-überschatten">3. Shadowing (Überschatten)</a></h2>
-<p>In Rust kannst du eine Variable neu deklarieren und dabei denselben Namen wiederverwenden. Die neue Variable überschattet die alte.</p>
+<h2 id="2-die-definition"><a class="header" href="#2-die-definition">2. Die Definition</a></h2>
+<p>Um eine präzise Grundlage für die anschließende Syntaxgegenüberstellung und Speicheranalyse zu schaffen, etablieren wir zunächst die formalen Fachbegriffe:</p>
 <ul>
-<li><strong>Vorteil:</strong> Du kannst den Typ der Variable ändern, ohne einen neuen Namen erfinden zu müssen.</li>
+<li><strong>Variable</strong>: Eine benannte Speicherbindung (Binding) auf dem Stack. Standardmäßig sind Variablen in Rust unveränderlich (<em>immutable</em>). Die Mutabilität (<em>Veränderbarkeit</em>) muss explizit mit dem Schlüsselwort <code>mut</code> angefordert werden.</li>
+<li><strong>Konstante (<code>const</code>)</strong>: Ein unveränderlicher Wert, der zur Kompilierzeit ausgewertet wird. Konstanten besitzen keinen festen Speicherort zur Laufzeit; ihr Wert wird an jeder Verwendungsstelle direkt in den Maschinencode einbetoniert (Inlining). Die Typ annotation ist zwingend erforderlich.</li>
+<li><strong>Shadowing (Überschattung)</strong>: Die Deklaration einer neuen Variablen mit demselben Namen wie eine bereits existierende Variable im selben oder einem übergeordneten Scope. Dies ermöglicht eine Änderung des Datentyps und der Mutabilität, ohne einen neuen Bezeichner einführen zu müssen.</li>
+<li><strong>Skalarer Datentyp</strong>: Ein primitiver Typ, der einen einzelnen, atomaren Wert repräsentiert. Dazu gehören Ganzzahlen (Integers), Fließkommazahlen (Floats), Booleans (<code>bool</code>) und Unicode-Zeichen (<code>char</code>).</li>
+<li><strong>Zusammengesetzter Datentyp (Compound Type)</strong>: Ein Typ, der mehrere Werte in einer einzigen Struktur zusammenfasst.
+<ul>
+<li><strong>Array (<code>[T; N]</code>)</strong>: Eine homogene Sammlung von Elementen des gleichen Typs <code>T</code> mit einer festen, zur Kompilierzeit bekannten Länge <code>N</code>. Das Array liegt flach und zusammenhängend auf dem Stack.</li>
+<li><strong>Tupel (<code>(T1, T2, ...)</code>)</strong>: Eine heterogene Sammlung von Elementen, die unterschiedliche Typen besitzen können. Die Länge ist fest. Die Elemente werden über ihre Position indiziert.</li>
 </ul>
-<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>let x = 5;
-let x = x + 1; // x ist jetzt 6
+</li>
+<li><strong>Unit-Typ (<code>()</code>)</strong>: Ein spezielles Tupel ohne Elemente. Es repräsentiert das Fehlen eines Wertes (vergleichbar mit <code>void</code> in anderen Sprachen) und belegt physisch 0 Bytes im Speicher.</li>
+</ul>
+<h3 id="alltagsnahe-metapher"><a class="header" href="#alltagsnahe-metapher">Alltagsnahe Metapher</a></h3>
+<blockquote class="blockquote-tag blockquote-tag-note">
+<p class="blockquote-tag-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>Note</p>
+<ul>
+<li><strong>Der Pillen-Organizer (Array)</strong>: Ein Array ist wie ein wöchentlicher Pillen-Organizer. Jedes Fach hat exakt dieselbe Größe, ist fortlaufend nummeriert (Index 0 bis 6) und darf nur denselben Inhalt aufnehmen (z. B. Vitamintabletten). Sie können nicht spontan ein achtes Fach anbauen.</li>
+<li><strong>Das Schweizer Taschenmesser (Tupel)</strong>: Ein Tupel ist wie ein Schweizer Taschenmesser. Es enthält verschiedene Werkzeuge (eine Schere, eine Klinge, eine Feile). Jedes Werkzeug hat eine andere Form, Größe und Funktion (heterogene Typen). Die Zusammensetzung ist fest definiert und kann nicht im Nachhinein verändert werden.</li>
+<li><strong>Der leere Briefumschlag (Unit-Typ <code>()</code>)</strong>: Der Unit-Typ ist wie ein leerer Briefumschlag. Er ist da, um als Umschlag (Typ) zu existieren, enthält aber keine Nachricht (Daten). Er benötigt keinen physischen Platz, transportiert aber die Information: „Ich bin erfolgreich angekommen, aber ich bringe keine Daten mit.“</li>
+</ul>
+</blockquote>
+<hr>
+<h2 id="91-syntaktisches-cheat-sheet"><a class="header" href="#91-syntaktisches-cheat-sheet">9.1 Syntaktisches Cheat-Sheet</a></h2>
+<p>Dieses Cheat-Sheet dient als schnelles Nachschlagewerk für den direkten Vergleich der verschiedenen Variablentypen und Datenstrukturen.</p>
+<h3 id="911-gegenüberstellung"><a class="header" href="#911-gegenüberstellung">9.1.1 Gegenüberstellung</a></h3>
+<p>Die folgende Tabelle vergleicht die wichtigsten Eigenschaften der skalaren und zusammengesetzten Datentypen in Rust:</p>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th style="text-align: left">Kriterium</th><th style="text-align: left">Skalare Typen (<code>i32</code>, <code>f64</code>, <code>bool</code>, <code>char</code>)</th><th style="text-align: left">Arrays (<code>[T; N]</code>)</th><th style="text-align: left">Tupel (<code>(T1, T2, ...)</code>)</th></tr>
+</thead>
+<tbody>
+<tr><td style="text-align: left"><strong>Typ-Homogenität</strong></td><td style="text-align: left">Ein einzelner Basistyp</td><td style="text-align: left">Streng homogen (nur Elemente vom Typ <code>T</code>)</td><td style="text-align: left">Heterogen (unterschiedliche Typen erlaubt)</td></tr>
+<tr><td style="text-align: left"><strong>Größe zur Laufzeit</strong></td><td style="text-align: left">Fest (1 bis 16 Bytes)</td><td style="text-align: left">Fest (Anzahl $N \times$ Elementgröße)</td><td style="text-align: left">Fest (Summe der Elementgrößen + Padding)</td></tr>
+<tr><td style="text-align: left"><strong>Speicherort</strong></td><td style="text-align: left">Stack (bzw. CPU-Register)</td><td style="text-align: left">Stack (kontinuierlich)</td><td style="text-align: left">Stack (kontinuierlich mit Lücken)</td></tr>
+<tr><td style="text-align: left"><strong>Indexierungs-Syntax</strong></td><td style="text-align: left">Nicht anwendbar</td><td style="text-align: left"><code>array[index]</code> (Laufzeit-Bounds-Check)</td><td style="text-align: left"><code>tupel.0</code>, <code>tupel.1</code> (Compilezeit-statisch)</td></tr>
+<tr><td style="text-align: left"><strong>Zuweisungs-Semantik</strong></td><td style="text-align: left">Immer <code>Copy</code> (Bit-Kopie auf dem Stack)</td><td style="text-align: left"><code>Copy</code> nur, wenn Typ <code>T</code> den <code>Copy</code>-Trait besitzt</td><td style="text-align: left"><code>Copy</code> nur, wenn alle Teil-Typen <code>Copy</code> sind</td></tr>
+<tr><td style="text-align: left"><strong>Häufiger Einsatzzweck</strong></td><td style="text-align: left">Mathematische Berechnungen, Flags</td><td style="text-align: left">Puffer feste Größe, mathematische Vektoren</td><td style="text-align: left">Rückgabe mehrerer Werte aus Funktionen</td></tr>
+</tbody>
+</table>
+</div>
+<h3 id="syntaktischer-codevergleich"><a class="header" href="#syntaktischer-codevergleich">Syntaktischer Codevergleich</a></h3>
+<p>Der folgende Code zeigt die Deklaration, Initialisierung, Modifikation und das Entpacken der Typen im direkten Vergleich:</p>
+<pre class="playground"><code class="language-rust edition2021">fn main() {
+    // ==========================================
+    // 1. Skalare Typen
+    // ==========================================
+    let integer_val: i32 = -42;
+    let float_val: f64 = 3.14159;
+    let boolean_val: bool = true;
+    let character_val: char = '🦀'; // 4 Bytes Unicode
 
-let spaces = "   "; // Typ: &amp;str
-let spaces = spaces.len(); // Typ: usize (Länge: 3)
-<span class="boring">}</span></code></pre>
+    // ==========================================
+    // 2. Arrays (Homogen, feste Länge)
+    // ==========================================
+    // Deklaration mit Typ und Größe: [Typ; Größe]
+    let mut temperatures: [f32; 3] = [18.5, 21.0, 19.2];
+    
+    // Kurzschreibweise für Initialisierung mit Standardwerten: [Wert; Größe]
+    let byte_buffer: [u8; 1024] = [0; 1024]; // 1024 mal die 0
+
+    // Elementzugriff über eckige Klammern
+    temperatures[0] = 19.0; 
+    let first_temp = temperatures[0];
+
+    // ==========================================
+    // 3. Tupel (Heterogen, feste Länge)
+    // ==========================================
+    // Deklaration mit expliziten Typen: (Typ1, Typ2, ...)
+    let mut user_profile: (u32, String, bool) = (1001, String::from("Alice"), true);
+
+    // Elementzugriff über die Punkt-Notation
+    user_profile.0 = 1002; // ID ändern
+    let username = &amp;user_profile.1;
+
+    // Destrukturierung (Entpacken) eines Tupels
+    let (id, name, active) = &amp;user_profile;
+}</code></pre>
 <hr>
-<h2 id="4-datentypen-in-rust"><a class="header" href="#4-datentypen-in-rust">4. Datentypen in Rust</a></h2>
-<p>Rust ist statisch typisiert. Der Compiler muss jeden Typ vor dem Start kennen (oft per Typinferenz automatisch ermittelt).</p>
-<h3 id="a-skalare-datentypen-einzeilige-werte"><a class="header" href="#a-skalare-datentypen-einzeilige-werte">A. Skalare Datentypen (Einzeilige Werte)</a></h3>
+<h2 id="3-das-problem--die-motivation"><a class="header" href="#3-das-problem--die-motivation">3. Das Problem &amp; Die Motivation</a></h2>
+<p>In der hardwarenahen Systemprogrammierung ist der effiziente und korrekte Umgang mit dem Speicher von existenzieller Bedeutung. Werden Variablen und Datentypen unüberlegt eingesetzt, entstehen fundamentale Probleme:</p>
 <ol>
-<li><strong>Ganzzahlen (Integers):</strong>
+<li><strong>Speicherverschwendung &amp; Cache-Misses</strong>: CPUs lesen Daten nicht byteweise aus dem RAM, sondern in größeren Blöcken (Cache-Lines, meist 64 Bytes). Liegen Daten verstreut im Speicher oder sind sie unnötig groß, führt dies zu ständigen Cache-Misses. Die CPU muss auf den langsamen Hauptspeicher warten.</li>
+<li><strong>Datenkorruption durch Integer-Overflows</strong>: In sicherheitskritischen Bereichen (z. B. Flugsteuerungen oder Krypto grafie) kann ein einfacher Überlauf einer Zahl katastrophale Folgen haben. Wenn ein vorzeichenloser 8-Bit-Integer (<code>u8</code>) den Wert 255 erreicht und um 1 erhöht wird, fällt er im Release-Modus unbemerkt auf 0 zurück (<em>Wrapping</em>). Dies kann Schleifenbedingungen aushebeln oder falsche Sensorwerte simulieren.</li>
+<li><strong>Laufzeitabstürze durch mangelnde Typen trennung</strong>: Versucht ein Programmierer, heterogene Daten (wie Temperatur, Fehlermeldung und Sensor-ID) in ein einziges homogenes Array zu pressen, scheitert er entweder an den Typgrenzen des Compilers oder erzwingt unsichere Typkonvertierungen (<code>as</code>-Casts), die die Typ sicherheit aushebeln.</li>
+</ol>
+<p>Rust zwingt Entwickler durch sein strenges Typsystem und die Compilezeit-Garantien, diese Aspekte bereits beim Entwurf der Software zu berücksichtigen.</p>
+<hr>
+<h2 id="4-der-naive-versuch"><a class="header" href="#4-der-naive-versuch">4. Der naive Versuch</a></h2>
+<p>Im folgenden Code versucht ein Programmierer, ein einfaches Telemetriesystem zu schreiben. Er begeht dabei drei typische Anfängerfehler:</p>
+<ol>
+<li>Er versucht, heterogene Sensordaten in ein homogenes Array zu zwingen.</li>
+<li>Er verwendet für die Berechnung eines Offsets einen vorzeichenbehafteten 8-Bit-Integer (<code>i8</code>), wodurch ein unkontrollierter Überlauf provoziert wird.</li>
+<li>Er greift über einen dynamisch berechneten Index ungesichert auf ein Array zu.</li>
+</ol>
+<pre class="playground"><code class="language-rust edition2021">// Dieser Code lässt sich teilweise nicht kompilieren und stürzt zur Laufzeit ab!
+fn main() {
+    // FEHLER 1: Versuch, heterogene Daten in ein homogenes Array zu zwingen
+    // Ein Sensor hat: ID (u8), Temperatur (f32), Status-Flag (bool)
+    // Der Compiler wird diese Zuweisung verweigern!
+    // let raw_sensor_data = [42, 23.5, true]; 
+
+    // Wir weichen auf getrennte Variablen aus, um fortzufahren:
+    let sensor_id: u8 = 42;
+    let mut temperature: i8 = 120; // Maximale Betriebstemperatur nahe i8::MAX (127)
+    let status_active: bool = true;
+
+    // FEHLER 2: Unkontrollierter Integer-Overflow
+    // Ein Kalibrierungs-Offset soll addiert werden
+    let calibration_offset: i8 = 10;
+    
+    // Unter Debug-Bedingungen stürzt das Programm hier mit einer Panik ab!
+    temperature = temperature + calibration_offset; 
+    println!("Kalibrierte Temperatur: {}", temperature);
+
+    // FEHLER 3: Ungesicherter Indexzugriff auf ein Array
+    let readings = [15, 18, 20, 22, 19];
+    
+    // Der Index wird dynamisch berechnet (z. B. durch Sensoreingabe)
+    let target_index = readings.len() + 1; 
+    
+    // Dieser Zugriff provoziert eine Laufzeit-Panik (Bounds Check Failure)
+    let critical_reading = readings[target_index]; 
+    println!("Kritischer Messwert: {}", critical_reading);
+}</code></pre>
+<hr>
+<h2 id="5-die-anatomie-des-fehlers"><a class="header" href="#5-die-anatomie-des-fehlers">5. Die Anatomie des Fehlers</a></h2>
+<h3 id="1-compiler-fehler-bei-der-array-deklaration"><a class="header" href="#1-compiler-fehler-bei-der-array-deklaration">1. Compiler-Fehler bei der Array-Deklaration</a></h3>
+<p>Wenn Sie versuchen, die Zeile <code>let raw_sensor_data = [42, 23.5, true];</code> einzukommentieren, bricht der Compiler sofort mit folgendem Fehler ab:</p>
+<pre><code class="language-text">error[E0308]: mismatched types
+ --&gt; src/main.rs:5:32
+  |
+5 |     let raw_sensor_data = [42, 23.5, true];
+  |                                ^^^^ expected integer, found float
+  |
+help: change the type of the numeric literal or remove the incompatible elements
+</code></pre>
+<p><strong>Ursache</strong>: Ein Rust-Array vom Typ <code>[T; N]</code> erfordert absolute Homogenität. Der Compiler leitet aus dem ersten Element <code>42</code> ab, dass es sich um ein Array aus Integers handelt. Das zweite Element <code>23.5</code> (ein Float) bricht diese Regel fundamental.</p>
+<hr>
+<h3 id="2-laufzeit-absturz-durch-integer-overflow-debug-modus"><a class="header" href="#2-laufzeit-absturz-durch-integer-overflow-debug-modus">2. Laufzeit-Absturz durch Integer-Overflow (Debug-Modus)</a></h3>
+<p>Wird der Array-Fehler behoben, übersetzt der Compiler das Programm im Debug-Profil problemlos. Beim Ausführen stürzt die Applikation jedoch bei der Addition ab:</p>
+<pre><code class="language-text">thread 'main' panicked at src/main.rs:17:19:
+attempt to add with overflow
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+</code></pre>
+<p><strong>Was im Speicher passiert</strong>:
+Ein <code>i8</code> belegt genau 1 Byte (8 Bits) auf dem Stack. Der Wertebereich reicht von $-128$ bis $+127$.</p>
 <ul>
-<li>Mit Vorzeichen (Signed): <code>i8</code>, <code>i16</code>, <code>i32</code>, <code>i64</code>, <code>i128</code>, <code>isize</code></li>
-<li>Ohne Vorzeichen (Unsigned): <code>u8</code>, <code>u16</code>, <code>u32</code>, <code>u64</code>, <code>u128</code>, <code>usize</code></li>
-<li>Standard: <code>i32</code></li>
+<li>Die Binärdarstellung für <code>120</code> ist <code>0111_1000</code>.</li>
+<li>Die Binärdarstellung für <code>10</code> ist <code>0000_1010</code>.</li>
+<li>Bei der Addition im CPU-Register entsteht der Wert <code>1000_0010</code>.</li>
+<li>Da das MSB (Most Significant Bit, das vorderste Bit) bei vorzeichenbehafteten Integers als Vorzeichen-Flag fungiert (<code>1</code> steht für negativ, kodiert im Zweierkomplement), wird dieser Wert als $-126$ interpretiert.</li>
+<li>Da Rust im <strong>Debug-Modus</strong> standardmäßig auf Überläufe prüft, erkennt es diese mathematische Inkonsistenz und löst eine kontrollierte Panik aus, um zu verhindern, dass die Logik mit korrupten Daten arbeitet.</li>
+<li>Im <strong>Release-Modus</strong> (<code>--release</code>) würde Rust diesen Check aus Performancegründen weglassen. Die Variable <code>temperature</code> würde lautlos auf <code>-126</code> umspringen (<em>Wrapping</em>). Ihr Sensor würde plötzlich frostige Temperaturen statt extremer Hitze melden – ein katastrophaler Logikfehler!</li>
+</ul>
+<hr>
+<h3 id="3-laufzeit-absturz-durch-out-of-bounds-zugriff"><a class="header" href="#3-laufzeit-absturz-durch-out-of-bounds-zugriff">3. Laufzeit-Absturz durch Out-of-Bounds-Zugriff</a></h3>
+<p>Falls der Overflow umgangen wird, stürzt das Programm beim Zugriff <code>readings[target_index]</code> ab:</p>
+<pre><code class="language-text">thread 'main' panicked at src/main.rs:25:28:
+index out of bounds: the len is 5 but the index is 6
+</code></pre>
+<p><strong>Was im Speicher passiert</strong>:
+Das Array <code>readings</code> liegt als kompakter Block von 5 Integers (<code>5 * 4 Bytes = 20 Bytes</code>) auf dem Stack. Ein Zugriff auf Index 6 würde bedeuten, dass das Programm die Startadresse des Arrays nimmt, um 24 Bytes nach vorne springt und dort liegenden Speicher liest. Dieser Speicher gehört jedoch zu anderen Variablen. Um Speicherverletzungen (wie Buffer Overflows, die in C/C++ als Sicherheitslücken ausgenutzt werden) unmöglich zu machen, führt Rust bei jedem Indexzugriff einen impliziten Grenzwert-Check durch (<em>Bounds Checking</em>) und stürzt lieber ab, als unautorisierten Speicher freizugeben.</p>
+<hr>
+<h2 id="6-die-lösung"><a class="header" href="#6-die-lösung">6. Die Lösung</a></h2>
+<p>Um diese Schwachstellen sauber zu beseitigen, wenden wir folgende Techniken an:</p>
+<ol>
+<li><strong>Tupel</strong> für die Speicherung heterogener Datensätze.</li>
+<li><strong>Sichere Arithmetik-Methoden</strong> der Standardbibliothek zur Kontrolle von Überläufen.</li>
+<li><strong>Sicherer Array-Zugriff</strong> mittels der <code>.get()</code>-Methode, die ein <code>Option</code>-Objekt zurückgibt.</li>
+</ol>
+<p>Hier ist die fehlerfreie Implementierung nach dem <strong>EVA-Prinzip</strong>:</p>
+<pre class="playground"><code class="language-rust edition2021">fn main() {
+    // =========================================================================
+    // EINGABE (Input): Definition der Sensor-ID, des Rohwerts und des Offsets
+    // =========================================================================
+    let sensor_id: u8 = 42;
+    let raw_temp: i8 = 120;
+    let calibration_offset: i8 = 10;
+    
+    // Ein Tupel fasst die heterogenen Daten strukturiert zusammen
+    let sensor_meta: (u8, bool) = (sensor_id, true);
+
+    // =========================================================================
+    // VERARBEITUNG (Processing): Sichere Addition und sicherer Array-Zugriff
+    // =========================================================================
+    
+    // Option A: Sättigende Addition (Saturating) -&gt; Bleibt am Maximum (127) kleben
+    let calibrated_temp_saturating = raw_temp.saturating_add(calibration_offset);
+
+    // Option B: Kontrollierter Überlauf (Checked) -&gt; Gibt None zurück, wenn es überläuft
+    let calibrated_temp_checked = match raw_temp.checked_add(calibration_offset) {
+        Some(val) =&gt; val,
+        None =&gt; {
+            eprintln!("Warnung: Sensor-Temperaturüberlauf erkannt! Verwende Maximalwert.");
+            i8::MAX // Ausfall-Sicherheitswert
+        }
+    };
+
+    // Sicherer Zugriff auf das Messwert-Array
+    let readings = [15, 18, 20, 22, 19];
+    let target_index = 6; // Ungültiger Index
+
+    // .get() gibt im Fehlerfall None zurück, anstatt abzustürzen
+    let safe_reading = match readings.get(target_index) {
+        Some(value) =&gt; *value,
+        None =&gt; {
+            eprintln!("Fehler: Index {} außerhalb des gültigen Bereichs!", target_index);
+            -1 // Standard-Fehlercode
+        }
+    };
+
+    // =========================================================================
+    // AUSGABE (Output): Ausgabe der berechneten Werte auf der Konsole
+    // =========================================================================
+    println!("Sensor ID: {}, Aktiv: {}", sensor_meta.0, sensor_meta.1);
+    println!("Saturating Temp: {} °C (Erwartet: 127)", calibrated_temp_saturating);
+    println!("Checked Temp: {} °C (Erwartet: 127)", calibrated_temp_checked);
+    println!("Sicherer Messwert: {}", safe_reading);
+}</code></pre>
+<h3 id="zeile-für-zeile-erklärung-nach-dem-eva-prinzip"><a class="header" href="#zeile-für-zeile-erklärung-nach-dem-eva-prinzip">Zeile-für-Zeile-Erklärung nach dem EVA-Prinzip</a></h3>
+<ul>
+<li><strong>Eingabe (Input)</strong>:
+<ul>
+<li>Wir deklarieren die Rohdaten (<code>sensor_id</code>, <code>raw_temp</code>, <code>calibration_offset</code>) auf dem Stack.</li>
+<li>Wir erstellen das Tupel <code>sensor_meta</code>. Da dieses unterschiedliche Typen (<code>u8</code> und <code>bool</code>) aufnehmen kann, akzeptiert der Compiler die Definition anstandslos.</li>
 </ul>
 </li>
-<li><strong>Fließkommazahlen (Floats):</strong>
+<li><strong>Verarbeitung (Processing)</strong>:
 <ul>
-<li><code>f32</code> (einfache Genauigkeit) und <code>f64</code> (doppelte Genauigkeit)</li>
-<li>Standard: <code>f64</code></li>
+<li>Anstelle des mathematischen Operators <code>+</code> nutzen wir <code>saturating_add</code>. Wenn die Summe $120 + 10 = 130$ die Grenze von $127$ überschreitet, rundet Rust das Ergebnis nicht ab, sondern hält es exakt auf dem maximalen Grenzwert (<code>i8::MAX</code>, also $127$).</li>
+<li>Alternativ verwenden wir <code>checked_add</code>. Diese Methode gibt ein <code>Option&lt;i8&gt;</code> zurück. Bei einem Überlauf ist das Ergebnis <code>None</code>. Über ein <code>match</code>-Konstrukt fangen wir diesen Fall explizit ab und setzen die Temperatur kontrolliert auf <code>i8::MAX</code>. Das Programm läuft stabil weiter.</li>
+<li>Beim Array-Zugriff rufen wir <code>readings.get(target_index)</code> auf. Da der Index 6 außerhalb des Bereichs liegt, stürzt das System nicht ab. Es gibt <code>None</code> zurück, was wir im <code>match</code>-Block sicher behandeln.</li>
 </ul>
 </li>
-<li><strong>Wahrheitswerte (Booleans):</strong>
+<li><strong>Ausgabe (Output)</strong>:
 <ul>
-<li><code>bool</code> (kann nur <code>true</code> oder <code>false</code> sein)</li>
+<li>Die Ergebnisse werden formatiert ausgegeben. Es kommt zu keinerlei unkontrollierten Laufzeitabstürzen.</li>
 </ul>
 </li>
-<li><strong>Zeichen (Characters):</strong>
+</ul>
+<hr>
+<h2 id="7-kleines-tutorial-gps--und-telemetrie-decoder"><a class="header" href="#7-kleines-tutorial-gps--und-telemetrie-decoder">7. Kleines Tutorial: GPS- und Telemetrie-Decoder</a></h2>
+<p>In diesem Tutorial entwickeln wir einen einfachen Decoder für serielle GPS-Datensätze. Die eingehenden Daten bestehen aus einer festen Byte-Sequenz (Array) und sollen in strukturierte Geokoordinaten (Tupel aus Breitengrad, Längengrad und Satelliten anzahl) übersetzt werden. Dabei nutzen wir Shadowing und Konstanten zur Strukturierung.</p>
+<h3 id="schritt-1-das-projekt-anlegen"><a class="header" href="#schritt-1-das-projekt-anlegen">Schritt 1: Das Projekt anlegen</a></h3>
+<p>Erstellen Sie ein neues Cargo-Projekt auf Ihrem System (Sie können dies in Ihrem Terminal ausführen, nicht im Code block):</p>
+<pre><code class="language-bash">cargo new telemetry_decoder --bin
+</code></pre>
+<h3 id="schritt-2-konstanten-und-datenstrukturen-definieren"><a class="header" href="#schritt-2-konstanten-und-datenstrukturen-definieren">Schritt 2: Konstanten und Datenstrukturen definieren</a></h3>
+<p>Öffnen Sie die Datei <code>src/main.rs</code> und definieren Sie die grundlegenden Systemparameter als Konstanten:</p>
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>// Die erwartete Paketgröße in Bytes
+const RAW_PACKET_SIZE: usize = 8;
+// Der Skalierungsfaktor zur Umwandlung von Rohwerten in echte GPS-Koordinaten
+const COORDINATE_SCALE: f64 = 10_000.0;
+<span class="boring">}</span></code></pre>
+<h3 id="schritt-3-die-dekodierungs-logik-implementieren"><a class="header" href="#schritt-3-die-dekodierungs-logik-implementieren">Schritt 3: Die Dekodierungs-Logik implementieren</a></h3>
+<p>Wir schreiben eine Funktion <code>decode_gps_packet</code>, die ein rohes Byte-Array entgegennimmt und ein strukturiertes Tupel zurückgibt. Wir nutzen hierbei Bit-Shifting, um einzelne Bytes zu größeren Integers zusammenzusetzen:</p>
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>// Dekodiert ein 8-Byte-Paket in (Latitude, Longitude, Satellites, Valid)
+fn decode_gps_packet(packet: [u8; RAW_PACKET_SIZE]) -&gt; (f64, f64, u8, bool) {
+    // Byte 0-2: Breitengrad (Latitude) als u24 (simuliert über u32)
+    let raw_lat = ((packet[0] as u32) &lt;&lt; 16) | ((packet[1] as u32) &lt;&lt; 8) | (packet[2] as u32);
+    
+    // Byte 3-5: Längengrad (Longitude) als u24
+    let raw_lon = ((packet[3] as u32) &lt;&lt; 16) | ((packet[4] as u32) &lt;&lt; 8) | (packet[5] as u32);
+
+    // Byte 6: Anzahl der Satelliten
+    let satellites = packet[6];
+
+    // Byte 7: Status-Flag (0 = ungültig, 1 = gültig)
+    let is_valid = packet[7] == 1;
+
+    // Umrechnung in Fließkommagrad unter Verwendung unserer Konstante
+    let latitude = (raw_lat as f64) / COORDINATE_SCALE;
+    let longitude = (raw_lon as f64) / COORDINATE_SCALE;
+
+    (latitude, longitude, satellites, is_valid)
+}
+<span class="boring">}</span></code></pre>
+<h3 id="schritt-4-die-integration-in-der-main-funktion"><a class="header" href="#schritt-4-die-integration-in-der-main-funktion">Schritt 4: Die Integration in der <code>main</code>-Funktion</a></h3>
+<p>Jetzt fügen wir Testdaten ein und verarbeiten diese. Wir nutzen Shadowing, um die dekodierten Rohdaten für die Ausgabe aufzubereiten:</p>
+<pre class="playground"><code class="language-rust edition2021">fn main() {
+    // Ein simuliertes GPS-Rohdatenpaket
+    // Latitude-Bytes: [0x07, 0xA1, 0x20] -&gt; 500000 -&gt; 50.0000°
+    // Longitude-Bytes: [0x01, 0x86, 0xA0] -&gt; 100000 -&gt; 10.0000°
+    // Satelliten: 9
+    // Status: 1 (Gültig)
+    let raw_data: [u8; RAW_PACKET_SIZE] = [0x07, 0xA1, 0x20, 0x01, 0x86, 0xA0, 9, 1];
+
+    println!("Starte Dekodierung des Telemetriepakets...");
+
+    // Aufruf des Decoders
+    let decoded_gps = decode_gps_packet(raw_data);
+
+    // Shadowing nutzen, um die Daten übersichtlich zu strukturieren und auszugeben
+    let (lat, lon, sats, valid) = decoded_gps;
+
+    if valid {
+        println!("--- GPS-Signal erfasst ---");
+        println!("Breitengrad: {:.4}° Nord", lat);
+        println!("Längengrad:  {:.4}° Ost", lon);
+        println!("Satelliten in Reichweite: {}", sats);
+    } else {
+        println!("--- Warnung: GPS-Signal ungültig! ---");
+    }
+}</code></pre>
+<hr>
+<h2 id="8-mentale-modelle--deep-dive"><a class="header" href="#8-mentale-modelle--deep-dive">8. Mentale Modelle &amp; Deep Dive</a></h2>
+<p>Um die Speicherverwaltung von Rust-Typen wirklich zu durchdringen, müssen wir die Abstraktionsebene verlassen und uns ansehen, wie der Compiler die Daten im RAM anordnet.</p>
+<h3 id="heap-vs-stack-bei-primitives"><a class="header" href="#heap-vs-stack-bei-primitives">Heap vs. Stack bei Primitives</a></h3>
+<p>Im Gegensatz zu komplexen Typen wie <code>String</code> oder <code>Vec&lt;T&gt;</code>, die dynamisch wachsen und Zeiger auf den Heap besitzen, sind skalare Typen, Arrays und Tupel <strong>reine Stack-Typen</strong>.</p>
 <ul>
-<li><code>char</code> (4 Bytes, Unicode für Emojis und Sonderzeichen, in einfachen Anführungszeichen: <code>'z'</code>)</li>
+<li>Sie besitzen keine Pointer auf den Heap.</li>
+<li>Sie implementieren alle implizit den <code>Copy</code>-Trait (sofern bei Arrays und Tupeln deren Elementtypen dies ebenfalls tun).</li>
+<li>Wenn Sie ein Array einer neuen Variablen zuweisen, kopiert Rust den gesamten Speicherblock auf den Stack. Es gibt keinen Move-Zwang, da kein Heap-Speicher doppelt freigegeben werden könnte.</li>
+</ul>
+<pre><code>Zuweisung eines Arrays (Copy-Semantik):
+Stack (Variable a)       Stack (Variable b)
+┌───┬───┬───┐            ┌───┬───┬───┐
+│ 1 │ 2 │ 3 │   ====&gt;    │ 1 │ 2 │ 3 │
+└───┴───┴───┘            └───┴───┴───┘
+(a bleibt voll einsatzfähig!)
+</code></pre>
+<h3 id="thread-safety-die-auto-traits-send-und-sync"><a class="header" href="#thread-safety-die-auto-traits-send-und-sync">Thread-Safety: Die Auto-Traits <code>Send</code> und <code>Sync</code></a></h3>
+<p>Im Systembereich ist Multithreading allgegenwärtig. Rust garantiert Thread-Safety durch zwei Compiler-eingebaute Traits, die automatisch vergeben werden (Auto-Traits):</p>
+<ul>
+<li><strong><code>Send</code></strong>: Zeigt an, dass ein Typ sicher an einen anderen Thread übertragen werden darf.</li>
+<li><strong><code>Sync</code></strong>: Zeigt an, dass mehrere Threads gleichzeitig über Referenzen auf denselben Wert zugreifen dürfen (<code>&amp;T</code> is <code>Send</code>).</li>
+</ul>
+<p>Da alle hier behandelten skalaren Typen, Arrays und Tupel reine Speicherbereiche ohne geteilte Zeiger oder veränderliche globale Zustände sind, sind sie <strong>vollständig <code>Send</code> und <code>Sync</code></strong>. Sie können diese Daten bedenkenlos zwischen Threads teilen oder verschieben, solange die Standard-Borrowing-Regeln eingehalten werden.</p>
+<hr>
+<h2 id="92-physischer-speicherbedarf"><a class="header" href="#92-physischer-speicherbedarf">9.2 Physischer Speicherbedarf</a></h2>
+<h3 id="921-datengrößen"><a class="header" href="#921-datengrößen">9.2.1 Datengrößen</a></h3>
+<p>Der physische Speicherbedarf eines Datentyps hängt maßgeblich von der Bitbreite der Zielplattform (32-Bit- vs. 64-Bit-CPU) ab. Die folgende Tabelle schlüsselt die exakten Bytegrößen auf:</p>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th style="text-align: left">Datentyp</th><th style="text-align: left">Größe auf 32-Bit CPUs</th><th style="text-align: left">Größe auf 64-Bit CPUs</th><th style="text-align: left">Alignment (64-Bit)</th></tr>
+</thead>
+<tbody>
+<tr><td style="text-align: left"><code>i8</code> / <code>u8</code> / <code>bool</code></td><td style="text-align: left">1 Byte</td><td style="text-align: left">1 Byte</td><td style="text-align: left">1 Byte</td></tr>
+<tr><td style="text-align: left"><code>i16</code> / <code>u16</code></td><td style="text-align: left">2 Bytes</td><td style="text-align: left">2 Bytes</td><td style="text-align: left">2 Bytes</td></tr>
+<tr><td style="text-align: left"><code>i32</code> / <code>u32</code> / <code>f32</code></td><td style="text-align: left">4 Bytes</td><td style="text-align: left">4 Bytes</td><td style="text-align: left">4 Bytes</td></tr>
+<tr><td style="text-align: left"><code>i64</code> / <code>u64</code> / <code>f64</code></td><td style="text-align: left">8 Bytes</td><td style="text-align: left">8 Bytes</td><td style="text-align: left">8 Bytes</td></tr>
+<tr><td style="text-align: left"><code>i128</code> / <code>u128</code></td><td style="text-align: left">16 Bytes</td><td style="text-align: left">16 Bytes</td><td style="text-align: left">8 oder 16 Bytes (OS-abhängig)</td></tr>
+<tr><td style="text-align: left"><code>char</code></td><td style="text-align: left">4 Bytes</td><td style="text-align: left">4 Bytes</td><td style="text-align: left">4 Bytes</td></tr>
+<tr><td style="text-align: left"><code>isize</code> / <code>usize</code></td><td style="text-align: left"><strong>4 Bytes</strong></td><td style="text-align: left"><strong>8 Bytes</strong></td><td style="text-align: left"><strong>8 Bytes</strong></td></tr>
+<tr><td style="text-align: left"><code>[T; N]</code> (Array)</td><td style="text-align: left">$N \times \text{Größe}(T)$</td><td style="text-align: left">$N \times \text{Größe}(T)$</td><td style="text-align: left">Entspricht Alignment von $T$</td></tr>
+<tr><td style="text-align: left"><code>(T1, T2, ...)</code> (Tupel)</td><td style="text-align: left">Summe der Typen + Padding</td><td style="text-align: left">Summe der Typen + Padding</td><td style="text-align: left">Größtes Alignment der Teil-Typen</td></tr>
+</tbody>
+</table>
+</div>
+<hr>
+<h3 id="deep-dive-speicher-alignment-und-padding"><a class="header" href="#deep-dive-speicher-alignment-und-padding">Deep Dive: Speicher-Alignment und Padding</a></h3>
+<p>Warum ist die Größe eines Tupels wie <code>(u8, u32)</code> nicht einfach 5 Bytes ($1 + 4$), sondern 8 Bytes? Die Antwort liegt im <strong>Speicher-Alignment</strong> (Speicherausrichtung).</p>
+<p>CPUs lesen Daten nicht byteweise, sondern in Speicherworten (z. B. 4 Bytes auf 32-Bit-Systemen oder 8 Bytes auf 64-Bit-Systemen). Wenn ein 4-Byte-Integer (<code>u32</code>) an einer Speicheradresse liegt, die nicht durch 4 teilbar ist (z. B. <code>0x03</code>), muss die CPU zwei Lesezugriffe durchführen und die Bits verschieben. Das kostet Performance. Manche Architekturen (wie ARM) stürzen bei unaligned Zugriffen sogar ab.</p>
+<p>Aus diesem Grund erzwingt der Rust-Compiler zwei Regeln:</p>
+<ol>
+<li><strong>Alignment</strong>: Jeder Typ hat eine Ausrichtungsanforderung. Ein Typ mit Alignment $A$ darf nur an einer Speicheradresse abgelegt werden, die ein Vielfaches von $A$ ist.</li>
+<li><strong>Padding</strong>: Um das Alignment zu garantieren, fügt der Compiler ungenutzte Füll-Bytes (<em>Padding</em>) ein.</li>
+</ol>
+<h4 id="visualisierung-des-layouts-eines-tupels-u8-u32"><a class="header" href="#visualisierung-des-layouts-eines-tupels-u8-u32">Visualisierung des Layouts eines Tupels <code>(u8, u32)</code>:</a></h4>
+<p>Da <code>u32</code> ein Alignment von 4 Bytes benötigt, kann es im Speicher nicht direkt nach dem 1-Byte <code>u8</code> liegen. Der Compiler fügt 3 Padding-Bytes ein:</p>
+<pre><code>Adresse: 0x00      0x01      0x02      0x03      0x04   0x05   0x06   0x07
+Wert:    [ u8 ]    [  PADDING-BYTE (x3)  ]       [       u32-Wert      ]
+         └────┬───┘└──────────┬──────────┘       └──────────┬──────────┘
+           1 Byte          3 Bytes                     4 Bytes
+</code></pre>
+<h4 id="wichtige-regel-für-tupel"><a class="header" href="#wichtige-regel-für-tupel">Wichtige Regel für Tupel:</a></h4>
+<p>Im Gegensatz zu Structs, bei denen der Rust-Compiler die Reihenfolge der Felder im Speicher frei optimieren darf (<code>repr(Rust)</code>), <strong>behalten Tupel ihre definierte Reihenfolge im Speicher strikt bei</strong>.</p>
+<p>Betrachten wir das Tupel <code>(u8, u32, u8)</code>:</p>
+<ul>
+<li><code>u8</code> (1 Byte) an Adresse 0</li>
+<li>3 Bytes Padding, um das Alignment von <code>u32</code> (Adresse 4) zu erfüllen</li>
+<li><code>u32</code> (4 Bytes) belegt Adressen 4 bis 7</li>
+<li><code>u8</code> (1 Byte) an Adresse 8</li>
+<li>Da die Gesamtgröße eines zusammengesetzten Typs immer ein Vielfaches seines maximalen Alignments (hier 4 Bytes) sein muss, werden am Ende weitere 3 Bytes Padding angehängt.</li>
+<li><strong>Gesamtgröße</strong>: 12 Bytes (obwohl nur 6 Bytes echte Nutzdaten enthalten sind!).</li>
+</ul>
+<hr>
+<h2 id="exhaustive-api-reference"><a class="header" href="#exhaustive-api-reference">Exhaustive API-Reference</a></h2>
+<p>Um die Vorgaben für ein professionelles Lehrbuch zu erfüllen, dokumentieren wir an dieser Stelle die wichtigsten in der Standardbibliothek implementierten Methoden für unsere Kern-Typen lückenlos.</p>
+<h3 id="1-integer-methoden-i32--u32--i8-etc"><a class="header" href="#1-integer-methoden-i32--u32--i8-etc">1. Integer-Methoden (<code>i32</code> / <code>u32</code> / <code>i8</code> etc.)</a></h3>
+<h4 id="checked_add"><a class="header" href="#checked_add"><code>checked_add</code></a></h4>
+<ul>
+<li><strong>Signatur</strong>: <code>pub fn checked_add(self, rhs: Self) -&gt; Option&lt;Self&gt;</code></li>
+<li><strong>Parameter</strong>: <code>rhs</code> (Right-Hand Side): Der zu addierende Wert des gleichen Typs.</li>
+<li><strong>Rückgabetyp</strong>: <code>Option&lt;Self&gt;</code>: <code>Some(Ergebnis)</code> bei erfolgreicher Addition, <code>None</code> bei Überlauf.</li>
+<li><strong>Panics</strong>: Keine.</li>
+<li><strong>Beispiel</strong>:
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let x: u8 = 250;
+assert_eq!(x.checked_add(10), None);
+assert_eq!(x.checked_add(5), Some(255));
+<span class="boring">}</span></code></pre>
+</li>
+</ul>
+<h4 id="saturating_add"><a class="header" href="#saturating_add"><code>saturating_add</code></a></h4>
+<ul>
+<li><strong>Signatur</strong>: <code>pub fn saturating_add(self, rhs: Self) -&gt; Self</code></li>
+<li><strong>Parameter</strong>: <code>rhs</code>: Der zu addierende Wert.</li>
+<li><strong>Rückgabetyp</strong>: <code>Self</code>: Die Summe, gedeckelt auf das jeweilige Limit des Typs (<code>MAX</code> oder <code>MIN</code>).</li>
+<li><strong>Panics</strong>: Keine.</li>
+<li><strong>Beispiel</strong>:
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let x: u8 = 250;
+assert_eq!(x.saturating_add(20), 255); // Bleibt bei u8::MAX stehen
+<span class="boring">}</span></code></pre>
+</li>
+</ul>
+<h4 id="wrapping_add"><a class="header" href="#wrapping_add"><code>wrapping_add</code></a></h4>
+<ul>
+<li><strong>Signatur</strong>: <code>pub fn wrapping_add(self, rhs: Self) -&gt; Self</code></li>
+<li><strong>Parameter</strong>: <code>rhs</code>: Der zu addierende Wert.</li>
+<li><strong>Rückgabetyp</strong>: <code>Self</code>: Die Summe modulo Wertebereichsgröße (Überlauf-Wrapping).</li>
+<li><strong>Panics</strong>: Keine (auch nicht im Debug-Modus).</li>
+<li><strong>Beispiel</strong>:
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let x: u8 = 255;
+assert_eq!(x.wrapping_add(1), 0);
+<span class="boring">}</span></code></pre>
+</li>
+</ul>
+<h4 id="overflowing_add"><a class="header" href="#overflowing_add"><code>overflowing_add</code></a></h4>
+<ul>
+<li><strong>Signatur</strong>: <code>pub fn overflowing_add(self, rhs: Self) -&gt; (Self, bool)</code></li>
+<li><strong>Parameter</strong>: <code>rhs</code>: Der zu addierende Wert.</li>
+<li><strong>Rückgabetyp</strong>: <code>(Self, bool)</code>: Ein Tupel bestehend aus dem (ggf. gewrappten) Wert und einem Boolean, der anzeigt, ob ein Überlauf stattgefunden hat (<code>true</code>).</li>
+<li><strong>Panics</strong>: Keine.</li>
+<li><strong>Beispiel</strong>:
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let x: u8 = 255;
+assert_eq!(x.overflowing_add(1), (0, true));
+<span class="boring">}</span></code></pre>
+</li>
+</ul>
+<h4 id="abs"><a class="header" href="#abs"><code>abs</code></a></h4>
+<ul>
+<li><strong>Signatur</strong>: <code>pub fn abs(self) -&gt; Self</code></li>
+<li><strong>Parameter</strong>: Keine.</li>
+<li><strong>Rückgabetyp</strong>: <code>Self</code>: Der absolute Wert (ohne Vorzeichen).</li>
+<li><strong>Panics</strong>: Stürzt ab, wenn der Wert <code>MIN</code> ist (da der positive Gegenpart von <code>MIN</code> außerhalb des Wertebereichs liegt).</li>
+<li><strong>Beispiel</strong>:
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let x: i32 = -5;
+assert_eq!(x.abs(), 5);
+<span class="boring">}</span></code></pre>
+</li>
+</ul>
+<h4 id="pow"><a class="header" href="#pow"><code>pow</code></a></h4>
+<ul>
+<li><strong>Signatur</strong>: <code>pub fn pow(self, exp: u32) -&gt; Self</code></li>
+<li><strong>Parameter</strong>: <code>exp</code>: Der Exponent als <code>u32</code>.</li>
+<li><strong>Rückgabetyp</strong>: <code>Self</code>: Die Basis hoch <code>exp</code>.</li>
+<li><strong>Panics</strong>: Stürzt im Debug-Modus ab bei mathematischem Überlauf.</li>
+<li><strong>Beispiel</strong>:
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let base: i32 = 2;
+assert_eq!(base.pow(8), 256);
+<span class="boring">}</span></code></pre>
+</li>
+</ul>
+<h4 id="to_be_bytes"><a class="header" href="#to_be_bytes"><code>to_be_bytes</code></a></h4>
+<ul>
+<li><strong>Signatur</strong>: <code>pub fn to_be_bytes(self) -&gt; [u8; N]</code></li>
+<li><strong>Parameter</strong>: Keine.</li>
+<li><strong>Rückgabetyp</strong>: Ein Byte-Array der Größe <code>N</code> (entsprechend der Typgröße in Bytes) im Big-Endian-Format (wichtig für Netzwerkprotokolle).</li>
+<li><strong>Panics</strong>: Keine.</li>
+<li><strong>Beispiel</strong>:
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let val: u32 = 0x12345678;
+assert_eq!(val.to_be_bytes(), [0x12, 0x34, 0x56, 0x78]);
+<span class="boring">}</span></code></pre>
+</li>
+</ul>
+<h4 id="from_le_bytes"><a class="header" href="#from_le_bytes"><code>from_le_bytes</code></a></h4>
+<ul>
+<li><strong>Signatur</strong>: <code>pub fn from_le_bytes(bytes: [u8; N]) -&gt; Self</code></li>
+<li><strong>Parameter</strong>: <code>bytes</code>: Ein Byte-Array der Größe <code>N</code> im Little-Endian-Format.</li>
+<li><strong>Rückgabetyp</strong>: <code>Self</code>: Der rekonstruierte Integer-Wert.</li>
+<li><strong>Panics</strong>: Keine.</li>
+<li><strong>Beispiel</strong>:
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let bytes = [0x78, 0x56, 0x34, 0x12];
+assert_eq!(u32::from_le_bytes(bytes), 0x12345678);
+<span class="boring">}</span></code></pre>
+</li>
+</ul>
+<hr>
+<h3 id="2-fließkomma-methoden-f64--f32"><a class="header" href="#2-fließkomma-methoden-f64--f32">2. Fließkomma-Methoden (<code>f64</code> / <code>f32</code>)</a></h3>
+<h4 id="is_nan"><a class="header" href="#is_nan"><code>is_nan</code></a></h4>
+<ul>
+<li><strong>Signatur</strong>: <code>pub fn is_nan(self) -&gt; bool</code></li>
+<li><strong>Parameter</strong>: Keine.</li>
+<li><strong>Rückgabetyp</strong>: <code>bool</code>: <code>true</code>, wenn der Wert “Not a Number” (NaN) ist.</li>
+<li><strong>Panics</strong>: Keine.</li>
+<li><strong>Beispiel</strong>:
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let nan_val = f64::NAN;
+assert!(nan_val.is_nan());
+<span class="boring">}</span></code></pre>
+</li>
+</ul>
+<h4 id="sqrt"><a class="header" href="#sqrt"><code>sqrt</code></a></h4>
+<ul>
+<li><strong>Signatur</strong>: <code>pub fn sqrt(self) -&gt; Self</code></li>
+<li><strong>Parameter</strong>: Keine.</li>
+<li><strong>Rückgabetyp</strong>: <code>Self</code>: Die Quadratwurzel des Wertes.</li>
+<li><strong>Panics</strong>: Keine (Rückgabe von <code>NaN</code> bei negativen Zahlen).</li>
+<li><strong>Beispiel</strong>:
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let val: f64 = 9.0;
+assert_eq!(val.sqrt(), 3.0);
+<span class="boring">}</span></code></pre>
+</li>
+</ul>
+<hr>
+<h3 id="3-unicode-zeichen-methoden-char"><a class="header" href="#3-unicode-zeichen-methoden-char">3. Unicode-Zeichen-Methoden (<code>char</code>)</a></h3>
+<h4 id="is_alphabetic"><a class="header" href="#is_alphabetic"><code>is_alphabetic</code></a></h4>
+<ul>
+<li><strong>Signatur</strong>: <code>pub fn is_alphabetic(self) -&gt; bool</code></li>
+<li><strong>Parameter</strong>: Keine.</li>
+<li><strong>Rückgabetyp</strong>: <code>bool</code>: <code>true</code>, wenn das Zeichen ein Buchstabe ist.</li>
+<li><strong>Panics</strong>: Keine.</li>
+<li><strong>Beispiel</strong>:
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>assert!('a'.is_alphabetic());
+assert!(!'9'.is_alphabetic());
+<span class="boring">}</span></code></pre>
+</li>
+</ul>
+<h4 id="len_utf8"><a class="header" href="#len_utf8"><code>len_utf8</code></a></h4>
+<ul>
+<li><strong>Signatur</strong>: <code>pub fn len_utf8(self) -&gt; usize</code></li>
+<li><strong>Parameter</strong>: Keine.</li>
+<li><strong>Rückgabetyp</strong>: <code>usize</code>: Die Anzahl der Bytes, die dieses Zeichen zur UTF-8-Kodierung benötigt (1 bis 4).</li>
+<li><strong>Panics</strong>: Keine.</li>
+<li><strong>Beispiel</strong>:
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>assert_eq!('a'.len_utf8(), 1);
+assert_eq!('🦀'.len_utf8(), 4);
+<span class="boring">}</span></code></pre>
+</li>
+</ul>
+<hr>
+<h3 id="4-array-methoden-bzw-slice-methoden-auf-arrays"><a class="header" href="#4-array-methoden-bzw-slice-methoden-auf-arrays">4. Array-Methoden (bzw. Slice-Methoden auf Arrays)</a></h3>
+<h4 id="len"><a class="header" href="#len"><code>len</code></a></h4>
+<ul>
+<li><strong>Signatur</strong>: <code>pub const fn len(&amp;self) -&gt; usize</code></li>
+<li><strong>Parameter</strong>: Keine.</li>
+<li><strong>Rückgabetyp</strong>: <code>usize</code>: Die Anzahl der Elemente im Array.</li>
+<li><strong>Panics</strong>: Keine.</li>
+<li><strong>Beispiel</strong>:
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let arr = [10, 20, 30];
+assert_eq!(arr.len(), 3);
+<span class="boring">}</span></code></pre>
+</li>
+</ul>
+<h4 id="contains"><a class="header" href="#contains"><code>contains</code></a></h4>
+<ul>
+<li><strong>Signatur</strong>: <code>pub fn contains(&amp;self, x: &amp;T) -&gt; bool where T: PartialEq</code></li>
+<li><strong>Parameter</strong>: <code>x</code>: Referenz auf den gesuchten Wert.</li>
+<li><strong>Rückgabetyp</strong>: <code>bool</code>: <code>true</code>, wenn der Wert im Array enthalten ist.</li>
+<li><strong>Panics</strong>: Keine.</li>
+<li><strong>Beispiel</strong>:
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let arr = [1, 2, 3];
+assert!(arr.contains(&amp;2));
+<span class="boring">}</span></code></pre>
+</li>
+</ul>
+<hr>
+<h2 id="9-drei-praktische-übungen"><a class="header" href="#9-drei-praktische-übungen">9. Drei praktische Übungen</a></h2>
+<h3 id="übung-1-sicheres-sensor-aggregat-schwierigkeit-leicht"><a class="header" href="#übung-1-sicheres-sensor-aggregat-schwierigkeit-leicht">Übung 1: Sicheres Sensor-Aggregat (Schwierigkeit: Leicht)</a></h3>
+<p><strong>Ziel</strong>: Festigung der sicheren Arithmetik-Syntax zur Überlaufvermeidung.</p>
+<ul>
+<li><strong>Anforderung</strong>:
+Schreiben Sie eine Funktion <code>safe_average</code>, die zwei Temperaturen als <code>i8</code> entgegennimmt und deren Mittelwert berechnet. Da die Summe zweier Temperaturen den Wertebereich von <code>i8</code> überschreiten kann, darf die Addition nicht direkt mit dem <code>+</code>-Operator ausgeführt werden. Verwenden Sie stattdessen <code>checked_add</code> und behandeln Sie den Überlauffall, indem Sie im Fehlerfall einen Durchschnitt von <code>0</code> zurückgeben.</li>
+<li><strong>Erwartete Signatur</strong>:
+<code>fn safe_average(temp1: i8, temp2: i8) -&gt; i8</code></li>
+<li><strong>Beispiel-Input/Output</strong>:
+<ul>
+<li>Input: <code>100</code>, <code>40</code> -&gt; Output: <code>0</code> (da $140$ einen Überlauf bei <code>i8</code> auslöst)</li>
+<li>Input: <code>20</code>, <code>30</code> -&gt; Output: <code>25</code></li>
+</ul>
+</li>
+<li><strong>Lösungshinweis (Hint)</strong>:
+Nutzen Sie ein <code>match</code> auf <code>temp1.checked_add(temp2)</code>. Dividieren Sie das Ergebnis im Erfolgsfall durch 2.</li>
+</ul>
+<hr>
+<h3 id="übung-2-zyklischer-ringpuffer-index-schwierigkeit-mittel"><a class="header" href="#übung-2-zyklischer-ringpuffer-index-schwierigkeit-mittel">Übung 2: Zyklischer Ringpuffer-Index (Schwierigkeit: Mittel)</a></h3>
+<p><strong>Ziel</strong>: Praktische Anwendung von Arrays, Tupeln und dem Modulo-Verhalten (<code>wrapping_add</code>).</p>
+<ul>
+<li><strong>Anforderung</strong>:
+In Embedded-Systemen werden Sensorwerte oft in einem zirkulären Array (Ringpuffer) gespeichert. Schreiben Sie eine Funktion <code>push_to_buffer</code>, die den aktuellen Puffer (ein Array der Größe 4), den aktuellen Schreib-Index (<code>u8</code>) und einen neuen Wert (<code>i32</code>) entgegennimmt. Die Funktion soll den Wert an der Index-Position einfügen und den neuen Schreib-Index zurückgeben. Der Schreib-Index muss zyklisch zwischen 0 und 3 rotieren. Nutzen Sie zur Indexerhöhung die Methode <code>wrapping_add</code> kombiniert mit einer Modulo-Operation, um Überläufe bei kontinuierlichem Betrieb dauerhaft zu verhindern.</li>
+<li><strong>Erwartete Signatur</strong>:
+<code>fn push_to_buffer(mut buffer: [i32; 4], index: u8, value: i32) -&gt; ([i32; 4], u8)</code></li>
+<li><strong>Beispiel-Input/Output</strong>:
+<ul>
+<li>Input: Buffer <code>[0, 0, 0, 0]</code>, Index <code>3</code>, Value <code>99</code> -&gt; Output: Buffer <code>[0, 0, 0, 99]</code>, neuer Index <code>0</code></li>
+</ul>
+</li>
+<li><strong>Lösungshinweis (Hint)</strong>:
+Wandeln Sie den Puffer-Index vor dem Zugriff mittels <code>as usize</code> um. Erhöhen Sie den Index mit <code>index.wrapping_add(1)</code> und nehmen Sie das Ergebnis modulo 4 (<code>% 4</code>).</li>
+</ul>
+<hr>
+<h3 id="übung-3-binärer-telemetrie-parser-schwierigkeit-schwer"><a class="header" href="#übung-3-binärer-telemetrie-parser-schwierigkeit-schwer">Übung 3: Binärer Telemetrie-Parser (Schwierigkeit: Schwer)</a></h3>
+<p><strong>Ziel</strong>: Transferleistung zu Speicher-Alignment, Bit-Operationen und Byte-Konvertierungen.</p>
+<ul>
+<li>
+<p><strong>Anforderung</strong>:
+Sie erhalten ein rohes Datenpaket von einem IoT-Temperatursensor als Byte-Array der Größe 6.</p>
+<ul>
+<li>Byte 0: Sensor-ID (<code>u8</code>)</li>
+<li>Byte 1: Status-Bitmaske (<code>u8</code>). Ist das niederwertigste Bit (Bit 0) gesetzt, ist der Sensor aktiv.</li>
+<li>Byte 2-5: Temperaturwert kodiert als Big-Endian <code>f32</code>.</li>
+</ul>
+<p>Schreiben Sie eine Funktion <code>parse_telemetry</code>, die dieses Array einliest. Die Funktion soll prüfen, ob der Sensor laut Bitmaske aktiv ist. Wenn ja, konvertieren Sie die Bytes 2-5 in ein echtes <code>f32</code> und geben Sie ein Tupel bestehend aus <code>(Sensor-ID, Temperatur)</code> zurück. Ist der Sensor inaktiv, geben Sie <code>None</code> zurück.</p>
+</li>
+<li>
+<p><strong>Erwartete Signatur</strong>:
+<code>fn parse_telemetry(raw_data: [u8; 6]) -&gt; Option&lt;(u8, f32)&gt;</code></p>
+</li>
+<li>
+<p><strong>Lösungshinweis (Hint)</strong>:</p>
+<ul>
+<li>Um den Aktivitätsstatus zu prüfen, nutzen Sie eine Bitmaske: <code>raw_data[1] &amp; 1 == 1</code>.</li>
+<li>Um die 4 Bytes der Temperatur zu extrahieren, erzeugen Sie ein temporäres 4-Byte-Array <code>[raw_data[2], raw_data[3], raw_data[4], raw_data[5]]</code>.</li>
+<li>Nutzen Sie <code>f32::from_be_bytes(temp_bytes)</code>, um den Gleitkommawert zu rekonstruieren.</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="10-lernstrategie-selbsteinschätzung--merkzettel"><a class="header" href="#10-lernstrategie-selbsteinschätzung--merkzettel">10. Lernstrategie, Selbsteinschätzung &amp; Merkzettel</a></h2>
+<h3 id="spickzettel--merkzettel-cheat-sheet"><a class="header" href="#spickzettel--merkzettel-cheat-sheet">Spickzettel / Merkzettel (Cheat Sheet)</a></h3>
+<p>Hier ist die wichtigste Syntax für die Deklaration und Initialisierung auf einen glance:</p>
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>// Skalare Variablen
+let mut steps: u64 = 0;             // Standard-Integer auf Stack
+let price: f64 = 99.99;             // Fließkommazahl IEEE-754
+
+// Arrays (Homogen)
+let numbers: [i32; 5] = [1, 2, 3, 4, 5];
+let count = numbers.len();          // Länge ermitteln
+let first = numbers[0];             // Elementzugriff (Achtung: Panic-Gefahr!)
+let safe_item = numbers.get(10);    // Sicherer Zugriff (gibt Option&lt;&amp;i32&gt; zurück)
+
+// Tupel (Heterogen)
+let record: (u32, f32, char) = (42, 36.6, '🤒');
+let sensor_id = record.0;           // Direktzugriff über Punkt-Syntax
+let (id, temp, symbol) = record;    // Destrukturierung
+<span class="boring">}</span></code></pre>
+<h3 id="active-recall-selbsttestfragen"><a class="header" href="#active-recall-selbsttestfragen">Active Recall (Selbsttestfragen)</a></h3>
+<ol>
+<li><strong>Frage</strong>: Warum kann man ein Array in Rust nicht dynamisch während der Laufzeit vergrößern?
+<ul>
+<li><em>Antwort</em>: Da Arrays flach auf dem Stack liegen, muss der Compiler ihre genaue Größe zur Kompilierzeit kennen, um den Stackframe-Pointer korrekt zu verschieben. Dynamische Vergrößerung würde den Stackframe beschädigen.</li>
+</ul>
+</li>
+<li><strong>Frage</strong>: Was passiert bei einem Integer-Overflow im <code>--release</code>-Build im Vergleich zum Debug-Build?
+<ul>
+<li><em>Antwort</em>: Im Debug-Build stürzt das Programm mit einer Panik ab. Im Release-Build wird das Ergebnis lautlos gewrappt (Modulo-Arithmetik), was zu schwer zu findenden Logikfehlern führen kann.</li>
+</ul>
+</li>
+<li><strong>Frage</strong>: Warum ist die Bytegröße von <code>usize</code> nicht auf allen Systemen identisch?
+<ul>
+<li><em>Antwort</em>: <code>usize</code> repräsentiert die Breite des Adressbusses der CPU. Auf einer 32-Bit-CPU werden 4 Bytes zur Adressierung benötigt, auf einer 64-Bit-CPU hingegen 8 Bytes.</li>
+</ul>
+</li>
+<li><strong>Frage</strong>: Wie unterscheidet sich das Speicher-Alignment bei einem Struct von dem eines Tupels?
+<ul>
+<li><em>Antwort</em>: Der Rust-Compiler darf Felder eines Structs umsortieren (<code>repr(Rust)</code>), um Padding-Bytes zu minimieren. Bei Tupeln hingegen ist die Reihenfolge der Elemente im Speicher fest vorgegeben.</li>
+</ul>
+</li>
+<li><strong>Frage</strong>: Wann implementieren Arrays den <code>Copy</code>-Trait?
+<ul>
+<li><em>Antwort</em>: Ein Array implementiert den <code>Copy</code>-Trait genau dann, wenn der Typ seiner Elemente <code>T</code> ebenfalls <code>Copy</code> implementiert. Ein <code>[i32; 10]</code> ist <code>Copy</code>, ein <code>[String; 10]</code> hingegen nicht.</li>
 </ul>
 </li>
 </ol>
-<h3 id="b-zusammengesetzte-datentypen-compound-types"><a class="header" href="#b-zusammengesetzte-datentypen-compound-types">B. Zusammengesetzte Datentypen (Compound Types)</a></h3>
+<h3 id="die-feynman-methode"><a class="header" href="#die-feynman-methode">Die Feynman-Methode</a></h3>
+<p>Erklären Sie einem Programmierer, der nur Python oder JavaScript kennt, den Unterschied zwischen einem Array und einem Tupel in Rust. Verwenden Sie dabei maximal drei Sätze und konzentrieren Sie sich auf Speicherlayout und Typsicherheit.</p>
+<h3 id="gezielte-fehlerprovokation-compiler-guided-learning"><a class="header" href="#gezielte-fehlerprovokation-compiler-guided-learning">Gezielte Fehlerprovokation (Compiler-Guided Learning)</a></h3>
+<p>Modifizieren Sie Ihren funktionierenden Lösungscode aus Abschnitt 6 absichtlich wie folgt, um das Verhalten des Compilers und der Laufzeitumgebung zu studieren:</p>
 <ol>
-<li><strong>Das Tupel (Tuple):</strong>
-<ul>
-<li>Feste Länge, erlaubt <strong>unterschiedliche</strong> Datentypen.</li>
-<li>Zugriff über Punkt-Notation (<code>.0</code>) oder Entpacken (Destrukturierung).</li>
-<li>Leeres Tupel <code>()</code> wird <em>Unit</em> genannt (stellt leere Rückgabewerte dar).</li>
-</ul>
-<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>let tup: (i32, f64, u8) = (500, 6.4, 1);
-let (x, y, z) = tup; // Destrukturieren
-let fuenfhundert = tup.0; // Direktzugriff
-<span class="boring">}</span></code></pre>
-</li>
-<li><strong>Das Array:</strong>
-<ul>
-<li>Feste Länge, alle Elemente müssen <strong>denselben</strong> Datentyp haben (homogen).</li>
-<li>Zugriff über eckige Klammern (<code>a[0]</code>).</li>
-<li>Bietet eingebaute Laufzeit-Sicherheitsprüfungen (Verhindert ungültigen Speicherzugriff durch sofortigen Abbruch/Panic).</li>
-</ul>
-<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>let a: [i32; 5] = [1, 2, 3, 4, 5];
-let first = a[0];
-<span class="boring">}</span></code></pre>
-</li>
+<li>Ändern Sie einen Indexzugriff im Array auf einen statischen Wert, der garantiert zu groß ist (z. B. <code>readings[10]</code>). Beobachten Sie, ob der Compiler den Fehler bereits beim Übersetzen erkennt (statische Analyse).</li>
+<li>Deklarieren Sie ein Tupel, weisen Sie ein Element einem nicht-kompatiblen Typ zu und lesen Sie die Compiler-Fehlermeldung aufmerksam.</li>
 </ol>
+<h3 id="metakognitiver-selbsttest"><a class="header" href="#metakognitiver-selbsttest">Metakognitiver Selbsttest</a></h3>
+<p>Wechseln Sie erst zu <a href="file:///home/thorsten/RustKurs/doc/src/10.md">Kapitel 10 (Funktionen)</a>, wenn Sie:</p>
+<ul>
+<li><input disabled="" type="checkbox"> Den Unterschied zwischen <code>checked_add</code>, <code>saturating_add</code> und <code>wrapping_add</code> im Schlaf erklären können.</li>
+<li><input disabled="" type="checkbox"> Verstanden haben, warum das Tupel <code>(u8, u32)</code> im Speicher 8 Bytes belegt und wie die 3 Padding-Bytes dort hingekommen sind.</li>
+<li><input disabled="" type="checkbox"> Die eckigen Klammern <code>[]</code> (Array) sicher von den runden Klammern <code>()</code> (Tupel/Unit) abgrenzen können.</li>
+</ul>
 <hr>
-<h2 id="-merkzettel-variablen--datentypen"><a class="header" href="#-merkzettel-variablen--datentypen">💡 Merkzettel: Variablen &amp; Datentypen</a></h2>
+<h2 id="11-zusammenfassung"><a class="header" href="#11-zusammenfassung">11. Zusammenfassung</a></h2>
 <ul>
-<li><strong>Standard:</strong> Variablen sind unveränderlich. Nutze <code>mut</code> für Veränderbarkeit.</li>
-<li><strong>Konstanten (<code>const</code>):</strong> Immer unveränderlich, Typangabe Pflicht, Großbuchstaben als Konvention.</li>
-<li><strong>Shadowing:</strong> Wiederverwendung desselben Variablennamens mit <code>let</code>. Typänderungen sind dabei erlaubt.</li>
-<li><strong>Zahlen:</strong> Standard für Ganzzahlen ist <code>i32</code>, für Fließkommazahlen <code>f64</code>.</li>
-<li><strong>Tupel vs. Array:</strong>
-<ul>
-<li><strong>Tupel <code>()</code></strong>: Verschiedene Typen erlaubt, Zugriff mit <code>.index</code> (z. B. <code>.0</code>).</li>
-<li><strong>Array <code>[]</code></strong>: Nur derselbe Typ erlaubt, Zugriff mit <code>[index]</code> (z. B. <code>[0]</code>).</li>
+<li><strong>Skalare vs. Zusammengesetzte Typen</strong>: Skalare Typen (<code>i32</code>, <code>f64</code>, <code>bool</code>, <code>char</code>) speichern Einzelwerte. Arrays (<code>[T; N]</code>) speichern homogene Daten fester Länge. Tupel (<code>(T1, T2, ...)</code>) speichern heterogene Datensätze fester Länge.</li>
+<li><strong>Sichere Arithmetik</strong>: Nutzen Sie bei kritischen Berechnungen immer die <code>checked_</code> oder <code>saturating_</code> Methoden der Standardbibliothek anstelle der Standard-Operatoren, um unkontrollierte Laufzeitabstürze oder lautlose Überläufe zu verhindern.</li>
+<li><strong>Speicher-Alignment</strong>: CPUs greifen am effizientesten auf ausgerichtete Adressen zu. Rust fügt automatisch Padding-Bytes ein, um dieses Alignment zu erzwingen. Tupel behalten ihre Definitionsreihenfolge im Speicher bei, was zu ungenutztem Speicherplatz (Padding) führen kann.</li>
+<li><strong>Sicherer Zugriff</strong>: Der direkte Array-Zugriff mit <code>[index]</code> ist crash-gefährdet. Nutzen Sie <code>.get(index)</code> für den sicheren Zugriff, um ein <code>Option</code>-Ergebnis zu erhalten.</li>
 </ul>
-</li>
-<li><strong>Sicherheit:</strong> Rust bricht bei ungültigen Array-Zugriffen sofort ab (<em>Panic</em>), um Speicherfehler zu verhindern.</li>
-</ul>
-<p>Nächste Lektion ist Funktion</p>
+<hr>
+<p><strong>Lizenz- und Attributionshinweis</strong>:
+Teile dieses Kapitels basieren auf Übersetzungen und didaktischen Anpassungen des offiziellen Buches <a href="https://doc.rust-lang.org/book/">The Rust Programming Language</a> von Steve Klabnik und Carol Nichols (sowie Beiträgen der Rust-Community), lizenziert unter <a href="https://opensource.org/licenses/MIT">MIT</a> und <a href="https://www.apache.org/licenses/LICENSE-2.0">Apache 2.0</a>.</p>
 
                     </main>
 

@@ -35,7 +35,7 @@
             const path_to_root = "";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "searchindex-a9440cc5.js";
+            window.path_to_searchindex_js = "searchindex-76719c3e.js";
         </script>
         <!-- Start loading toc.js asap -->
         <script src="toc-dedbbe6e.js"></script>
@@ -174,226 +174,1034 @@
 
                 <div id="mdbook-content" class="content">
                     <main>
-                        <h2 id="rust-datentypen-einfach-erklärt"><a class="header" href="#rust-datentypen-einfach-erklärt">Rust Datentypen einfach erklärt</a></h2>
+                        <h1 id="kapitel-6-skalare--primitive-datentypen"><a class="header" href="#kapitel-6-skalare--primitive-datentypen">Kapitel 6: Skalare &amp; primitive Datentypen</a></h1>
+<p>Im Verlauf dieses Kapitels werden wir die fundamentalen Bausteine der Rust-Typisierung kennenlernen: die primitiven und skalaren Datentypen. Diese Typen sind direkt auf Hardware-Ebene abgebildet und bilden die Basis für jede komplexe Datenstruktur in Rust.</p>
+<hr>
+<h2 id="601-lernziele--lernplan"><a class="header" href="#601-lernziele--lernplan">6.0.1 Lernziele &amp; Lernplan</a></h2>
+<h3 id="lernziele"><a class="header" href="#lernziele">Lernziele</a></h3>
 <ul>
-<li>Rust ist eine statisch typisierte Sprache</li>
+<li><strong>Klassifizieren und Auswählen</strong>: Sie können die verschiedenen ganzzahligen Datentypen (signed und unsigned) in Rust anhand ihres Wertebereichs und Speicherbedarfs kategorisieren und den optimalen Typ für eine gegebene mathematische oder speichertechnische Problemstellung auswählen.</li>
+<li><strong>Systemarchitektur analysieren</strong>: Sie können systemabhängige Integertypen (<code>isize</code> und <code>usize</code>) in Bezug auf die native Wortbreite von 32-Bit- und 64-Bit-CPUs erklären und in praktischen Anwendungen zur sicheren Adressierung und Array-Indexierung einsetzen.</li>
+<li><strong>Fehlerkontrolle bei Überläufen</strong>: Sie können das Verhalten des Rust-Compilers und der Laufzeitumgebung bei einem Integer Overflow im Debug- und Release-Modus beschreiben und dieses Verhalten durch defensive Programmiertechniken (z. B. sichere arithmetische Methoden wie <code>checked_add</code>) gezielt kontrollieren.</li>
+<li><strong>Speicherlayouts zeichnen</strong>: Sie können das physische Speicherlayout von Fließkommazahlen (IEEE-754), Booleans und Unicode-Zeichen (<code>char</code>) im Arbeitsspeicher skizzieren und den Unterschied zwischen Zeichen und String-Literalen erklären.</li>
+<li><strong>Casting-Risiken bewerten</strong>: Sie können explizite Typkonvertierungen mit dem <code>as</code>-Operator durchführen und die damit verbundenen Risiken wie Bit-Truncation (Abschneiden von Bits) und Vorzeichenverlust (signed/unsigned Casts) formal analysieren und bewerten.</li>
 </ul>
-<h2 id="skalare-typen"><a class="header" href="#skalare-typen">Skalare Typen</a></h2>
-<h3 id="ein-skalarer-typ-repräsentiert-einen-einzigen-wert-die-wichtigsten-numerischen-typen-sind"><a class="header" href="#ein-skalarer-typ-repräsentiert-einen-einzigen-wert-die-wichtigsten-numerischen-typen-sind">Ein skalarer Typ repräsentiert einen einzigen Wert. Die wichtigsten numerischen Typen sind:</a></h3>
-<h4 id="ganzzahlen-integers-zahlen-ohne-komma"><a class="header" href="#ganzzahlen-integers-zahlen-ohne-komma">Ganzzahlen (Integers): Zahlen ohne Komma.</a></h4>
-<h5 id="ganzzahlen-integers-zahlen-ohne-komma-1"><a class="header" href="#ganzzahlen-integers-zahlen-ohne-komma-1">Ganzzahlen (Integers): Zahlen ohne Komma.</a></h5>
-<ul>
-<li>Mit Vorzeichen (i für signed): Können positiv und negativ sein (z. B. -5, 12). Standard ist i32.</li>
-<li>Ohne Vorzeichen (u für unsigned): Können nur 0 oder positiv sein (z. B. 5). Weil sie kein Minuszeichen speichern müssen, passen größere positive Zahlen hinein.</li>
-</ul>
-<h4 id="fließkommazahlen-floats-zahlen-mit-nachkommastellen-dezimalzahlen-standard-ist"><a class="header" href="#fließkommazahlen-floats-zahlen-mit-nachkommastellen-dezimalzahlen-standard-ist">Fließkommazahlen (Floats): Zahlen mit Nachkommastellen (Dezimalzahlen). Standard ist</a></h4>
-<ul>
-<li>f64</li>
-</ul>
-<h3 id="was-bedeuten-die-zahlen-z-b-8-32-64"><a class="header" href="#was-bedeuten-die-zahlen-z-b-8-32-64">Was bedeuten die Zahlen (z. B. 8, 32, 64)?</a></h3>
-<p>Wichtig für Anfänger: Verschwende am Anfang keine Zeit mit “Mikro-Optimierung” des Speichers. Nutze einfach die * * * * Rust-Standards (i32 und f64). Heutige Computer haben mehr als genug Speicher.</p>
-<ul>
-<li>
-<p>Statische Typisierung: Rust muss jeden Datentyp vor dem Start des Programms kennen.</p>
-</li>
-<li>
-<p>Typinferenz: Rust erkennt den Typ oft automatisch anhand des zugewiesenen Wertes.</p>
-</li>
-<li>
-<p>Zusammengesetzte Typen (Vorschau): Können im Gegensatz zu skalaren Typen mehrere Werte wie ein “Behälter” aufnehmen.</p>
-</li>
-</ul>
-<p>Speicher-Eselsbrücke</p>
-<ul>
-<li>
-<p>i = Integer (Ganzzahl mit Vorzeichen, kann ins Ins Negative gehen).</p>
-</li>
-<li>
-<p>u = Unsigned (Vorzeichenlos, Unmöglich negativ).</p>
-</li>
-<li>
-<p>Standard-Regel: Wenn du eine normale Zahl brauchst, nimm einfach i32. Wenn du eine Kommazahl brauchst, nimm f64.</p>
-</li>
-</ul>
-<p>Das Wichtigste in Kürze</p>
-<ul>
-<li>Explizite Typisierung: Standardmäßig macht Rust aus ganzen Zahlen ein i32. Willst du das ändern, hängst du einen Doppelpunkt und den Typ an den Variablennamen (z. B. let x: i8 = -100;).</li>
-<li>Wertebereich beachten: Jeder Typ hat Grenzen. Passt eine Zahl nicht in den Speicherplatz (z. B. 400 in ein u8), streikt der Compiler und das Programm startet erst gar nicht.</li>
-<li>Alternative Schreibweise (Suffix): Du kannst den Typ auch direkt ohne Leerzeichen an die Zahl klatschen (z. B. let x = 20i8;). Das bewirkt genau dasselbe, wird aber seltener genutzt.</li>
-</ul>
-<h2 id="merkzettel-rust-integer-ganzzahlen-im-überblick"><a class="header" href="#merkzettel-rust-integer-ganzzahlen-im-überblick">Merkzettel: Rust Integer (Ganzzahlen) im Überblick</a></h2>
-<ul>
-<li>i (signed / mit Vorzeichen): Kann negative und positive Zahlen speichern.</li>
-<li>u (unsigned / ohne Vorzeichen): Kann nur positive Zahlen und 0 speichern. Vorteil: Da kein Minuszeichen gespeichert werden muss, verdoppelt sich die Reichweite im positiven Bereich.</li>
-</ul>
-<h2 id="typen-speicherplatz-und-ihre-grenzen"><a class="header" href="#typen-speicherplatz-und-ihre-grenzen">Typen, Speicherplatz und ihre Grenzen</a></h2>
-<p>SpeichergrößeGültiger Zahlenbereich (Grenzen)Beispiel für Fehleri81 Byte (8 Bit)-128 bis 127let x: i8 = -210; (zu klein)u81 Byte (8 Bit)0 bis 255let x: u8 = -15; (kein Minus erlaubt)i162 Bytes (16 Bit)-32.768 bis 32.767let x: i16 = 64000; (zu groß)u162 Bytes (16 Bit)0 bis 65.535let x: u16 = 66000; (zu groß)i324 Bytes (32 Bit)ca. -2,14 Mrd. bis +2,14 Mrd.(Standardtyp in Rust)u324 Bytes (32 Bit)0 bis ca. 4,29 Mrd.let x: u32 = -1; (kein Minus erlaubt)</p>
-<p>Merke für die Praxis: Wenn eine Zahl den zugewiesenen Bereich sprengt, bricht Rust den Kompiliervorgang sofort mit einer Fehlermeldung ab. Das schützt dich vor Fehlern im fertigen Programm!</p>
-<p>Das Wichtigste in Kürze</p>
-<ul>
-<li>
-<p>Große Zahlen im Code (wie 6000000) sind schwer zu lesen. Rust erlaubt es dir, Unterstriche (_) als visuelle Trennzeichen in Zahlen einzufügen (wie das Tausendertrennzeichen in der Mathematik).</p>
-</li>
-<li>
-<p>Dem Compiler ist es egal: Rust ignoriert die Unterstriche beim Kompilieren komplett.</p>
-</li>
-<li>
-<p>Flexibel: Du kannst so viele Unterstriche setzen, wo du willst.</p>
-</li>
-<li>
-<p>Best Practice: Sinnvoll ist es, Zahlen in 3er-Blöcke aufzuteilen (z. B. 6_000_000).</p>
-</li>
-<li>
-<p>Eselsbrücke: Ersetze das mathematische Tausender-Komma (oder den Punkt) im Code einfach durch einen Unterstrich _. Das erhöht die Lesbarkeit sofort und verhindert Tippfehler bei vielen Nullen!</p>
-</li>
-</ul>
-<h2 id="das-wichtigste-in-kürze"><a class="header" href="#das-wichtigste-in-kürze">Das Wichtigste in Kürze</a></h2>
-<p>Während Typen wie i32 oder u8 auf jedem Computer immer exakt gleich groß sind, passen sich isize und usize automatisch an den Computer an, auf dem das Programm gerade läuft.</p>
-<ul>
-<li>Die Anpassung: Auf einem 64-Bit-Computer werden sie zu 64-Bit-Typen (i64 / u64). Auf einem 32-Bit-Computer werden sie zu 32-Bit-Typen (i32 / u32).</li>
-<li>Der Zweck: Sie dienen als “Spitznamen” (Aliase) für den nativen Typ des Systems. Das macht den Code extrem flexibel und spart automatisch Speicher auf älteren Systemen, während es auf modernen Computern die maximale Leistung herausholt.
-Wofür braucht man das? In der Praxis nutzt man usize vor allem, wenn man Dinge zählt, die mit der Speichergröße des Computers zu tun haben – zum Beispiel, um die Länge von Listen (Arrays/Vektoren) zu bestimmen oder Elemente darin über einen Index anzusprechen.</li>
-</ul>
-<h2 id="was-ist-ein-string-literal"><a class="header" href="#was-ist-ein-string-literal">Was ist ein String-Literal?</a></h2>
-<p>Ein Text in doppelten Anführungszeichen (z. B. “Hello World”) ist in Rust technisch gesehen ein String-Literal. Der Compiler kennt diesen Text schon beim Verharmlosen (Kompilieren), weil er fest im Quellcode geschrieben steht. Dynamische Texte (z. B. Benutzereingaben) funktionieren später anders.</p>
-<h2 id="maskierung-escaping--sonderzeichen"><a class="header" href="#maskierung-escaping--sonderzeichen">Maskierung (Escaping) &amp; Sonderzeichen</a></h2>
-<p>Manche Zeichen haben in Rust eine Sonderfunktion. Sie beginnen immer mit einem Backslash (). Möchtest du diese Zeichen wörtlich als Text drucken, musst du sie mit einem zusätzlichen Backslash “maskieren” (escapen).</p>
-<ul>
-<li>
-<p>\n erzeugt eine neue Zeile.</p>
-</li>
-<li>
-<p>\t erzeugt einen Tabulator-Abstand.</p>
-</li>
-<li>
-<p>" druckt ein echtes Anführungszeichen, ohne dass Rust denkt, der String ist vorbei.</p>
-</li>
-<li>
-<p>\ druckt einen einzelnen, echten Backslash (wichtig z. B. bei Windows-Dateipfaden).</p>
-</li>
-</ul>
-<p>Die Rettung: Raw Strings
-Wenn du viele Backslashes oder Pfade hast, wird der Code durch das ständige Maskieren (\) unleserlich. Die Lösung ist ein Raw String (Roh-Zeichenkette). Setze einfach ein r vor die Anführungszeichen. Rust ignoriert dann alle Sonderfunktionen und druckt alles exakt so, wie es da steht.</p>
+<h3 id="lernplan"><a class="header" href="#lernplan">Lernplan</a></h3>
 <ol>
-<li>Was ist eine Methode?
-Eine Methode ist im Grunde eine Funktion, die fest an einen bestimmten Wert oder Datentyp gebunden ist. Sie ist wie ein Befehl, den man direkt auf eine Variable anwendet.</li>
+<li><strong>Grundlagen der Ganzzahltypen</strong>: Deklaration, Wertebereiche und systemabhängige Typen (<code>usize</code>/<code>isize</code>).</li>
+<li><strong>Beherrschen von Integer-Überläufen</strong>: Analyse von Debug- vs. Release-Modus und Nutzung sicherer arithmetischer Bibliotheksmethoden.</li>
+<li><strong>Weitere primitive Typen</strong>: Fließkommazahlen nach IEEE-754, Booleans (und deren Byte-Ausrichtung) sowie Unicode-Zeichen (<code>char</code>).</li>
+<li><strong>Sichere Typkonvertierung</strong>: Der <code>as</code>-Operator, seine Funktionsweise und seine Risiken.</li>
+<li><strong>Praktische Anwendung &amp; Vertiefung</strong>: Ein Schritt-für-Schritt-Tutorial, vertiefende Speicherdiagramme und drei praktische Programmierübungen.</li>
 </ol>
+<hr>
+<h2 id="602-die-definition"><a class="header" href="#602-die-definition">6.0.2 Die Definition</a></h2>
 <ul>
-<li>
-<p>Funktion / Makro: Steht für sich alleine (z. B. println!(…)).</p>
-</li>
-<li>
-<p>Methode: Klebt immer mit einem Punkt an einer Variablen (z. B. text.trim()).</p>
-</li>
-<li>
-<p>Eingabe (Argument): Was in die Klammern reinwandert.</p>
-</li>
-<li>
-<p>Ausgabe (Rückgabewert): Das Ergebnis, das am Ende rauskommt.</p>
-</li>
+<li><strong>Skalarer Datentyp</strong>: Ein Typ, der einen einzelnen, atomaren Wert repräsentiert. Rust besitzt vier primäre skalare Typen: Ganzzahlen, Fließkommazahlen, Booleans und Zeichen.</li>
+<li><strong>Integertyp (Ganzzahl)</strong>: Ein numerischer Datentyp, der ausschließlich ganze Zahlen ohne Nachkommastellen darstellt. Er wird unterteilt in vorzeichenbehaftete (signed) und vorzeichenlose (unsigned) Typen fester Bitbreite.</li>
+<li><strong>Systemabhängiger Integertyp</strong>: Ein Integertyp (<code>isize</code>/<code>usize</code>), dessen Bitbreite der nativen Wortbreite (Wortgröße) der Ziel-CPU-Architektur entspricht.</li>
+<li><strong>Integer Overflow (Ganzzahlüberlauf)</strong>: Ein Zustand, der auftritt, wenn eine mathematische Operation einen Wert berechnet, der außerhalb des darstellbaren Wertebereichs des zugrunde liegenden Integertyps liegt.</li>
+<li><strong>Fließkommazahl</strong>: Eine rechnerische Annäherung an reelle Zahlen mit Nachkommastellen, spezifiziert nach dem Standard IEEE-754.</li>
+<li><strong>Boolean</strong>: Ein logischer Datentyp, der genau zwei Wahrheitswerte annehmen kann: <code>true</code> (wahr) oder <code>false</code> (falsch).</li>
+<li><strong>Zeichen (char)</strong>: Ein Datentyp, der einen einzelnen Unicode-Skalarwert repräsentiert und im Speicher immer exakt 4 Bytes belegt.</li>
+<li><strong>Typkonvertierung (Casting)</strong>: Die explizite Umwandlung eines Wertes von einem Quell-Datentyp in einen Ziel-Datentyp. In Rust wird dies primär über das Schlüsselwort <code>as</code> gesteuert.</li>
 </ul>
-<p>Ein Float (Fließkommazahl) stellt eine Dezimalzahl mit Nachkommastellen dar. In Rust sind Floats immer vorzeichenbehaftet (sie können also positive und negative Werte haben). Es gibt keine “unsigned” (rein positiven) Floats.</p>
-<p>fn main() {
-let pi: f64 = 3.14159;</p>
-<pre><code>// 1. .floor() -&gt; Abrunden (zum "Boden")
-println!("{}", pi.floor()); // Ausgabe: 3.0
-
-// 2. .ceil() -&gt; Aufrunden (zur "Decke" / Ceiling)
-println!("{}", pi.ceil());  // Ausgabe: 4.0
-
-// 3. .round() -&gt; Kaufmännisch runden (zur nächsten ganzen Zahl)
-println!("{}", pi.round()); // Ausgabe: 3.0 (da .14 näher an 3 ist)
-
-let kaffee_preis: f64 = 3.75;
-println!("{}", kaffee_preis.round()); // Ausgabe: 4.0 (da .75 näher an 4 ist)
-</code></pre>
-<p>}</p>
-<p>Wenn du eine Kommazahl mit println! ausgibst, kannst du die Anzahl der angezeigten Nachkommastellen begrenzen. Das Zaubermittel dafür heißt Formatbezeichner (Format Speci)
-Die Syntax: Innerhalb der geschweiften Klammern fügst du einen Doppelpunkt :, einen Punkt . und die gewünschte Anzahl an Stellen ein (z. B. :.2 für 2 Stellen).</p>
-<ul>
-<li>
-<p>Wichtig: Der echte Wert in der Variable ändert sich dadurch nicht. Rust passt nur die optische Darstellung bei der Ausgabe an und rundet die Zahl dabei mathematisch korrekt.</p>
-</li>
-<li>
-<p>Zwei Wege: Das funktioniert sowohl, wenn die Variable direkt in den Klammern steht ({pi:.2}), als auch, wenn sie als Argument hinten dranhängt ({:.2}, pi).</p>
-</li>
-</ul>
-<p>Rust
-fn main() {
-let pi = 3.14159265;</p>
-<pre><code>// ---- Variante 1: Variable direkt in der Klammer (Kompakt) ----
-println!("Pi auf 2 Stellen: {pi:.2}"); // Ausgabe: 3.14
-println!("Pi auf 4 Stellen: {pi:.4}"); // Ausgabe: 3.1416 (automatisch aufgerundet!)
-
-// ---- Variante 2: Variable als Argument hinten dran (Klassisch) ----
-println!("Ausgabe auf 3 Stellen: {:.3}", pi); // Ausgabe: 3.142
-
-// Der Originalwert ist immer noch unverändert:
-println!("Originaler Wert: {}", pi); // Ausgabe: 3.14159265
-</code></pre>
-<p>}
-💡 Eselsbrücke für die Praxis: Denk bei :.2 einfach an ein Gesicht mit Brille, das genau hinsieht: Der Doppelpunkt : startet das Tuning, der Punkt . trennt ab, und die 2 sagt, wie viele Ziffern übrig bleiben!</p>
-<h2 id="was-ist-casting"><a class="header" href="#was-ist-casting">Was ist Casting?</a></h2>
-<ul>
-<li>Casting bedeutet, einen Wert von einem Datentyp in einen anderen umzuwandeln (z. B. eine Kommazahl in eine Ganzzahl). In Rust nutzt man dafür das Schlüsselwort as.</li>
-<li>
-<ol start="2">
-<li>Wie funktioniert es?</li>
+<hr>
+<h2 id="603-das-problem--die-motivation"><a class="header" href="#603-das-problem--die-motivation">6.0.3 Das Problem &amp; Die Motivation</a></h2>
+<p>In dynamischen oder stark abstrahierenden Programmiersprachen (wie Python oder JavaScript) müssen sich Entwickler selten Gedanken über die physikalische Bitbreite einer Zahl oder den physischen Speicherbedarf eines Zeichens machen. Zahlen sind dort meist generische “Numbers” (die intern als 64-Bit-Fließkommazahlen implementiert sind), und Zeichenketten sind dynamische, abstrakte Heap-Objekte.</p>
+<p>Dieser Komfort hat in der Systemprogrammierung jedoch drei gravierende Nachteile:</p>
+<ol>
+<li><strong>Performance-Verlust</strong>: Die Verwendung von Allzweck-Typen führt zu ineffizienter Speichernutzung und langsamerer CPU-Verarbeitung, da die zugrundeliegende Prozessorhardware nicht optimal ausgelastet wird. Ein Prozessor rechnet mit 32-Bit- oder 64-Bit-Ganzzahlen auf Registerebene um ein Vielfaches schneller als mit dynamisch allozierten Fließkommaobjekten.</li>
+<li><strong>Katastrophale Softwarefehler (Bugs)</strong>: Wenn eine Variable unbemerkt ihre Kapazitätsgrenzen überschreitet (Integer Overflow) oder bei einer Konvertierung unbemerkt Daten verliert, kann dies fatale Folgen haben. Ein historisch berühmtes Beispiel ist der Absturz der Ariane-5-Rakete am 4. Juni 1996. Ein Überlauf bei einer Typkonvertierung von einer 64-Bit-Fließkommazahl in eine 16-Bit-Ganzzahl führte zum Systemabsturz der Bordcomputer und zur Selbstzerstörung der Rakete nach nur 37 Flugsekunden.</li>
+<li><strong>Plattforminkompatibilität</strong>: Wenn Indizes oder Adressen nicht exakt an die Systemarchitektur angepasst sind, kann ein Programm auf einem 32-Bit-Embedded-System abstürzen, während es auf einem 64-Bit-Server fehlerfrei läuft.</li>
 </ol>
-</li>
-<li>Du schreibst die ursprüngliche Variable, gefolgt von as und dem neuen Typ: variable as neuer_typ. Die originale Variable bleibt dabei völlig unverändert!</li>
-</ul>
-<p>Praktische Code-Beispiele
-Rust
-fn main() {
-// –– 1. Ganzzahl verkleinern (i32 zu i8) ––
-let miles_away = 50; // Rust denkt automatisch: i32
-let miles_i8 = miles_away as i8; // Sicher umgewandelt in i8</p>
-<pre><code>// ---- 2. Float-Präzision ändern (f64 zu f32) ----
-let ungenaues_pi = 3.14159265f64; 
-let pi_f32 = ungenaues_pi as f32; // Jetzt als 32-Bit-Float
-
-// ---- 3. Kommazahl zu Ganzzahl (Achtung: Abschneiden!) ----
-let strecke_float = 100.99; // Standard: f64
-let strecke_int = strecke_float as i32; 
-
-println!("{}", strecke_int); // Ausgabe: 100 (Es wird NICHT gerundet, nur abgeschnitten!)
+<p>Rust löst dieses Problem durch kompromisslose Präzision. Es verlangt von Ihnen als Entwickler, explizit festzulegen, wie viele Bits verwendet werden sollen, ob eine Zahl negativ sein darf und wie Konvertierungen stattfinden. Dadurch garantiert Rust maximale Hardwarenähe und Performance bei gleichzeitiger Speizersicherheit zur Compilezeit.</p>
+<hr>
+<h2 id="604-der-naive-versuch-der-fehlerhafte-code"><a class="header" href="#604-der-naive-versuch-der-fehlerhafte-code">6.0.4 Der naive Versuch (Der fehlerhafte Code)</a></h2>
+<p>Wir betrachten ein Szenario, in dem ein Entwickler versucht, zwei unterschiedliche Ganzzahltypen direkt miteinander zu addieren (implizite Konvertierung) und gleichzeitig einen Wert über die Grenze eines 8-Bit-Integers hinaus ansteigen lässt.</p>
+<pre class="playground"><code class="language-rust edition2021">fn main() {
+    // Ein naiver Versuch, unterschiedliche Ganzzahltypen zu mischen
+    let kleine_zahl: u8 = 200;
+    let grosse_zahl: u16 = 1000;
+    
+    // Versuch 1: Implizite Typkonvertierung bei der Addition.
+    // Der Entwickler nimmt an, dass Rust die Typen automatisch anpasst.
+    let ergebnis = kleine_zahl + grosse_zahl;
+    
+    // Versuch 2: Integer Overflow intensivieren.
+    // Wir addieren einen Wert, der die maximale Grenze von u8 (255) überschreitet.
+    let overflow_versuch: u8 = kleine_zahl + 60;
+    
+    println!("Ergebnis: {}", ergebnis);
+    println!("Overflow Versuch: {}", overflow_versuch);
+}</code></pre>
+<hr>
+<h2 id="605-die-anatomie-des-fehlers"><a class="header" href="#605-die-anatomie-des-fehlers">6.0.5 Die Anatomie des Fehlers</a></h2>
+<p>Wenn wir versuchen, diesen Code mit <code>cargo check</code> zu prüfen, scheitert der Vorgang sofort an Versuch 1.</p>
+<h3 id="51-der-compiler-fehler-bei-impliziter-typkonvertierung"><a class="header" href="#51-der-compiler-fehler-bei-impliziter-typkonvertierung">5.1 Der Compiler-Fehler bei impliziter Typkonvertierung</a></h3>
+<p>Der Compiler meldet für die Zeile <code>let ergebnis = kleine_zahl + grosse_zahl;</code>:</p>
+<pre><code class="language-text">error[E0308]: mismatched types
+ --&gt; src/main.rs:7:34
+  |
+7 |     let ergebnis = kleine_zahl + grosse_zahl;
+  |                                  ^^^^^^^^^^^ expected `u8`, found `u16`
+  |
+help: you can cast a `u16` to a `u8`, but this may lose precision
+  |
+7 |     let ergebnis = kleine_zahl + grosse_zahl as u8;
+  |                                  ~~~~~~~~~~~~~~~~~
 </code></pre>
-<p>}
-⚠️ Wichtiger Anfänger-Tipp: Rust rundet beim Casting von Float zu Integer niemals kaufmännisch auf! Selbst aus 99.99 as i32 wird gnadenlos die Ganzzahl 99. Möchtest du echtes Runden, nutze vorher die Methode .round().</p>
-<h2 id="was-ist-ein-boolean"><a class="header" href="#was-ist-ein-boolean">Was ist ein Boolean?</a></h2>
+<p><strong>Analyse des Compilers</strong>:
+Rust führt ausnahmslos <strong>keine</strong> implizite Typkonvertierung (“Implicit Coercion”) bei numerischen Primitiven durch. Selbst wenn die Konvertierung völlig verlustfrei wäre (wie die Erweiterung von <code>u8</code> auf <code>u16</code>), zwingt uns Rust zu syntaktischer Klarheit. Dies verhindert subtile Fehler, bei denen Entwickler unabsichtlich Präzision verlieren oder falsche Annahmen über den Typ von Berechnungsergebnissen treffen.</p>
+<h3 id="52-das-laufzeitverhalten-bei-integer-overflow"><a class="header" href="#52-das-laufzeitverhalten-bei-integer-overflow">5.2 Das Laufzeitverhalten bei Integer Overflow</a></h3>
+<p>Nehmen wir an, wir entfernen Versuch 1, um das Verhalten von Versuch 2 zu untersuchen:</p>
+<pre class="playground"><code class="language-rust edition2021">fn main() {
+    let kleine_zahl: u8 = 200;
+    let overflow_versuch: u8 = kleine_zahl + 60;
+    println!("Overflow Versuch: {}", overflow_versuch);
+}</code></pre>
+<p>Dieser Code kompiliert fehlerfrei. Führen wir das Programm nun im <strong>Debug-Modus</strong> (<code>cargo run</code>) aus, stürzt die Anwendung mit einer <em>Panic</em> ab:</p>
+<pre><code class="language-text">thread 'main' panicked at src/main.rs:3:32:
+attempt to add with overflow
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+</code></pre>
+<p><strong>Was passiert hier im Speicher?</strong>
+Ein <code>u8</code> belegt genau 1 Byte (8 Bits) auf dem Stack. Der maximale Wert, den 8 Bits darstellen können, ist <code>2^8 - 1 = 255</code>.
+Im Binärformat sieht die Berechnung wie folgt aus:</p>
 <ul>
-<li>Ein Boolean (benannt nach George Boole) stellt den Zustand der Wahrheit in der Programmierung dar. Er kennt exakt nur zwei Zustände: true (wahr) oder false (falsch). Damit lassen sich Ja/Nein-, An/Aus- oder Aktiv/Inaktiv-Szenarien perfekt abbilden.</li>
-<li>
-<ol start="2">
-<li>Der Typ bool und sein Speicher
-In Rust heißt dieser Typ kurz bool.</li>
+<li><code>200</code> dezimal = <code>11001000</code> binär</li>
+<li><code>60</code> dezimal = <code>00111100</code> binär</li>
+</ul>
+<p>Wenn wir diese beiden Zahlen binär addieren:</p>
+<pre><code class="language-text">  11001000  (200)
++ 00111100  (60)
+----------
+ 100000100  (260)
+</code></pre>
+<p>Das Ergebnis <code>260</code> benötigt 9 Bits (<code>1 0000 0100</code>). Da ein <code>u8</code> jedoch nur 8 Bits speichern kann, wird das höchstwertige Bit (das 9. Bit ganz links) abgeschnitten (Bit-Truncation). Übrig bleibt <code>00000100</code>, was dezimal <code>4</code> entspricht.</p>
+<ul>
+<li>Im <strong>Debug-Modus</strong> fügt der Compiler bei jeder arithmetischen Operation Prüfungen hinzu. Erkennt das Programm zur Laufzeit, dass ein Überlauf stattfindet, stürzt es mit einer kontrollierten <em>Panic</em> ab, um die Weiterverarbeitung von korrupten Daten zu verhindern.</li>
+<li>Im <strong>Release-Modus</strong> (<code>cargo run --release</code>) werden diese Checks aus Performance-Gründen deaktiviert. Hier findet ein sogenanntes <strong>Zweierkomplement-Wrapping</strong> statt. Das Ergebnis “wickelt” sich um den Wertebereich herum, so dass <code>200 + 60</code> zu <code>4</code> wird. Dies kann zu extrem schwer auffindbaren logischen Fehlern in Produktionsanwendungen führen!</li>
+</ul>
+<hr>
+<h2 id="606-die-lösung"><a class="header" href="#606-die-lösung">6.0.6 Die Lösung</a></h2>
+<p>Die Lösung besteht darin:</p>
+<ol>
+<li>Die Typen explizit mit dem <code>as</code>-Operator anzupassen.</li>
+<li>Den potenziellen Überlauf mithilfe von sicheren arithmetischen Methoden (wie <code>checked_add</code>) abzufangen, anstatt die Standard-Operatoren (<code>+</code>, <code>-</code>, <code>*</code>) ungeprüft zu verwenden.</li>
 </ol>
-</li>
-</ul>
-<p>Der Speicher-Trick: Rein mathematisch würde 1 Bit (0 oder 1) reichen. Rust spendiert einem bool im Arbeitsspeicher aber 1 Byte (8 Bits). Warum? Moderne Computer-Architekturen können auf ganze Bytes viel schneller zugreifen als auf einzelne Bits. Das bringt mehr Leistung (Performance).
-3. Wie entstehen Booleans?
-Direkte Zuweisung: let an: bool = true; (Wichtig: ohne Anführungszeichen, sonst wäre es Text!).</p>
+<h3 id="didaktischer-pseudocode"><a class="header" href="#didaktischer-pseudocode">Didaktischer Pseudocode</a></h3>
+<pre><code class="language-text">EINGABE:
+    Lese kleine_zahl (Typ: 8-Bit-Ganzzahl ohne Vorzeichen, Wert = 200)
+    Lese grosse_zahl (Typ: 16-Bit-Ganzzahl ohne Vorzeichen, Wert = 1000)
+
+VERARBEITUNG:
+    Schritt 1: Konvertiere kleine_zahl explizit in den Typ 16-Bit-Ganzzahl (Wert = 200)
+    Schritt 2: Addiere konvertierte kleine_zahl und grosse_zahl -&gt; ergebnis_addition (Wert = 1200)
+    Schritt 3: Führe eine sichere Addition von kleine_zahl und 60 durch.
+               Prüfe, ob die Summe den Wertebereich von 8-Bit-Ganzzahlen (0-255) überschreitet.
+               Wenn ja: Gib einen Fehler oder einen Standardwert aus.
+               Wenn nein: Verwende das berechnete Summen-Ergebnis.
+
+AUSGABE:
+    Gib ergebnis_addition aus.
+    Gib das sichere Overflow-Ergebnis aus.
+</code></pre>
+<h3 id="der-sichere-rust-code"><a class="header" href="#der-sichere-rust-code">Der sichere Rust-Code</a></h3>
+<pre class="playground"><code class="language-rust edition2021">fn main() {
+    // EINGABE
+    let kleine_zahl: u8 = 200;
+    let grosse_zahl: u16 = 1000;
+    
+    // VERARBEITUNG
+    // 1. Explizite Konvertierung von u8 zu u16 (verlustfrei)
+    let ergebnis_addition: u16 = (kleine_zahl as u16) + grosse_zahl;
+    
+    // 2. Sichere Addition mit Typprüfung zur Vermeidung von Overflows
+    // Wir nutzen die Methode checked_add, die Option&lt;T&gt; zurückgibt
+    let sicheres_ergebnis: Option&lt;u8&gt; = kleine_zahl.checked_add(60);
+    
+    // AUSGABE
+    println!("Ergebnis der Addition (u16): {}", ergebnis_addition);
+    
+    match sicheres_ergebnis {
+        Some(wert) =&gt; println!("Erfolgreiche sichere Addition: {}", wert),
+        None =&gt; println!("Fehler: Die Addition führte zu einem Integer Overflow!"),
+    }
+}</code></pre>
+<h3 id="zeile-für-zeile-ablaufbeschreibung-und-eva-analyse"><a class="header" href="#zeile-für-zeile-ablaufbeschreibung-und-eva-analyse">Zeile-für-Zeile-Ablaufbeschreibung und EVA-Analyse</a></h3>
 <ul>
-<li>
-<p>Vergleiche: Mathematische Prüfungen wie “kleiner als” (&lt;) oder “größer als” (&gt;) geben automatisch ein true oder false zurück.</p>
-</li>
-<li>
-<p>Typ-Methoden: Zahlen haben eingebaute Werkzeuge, die Fragen beantworten (z. B. .is_positive()).</p>
+<li><strong>Zeile 3-4 (Eingabe)</strong>: Deklaration von <code>kleine_zahl</code> (Typ <code>u8</code>, Wert 200) und <code>grosse_zahl</code> (Typ <code>u16</code>, Wert 1000) auf dem Stack.</li>
+<li><strong>Zeile 8 (Verarbeitung)</strong>: Die Variable <code>kleine_zahl</code> wird mittels <code>kleine_zahl as u16</code> explizit in eine 16-Bit-Zahl umgewandelt. Der Wert <code>200</code> wird dabei auf 16 Bits erweitert (das Bitmuster wird mit Nullen aufgefüllt: <code>00000000 11001000</code>). Danach erfolgt die Addition mit <code>grosse_zahl</code> (ebenfalls <code>u16</code>). Das Ergebnis <code>1200</code> wird in <code>ergebnis_addition</code> gespeichert.</li>
+<li><strong>Zeile 12 (Verarbeitung)</strong>: Hier wird die Methode <code>checked_add</code> auf <code>kleine_zahl</code> mit dem Argument <code>60</code> aufgerufen. Sie prüft zur Laufzeit, ob <code>200 + 60</code> in ein <code>u8</code> passt. Da <code>260 &gt; 255</code>, schlägt die Operation fehl und gibt <code>None</code> (von Typ <code>Option&lt;u8&gt;</code>) zurück. Dies verhindert den Absturz des Programms und ermöglicht eine kontrollierte Reaktion.</li>
+<li><strong>Zeile 15-20 (Ausgabe)</strong>: Das mathematische Ergebnis <code>1200</code> wird auf der Konsole ausgegeben. Über ein <code>match</code>-Pattern wird geprüft, ob die sichere Addition geklappt hat. Da sie fehlgeschlagen ist (<code>None</code>), wird der Fehler-Zweig ausgeführt und der Text <code>"Fehler: Die Addition führte zu einem Integer Overflow!"</code> auf dem Bildschirm ausgegeben. Das Programm läuft stabil weiter.</li>
+</ul>
+<hr>
+<h2 id="61-ganzzahlige-datentypen"><a class="header" href="#61-ganzzahlige-datentypen">6.1 Ganzzahlige Datentypen</a></h2>
+<h3 id="611-integertypen"><a class="header" href="#611-integertypen">6.1.1 Integertypen</a></h3>
+<p>Ganzzahlige Typen (Integers) repräsentieren mathematisch ganze Zahlen (Zahlen ohne Nachkommastellen). In Rust werden diese Typen anhand von zwei Dimensionen unterschieden: <strong>Vorzeichen</strong> und <strong>Bitbreite</strong>.</p>
+<h4 id="vorzeichenbehaftet-signed-integers"><a class="header" href="#vorzeichenbehaftet-signed-integers">Vorzeichenbehaftet (Signed Integers)</a></h4>
+<p>Vorzeichenbehaftete Ganzzahlen (Kennbuchstabe <code>i</code> für “integer”) können sowohl positive als auch negative Werte sowie die Null darstellen. Sie werden auf Hardwareebene im <strong>Zweierkomplement (Two’s Complement)</strong> gespeichert. Das signifikanteste Bit (das Bit ganz links, das MSB) dient dabei als Vorzeichen-Bit. Ist dieses Bit <code>0</code>, handelt es sich um eine positive Zahl; ist es <code>1</code>, um eine negative Zahl. Das Zweierkomplement erlaubt es Prozessoren, Additionen und Subtraktionen über dieselbe Hardware-Logik auszuführen.</p>
+<h4 id="vorzeichenlos-unsigned-integers"><a class="header" href="#vorzeichenlos-unsigned-integers">Vorzeichenlos (Unsigned Integers)</a></h4>
+<p>Vorzeichenlose Ganzzahlen (Kennbuchstabe <code>u</code> für “unsigned”) können ausschließlich nicht-negative Werte (0 und positive Zahlen) darstellen. Da kein Bit für das Vorzeichen benötigt wird, steht die gesamte Bitbreite für den Betrag der Zahl zur Verfügung. Der maximale Wert einer vorzeichenlosen Zahl ist daher doppelt so groß wie der einer vorzeichenbehafteten Zahl gleicher Bitbreite plus eins.</p>
+<h4 id="die-wertebereiche-im-detail"><a class="header" href="#die-wertebereiche-im-detail">Die Wertebereiche im Detail</a></h4>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th style="text-align: left">Typ (Signed)</th><th style="text-align: left">Typ (Unsigned)</th><th style="text-align: left">Bitbreite</th><th style="text-align: left">Speichergröße</th><th style="text-align: left">Wertebereich (Formel)</th><th style="text-align: left">Wertebereich (Numerisch)</th></tr>
+</thead>
+<tbody>
+<tr><td style="text-align: left"><code>i8</code></td><td style="text-align: left">-</td><td style="text-align: left">8 Bit</td><td style="text-align: left">1 Byte</td><td style="text-align: left"><code>-2^7</code> bis <code>2^7 - 1</code></td><td style="text-align: left"><code>-128</code> bis <code>127</code></td></tr>
+<tr><td style="text-align: left">-</td><td style="text-align: left"><code>u8</code></td><td style="text-align: left">8 Bit</td><td style="text-align: left">1 Byte</td><td style="text-align: left"><code>0</code> bis <code>2^8 - 1</code></td><td style="text-align: left"><code>0</code> bis <code>255</code></td></tr>
+<tr><td style="text-align: left"><code>i16</code></td><td style="text-align: left">-</td><td style="text-align: left">16 Bit</td><td style="text-align: left">2 Bytes</td><td style="text-align: left"><code>-2^15</code> bis <code>2^15 - 1</code></td><td style="text-align: left"><code>-32.768</code> bis <code>32.767</code></td></tr>
+<tr><td style="text-align: left">-</td><td style="text-align: left"><code>u16</code></td><td style="text-align: left">16 Bit</td><td style="text-align: left">2 Bytes</td><td style="text-align: left"><code>0</code> bis <code>2^16 - 1</code></td><td style="text-align: left"><code>0</code> bis <code>65.535</code></td></tr>
+<tr><td style="text-align: left"><code>i32</code></td><td style="text-align: left">-</td><td style="text-align: left">32 Bit</td><td style="text-align: left">4 Bytes</td><td style="text-align: left"><code>-2^31</code> bis <code>2^31 - 1</code></td><td style="text-align: left">ca. <code>-2,14</code> Mrd. bis <code>+2,14</code> Mrd.</td></tr>
+<tr><td style="text-align: left">-</td><td style="text-align: left"><code>u32</code></td><td style="text-align: left">32 Bit</td><td style="text-align: left">4 Bytes</td><td style="text-align: left"><code>0</code> bis <code>2^32 - 1</code></td><td style="text-align: left"><code>0</code> bis ca. <code>4,29</code> Mrd.</td></tr>
+<tr><td style="text-align: left"><code>i64</code></td><td style="text-align: left">-</td><td style="text-align: left">64 Bit</td><td style="text-align: left">8 Bytes</td><td style="text-align: left"><code>-2^63</code> bis <code>2^63 - 1</code></td><td style="text-align: left">ca. <code>-9,22</code> Trillionen bis <code>+9,22</code> Trillionen</td></tr>
+<tr><td style="text-align: left">-</td><td style="text-align: left"><code>u64</code></td><td style="text-align: left">64 Bit</td><td style="text-align: left">8 Bytes</td><td style="text-align: left"><code>0</code> bis <code>2^64 - 1</code></td><td style="text-align: left"><code>0</code> bis ca. <code>18,4</code> Trillionen</td></tr>
+<tr><td style="text-align: left"><code>i128</code></td><td style="text-align: left">-</td><td style="text-align: left">128 Bit</td><td style="text-align: left">16 Bytes</td><td style="text-align: left"><code>-2^127</code> bis <code>2^127 - 1</code></td><td style="text-align: left">Astronomisch groß</td></tr>
+<tr><td style="text-align: left">-</td><td style="text-align: left"><code>u128</code></td><td style="text-align: left">128 Bit</td><td style="text-align: left">16 Bytes</td><td style="text-align: left"><code>0</code> bis <code>2^128 - 1</code></td><td style="text-align: left">Astronomisch groß</td></tr>
+</tbody>
+</table>
+</div>
+<h4 id="standardtyp-in-rust"><a class="header" href="#standardtyp-in-rust">Standardtyp in Rust</a></h4>
+<p>Wenn Sie einer Variablen eine Ganzzahl zuweisen, ohne deren Typ explizit zu deklarieren (z. B. <code>let x = 42;</code>), weist Rust dieser Variablen standardmäßig den Typ <strong><code>i32</code></strong>. Dieser Typ stellt auf modernen CPUs in der Regel die beste Balance zwischen Berechnungsgeschwindigkeit und Wertebereich dar.</p>
+<h4 id="formatierung-von-literalen"><a class="header" href="#formatierung-von-literalen">Formatierung von Literalen</a></h4>
+<p>Rust bietet eine Vielzahl syntaktischer Möglichkeiten, um Zahlenliterale im Quellcode lesbar zu gestalten:</p>
+<ul>
+<li><strong>Visuelle Trennung</strong>: Sie können den Unterstrich <code>_</code> als Tausendertrennzeichen nutzen (z. B. <code>let million = 1_000_000;</code>). Der Compiler ignoriert Unterstriche in Zahlenliteralen vollständig.</li>
+<li><strong>Typ-Suffix</strong>: Der Typ kann direkt an das Literal angehängt werden (z. B. <code>let a = 42u8;</code> oder <code>let b = -100i64;</code>).</li>
+<li><strong>Zahlensysteme</strong>:
+<ul>
+<li>Dezimal: <code>98_222</code></li>
+<li>Hexadezimal (Präfix <code>0x</code>): <code>0xff</code> (entspricht 255)</li>
+<li>Oktal (Präfix <code>0o</code>): <code>0o77</code> (entspricht 63)</li>
+<li>Binär (Präfix <code>0b</code>): <code>0b1111_0000</code> (entspricht 240)</li>
+<li>Byte-Literal (nur für <code>u8</code>): <code>b'A'</code> (entspricht dem ASCII-Wert von A, also 65)</li>
+</ul>
 </li>
 </ul>
-<p>📌 Merkzettel: Der Datentyp char in Rust
-⚙️ Syntax im Vergleich
-Rust
-let buchstabe: char = ‘B’; // ✅ Gültiger char (Einfache Anführungszeichen)
-let emoji: char = ‘🎧’;    // ✅ Gültiger char (Ein Emoji ist EIN Zeichen)</p>
-<p>// let fehler: char = ‘AB’;  ❌ FEHLER: Mehr als ein Zeichen!
-// let text: char = “B”;     ❌ FEHLER: Doppelte Anführungszeichen machen daraus einen String!</p>
-<p>Schnelle Eselsbrücke für Anfänger
-Einfache Striche (’) = Einsames Zeichen (char).</p>
-<p>Doppelte Striche (“) = Doppelt so viele Zeichen wie du willst (String).</p>
-<p>Da Rust-Zahlen und -Texte vollgepackt mit Methoden sind, kannst du einen char jederzeit ganz einfach prüfen oder manipulieren!</p>
-<p>Nächste Lektion: Projekt für Variablen und Datentypen programmieren  Übungen</p>
+<h3 id="612-systemabhängige-integertypen"><a class="header" href="#612-systemabhängige-integertypen">6.1.2 Systemabhängige Integertypen</a></h3>
+<p>Die Typen <code>isize</code> (vorzeichenbehaftet) und <code>usize</code> (vorzeichenlos) besitzen keine feste Bitbreite. Ihre Größe hängt von der Architektur der CPU ab, für die das Programm übersetzt wird:</p>
+<ul>
+<li>Auf einer <strong>64-Bit-Architektur</strong> (x86_64, ARM64) belegen sie <strong>64 Bit (8 Bytes)</strong>.</li>
+<li>Auf einer <strong>32-Bit-Architektur</strong> (x86, ARMv7) belegen sie <strong>32 Bit (4 Bytes)</strong>.</li>
+<li>Auf <strong>16-Bit-Mikrocontrollern</strong> belegen sie <strong>16 Bit (2 Bytes)</strong>.</li>
+</ul>
+<h4 id="der-zweck"><a class="header" href="#der-zweck">Der Zweck</a></h4>
+<p>Diese Typen repräsentieren die native Speicheradressbreite des Zielsystems.</p>
+<ul>
+<li><strong>Indexierung</strong>: Jede Indexierung von Arrays, Vektoren oder Slices (z. B. <code>array[index]</code>) erfordert zwingend den Typ <code>usize</code>. Dies stellt sicher, dass der Index groß genug sein kann, um auf jedes Element im theoretisch adressierbaren Arbeitsspeicher zuzugreifen, während gleichzeitig kein unnötiger Speicherplatz auf kleineren Plattformen verschwendet wird.</li>
+<li><strong>Kollektionsgrößen</strong>: Die Methode <code>.len()</code>, die von Standard-Kollektionen bereitgestellt wird, gibt stets ein <code>usize</code> zurück.</li>
+</ul>
+<h3 id="613-integer-overflow"><a class="header" href="#613-integer-overflow">6.1.3 Integer Overflow</a></h3>
+<p>Ein Integer Overflow tritt auf, wenn der mathematische Wert einer arithmetischen Operation die Grenzen des zugewiesenen Typs sprengt. Rust bietet Ihnen die Möglichkeit, dieses Verhalten über spezielle Bibliotheksmethoden explizit zu steuern, um unvorhergesehene Abstürze oder stille Berechnungsfehler zu vermeiden.</p>
+<h4 id="die-vier-kontroll-strategien"><a class="header" href="#die-vier-kontroll-strategien">Die vier Kontroll-Strategien</a></h4>
+<p>Die Standardbibliothek implementiert für alle Ganzzahltypen vier Gruppen von Methoden zur Behandlung von Überläufen:</p>
+<ol>
+<li><strong>Wrapping-Methoden (<code>wrapping_*</code>)</strong>: Das Ergebnis wird modulo des Wertebereichs des Typs berechnet (Zweierkomplement-Wrapping). Es findet kein Absturz statt.
+<ul>
+<li>Beispiel: <code>255u8.wrapping_add(1)</code> ergibt <code>0</code>.</li>
+</ul>
+</li>
+<li><strong>Checked-Methoden (<code>checked_*</code>)</strong>: Die Methode gibt ein <code>Option</code>-Objekt zurück. Bei einem Überlauf wird <code>None</code> geliefert, andernfalls <code>Some(ergebnis)</code>. Dies ist das sicherste Werkzeug für kritische Berechnungen.
+<ul>
+<li>Beispiel: <code>255u8.checked_add(1)</code> ergibt <code>None</code>.</li>
+</ul>
+</li>
+<li><strong>Saturating-Methoden (<code>saturating_*</code>)</strong>: Das Ergebnis wird am Rand des darstellbaren Wertebereichs gedeckelt (Sättigung).
+<ul>
+<li>Beispiel: <code>250u8.saturating_add(20)</code> ergibt <code>255</code> (das Maximum für <code>u8</code>).</li>
+<li>Beispiel: <code>0u8.saturating_sub(1)</code> ergibt <code>0</code> (das Minimum für <code>u8</code>).</li>
+</ul>
+</li>
+<li><strong>Overflowing-Methoden (<code>overflowing_*</code>)</strong>: Liefert ein Tupel <code>(Ergebnis, bool)</code>. Das Ergebnis wird gewrappt, und das <code>bool</code> gibt an, ob ein Überlauf stattgefunden hat.
+<ul>
+<li>Beispiel: <code>255u8.overflowing_add(1)</code> ergibt <code>(0, true)</code>.</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h2 id="62-weitere-primitive-typen"><a class="header" href="#62-weitere-primitive-typen">6.2 Weitere primitive Typen</a></h2>
+<h3 id="621-fließkommazahlen"><a class="header" href="#621-fließkommazahlen">6.2.1 Fließkommazahlen</a></h3>
+<p>Fließkommazahlen (Floats) repräsentieren reelle Zahlen mit Nachkommastellen. Rust bietet zwei Typen nach dem Industriestandard <strong>IEEE-754</strong>:</p>
+<ul>
+<li><strong><code>f32</code></strong>: Einfache Genauigkeit (Single Precision), belegt 32 Bit (4 Bytes). Bietet eine Präzision von ca. 7 Nachkommastellen.</li>
+<li><strong><code>f64</code></strong>: Doppelte Genauigkeit (Double Precision), belegt 64 Bit (8 Bytes). Bietet eine Präzision von ca. 15 bis 17 Nachkommastellen.</li>
+</ul>
+<h4 id="der-standard"><a class="header" href="#der-standard">Der Standard</a></h4>
+<p>Wird kein Typ explizit angegeben (z. B. <code>let pi = 3.14159;</code>), wählt Rust automatisch <strong><code>f64</code></strong>. Auf modernen 64-Bit-Prozessoren sind Berechnungen mit <code>f64</code> in der Regel genauso schnell wie mit <code>f32</code>, bieten aber eine drastisch höhere Präzision und minimieren Rundungsfehler.</p>
+<h4 id="präzisionsverlust-und-rundungsfehler"><a class="header" href="#präzisionsverlust-und-rundungsfehler">Präzisionsverlust und Rundungsfehler</a></h4>
+<p>Da Fließkommazahlen im Binärsystem dargestellt werden, können periodische Brüche des Dezimalsystems (wie <code>0.1</code> oder <code>0.2</code>) nicht exakt im binären RAM abgebildet werden. Dies führt zu minimalen Rundungsdifferenzen.</p>
+<pre class="playground"><code class="language-rust edition2021">fn main() {
+    let a = 0.1;
+    let b = 0.2;
+    println!("a + b == 0.3? {}", a + b == 0.3); // Ausgabe: false
+    println!("Tatsächlicher Wert von a + b: {:.20}", a + b); 
+    // Ausgabe: 0.30000000000000004441
+}</code></pre>
+<blockquote class="blockquote-tag blockquote-tag-warning">
+<p class="blockquote-tag-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M6.457 1.047c.659-1.234 2.427-1.234 3.086 0l6.082 11.378A1.75 1.75 0 0 1 14.082 15H1.918a1.75 1.75 0 0 1-1.543-2.575Zm1.763.707a.25.25 0 0 0-.44 0L1.698 13.132a.25.25 0 0 0 .22.368h12.164a.25.25 0 0 0 .22-.368Zm.53 3.996v2.5a.75.75 0 0 1-1.5 0v-2.5a.75.75 0 0 1 1.5 0ZM9 11a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"></path></svg>Warning</p>
+<p>Vergleichen Sie Fließkommazahlen niemals direkt mit dem Gleichheitsoperator <code>==</code>. Prüfen Sie stattdessen, ob die absolute Differenz der beiden Zahlen kleiner als ein sehr kleiner Schwellenwert (Epsilon, z. B. <code>1e-10</code>) ist.</p>
+</blockquote>
+<h4 id="spezielle-zustände"><a class="header" href="#spezielle-zustände">Spezielle Zustände</a></h4>
+<ul>
+<li><strong><code>NaN</code> (Not a Number)</strong>: Repräsentiert mathematisch undefinierte Ergebnisse (z. B. <code>0.0 / 0.0</code> oder die Quadratwurzel aus einer negativen Zahl). <code>NaN</code> hat die Eigenschaft, bei Vergleichen mit sich selbst immer <code>false</code> zu liefern (<code>f64::NAN == f64::NAN</code> ist <code>false</code>).</li>
+<li><strong><code>INFINITY</code> / <code>NEG_INFINITY</code></strong>: Repräsentiert positive und negative Unendlichkeit (z. B. bei einer Division durch Null: <code>1.0f64 / 0.0f64</code>).</li>
+</ul>
+<h3 id="622-booleans--zeichen"><a class="header" href="#622-booleans--zeichen">6.2.2 Booleans &amp; Zeichen</a></h3>
+<h4 id="booleans-bool"><a class="header" href="#booleans-bool">Booleans (<code>bool</code>)</a></h4>
+<p>Der Typ <code>bool</code> repräsentiert einen Wahrheitswert. Er besitzt exakt zwei Ausprägungen: <code>true</code> und <code>false</code>.</p>
+<ul>
+<li><strong>Speicherbedarf</strong>: Obwohl ein einzelnes Bit mathematisch ausreichen würde, belegt ein <code>bool</code> in Rust <strong>1 Byte (8 Bits)</strong>. Dies ist eine gezielte Performance-Optimierung. Da Prozessoren Speicheradressen byte-weise ansprechen, erfordert der Zugriff auf ein einzelnes Bit zusätzliche Maskierungs- und Verschiebeoperationen im Prozessor. Durch die Verwendung von einem vollen Byte kann die CPU direkt und mit maximaler Geschwindigkeit auf den Wert zugreifen.</li>
+</ul>
+<h4 id="zeichen-char"><a class="header" href="#zeichen-char">Zeichen (<code>char</code>)</a></h4>
+<p>Der Typ <code>char</code> repräsentiert einen einzelnen <strong>Unicode-Skalarwert</strong> (Unicode Scalar Value).</p>
+<ul>
+<li><strong>Speicherbedarf</strong>: Ein <code>char</code> belegt in Rust immer <strong>4 Bytes (32 Bits)</strong>. Dies stellt sicher, dass jedes theoretisch existierende Unicode-Zeichen in einer einzigen Variable gespeichert werden kann.</li>
+<li><strong>Unicode-Umfang</strong>: Neben den Standard-ASCII-Zeichen (lateinische Buchstaben, Ziffern) unterstützt ein <code>char</code> Umlaute (<code>'ä'</code>), Schriftzeichen aus asiatischen oder arabischen Alphabeten sowie Emojis (z. B. <code>'🦀'</code>).</li>
+<li><strong>Syntaktischer Unterschied</strong>:
+<ul>
+<li><code>char</code>-Literale werden mit <strong>einfachen Anführungszeichen (Single Quotes)</strong> deklariert (z. B. <code>'x'</code>).</li>
+<li>Zeichenketten (<code>&amp;str</code>, <code>String</code>) werden mit <strong>doppelten Anführungszeichen (Double Quotes)</strong> deklariert (z. B. <code>"x"</code>).</li>
+<li>Der Versuch, ein String-Literal mit einem Zeichen-Literal zu vermischen, wird vom Compiler sofort als Typfehler abgewiesen.</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="63-typkonvertierung"><a class="header" href="#63-typkonvertierung">6.3 Typkonvertierung</a></h2>
+<h3 id="631-der-as-operator"><a class="header" href="#631-der-as-operator">6.3.1 Der as-Operator</a></h3>
+<p>Rust verlangt für alle Typumwandlungen bei primitiven numerischen Typen eine explizite Anweisung im Quellcode. Hierzu wird das Schlüsselwort <code>as</code> verwendet.
+<code>let ziel = quelle as ziel_typ;</code></p>
+<p>Obwohl diese Syntax einfach erscheint, führt der <code>as</code>-Operator ein erzwungenes Casting auf Bit-Ebene aus. Wenn Sie nicht aufpassen, kann dies zu schwerwiegenden Datenverlusten führen:</p>
+<h4 id="1-bit-truncation-abschneiden-von-bits"><a class="header" href="#1-bit-truncation-abschneiden-von-bits">1. Bit-Truncation (Abschneiden von Bits)</a></h4>
+<p>Wenn Sie einen größeren Integertyp in einen kleineren Typ umwandeln (z. B. <code>u16 as u8</code>), werden die höherwertigen Bits abgeschnitten, die nicht mehr in den kleineren Typ passen.</p>
+<ul>
+<li>Beispiel: <code>let x: u16 = 258;</code> (Binär: <code>00000001 00000010</code>)</li>
+<li><code>let y = x as u8;</code></li>
+<li>Die oberen 8 Bits (<code>00000001</code>) werden verworfen. Übrig bleibt <code>00000010</code>, was dezimal <code>2</code> entspricht.</li>
+</ul>
+<h4 id="2-vorzeichenverlust-sign-loss"><a class="header" href="#2-vorzeichenverlust-sign-loss">2. Vorzeichenverlust (Sign Loss)</a></h4>
+<p>Beim Casting zwischen vorzeichenbehafteten und vorzeichenlosen Typen gleicher Bitbreite (z. B. <code>i8 as u8</code>) bleibt das Bitmuster im Speicher unverändert, wird jedoch vollkommen anders interpretiert.</p>
+<ul>
+<li>Beispiel: <code>let x: i8 = -1;</code> (Binär im Zweierkomplement: <code>11111111</code>)</li>
+<li><code>let y = x as u8;</code></li>
+<li>Das Bitmuster <code>11111111</code> repräsentiert bei vorzeichenloser Interpretation den Wert <code>255</code>.</li>
+</ul>
+<h4 id="3-fließkomma-zu-ganzzahl-float-to-int-casting"><a class="header" href="#3-fließkomma-zu-ganzzahl-float-to-int-casting">3. Fließkomma zu Ganzzahl (Float-to-Int-Casting)</a></h4>
+<p>Beim Umwandeln eines Floats in eine Ganzzahl (z. B. <code>f64 as i32</code>) wird der Nachkommateil abgeschnitten. Es erfolgt <strong>keine kaufmännische Rundung</strong>.</p>
+<ul>
+<li>Beispiel: <code>let x: f64 = 99.99;</code></li>
+<li><code>let y = x as i32;</code> // y ist 99</li>
+<li>Sollte der Float-Wert den maximal darstellbaren Bereich des Integers überschreiten (oder <code>NaN</code>/<code>INFINITY</code> sein), liefert der Cast seit Rust 1.45 das Sättigungs-Limit des Zieltyps (z. B. <code>i32::MAX</code> oder <code>i32::MIN</code>).</li>
+</ul>
+<hr>
+<h2 id="607-kleines-tutorial-schritt-für-schritt-praxis"><a class="header" href="#607-kleines-tutorial-schritt-für-schritt-praxis">6.0.7 Kleines Tutorial (Schritt-für-Schritt-Praxis)</a></h2>
+<p>Wir erstellen ein kleines, praxisnahes Mini-Projekt: Einen <strong>Sensordaten-Prozessor</strong>. Dieser simuliert das Einlesen von analogen Sensordaten (als <code>u16</code>), rechnet sie in physikalische Fließkommawerte um, wendet einen Skalierungsfaktor an, prüft auf Messbereichs-Überläufe und gibt die Werte sauber formatiert aus.</p>
+<h3 id="schritt-1-projektstruktur-anlegen"><a class="header" href="#schritt-1-projektstruktur-anlegen">Schritt 1: Projektstruktur anlegen</a></h3>
+<p>Erstellen Sie ein neues Cargo-Projekt in Ihrem Arbeitsverzeichnis:</p>
+<pre><code class="language-bash">cargo new --bin sensor_processor
+</code></pre>
+<h3 id="schritt-2-den-code-implementieren"><a class="header" href="#schritt-2-den-code-implementieren">Schritt 2: Den Code implementieren</a></h3>
+<p>Ersetzen Sie den Inhalt der Datei <code>src/main.rs</code> vollständig durch folgenden Code:</p>
+<pre class="playground"><code class="language-rust edition2021">fn main() {
+    // 1. EINGABE: Rohdaten eines analogen 12-Bit-Sensors (Bereich: 0 bis 4095)
+    let raw_analog_value: u16 = 3850;
+    let scaling_factor: f64 = 1.25;
+    
+    println!("--- SENSORDATEN-PROZESSOR ---");
+    println!("Analoger Rohwert: {} / 4095", raw_analog_value);
+
+    // 2. VERARBEITUNG:
+    // Schritt A: Sichere Konvertierung des Rohwerts in eine Fließkommazahl.
+    // Ein u16 passt immer verlustfrei in ein f64, daher ist "as" hier sicher.
+    let float_raw = raw_analog_value as f64;
+    
+    // Schritt B: Berechnung des Spannungswertes (Referenz: 5.0 Volt bei 4095)
+    let voltage = (float_raw / 4095.0) * 5.0;
+    
+    // Schritt C: Skalierung der Spannung
+    let scaled_voltage = voltage * scaling_factor;
+    
+    // Schritt D: Konvertierung in einen ganzzahligen Prozentwert (0-100%)
+    // Wir wollen runden statt abzuschneiden, also nutzen wir .round()
+    let percent_float = (voltage / 5.0) * 100.0;
+    let percent_int = percent_float.round() as u8;
+
+    // Schritt E: Simulation einer Zähler-Variable zur Demonstration von Überläufen
+    let read_count: u8 = 250;
+    let next_read_count = read_count.checked_add(10);
+
+    // 3. AUSGABE
+    println!("Gemessene Spannung: {:.3} V", voltage);
+    println!("Skalierte Spannung: {:.3} V", scaled_voltage);
+    println!("Füllstand: {} %", percent_int);
+    
+    // Warnungs-Flags basierend auf Booleans
+    let is_critical = scaled_voltage &gt; 4.5;
+    println!("Kritischer Zustand: {}", is_critical);
+
+    match next_read_count {
+        Some(count) =&gt; println!("Messungs-Index: {}", count),
+        None =&gt; println!("WARNUNG: Indexüberlauf der Messung blockiert!"),
+    }
+}</code></pre>
+<h3 id="schritt-3-ausführen-und-verifizieren"><a class="header" href="#schritt-3-ausführen-und-verifizieren">Schritt 3: Ausführen und Verifizieren</a></h3>
+<p>Führen Sie das Programm im Terminal aus:</p>
+<pre><code class="language-bash">cargo run
+</code></pre>
+<p><strong>Die Ausgabe</strong>:</p>
+<pre><code class="language-text">--- SENSORDATEN-PROZESSOR ---
+Analoger Rohwert: 3850 / 4095
+Gemessene Spannung: 4.701 V
+Skalierte Spannung: 5.876 V
+Füllstand: 94 %
+Kritischer Zustand: true
+WARNUNG: Indexüberlauf der Messung blockiert!
+</code></pre>
+<hr>
+<h2 id="608-mentale-modelle--deep-dive"><a class="header" href="#608-mentale-modelle--deep-dive">6.0.8 Mentale Modelle &amp; Deep Dive</a></h2>
+<h3 id="81-speicherdiagramme"><a class="header" href="#81-speicherdiagramme">8.1 Speicherdiagramme</a></h3>
+<h4 id="diagramm-1-u8-vs-i8-speicherbelegung"><a class="header" href="#diagramm-1-u8-vs-i8-speicherbelegung">Diagramm 1: <code>u8</code> vs <code>i8</code> Speicherbelegung</a></h4>
+<p>Ein Byte kann 256 Zustände darstellen. Im vorzeichenbehafteten Typ (<code>i8</code>) wird das linke Bit als negativer Wert interpretiert:</p>
+<pre><code class="language-text">  u8 (Unsigned 8-Bit, Wert: 135)
+  +---+---+---+---+---+---+---+---+
+  | 1 | 0 | 0 | 0 | 0 | 1 | 1 | 1 |  &lt;-- Wertigkeit der Bits: 128, 64, 32, 16, 8, 4, 2, 1
+  +---+---+---+---+---+---+---+---+
+    ^
+    |-- Meistwertiges Bit (MSB): Repräsentiert +128
+    
+    Berechnung: 128*1 + 64*0 + 32*0 + 16*0 + 8*0 + 4*1 + 2*1 + 1*1 = 135
+
+  i8 (Signed 8-Bit, Wert: -121)
+  +---+---+---+---+---+---+---+---+
+  | 1 | 0 | 0 | 0 | 0 | 1 | 1 | 1 |  &lt;-- Das MSB zählt negativ (-128)
+  +---+---+---+---+---+---+---+---+
+    ^
+    |-- Vorzeichen-Bit (MSB): Repräsentiert -128
+    
+    Berechnung: -128*1 + 64*0 + 32*0 + 16*0 + 8*0 + 4*1 + 2*1 + 1*1 = -121
+</code></pre>
+<h4 id="diagramm-2-usize--isize-auf-unterschiedlichen-cpu-architekturen"><a class="header" href="#diagramm-2-usize--isize-auf-unterschiedlichen-cpu-architekturen">Diagramm 2: <code>usize</code> / <code>isize</code> auf unterschiedlichen CPU-Architekturen</a></h4>
+<p>Die Breite der systemabhängigen Typen passt sich dynamisch an die Datenbus- und Registerbreite der CPU an:</p>
+<pre><code class="language-text">  32-Bit System (z. B. ARM Cortex-M4, x86)
+  +---------------------------------------+
+  |               32 Bits                 |  --&gt; Adressraum: 0 bis 4.294.967.295 (4 Gigabytes)
+  +---------------------------------------+
+
+  64-Bit System (z. B. x86_64, Apple Silicon M-Serie)
+  +-------------------------------------------------------------------------------+
+  |                                   64 Bits                                     |  --&gt; Adressraum: 0 bis 18,4 Trillionen (16 Exabytes)
+  +-------------------------------------------------------------------------------+
+</code></pre>
+<h4 id="diagramm-3-f32-ieee-754-bitaufteilung-im-ram"><a class="header" href="#diagramm-3-f32-ieee-754-bitaufteilung-im-ram">Diagramm 3: <code>f32</code> IEEE-754 Bitaufteilung im RAM</a></h4>
+<p>Ein Fließkommawert wird geteilt gespeichert, um extrem große und kleine Zahlen effizient darzustellen:</p>
+<pre><code class="language-text">  f32 (32-Bit Fließkommazahl)
+  +-+--------+-----------------------+
+  |S|Exponent|       Mantisse        |
+  +-+--------+-----------------------+
+   1   8 Bits         23 Bits
+   Bit
+
+   - S (Sign Bit): Bestimmt das Vorzeichen (0 = positiv, 1 = negativ).
+   - Exponent: Bestimmt die Position des Kommas (Basis 2).
+   - Mantisse: Repräsentiert die signifikanten Ziffern der Zahl.
+</code></pre>
+<h4 id="diagramm-4-char-4-bytes-vs-ascii-zeichen-1-byte"><a class="header" href="#diagramm-4-char-4-bytes-vs-ascii-zeichen-1-byte">Diagramm 4: <code>char</code> (4 Bytes) vs ASCII-Zeichen (1 Byte)</a></h4>
+<p>In Rust schützt Sie der Typ <code>char</code> vor Codierungsproblemen, da er nativ Unicode unterstützt:</p>
+<pre><code class="language-text">  Standard ASCII-Zeichen (in C/C++ oder u8 in Rust)
+  +--------+
+  |01000001|  --&gt; 'A' (Dezimal: 65, 1 Byte)
+  +--------+
+
+  Rust char (Unicode Scalar Value)
+  +--------+--------+--------+--------+
+  |00000000|00000000|00011111|10010000|  --&gt; '🦀' (Unicode: U+1F980, 4 Bytes)
+  +--------+--------+--------+--------+
+   Byte 1   Byte 2   Byte 3   Byte 4
+</code></pre>
+<h4 id="diagramm-5-truncation-beim-as-operator"><a class="header" href="#diagramm-5-truncation-beim-as-operator">Diagramm 5: Truncation beim <code>as</code>-Operator</a></h4>
+<p>Wird eine größere Bitbreite erzwungen verkleinert, schneidet die CPU die oberen Bits physisch weg:</p>
+<pre><code class="language-text">  u16-Wert: 258
+  +-----------------+-----------------+
+  | 0 0 0 0 0 0 0 1 | 0 0 0 0 0 0 1 0 |  --&gt; Dezimal: 258 (256 + 2)
+  +-----------------+-----------------+
+    Höherwertiges Byte   Niederwertiges Byte
+         |                 |
+         v (as u8 Cast)    v
+     [Verworfen!]     [Behalten]
+                           |
+                           v
+                    +-----------------+
+                    | 0 0 0 0 0 0 1 0 |  --&gt; Dezimal: 2
+                    +-----------------+
+</code></pre>
+<hr>
+<h3 id="82-ausführliche-methoden--und-api-referenz"><a class="header" href="#82-ausführliche-methoden--und-api-referenz">8.2 Ausführliche Methoden- und API-Referenz</a></h3>
+<h4 id="821-ganzzahlige-methoden-beispielhaft-für-alle-ganzzahlen"><a class="header" href="#821-ganzzahlige-methoden-beispielhaft-für-alle-ganzzahlen">8.2.1 Ganzzahlige Methoden (Beispielhaft für alle Ganzzahlen)</a></h4>
+<h5 id="1-checked_add"><a class="header" href="#1-checked_add">1. <code>checked_add</code></a></h5>
+<ul>
+<li><strong>Methoden-Signatur</strong>: <code>pub const fn checked_add(self, rhs: Self) -&gt; Option&lt;Self&gt;</code></li>
+<li><strong>Parameter</strong>:
+<ul>
+<li><code>self</code>: Der Basis-Ganzzahlwert (Besitzübergabe).</li>
+<li><code>rhs</code>: Der zu addierende Ganzzahlwert vom selben Typ (Besitzübergabe).</li>
+</ul>
+</li>
+<li><strong>Rückgabetyp</strong>: <code>Option&lt;Self&gt;</code>. Liefert <code>Some(Summe)</code> bei erfolgreicher Berechnung, andernfalls <code>None</code> bei einem Überlauf.</li>
+<li><strong>Sicherheitsaspekte &amp; Panics</strong>: Diese Methode stürzt niemals ab (keine Panics).</li>
+<li><strong>Minicode-Beispiel</strong>:
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let a: u8 = 250;
+assert_eq!(a.checked_add(10), None);
+assert_eq!(a.checked_add(5), Some(255));
+<span class="boring">}</span></code></pre>
+</li>
+</ul>
+<h5 id="2-checked_sub"><a class="header" href="#2-checked_sub">2. <code>checked_sub</code></a></h5>
+<ul>
+<li><strong>Methoden-Signatur</strong>: <code>pub const fn checked_sub(self, rhs: Self) -&gt; Option&lt;Self&gt;</code></li>
+<li><strong>Parameter</strong>:
+<ul>
+<li><code>self</code>: Der Basiswert.</li>
+<li><code>rhs</code>: Der zu subtrahierende Wert.</li>
+</ul>
+</li>
+<li><strong>Rückgabetyp</strong>: <code>Option&lt;Self&gt;</code>. Liefert <code>Some(Differenz)</code> oder <code>None</code> bei Unterlauf (z. B. wenn das Ergebnis negativ würde bei unsigned Typen).</li>
+<li><strong>Sicherheitsaspekte &amp; Panics</strong>: Keine Panics.</li>
+<li><strong>Minicode-Beispiel</strong>:
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let a: u8 = 5;
+assert_eq!(a.checked_sub(10), None);
+<span class="boring">}</span></code></pre>
+</li>
+</ul>
+<h5 id="3-checked_mul"><a class="header" href="#3-checked_mul">3. <code>checked_mul</code></a></h5>
+<ul>
+<li><strong>Methoden-Signatur</strong>: <code>pub const fn checked_mul(self, rhs: Self) -&gt; Option&lt;Self&gt;</code></li>
+<li><strong>Parameter</strong>:
+<ul>
+<li><code>self</code>: Der Multiplikand.</li>
+<li><code>rhs</code>: Der Multiplikator.</li>
+</ul>
+</li>
+<li><strong>Rückgabetyp</strong>: <code>Option&lt;Self&gt;</code>. <code>Some(Produkt)</code> oder <code>None</code> bei Überlauf.</li>
+<li><strong>Sicherheitsaspekte &amp; Panics</strong>: Keine Panics.</li>
+<li><strong>Minicode-Beispiel</strong>:
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let a: u8 = 100;
+assert_eq!(a.checked_mul(3), None);
+<span class="boring">}</span></code></pre>
+</li>
+</ul>
+<h5 id="4-checked_div"><a class="header" href="#4-checked_div">4. <code>checked_div</code></a></h5>
+<ul>
+<li><strong>Methoden-Signatur</strong>: <code>pub const fn checked_div(self, rhs: Self) -&gt; Option&lt;Self&gt;</code></li>
+<li><strong>Parameter</strong>:
+<ul>
+<li><code>self</code>: Der Dividend.</li>
+<li><code>rhs</code>: Der Divisor.</li>
+</ul>
+</li>
+<li><strong>Rückgabetyp</strong>: <code>Option&lt;Self&gt;</code>. <code>Some(Quotient)</code> oder <code>None</code> bei einer Division durch Null oder bei Überlauf (z. B. <code>i32::MIN / -1</code>).</li>
+<li><strong>Sicherheitsaspekte &amp; Panics</strong>: Keine Panics (im Gegensatz zum standardmäßigen <code>/</code>-Operator, der bei Division durch Null panict!).</li>
+<li><strong>Minicode-Beispiel</strong>:
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let a: i32 = 10;
+assert_eq!(a.checked_div(0), None);
+<span class="boring">}</span></code></pre>
+</li>
+</ul>
+<h5 id="5-wrapping_add"><a class="header" href="#5-wrapping_add">5. <code>wrapping_add</code></a></h5>
+<ul>
+<li><strong>Methoden-Signatur</strong>: <code>pub const fn wrapping_add(self, rhs: Self) -&gt; Self</code></li>
+<li><strong>Parameter</strong>:
+<ul>
+<li><code>self</code>: Der Basiswert.</li>
+<li><code>rhs</code>: Der Summand.</li>
+</ul>
+</li>
+<li><strong>Rückgabetyp</strong>: <code>Self</code>. Das mathematisch gewrappte Ergebnis.</li>
+<li><strong>Sicherheitsaspekte &amp; Panics</strong>: Keine Panics.</li>
+<li><strong>Minicode-Beispiel</strong>:
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let a: u8 = 255;
+assert_eq!(a.wrapping_add(1), 0);
+<span class="boring">}</span></code></pre>
+</li>
+</ul>
+<h5 id="6-wrapping_sub"><a class="header" href="#6-wrapping_sub">6. <code>wrapping_sub</code></a></h5>
+<ul>
+<li><strong>Methoden-Signatur</strong>: <code>pub const fn wrapping_sub(self, rhs: Self) -&gt; Self</code></li>
+<li><strong>Parameter</strong>:
+<ul>
+<li><code>self</code>: Der Basiswert.</li>
+<li><code>rhs</code>: Der Subtrahend.</li>
+</ul>
+</li>
+<li><strong>Rückgabetyp</strong>: <code>Self</code>. Das gewrappte Ergebnis.</li>
+<li><strong>Sicherheitsaspekte &amp; Panics</strong>: Keine Panics.</li>
+<li><strong>Minicode-Beispiel</strong>:
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let a: u8 = 0;
+assert_eq!(a.wrapping_sub(1), 255);
+<span class="boring">}</span></code></pre>
+</li>
+</ul>
+<h5 id="7-saturating_add"><a class="header" href="#7-saturating_add">7. <code>saturating_add</code></a></h5>
+<ul>
+<li><strong>Methoden-Signatur</strong>: <code>pub const fn saturating_add(self, rhs: Self) -&gt; Self</code></li>
+<li><strong>Parameter</strong>:
+<ul>
+<li><code>self</code>: Der Basiswert.</li>
+<li><code>rhs</code>: Der Summand.</li>
+</ul>
+</li>
+<li><strong>Rückgabetyp</strong>: <code>Self</code>. Das am Limit gedeckelte Ergebnis.</li>
+<li><strong>Sicherheitsaspekte &amp; Panics</strong>: Keine Panics.</li>
+<li><strong>Minicode-Beispiel</strong>:
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let a: u8 = 200;
+assert_eq!(a.saturating_add(100), 255);
+<span class="boring">}</span></code></pre>
+</li>
+</ul>
+<h5 id="8-saturating_sub"><a class="header" href="#8-saturating_sub">8. <code>saturating_sub</code></a></h5>
+<ul>
+<li><strong>Methoden-Signatur</strong>: <code>pub const fn saturating_sub(self, rhs: Self) -&gt; Self</code></li>
+<li><strong>Parameter</strong>:
+<ul>
+<li><code>self</code>: Der Basiswert.</li>
+<li><code>rhs</code>: Der Subtrahend.</li>
+</ul>
+</li>
+<li><strong>Rückgabetyp</strong>: <code>Self</code>. Das am Minimalwert gedeckelte Ergebnis.</li>
+<li><strong>Sicherheitsaspekte &amp; Panics</strong>: Keine Panics.</li>
+<li><strong>Minicode-Beispiel</strong>:
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let a: u8 = 10;
+assert_eq!(a.saturating_sub(20), 0);
+<span class="boring">}</span></code></pre>
+</li>
+</ul>
+<h5 id="9-overflowing_add"><a class="header" href="#9-overflowing_add">9. <code>overflowing_add</code></a></h5>
+<ul>
+<li><strong>Methoden-Signatur</strong>: <code>pub const fn overflowing_add(self, rhs: Self) -&gt; (Self, bool)</code></li>
+<li><strong>Parameter</strong>:
+<ul>
+<li><code>self</code>: Der Basiswert.</li>
+<li><code>rhs</code>: Der Summand.</li>
+</ul>
+</li>
+<li><strong>Rückgabetyp</strong>: <code>(Self, bool)</code>. Ein Tupel mit dem gewrappten Ergebnis und einem Boolean, der anzeigt, ob ein Überlauf stattgefunden hat.</li>
+<li><strong>Sicherheitsaspekte &amp; Panics</strong>: Keine Panics.</li>
+<li><strong>Minicode-Beispiel</strong>:
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let a: u8 = 255;
+assert_eq!(a.overflowing_add(1), (0, true));
+<span class="boring">}</span></code></pre>
+</li>
+</ul>
+<h5 id="10-pow"><a class="header" href="#10-pow">10. <code>pow</code></a></h5>
+<ul>
+<li><strong>Methoden-Signatur</strong>: <code>pub const fn pow(self, exp: u32) -&gt; Self</code></li>
+<li><strong>Parameter</strong>:
+<ul>
+<li><code>self</code>: Die Basis.</li>
+<li><code>exp</code>: Der Exponent (immer vom Typ <code>u32</code>).</li>
+</ul>
+</li>
+<li><strong>Rückgabetyp</strong>: <code>Self</code>. Die Potenz <code>self^exp</code>.</li>
+<li><strong>Sicherheitsaspekte &amp; Panics</strong>: Panict im Debug-Modus, wenn das Ergebnis den Wertebereich überschreitet.</li>
+<li><strong>Minicode-Beispiel</strong>:
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let base: u32 = 2;
+assert_eq!(base.pow(8), 256);
+<span class="boring">}</span></code></pre>
+</li>
+</ul>
+<h5 id="11-abs"><a class="header" href="#11-abs">11. <code>abs</code></a></h5>
+<ul>
+<li><strong>Methoden-Signatur</strong>: <code>pub const fn abs(self) -&gt; Self</code></li>
+<li><strong>Parameter</strong>:
+<ul>
+<li><code>self</code>: Der signed Ganzzahlwert.</li>
+</ul>
+</li>
+<li><strong>Rückgabetyp</strong>: <code>Self</code>. Der absolute Betrag der Zahl.</li>
+<li><strong>Sicherheitsaspekte &amp; Panics</strong>: Panict, wenn <code>self == Self::MIN</code> aufgerufen wird, da der positive Wert nicht im signed Wertebereich dargestellt werden kann (z. B. <code>-128i8</code> kann nicht als <code>+128i8</code> gespeichert werden, da <code>i8</code> nur bis <code>127</code> reicht).</li>
+<li><strong>Minicode-Beispiel</strong>:
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let a: i32 = -5;
+assert_eq!(a.abs(), 5);
+<span class="boring">}</span></code></pre>
+</li>
+</ul>
+<hr>
+<h4 id="822-fließkommamethoden-beispielhaft-für-f64"><a class="header" href="#822-fließkommamethoden-beispielhaft-für-f64">8.2.2 Fließkommamethoden (Beispielhaft für <code>f64</code>)</a></h4>
+<h5 id="1-floor"><a class="header" href="#1-floor">1. <code>floor</code></a></h5>
+<ul>
+<li><strong>Methoden-Signatur</strong>: <code>pub fn floor(self) -&gt; Self</code></li>
+<li><strong>Parameter</strong>:
+<ul>
+<li><code>self</code>: Die Fließkommazahl.</li>
+</ul>
+</li>
+<li><strong>Rückgabetyp</strong>: <code>Self</code>. Die größte Ganzzahl kleiner oder gleich <code>self</code>.</li>
+<li><strong>Sicherheitsaspekte &amp; Panics</strong>: Keine Panics.</li>
+<li><strong>Minicode-Beispiel</strong>:
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let val: f64 = 3.9;
+assert_eq!(val.floor(), 3.0);
+<span class="boring">}</span></code></pre>
+</li>
+</ul>
+<h5 id="2-ceil"><a class="header" href="#2-ceil">2. <code>ceil</code></a></h5>
+<ul>
+<li><strong>Methoden-Signatur</strong>: <code>pub fn ceil(self) -&gt; Self</code></li>
+<li><strong>Parameter</strong>:
+<ul>
+<li><code>self</code>: Die Fließkommazahl.</li>
+</ul>
+</li>
+<li><strong>Rückgabetyp</strong>: <code>Self</code>. Die kleinste Ganzzahl größer oder gleich <code>self</code>.</li>
+<li><strong>Sicherheitsaspekte &amp; Panics</strong>: Keine Panics.</li>
+<li><strong>Minicode-Beispiel</strong>:
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let val: f64 = 3.1;
+assert_eq!(val.ceil(), 4.0);
+<span class="boring">}</span></code></pre>
+</li>
+</ul>
+<h5 id="3-round"><a class="header" href="#3-round">3. <code>round</code></a></h5>
+<ul>
+<li><strong>Methoden-Signatur</strong>: <code>pub fn round(self) -&gt; Self</code></li>
+<li><strong>Parameter</strong>:
+<ul>
+<li><code>self</code>: Die Fließkommazahl.</li>
+</ul>
+</li>
+<li><strong>Rückgabetyp</strong>: <code>Self</code>. Der mathematisch gerundete Wert (Nachkommastelle <code>&gt;= 0.5</code> rundet auf).</li>
+<li><strong>Sicherheitsaspekte &amp; Panics</strong>: Keine Panics.</li>
+<li><strong>Minicode-Beispiel</strong>:
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let val: f64 = 3.5;
+assert_eq!(val.round(), 4.0);
+<span class="boring">}</span></code></pre>
+</li>
+</ul>
+<h5 id="4-is_nan"><a class="header" href="#4-is_nan">4. <code>is_nan</code></a></h5>
+<ul>
+<li><strong>Methoden-Signatur</strong>: <code>pub fn is_nan(self) -&gt; bool</code></li>
+<li><strong>Parameter</strong>:
+<ul>
+<li><code>self</code>: Die Fließkommazahl.</li>
+</ul>
+</li>
+<li><strong>Rückgabetyp</strong>: <code>bool</code>. <code>true</code>, wenn der Wert <code>NaN</code> ist.</li>
+<li><strong>Sicherheitsaspekte &amp; Panics</strong>: Keine Panics.</li>
+<li><strong>Minicode-Beispiel</strong>:
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let val = f64::NAN;
+assert!(val.is_nan());
+<span class="boring">}</span></code></pre>
+</li>
+</ul>
+<h5 id="5-is_infinite"><a class="header" href="#5-is_infinite">5. <code>is_infinite</code></a></h5>
+<ul>
+<li><strong>Methoden-Signatur</strong>: <code>pub fn is_infinite(self) -&gt; bool</code></li>
+<li><strong>Parameter</strong>:
+<ul>
+<li><code>self</code>: Die Fließkommazahl.</li>
+</ul>
+</li>
+<li><strong>Rückgabetyp</strong>: <code>bool</code>. <code>true</code>, wenn der Wert positiv oder negativ unendlich ist.</li>
+<li><strong>Sicherheitsaspekte &amp; Panics</strong>: Keine Panics.</li>
+<li><strong>Minicode-Beispiel</strong>:
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let val = 1.0f64 / 0.0f64;
+assert!(val.is_infinite());
+<span class="boring">}</span></code></pre>
+</li>
+</ul>
+<h5 id="6-fract"><a class="header" href="#6-fract">6. <code>fract</code></a></h5>
+<ul>
+<li><strong>Methoden-Signatur</strong>: <code>pub fn fract(self) -&gt; Self</code></li>
+<li><strong>Parameter</strong>:
+<ul>
+<li><code>self</code>: Die Fließkommazahl.</li>
+</ul>
+</li>
+<li><strong>Rückgabetyp</strong>: <code>Self</code>. Der Nachkommateil der Zahl.</li>
+<li><strong>Sicherheitsaspekte &amp; Panics</strong>: Keine Panics.</li>
+<li><strong>Minicode-Beispiel</strong>:
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let val: f64 = 3.1415;
+assert!((val.fract() - 0.1415).abs() &lt; 1e-10);
+<span class="boring">}</span></code></pre>
+</li>
+</ul>
+<hr>
+<h4 id="823-boolean-methoden"><a class="header" href="#823-boolean-methoden">8.2.3 Boolean-Methoden</a></h4>
+<h5 id="1-then"><a class="header" href="#1-then">1. <code>then</code></a></h5>
+<ul>
+<li><strong>Methoden-Signatur</strong>: <code>pub fn then&lt;T, F&gt;(self, f: F) -&gt; Option&lt;T&gt; where F: FnOnce() -&gt; T</code></li>
+<li><strong>Parameter</strong>:
+<ul>
+<li><code>self</code>: Der Boolean-Wert.</li>
+<li><code>f</code>: Eine Closure (anonyme Funktion), die den Wert berechnet, wenn <code>self == true</code> ist.</li>
+</ul>
+</li>
+<li><strong>Rückgabetyp</strong>: <code>Option&lt;T&gt;</code>. Gibt <code>Some(f())</code> zurück, wenn <code>self</code> wahr ist, ansonsten <code>None</code>.</li>
+<li><strong>Sicherheitsaspekte &amp; Panics</strong>: Keine Panics, es sei denn, die ausgeführte Closure selbst wirft eine Panic.</li>
+<li><strong>Minicode-Beispiel</strong>:
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let active = true;
+let value = active.then(|| 42);
+assert_eq!(value, Some(42));
+<span class="boring">}</span></code></pre>
+</li>
+</ul>
+<h5 id="2-then_some"><a class="header" href="#2-then_some">2. <code>then_some</code></a></h5>
+<ul>
+<li><strong>Methoden-Signatur</strong>: <code>pub fn then_some&lt;T&gt;(self, t: T) -&gt; Option&lt;T&gt;</code></li>
+<li><strong>Parameter</strong>:
+<ul>
+<li><code>self</code>: Der Boolean-Wert.</li>
+<li><code>t</code>: Der Wert, der zurückgegeben werden soll, wenn <code>self == true</code> ist.</li>
+</ul>
+</li>
+<li><strong>Rückgabetyp</strong>: <code>Option&lt;T&gt;</code>. Liefert <code>Some(t)</code> oder <code>None</code>.</li>
+<li><strong>Sicherheitsaspekte &amp; Panics</strong>: Keine Panics.</li>
+<li><strong>Minicode-Beispiel</strong>:
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let enabled = false;
+let widget = enabled.then_some("Button");
+assert_eq!(widget, None);
+<span class="boring">}</span></code></pre>
+</li>
+</ul>
+<hr>
+<h4 id="824-zeichen-methoden-char"><a class="header" href="#824-zeichen-methoden-char">8.2.4 Zeichen-Methoden (<code>char</code>)</a></h4>
+<h5 id="1-is_alphabetic"><a class="header" href="#1-is_alphabetic">1. <code>is_alphabetic</code></a></h5>
+<ul>
+<li><strong>Methoden-Signatur</strong>: <code>pub fn is_alphabetic(self) -&gt; bool</code></li>
+<li><strong>Parameter</strong>:
+<ul>
+<li><code>self</code>: Das Unicode-Zeichen.</li>
+</ul>
+</li>
+<li><strong>Rückgabetyp</strong>: <code>bool</code>. <code>true</code>, wenn das Zeichen ein Buchstabe im Unicode-Standard ist.</li>
+<li><strong>Sicherheitsaspekte &amp; Panics</strong>: Keine Panics.</li>
+<li><strong>Minicode-Beispiel</strong>:
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let c = '🦀';
+assert!(!c.is_alphabetic());
+let letter = 'ä';
+assert!(letter.is_alphabetic());
+<span class="boring">}</span></code></pre>
+</li>
+</ul>
+<h5 id="2-is_numeric"><a class="header" href="#2-is_numeric">2. <code>is_numeric</code></a></h5>
+<ul>
+<li><strong>Methoden-Signatur</strong>: <code>pub fn is_numeric(self) -&gt; bool</code></li>
+<li><strong>Parameter</strong>:
+<ul>
+<li><code>self</code>: Das Unicode-Zeichen.</li>
+</ul>
+</li>
+<li><strong>Rückgabetyp</strong>: <code>bool</code>. <code>true</code>, wenn das Zeichen eine Ziffer oder ein numerischer Wert im Unicode-Standard ist.</li>
+<li><strong>Sicherheitsaspekte &amp; Panics</strong>: Keine Panics.</li>
+<li><strong>Minicode-Beispiel</strong>:
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let c = '9';
+assert!(c.is_numeric());
+<span class="boring">}</span></code></pre>
+</li>
+</ul>
+<h5 id="3-is_whitespace"><a class="header" href="#3-is_whitespace">3. <code>is_whitespace</code></a></h5>
+<ul>
+<li><strong>Methoden-Signatur</strong>: <code>pub fn is_whitespace(self) -&gt; bool</code></li>
+<li><strong>Parameter</strong>:
+<ul>
+<li><code>self</code>: Das Zeichen.</li>
+</ul>
+</li>
+<li><strong>Rückgabetyp</strong>: <code>bool</code>. <code>true</code>, wenn das Zeichen ein Whitespace (Leerzeichen, Tabulator, Zeilenumbruch etc.) ist.</li>
+<li><strong>Sicherheitsaspekte &amp; Panics</strong>: Keine Panics.</li>
+<li><strong>Minicode-Beispiel</strong>:
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let c = '\n';
+assert!(c.is_whitespace());
+<span class="boring">}</span></code></pre>
+</li>
+</ul>
+<h5 id="4-to_uppercase"><a class="header" href="#4-to_uppercase">4. <code>to_uppercase</code></a></h5>
+<ul>
+<li><strong>Methoden-Signatur</strong>: <code>pub fn to_uppercase(self) -&gt; ToUppercase</code></li>
+<li><strong>Parameter</strong>:
+<ul>
+<li><code>self</code>: Das Zeichen.</li>
+</ul>
+</li>
+<li><strong>Rückgabetyp</strong>: <code>ToUppercase</code> (ein Iterator über <code>char</code>-Werte). Da manche Unicode-Zeichen beim Großschreiben in mehrere Zeichen zerfallen (z. B. das deutsche <code>'ß'</code> wird zu <code>'S'</code> und <code>'S'</code>), gibt Rust hier einen Iterator zurück.</li>
+<li><strong>Sicherheitsaspekte &amp; Panics</strong>: Keine Panics.</li>
+<li><strong>Minicode-Beispiel</strong>:
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let c = 'ß';
+let upper: String = c.to_uppercase().collect();
+assert_eq!(upper, "SS");
+<span class="boring">}</span></code></pre>
+</li>
+</ul>
+<h5 id="5-len_utf8"><a class="header" href="#5-len_utf8">5. <code>len_utf8</code></a></h5>
+<ul>
+<li><strong>Methoden-Signatur</strong>: <code>pub fn len_utf8(self) -&gt; usize</code></li>
+<li><strong>Parameter</strong>:
+<ul>
+<li><code>self</code>: Das Zeichen.</li>
+</ul>
+</li>
+<li><strong>Rückgabetyp</strong>: <code>usize</code>. Gibt die Anzahl an Bytes zurück, die das Zeichen im UTF-8-Format belegt (Bereich: 1 bis 4).</li>
+<li><strong>Sicherheitsaspekte &amp; Panics</strong>: Keine Panics.</li>
+<li><strong>Minicode-Beispiel</strong>:
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>assert_eq!('A'.len_utf8(), 1);
+assert_eq!('ä'.len_utf8(), 2);
+assert_eq!('🦀'.len_utf8(), 4);
+<span class="boring">}</span></code></pre>
+</li>
+</ul>
+<hr>
+<h2 id="609-drei-praktische-übungen"><a class="header" href="#609-drei-praktische-übungen">6.0.9 Drei praktische Übungen</a></h2>
+<h3 id="übung-1-leicht-sichere-temperaturkonvertierung"><a class="header" href="#übung-1-leicht-sichere-temperaturkonvertierung">Übung 1 (Leicht): Sichere Temperaturkonvertierung</a></h3>
+<p><strong>Aufgabenstellung</strong>:
+Schreiben Sie ein Programm, das eine Temperatur in Grad Celsius (als <code>f64</code>) in Fahrenheit umrechnet. Das Programm soll die Eingabe und Ausgabe auf der Konsole formatiert ausgeben. Falls der Wert unter dem absoluten Nullpunkt (<code>-273.15 °C</code>) liegt, soll ein Fehler gemeldet werden.
+<em>Formel</em>: <code>Fahrenheit = Celsius * 1.8 + 32.0</code></p>
+<p><strong>Anforderungen</strong>:</p>
+<ul>
+<li>Signatur der Konvertierungsfunktion: <code>fn celsius_to_fahrenheit(celsius: f64) -&gt; Option&lt;f64&gt;</code></li>
+<li>Formatiert auf 2 Nachkommastellen bei der Konsolenausgabe.</li>
+</ul>
+<p><strong>Lösungshinweis</strong>:
+Prüfen Sie zuerst mit einer <code>if</code>-Verzweigung, ob <code>celsius &lt; -273.15</code> gilt. Falls ja, geben Sie <code>None</code> zurück, andernfalls <code>Some(berechneter_wert)</code>.</p>
+<hr>
+<h3 id="übung-2-mittel-sicherer-ringpuffer-indexrechner"><a class="header" href="#übung-2-mittel-sicherer-ringpuffer-indexrechner">Übung 2 (Mittel): Sicherer Ringpuffer-Indexrechner</a></h3>
+<p><strong>Aufgabenstellung</strong>:
+In der Embedded-Programmierung werden Ringpuffer (Circular Buffers) häufig verwendet. Schreiben Sie eine Funktion, die einen aktuellen Index (<code>usize</code>), einen Offset (<code>usize</code>) und die Puffergröße (<code>usize</code>) nimmt und den neuen Index nach der Bewegung berechnet. Wenn ein Index-Überlauf auf CPU-Ebene stattfinden würde (z. B. bei sehr großen Indizes), soll das Programm kontrolliert reagieren, anstatt abzustürzen.</p>
+<p><strong>Anforderungen</strong>:</p>
+<ul>
+<li>Signatur: <code>fn next_index(current: usize, offset: usize, buffer_size: usize) -&gt; Option&lt;usize&gt;</code></li>
+<li>Der Rechner muss mit <code>checked_add</code> und dem Modulo-Operator <code>%</code> arbeiten.</li>
+</ul>
+<p><strong>Lösungshinweis</strong>:
+Nutzen Sie <code>current.checked_add(offset)</code>. Führen Sie auf das Ergebnis (falls vorhanden) den Modulo-Operator <code>% buffer_size</code> aus.</p>
+<hr>
+<h3 id="übung-3-schwer-ein-robuster-binärer-datenparser"><a class="header" href="#übung-3-schwer-ein-robuster-binärer-datenparser">Übung 3 (Schwer): Ein robuster binärer Datenparser</a></h3>
+<p><strong>Aufgabenstellung</strong>:
+Sie erhalten als Eingabe ein binäres Paket aus einem Netzwerk-Stream als Byte-Array <code>[u8; 4]</code>.
+Das Paket ist wie folgt aufgebaut:</p>
+<ul>
+<li>Byte 0: Vorzeichenbehafteter 8-Bit-Integer (<code>i8</code>) für die Umgebungstemperatur.</li>
+<li>Byte 1-2: Vorzeichenloser 16-Bit-Integer (<code>u16</code>) für die Luftfeuchtigkeit in Big-Endian-Byte-Reihenfolge.</li>
+<li>Byte 3: Ein Status-Byte (Bit 0 = Sensor Aktiv, Bit 1 = Akku Schwach, Bit 2-7 = Reserviert).</li>
+</ul>
+<p>Schreiben Sie ein Programm, das dieses Byte-Paket einliest, die Daten in die passenden Typen konvertiert und prüft, ob die Sensordaten plausibel sind.</p>
+<p><strong>Anforderungen</strong>:</p>
+<ul>
+<li>Konvertieren Sie Byte 1 und 2 unter Berücksichtigung von Big-Endian (nutzen Sie die Methode <code>u16::from_be_bytes([byte1, byte2])</code>).</li>
+<li>Prüfen Sie mit bitweisen Operatoren, ob der Sensor aktiv ist und ob der Akku schwach ist.</li>
+<li>Konvertieren Sie die Luftfeuchtigkeit in Prozent (als <code>f64</code>) und runden Sie diese kaufmännisch bei der Ausgabe auf 1 Nachkommastelle.</li>
+</ul>
+<p><strong>Lösungshinweis</strong>:
+Um Bit-Flags zu prüfen, nutzen Sie den bitweisen Und-Operator <code>&amp;</code>. Zum Beispiel: <code>let is_active = (status_byte &amp; 0b0000_0001) != 0;</code>.</p>
+<hr>
+<h2 id="6010-lernstrategie-selbsteinschätzung--merkzettel"><a class="header" href="#6010-lernstrategie-selbsteinschätzung--merkzettel">6.0.10 Lernstrategie, Selbsteinschätzung &amp; Merkzettel</a></h2>
+<h3 id="spickzettel-cheat-sheet"><a class="header" href="#spickzettel-cheat-sheet">Spickzettel (Cheat Sheet)</a></h3>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th style="text-align: left">Konzept</th><th style="text-align: left">Syntax</th><th style="text-align: left">Beispiel</th></tr>
+</thead>
+<tbody>
+<tr><td style="text-align: left"><strong>Typannotation</strong></td><td style="text-align: left"><code>let name: typ = wert;</code></td><td style="text-align: left"><code>let x: u32 = 100;</code></td></tr>
+<tr><td style="text-align: left"><strong>Typ-Suffix</strong></td><td style="text-align: left"><code>let name = wertyyp;</code></td><td style="text-align: left"><code>let x = 100u32;</code></td></tr>
+<tr><td style="text-align: left"><strong>Expliziter Cast</strong></td><td style="text-align: left"><code>ausdruck as ziel_typ</code></td><td style="text-align: left"><code>let y = x as f64;</code></td></tr>
+<tr><td style="text-align: left"><strong>Zusatzzeichen</strong></td><td style="text-align: left"><code>_</code> als Trenner</td><td style="text-align: left"><code>let x = 1_000_000_u64;</code></td></tr>
+<tr><td style="text-align: left"><strong>Sichere Addition</strong></td><td style="text-align: left"><code>a.checked_add(b)</code></td><td style="text-align: left"><code>let sum = 200_u8.checked_add(60);</code></td></tr>
+<tr><td style="text-align: left"><strong>Unicode Zeichen</strong></td><td style="text-align: left"><code>let c: char = '...';</code></td><td style="text-align: left"><code>let c: char = '🦀';</code></td></tr>
+</tbody>
+</table>
+</div>
+<h3 id="active-recall-verständnisfragen"><a class="header" href="#active-recall-verständnisfragen">Active Recall (Verständnisfragen)</a></h3>
+<ol>
+<li><strong>Frage</strong>: Warum gibt es in Rust im Gegensatz zu vielen anderen Programmiersprachen wie C/C++ keine implizite Typkonvertierung?</li>
+<li><strong>Frage</strong>: Was passiert physisch im Arbeitsspeicher, wenn eine negative Ganzzahl (z. B. <code>-5i8</code>) in einen vorzeichenlosen Ganzzahltyp (<code>u8</code>) mit dem <code>as</code>-Operator konvertiert wird?</li>
+<li><strong>Frage</strong>: Warum belegt der Typ <code>char</code> in Rust exakt 4 Bytes, während in UTF-8 kodierten Dateien viele Zeichen nur 1 oder 2 Bytes belegen?</li>
+<li><strong>Frage</strong>: Unter welchen Bedingungen stürzt eine Ganzzahlberechnung im Release-Modus (<code>--release</code>) aufgrund eines Overflows ab?</li>
+</ol>
+<h3 id="die-feynman-methode"><a class="header" href="#die-feynman-methode">Die Feynman-Methode</a></h3>
+<p>Erklären Sie einem Programmier-Anfänger in maximal drei Sätzen:</p>
+<ol>
+<li>Was der Unterschied zwischen dem Stack-Layout eines <code>bool</code> (1 Byte) und dem mathematischen Informationsgehalt eines Bools (1 Bit) ist und warum dies so gelöst wurde.</li>
+<li>Warum der <code>as</code>-Operator bei numerischen Casts gefährlich sein kann.</li>
+</ol>
+<h3 id="gezielte-fehlerprovokation-compiler-guided-learning"><a class="header" href="#gezielte-fehlerprovokation-compiler-guided-learning">Gezielte Fehlerprovokation (Compiler-Guided Learning)</a></h3>
+<p>Kopieren Sie den lauffähigen Code des Tutorials in ein neues Projekt und provozieren Sie bewusst Compilerfehler:</p>
+<ol>
+<li>Entfernen Sie das <code>as f64</code> bei der Berechnung von <code>voltage</code>. Beobachten Sie die Fehlermeldung des Compilers.</li>
+<li>Versuchen Sie, ein Zeichen mit doppelten Anführungszeichen als <code>char</code> zu deklarieren: <code>let c: char = "A";</code>. Analysieren Sie die Reaktion des Compilers.</li>
+</ol>
+<h3 id="metakognitiver-selbsttest"><a class="header" href="#metakognitiver-selbsttest">Metakognitiver Selbsttest</a></h3>
+<p>Wechseln Sie erst zum nächsten Kapitel (<a href="file:///home/thorsten/RustKurs/doc/src/7.md">Kapitel 7: Übungsprojekt</a>), wenn Sie:</p>
+<ul>
+<li><input disabled="" type="checkbox"> Den Unterschied zwischen <code>checked_*</code>, <code>wrapping_*</code> und <code>saturating_*</code> erklären können.</li>
+<li><input disabled="" type="checkbox"> Verstanden haben, warum Fließkommazahlen-Vergleiche mit <code>==</code> instabil sind.</li>
+<li><input disabled="" type="checkbox"> Wissen, wofür <code>usize</code> und <code>isize</code> gedacht sind.</li>
+<li><input disabled="" type="checkbox"> Den Unterschied in der Syntax von Zeichen (<code>'x'</code>) und Strings (<code>"x"</code>) verinnerlicht haben.</li>
+</ul>
+<hr>
+<h2 id="6011-zusammenfassung"><a class="header" href="#6011-zusammenfassung">6.0.11 Zusammenfassung</a></h2>
+<ul>
+<li><strong>Strikte Typsicherheit</strong>: Rust führt keine implizite Typkonvertierung durch. Jede Konvertierung zwischen numerischen Typen muss explizit mit dem <code>as</code>-Operator oder über API-Methoden vorgenommen werden.</li>
+<li><strong>Ganzzahltypen</strong>: Es wird strikt zwischen vorzeichenbehafteten (<code>i8</code> bis <code>i128</code>) und vorzeichenlosen (<code>u8</code> bis <code>u128</code>) Integertypen unterschieden. Der Standardtyp is <code>i32</code>.</li>
+<li><strong>Systemabhängige Typen</strong>: <code>usize</code> und <code>isize</code> passen ihre Breite automatisch an die Wortbreite der Ziel-CPU an (z. B. 64 Bit auf modernen PCs). Sie sind unerlässlich für Array-Indexierungen und Längenbestimmungen.</li>
+<li><strong>Gefahren bei Berechnungen</strong>: Ein Integer-Überlauf führt im Debug-Modus zum sofortigen Programmabsturz (Panic). Im Release-Modus findet stilles Wrapping (Zweierkomplement-Arithmetik) statt. Sichere arithmetische Methoden wie <code>checked_add</code> fangen diese Szenarien verlässlich ab.</li>
+<li><strong>Spezialtypen</strong>:
+<ul>
+<li>Fließkommazahlen (<code>f32</code>/<code>f64</code>) folgen IEEE-754. Standard ist <code>f64</code>. Vorsicht bei Rundungsfehlern und dem Zustand <code>NaN</code>.</li>
+<li>Booleans (<code>bool</code>) belegen aus Performance-Gründen 1 Byte statt 1 Bit.</li>
+<li>Zeichen (<code>char</code>) repräsentieren einen Unicode-Skalarwert und belegen immer 4 Bytes (nicht zu verwechseln mit Strings).</li>
+</ul>
+</li>
+</ul>
+<hr>
+<p><strong>Lizenz- und Attributionshinweis</strong>:
+Teile dieses Kapitels basieren auf Übersetzungen und didaktischen Anpassungen des offiziellen Buches <a href="https://doc.rust-lang.org/book/">The Rust Programming Language</a> von Steve Klabnik und Carol Nichols (sowie Beiträgen der Rust-Community), lizenziert unter <a href="https://opensource.org/licenses/MIT">MIT</a> und <a href="https://www.apache.org/licenses/LICENSE-2.0">Apache 2.0</a>.</p>
 
                     </main>
 

@@ -35,7 +35,7 @@
             const path_to_root = "";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "searchindex-a9440cc5.js";
+            window.path_to_searchindex_js = "searchindex-76719c3e.js";
         </script>
         <!-- Start loading toc.js asap -->
         <script src="toc-dedbbe6e.js"></script>
@@ -174,85 +174,464 @@
 
                 <div id="mdbook-content" class="content">
                     <main>
-                        <h1 id="-kapitel-4-das-erste-rust-projekt-video-analyse--tonspur-bereinigung"><a class="header" href="#-kapitel-4-das-erste-rust-projekt-video-analyse--tonspur-bereinigung">🎬 Kapitel 4: Das erste Rust-Projekt (Video-Analyse &amp; Tonspur-Bereinigung)</a></h1>
-<p>In diesem Kapitel erstellen wir unser erstes Rust-Projekt mit Cargo und VS Code. Um eine optimale Videoqualität zu gewährleisten, wurde die verrauschte Original-Tonspur des Videos <code>Video/4.mp4</code> komplett durch eine glasklare, präzise getimte Sprachspur (TTS mit dem Kokoro-ONNX-Modell, Sprecher “Martin”) ersetzt.</p>
-<p>Das fertige Video mit der rauschfreien Tonspur ist unter <a href="file:///home/thorsten/RustKurs/4.mp4">4.mp4</a> gespeichert.</p>
+                        <h1 id="4-erstes-cargo-projekt"><a class="header" href="#4-erstes-cargo-projekt">4. Erstes Cargo-Projekt</a></h1>
+<p>Herzlich willkommen zu diesem Kapitel. Wenn Sie die ersten drei Kapitel durchgearbeitet haben, besitzen Sie nun eine installierte Rust-Toolchain und eine einsatzbereite Entwicklungsumgebung mit Visual Studio Code und dem Sprachserver <code>rust-analyzer</code>. In diesem Kapitel machen wir den entscheidenden Schritt von der theoretischen Betrachtung einzelner Quellcodedateien hin zu einer professionellen, strukturierten Projektentwicklung.</p>
+<p>Wir werden das offizielle Build-System und den Paketmanager von Rust – <strong>Cargo</strong> – im Detail kennenlernen. Dieses Werkzeug ist das Rückgrat des Rust-Ökosystems. Es nimmt Ihnen die manuelle Arbeit der Compilersteuerung, der Bibliotheksauflösung und der Build-Konfiguration ab. Um die Funktionsweise und die Mechanismen dahinter tiefgreifend zu verstehen, werden wir zunächst die Grenzen der manuellen Kompilierung betrachten, bevor wir uns den automatisierten Workflows von Cargo widmen.</p>
 <hr>
-<h2 id="-technische-details-des-videos"><a class="header" href="#-technische-details-des-videos">📊 Technische Details des Videos</a></h2>
+<h2 id="41-projekt-initialisierung"><a class="header" href="#41-projekt-initialisierung">4.1 Projekt-Initialisierung</a></h2>
+<p>Die Erstellung eines neuen Projekts ist der erste Schritt in jedem Rust-Entwicklungszyklus. Cargo stellt uns hierfür spezialisierte Werkzeuge zur Verfügung, um standardisierte Projektstrukturen aufzubauen.</p>
+<h3 id="411-cargo-befehle"><a class="header" href="#411-cargo-befehle">4.1.1 Cargo-Befehle</a></h3>
+<p>Es gibt zwei Hauptbefehle, um ein neues Cargo-Projekt ins Leben zu rufen: <code>cargo new</code> und <code>cargo init</code>.</p>
+<h4 id="1-cargo-new-projektname"><a class="header" href="#1-cargo-new-projektname">1. <code>cargo new &lt;projektname&gt;</code></a></h4>
+<p>Dies ist der am häufigsten verwendete Befehl. Er erstellt ein komplett neues Verzeichnis mit dem angegebenen Namen und initialisiert darin die Standard-Projektstruktur.</p>
+<pre><code class="language-bash">cargo new mein_projekt
+</code></pre>
+<p>Standardmäßig erstellt dieser Befehl ein <strong>ausführbares Programm (Binary)</strong>. Das bedeutet, das Projekt enthält eine <code>main.rs</code> mit einer <code>main</code>-Funktion, die vom Betriebssystem direkt gestartet werden kann. Das explizite Flag hierfür lautet <code>--bin</code>:</p>
+<pre><code class="language-bash">cargo new mein_projekt --bin
+</code></pre>
+<p>Wenn Sie stattdessen eine <strong>Bibliothek (Library)</strong> erstellen möchten, die von anderen Programmen als Abhängigkeit eingebunden werden soll, nutzen Sie das Flag <code>--lib</code>:</p>
+<pre><code class="language-bash">cargo new mein_bibliotheksprojekt --lib
+</code></pre>
+<blockquote class="blockquote-tag blockquote-tag-tip">
+<p class="blockquote-tag-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M8 1.5c-2.363 0-4 1.69-4 3.75 0 .984.424 1.625.984 2.304l.214.253c.223.264.47.556.673.848.284.411.537.896.621 1.49a.75.75 0 0 1-1.484.211c-.04-.282-.163-.547-.37-.847a8.456 8.456 0 0 0-.542-.68c-.084-.1-.173-.205-.268-.32C3.201 7.75 2.5 6.766 2.5 5.25 2.5 2.31 4.863 0 8 0s5.5 2.31 5.5 5.25c0 1.516-.701 2.5-1.328 3.259-.095.115-.184.22-.268.319-.207.245-.383.453-.541.681-.208.3-.33.565-.37.847a.751.751 0 0 1-1.485-.212c.084-.593.337-1.078.621-1.489.203-.292.45-.584.673-.848.075-.088.147-.173.213-.253.561-.679.985-1.32.985-2.304 0-2.06-1.637-3.75-4-3.75ZM5.75 12h4.5a.75.75 0 0 1 0 1.5h-4.5a.75.75 0 0 1 0-1.5ZM6 15.25a.75.75 0 0 1 .75-.75h2.5a.75.75 0 0 1 0 1.5h-2.5a.75.75 0 0 1-.75-.75Z"></path></svg>Tip</p>
+<p>Der Unterschied auf Dateisystemebene: Ein Binary-Projekt generiert eine <code>src/main.rs</code>, während ein Library-Projekt eine <code>src/lib.rs</code> generiert. Letztere besitzt keine <code>main</code>-Funktion, sondern enthält wiederverwendbare Funktionen und Strukturen sowie ein standardmäßig generiertes Testgerüst.</p>
+</blockquote>
+<h4 id="2-cargo-init"><a class="header" href="#2-cargo-init">2. <code>cargo init</code></a></h4>
+<p>Manchmal haben Sie bereits ein Verzeichnis erstellt (z. B. über ein Git-Repository, das Sie geklont haben) und möchten dieses und dessen Inhalt nachträglich in ein Cargo-Projekt umwandeln. In diesem Fall wechseln Sie in das bestehende Verzeichnis und führen <code>cargo init</code> aus:</p>
+<pre><code class="language-bash">cd mein_existierendes_verzeichnis
+cargo init
+</code></pre>
+<p>Auch hier können Sie das <code>--lib</code>-Flag verwenden, falls eine Bibliothek statt eines Binaries initialisiert werden soll.</p>
+<p>Sowohl <code>cargo new</code> als auch <code>cargo init</code> führen im Hintergrund eine sehr wichtige Systemoperation aus: Sie initialisieren automatisch ein neues <strong>Git-Repository</strong> im Projektordner, sofern sich dieser nicht bereits innerhalb eines übergeordneten Git-Repositorys befindet. Es wird eine <code>.git</code>-Struktur angelegt und eine <code>.gitignore</code>-Datei erstellt. Wenn Sie dies explizit verhindern möchten, können Sie das Flag <code>--vcs none</code> übergeben:</p>
+<pre><code class="language-bash">cargo new mein_projekt --vcs none
+</code></pre>
+<hr>
+<h3 id="412-projektstruktur"><a class="header" href="#412-projektstruktur">4.1.2 Projektstruktur</a></h3>
+<p>Wenn wir uns die von <code>cargo new mein_projekt</code> erstellte Ordnerstruktur ansehen, finden wir ein minimalistisches, aber durchdachtes Layout vor:</p>
+<pre><code class="language-text">mein_projekt/
+├── Cargo.toml
+├── .git/
+├── .gitignore
+└── src/
+    └── main.rs
+</code></pre>
+<p>Lassen Sie uns die Rolle und den Inhalt jeder dieser Komponenten auf Systemebene detailliert analysieren:</p>
+<h4 id="1-cargotoml"><a class="header" href="#1-cargotoml">1. <code>Cargo.toml</code></a></h4>
+<p>Das Herzstück jedes Cargo-Projekts. Dies ist das <strong>Manifest</strong> (Konfigurationsdatei), in dem alle Metadaten Ihres Projekts sowie dessen Abhängigkeiten in einer menschenlesbaren Form deklariert werden. Wir untersuchen diese Datei im nächsten Abschnitt genauer.</p>
+<h4 id="2-die-quellcodedatei-srcmainrs"><a class="header" href="#2-die-quellcodedatei-srcmainrs">2. Die Quellcodedatei <code>src/main.rs</code></a></h4>
+<p>Der gesamte Rust-Quellcode gehört zwingend in das Verzeichnis <code>src/</code> (Source). Cargo erwartet bei einem ausführbaren Projekt standardmäßig, dass sich der Einstiegspunkt in der Datei <code>src/main.rs</code> befindet. Der standardmäßig generierte Inhalt sieht wie folgt aus:</p>
+<pre class="playground"><code class="language-rust edition2021">fn main() {
+    println!("Hello, world!");
+}</code></pre>
+<h4 id="3-die-versionsverwaltungskonfiguration-gitignore"><a class="header" href="#3-die-versionsverwaltungskonfiguration-gitignore">3. Die Versionsverwaltungskonfiguration <code>.gitignore</code></a></h4>
+<p>Cargo ist eng mit dem Versionsverwaltungssystem Git verzahnt. Die generierte <code>.gitignore</code>-Datei hat standardmäßig folgenden Inhalt:</p>
+<pre><code class="language-text">/target
+</code></pre>
+<p>Dies ist eine kritische Einstellung für Ihr Betriebssystem und Ihr Repository. Sie weist Git an, das gesamte Verzeichnis <code>/target</code> zu ignorieren. Das Verzeichnis <code>target/</code> wird erst beim Kompilieren (z. B. durch <code>cargo build</code>) erzeugt. Es enthält alle vom Compiler generierten Zwischenstufen, Systembibliotheken, Abhängigkeitskompilate und schließlich das fertige ausführbare Maschinenprogramm. Dieses Verzeichnis kann sehr schnell Hunderte von Megabytes oder gar Gigabytes groß werden. Da diese Daten jederzeit aus dem Quellcode neu generiert werden können, gehören sie niemals in die Versionsverwaltung. Das Einchecken von <code>target/</code> würde Repositorys extrem aufblähen und zu massiven Merge-Konflikten führen, da sich die Binärdateien bei jedem Kompilierungsvorgang ändern.</p>
+<hr>
+<h2 id="42-die-projektkonfiguration"><a class="header" href="#42-die-projektkonfiguration">4.2 Die Projektkonfiguration</a></h2>
+<p>Die gesamte Steuerung des Projekts erfolgt über zwei Dateien im Stammverzeichnis: <code>Cargo.toml</code> (das Manifest) und <code>Cargo.lock</code> (die Sperrdatei). Obwohl beide Dateien Konfigurationen darstellen, erfüllen sie völlig unterschiedliche Zwecke im Build-Prozess.</p>
+<hr>
+<h3 id="421-das-manifest-cargotoml"><a class="header" href="#421-das-manifest-cargotoml">4.2.1 Das Manifest (Cargo.toml)</a></h3>
+<p>Das Manifest wird im TOML-Format geschrieben. <strong>TOML</strong> steht für <em>Tom’s Obvious Minimal Language</em> und wurde speziell entworfen, um durch eine einfache Schlüssel-Wert-Struktur leicht lesbar und schreibbar zu sein.</p>
+<blockquote class="blockquote-tag blockquote-tag-important">
+<p class="blockquote-tag-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 1.75C0 .784.784 0 1.75 0h12.5C15.216 0 16 .784 16 1.75v9.5A1.75 1.75 0 0 1 14.25 13H8.06l-2.573 2.573A1.458 1.458 0 0 1 3 14.543V13H1.75A1.75 1.75 0 0 1 0 11.25Zm1.75-.25a.25.25 0 0 0-.25.25v9.5c0 .138.112.25.25.25h2a.75.75 0 0 1 .75.75v2.19l2.72-2.72a.749.749 0 0 1 .53-.22h6.5a.25.25 0 0 0 .25-.25v-9.5a.25.25 0 0 0-.25-.25Zm7 2.25v2.5a.75.75 0 0 1-1.5 0v-2.5a.75.75 0 0 1 1.5 0ZM9 9a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"></path></svg>Important</p>
+<p>Achten Sie bei der Endung der Datei genau auf die Groß- und Kleinschreibung: Es muss zwingend ein großes <strong>C</strong> und der Rest klein geschrieben werden: <strong><code>Cargo.toml</code></strong>. Das Betriebssystem Linux unterscheidet strikt zwischen Groß- und Kleinschreibung (Case Sensitivity); eine Datei namens <code>cargo.toml</code> wird von Cargo nicht erkannt.</p>
+</blockquote>
+<p>Betrachten wir das von Cargo standardmäßig generierte Manifest:</p>
+<pre><code class="language-toml">[package]
+name = "mein_projekt"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+</code></pre>
+<p>Diese Datei ist in verschiedene <strong>Sektionen</strong> (in eckigen Klammern <code>[...]</code>) unterteilt:</p>
+<h4 id="1-die-sektion-package"><a class="header" href="#1-die-sektion-package">1. Die Sektion <code>[package]</code></a></h4>
+<p>Hier werden die Metadaten definiert, die das Paket selbst beschreiben. Diese Daten sind insbesondere dann wichtig, wenn Sie Ihr Paket auf crates.io veröffentlichen möchten.</p>
 <ul>
-<li><strong>Dateiname:</strong> <code>Video/4.mp4</code> (Original) / <code>4.mp4</code> (Bereinigt mit Sprecher)</li>
-<li><strong>Auflösung:</strong> 1280x720 (720p)</li>
-<li><strong>Bildwiederholrate (FPS):</strong> 30 fps</li>
-<li><strong>Dauer:</strong> 01:43.38 (103,38 Sekunden)</li>
-<li><strong>Audio-Format (Neu):</strong> AAC Mono, 48 kHz (Rauschfrei)</li>
+<li><code>name</code>: Der eindeutige Bezeichner Ihres Projekts. Er darf nur aus alphanumerischen Zeichen, Unterstrichen <code>_</code> und Bindestrichen <code>-</code> bestehen.</li>
+<li><code>version</code>: Die aktuelle Version Ihres Projekts. Rust erzwingt hier das System der <strong>semantischen Versionierung (SemVer)</strong>. Eine Version besteht immer aus drei Ziffern: <code>Major.Minor.Patch</code> (z. B. <code>0.1.0</code>).
+<ul>
+<li><strong>Major</strong>: Erhöhung bei inkompatiblen API-Änderungen (Bruch der Abwärtskompatibilität).</li>
+<li><strong>Minor</strong>: Erhöhung bei funktionalen Erweiterungen, die abwärtskompatibel sind.</li>
+<li><strong>Patch</strong>: Erhöhung bei abwärtskompatiblen Fehlerbehebungen (Bugfixes).</li>
+</ul>
+</li>
+<li><code>edition</code>: Definiert die Sprachversion von Rust. Im Gegensatz zu C++ (wo verschiedene Standards wie C++11, C++20 oft zu Inkompatibilitäten führen) garantieren Rust-Editionen (wie <code>2015</code>, <code>2018</code>, <code>2021</code>) vollkommene Interoperabilität. Eine Edition ermöglicht es dem Rust-Team, neue Schlüsselwörter einzuführen (z. B. <code>async</code> und <code>await</code> in der Edition 2018), ohne dass alter Code bricht. Compiler-Editionen sind abwärtskompatibel; ein Projekt der Edition 2021 kann problemlos Bibliotheken nutzen, die in der Edition 2015 geschrieben wurden.</li>
+</ul>
+<h4 id="2-die-sektion-dependencies"><a class="header" href="#2-die-sektion-dependencies">2. Die Sektion <code>[dependencies]</code></a></h4>
+<p>Hier tragen Sie alle externen Bibliotheken ein, die Ihr Projekt benötigt. Cargo lädt diese automatisch herunter. Dabei können Sie Versionen auf verschiedene Arten spezifizieren:</p>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th style="text-align: left">Syntax-Typ</th><th style="text-align: left">Beispiel in <code>Cargo.toml</code></th><th style="text-align: left">Erlaubter Versionsbereich</th><th style="text-align: left">Erklärung</th></tr>
+</thead>
+<tbody>
+<tr><td style="text-align: left"><strong>Caret (Standard)</strong></td><td style="text-align: left"><code>rand = "0.8.5"</code> oder <code>^0.8.5</code></td><td style="text-align: left"><code>&gt;=0.8.5, &lt;0.9.0</code></td><td style="text-align: left">Erlaubt Updates, die die am weitesten links stehende Ziffer ungleich Null nicht verändern. Dies garantiert maximale Sicherheit bei gleichzeitiger Aktualität.</td></tr>
+<tr><td style="text-align: left"><strong>Tilde</strong></td><td style="text-align: left"><code>rand = "~0.8.5"</code></td><td style="text-align: left"><code>&gt;=0.8.5, &lt;0.9.0</code></td><td style="text-align: left">Ermöglicht nur Updates auf Patch-Ebene. Bei <code>~0.8</code> wäre es <code>&gt;=0.8.0, &lt;0.9.0</code>.</td></tr>
+<tr><td style="text-align: left"><strong>Wildcard</strong></td><td style="text-align: left"><code>rand = "0.8.*"</code></td><td style="text-align: left"><code>&gt;=0.8.0, &lt;0.9.0</code></td><td style="text-align: left">Akzeptiert jeden beliebigen Patch-Level innerhalb der spezifizierten Minor-Version.</td></tr>
+<tr><td style="text-align: left"><strong>Exakte Version</strong></td><td style="text-align: left"><code>rand = "=0.8.5"</code></td><td style="text-align: left"><code>==0.8.5</code></td><td style="text-align: left">Friert die Version starr ein. Es werden keinerlei Updates zugelassen.</td></tr>
+<tr><td style="text-align: left"><strong>Bereiche</strong></td><td style="text-align: left"><code>rand = "&gt;=0.8.0, &lt;0.8.4"</code></td><td style="text-align: left">Spezifizierter Bereich</td><td style="text-align: left">Erlaubt die genaue mathematische Eingrenzung von Versionen.</td></tr>
+</tbody>
+</table>
+</div>
+<hr>
+<h3 id="422-die-sperrdatei-cargolock"><a class="header" href="#422-die-sperrdatei-cargolock">4.2.2 Die Sperrdatei (Cargo.lock)</a></h3>
+<p>Während Sie in der <code>Cargo.toml</code> Ihre <em>Wünsche</em> und <em>Zulässigkeiten</em> deklarieren (z. B. “Ich möchte eine beliebige, kompatible Version von <code>rand</code> ab <code>0.8.5</code>”), dokumentiert die Datei <code>Cargo.lock</code> den <strong>exakten Ist-Zustand</strong> zum Zeitpunkt des letzten erfolgreichen Builds.</p>
+<p>Ein Auszug aus einer typischen <code>Cargo.lock</code> zeigt die Detailtiefe:</p>
+<pre><code class="language-toml"># Dieses File wird automatisch von Cargo gepflegt.
+# Es wird NICHT empfohlen, es manuell zu bearbeiten.
+[[package]]
+name = "mein_projekt"
+version = "0.1.0"
+dependencies = [
+ "rand",
+]
+
+[[package]]
+name = "rand"
+version = "0.8.5"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "34af8d1a0e25924bc5b7c43c079c942339d8f0a8b57c39049bef581b46327404"
+dependencies = [
+ "libc",
+ "rand_chacha",
+ "rand_core",
+]
+</code></pre>
+<h4 id="wie-arbeitet-cargolock-auf-systemebene"><a class="header" href="#wie-arbeitet-cargolock-auf-systemebene">Wie arbeitet <code>Cargo.lock</code> auf Systemebene?</a></h4>
+<p>Wenn Sie oder ein Teammitglied das Projekt zum ersten Mal ausführen, analysiert Cargo die <code>Cargo.toml</code>. Es stellt fest, dass <code>rand = "0.8.5"</code> benötigt wird. Cargo kontaktiert crates.io, stellt fest, dass die aktuellste Version der <code>0.8</code>-Reihe beispielsweise <code>0.8.5</code> ist, lädt diese herunter und ermittelt deren kryptografischen Hashwert (SHA-256 Checksum).</p>
+<p>Cargo schreibt nun diese exakten Daten in die <code>Cargo.lock</code>.</p>
+<ul>
+<li><strong>Der Clou</strong>: Wenn ein anderer Entwickler Ihr Projekt klont und <code>cargo build</code> ausführt, liest Cargo zuerst die <code>Cargo.lock</code>. Selbst wenn in der Zwischenzeit eine Version <code>0.8.6</code> auf crates.io veröffentlicht wurde, ignoriert Cargo diese und lädt exakt die Version <code>0.8.5</code> herunter, verifiziert sie mit dem gespeicherten Hashwert und baut das Projekt.</li>
+<li><strong>Resultat</strong>: 100 % reproduzierbare Builds. Kein unerwarteter Code-Bruch durch automatische Hintergrund-Updates von Bibliotheken.</li>
+</ul>
+<h4 id="git-best-practice-einchecken-oder-nicht"><a class="header" href="#git-best-practice-einchecken-oder-nicht">Git-Best-Practice: Einchecken oder nicht?</a></h4>
+<ul>
+<li><strong>Anwendungen (Binaries/Executables)</strong>: <strong>Ja!</strong> Checken Sie <code>Cargo.lock</code> immer in Ihr Git-Repository ein. Nur so stellen Sie sicher, dass Ihre Kollegen, Ihre CI/CD-Pipeline und Ihre Produktions-Server exakt denselben Byte-Code erzeugen.</li>
+<li><strong>Bibliotheken (Libraries)</strong>: <strong>Nein!</strong> Fügen Sie <code>Cargo.lock</code> bei Bibliotheken zur <code>.gitignore</code> hinzu. Warum? Wenn Ihre Bibliothek von anderen Projekten genutzt wird, bestimmt das Endprodukt (die Anwendung) die genaue Versionierung. Ihre Bibliothek muss flexibel gegenüber verschiedenen kompatiblen Versionen der Abhängigkeiten sein. Das Einchecken der Lock-Datei würde hier falsche Garantien suggerieren.</li>
 </ul>
 <hr>
-<h2 id="-szenenübersicht-und-zeitstempel"><a class="header" href="#-szenenübersicht-und-zeitstempel">🎥 Szenenübersicht und Zeitstempel</a></h2>
-<p>Hier ist eine detaillierte Aufschlüsselung der Ereignisse im Video und der zugehörigen Sprachsegmente:</p>
-<h3 id="1-intro--cargo-initialisierung-0000---0016"><a class="header" href="#1-intro--cargo-initialisierung-0000---0016">1. Intro &amp; Cargo-Initialisierung (00:00 - 00:16)</a></h3>
+<h2 id="43-der-cargo-workflow"><a class="header" href="#43-der-cargo-workflow">4.3 Der Cargo-Workflow</a></h2>
+<p>Der alltägliche Arbeitsfluss mit Rust zeichnet sich durch extrem schnelle Feedback-Schleifen aus. Cargo stellt vier primäre Befehle für diesen Zyklus bereit.</p>
+<hr>
+<h3 id="431-entwicklungszyklen"><a class="header" href="#431-entwicklungszyklen">4.3.1 Entwicklungszyklen</a></h3>
+<pre class="mermaid">stateDiagram-v2
+    [*] --&gt; CodeSchreiben
+    CodeSchreiben --&gt; CargoCheck : Schnelle Syntaxprüfung
+    CargoCheck --&gt; CodeSchreiben : Fehler gefunden
+    CargoCheck --&gt; CargoRun : Erfolgreich, jetzt testen
+    CargoRun --&gt; CodeSchreiben : Logikfehler / Anpassung
+    CargoRun --&gt; ReleaseBuild : Fertig für Produktion (cargo build --release)
+</pre>
+
+<h4 id="1-cargo-check"><a class="header" href="#1-cargo-check">1. <code>cargo check</code></a></h4>
+<p>Der mit Abstand wichtigste Befehl während des aktiven Programmierens. <code>cargo check</code> durchläuft die lexikalische Analyse, das Parsing, die Typprüfung und den Borrow Checker von Rust. Er überspringt jedoch den zeitintensiven letzten Schritt: Die Codegenerierung durch das LLVM-Compiler-Backend (das Erzeugen von Assembler-Code und Maschinencode) sowie das Linken der Binärdateien.</p>
 <ul>
-<li><strong>Visueller Inhalt:</strong> Das Ubuntu-Terminal ist geöffnet. Der Benutzer tippt den Befehl <code>cargo new hallowelt</code> ein und führt ihn aus. Cargo erstellt ein neues Verzeichnis <code>hallowelt</code> mit den Standard-Projektdateien.</li>
-<li><strong>Sprechertext (Start: 00:01):</strong>
-<blockquote>
-<p><em>“Willkommen zu Kapitel vier. Hier erstellen wir unser erstes Rust-Projekt. Im Ubuntu-Terminal nutzen wir das Tool Cargo, den offiziellen Paketmanager. Mit dem Befehl cargo new hallowelt legen wir ein neues Verzeichnis mit allen benötigten Projektdateien an.”</em></p>
-</blockquote>
-</li>
+<li><strong>Vorteil</strong>: <code>cargo check</code> ist oft um den Faktor 10 bis 50 schneller als ein vollständiger Build. Es gibt Ihnen sofortiges Feedback, ob Ihr Code syntaktisch korrekt ist und die strengen Regeln der Speicherverwaltung einhält.</li>
+<li><strong>Praxis</strong>: Führen Sie <code>cargo check</code> alle paar Minuten oder direkt nach dem Speichern einer Datei aus.</li>
 </ul>
-<h3 id="2-vs-code-öffnen-0016---0030"><a class="header" href="#2-vs-code-öffnen-0016---0030">2. VS Code öffnen (00:16 - 00:30)</a></h3>
+<h4 id="2-cargo-build"><a class="header" href="#2-cargo-build">2. <code>cargo build</code></a></h4>
+<p>Dieser Befehl kompiliert Ihr Projekt und alle seine Abhängigkeiten vollständig. Wenn Sie keinen weiteren Parameter übergeben, baut Cargo das Projekt im <strong>Debug-Modus</strong> (siehe Abschnitt 4.3.2).
+Die fertigen Kompilate und die ausführbare Datei landen im Verzeichnis <code>target/debug/</code>.
+Der Name des ausführbaren Programms entspricht dem in der <code>Cargo.toml</code> definierten Paketnamen.</p>
+<h4 id="3-cargo-run"><a class="header" href="#3-cargo-run">3. <code>cargo run</code></a></h4>
+<p>Ein Komfort-Befehl. Er prüft, ob sich seit dem letzten Build Quellcodedateien geändert haben. Wenn ja, führt er implizit ein <code>cargo build</code> aus. Danach startet er die generierte ausführbare Binärdatei direkt und leitet deren Standard-Eingabe und -Ausgabe (<code>stdin</code>, <code>stdout</code>, <code>stderr</code>) in Ihr Terminal um.</p>
 <ul>
-<li><strong>Visueller Inhalt:</strong> Der Benutzer wechselt mit <code>cd hallowelt</code> (implizit) bzw. öffnet das neu erstellte Verzeichnis direkt im Editor Visual Studio Code über den Befehl <code>code hallowelt</code>.</li>
-<li><strong>Sprechertext (Start: 00:16.5):</strong>
-<blockquote>
-<p><em>“Um den Quellcode zu bearbeiten, öffnen wir das Verzeichnis anschließend in Visual Studio Code mit dem Befehl code hallowelt.”</em></p>
-</blockquote>
-</li>
+<li><strong>Übergabe von Argumenten</strong>: Wenn Sie Argumente an Ihr eigenes Programm (nicht an Cargo) übergeben möchten, müssen Sie diese nach einem doppelten Bindestrich <code>--</code> anhängen:
+<code>cargo run -- --hilfe-ausgeben --pfad /daten</code></li>
 </ul>
-<h3 id="3-projektstruktur-erkunden-0030---0046"><a class="header" href="#3-projektstruktur-erkunden-0030---0046">3. Projektstruktur erkunden (00:30 - 00:46)</a></h3>
+<h4 id="4-cargo-clean"><a class="header" href="#4-cargo-clean">4. <code>cargo clean</code></a></h4>
+<p>Dieser Befehl löscht das komplette Verzeichnis <code>target/</code> von Ihrer Festplatte. Er ist nützlich, um Speicherplatz freizugeben (da sich dort im Laufe der Zeit Gigabytes an Zwischenstufen ansammeln können) oder um eine saubere, vollständige Neukompilierung des gesamten Projekts von Grund auf zu erzwingen, falls sich Systembibliotheken geändert haben.</p>
+<hr>
+<h3 id="432-build-profile"><a class="header" href="#432-build-profile">4.3.2 Build-Profile</a></h3>
+<p>Rust bietet Ihnen die Möglichkeit, die Übersetzung Ihres Codes exakt auf den Verwendungszweck abzustimmen. Standardmäßig sind zwei Profile vordefiniert:</p>
+<h4 id="1-das-debug-profil-entwicklungsmodus"><a class="header" href="#1-das-debug-profil-entwicklungsmodus">1. Das Debug-Profil (Entwicklungsmodus)</a></h4>
+<p>Wird aufgerufen durch einfaches <code>cargo build</code> oder <code>cargo run</code>.</p>
 <ul>
-<li><strong>Visueller Inhalt:</strong> Visual Studio Code öffnet sich. Der Explorer auf der linken Seite wird sichtbar. Er zeigt die Struktur des frisch generierten Rust-Projekts: Die Konfigurationsdatei <code>Cargo.toml</code> sowie den Quellcode-Ordner <code>src/</code>.</li>
-<li><strong>Sprechertext (Start: 00:30):</strong>
-<blockquote>
-<p><em>“Visual Studio Code öffnet sich nun. Auf der linken Seite im Explorer sehen wir die Struktur unseres Rust-Projekts. Neben der Konfigurationsdatei Cargo.toml finden wir den Quellcode-Ordner src, in dem sich unsere Programme befinden.”</em></p>
-</blockquote>
-</li>
+<li><strong>Compiler-Optimierung</strong>: Keine Optimierung (<code>opt-level = 0</code>). Der Compiler übersetzt den Rust-Code eins zu eins in Maschinencode. Das geht extrem schnell, führt aber zu langsamem und großem Maschinencode.</li>
+<li><strong>Debug-Symbole</strong>: Vollständig vorhanden. Der Maschinencode enthält Verweise auf den ursprünglichen Quelltext (Dateinamen, Zeilennummern, Variablennamen). Wenn das Programm abstürzt, erhalten Sie einen detaillierten Stack-Trace (Aufrufpfad).</li>
+<li><strong>Integer-Überläufe</strong>: Führen zur Compile- oder Laufzeit zu einer kontrollierten Panik (<code>panic!</code>). Das verhindert unbemerktes Fehlverhalten im mathematischen Bereich.</li>
 </ul>
-<h3 id="4-quellcode-editieren-0046---0107"><a class="header" href="#4-quellcode-editieren-0046---0107">4. Quellcode editieren (00:46 - 01:07)</a></h3>
+<h4 id="2-das-release-profil-produktionsmodus"><a class="header" href="#2-das-release-profil-produktionsmodus">2. Das Release-Profil (Produktionsmodus)</a></h4>
+<p>Wird aufgerufen durch <code>cargo build --release</code> oder <code>cargo run --release</code>.</p>
 <ul>
-<li><strong>Visueller Inhalt:</strong> Der Benutzer klickt auf <code>src/main.rs</code>. Der Editor zeigt das standardmäßig generierte <code>Hello, world!</code>-Programm in englischer Sprache. Der Text <code>"Hello, world!"</code> wird in <code>"Hallo Welt"</code> geändert. Die Datei wird gespeichert.</li>
-<li><strong>Sprechertext (Start: 00:46):</strong>
-<blockquote>
-<p><em>“Wir öffnen die Quellcodedatei main.rs im src-Ordner. Standardmäßig hat Cargo hier bereits ein einfaches Hallo-Welt-Programm in englischer Sprache generiert. Wir ändern den Text in Hallo Welt ab, um unser Programm zu personalisieren, und speichern die Datei.”</em></p>
-</blockquote>
-</li>
+<li><strong>Compiler-Optimierung</strong>: Maximale Optimierung (<code>opt-level = 3</code>). Der Compiler analysiert den Code global über das LLVM-Backend. Er führt komplexe mathematische Optimierungen durch:
+<ul>
+<li><strong>Inlining</strong>: Kleine Funktionen werden direkt an den Aufrufort kopiert, um den Overhead des Stack-Frame-Aufbaus zu eliminieren.</li>
+<li><strong>Dead Code Elimination</strong>: Code, der niemals ausgeführt werden kann, wird physisch aus dem Binary gelöscht.</li>
+<li><strong>Loop Unrolling</strong>: Schleifen werden flach geklopft, um Sprungbefehle auf CPU-Ebene zu minimieren.</li>
 </ul>
-<h3 id="5-kompilieren-und-ausführen-0107---0122"><a class="header" href="#5-kompilieren-und-ausführen-0107---0122">5. Kompilieren und Ausführen (01:07 - 01:22)</a></h3>
-<ul>
-<li><strong>Visueller Inhalt:</strong> Der Benutzer bewegt den Cursor auf den <code>Run</code>-Button (den Code Lens-Link direkt über der Funktion <code>fn main()</code>). Ein Terminal öffnet sich am unteren Fensterrand von VS Code, und der Build-Prozess wird gestartet.</li>
-<li><strong>Sprechertext (Start: 01:07):</strong>
-<blockquote>
-<p><em>“Um das Programm auszuführen, klicken wir auf die kleine Run-Schaltfläche direkt über der Hauptfunktion. Visual Studio Code öffnet daraufhin am unteren Bildschirmrand ein Terminal und startet den Compiler.”</em></p>
-</blockquote>
 </li>
+<li><strong>Debug-Symbole</strong>: Werden standardmäßig komplett entfernt. Das verringert die Dateigröße des Programms massiv.</li>
+<li><strong>Integer-Überläufe</strong>: Lösen <strong>keine</strong> Panik aus. Stattdessen kommt es zu einem lautlosen Überlauf nach den Regeln der modularen Arithmetik (Zweierkomplement-Wrapping, z. B. <code>255u8 + 1u8 == 0u8</code>). Dies spart CPU-Zyklen.</li>
 </ul>
-<h3 id="6-outro--ausblick-auf-kapitel-5-0122---014338"><a class="header" href="#6-outro--ausblick-auf-kapitel-5-0122---014338">6. Outro &amp; Ausblick auf Kapitel 5 (01:22 - 01:43.38)</a></h3>
-<ul>
-<li><strong>Visueller Inhalt:</strong> Das Terminal zeigt die Ausgabe des Compilers und schließlich das Ergebnis: <code>Hallo Welt</code>. Die Lektion wird beendet.</li>
-<li><strong>Sprechertext (Start: 01:22):</strong>
-<blockquote>
-<p><em>“Der Compiler übersetzt unseren Code in kürzester Zeit und führt das Programm aus. Im Terminal sehen wir die Ausgabe Hallo Welt. Herzlichen Glückwunsch, du hast dein erstes Rust-Programm erfolgreich gestartet! Im nächsten Kapitel beschäftigen wir uns mit Variablen.”</em></p>
+<h4 id="vergleich-auf-systemebene"><a class="header" href="#vergleich-auf-systemebene">Vergleich auf Systemebene</a></h4>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th style="text-align: left">Eigenschaft</th><th style="text-align: left">Debug-Profil (<code>cargo build</code>)</th><th style="text-align: left">Release-Profil (<code>cargo build --release</code>)</th></tr>
+</thead>
+<tbody>
+<tr><td style="text-align: left"><strong>Optimierungsstufe</strong></td><td style="text-align: left"><code>opt-level = 0</code> (Keine)</td><td style="text-align: left"><code>opt-level = 3</code> (Maximal)</td></tr>
+<tr><td style="text-align: left"><strong>Kompilierungszeit</strong></td><td style="text-align: left">Sehr kurz</td><td style="text-align: left">Deutlich länger (wegen Optimierungsschleifen)</td></tr>
+<tr><td style="text-align: left"><strong>Ausführungsgeschwindigkeit</strong></td><td style="text-align: left">Normal bis langsam</td><td style="text-align: left">Extrem schnell (Faktor 10 bis 100 schneller)</td></tr>
+<tr><td style="text-align: left"><strong>Binary-Größe</strong></td><td style="text-align: left">Sehr groß (enthält Debug-Metadaten)</td><td style="text-align: left">Sehr klein (optimiert und gestrippt)</td></tr>
+<tr><td style="text-align: left"><strong>Integer-Overflow</strong></td><td style="text-align: left">Absturz (<code>panic!</code>)</td><td style="text-align: left">Wrapping (Zweierkomplement-Verhalten)</td></tr>
+<tr><td style="text-align: left"><strong>Zielordner</strong></td><td style="text-align: left"><code>target/debug/</code></td><td style="text-align: left"><code>target/release/</code></td></tr>
+</tbody>
+</table>
+</div>
+<blockquote class="blockquote-tag blockquote-tag-warning">
+<p class="blockquote-tag-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M6.457 1.047c.659-1.234 2.427-1.234 3.086 0l6.082 11.378A1.75 1.75 0 0 1 14.082 15H1.918a1.75 1.75 0 0 1-1.543-2.575Zm1.763.707a.25.25 0 0 0-.44 0L1.698 13.132a.25.25 0 0 0 .22.368h12.164a.25.25 0 0 0 .22-.368Zm.53 3.996v2.5a.75.75 0 0 1-1.5 0v-2.5a.75.75 0 0 1 1.5 0ZM9 11a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"></path></svg>Warning</p>
+<p>Führen Sie niemals Performance-Messungen (Benchmarks) an einem Programm aus, das im Debug-Modus kompiliert wurde. Die Ergebnisse sind absolut nicht repräsentativ. Nutzen Sie für jegliche Laufzeitanalyse ausnahmslos das <code>--release</code>-Flag.</p>
 </blockquote>
-</li>
+<h4 id="anpassung-von-profilen-in-der-cargotoml"><a class="header" href="#anpassung-von-profilen-in-der-cargotoml">Anpassung von Profilen in der <code>Cargo.toml</code></a></h4>
+<p>Sie können das Verhalten der Profile an Ihre Bedürfnisse anpassen. Fügen Sie dazu einfach entsprechende Sektionen in Ihr Manifest ein:</p>
+<pre><code class="language-toml"># Optimierungen auch im Debug-Modus leicht aktivieren (beschleunigt Tests)
+[profile.dev]
+opt-level = 1
+
+# Im Release-Modus Debug-Symbole für Profiling-Tools behalten
+[profile.release]
+debug = true
+opt-level = 3
+</code></pre>
+<hr>
+<h2 id="44-didaktisches-11-schritte-zusatzmaterial"><a class="header" href="#44-didaktisches-11-schritte-zusatzmaterial">4.4 Didaktisches 11-Schritte-Zusatzmaterial</a></h2>
+<p>Um dem 11-Schritte-Schema aus markdown.md (file:///home/thorsten/RustKurs/markdown.md) gerecht zu werden, vertiefen wir nun die Konzepte durch didaktisch aufbereitete Abschnitte zur Motivation, zur Fehleranatomie bei manueller Übersetzung und bieten ein praxisnahes Tutorial, mentale Modelle und strukturierte Übungen.</p>
+<h3 id="441-das-problem--die-motivation-vertiefung"><a class="header" href="#441-das-problem--die-motivation-vertiefung">4.4.1 Das Problem &amp; Die Motivation (Vertiefung)</a></h3>
+<p>In der traditionellen Systemprogrammierung (z.B. C/C++) ist das Linker- und Dependency-Management dezentralisiert. Jedes Betriebssystem besitzt eigene Verzeichnisse für Systembibliotheken (z. B. <code>/usr/lib</code> unter Linux oder Systemordner unter Windows). Das Fehlen eines standardisierten Paketmanagers führt dazu, dass Entwickler oft Stunden damit verbringen, Makefiles zu schreiben, statische Links zu konfigurieren oder Compilerpfade zu biegen.</p>
+<p>Rust beseitigt diesen Aufwand fundamental. Cargo standardisiert das Build-System und die Paketverwaltung so eng, dass ein einziger Befehl genügt, um ein komplexes Projekt mit Hunderten von Modulen auf jedem Betriebssystem identisch zu kompilieren.</p>
+<h3 id="442-der-naive-versuch-manuelles-kompilieren-ohne-cargo"><a class="header" href="#442-der-naive-versuch-manuelles-kompilieren-ohne-cargo">4.4.2 Der naive Versuch (Manuelles Kompilieren ohne Cargo)</a></h3>
+<p>Stellen wir uns vor, wir möchten ein einfaches Projekt mit einer externen Bibliothek manuell mit dem nackten Compiler <code>rustc</code> übersetzen. Unser Programm soll Text mithilfe der Bibliothek <code>ferris-says</code> formatiert ausgeben.</p>
+<p>Wir schreiben folgende Quellcodedatei namens <code>main.rs</code>:</p>
+<pre class="playground"><code class="language-rust edition2021">// Datei: main.rs
+fn main() {
+    let botschaft = "Hallo Welt!";
+    let breite = botschaft.chars().count();
+    let mut stdout = std::io::stdout();
+    
+    // Versuch, die externe Bibliothek ferris-says aufzurufen
+    ferris_says::say(botschaft.as_bytes(), breite, &amp;mut stdout).unwrap();
+}</code></pre>
+<p>Wir versuchen nun im Terminal, diese Datei direkt mit dem Compiler zu übersetzen:</p>
+<pre><code class="language-bash">rustc main.rs
+</code></pre>
+<h3 id="443-die-anatomie-des-fehlers-compiler-fehler-und-speicherdiagramm-beschreibung"><a class="header" href="#443-die-anatomie-des-fehlers-compiler-fehler-und-speicherdiagramm-beschreibung">4.4.3 Die Anatomie des Fehlers (Compiler-Fehler und Speicherdiagramm-Beschreibung)</a></h3>
+<p>Der Compiler bricht die Ausführung sofort mit folgendem Fehler ab:</p>
+<pre><code class="language-text">error[E0433]: failed to resolve: use of undeclared crate or module `ferris_says`
+ --&gt; main.rs:7:5
+  |
+7 |     ferris_says::say(botschaft.as_bytes(), breite, &amp;mut stdout).unwrap();
+  |     ^^^^^^^^^^^ use of undeclared crate or module `ferris_says`
+</code></pre>
+<h4 id="die-analyse"><a class="header" href="#die-analyse">Die Analyse</a></h4>
+<ul>
+<li><strong>Ursache</strong>: Der Compiler <code>rustc</code> arbeitet im luftleeren Raum des Dateisystems. Er hat keinen Bezug zu einer Online-Registrierung oder einem Paketordner.</li>
+<li><strong>Speicher- und Dateisystemverhalten</strong>: <code>rustc</code> versucht, den Bezeichner <code>ferris_says</code> in den Modulpfaden des aktuellen Projekts oder in der Standardbibliothek zu finden. Da keine Referenz auf eine <code>.rlib</code>-Datei (Rusts statische Bibliothek) über das Kommandozeilenflag <code>--extern</code> übergeben wurde, kann das Symbol nicht aufgelöst werden. Der Build-Prozess scheitert, bevor überhaupt Maschinencode generiert werden kann.</li>
 </ul>
 <hr>
-<h2 id="-wie-die-tonspur-bereinigt-wurde"><a class="header" href="#-wie-die-tonspur-bereinigt-wurde">🛠️ Wie die Tonspur bereinigt wurde</a></h2>
+<h3 id="444-die-lösung-eva-prinzip"><a class="header" href="#444-die-lösung-eva-prinzip">4.4.4 Die Lösung (EVA-Prinzip)</a></h3>
+<p>Die Lösung besteht darin, das Projekt über Cargo zu verwalten und die Abhängigkeit in der <code>Cargo.toml</code> zu registrieren.</p>
+<h4 id="das-eva-prinzip-des-cargo-build-prozesses"><a class="header" href="#das-eva-prinzip-des-cargo-build-prozesses">Das EVA-Prinzip des Cargo-Build-Prozesses:</a></h4>
 <ol>
-<li><strong>Sprachspur-Generierung:</strong> Mithilfe des Python-Skripts <a href="file:///home/thorsten/RustKurs/generate_audio_ch4.py">generate_audio_ch4.py</a> wurde über das deutsche TTS-Modell <code>Kokoro</code> (Stimme “Martin”) ein rauschfreier, hochqualitativer Begleittext erzeugt.</li>
-<li><strong>Timing-Synchronisation:</strong> Die einzelnen Sprachblöcke wurden präzise auf die visuellen Ereignisse im Video abgestimmt (siehe Startzeitstempel in <code>generate_audio_ch4.py</code>).</li>
-<li><strong>Mischen mit dem Video:</strong> Per <code>ffmpeg</code> wurde die verrauschte Original-Tonspur entfernt und die neu generierte Audiodatei (<code>audio/ch4_voiceover.wav</code>) lippensynchron und rauschfrei mit dem Video gemountet:
-<pre><code class="language-bash">ffmpeg -y -i Video/4.mp4 -i audio/ch4_voiceover.wav -map 0:v -map 1:a -c:v copy -c:a aac -shortest 4.mp4
+<li><strong>Eingabe (Input)</strong>: Die Quelldateien (<code>src/main.rs</code>), das Manifest (<code>Cargo.toml</code>) und optional die Sperrdatei (<code>Cargo.lock</code>).</li>
+<li><strong>Verarbeitung (Processing)</strong>: Cargo liest das Manifest, prüft die Versionen, lädt die fehlenden Crates herunter, speichert sie im globalen Cache, ruft <code>rustc</code> für jedes Crate in der korrekten Reihenfolge auf und verlinkt die entstehenden Zwischenkompilate statisch miteinander.</li>
+<li><strong>Ausgabe (Output)</strong>: Ein lauffähiges, statisch gelinktes Binary im Zielordner (<code>target/debug/</code> oder <code>target/release/</code>) und eine aktualisierte <code>Cargo.lock</code>-Sperrdatei.</li>
+</ol>
+<hr>
+<h3 id="445-kleines-tutorial-schritt-für-schritt-praxis"><a class="header" href="#445-kleines-tutorial-schritt-für-schritt-praxis">4.4.5 Kleines Tutorial (Schritt-für-Schritt-Praxis)</a></h3>
+<p>Wir erstellen nun Schritt für Schritt ein echtes Projekt namens <code>text_schmiede</code> unter Verwendung von Cargo.</p>
+<h4 id="schritt-1-projekt-anlegen"><a class="header" href="#schritt-1-projekt-anlegen">Schritt 1: Projekt anlegen</a></h4>
+<p>Erstellen Sie das Projekt in Ihrem Terminal:</p>
+<pre><code class="language-bash">cargo new text_schmiede --bin
+cd text_schmiede
+</code></pre>
+<h4 id="schritt-2-abhängigkeit-deklarieren"><a class="header" href="#schritt-2-abhängigkeit-deklarieren">Schritt 2: Abhängigkeit deklarieren</a></h4>
+<p>Öffnen Sie <code>Cargo.toml</code> und fügen Sie das Crate <code>ferris-says</code> hinzu:</p>
+<pre><code class="language-toml">[package]
+name = "text_schmiede"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+ferris-says = "0.3.1"
+</code></pre>
+<h4 id="schritt-3-quellcode-implementieren"><a class="header" href="#schritt-3-quellcode-implementieren">Schritt 3: Quellcode implementieren</a></h4>
+<p>Ersetzen Sie den Inhalt von <code>src/main.rs</code> durch ein interaktives Programm, das die Standardeingabe liest und formatiert ausgibt:</p>
+<pre class="playground"><code class="language-rust edition2021">// Datei: src/main.rs
+use ferris_says::say;
+use std::io::{stdin, stdout, BufWriter, Write};
+
+fn main() {
+    print!("Geben Sie Text für Ferris ein: ");
+    stdout().flush().unwrap();
+
+    let mut eingabe = String::new();
+    stdin().read_line(&amp;mut eingabe).expect("Fehler beim Lesen");
+    
+    let text = eingabe.trim();
+    let breite = text.chars().count();
+    
+    let ausgabe = stdout();
+    let mut schreiber = BufWriter::new(ausgabe.lock());
+    
+    say(text.as_bytes(), breite, &amp;mut schreiber).unwrap();
+    schreiber.flush().unwrap();
+}</code></pre>
+<h4 id="schritt-4-ausführen"><a class="header" href="#schritt-4-ausführen">Schritt 4: Ausführen</a></h4>
+<p>Starten Sie das Programm mit:</p>
+<pre><code class="language-bash">cargo run
+</code></pre>
+<p>Geben Sie einen Text ein (z.B. <code>Hallo Cargo!</code>) und beobachten Sie die Ausgabe von Ferris dem Krebs.</p>
+<hr>
+<h3 id="446-mentale-modelle--deep-dive-hintergrundwissen"><a class="header" href="#446-mentale-modelle--deep-dive-hintergrundwissen">4.4.6 Mentale Modelle &amp; Deep Dive (Hintergrundwissen)</a></h3>
+<h4 id="visualisierung-des-abhängigkeits-resolution-prozesses"><a class="header" href="#visualisierung-des-abhängigkeits-resolution-prozesses">Visualisierung des Abhängigkeits-Resolution-Prozesses</a></h4>
+<p>Wenn Cargo die <code>Cargo.toml</code> parst, baut es im RAM einen gerichteten kreisfreien Graphen (DAG) auf, um zyklische Abhängigkeiten auszuschließen:</p>
+<pre class="mermaid">graph TD
+    A[Mein Projekt] --&gt; B[ferris-says 0.3.1]
+    B --&gt; C[unicode-width 0.1.10]
+    B --&gt; D[smallvec 1.10.0]
+</pre>
+
+<h4 id="deep-dive-die-llvm-optimierungskette"><a class="header" href="#deep-dive-die-llvm-optimierungskette">Deep Dive: Die LLVM-Optimierungskette</a></h4>
+<p>Bei einem Release-Build (<code>cargo build --release</code>) übergibt <code>rustc</code> den generierten Zwischencode (LLVM-IR) an das LLVM-Compiler-Backend. LLVM führt hunderte von Optimierungsdurchläufen aus:</p>
+<ul>
+<li><strong>Inlining</strong>: Die Funktion <code>kreis_flaeche(r)</code> wird direkt durch den Term <code>r * r * 3.1415...</code> ersetzt. Dadurch entfällt der CPU-Register-Speicher-Wechsel (Funktionsaufruf-Overhead).</li>
+<li><strong>Loop Unrolling</strong>: Eine Schleife, die 3 Mal läuft, wird vom Compiler in 3 aufeinanderfolgende Codeblöcke kopiert. Das verhindert Sprungvorhersage-Fehler auf der CPU-Pipeline.</li>
+</ul>
+<hr>
+<h3 id="447-drei-praktische-übungen-herausforderungen"><a class="header" href="#447-drei-praktische-übungen-herausforderungen">4.4.7 Drei praktische Übungen (Herausforderungen)</a></h3>
+<h4 id="übung-1-leicht---syntax-festigen"><a class="header" href="#übung-1-leicht---syntax-festigen">Übung 1 (Leicht - Syntax festigen)</a></h4>
+<ul>
+<li><strong>Aufgabe</strong>: Initialisieren Sie ein neues Bibliotheksprojekt namens <code>rechner_kern</code> mit <code>cargo new rechner_kern --lib</code>.</li>
+<li><strong>Anforderung</strong>: Implementieren Sie eine mathematische Additionsfunktion in <code>src/lib.rs</code> und dokumentieren Sie diese. Führen Sie <code>cargo check</code> aus.</li>
+<li><strong>Lösungshinweis</strong>: <code>pub fn addiere(x: i32, y: i32) -&gt; i32 { x + y }</code> in <code>src/lib.rs</code> einfügen.</li>
+</ul>
+<h4 id="übung-2-mittel---profile-konfigurieren"><a class="header" href="#übung-2-mittel---profile-konfigurieren">Übung 2 (Mittel - Profile konfigurieren)</a></h4>
+<ul>
+<li><strong>Aufgabe</strong>: Fügen Sie Ihrem Projekt <code>text_schmiede</code> ein benutzerdefiniertes Profil hinzu. Im Standard-Entwicklungsprofil soll das Optimierungslevel auf <code>1</code> gesetzt werden, um die Performance bei lokalen Tests zu erhöhen.</li>
+<li><strong>Anforderung</strong>: Passen Sie die <code>Cargo.toml</code> an.</li>
+<li><strong>Lösungshinweis</strong>:
+<pre><code class="language-toml">[profile.dev]
+opt-level = 1
 </code></pre>
 </li>
+</ul>
+<h4 id="übung-3-schwer---dependency-hell-auflösen"><a class="header" href="#übung-3-schwer---dependency-hell-auflösen">Übung 3 (Schwer - Dependency Hell auflösen)</a></h4>
+<ul>
+<li><strong>Aufgabe</strong>: Simulieren Sie die Einbindung zweier inkompatibler Versionen eines Hilfs-Crates in einem komplexeren Projekt und lösen Sie den Konflikt auf, indem Sie ein Crate über das Feld <code>[patch.crates-io]</code> auf eine lokale, modifizierte Kopie umleiten.</li>
+<li><strong>Anforderung</strong>: Erstellen Sie eine minimale lokale Modifikation und verlinken Sie diese über die Sektion <code>[patch]</code>.</li>
+<li><strong>Lösungshinweis</strong>: Die Syntax lautet:
+<pre><code class="language-toml">[patch.crates-io]
+externe-bibliothek = { path = "./lokale_kopie" }
+</code></pre>
+</li>
+</ul>
+<hr>
+<h3 id="448-lernstrategie-selbsteinschätzung--merkzettel"><a class="header" href="#448-lernstrategie-selbsteinschätzung--merkzettel">4.4.8 Lernstrategie, Selbsteinschätzung &amp; Merkzettel</a></h3>
+<h4 id="spickzettel-cheat-sheet"><a class="header" href="#spickzettel-cheat-sheet">Spickzettel (Cheat Sheet)</a></h4>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th style="text-align: left">Befehl</th><th style="text-align: left">Aktion</th><th style="text-align: left">Detail</th></tr>
+</thead>
+<tbody>
+<tr><td style="text-align: left"><code>cargo new &lt;name&gt; --bin</code></td><td style="text-align: left">Neues ausführbares Projekt</td><td style="text-align: left">Erstellt <code>main.rs</code></td></tr>
+<tr><td style="text-align: left"><code>cargo new &lt;name&gt; --lib</code></td><td style="text-align: left">Neues Bibliotheksprojekt</td><td style="text-align: left">Erstellt <code>lib.rs</code></td></tr>
+<tr><td style="text-align: left"><code>cargo check</code></td><td style="text-align: left">Nur Syntax- und Typprüfung</td><td style="text-align: left">Extrem schnell</td></tr>
+<tr><td style="text-align: left"><code>cargo build --release</code></td><td style="text-align: left">Optimierter Build</td><td style="text-align: left">Code-Optimierung Stufe 3</td></tr>
+</tbody>
+</table>
+</div>
+<h4 id="active-recall"><a class="header" href="#active-recall">Active Recall</a></h4>
+<ol>
+<li><strong>Frage</strong>: Was passiert auf Systemebene, wenn <code>Cargo.lock</code> gelöscht wird?
+<ul>
+<li><em>Antwort</em>: Cargo ermittelt beim nächsten Build alle Abhängigkeitsversionen komplett neu anhand der <code>Cargo.toml</code> und lädt potenziell neuere Minor- oder Patch-Versionen herunter.</li>
+</ul>
+</li>
+<li><strong>Frage</strong>: Warum ist <code>cargo run</code> im Debug-Modus ungeeignet für Benchmarks?
+<ul>
+<li><em>Antwort</em>: Weil der Maschinencode ohne jegliche Compiler-Optimierungen generiert wird.</li>
+</ul>
+</li>
+<li><strong>Frage</strong>: Welche Rolle hat der <code>target/</code>-Ordner im Kontext von Git?
+<ul>
+<li><em>Antwort</em>: Er enthält flüchtige Kompilate und darf niemals in Git eingecheckt werden (daher standardmäßig in <code>.gitignore</code>).</li>
+</ul>
+</li>
 </ol>
+<h4 id="feynman-methode"><a class="header" href="#feynman-methode">Feynman-Methode</a></h4>
+<p>Erklären Sie in maximal 3 Sätzen die Rolle von <code>Cargo.toml</code> im Vergleich zu <code>Cargo.lock</code>:</p>
+<blockquote>
+<p><em>“Die <code>Cargo.toml</code> enthält die Bauanleitung und die groben Anforderungen, die ich als Programmierer stelle. Die <code>Cargo.lock</code> ist das exakte Zustandsprotokoll, das dokumentiert, welche präzisen Versionen Cargo beim letzten Build tatsächlich heruntergeladen hat. Dadurch wird garantiert, dass das Programm überall exakt gleich kompiliert wird.”</em></p>
+</blockquote>
+<h4 id="gezielte-fehlerprovokation"><a class="header" href="#gezielte-fehlerprovokation">Gezielte Fehlerprovokation</a></h4>
+<p>Entfernen Sie eine eckige Klammer in der Sektion <code>[dependencies</code> in <code>Cargo.toml</code> und starten Sie <code>cargo check</code>. Der TOML-Parser wird mit einer präzisen Angabe der fehlerhaften Zeilennummer abbrechen.</p>
+<h4 id="metakognitiver-selbsttest"><a class="header" href="#metakognitiver-selbsttest">Metakognitiver Selbsttest</a></h4>
+<p>Wechseln Sie erst zu Kapitel 5, wenn Sie:</p>
+<ul>
+<li><input disabled="" type="checkbox"> Den Unterschied zwischen <code>Cargo.toml</code> und <code>Cargo.lock</code> sicher erklären können.</li>
+<li><input disabled="" type="checkbox"> Wissen, wo Cargo die heruntergeladenen Abhängigkeiten speichert.</li>
+<li><input disabled="" type="checkbox"> Den Vorteil von <code>cargo check</code> gegenüber <code>cargo build</code> verstanden haben.</li>
+</ul>
+<hr>
+<h3 id="449-zusammenfassung"><a class="header" href="#449-zusammenfassung">4.4.9 Zusammenfassung</a></h3>
+<ul>
+<li><strong>Cargo</strong> ist das zentrale Build-System und der Paketmanager von Rust.</li>
+<li><strong>Initialisierung</strong>: Mit <code>cargo new</code> werden standardisierte Projektstrukturen inklusive Git-Anbindung erzeugt.</li>
+<li><strong>Projektkonfiguration</strong>: <code>Cargo.toml</code> deklariert Wünsche und Paket-Metadaten. <code>Cargo.lock</code> friert den exakten Abhängigkeitsbaum für reproduzierbare Builds ein.</li>
+<li><strong>Workflow</strong>: <code>cargo check</code> ist das primäre Werkzeug zur schnellen Code-Prüfung. <code>cargo run</code> führt das Programm aus.</li>
+<li><strong>Build-Profile</strong>: Das Debug-Profil (<code>cargo build</code>) optimiert nicht und behält Debug-Symbole; das Release-Profil (<code>cargo build --release</code>) bietet maximale Performance auf Maschinenebene.</li>
+</ul>
+<hr>
+<h3 id="4410-api-referenz-cargo-befehle-manifest-schlüssel--stdenv"><a class="header" href="#4410-api-referenz-cargo-befehle-manifest-schlüssel--stdenv">4.4.10 API-Referenz (Cargo-Befehle, Manifest-Schlüssel &amp; std::env)</a></h3>
+<p>Hier werden wichtige systembezogene APIs dokumentiert, die in Cargo-Projekten Anwendung finden.</p>
+<h4 id="1-stdenvvar"><a class="header" href="#1-stdenvvar">1. <code>std::env::var</code></a></h4>
+<ul>
+<li><strong>Signatur</strong>: <code>pub fn var&lt;K: AsRef&lt;OsStr&gt;&gt;(key: K) -&gt; Result&lt;String, VarError&gt;</code></li>
+<li><strong>Parameter</strong>: <code>key</code> (Typ <code>K</code>, Name der Umgebungsvariable).</li>
+<li><strong>Rückgabetyp</strong>: <code>Result&lt;String, VarError&gt;</code></li>
+<li><strong>Panics</strong>: Keine.</li>
+<li><strong>Kurzbeispiel</strong>:
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let manifest_pfad = std::env::var("CARGO_MANIFEST_DIR").unwrap();
+<span class="boring">}</span></code></pre>
+</li>
+</ul>
+<h4 id="2-stdenvargs"><a class="header" href="#2-stdenvargs">2. <code>std::env::args</code></a></h4>
+<ul>
+<li><strong>Signatur</strong>: <code>pub fn args() -&gt; Args</code></li>
+<li><strong>Parameter</strong>: Keine.</li>
+<li><strong>Rückgabetyp</strong>: <code>Args</code> (Iterator über String-Argumente).</li>
+<li><strong>Panics</strong>: Panikt bei ungültigem Unicode in den Argumenten.</li>
+<li><strong>Kurzbeispiel</strong>:
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let argumente: Vec&lt;String&gt; = std::env::args().collect();
+<span class="boring">}</span></code></pre>
+</li>
+</ul>
+<h4 id="3-stdenvcurrent_dir"><a class="header" href="#3-stdenvcurrent_dir">3. <code>std::env::current_dir</code></a></h4>
+<ul>
+<li><strong>Signatur</strong>: <code>pub fn current_dir() -&gt; Result&lt;PathBuf, Error&gt;</code></li>
+<li><strong>Parameter</strong>: Keine.</li>
+<li><strong>Rückgabetyp</strong>: <code>Result&lt;PathBuf, std::io::Error&gt;</code></li>
+<li><strong>Panics</strong>: Keine.</li>
+<li><strong>Kurzbeispiel</strong>:
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let aktueller_ordner = std::env::current_dir().unwrap();
+<span class="boring">}</span></code></pre>
+</li>
+</ul>
+<hr>
+<p><strong>Lizenz- und Attributionshinweis</strong>:
+Teile dieses Kapitels basieren auf Übersetzungen und didaktischen Anpassungen des offiziellen Buches <a href="https://doc.rust-lang.org/book/">The Rust Programming Language</a> von Steve Klabnik und Carol Nichols (sowie Beiträgen der Rust-Community), lizenziert unter <a href="https://opensource.org/licenses/MIT">MIT</a> und <a href="https://www.apache.org/licenses/LICENSE-2.0">Apache 2.0</a>.</p>
 
                     </main>
 

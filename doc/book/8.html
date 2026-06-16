@@ -35,7 +35,7 @@
             const path_to_root = "";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "searchindex-a9440cc5.js";
+            window.path_to_searchindex_js = "searchindex-76719c3e.js";
         </script>
         <!-- Start loading toc.js asap -->
         <script src="toc-dedbbe6e.js"></script>
@@ -174,118 +174,977 @@
 
                 <div id="mdbook-content" class="content">
                     <main>
-                        <h2 id="datentypen-skalare-vs-zusammengesetzte-datentypen"><a class="header" href="#datentypen-skalare-vs-zusammengesetzte-datentypen">Datentypen: Skalare vs. zusammengesetzte Datentypen</a></h2>
-<p>Wir haben bereits skalare Datentypen besprochen.
-Jetzt besprechen wir zusammengesetzte (oder strukturierte) Datentypen.
-In Rust gibt es zwei zusammengesetzte Datentypen: Arrays und Tupel. (Dynamische Datentypen werden später besprochen.)</p>
-<h2 id="was-ist-ein-array"><a class="header" href="#was-ist-ein-array">Was ist ein Array?</a></h2>
-<p>Ein Array kannst du dir wie eine Schachtel mit festen Fächern vorstellen. Es hat drei wichtige Eigenschaften:</p>
+                        <h1 id="kapitel-8-arrays--tupel"><a class="header" href="#kapitel-8-arrays--tupel">Kapitel 8: Arrays &amp; Tupel</a></h1>
+<p>Arrays und Tupel stellen die beiden fundamentalen, in die Sprache integrierten zusammengesetzten Datentypen in Rust dar. Sie ermöglichen es Ihnen, mehrere Werte zu einer logischen Einheit zusammenzufassen. Während Arrays homogene Datenstrukturen fester Größe beschreiben, dienen Tupel als heterogene, flexible Container für Daten unterschiedlicher Typen. Dieses Kapitel führt Sie von den elementaren Grundlagen über das physische Speicherlayout bis hin zu fortgeschrittenen Compiler-Optimierungen und Systemaspekten.</p>
+<p>Die didaktischen und strukturellen Vorgaben für dieses Kapitel wurden gemäß den Richtlinien in <a href="file:///home/thorsten/RustKurs/markdown.md">markdown.md</a> und <a href="file:///home/thorsten/RustKurs/AGENTS.md">AGENTS.md</a> umgesetzt.</p>
+<hr>
+<h2 id="1-lernziele--lernplan"><a class="header" href="#1-lernziele--lernplan">1. Lernziele &amp; Lernplan</a></h2>
+<h3 id="lernziele"><a class="header" href="#lernziele">Lernziele</a></h3>
 <ul>
-<li><strong>Homogen:</strong> Alle Elemente müssen vom selben Datentyp sein (z. B. nur ganze Zahlen).</li>
-<li><strong>Feste Größe:</strong> Die Anzahl der Fächer steht von Anfang an fest. Ein Array kann im Nachhinein weder wachsen noch schrumpfen.</li>
-<li><strong>Geordnet:</strong> Die Elemente liegen in einer festen Reihenfolge vor (von links nach rechts).</li>
+<li><strong>Sie können</strong> den Unterschied zwischen homogenen Arrays (<code>[T; N]</code>) und heterogenen Tupeln (<code>(T1, T2, ...)</code>) bezüglich Typisierung, Speicherlayout und Verwendungszweck präzise erklären.</li>
+<li><strong>Sie können</strong> das exakte Speicherlayout von Arrays und Tupeln auf dem Stack skizzieren, inklusive der Berechnung von Byte-Größen, Alignment-Bedingungen, Padding-Bytes und dem vom Compiler durchgeführten Field Reordering.</li>
+<li><strong>Sie können</strong> den Unterschied zwischen ungesichertem Indexzugriff und sicheren Methoden wie <code>.get()</code> erklären und die Funktionsweise des Bounds Checkers zur Laufzeit sowie dessen Optimierung durch LLVM (Bounds Check Elimination) analysieren.</li>
+<li><strong>Sie können</strong> Tupel mittels Pattern Matching und Destrukturierung zerlegen und sie als effiziente Ad-hoc-Rückgabewerte aus Funktionen einsetzen.</li>
+<li><strong>Sie können</strong> die wichtigsten Standardbibliotheksmethoden von Arrays und deren impliziten Übergang zu Slices (Deref Coercion) in der Praxis anwenden.</li>
 </ul>
-<h2 id="syntax-in-rust"><a class="header" href="#syntax-in-rust">Syntax in Rust</a></h2>
-<p>So schreibt man ein Array in Rust:</p>
-<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>// Rust erkennt den Typ (6 Ganzzahlen) automatisch:
-let numbers = [4, 8, 15, 16, 23, 42];
-
-// Explizite Typschreibweise: [Typ; Anzahl]
-let numbers: [i32; 6] = [4, 8, 15, 16, 23, 42];
-<span class="boring">}</span></code></pre>
-<p><strong>Wichtig:</strong> Wenn du den Typ <code>[i32; 6]</code> (6 Elemente) angibst, musst du auch exakt 6 Elemente in die eckigen Klammern schreiben. Sonst streikt der Compiler!</p>
-<h3 id="nützliche-funktionen-und-sonderfälle"><a class="header" href="#nützliche-funktionen-und-sonderfälle">Nützliche Funktionen und Sonderfälle</a></h3>
+<h3 id="lernplan"><a class="header" href="#lernplan">Lernplan</a></h3>
 <ul>
-<li><strong>Länge abfragen:</strong> Mit <code>.len()</code> findest du heraus, wie viele Elemente im Array sind.</li>
+<li><input disabled="" type="checkbox"> <strong>2. Die Definition</strong>: Formale Begriffsbestimmung von Arrays, Tupeln und dem Unit-Typ sowie verständliche Analogien.</li>
+<li><input disabled="" type="checkbox"> <strong>3. Das Problem &amp; Die Motivation</strong>: Warum skalare Typen allein für strukturierte Daten unzureichend sind und welche Systemvorteile feste Stack-Strukturen bieten.</li>
+<li><input disabled="" type="checkbox"> <strong>4. Der naive Versuch</strong>: Ein fehlerhaftes Rust-Programm, das die Gefahren von ungeschützten Array-Indexzugriffen demonstriert.</li>
+<li><input disabled="" type="checkbox"> <strong>5. Die Anatomie des Fehlers</strong>: Detaillierte Analyse des Laufzeitabsturzes (Panic) und das physische Speicherverhalten auf dem Stack.</li>
+<li><input disabled="" type="checkbox"> <strong>6. Die Lösung</strong>: Implementierung sicherer Zugriffsmechanismen nach dem EVA-Prinzip.</li>
+<li><input disabled="" type="checkbox"> <strong>7. Kleines Tutorial</strong>: Schritt-für-Schritt-Entwicklung einer kleinen Wetterstations-Logik zur Demonstration beider Datentypen.</li>
+<li><input disabled="" type="checkbox"> <strong>8. Mentale Modelle &amp; Deep Dive</strong>:
+<ul>
+<li><strong>8.1 Arrays (<code>[T; N]</code>)</strong>
+<ul>
+<li><strong>8.1.1 Deklaration &amp; Speicherstruktur</strong>: Homogene Typen, feste Compilezeit-Größe, Stack-Allokation.</li>
+<li><strong>8.1.2 Elementzugriff</strong>: Indexierung, Bounds Checking und CPU-Effizienz.</li>
 </ul>
-<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>let length = numbers.len(); // Ergibt 6
-<span class="boring">}</span></code></pre>
+</li>
+<li><strong>8.2 Tupel (<code>(T1, T2, ...)</code>)</strong>
 <ul>
-<li><strong>Leere Arrays:</strong> Ein komplett leeres Array <code>[]</code> erlaubt Rust nur, wenn du den Typ und die Länge 0 ausdrücklich dazuschreibst, da der Compiler sonst nicht weiß, was später hineinsoll:</li>
+<li><strong>8.2.1 Heterogene Strukturen</strong>: Zusammengesetzte Datentypen unterschiedlicher Typen, Alignment, Padding und Compiler-Reordering.</li>
+<li><strong>8.2.2 Elementzugriff</strong>: Zugriff über Punkt-Notation, Destrukturierung und Mustermatchung.</li>
 </ul>
-<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>let empty_array: [f64; 0] = []; // Gültig
-<span class="boring">}</span></code></pre>
-<h2 id="array-elemente-aufrufen-und-ändern"><a class="header" href="#array-elemente-aufrufen-und-ändern">Array-Elemente aufrufen und ändern</a></h2>
-<h3 id="das-zählen-beginnt-bei-0-index"><a class="header" href="#das-zählen-beginnt-bei-0-index">Das Zählen beginnt bei 0 (Index)</a></h3>
-<p>Menschen zählen ab 1, Programmiersprachen ab 0. Die Position eines Elements nennt man Index.</p>
-<ul>
-<li>Erstes Element = Index 0</li>
-<li>Zweites Element = Index 1</li>
-<li>Der letzte Index ist immer: Länge minus 1</li>
+</li>
+<li><strong>Exhaustive API-Referenz</strong>: Umfassende Dokumentation der Standardbibliotheksmethoden mit Signaturen und Minicode-Beispielen.</li>
 </ul>
-<h3 id="werte-ändern-überschreiben"><a class="header" href="#werte-ändern-überschreiben">Werte ändern (Überschreiben)</a></h3>
-<p>Ein normales Array hat eine feste Größe (du kannst keine neuen Elemente hinzufügen oder löschen). Wenn du das Array mit <code>mut</code> veränderbar machst, kannst du aber bestehende Werte überschreiben:</p>
-<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>let mut seasons = ["Frühling", "Sommer", "Fall", "Winter"];
-seasons[2] = "Herbst"; // Ersetzt "Fall" durch "Herbst"
-<span class="boring">}</span></code></pre>
-<h3 id="das-wichtigste-auf-einen-blick"><a class="header" href="#das-wichtigste-auf-einen-blick">Das Wichtigste auf einen Blick</a></h3>
-<ul>
-<li><strong>Index startet bei 0:</strong> <code>array[0]</code> ist das erste Element.</li>
-<li><strong>Feste Größe:</strong> Elemente können weder gelöscht noch hinzugefügt werden.</li>
-<li><strong>Verändern:</strong> Nur erlaubt, wenn das Array mit <code>let mut</code> deklariert wurde.</li>
-<li><strong>Vorschau:</strong> Wenn du ein Array brauchst, das wachsen oder schrumpfen kann, nutzt man in Rust später einen sogenannten Vektor (<code>Vec&lt;T&gt;</code>).</li>
+</li>
+<li><input disabled="" type="checkbox"> <strong>9. Drei praktische Übungen</strong>: Programmieraufgaben mit ansteigendem Schwierigkeitsgrad (Leicht, Mittel, Schwer) inklusive Hilfestellungen.</li>
+<li><input disabled="" type="checkbox"> <strong>10. Lernstrategie, Selbsteinschätzung &amp; Merkzettel</strong>: Syntaktischer Spickzettel, Active Recall, Feynman-Methode und geführter Selbsttest.</li>
+<li><input disabled="" type="checkbox"> <strong>11. Zusammenfassung</strong>: Die wichtigsten Erkenntnisse auf einen Blick.</li>
 </ul>
 <hr>
-<h2 id="das-tupel-der-flexible-mix-container"><a class="header" href="#das-tupel-der-flexible-mix-container">Das Tupel: Der flexible Mix-Container</a></h2>
-<p>Ein Tupel ist (genau wie ein Array) ein zusammengesetzter Datentyp, der mehrere Werte in einer festen Reihenfolge speichert.</p>
-<p>Der riesige Unterschied zum Array: <strong>Ein Tupel darf verschiedene Datentypen mischen!</strong> Du kannst darin gleichzeitig Text, ganze Zahlen und Wahrheitswerte speichern. Es eignet sich perfekt, um zusammengehörige Daten (wie die Informationen zu einer Person) zu bündeln.</p>
-<h3 id="1-ein-tupel-erstellen"><a class="header" href="#1-ein-tupel-erstellen">1. Ein Tupel erstellen</a></h3>
-<p>Ein Tupel wird mit normalen, runden Klammern <code>()</code> geschrieben:</p>
-<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>// Ein Tupel mit: Text (Name), Zahl (Alter), Text (Abteilung)
-let employee = ("Molly", 32, "Marketing");
-<span class="boring">}</span></code></pre>
-<h3 id="2-zugriff-auf-die-werte-die-punkt-notation"><a class="header" href="#2-zugriff-auf-die-werte-die-punkt-notation">2. Zugriff auf die Werte (Die Punkt-Notation)</a></h3>
-<p>Genau wie beim Array startet der Index bei 0. Um an die Werte zu kommen, nutzt man beim Tupel jedoch einen Punkt <code>.</code> statt eckiger Klammern:</p>
-<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>let name = employee.0;       // "Molly"
-let age = employee.1;        // 32
-let department = employee.2; // "Marketing"
-<span class="boring">}</span></code></pre>
-<h3 id="3-der-profi-trick-destrukturieren-musterabgleich"><a class="header" href="#3-der-profi-trick-destrukturieren-musterabgleich">3. Der Profi-Trick: Destrukturieren (Musterabgleich)</a></h3>
-<p>Weil das manuelle Auslesen über <code>.0</code>, <code>.1</code> mühsam ist, gibt es in Rust eine geniale Abkürzung. Du kannst das Tupel in einer einzigen Zeile komplett in einzelne Variablen zerlegen:</p>
-<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>// Rust entpackt das Tupel automatisch von links nach rechts!
-let (name, age, department) = employee;
-
-// Jetzt kannst du die Variablen direkt nutzen:
-println!("Name: {}, Alter: {}", name, age);
-<span class="boring">}</span></code></pre>
-<hr>
-<h2 id="spickzettel-tupel-in-rust"><a class="header" href="#spickzettel-tupel-in-rust">Spickzettel: Tupel in Rust</a></h2>
-<h3 id="-das-wichtigste-auf-einen-blick"><a class="header" href="#-das-wichtigste-auf-einen-blick">💡 Das Wichtigste auf einen Blick</a></h3>
+<h2 id="2-die-definition"><a class="header" href="#2-die-definition">2. Die Definition</a></h2>
 <ul>
-<li><strong>Typen-Mix:</strong> Erlaubt unterschiedliche Datentypen (z. B. <code>i32</code>, <code>bool</code>, <code>&amp;str</code>) in einem Container.</li>
-<li><strong>Runde Klammern:</strong> Erstellt mit <code>(wert1, wert2)</code>.</li>
-<li><strong>Auslesen mit Punkt:</strong> Zugriff erfolgt über <code>.0</code>, <code>.1</code>, <code>.2</code> etc.</li>
-<li><strong>Feste Größe:</strong> Nach der Erstellung können keine Elemente hinzugefügt oder gelöscht werden.</li>
-<li><strong>Anzeigen/Debuggen:</strong> Ein Tupel kann nicht normal mit <code>{}</code> gedruckt werden. Nutze dafür den Debug-Modus <code>{:?}</code> oder <code>{:#?}</code>.</li>
+<li><strong>Array (<code>[T; N]</code>)</strong>: Ein homogener, sequentieller Datentyp mit einer festen Anzahl <code>N</code> von Elementen des Typs <code>T</code>. Die Größe <code>N</code> ist Teil des Typs (z. B. ist <code>[i32; 3]</code> ein anderer Typ als <code>[i32; 4]</code>) und muss zwingend zur Compilezeit feststehen. Arrays werden flach auf dem Stack alloziiert.</li>
+<li><strong>Tupel (<code>(T1, T2, T3, ...)</code>)</strong>: Ein heterogener, strukturierter Datentyp, der eine feste Anzahl von Werten unterschiedlicher Typen in einer geordneten Sequenz zusammenfasst. Auch die Struktur eines Tupels ist nach seiner Definition unveränderlich.</li>
+<li><strong>Unit-Typ (<code>()</code>)</strong>: Ein spezielles Tupel ohne Elemente. Es besitzt eine Größe von 0 Bytes und repräsentiert das Fehlen eines Werts (vergleichbar mit <code>void</code> in C/C++ oder Java).</li>
+<li><strong>Index</strong>: Die ganzzahlige Position eines Elements innerhalb eines Arrays oder Tupels, beginnend bei <code>0</code> für das erste Element.</li>
 </ul>
-<pre class="playground"><code class="language-rust edition2021">fn main() {
-    // 1. Tupel erstellen
-    let person = ("Alex", 28, true); // (Text, Zahl, Bool-Wert)
+<h3 id="didaktische-analogien"><a class="header" href="#didaktische-analogien">Didaktische Analogien</a></h3>
+<blockquote class="blockquote-tag blockquote-tag-note">
+<p class="blockquote-tag-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>Note</p>
+<p><strong>Die Pillendose für Arrays</strong>:
+Stellen Sie sich eine wöchentliche Pillendose mit genau sieben nummerierten Fächern vor. Jedes Fach ist exakt gleich groß und kann nur Pillen desselben Typs aufnehmen (homogen). Sie können der Dose keine Fächer hinzufügen und keine entfernen (feste Größe). Wenn Sie auf ein Fach zugreifen wollen, das über den siebten Tag hinausgeht, greifen Sie ins Leere – Rust verhindert dies strikt.</p>
+</blockquote>
+<blockquote class="blockquote-tag blockquote-tag-note">
+<p class="blockquote-tag-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>Note</p>
+<p><strong>Das Postfach für Tupel</strong>:
+Stellen Sie sich ein Postfach für ein Paket vor, das verschiedene Gegenstände enthält: Einen Brief (Text), einen Schlüssel (Ganzzahl) und eine Zugangskarte (Wahrheitswert). Die Gegenstände sind unterschiedlich geformt und haben unterschiedliche Bedeutungen (heterogen), sind aber fest in diesem einen Paket an Sie adressiert.</p>
+</blockquote>
+<hr>
+<h2 id="3-das-problem--die-motivation"><a class="header" href="#3-das-problem--die-motivation">3. Das Problem &amp; Die Motivation</a></h2>
+<p>In der Softwareentwicklung stehen Programmierer häufig vor der Aufgabe, logisch zusammengehörige Daten zu verwalten. Wenn wir beispielsweise die Temperaturen einer Arbeitswoche (fünf Tage) erfassen möchten, könnten wir fünf einzelne Variablen deklarieren:</p>
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let temp_montag = 19.5;
+let temp_dienstag = 20.1;
+// ...
+<span class="boring">}</span></code></pre>
+<p>Dieser Ansatz skaliert nicht. Wir können diese Daten nicht in einer Schleife durchlaufen, sie nicht als geschlossene Einheit an Funktionen übergeben und keine mathematischen Operationen (wie die Berechnung des Mittelwerts) kompakt formulieren.</p>
+<p>Für heterogene Daten (z. B. Name, Alter und Aktivitätsstatus eines Benutzers) gilt dasselbe. Einzelne Variablen verlieren ihre logische Zusammengehörigkeit:</p>
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let name = "Tobias";
+let alter = 34;
+let aktiv = true;
+<span class="boring">}</span></code></pre>
+<p>Wir benötigen Container, die diese Daten bündeln.</p>
+<h3 id="warum-nicht-einfach-dynamische-kollektionen-wie-vektoren-vect-nutzen"><a class="header" href="#warum-nicht-einfach-dynamische-kollektionen-wie-vektoren-vect-nutzen">Warum nicht einfach dynamische Kollektionen wie Vektoren (<code>Vec&lt;T&gt;</code>) nutzen?</a></h3>
+<p>Vektoren sind dynamisch und können zur Laufzeit wachsen. Diese Flexibilität erkauft man sich jedoch mit System-Overhead:</p>
+<ol>
+<li><strong>Heap-Allokation</strong>: Vektoren speichern ihre Elemente auf dem Heap. Der Zugriff erfordert eine Indirektion (einen Zeiger auf dem Stack, der auf den Heap verweist). Heap-Allokationen erfordern komplexe Algorithmen des Betriebssystems zur Speicherverwaltung und sind um Größenordnungen langsamer als Stack-Operationen.</li>
+<li><strong>Speicher-Overhead</strong>: Ein Vektor benötigt auf dem Stack mindestens 24 Bytes (Pointer, Länge, Kapazität), selbst wenn er leer ist.</li>
+<li><strong>Laufzeit-Indirektion</strong>: Da die Daten auf dem Heap liegen, muss die CPU bei jedem Zugriff eine zusätzliche Speicheradresse auflösen, was Cache-Misses begünstigen kann.</li>
+</ol>
+<p>Arrays und Tupel bieten hier die perfekte Lösung für Daten mit konstanter Struktur. Da ihre Größe zur Compilezeit feststeht, kann der Compiler sie direkt und ohne Indirektion flach auf dem Stack anordnen. Die Allokation ist extrem schnell, da lediglich der Stack-Pointer verschoben werden muss.</p>
+<hr>
+<h2 id="4-der-naive-versuch"><a class="header" href="#4-der-naive-versuch">4. Der naive Versuch</a></h2>
+<p>Der folgende Code zeigt den naiven Versuch eines Programmierers, Temperaturen über ein Array einzulesen und basierend auf einer dynamischen Benutzereingabe (oder einem berechneten Index) einen Wert auszulesen. Da keine Validierung des Index stattfindet, führt ein falscher Index zu einem unkontrollierten Absturz des Programms zur Laufzeit.</p>
+<pre class="playground"><code class="language-rust edition2021">use std::io;
 
-    // 2. Einzeln auslesen (Punkt-Syntax)
-    let alter = person.1; // 28
+fn main() {
+    // Ein Array mit den gemessenen Temperaturen von Montag bis Freitag
+    let temperaturen = [18.2, 19.5, 20.8, 17.4, 19.1];
+    
+    println!("Wir haben {} Temperaturen aufgezeichnet.", temperaturen.len());
+    println!("Geben Sie den Tag als Index ein (0 für Montag bis 4 für Freitag):");
 
-    // 3. Komplett entpacken (Destrukturieren)
-    let (name, age, ist_aktiv) = person;
+    let mut eingabe = String::new();
+    io::stdin()
+        .read_line(&amp;mut eingabe)
+        .expect("Fehler beim Lesen der Eingabe");
 
-    // 4. Per Debug-Modus das ganze Tupel auf einmal anzeigen
-    println!("{:?}", person); // Gibt aus: ("Alex", 28, true)
+    // Parsen der Eingabe in eine Ganzzahl
+    let index: usize = eingabe
+        .trim()
+        .parse()
+        .expect("Bitte geben Sie eine gültige Zahl ein");
+
+    // NAIVER VERSUCH: Direkter, ungeschützter Zugriff über den Index
+    let ausgewaehlte_temp = temperaturen[index];
+
+    println!("Die Temperatur an Index {} beträgt: {}°C", index, ausgewaehlte_temp);
 }</code></pre>
-<p><em>Möchtest du sehen, wie man Tupel als Rückgabewert aus einer Funktion nutzt, um mehr als nur einen Wert zurückzugeben?</em></p>
+<hr>
+<h2 id="5-die-anatomie-des-fehlers"><a class="header" href="#5-die-anatomie-des-fehlers">5. Die Anatomie des Fehlers</a></h2>
+<h3 id="das-verhalten-bei-fehlanwendung"><a class="header" href="#das-verhalten-bei-fehlanwendung">Das Verhalten bei Fehlanwendung</a></h3>
+<p>Wenn Sie dieses Programm ausführen und eine Zahl außerhalb des gültigen Bereichs (also <code>5</code> oder größer) eingeben, lässt sich das Programm zwar problemlos kompilieren, stürzt jedoch zur Laufzeit mit folgender Fehlermeldung (einer sogenannten <em>Panic</em>) ab:</p>
+<pre><code class="language-text">thread 'main' panicked at src/main.rs:21:29:
+index out of bounds: the len is 5 but the index is 5
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+</code></pre>
+<h3 id="was-passiert-im-speicher"><a class="header" href="#was-passiert-im-speicher">Was passiert im Speicher?</a></h3>
+<p>Betrachten wir das Speicherlayout auf dem Stack während der Ausführung:</p>
+<pre><code class="language-text">       STACK-SPEICHER (Wachstum nach unten)
+      +-----------------------------------------+
+      | Variable      | Typ       | Wert        |
+      +---------------+-----------+-------------+
+      | temperaturen  | [f64; 5]  |             |
+      |   [0]         | f64       | 18.2        |  &lt;- Adresse: 0x7ffd..00
+      |   [1]         | f64       | 19.5        |  &lt;- Adresse: 0x7ffd..08
+      |   [2]         | f64       | 20.8        |  &lt;- Adresse: 0x7ffd..10
+      |   [3]         | f64       | 17.4        |  &lt;- Adresse: 0x7ffd..18
+      |   [4]         | f64       | 19.1        |  &lt;- Adresse: 0x7ffd..20
+      +---------------+-----------+-------------+
+      | index         | usize     | 5           |  &lt;- Benutzereingabe
+      +-----------------------------------------+
+</code></pre>
+<p>Ein <code>f64</code>-Wert belegt exakt 8 Bytes. Das Array <code>temperaturen</code> belegt somit als zusammenhängender Block <code>5 * 8 = 40</code> Bytes auf dem Stack.</p>
+<ol>
+<li><strong>Die Adressberechnung</strong>: Wenn wir <code>temperaturen[index]</code> aufrufen, berechnet die CPU die physische Speicheradresse nach der Formel:
+$$\text{Zieladresse} = \text{Startadresse} + (\text{Index} \times \text{Größe des Datentyps})$$
+Für <code>index = 5</code> ergibt dies:
+$$\text{Zieladresse} = 0x7ffd..00 + (5 \times 8 \text{ Bytes}) = 0x7ffd..28$$</li>
+<li><strong>Die Gefahr</strong>: Die berechnete Adresse <code>0x7ffd..28</code> liegt außerhalb des alloziierten Speicherbereichs von <code>temperaturen</code>. Sie zeigt auf den Speicherbereich der nachfolgenden Variablen (<code>index</code>).</li>
+<li><strong>Warum Rust eingreift</strong>: In Programmiersprachen wie C oder C++ würde das System diese Adresse unbemerkt auslesen. Das führt entweder zu logisch falschen Werten (Information Leak) oder, falls auf geschützten Speicher zugegriffen wird, zu einem Segmentation Fault. In Rust überprüft der Compiler bzw. die Laufzeitumgebung bei jedem Indexzugriff über eckige Klammern die Bedingung:
+$$\text{Index} &lt; \text{Länge des Arrays}$$
+Da <code>5 &lt; 5</code> falsch ist, bricht Rust das Programm kontrolliert ab, um die Speichersicherheit des Gesamtsystems zu garantieren.</li>
+</ol>
+<hr>
+<h2 id="6-die-lösung"><a class="header" href="#6-die-lösung">6. Die Lösung</a></h2>
+<p>Um diesen Laufzeitabsturz zu verhindern, wenden wir das <strong>EVA-Prinzip</strong> (Eingabe - Verarbeitung - Ausgabe) an und nutzen die sichere Methode <code>.get()</code>, die ein <code>Option&lt;&amp;T&gt;</code> zurückgibt, anstatt des ungeschützten Index-Operators.</p>
+<pre class="playground"><code class="language-rust edition2021">use std::io;
+
+fn main() {
+    // 1. EINGABE (Input)
+    let temperaturen = [18.2, 19.5, 20.8, 17.4, 19.1];
+    
+    println!("Geben Sie den Tag als Index ein (0 bis 4):");
+    let mut eingabe = String::new();
+    io::stdin()
+        .read_line(&amp;mut eingabe)
+        .expect("Fehler beim Lesen");
+
+    let index: usize = match eingabe.trim().parse() {
+        Ok(num) =&gt; num,
+        Err(_) =&gt; {
+            println!("Fehler: Bitte geben Sie eine positive Ganzzahl ein.");
+            return;
+        }
+    };
+
+    // 2. VERARBEITUNG (Processing) &amp; AUSGABE (Output)
+    // .get() gibt im Erfolgsfall Some(&amp;Wert) zurück, andernfalls None.
+    match temperaturen.get(index) {
+        Some(&amp;temp) =&gt; {
+            println!("Erfolgreicher Zugriff!");
+            println!("Die Temperatur an Index {} beträgt: {}°C", index, temp);
+        }
+        None =&gt; {
+            println!("Fehler: Der Index {} liegt außerhalb des gültigen Bereichs (0 bis {}).", 
+                     index, temperaturen.len() - 1);
+        }
+    }
+}</code></pre>
+<h3 id="erklärung-nach-dem-eva-prinzip"><a class="header" href="#erklärung-nach-dem-eva-prinzip">Erklärung nach dem EVA-Prinzip</a></h3>
+<ol>
+<li><strong>Eingabe (Input)</strong>: Wir lesen den Index als Zeichenkette ein und parsen ihn sicher mittels <code>match</code> auf das <code>Result</code>-Objekt von <code>.parse()</code>. Fehlerhafte Eingaben (wie Buchstaben) werden abgefangen, ohne dass das Programm abstürzt.</li>
+<li><strong>Verarbeitung (Processing)</strong>: Wir übergeben den berechneten <code>usize</code>-Index an die Methode <code>.get()</code>.
+<ul>
+<li><strong>Signatur</strong>: <code>pub fn get&lt;I&gt;(&amp;self, index: I) -&gt; Option&lt;&amp;I::Output&gt;</code></li>
+<li>Ist der Index gültig, wird die Referenz auf das Element in einen <code>Some</code>-Wrapper verpackt.</li>
+<li>Ist der Index ungültig, gibt die Methode <code>None</code> zurück.</li>
+</ul>
+</li>
+<li><strong>Ausgabe (Output)</strong>: Das Programm verzweigt über ein <code>match</code>-Konstrukt. Im Erfolgsfall wird der Wert dereferenziert und ausgegeben. Im Fehlerfall wird eine lesbare Fehlermeldung ausgegeben, und das Programm läuft stabil weiter.</li>
+</ol>
+<hr>
+<h2 id="7-kleines-tutorial-die-mini-wetterstation"><a class="header" href="#7-kleines-tutorial-die-mini-wetterstation">7. Kleines Tutorial: Die Mini-Wetterstation</a></h2>
+<p>In diesem Tutorial erstellen wir eine kleine Anwendung für eine Wetterstation. Wir kombinieren Arrays (für die Speicherung von Temperaturmesswerten eines Tages) und Tupel (für die Aggregation von Wetterdaten wie Luftfeuchtigkeit, Windgeschwindigkeit und Ortsname).</p>
+<h3 id="schritt-1-das-projekt-anlegen"><a class="header" href="#schritt-1-das-projekt-anlegen">Schritt 1: Das Projekt anlegen</a></h3>
+<p>Erstellen Sie ein neues Cargo-Projekt in Ihrem Workspace:</p>
+<pre><code class="language-bash">cargo new weather_station --bin
+</code></pre>
+<h3 id="schritt-2-den-code-implementieren"><a class="header" href="#schritt-2-den-code-implementieren">Schritt 2: Den Code implementieren</a></h3>
+<p>Ersetzen Sie den Inhalt von <code>src/main.rs</code> durch den folgenden Code:</p>
+<pre class="playground"><code class="language-rust edition2021">/// Berechnet den Durchschnitt einer festen Anzahl von Messwerten.
+/// 
+/// **Eingabe (Input)**: Ein Array-Referenz `&amp;[f64; 5]` (5 Messwerte)
+/// **Verarbeitung (Processing)**: Summiert alle Werte und dividiert durch 5.0
+/// **Ausgabe (Output)**: Der Mittelwert als `f64`
+fn berechne_durchschnitt(messwerte: &amp;[f64; 5]) -&gt; f64 {
+    let mut summe = 0.0;
+    // Iteration über das Array
+    for wert in messwerte.iter() {
+        summe += wert;
+    }
+    summe / (messwerte.len() as f64)
+}
+
+/// Extrahiert die Daten aus einem Wetter-Tupel und gibt einen formatierten Bericht aus.
+/// 
+/// **Eingabe**: Ein Tupel bestehend aus (Ortsname, Luftfeuchtigkeit in %, Windgeschwindigkeit in km/h)
+fn drucke_wetterbericht(daten: (&amp;str, u32, f64)) {
+    // Destrukturierung des Tupels
+    let (ort, feuchtigkeit, wind) = daten;
+    
+    println!("--- Wetterbericht für {} ---", ort);
+    println!("Luftfeuchtigkeit: {}%", feuchtigkeit);
+    println!("Windgeschwindigkeit: {} km/h", wind);
+}
+
+fn main() {
+    // 1. Array-Deklaration: 5 stündliche Messwerte
+    let stunden_messungen: [f64; 5] = [12.5, 13.1, 14.5, 13.8, 12.0];
+
+    // 2. Tupel-Deklaration: Heterogene Wetterdaten (Stadt, Luftfeuchtigkeit, Wind)
+    let station_info: (&amp;str, u32, f64) = ("Berlin-Tempelhof", 65, 12.4);
+
+    // 3. Durchschnitt berechnen
+    let schnitt = berechne_durchschnitt(&amp;stunden_messungen);
+
+    // 4. Bericht ausgeben
+    drucke_wetterbericht(station_info);
+    println!("Durchschnittliche Tagestemperatur: {:.2}°C", schnitt);
+
+    // 5. Demonstration der Modifikation mit mut
+    let mut aenderbare_messungen = stunden_messungen; // Kopie des Arrays auf den Stack
+    aenderbare_messungen[0] = 15.0; // Änderung erlaubt, da 'mut' deklariert
+    println!("Erster Messwert angepasst: {}°C", aenderbare_messungen[0]);
+}</code></pre>
+<h3 id="schritt-3-ausführen-und-validieren"><a class="header" href="#schritt-3-ausführen-und-validieren">Schritt 3: Ausführen und Validieren</a></h3>
+<p>Starten Sie das Programm mit Cargo:</p>
+<pre><code class="language-bash">cargo run
+</code></pre>
+<p>Sie sollten folgende Ausgabe sehen:</p>
+<pre><code class="language-text">--- Wetterbericht für Berlin-Tempelhof ---
+Luftfeuchtigkeit: 65%
+Windgeschwindigkeit: 12.4 km/h
+Durchschnittliche Tagestemperatur: 13.18°C
+Erster Messwert angepasst: 15°C
+</code></pre>
+<hr>
+<h2 id="8-mentale-modelle--deep-dive"><a class="header" href="#8-mentale-modelle--deep-dive">8. Mentale Modelle &amp; Deep Dive</a></h2>
+<p>Um Rust auf Systemebene zu beherrschen, müssen wir verstehen, wie der Compiler diese Strukturen im physischen RAM anordnet und optimiert.</p>
+<h3 id="81-arrays-t-n"><a class="header" href="#81-arrays-t-n">8.1 Arrays (<code>[T; N]</code>)</a></h3>
+<h4 id="811-deklaration--speicherstruktur"><a class="header" href="#811-deklaration--speicherstruktur">8.1.1 Deklaration &amp; Speicherstruktur</a></h4>
+<p>Arrays sind in Rust flach gepackte Sequenzen im Speicher. Deklarieren wir eine Variable <code>let arr = [10u8, 20u8, 30u8];</code>, sieht das Layout im Arbeitsspeicher wie folgt aus:</p>
+<pre><code class="language-text">       STACK-SPEICHER
+      +---------------+-------------+
+      | Adresse       | Wert (Byte) |
+      +---------------+-------------+
+      | 0x7ffd..00    | 10 (0x0A)   | -&gt; arr[0]
+      | 0x7ffd..01    | 20 (0x14)   | -&gt; arr[1]
+      | 0x7ffd..02    | 30 (0x1E)   | -&gt; arr[2]
+      +---------------+-------------+
+</code></pre>
+<h5 id="das-prinzip-der-compilezeit-größe"><a class="header" href="#das-prinzip-der-compilezeit-größe">Das Prinzip der Compilezeit-Größe</a></h5>
+<p>Da die Größe <code>N</code> im Typ verankert ist (z. B. <code>[i32; 1000]</code>), weiß der Compiler beim Übersetzen exakt, wie viel Speicherplatz im Stack-Frame der Funktion reserviert werden muss. Der Stack-Pointer wird beim Betreten der Funktion um diesen exakten Wert dekrementiert (bzw. inkrementiert, je nach CPU-Architektur). Es sind keine Systemaufrufe zur Laufzeit nötig.</p>
+<h5 id="typinitialisierungsvarianten"><a class="header" href="#typinitialisierungsvarianten">Typinitialisierungsvarianten</a></h5>
+<p>Rust bietet zwei syntaktische Wege, ein Array zu initialisieren:</p>
+<ol>
+<li><strong>Listen-Initialisierung</strong>: Explizite Auflistung aller Werte:
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let a: [i32; 3] = [1, 2, 3];
+<span class="boring">}</span></code></pre>
+</li>
+<li><strong>Wiederholungs-Initialisierung</strong>: Ein Standardwert und die Anzahl der Wiederholungen, getrennt durch ein Semikolon:
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let b = [0; 500]; // Erstellt ein Array mit 500 Elementen, alle mit dem Wert 0 initialisiert.
+<span class="boring">}</span></code></pre>
+<blockquote class="blockquote-tag blockquote-tag-important">
+<p class="blockquote-tag-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 1.75C0 .784.784 0 1.75 0h12.5C15.216 0 16 .784 16 1.75v9.5A1.75 1.75 0 0 1 14.25 13H8.06l-2.573 2.573A1.458 1.458 0 0 1 3 14.543V13H1.75A1.75 1.75 0 0 1 0 11.25Zm1.75-.25a.25.25 0 0 0-.25.25v9.5c0 .138.112.25.25.25h2a.75.75 0 0 1 .75.75v2.19l2.72-2.72a.749.749 0 0 1 .53-.22h6.5a.25.25 0 0 0 .25-.25v-9.5a.25.25 0 0 0-.25-.25Zm7 2.25v2.5a.75.75 0 0 1-1.5 0v-2.5a.75.75 0 0 1 1.5 0ZM9 9a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"></path></svg>Important</p>
+<p>Die Wiederholungs-Initialisierung <code>[wert; N]</code> setzt voraus, dass der Typ des Werts das <code>Copy</code>-Trait implementiert oder es sich um einen konstanten Ausdruck handelt. Andernfalls könnte Rust die Werte nicht sicher im Speicher kopieren, ohne Ownership-Regeln zu verletzen.</p>
+</blockquote>
+</li>
+</ol>
+<h5 id="alignment-und-padding-bei-arrays"><a class="header" href="#alignment-und-padding-bei-arrays">Alignment und Padding bei Arrays</a></h5>
+<p>Arrays haben dasselbe Alignment (Ausrichtung im Speicher) wie ihr zugrundeliegender Elementtyp. Ein <code>[u8; 4]</code> hat ein Alignment von 1 Byte, während ein <code>[i64; 4]</code> ein Alignment von 8 Bytes besitzt. Das bedeutet, dass ein <code>[i64; 4]</code> im RAM an einer Speicheradresse liegen muss, die ohne Rest durch 8 teilbar ist. Dies ermöglicht es der CPU, die Werte über ihren Systembus in einem einzigen Taktzyklus einzulesen.</p>
+<h4 id="812-elementzugriff"><a class="header" href="#812-elementzugriff">8.1.2 Elementzugriff</a></h4>
+<p>Der Zugriff auf Array-Elemente kann auf zwei Wegen erfolgen:</p>
+<h5 id="1-index-operator-arrindex"><a class="header" href="#1-index-operator-arrindex">1. Index-Operator <code>arr[index]</code></a></h5>
+<p>Dies ist der direkte Zugriff. Rust führt hierbei eine Laufzeitprüfung (Bounds Check) durch.</p>
+<ul>
+<li><strong>CPU-Overhead</strong>: Bei jedem Zugriff wird eine zusätzliche Assembler-Instruktion zur Prüfung der Grenzen generiert (z. B. <code>cmp</code> und <code>jae</code> auf x86-Systemen).</li>
+<li><strong>Compiler-Optimierung (Bounds Check Elimination)</strong>: Der LLVM-Compiler ist extrem intelligent. Wenn wir über eine feste Range iterieren, kann er beweisen, dass die Grenzen niemals überschritten werden. In diesem Fall eliminiert der Compiler die Laufzeitprüfungen vollständig:
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let arr = [10, 20, 30, 40, 50];
+// LLVM erkennt, dass 'i' nur Werte von 0 bis 4 annimmt.
+// Es werden KEINE Laufzeitprüfungen in der Schleife durchgeführt!
+for i in 0..5 {
+    println!("{}", arr[i]); 
+}
+<span class="boring">}</span></code></pre>
+</li>
+</ul>
+<h5 id="2-sicherer-zugriff-über-get-und-get_mut"><a class="header" href="#2-sicherer-zugriff-über-get-und-get_mut">2. Sicherer Zugriff über <code>.get()</code> und <code>.get_mut()</code></a></h5>
+<p>Diese Methoden geben ein <code>Option&lt;&amp;T&gt;</code> bzw. <code>Option&lt;&amp;mut T&gt;</code> zurück. Sie verhindern Abstürze vollständig und zwingen den Entwickler, den Fehlerfall explizit zu behandeln.</p>
+<h5 id="multithreading-und-arrays"><a class="header" href="#multithreading-und-arrays">Multithreading und Arrays</a></h5>
+<p>Arrays implementieren die Auto-Traits <code>Send</code> und <code>Sync</code>, sofern der Elementtyp <code>T</code> diese implementiert.</p>
+<ul>
+<li><code>Send</code>: Das Array kann an einen anderen Thread übertragen werden.</li>
+<li><code>Sync</code>: Mehrere Threads können gleichzeitig über unveränderliche Referenzen (<code>&amp;[T; N]</code>) auf das Array zugreifen.
+Da ein Array flach auf dem Stack liegt, erfordert das Übertragen an einen anderen Thread eine Kopie der Daten, es sei denn, das Array wurde in ein intelligentes Zeiger-Konstrukt wie <code>Arc</code> oder einen Heap-Pointer (<code>Box</code>) verpackt.</li>
+</ul>
+<hr>
+<h3 id="82-tupel-t1-t2-"><a class="header" href="#82-tupel-t1-t2-">8.2 Tupel (<code>(T1, T2, ...)</code>)</a></h3>
+<h4 id="821-heterogene-strukturen"><a class="header" href="#821-heterogene-strukturen">8.2.1 Heterogene Strukturen</a></h4>
+<p>Ein Tupel fasst Typen unterschiedlicher Größe und Ausrichtung zusammen. Im Gegensatz zu Arrays gibt es bei Tupeln keine Garantie über die physische Anordnung der Felder im Speicher.</p>
+<h5 id="das-phänomen-des-field-reordering"><a class="header" href="#das-phänomen-des-field-reordering">Das Phänomen des Field Reordering</a></h5>
+<p>Betrachten wir das Tupel <code>let t: (u8, i32, u8) = (1, 100, 2);</code>.</p>
+<ul>
+<li>Ein <code>u8</code> benötigt 1 Byte (Alignment: 1).</li>
+<li>Ein <code>i32</code> benötigt 4 Bytes (Alignment: 4).</li>
+</ul>
+<p>Würde der Compiler die Felder strikt in der Reihenfolge der Deklaration im Speicher ablegen, sähe das Layout so aus:</p>
+<pre><code class="language-text">       NAIVES LAYOUT (Größe: 12 Bytes)
+      +------+------+------+------+------+------+------+------+------+------+------+------+
+      | u8   | Padding (3 Bytes)  | i32 (4 Bytes)             | u8   | Padding (3 Bytes)  |
+      +------+------+------+------+------+------+------+------+------+------+------+------+
+      | 0x01 | 0x00 | 0x00 | 0x00 | 0x00 | 0x00 | 0x00 | 0x64 | 0x02 | 0x00 | 0x00 | 0x00 |
+      +------+------+------+------+------+------+------+------+------+------+------+------+
+</code></pre>
+<p>Um den Speicherplatz optimal auszunutzen, ordnet der Rust-Compiler die Felder im Speicher neu an (<strong>Field Reordering</strong>). Er sortiert sie absteigend nach ihrem Alignment-Bedarf. Das tatsächliche Layout im RAM sieht daher so aus:</p>
+<pre><code class="language-text">       OPTIMIERTES LAYOUT (Größe: 8 Bytes)
+      +---------------------------+------+------+---------------------+
+      | i32 (4 Bytes)             | u8   | u8   | Padding (2 Bytes)   |
+      +---------------------------+------+------+---------------------+
+      | 0x00 | 0x00 | 0x00 | 0x64 | 0x01 | 0x02 | 0x00 | 0x00         |
+      +---------------------------+------+------+---------------------+
+</code></pre>
+<p>Durch diese Optimierung spart Rust 4 Bytes Speicherplatz auf dem Stack ein.</p>
+<blockquote class="blockquote-tag blockquote-tag-warning">
+<p class="blockquote-tag-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M6.457 1.047c.659-1.234 2.427-1.234 3.086 0l6.082 11.378A1.75 1.75 0 0 1 14.082 15H1.918a1.75 1.75 0 0 1-1.543-2.575Zm1.763.707a.25.25 0 0 0-.44 0L1.698 13.132a.25.25 0 0 0 .22.368h12.164a.25.25 0 0 0 .22-.368Zm.53 3.996v2.5a.75.75 0 0 1-1.5 0v-2.5a.75.75 0 0 1 1.5 0ZM9 11a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"></path></svg>Warning</p>
+<p>Verlassen Sie sich niemals auf die physische Reihenfolge der Felder in einem Tupel im Speicher. Wenn Sie ein definiertes Speicherlayout für die Interoperabilität mit C-Bibliotheken benötigen, verwenden Sie stattdessen ein Struct mit dem Attribut <code>#[repr(C)]</code>.</p>
+</blockquote>
+<h5 id="der-unit-typ-"><a class="header" href="#der-unit-typ-">Der Unit-Typ <code>()</code></a></h5>
+<p>Das leere Tupel <code>()</code> ist ein fundamentaler Typ in Rust.</p>
+<ul>
+<li><strong>Größe</strong>: <code>std::mem::size_of::&lt;()&gt;() == 0</code></li>
+<li><strong>Zweck</strong>: Funktionen, die keinen expliziten Rückgabetyp definieren, geben implizit den Unit-Typ zurück. Er signalisiert dem Compiler: “Diese Operation wurde erfolgreich abgeschlossen, liefert aber keinen nutzbaren Datenwert zurück.”</li>
+</ul>
+<h4 id="822-elementzugriff"><a class="header" href="#822-elementzugriff">8.2.2 Elementzugriff</a></h4>
+<p>Auf Tupel-Elemente kann nicht mit eckigen Klammern und einer dynamischen Variable zugegriffen werden (<code>tup[i]</code> ist ungültig). Da die Elemente unterschiedliche Typen haben können, muss der Typ jedes Zugriffs zur Compilezeit feststehen.</p>
+<h5 id="1-punkt-notation-statische-indexierung"><a class="header" href="#1-punkt-notation-statische-indexierung">1. Punkt-Notation (Statische Indexierung)</a></h5>
+<p>Der Zugriff erfolgt über <code>.0</code>, <code>.1</code>, <code>.2</code> etc. Der Compiler kennt den Typ jedes Feldes an dieser Position und prüft den Zugriff streng zur Compilezeit. Ein Zugriff auf <code>.3</code> bei einem 3er-Tupel führt zu einem sofortigen Compiler-Fehler.</p>
+<h5 id="2-destrukturierung-via-pattern-matching"><a class="header" href="#2-destrukturierung-via-pattern-matching">2. Destrukturierung via Pattern Matching</a></h5>
+<p>Dies ist der eleganteste und idiomatischste Weg, um an die Werte eines Tupels zu gelangen.</p>
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let person = ("Anna", 28, true);
+
+// Komplettes Entpacken
+let (name, alter, ist_aktiv) = person;
+
+// Ignorieren ungenutzter Felder mit dem Unterstrich (_)
+let (name, _, _) = person;
+
+// Ignorieren des Rests mit der Punkt-Punkt-Syntax (..)
+let (name, ..) = person;
+<span class="boring">}</span></code></pre>
+<h5 id="tupel-als-rückgabewerte"><a class="header" href="#tupel-als-rückgabewerte">Tupel als Rückgabewerte</a></h5>
+<p>Da Rust-Funktionen standardmäßig nur einen Wert zurückgeben können, sind Tupel das ideale Werkzeug, um mehrere Werte ad hoc und ohne die Deklaration eines eigenen Structs zurückzugeben:</p>
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>fn dividiere(dividend: i32, divisor: i32) -&gt; (i32, i32) {
+    let quotient = dividend / divisor;
+    let rest = dividend % divisor;
+    (quotient, rest) // Rückgabe als Tupel
+}
+<span class="boring">}</span></code></pre>
+<hr>
+<h2 id="exhaustive-api-referenz-arrays--slices"><a class="header" href="#exhaustive-api-referenz-arrays--slices">Exhaustive API-Referenz (Arrays &amp; Slices)</a></h2>
+<p>Da Arrays implizit zu Slices coercen (<code>Deref</code>-Coercion zu <code>[T]</code>), stehen Ihnen auf Arrays fast alle Methoden von Slices zur Verfügung. Nachfolgend finden Sie eine vollständige Übersicht über die wichtigsten Standardbibliotheksmethoden.</p>
+<h3 id="1-len"><a class="header" href="#1-len">1. <code>len</code></a></h3>
+<ul>
+<li><strong>Signatur</strong>: <code>pub const fn len(&amp;self) -&gt; usize</code></li>
+<li><strong>Parameter</strong>: <code>&amp;self</code> (unveränderliche Referenz)</li>
+<li><strong>Rückgabetyp</strong>: <code>usize</code> (die Anzahl der Elemente)</li>
+<li><strong>Sicherheitsaspekte &amp; Panics</strong>: Keine. Läuft immer sicher.</li>
+<li><strong>Beispiel</strong>:
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let arr = [1, 2, 3];
+assert_eq!(arr.len(), 3);
+<span class="boring">}</span></code></pre>
+</li>
+</ul>
+<h3 id="2-is_empty"><a class="header" href="#2-is_empty">2. <code>is_empty</code></a></h3>
+<ul>
+<li><strong>Signatur</strong>: <code>pub const fn is_empty(&amp;self) -&gt; bool</code></li>
+<li><strong>Parameter</strong>: <code>&amp;self</code></li>
+<li><strong>Rückgabetyp</strong>: <code>bool</code> (<code>true</code> wenn die Länge 0 ist, sonst <code>false</code>)</li>
+<li><strong>Sicherheitsaspekte &amp; Panics</strong>: Keine.</li>
+<li><strong>Beispiel</strong>:
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let arr: [i32; 0] = [];
+assert!(arr.is_empty());
+<span class="boring">}</span></code></pre>
+</li>
+</ul>
+<h3 id="3-first"><a class="header" href="#3-first">3. <code>first</code></a></h3>
+<ul>
+<li><strong>Signatur</strong>: <code>pub const fn first(&amp;self) -&gt; Option&lt;&amp;T&gt;</code></li>
+<li><strong>Parameter</strong>: <code>&amp;self</code></li>
+<li><strong>Rückgabetyp</strong>: <code>Option&lt;&amp;T&gt;</code> (Referenz auf das erste Element)</li>
+<li><strong>Sicherheitsaspekte &amp; Panics</strong>: Keine. Gibt bei leeren Slices <code>None</code> zurück.</li>
+<li><strong>Beispiel</strong>:
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let arr = [10, 20, 30];
+assert_eq!(arr.first(), Some(&amp;10));
+<span class="boring">}</span></code></pre>
+</li>
+</ul>
+<h3 id="4-first_mut"><a class="header" href="#4-first_mut">4. <code>first_mut</code></a></h3>
+<ul>
+<li><strong>Signatur</strong>: <code>pub fn first_mut(&amp;mut self) -&gt; Option&lt;&amp;mut T&gt;</code></li>
+<li><strong>Parameter</strong>: <code>&amp;mut self</code> (veränderbare Referenz)</li>
+<li><strong>Rückgabetyp</strong>: <code>Option&lt;&amp;mut T&gt;</code> (veränderbare Referenz auf das erste Element)</li>
+<li><strong>Sicherheitsaspekte &amp; Panics</strong>: Keine.</li>
+<li><strong>Beispiel</strong>:
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let mut arr = [10, 20, 30];
+if let Some(first) = arr.first_mut() {
+    *first = 99;
+}
+assert_eq!(arr[0], 99);
+<span class="boring">}</span></code></pre>
+</li>
+</ul>
+<h3 id="5-last"><a class="header" href="#5-last">5. <code>last</code></a></h3>
+<ul>
+<li><strong>Signatur</strong>: <code>pub const fn last(&amp;self) -&gt; Option&lt;&amp;T&gt;</code></li>
+<li><strong>Parameter</strong>: <code>&amp;self</code></li>
+<li><strong>Rückgabetyp</strong>: <code>Option&lt;&amp;T&gt;</code> (Referenz auf das letzte Element)</li>
+<li><strong>Sicherheitsaspekte &amp; Panics</strong>: Keine.</li>
+<li><strong>Beispiel</strong>:
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let arr = [10, 20, 30];
+assert_eq!(arr.last(), Some(&amp;30));
+<span class="boring">}</span></code></pre>
+</li>
+</ul>
+<h3 id="6-last_mut"><a class="header" href="#6-last_mut">6. <code>last_mut</code></a></h3>
+<ul>
+<li><strong>Signatur</strong>: <code>pub fn last_mut(&amp;mut self) -&gt; Option&lt;&amp;mut T&gt;</code></li>
+<li><strong>Parameter</strong>: <code>&amp;mut self</code></li>
+<li><strong>Rückgabetyp</strong>: <code>Option&lt;&amp;mut T&gt;</code> (veränderbare Referenz auf das letzte Element)</li>
+<li><strong>Sicherheitsaspekte &amp; Panics</strong>: Keine.</li>
+<li><strong>Beispiel</strong>:
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let mut arr = [10, 20, 30];
+if let Some(last) = arr.last_mut() {
+    *last = 99;
+}
+assert_eq!(arr[2], 99);
+<span class="boring">}</span></code></pre>
+</li>
+</ul>
+<h3 id="7-get"><a class="header" href="#7-get">7. <code>get</code></a></h3>
+<ul>
+<li><strong>Signatur</strong>: <code>pub fn get&lt;I&gt;(&amp;self, index: I) -&gt; Option&lt;&amp;I::Output&gt; where I: SliceIndex&lt;[T]&gt;</code></li>
+<li><strong>Parameter</strong>: <code>index</code> (ein passender Index, z. B. <code>usize</code> oder eine Range wie <code>1..3</code>)</li>
+<li><strong>Rückgabetyp</strong>: <code>Option&lt;&amp;T&gt;</code> (bzw. Referenz auf das Teilschnitt-Slice)</li>
+<li><strong>Sicherheitsaspekte &amp; Panics</strong>: Keine.</li>
+<li><strong>Beispiel</strong>:
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let arr = [10, 20, 30];
+assert_eq!(arr.get(1), Some(&amp;20));
+assert_eq!(arr.get(5), None);
+<span class="boring">}</span></code></pre>
+</li>
+</ul>
+<h3 id="8-get_mut"><a class="header" href="#8-get_mut">8. <code>get_mut</code></a></h3>
+<ul>
+<li><strong>Signatur</strong>: <code>pub fn get_mut&lt;I&gt;(&amp;mut self, index: I) -&gt; Option&lt;&amp;mut I::Output&gt; where I: SliceIndex&lt;[T]&gt;</code></li>
+<li><strong>Parameter</strong>: <code>index</code></li>
+<li><strong>Rückgabetyp</strong>: <code>Option&lt;&amp;mut T&gt;</code></li>
+<li><strong>Sicherheitsaspekte &amp; Panics</strong>: Keine.</li>
+<li><strong>Beispiel</strong>:
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let mut arr = [10, 20, 30];
+if let Some(val) = arr.get_mut(1) {
+    *val = 42;
+}
+assert_eq!(arr[1], 42);
+<span class="boring">}</span></code></pre>
+</li>
+</ul>
+<h3 id="9-map-exklusiv-für-t-n"><a class="header" href="#9-map-exklusiv-für-t-n">9. <code>map</code> (Exklusiv für <code>[T; N]</code>)</a></h3>
+<ul>
+<li><strong>Signatur</strong>: <code>pub fn map&lt;F, U&gt;(self, f: F) -&gt; [U; N] where F: FnMut(T) -&gt; U</code></li>
+<li><strong>Parameter</strong>: <code>self</code> (Besitzübernahme des Arrays), <code>f</code> (Transformationsfunktion)</li>
+<li><strong>Rückgabetyp</strong>: Ein neues Array <code>[U; N]</code> mit transformierten Werten</li>
+<li><strong>Sicherheitsaspekte &amp; Panics</strong>: Keine, außer die übergebene Closure <code>f</code> panickt.</li>
+<li><strong>Beispiel</strong>:
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let arr = [1, 2, 3];
+let doubled = arr.map(|x| x * 2);
+assert_eq!(doubled, [2, 4, 6]);
+<span class="boring">}</span></code></pre>
+</li>
+</ul>
+<h3 id="10-contains"><a class="header" href="#10-contains">10. <code>contains</code></a></h3>
+<ul>
+<li><strong>Signatur</strong>: <code>pub fn contains(&amp;self, x: &amp;T) -&gt; bool where T: PartialEq</code></li>
+<li><strong>Parameter</strong>: <code>x</code> (Referenz auf den gesuchten Wert)</li>
+<li><strong>Rückgabetyp</strong>: <code>bool</code> (<code>true</code> wenn gefunden, sonst <code>false</code>)</li>
+<li><strong>Sicherheitsaspekte &amp; Panics</strong>: Keine.</li>
+<li><strong>Beispiel</strong>:
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let arr = [1, 2, 3];
+assert!(arr.contains(&amp;2));
+<span class="boring">}</span></code></pre>
+</li>
+</ul>
+<h3 id="11-starts_with"><a class="header" href="#11-starts_with">11. <code>starts_with</code></a></h3>
+<ul>
+<li><strong>Signatur</strong>: <code>pub fn starts_with(&amp;self, needle: &amp;[T]) -&gt; bool where T: PartialEq</code></li>
+<li><strong>Parameter</strong>: <code>needle</code> (Slice-Referenz der gesuchten Startsequenz)</li>
+<li><strong>Rückgabetyp</strong>: <code>bool</code></li>
+<li><strong>Sicherheitsaspekte &amp; Panics</strong>: Keine.</li>
+<li><strong>Beispiel</strong>:
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let arr = [1, 2, 3, 4];
+assert!(arr.starts_with(&amp;[1, 2]));
+<span class="boring">}</span></code></pre>
+</li>
+</ul>
+<h3 id="12-ends_with"><a class="header" href="#12-ends_with">12. <code>ends_with</code></a></h3>
+<ul>
+<li><strong>Signatur</strong>: <code>pub fn ends_with(&amp;self, needle: &amp;[T]) -&gt; bool where T: PartialEq</code></li>
+<li><strong>Parameter</strong>: <code>needle</code></li>
+<li><strong>Rückgabetyp</strong>: <code>bool</code></li>
+<li><strong>Sicherheitsaspekte &amp; Panics</strong>: Keine.</li>
+<li><strong>Beispiel</strong>:
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let arr = [1, 2, 3, 4];
+assert!(arr.ends_with(&amp;[3, 4]));
+<span class="boring">}</span></code></pre>
+</li>
+</ul>
+<h3 id="13-binary_search"><a class="header" href="#13-binary_search">13. <code>binary_search</code></a></h3>
+<ul>
+<li><strong>Signatur</strong>: <code>pub fn binary_search(&amp;self, x: &amp;T) -&gt; Result&lt;usize, usize&gt; where T: Ord</code></li>
+<li><strong>Parameter</strong>: <code>x</code> (Gesuchtes Element). Setzt ein sortiertes Array voraus!</li>
+<li><strong>Rückgabetyp</strong>: <code>Result&lt;usize, usize&gt;</code> (<code>Ok(Index)</code> wenn gefunden, <code>Err(InsertIndex)</code> wenn nicht gefunden)</li>
+<li><strong>Sicherheitsaspekte &amp; Panics</strong>: Keine.</li>
+<li><strong>Beispiel</strong>:
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let arr = [10, 20, 30, 40];
+assert_eq!(arr.binary_search(&amp;30), Ok(2));
+<span class="boring">}</span></code></pre>
+</li>
+</ul>
+<h3 id="14-sort"><a class="header" href="#14-sort">14. <code>sort</code></a></h3>
+<ul>
+<li><strong>Signatur</strong>: <code>pub fn sort(&amp;mut self) where T: Ord</code></li>
+<li><strong>Parameter</strong>: <code>&amp;mut self</code></li>
+<li><strong>Rückgabetyp</strong>: <code>()</code> (Sortierung erfolgt In-Place, stabil)</li>
+<li><strong>Sicherheitsaspekte &amp; Panics</strong>: Keine.</li>
+<li><strong>Beispiel</strong>:
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let mut arr = [3, 1, 2];
+arr.sort();
+assert_eq!(arr, [1, 2, 3]);
+<span class="boring">}</span></code></pre>
+</li>
+</ul>
+<h3 id="15-sort_unstable"><a class="header" href="#15-sort_unstable">15. <code>sort_unstable</code></a></h3>
+<ul>
+<li><strong>Signatur</strong>: <code>pub fn sort_unstable(&amp;mut self) where T: Ord</code></li>
+<li><strong>Parameter</strong>: <code>&amp;mut self</code></li>
+<li><strong>Rückgabetyp</strong>: <code>()</code> (In-Place, instabil aber meist schneller, alloziert keinen Hilfsspeicher)</li>
+<li><strong>Sicherheitsaspekte &amp; Panics</strong>: Keine.</li>
+<li><strong>Beispiel</strong>:
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let mut arr = [3, 1, 2];
+arr.sort_unstable();
+assert_eq!(arr, [1, 2, 3]);
+<span class="boring">}</span></code></pre>
+</li>
+</ul>
+<h3 id="16-reverse"><a class="header" href="#16-reverse">16. <code>reverse</code></a></h3>
+<ul>
+<li><strong>Signatur</strong>: <code>pub fn reverse(&amp;mut self)</code></li>
+<li><strong>Parameter</strong>: <code>&amp;mut self</code></li>
+<li><strong>Rückgabetyp</strong>: <code>()</code> (Kehrt die Reihenfolge In-Place um)</li>
+<li><strong>Sicherheitsaspekte &amp; Panics</strong>: Keine.</li>
+<li><strong>Beispiel</strong>:
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let mut arr = [1, 2, 3];
+arr.reverse();
+assert_eq!(arr, [3, 2, 1]);
+<span class="boring">}</span></code></pre>
+</li>
+</ul>
+<h3 id="17-rotate_left"><a class="header" href="#17-rotate_left">17. <code>rotate_left</code></a></h3>
+<ul>
+<li><strong>Signatur</strong>: <code>pub fn rotate_left(&amp;mut self, mid: usize)</code></li>
+<li><strong>Parameter</strong>: <code>mid</code> (Rotationspunkt)</li>
+<li><strong>Rückgabetyp</strong>: <code>()</code> (Rotiert Elemente nach links)</li>
+<li><strong>Sicherheitsaspekte &amp; Panics</strong>: Panickt, wenn <code>mid &gt; len</code>.</li>
+<li><strong>Beispiel</strong>:
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let mut arr = [1, 2, 3, 4, 5];
+arr.rotate_left(2);
+assert_eq!(arr, [3, 4, 5, 1, 2]);
+<span class="boring">}</span></code></pre>
+</li>
+</ul>
+<h3 id="18-rotate_right"><a class="header" href="#18-rotate_right">18. <code>rotate_right</code></a></h3>
+<ul>
+<li><strong>Signatur</strong>: <code>pub fn rotate_right(&amp;mut self, k: usize)</code></li>
+<li><strong>Parameter</strong>: <code>k</code> (Anzahl der Schritte nach rechts)</li>
+<li><strong>Rückgabetyp</strong>: <code>()</code></li>
+<li><strong>Sicherheitsaspekte &amp; Panics</strong>: Panickt, wenn <code>k &gt; len</code>.</li>
+<li><strong>Beispiel</strong>:
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let mut arr = [1, 2, 3, 4, 5];
+arr.rotate_right(2);
+assert_eq!(arr, [4, 5, 1, 2, 3]);
+<span class="boring">}</span></code></pre>
+</li>
+</ul>
+<h3 id="19-swap"><a class="header" href="#19-swap">19. <code>swap</code></a></h3>
+<ul>
+<li><strong>Signatur</strong>: <code>pub fn swap(&amp;mut self, a: usize, b: usize)</code></li>
+<li><strong>Parameter</strong>: <code>a</code> und <code>b</code> (Die zu tauschenden Indizes)</li>
+<li><strong>Rückgabetyp</strong>: <code>()</code></li>
+<li><strong>Sicherheitsaspekte &amp; Panics</strong>: Panickt, wenn <code>a</code> oder <code>b</code> außerhalb der Grenzen liegen.</li>
+<li><strong>Beispiel</strong>:
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let mut arr = [10, 20, 30];
+arr.swap(0, 2);
+assert_eq!(arr, [30, 20, 10]);
+<span class="boring">}</span></code></pre>
+</li>
+</ul>
+<h3 id="20-fill"><a class="header" href="#20-fill">20. <code>fill</code></a></h3>
+<ul>
+<li><strong>Signatur</strong>: <code>pub fn fill(&amp;mut self, value: T) where T: Clone</code></li>
+<li><strong>Parameter</strong>: <code>value</code> (Der Wert, mit dem das Array gefüllt werden soll)</li>
+<li><strong>Rückgabetyp</strong>: <code>()</code></li>
+<li><strong>Sicherheitsaspekte &amp; Panics</strong>: Keine.</li>
+<li><strong>Beispiel</strong>:
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let mut arr = [1; 4];
+arr.fill(9);
+assert_eq!(arr, [9, 9, 9, 9]);
+<span class="boring">}</span></code></pre>
+</li>
+</ul>
+<h3 id="21-fill_with"><a class="header" href="#21-fill_with">21. <code>fill_with</code></a></h3>
+<ul>
+<li><strong>Signatur</strong>: <code>pub fn fill_with&lt;F&gt;(&amp;mut self, f: F) where F: FnMut() -&gt; T</code></li>
+<li><strong>Parameter</strong>: <code>f</code> (Eine Generator-Funktion/Closure)</li>
+<li><strong>Rückgabetyp</strong>: <code>()</code></li>
+<li><strong>Sicherheitsaspekte &amp; Panics</strong>: Keine.</li>
+<li><strong>Beispiel</strong>:
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let mut arr = [0; 3];
+let mut x = 1;
+arr.fill_with(|| { x *= 2; x });
+assert_eq!(arr, [2, 4, 8]);
+<span class="boring">}</span></code></pre>
+</li>
+</ul>
+<h3 id="22-iter"><a class="header" href="#22-iter">22. <code>iter</code></a></h3>
+<ul>
+<li><strong>Signatur</strong>: <code>pub fn iter(&amp;self) -&gt; Iter&lt;'_, T&gt;</code></li>
+<li><strong>Parameter</strong>: <code>&amp;self</code></li>
+<li><strong>Rückgabetyp</strong>: Ein Iterator über unveränderliche Referenzen der Elemente.</li>
+<li><strong>Sicherheitsaspekte &amp; Panics</strong>: Keine.</li>
+<li><strong>Beispiel</strong>:
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let arr = [10, 20];
+let mut iterator = arr.iter();
+assert_eq!(iterator.next(), Some(&amp;10));
+<span class="boring">}</span></code></pre>
+</li>
+</ul>
+<h3 id="23-iter_mut"><a class="header" href="#23-iter_mut">23. <code>iter_mut</code></a></h3>
+<ul>
+<li><strong>Signatur</strong>: <code>pub fn iter_mut(&amp;mut self) -&gt; IterMut&lt;'_, T&gt;</code></li>
+<li><strong>Parameter</strong>: <code>&amp;mut self</code></li>
+<li><strong>Rückgabetyp</strong>: Ein Iterator über veränderbare Referenzen der Elemente.</li>
+<li><strong>Sicherheitsaspekte &amp; Panics</strong>: Keine.</li>
+<li><strong>Beispiel</strong>:
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let mut arr = [10, 20];
+for val in arr.iter_mut() {
+    *val += 5;
+}
+assert_eq!(arr, [15, 25]);
+<span class="boring">}</span></code></pre>
+</li>
+</ul>
+<h3 id="24-split_at"><a class="header" href="#24-split_at">24. <code>split_at</code></a></h3>
+<ul>
+<li><strong>Signatur</strong>: <code>pub fn split_at(&amp;self, mid: usize) -&gt; (&amp;[T], &amp;[T])</code></li>
+<li><strong>Parameter</strong>: <code>mid</code> (Index, an dem gesplittet werden soll)</li>
+<li><strong>Rückgabetyp</strong>: Ein Tupel aus zwei unveränderlichen Slice-Referenzen</li>
+<li><strong>Sicherheitsaspekte &amp; Panics</strong>: Panickt, wenn <code>mid &gt; len</code>.</li>
+<li><strong>Beispiel</strong>:
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let arr = [1, 2, 3, 4];
+let (left, right) = arr.split_at(2);
+assert_eq!(left, &amp;[1, 2]);
+assert_eq!(right, &amp;[3, 4]);
+<span class="boring">}</span></code></pre>
+</li>
+</ul>
+<h3 id="25-split_at_mut"><a class="header" href="#25-split_at_mut">25. <code>split_at_mut</code></a></h3>
+<ul>
+<li><strong>Signatur</strong>: <code>pub fn split_at_mut(&amp;mut self, mid: usize) -&gt; (&amp;mut [T], &amp;mut [T])</code></li>
+<li><strong>Parameter</strong>: <code>mid</code></li>
+<li><strong>Rückgabetyp</strong>: Ein Tupel aus zwei veränderbaren Slice-Referenzen</li>
+<li><strong>Sicherheitsaspekte &amp; Panics</strong>: Panickt, wenn <code>mid &gt; len</code>.</li>
+<li><strong>Beispiel</strong>:
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let mut arr = [1, 2, 3, 4];
+let (left, right) = arr.split_at_mut(2);
+left[0] = 9;
+right[0] = 8;
+assert_eq!(arr, [9, 2, 8, 4]);
+<span class="boring">}</span></code></pre>
+</li>
+</ul>
+<h3 id="26-windows"><a class="header" href="#26-windows">26. <code>windows</code></a></h3>
+<ul>
+<li><strong>Signatur</strong>: <code>pub fn windows(&amp;self, size: usize) -&gt; Windows&lt;'_, T&gt;</code></li>
+<li><strong>Parameter</strong>: <code>size</code> (Fenstergröße)</li>
+<li><strong>Rückgabetyp</strong>: Ein Iterator über sich überlappende Teil-Slices</li>
+<li><strong>Sicherheitsaspekte &amp; Panics</strong>: Panickt, wenn <code>size == 0</code>.</li>
+<li><strong>Beispiel</strong>:
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let arr = [1, 2, 3, 4];
+let mut wins = arr.windows(2);
+assert_eq!(wins.next(), Some(&amp;[1, 2][..]));
+assert_eq!(wins.next(), Some(&amp;[2, 3][..]));
+<span class="boring">}</span></code></pre>
+</li>
+</ul>
+<h3 id="27-chunks"><a class="header" href="#27-chunks">27. <code>chunks</code></a></h3>
+<ul>
+<li><strong>Signatur</strong>: <code>pub fn chunks(&amp;self, chunk_size: usize) -&gt; Chunks&lt;'_, T&gt;</code></li>
+<li><strong>Parameter</strong>: <code>chunk_size</code></li>
+<li><strong>Rückgabetyp</strong>: Ein Iterator über sich nicht überlappende Teil-Slices</li>
+<li><strong>Sicherheitsaspekte &amp; Panics</strong>: Panickt, wenn <code>chunk_size == 0</code>.</li>
+<li><strong>Beispiel</strong>:
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let arr = [1, 2, 3, 4, 5];
+let mut chks = arr.chunks(2);
+assert_eq!(chks.next(), Some(&amp;[1, 2][..]));
+assert_eq!(chks.next(), Some(&amp;[3, 4][..]));
+assert_eq!(chks.next(), Some(&amp;[5][..]));
+<span class="boring">}</span></code></pre>
+</li>
+</ul>
+<h3 id="28-chunks_mut"><a class="header" href="#28-chunks_mut">28. <code>chunks_mut</code></a></h3>
+<ul>
+<li><strong>Signatur</strong>: <code>pub fn chunks_mut(&amp;mut self, chunk_size: usize) -&gt; ChunksMut&lt;'_, T&gt;</code></li>
+<li><strong>Parameter</strong>: <code>chunk_size</code></li>
+<li><strong>Rückgabetyp</strong>: Iterator über veränderbare Teil-Slices</li>
+<li><strong>Sicherheitsaspekte &amp; Panics</strong>: Panickt, wenn <code>chunk_size == 0</code>.</li>
+<li><strong>Beispiel</strong>:
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let mut arr = [1, 2, 3, 4];
+for chunk in arr.chunks_mut(2) {
+    chunk[0] = 9;
+}
+assert_eq!(arr, [9, 2, 9, 4]);
+<span class="boring">}</span></code></pre>
+</li>
+</ul>
+<h3 id="29-as_slice"><a class="header" href="#29-as_slice">29. <code>as_slice</code></a></h3>
+<ul>
+<li><strong>Signatur</strong>: <code>pub fn as_slice(&amp;self) -&gt; &amp;[T]</code></li>
+<li><strong>Parameter</strong>: <code>&amp;self</code></li>
+<li><strong>Rückgabetyp</strong>: <code>&amp;[T]</code> (Explizite Konvertierung des Arrays in ein Slice)</li>
+<li><strong>Sicherheitsaspekte &amp; Panics</strong>: Keine.</li>
+<li><strong>Beispiel</strong>:
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let arr = [1, 2, 3];
+let slice = arr.as_slice();
+assert_eq!(slice, &amp;[1, 2, 3]);
+<span class="boring">}</span></code></pre>
+</li>
+</ul>
+<h3 id="30-as_mut_slice"><a class="header" href="#30-as_mut_slice">30. <code>as_mut_slice</code></a></h3>
+<ul>
+<li><strong>Signatur</strong>: <code>pub fn as_mut_slice(&amp;mut self) -&gt; &amp;mut [T]</code></li>
+<li><strong>Parameter</strong>: <code>&amp;mut self</code></li>
+<li><strong>Rückgabetyp</strong>: <code>&amp;mut [T]</code></li>
+<li><strong>Sicherheitsaspekte &amp; Panics</strong>: Keine.</li>
+<li><strong>Beispiel</strong>:
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let mut arr = [1, 2, 3];
+let mut_slice = arr.as_mut_slice();
+mut_slice[0] = 99;
+assert_eq!(arr, [99, 2, 3]);
+<span class="boring">}</span></code></pre>
+</li>
+</ul>
+<hr>
+<h2 id="9-drei-praktische-übungen"><a class="header" href="#9-drei-praktische-übungen">9. Drei praktische Übungen</a></h2>
+<h3 id="übung-1-leicht-array-spiegelung"><a class="header" href="#übung-1-leicht-array-spiegelung">Übung 1 (Leicht): Array-Spiegelung</a></h3>
+<ul>
+<li><strong>Aufgabe</strong>: Schreiben Sie eine Funktion <code>spiegele_array(mut arr: [i32; 6]) -&gt; [i32; 6]</code>, die die Reihenfolge der Elemente in einem Array von 6 Ganzzahlen umdreht. Nutzen Sie hierfür eine Schleife oder eine eingebaute Methode.</li>
+<li><strong>Blueprint</strong>:
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>fn spiegele_array(mut arr: [i32; 6]) -&gt; [i32; 6] {
+    // Ihr Code hier
+}
+<span class="boring">}</span></code></pre>
+</li>
+<li><strong>Lösungshinweis</strong>: Sie können das Array veränderbar machen und die Methode <code>.reverse()</code> aufrufen oder die Elemente manuell mithilfe der Methode <code>.swap(i, j)</code> tauschen.</li>
+</ul>
+<h3 id="übung-2-mittel-sensor-statistik"><a class="header" href="#übung-2-mittel-sensor-statistik">Übung 2 (Mittel): Sensor-Statistik</a></h3>
+<ul>
+<li><strong>Aufgabe</strong>: Schreiben Sie eine Funktion <code>analysiere_sensoren(daten: [f32; 10]) -&gt; (f32, f32, f32)</code>, die ein Array mit 10 Messwerten analysiert. Die Funktion soll ein Tupel zurückgeben, das folgende Werte enthält:
+<ol>
+<li>Den minimalen Messwert</li>
+<li>Den maximalen Messwert</li>
+<li>Den Durchschnitt aller Messwerte</li>
+</ol>
+</li>
+<li><strong>Anforderungen</strong>:
+<ul>
+<li>Der Code darf keine externen Crates nutzen.</li>
+<li>Wenn das Array negative Werte enthält, sollen diese normal verarbeitet werden.</li>
+</ul>
+</li>
+<li><strong>Blueprint</strong>:
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>fn analysiere_sensoren(daten: [f32; 10]) -&gt; (f32, f32, f32) {
+    // Ihr Code hier
+}
+<span class="boring">}</span></code></pre>
+</li>
+<li><strong>Lösungshinweis</strong>: Initialisieren Sie temporäre Variablen für Min und Max mit dem ersten Element des Arrays (<code>daten[0]</code>). Iterieren Sie dann über das Array, um Min, Max und die Summe zu ermitteln. Dividieren Sie am Ende die Summe durch <code>10.0</code>, um den Durchschnitt zu erhalten.</li>
+</ul>
+<h3 id="übung-3-schwer-sicherer-ringpuffer"><a class="header" href="#übung-3-schwer-sicherer-ringpuffer">Übung 3 (Schwer): Sicherer Ringpuffer</a></h3>
+<ul>
+<li><strong>Aufgabe</strong>: Implementieren Sie einen einfachen Ringpuffer mit einer festen Kapazität von 4 Elementen auf Basis eines Arrays und eines Tupels zur Zustandsverwaltung.
+<ul>
+<li>Verwenden Sie ein Array <code>[i32; 4]</code> als Puffer.</li>
+<li>Verwenden Sie ein Tupel <code>(usize, usize, usize)</code> zur Zustandshaltung, wobei die Felder Folgendes repräsentieren: <code>(schreib_index, lese_index, belegte_elemente)</code>.</li>
+<li>Schreiben Sie eine Funktion <code>schreibe_wert(puffer: &amp;mut [i32; 4], zustand: &amp;mut (usize, usize, usize), wert: i32) -&gt; Result&lt;(), &amp;'static str&gt;</code>. Wenn der Puffer voll ist, soll ein Fehler zurückgegeben werden.</li>
+<li>Schreiben Sie eine Funktion <code>lese_wert(puffer: &amp;[i32; 4], zustand: &amp;mut (usize, usize, usize)) -&gt; Result&lt;i32, &amp;'static str&gt;</code>. Wenn der Puffer leer ist, soll ein Fehler zurückgegeben werden.</li>
+</ul>
+</li>
+<li><strong>Blueprint</strong>:
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>fn schreibe_wert(puffer: &amp;mut [i32; 4], zustand: &amp;mut (usize, usize, usize), wert: i32) -&gt; Result&lt;(), &amp;'static str&gt; {
+    // Ihr Code hier
+}
+
+fn lese_wert(puffer: &amp;[i32; 4], zustand: &amp;mut (usize, usize, usize)) -&gt; Result&lt;i32, &amp;'static str&gt; {
+    // Ihr Code hier
+}
+<span class="boring">}</span></code></pre>
+</li>
+<li><strong>Lösungshinweis</strong>: Nutzen Sie den Modulo-Operator <code>% 4</code>, um die Indizes zyklisch innerhalb der Array-Grenzen (0 bis 3) zu halten. Erhöhen bzw. verringern Sie das dritte Feld des Zustandstupels (<code>zustand.2</code>), um festzustellen, ob der Puffer voll (Größe 4) oder leer (Größe 0) is.</li>
+</ul>
+<hr>
+<h2 id="10-lernstrategie-selbsteinschätzung--merkzettel"><a class="header" href="#10-lernstrategie-selbsteinschätzung--merkzettel">10. Lernstrategie, Selbsteinschätzung &amp; Merkzettel</a></h2>
+<h3 id="spickzettel-cheat-sheet"><a class="header" href="#spickzettel-cheat-sheet">Spickzettel (Cheat Sheet)</a></h3>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th style="text-align: left">Struktur</th><th style="text-align: left">Typ-Syntax</th><th style="text-align: left">Initialisierungsbeispiel</th><th style="text-align: left">Zugriffsmethode</th><th style="text-align: left">Speicherort</th><th style="text-align: left">Flexibilität</th></tr>
+</thead>
+<tbody>
+<tr><td style="text-align: left"><strong>Array</strong></td><td style="text-align: left"><code>[T; N]</code></td><td style="text-align: left"><code>[10, 20, 30]</code> oder <code>[0; 10]</code></td><td style="text-align: left"><code>arr[0]</code> (unsicher), <code>arr.get(0)</code> (sicher)</td><td style="text-align: left">Stack (flach)</td><td style="text-align: left">Homogen, feste Größe</td></tr>
+<tr><td style="text-align: left"><strong>Tupel</strong></td><td style="text-align: left"><code>(T1, T2, ...)</code></td><td style="text-align: left"><code>("Text", 42, true)</code></td><td style="text-align: left"><code>tup.0</code>, <code>tup.1</code> (statisch), Destrukturierung</td><td style="text-align: left">Stack (optimiert)</td><td style="text-align: left">Heterogen, feste Größe</td></tr>
+<tr><td style="text-align: left"><strong>Unit-Typ</strong></td><td style="text-align: left"><code>()</code></td><td style="text-align: left"><code>()</code></td><td style="text-align: left">-</td><td style="text-align: left">- (0 Bytes)</td><td style="text-align: left">Repräsentiert “Nichts”</td></tr>
+</tbody>
+</table>
+</div>
+<h3 id="active-recall"><a class="header" href="#active-recall">Active Recall</a></h3>
+<p>Versuchen Sie, die folgenden Fragen aus dem Gedächtnis zu beantworten:</p>
+<ol>
+<li>Warum führt der Versuch, auf ein Tupel-Element mit einer Variablen zuzugreifen (z. B. <code>let i = 1; let x = tup.i;</code>), zu einem Compilerfehler?</li>
+<li>Was versteht man unter dem Begriff <em>Field Reordering</em> bei Tupeln und welchem Zweck dient es?</li>
+<li>Welche Bedingung muss der Typ <code>T</code> erfüllen, damit ein Array über die Syntax <code>[wert; N]</code> initialisiert werden kann?</li>
+<li>Wie optimiert LLVM den Zugriff auf Array-Elemente in einer standardmäßigen <code>for</code>-Schleife?</li>
+</ol>
+<h3 id="die-feynman-methode"><a class="header" href="#die-feynman-methode">Die Feynman-Methode</a></h3>
+<p>Erklären Sie einem Programmierer, der nur Python oder JavaScript kennt, warum Rusts Arrays sicherer sind, obwohl sie bei einem falschen Index zur Laufzeit abstürzen. Schreiben Sie dies in maximal drei einfachen Sätzen auf.</p>
+<h3 id="gezielte-fehlerprovokation"><a class="header" href="#gezielte-fehlerprovokation">Gezielte Fehlerprovokation</a></h3>
+<ol>
+<li>Erstellen Sie ein Array <code>let a = [1, 2, 3];</code> und versuchen Sie, ihm ein viertes Element zuzuweisen oder es mit <code>let b: [i32; 4] = a;</code> einer Variablen anderen Typs zuzuweisen. Beobachten Sie die Compiler-Fehlermeldung.</li>
+<li>Definieren Sie ein Tupel <code>let t = (1, 2.0);</code> und versuchen Sie, <code>t.2</code> aufzurufen. Analysieren Sie die präzise Fehlermeldung des Compilers.</li>
+</ol>
+<h3 id="metakognitiver-selbsttest"><a class="header" href="#metakognitiver-selbsttest">Metakognitiver Selbsttest</a></h3>
+<p>Wechseln Sie erst zu Kapitel 9, wenn Sie:</p>
+<ul>
+<li><input disabled="" type="checkbox"> Den Unterschied zwischen Stack- und Heap-Allokation bei Arrays im Vergleich zu Vektoren verstanden haben.</li>
+<li><input disabled="" type="checkbox"> Ein heterogenes Tupel fehlerfrei deklarieren und über die Punkt-Notation sowie über Destrukturierung auslesen können.</li>
+<li><input disabled="" type="checkbox"> Den Rückgabetyp von <code>.get()</code> erklären und mit einem <code>match</code>-Block sicher auswerten können.</li>
+</ul>
+<hr>
+<h2 id="11-zusammenfassung"><a class="header" href="#11-zusammenfassung">11. Zusammenfassung</a></h2>
+<ul>
+<li><strong>Arrays (<code>[T; N]</code>)</strong> bieten eine extrem performante, homogene Speicherung auf dem Stack. Ihre Größe ist unveränderlicher Bestandteil ihres Typs.</li>
+<li><strong>Tupel (<code>(T1, T2, ...)</code>)</strong> erlauben es, heterogene Daten flexibel und ohne Namenszwang zu gruppieren. Sie werden häufig für Mehrfach-Rückgaben aus Funktionen verwendet.</li>
+<li><strong>Bounds Checking</strong> ist Rusts Sicherheitsnetz bei Array-Indexzugriffen. Es verhindert Speicherzugriffsfehler zur Laufzeit durch kontrolliertes Panik-Verhalten.</li>
+<li><strong>Sichere Alternativen</strong> wie die Methode <code>.get()</code> liefern ein <code>Option&lt;&amp;T&gt;</code> zurück und sollten bei dynamischen Indizes immer dem direkten Index-Operator vorgezogen werden.</li>
+<li><strong>Compiler-Optimierungen</strong> wie <em>Field Reordering</em> (bei Tupeln zur Reduzierung von Padding) und <em>Bounds Check Elimination</em> (bei Arrays durch LLVM) sorgen dafür, dass Rust-Code trotz maximaler Sicherheit die Performance von handoptimiertem C++ erreicht.</li>
+</ul>
+<hr>
+<p><strong>Lizenz- und Attributionshinweis</strong>:
+Teile dieses Kapitels basieren auf Übersetzungen und didaktischen Anpassungen des offiziellen Buches <a href="https://doc.rust-lang.org/book/">The Rust Programming Language</a> von Steve Klabnik und Carol Nichols (sowie Beiträgen der Rust-Community), lizenziert unter <a href="https://opensource.org/licenses/MIT">MIT</a> und <a href="https://www.apache.org/licenses/LICENSE-2.0">Apache 2.0</a>.</p>
 
                     </main>
 

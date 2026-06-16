@@ -35,7 +35,7 @@
             const path_to_root = "";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "searchindex-a9440cc5.js";
+            window.path_to_searchindex_js = "searchindex-76719c3e.js";
         </script>
         <!-- Start loading toc.js asap -->
         <script src="toc-dedbbe6e.js"></script>
@@ -175,315 +175,1187 @@
                 <div id="mdbook-content" class="content">
                     <main>
                         <h1 id="kapitel-24-projekt-professionalisierung--das-antigravity-cli"><a class="header" href="#kapitel-24-projekt-professionalisierung--das-antigravity-cli">Kapitel 24: Projekt-Professionalisierung &amp; das Antigravity CLI</a></h1>
-<p>Herzlichen Glückwunsch! Du hast die theoretischen und praktischen Grundlagen von Rust bis hin zu komplexeren Konzepten wie dem Ownership-System, Referenzen und Borrowing gemeistert. Doch mit wachsendem Wissen und größeren Projekten steigt auch die Komplexität. Um den Überblick nicht zu verlieren und die Zusammenarbeit mit modernen KI-Entwicklungswerkzeugen zu maximieren, ist eine professionelle Projektorganisation unerlässlich.</p>
-<p>In diesem Kapitel lernst du, wie du dein Rust-Projekt auf ein professionelles Niveau hebst. Wir betrachten die vier Säulen der Workspace-Governance (<code>AGENTS.md</code>, <code>skills.md</code>, <code>.agentrules</code> und <code>glossary.md</code>) und steigen tief in die Nutzung des <strong>Antigravity CLI</strong> (<code>agy</code>) ein. Du erfährst Schritt für Schritt, wie du ein neues Unterverzeichnis <code>Tutorial</code> mithilfe der KI-Unterstützung des CLI erstellst, integrierst und verwaltest.</p>
+<p>Herzlichen Glückwunsch! Sie haben die theoretischen und praktischen Grundlagen von Rust bis hin zu komplexeren Konzepten wie dem Ownership-System, Referenzen und Borrowing gemeistert. Doch mit wachsendem Wissen und größeren Projekten steigt auch die Komplexität. Um den Überblick nicht zu verlieren und die Zusammenarbeit mit modernen künstlichen Intelligenzen (KI) zur Entwicklung von Software zu maximieren, ist eine professionelle Projektorganisation unerlässlich.</p>
+<p>In diesem Kapitel lernen Sie, wie Sie Ihr Rust-Projekt auf ein professionelles Niveau heben. Wir betrachten die vier Säulen der Workspace-Governance (<a href="file:///home/thorsten/RustKurs/AGENTS.md">AGENTS.md</a>, <a href="file:///home/thorsten/RustKurs/skills.md">skills.md</a>, <a href="file:///home/thorsten/RustKurs/.agentrules">.agentrules</a> und <a href="file:///home/thorsten/RustKurs/glossary.md">glossary.md</a>) und steigen tief in die Nutzung des <strong>Antigravity CLI</strong> (<code>agy</code>) ein. Sie erfahren Schritt für Schritt, wie Sie ein neues Unterverzeichnis <code>Tutorial</code> mithilfe der KI-Unterstützung des CLI erstellen, integrieren und verwalten.</p>
 <hr>
-<h2 id="1-genaue-definitionen-was-ist-das-antigravity-cli-und-was-sind-governance-dateien"><a class="header" href="#1-genaue-definitionen-was-ist-das-antigravity-cli-und-was-sind-governance-dateien">1. Genaue Definitionen: Was ist das Antigravity CLI und was sind Governance-Dateien?</a></h2>
-<p>Bevor wir in die praktische Umsetzung einsteigen, definieren wir die Kernkomponenten dieses Workflows präzise:</p>
-<h3 id="a-das-antigravity-cli-agy"><a class="header" href="#a-das-antigravity-cli-agy">A) Das Antigravity CLI (<code>agy</code>)</a></h3>
-<p>Das <strong>Antigravity CLI</strong> (Befehlszeilenaufruf: <code>agy</code>) ist ein terminalbasiertes KI-Entwicklungswerkzeug von Google. Es unterscheidet sich von klassischen Chat-Assistenten durch drei wesentliche Merkmale:</p>
+<h2 id="31-lernziele--lernplan"><a class="header" href="#31-lernziele--lernplan">3.1 Lernziele &amp; Lernplan</a></h2>
+<h3 id="lernziele"><a class="header" href="#lernziele">Lernziele</a></h3>
+<ul>
+<li><strong>Sie können</strong> die Sicherheitsgrenzen einer Sandbox-Umgebung erklären und Rust-Code entwerfen, der innerhalb dieser Grenzen durch die Verwendung relativer Pfade und Workspace-Grenzprüfungen fehlerfrei ausgeführt wird.</li>
+<li><strong>Sie können</strong> die vier Workspace-Governance-Dateien (<a href="file:///home/thorsten/RustKurs/AGENTS.md">AGENTS.md</a>, <a href="file:///home/thorsten/RustKurs/skills.md">skills.md</a>, <a href="file:///home/thorsten/RustKurs/.agentrules">.agentrules</a> und <a href="file:///home/thorsten/RustKurs/glossary.md">glossary.md</a>) syntaktisch korrekt konfigurieren und deren Parameter zur präzisen Steuerung autonomer KI-Agenten anwenden.</li>
+<li><strong>Sie können</strong> ein neues Cargo-Unterprojekt innerhalb eines Tutorial-Verzeichnisses über die TUI des Antigravity CLI initialisieren, iterativ über den Review-Panel-Workflow (<code>ctrl+r</code>) anpassen und die Testergebnisse direkt in der Sandbox validieren.</li>
+</ul>
+<h3 id="lernplan-roadmap"><a class="header" href="#lernplan-roadmap">Lernplan (Roadmap)</a></h3>
 <ol>
-<li><strong>Lokaler Dateizugriff</strong>: Es liest und schreibt direkt in deinem Projektordner.</li>
-<li><strong>Sandbox-Umgebung</strong>: Befehle und Ausführungen laufen in einer isolierten Sicherheitsumgebung (Sandbox, z. B. via <code>nsjail</code>), um dein Wirts-System vor fehlerhaften oder schädlichen Operationen zu schützen.</li>
-<li><strong>Agentische Autonomie</strong>: Du stellst eine hochrangige Aufgabe (z. B. <em>“Erstelle ein Tutorial-Projekt”</em>), und das CLI plant eigenständig die Teilschritte, liest Dokumentationen, modifiziert Dateien und korrigiert Linter-Fehler, bis das Ziel erreicht ist.</li>
+<li><strong>Die Definition</strong>: Formale Definitionen der Systemkomponenten und alltagsnahe Metaphern.</li>
+<li><strong>Das Problem &amp; Die Motivation</strong>: Warum KI-gestützte Entwicklung ohne Governance und Sandbox-Schutz in der Praxis scheitert.</li>
+<li><strong>Der naive Versuch</strong>: Ein fehlerhafter Rust-Code, der unautorisierte Systemzugriffe versucht.</li>
+<li><strong>Die Anatomie des Fehlers</strong>: Analyse der Fehlermeldung und Erklärung der Linux-Sicherheitsmechanismen (nsjail, Namespaces, Mounts).</li>
+<li><strong>Die Lösung</strong>: Sicherer Rust-Code unter Verwendung relativer Pfade, strukturiert nach dem EVA-Prinzip.</li>
+<li><strong>Kleines Tutorial</strong>: Schritt-für-Schritt-Anleitung zur Erstellung eines Cargo-Projekts und Nutzung des interaktiven Review-Panels.</li>
+<li><strong>Mentale Modelle &amp; Deep Dive</strong>: Visualisierung des Workflows, detaillierte API-Dokumentation der vier Governance-Dateien und Systembetrachtungen (Thread-Safety, Performance).</li>
+<li><strong>Exhaustive API-Reference</strong>: Lückenlose Dokumentation aller Methoden von <code>std::path::Path</code> und <code>std::path::PathBuf</code> mit Beispielen.</li>
+<li><strong>Drei praktische Übungen</strong>: Aufgaben mit ansteigendem Schwierigkeitsgrad und Lösungshinweisen.</li>
+<li><strong>Lernstrategie, Selbsteinschätzung &amp; Merkzettel</strong>: Cheat Sheet, Active Recall Fragen, Feynman-Methode und gefundene Fehlerprovokation.</li>
+<li><strong>Zusammenfassung</strong>: Kernpunkte auf einen glance.</li>
 </ol>
-<h3 id="b-workspace-governance-dateien"><a class="header" href="#b-workspace-governance-dateien">B) Workspace-Governance-Dateien</a></h3>
-<p>Unter <strong>Workspace Governance</strong> versteht man Richtlinien-Dateien (<code>AGENTS.md</code>, <code>.agentrules</code>, <code>skills.md</code>, <code>glossary.md</code>), die im Hauptverzeichnis des Projekts liegen. Für das CLI wirken diese Dateien wie <strong>permanente System-Instruktionen</strong>:</p>
+<hr>
+<h2 id="32-die-definition"><a class="header" href="#32-die-definition">3.2 Die Definition</a></h2>
+<p>Für eine präzise technische Grundlage definieren wir die Kernkomponenten des Workflows wie folgt:</p>
 <ul>
-<li>Sie werden bei jedem Start von <code>agy</code> eingelesen.</li>
-<li>Sie steuern das Verhalten des Agenten dynamisch (z. B. Programmierstil, erlaubte Befehle, Begriffsdefinitionen).</li>
-<li>Sie verhindern den sogenannten “Kontext-Verfall”, da der Agent immer Zugriff auf die aktuellen Projektregeln und den Projektstatus hat.</li>
+<li><strong>Antigravity CLI (<code>agy</code>)</strong>: Eine terminalbasierte Befehlszeilenschnittstelle zur Interaktion mit autonomen KI-Entwicklungsagenten. Das CLI fungiert als Steuereinheit, die Prompts einliest, den Projektkontext analysiert, Subagenten koordiniert und Datei-Edits vorschlägt.</li>
+<li><strong>Sandbox-Umgebung</strong>: Eine isolierte Laufzeitumgebung auf Betriebssystemebene. Sie schränkt die Rechte des ausgeführten Prozesses (des Compilers, der Test-Binärdateien und des Agenten) streng ein. Dadurch wird verhindert, dass Schadcode oder logische Fehler das Wirtssystem kompromittieren oder verändern.</li>
+<li><strong>Workspace Governance</strong>: Ein Satz von vier zentralen Konfigurations- und Richtliniendokumenten im Projektstammverzeichnis (<a href="file:///home/thorsten/RustKurs/AGENTS.md">AGENTS.md</a>, <a href="file:///home/thorsten/RustKurs/skills.md">skills.md</a>, <a href="file:///home/thorsten/RustKurs/.agentrules">.agentrules</a> und <a href="file:///home/thorsten/RustKurs/glossary.md">glossary.md</a>), die dem Agenten als persistente Verhaltensinstruktionen dienen und die Ausführung, Codestil und Begriffsdefinitionen steuern.</li>
+<li><strong>Tutorial-Verzeichnis</strong>: Ein dedizierter, isolierter Unterordner (z. B. <code>Tutorial/</code>) innerhalb des Workspaces. Er dient der strukturierten Ablage von didaktischen Codebeispielen, um diese sauber vom Produktivcode zu trennen.</li>
 </ul>
-<h3 id="c-das-tutorial-unterverzeichnis"><a class="header" href="#c-das-tutorial-unterverzeichnis">C) Das Tutorial-Unterverzeichnis</a></h3>
-<p>Ein <strong>Tutorial-Unterverzeichnis</strong> (z. B. <code>Tutorial/</code>) ist ein isolierter Bereich innerhalb deines Projektordners. Es dient dazu:</p>
+<h3 id="alltagsnahe-metaphern-für-einsteiger"><a class="header" href="#alltagsnahe-metaphern-für-einsteiger">Alltagsnahe Metaphern für Einsteiger</a></h3>
+<h4 id="der-sandkasten-im-garten-die-sandbox"><a class="header" href="#der-sandkasten-im-garten-die-sandbox">Der Sandkasten im Garten (Die Sandbox)</a></h4>
+<p>Stellen Sie sich vor, Sie spielen im Sandkasten Ihres Gartens. Sie können dort Sandburgen bauen, Tunnel graben und Förmchen befüllen. Dies ist Ihr sicherer Workspace. Sie können sich innerhalb des Sandkastens frei bewegen. Die Holzumrandung des Sandkastens ist die Sandbox-Grenze. Sie hindert Sie physisch daran, mit Ihrer Schaufel das Fundament des Nachbarhauses zu untergraben oder Blumenbeete auf der anderen Straßenseite zu zerstören. Wenn Sie versuchen, außerhalb des Sandkastens zu graben, stoßen Sie auf eine unsichtbare, unüberwindbare Wand.</p>
+<h4 id="die-hausordnung-der-wohngemeinschaft-workspace-governance"><a class="header" href="#die-hausordnung-der-wohngemeinschaft-workspace-governance">Die Hausordnung der Wohngemeinschaft (Workspace Governance)</a></h4>
+<p>Die Governance-Dateien verhalten sich wie eine detaillierte Hausordnung in einer Wohngemeinschaft. Sie legt fest, wer für welche Aufgaben zuständig ist (<a href="file:///home/thorsten/RustKurs/AGENTS.md">AGENTS.md</a>), wie bestimmte Küchengeräte (Spezialwerkzeuge) bedient werden müssen (<a href="file:///home/thorsten/RustKurs/skills.md">skills.md</a>), welche Ruhezeiten und Verhaltensregeln gelten (<a href="file:///home/thorsten/RustKurs/.agentrules">.agentrules</a>) und welche Begriffe wir vereinbaren (<a href="file:///home/thorsten/RustKurs/glossary.md">glossary.md</a>), damit keine Missverständnisse entstehen. Jedes WG-Mitglied und jeder Gast (der KI-Agent) muss sich zwingend an diese Regeln halten, um ein geordnetes Zusammenleben zu garantieren.</p>
+<hr>
+<h2 id="33-das-problem--die-motivation"><a class="header" href="#33-das-problem--die-motivation">3.3 Das Problem &amp; Die Motivation</a></h2>
+<p>In der modernen, KI-gestützten Softwareentwicklung treten ohne strikte Governance und Sandbox-Systeme gravierende Probleme auf:</p>
+<ol>
+<li><strong>Kontextdrift &amp; Qualitätsverfall</strong>: Ohne eine klare Strukturierung verliert ein KI-Modell bei langen Interaktionen den Überblick über das Projekt. Es vergisst Stilrichtlinien, führt inkompatible Drittanbieter-Bibliotheken ein oder schreibt Code in einer falschen Rust-Edition.</li>
+<li><strong>Sicherheitsrisiken auf Systemebene</strong>: Ein autonomer Agent, der unkontrolliert Befehle ausführt, kann durch logische Fehler oder böswillige Prompts das Wirtssystem beschädigen. Beispielsweise könnte er versuchen, Systemkonfigurationen zu überschreiben, Ports zu blockieren oder unautorisierte Skripte auszuführen.</li>
+<li><strong>Fehlende Barrieren für Dateizugriffe</strong>: Ohne Sandbox-Einschränkungen besteht die Gefahr, dass ein Agent versehentlich sensible Systemdateien ausliest oder modifiziert, die außerhalb des eigentlichen Projektverzeichnisses liegen.</li>
+<li><strong>Inkonsistente Begriffswelten</strong>: Ohne ein zentrales Glossar übersetzt die KI Fachbegriffe willkürlich. Dies führt in Dokumentationen und Code-Kommentaren zu Verwirrung, da Begriffe wie “Borrowing” oder “Ownership” uneinheitlich verwendet werden.</li>
+</ol>
+<hr>
+<h2 id="34-der-naive-versuch"><a class="header" href="#34-der-naive-versuch">3.4 Der naive Versuch</a></h2>
+<p>Im folgenden vollständigen und syntaktisch korrekten Rust-Code versucht ein Entwickler, einen Eintrag in der systemweiten Konfigurationsdatei <code>/etc/hosts</code> vorzunehmen. Dieser Versuch soll demonstrieren, wie ein unautorisierter Systemzugriff außerhalb des Workspaces aussieht.</p>
+<pre class="playground"><code class="language-rust edition2021">use std::fs::OpenOptions;
+use std::io::Write;
+
+fn main() {
+    let system_pfad = "/etc/hosts";
+    println!("Versuche, die Systemdatei unter {} zu modifizieren...", system_pfad);
+
+    // Wir versuchen, eine lokale Domain-Umleitung in die systemweite Datei zu schreiben
+    match OpenOptions::new().append(true).open(system_pfad) {
+        Ok(mut datei) =&gt; {
+            match writeln!(datei, "127.0.0.1 test.local") {
+                Ok(_) =&gt; println!("Erfolgreich in {} geschrieben!", system_pfad),
+                Err(fehler) =&gt; eprintln!("Schreibfehler aufgetreten: {}", fehler),
+            }
+        }
+        Err(fehler) =&gt; {
+            eprintln!("Fehler beim Öffnen der Datei: {}", fehler);
+        }
+    }
+}</code></pre>
+<hr>
+<h2 id="35-die-anatomie-des-fehlers"><a class="header" href="#35-die-anatomie-des-fehlers">3.5 Die Anatomie des Fehlers</a></h2>
+<p>Wenn Sie diesen Code innerhalb der Sandbox des Antigravity CLI ausführen (oder wenn ein Agent versucht, diesen Code zu starten), bricht das Programm ab.</p>
+<h3 id="die-exakte-fehlermeldung"><a class="header" href="#die-exakte-fehlermeldung">Die exakte Fehlermeldung</a></h3>
+<pre><code class="language-text">Fehler beim Öffnen der Datei: Os { code: 13, kind: PermissionDenied, message: "Permission denied" }
+</code></pre>
+<h3 id="technische-erklärung-auf-systemebene"><a class="header" href="#technische-erklärung-auf-systemebene">Technische Erklärung auf Systemebene</a></h3>
+<ol>
+<li><strong>Der Systemaufruf (syscall)</strong>: In Zeile 8 fordert die Rust-Standardbibliothek über die Funktion <code>open</code> den Linux-Kernel auf, die Datei <code>/etc/hosts</code> mit den Flags <code>O_WRONLY | O_APPEND</code> zu öffnen.</li>
+<li><strong>Die nsjail-Sandbox</strong>: Das Antigravity CLI kapselt sämtliche Codeausführungen in einer <code>nsjail</code>-Sandbox. <code>nsjail</code> nutzt Linux-Sicherheitsfeatures, um den Prozess zu isolieren.</li>
+<li><strong>Mount-Namespaces</strong>: Die Sandbox erzeugt einen isolierten Mount-Namespace. Das reale Dateisystem des Wirtssystems wird für den Prozess unsichtbar gemacht oder nur stark eingeschränkt zur Verfügung gestellt. Das Verzeichnis <code>/etc</code> ist in der Sandbox entweder gar nicht gemountet oder als reines Nur-Lese-Dateisystem (<code>read-only mount</code>) eingebunden. Jedes Schreiben auf diesen Mount wird vom Linux-Kernel blockiert.</li>
+<li><strong>User-Namespaces und UID-Mapping</strong>: Der Prozess innerhalb der Sandbox wird einer unprivilegierten Benutzer-ID (UID) auf dem Wirtssystem zugewiesen (z. B. UID <code>999999</code>). Selbst wenn der Prozess innerhalb der Sandbox vorgibt, als <code>root</code> (UID <code>0</code>) zu laufen, besitzt er auf Betriebssystemebene keinerlei Schreibrechte für systemkritische Dateien.</li>
+<li><strong>Kernel-Blockade</strong>: Der Linux-Kernel fängt den Aufruf ab, stellt die fehlende Berechtigung fest und gibt den Fehlercode <code>EACCES</code> (Wert 13, <code>PermissionDenied</code>) zurück. Rust übersetzt diesen Fehler in ein <code>std::io::Error</code> vom Typ <code>PermissionDenied</code>.</li>
+</ol>
+<hr>
+<h2 id="36-die-lösung"><a class="header" href="#36-die-lösung">3.6 Die Lösung</a></h2>
+<p>Die sichere Lösung besteht darin, relative Pfade zu nutzen, die sich dynamisch auf das aktuelle Arbeitsverzeichnis des Workspaces beziehen. Dadurch wird sichergestellt, dass alle Dateioperationen innerhalb der erlaubten Sandbox-Grenzen stattfinden.</p>
+<h3 id="der-sichere-rust-code"><a class="header" href="#der-sichere-rust-code">Der sichere Rust-Code</a></h3>
+<pre class="playground"><code class="language-rust edition2021">use std::env;
+use std::fs::OpenOptions;
+use std::io::Write;
+use std::path::PathBuf;
+
+fn main() {
+    // 1. EINGABE: Ermittlung des aktuellen Arbeitsverzeichnisses des Workspaces
+    let mut workspace_pfad = match env::current_dir() {
+        Ok(pfad) =&gt; pfad,
+        Err(fehler) =&gt; {
+            eprintln!("Konnte das Arbeitsverzeichnis nicht lesen: {}", fehler);
+            return;
+        }
+    };
+
+    // Plattformunabhängiges Anfügen des relativen Pfades im Workspace
+    workspace_pfad.push("Tutorial");
+    workspace_pfad.push("hosts_lokal.txt");
+
+    println!("Sicherer Pfad für die Datei: {:?}", workspace_pfad);
+
+    // 2. VERARBEITUNG: Öffnen der Datei im erlaubten Workspace-Bereich
+    let zugriffs_ergebnis = OpenOptions::new()
+        .write(true)
+        .create(true)
+        .append(true)
+        .open(&amp;workspace_pfad);
+
+    // 3. AUSGABE: Schreiben in die Datei und Rückmeldung an den Benutzer
+    match zugriffs_ergebnis {
+        Ok(mut datei) =&gt; {
+            match writeln!(datei, "127.0.0.1 test.local") {
+                Ok(_) =&gt; {
+                    println!("Erfolgreich in den lokalen Pfad geschrieben!");
+                }
+                Err(fehler) =&gt; {
+                    eprintln!("Fehler beim Schreiben in die Datei: {}", fehler);
+                }
+            }
+        }
+        Err(fehler) =&gt; {
+            eprintln!("Fehler beim Zugriff auf den Pfad: {}", fehler);
+        }
+    }
+}</code></pre>
+<h3 id="zeile-für-zeile-erklärung-nach-dem-eva-prinzip"><a class="header" href="#zeile-für-zeile-erklärung-nach-dem-eva-prinzip">Zeile-für-Zeile-Erklärung nach dem EVA-Prinzip</a></h3>
+<h4 id="eingabe-input"><a class="header" href="#eingabe-input">Eingabe (Input)</a></h4>
 <ul>
-<li>Dem Nutzer lauffähige, didaktisch reduzierte Minimalbeispiele bereitzustellen.</li>
-<li>Den Hauptcode (<code>src/</code>) sauber von Lehrbeispielen zu trennen.</li>
-<li>Dem KI-Agenten eine abgegrenzte Spielwiese zu bieten, auf der er Codebeispiele für Lernende generieren und verifizieren kann, ohne die Produktivumgebung zu stören.</li>
+<li><strong>Zeile 8</strong>: Über <code>std::env::current_dir()</code> fragt das Programm das aktuelle Verzeichnis ab, aus dem der Prozess gestartet wurde. Da wir uns im Workspace befinden, gibt dies den sicheren Pfad zurück (z. B. <code>/home/thorsten/RustKurs</code>). Dies geschieht als <code>Result&lt;PathBuf, std::io::Error&gt;</code>.</li>
+<li><strong>Zeilen 17–18</strong>: Die Methode <code>push</code> der Struktur <code>PathBuf</code> fügt die Segmente <code>Tutorial</code> und <code>hosts_lokal.txt</code> an. Sie stellt sicher, dass der Pfadtrenner (z. B. <code>/</code> unter Linux) plattformunabhängig und korrekt gesetzt wird.</li>
+</ul>
+<h4 id="verarbeitung-processing"><a class="header" href="#verarbeitung-processing">Verarbeitung (Processing)</a></h4>
+<ul>
+<li><strong>Zeilen 22–26</strong>: Wir konfigurieren <code>OpenOptions</code>. Die Flags <code>write(true)</code>, <code>create(true)</code> und <code>append(true)</code> bewirken, dass die Datei geöffnet wird, bei Bedarf erstellt wird und neue Zeilen hinten angefügt werden. Da sich <code>/home/thorsten/RustKurs/Tutorial/hosts_lokal.txt</code> vollständig innerhalb des beschreibbaren Workspace-Verzeichnisses befindet, erlaubt die Sandbox diesen Dateizugriff.</li>
+</ul>
+<h4 id="ausgabe-output"><a class="header" href="#ausgabe-output">Ausgabe (Output)</a></h4>
+<ul>
+<li><strong>Zeilen 29–41</strong>: Im Erfolgsfall schreiben wir die Zeichenkette <code>"127.0.0.1 test.local"</code> mittels <code>writeln!</code> in den Puffer. Etwaige Fehler beim tatsächlichen Datentransfer auf das Speichermedium werden abgefangen. War der Schreibvorgang erfolgreich, wird eine Erfolgsmeldung auf der Standardausgabe ausgegeben.</li>
 </ul>
 <hr>
-<h2 id="2-die-vier-säulen-der-workspace-professionalisierung"><a class="header" href="#2-die-vier-säulen-der-workspace-professionalisierung">2. Die vier Säulen der Workspace-Professionalisierung</a></h2>
-<p>Wenn du dein Projekt maximal professionalisieren willst, reicht es nicht mehr aus, Code ad-hoc zu schreiben. Du benötigst klare Richtlinien für dich und die KI-Agenten, die dich beim Programmieren unterstützen. Eine saubere Ordnerstruktur im Projekt-Root sieht dabei wie folgt aus:</p>
-<pre><code>MeinRustProjekt/
-├── AGENTS.md        # Wer macht was? Wo stehen wir aktuell? (Status &amp; Rollen)
-├── skills.md        # Wie bediene ich Manim, Blender und Kokoro-onnx fehlerfrei? (Spezialwissen)
-├── .agentrules      # Allgemeine Verhaltensregeln für die KI (Sprache, Stil, Editionen)
-├── glossary.md      # Exakte Begriffsdefinitionen für das Rust-Lehrbuch (Fachbegriffe)
-├── Cargo.toml       # Rust Projektkonfiguration
-└── src/             # Quellcode-Verzeichnis
+<h2 id="37-kleines-tutorial"><a class="header" href="#37-kleines-tutorial">3.7 Kleines Tutorial</a></h2>
+<p>Dieses Tutorial führt Sie durch die Schritte zur Erstellung eines Unterprojekts im Ordner <code>Tutorial</code> mithilfe der KI-Unterstützung des Antigravity CLI.</p>
+<h3 id="schritt-1-das-cli-im-workspace-starten"><a class="header" href="#schritt-1-das-cli-im-workspace-starten">Schritt 1: Das CLI im Workspace starten</a></h3>
+<p>Öffnen Sie Ihr Terminal, wechseln Sie in das Hauptverzeichnis Ihres Rust-Kurses und starten Sie das CLI:</p>
+<pre><code class="language-bash">cd /home/thorsten/RustKurs
+agy
 </code></pre>
-<p>Diese Governance-Dateien werden von modernen KI-Assistenten wie dem Antigravity CLI beim Start automatisch eingelesen. Sie dienen als feste Leitplanken (Guards) und Kontextspeicher.</p>
-<h3 id="21-agentsmd--projektstatus-und-aufgabenteilung"><a class="header" href="#21-agentsmd--projektstatus-und-aufgabenteilung">2.1 <code>AGENTS.md</code> – Projektstatus und Aufgabenteilung</a></h3>
-<p>Diese Datei dokumentiert das “Wer, Was, Wo”. Sie gibt der KI Auskunft über den aktuellen Projektfortschritt und die genaue Rollenverteilung im Team (z. B. welche Kapitel bereits abgeschlossen sind).</p>
+<h3 id="schritt-2-den-prompt-für-den-agenten-eingeben"><a class="header" href="#schritt-2-den-prompt-für-den-agenten-eingeben">Schritt 2: Den Prompt für den Agenten eingeben</a></h3>
+<p>Geben Sie in der TUI des CLI folgende präzise Anweisung ein:</p>
+<pre><code class="language-text">Erstelle ein neues Unterverzeichnis namens Tutorial im Projekt-Root. Initialisiere darin ein neues Cargo-Projekt namens zahlenraten. Schreibe in Tutorial/zahlenraten/src/main.rs ein einfaches Zahlenratespiel in Rust und lege eine ausführliche README.md an.
+</code></pre>
+<h3 id="schritt-3-analyse-und-sandbox-planung"><a class="header" href="#schritt-3-analyse-und-sandbox-planung">Schritt 3: Analyse und Sandbox-Planung</a></h3>
+<p>Der Agent empfängt den Prompt und analysiert die Struktur. Er erstellt in der Sandbox den Pfad <code>Tutorial</code> und ruft dort <code>cargo new zahlenraten --bin</code> aus. Anschließend schreibt er die Codedateien.</p>
+<h3 id="schritt-4-den-interaktiven-kommentar-workflow-nutzen-ctrlr"><a class="header" href="#schritt-4-den-interaktiven-kommentar-workflow-nutzen-ctrlr">Schritt 4: Den interaktiven Kommentar-Workflow nutzen (<code>ctrl+r</code>)</a></h3>
+<p>Bevor die Änderungen physisch auf Ihre Festplatte geschrieben werden, zeigt Ihnen das CLI eine Übersicht der entworfenen Dateien.</p>
+<ol>
+<li>Drücken Sie <strong><code>ctrl+r</code></strong>, um das Review-Panel zu öffnen.</li>
+<li>Sie sehen den Entwurf der Datei <code>Tutorial/zahlenraten/src/main.rs</code>.</li>
+<li>Geben Sie folgendes Feedback in das Kommentarfeld ein:
+<pre><code class="language-text">Bitte stelle sicher, dass ungültige Eingaben (wie Buchstaben) nicht zum Absturz des Programms führen, sondern über eine Fehlermeldung abgefangen werden.
+</code></pre>
+</li>
+<li>Der Agent liest Ihr Feedback, korrigiert den Code in der Sandbox und präsentiert Ihnen den überarbeiteten Entwurf.</li>
+</ol>
+<h3 id="schritt-5-bestätigung-und-übernahme-proceed"><a class="header" href="#schritt-5-bestätigung-und-übernahme-proceed">Schritt 5: Bestätigung und Übernahme (Proceed)</a></h3>
+<p>Wenn Sie den Entwurf geprüft haben und der Code Ihren Anforderungen entspricht, wählen Sie im TUI-Menü die Option <strong>Proceed</strong> aus. Erst jetzt werden die Dateien aus der Sandbox in Ihren echten Workspace geschrieben.</p>
+<h3 id="schritt-6-ausführen-des-projekts-über-das-cli"><a class="header" href="#schritt-6-ausführen-des-projekts-über-das-cli">Schritt 6: Ausführen des Projekts über das CLI</a></h3>
+<p>Sie können das Zahlenratespiel direkt testen, ohne das CLI zu verlassen. Fügen Sie das Präfix <code>!</code> für einen direkten Shell-Befehl ein:</p>
+<pre><code class="language-bash">!cd Tutorial/zahlenraten &amp;&amp; cargo run
+</code></pre>
+<h3 id="der-generierte-code-in-tutorialzahlenratensrcmainrs"><a class="header" href="#der-generierte-code-in-tutorialzahlenratensrcmainrs">Der generierte Code in <code>Tutorial/zahlenraten/src/main.rs</code></a></h3>
+<pre class="playground"><code class="language-rust edition2021">use std::io;
+use std::cmp::Ordering;
+use rand::Rng;
+
+fn main() {
+    println!("Willkommen beim Zahlenratespiel!");
+
+    // Generiert eine Zufallszahl im Bereich von 1 bis einschließlich 100
+    let geheimzahl = rand::thread_rng().gen_range(1..=100);
+
+    println!("Ich habe an eine Zahl zwischen 1 und 100 gedacht.");
+
+    loop {
+        println!("Bitte geben Sie Ihren Tipp ein:");
+
+        let mut tipp = String::new();
+
+        io::stdin()
+            .read_line(&amp;mut tipp)
+            .expect("Fehler beim Lesen der Zeile");
+
+        // Fehlertolerante Konvertierung des Strings in eine vorzeichenlose 32-Bit-Ganzzahl
+        let tipp: u32 = match tipp.trim().parse() {
+            Ok(zahl) =&gt; zahl,
+            Err(_) =&gt; {
+                println!("Ungültige Eingabe! Bitte geben Sie eine Zahl ein.");
+                continue;
+            }
+        };
+
+        println!("Ihr Tipp lautet: {}", tipp);
+
+        match tipp.cmp(&amp;geheimzahl) {
+            Ordering::Less =&gt; println!("Zu klein!"),
+            Ordering::Greater =&gt; println!("Zu groß!"),
+            Ordering::Equal =&gt; {
+                println!("Herzlichen Glückwunsch, Sie haben gewonnen! 🎉");
+                break;
+            }
+        }
+    }
+}</code></pre>
+<hr>
+<h2 id="38-mentale-modelle--deep-dive"><a class="header" href="#38-mentale-modelle--deep-dive">3.8 Mentale Modelle &amp; Deep Dive</a></h2>
+<h3 id="interaktions-workflow"><a class="header" href="#interaktions-workflow">Interaktions-Workflow</a></h3>
+<pre class="mermaid">sequenceDiagram
+    actor Entwickler as Entwickler (TUI)
+    participant CLI as Antigravity CLI (agy)
+    participant Agent as KI-Agent
+    participant Sandbox as Sandbox (nsjail)
+    participant Workspace as Lokaler Workspace (Host)
+
+    Entwickler-&gt;&gt;CLI: Startet agy &amp; gibt Prompt ein
+    CLI-&gt;&gt;Agent: Sendet Prompt + Kontext (Governance)
+    Agent-&gt;&gt;Sandbox: Plan &amp; Ausführung (z.B. cargo new)
+    Sandbox--&gt;&gt;Agent: Ausgaben &amp; Entwürfe
+    Agent-&gt;&gt;CLI: Präsentiert Entwürfe (Artifacts)
+    CLI-&gt;&gt;Entwickler: Zeigt Entwürfe im Review-Status
+    Note over Entwickler, CLI: Entwickler drückt ctrl+r für Feedback
+    Entwickler-&gt;&gt;CLI: Gibt Feedback ein
+    CLI-&gt;&gt;Agent: Sendet Feedback
+    Agent-&gt;&gt;Sandbox: Modifiziert Dateien in Sandbox
+    Sandbox--&gt;&gt;Agent: Neue Entwürfe
+    Agent-&gt;&gt;CLI: Meldet aktualisierte Entwürfe
+    CLI-&gt;&gt;Entwickler: Zeigt aktualisierte Entwürfe
+    Entwickler-&gt;&gt;CLI: Bestätigt mit "Proceed"
+    CLI-&gt;&gt;Workspace: Schreibt Dateien auf Host-System
+</pre>
+
+<hr>
+<h3 id="die-vier-governance-dateien-im-detail"><a class="header" href="#die-vier-governance-dateien-im-detail">Die vier Governance-Dateien im Detail</a></h3>
+<h4 id="1-agentsmd"><a class="header" href="#1-agentsmd">1. <code>AGENTS.md</code></a></h4>
+<p>Diese Datei dokumentiert die Rollenverteilung, Subagenten-Typen und den aktuellen Projektstatus. Sie dient dem Agenten als Orientierung, damit er weiß, welche Kapitel bereits fertiggestellt sind und welche Aufgaben anstehen.</p>
 <ul>
-<li><strong>Nutzen</strong>: Sie verhindert, dass die KI veraltete Aufgaben wiederholt oder an der falschen Stelle weiterarbeitet.</li>
+<li><strong>Syntax</strong>: Standard-Markdown.</li>
+<li><strong>Wichtige Abschnitte</strong>:
+<ul>
+<li><code># Rollen &amp; Zuständigkeiten</code>: Definiert die Spezialisierung der Subagenten.</li>
+<li><code># Status</code>: Tabellarische Auflistung aller Kapitel und deren Bearbeitungsstand.</li>
 </ul>
-<h3 id="22-skillsmd--spezialwissen-für-tools-und-frameworks"><a class="header" href="#22-skillsmd--spezialwissen-für-tools-und-frameworks">2.2 <code>skills.md</code> – Spezialwissen für Tools und Frameworks</a></h3>
-<p>Hier wird prozedurales Wissen festgehalten, das über die normale Programmiersprache hinausgeht. In unserem Kurs betrifft das z. B. die fehlerfreie Erstellung von Manim-Szenen, die Steuerung von Blender via Python/Geometry-Nodes oder die Generierung von Sprache mit Kokoro-onnx.</p>
-<ul>
-<li><strong>Nutzen</strong>: Verhindert typische Halluzinationen oder Syntaxfehler der KI bei der Nutzung von Bibliotheken und externen Programmen.</li>
+</li>
+<li><strong>Standard-Optionen</strong>:
+<pre><code class="language-markdown"># Projektstatus: Rust-Kurs
+- Hauptagent: Verantwortlich für Theoriekapitel.
+- Subagent Video: Erstellung von Visualisierungen.
+</code></pre>
+</li>
 </ul>
-<h3 id="23-agentrules--die-programmierrichtlinien-und-verhaltensregeln"><a class="header" href="#23-agentrules--die-programmierrichtlinien-und-verhaltensregeln">2.3 <code>.agentrules</code> – Die Programmierrichtlinien und Verhaltensregeln</a></h3>
-<p>In dieser Konfigurationsdatei legst du fest, wie die KI agieren soll. Hier definierst du Vorgaben zu Sprache (z. B. Deutsch), Tonfall, Code-Formatierung (z. B. Zeilenlängen, Einrückungen) und Editiermethoden (z. B. “keine vollständigen Dateikopien, sondern präzises Editieren einzelner Zeilen”).</p>
+<h4 id="2-skillsmd"><a class="header" href="#2-skillsmd">2. <code>skills.md</code></a></h4>
+<p>In dieser Datei wird Spezialwissen für Tools und Bibliotheken definiert. Sie beschreibt exakte Arbeitsabläufe, um Halluzinationen der KI zu verhindern.</p>
 <ul>
-<li><strong>Nutzen</strong>: Sichert einen konsistenten Code-Stil und schont Token-Limits.</li>
+<li><strong>Syntax</strong>: Markdown mit der Überschriften-Konvention <code>## Skill: @name</code>.</li>
+<li><strong>Wichtige Abschnitte</strong>:
+<ul>
+<li><code>## Skill: @name</code>: Der eindeutige Bezeichner des Skills.</li>
+<li>Einrückungen und Listen zur Definition der Einzelschritte.</li>
 </ul>
-<h3 id="24-glossarymd--die-begriffliche-wahrheit"><a class="header" href="#24-glossarymd--die-begriffliche-wahrheit">2.4 <code>glossary.md</code> – Die begriffliche Wahrheit</a></h3>
-<p>In dieser Datei werden alle Fachbegriffe exakt definiert. Wenn die KI eine Erklärung für das Lehrbuch schreibt, muss sie sich an die Definitionen im Glossar halten.</p>
+</li>
+<li><strong>Beispiel</strong>:
+<pre><code class="language-markdown">## Skill: @generate-audio
+1. Text in Sätze aufteilen (maximal 150 Zeichen).
+2. Verwende generate_audio.py mit af_bella.
+</code></pre>
+</li>
+</ul>
+<h4 id="3-agentrules"><a class="header" href="#3-agentrules">3. <code>.agentrules</code></a></h4>
+<p>Die zentrale Konfigurationsdatei zur Steuerung des Agentenverhaltens. Sie legt Programmierrichtlinien, Editiermodi und sprachliche Vorgaben fest.</p>
 <ul>
-<li><strong>Nutzen</strong>: Verhindert widersprüchliche oder ungenaue Erklärungen komplexer Rust-Begriffe (wie z. B. der Unterschied zwischen <em>Borrowing</em> und <em>Ownership</em>).</li>
+<li><strong>Syntax</strong>: TOML/INI-Format.</li>
+<li><strong>Lückenlose Auflistung aller Abschnitte und Parameter</strong>:
+<ul>
+<li><code>[behavior]</code>
+<ul>
+<li><code>language</code>: Die primäre Kommunikations- und Dokusprache (z. B. <code>de</code>).</li>
+<li><code>tone</code>: Tonalität des Agenten (z. B. <code>professional_and_educational</code>).</li>
+<li><code>allow_network</code>: Erlaubnis für Netzwerkverbindungen (z. B. <code>false</code>).</li>
+</ul>
+</li>
+<li><code>[code_edition]</code>
+<ul>
+<li><code>always_preserve_comments</code>: Verhindert das Löschen von Kommentaren (z. B. <code>true</code>).</li>
+<li><code>always_preserve_docstrings</code>: Bewahrt Funktionsdokumentationen (z. B. <code>true</code>).</li>
+<li><code>preferred_indentation</code>: Definiert den Einrückungsstil (z. B. <code>spaces_4</code>).</li>
+<li><code>modify_mode</code>: Arbeitsmodus für Dateiänderungen (z. B. <code>precision_replace</code>).</li>
+</ul>
+</li>
+<li><code>[rust_guidelines]</code>
+<ul>
+<li><code>idiomatic_rust</code>: Erzwingt idiomatischen Code (z. B. <code>true</code>).</li>
+<li><code>clippy_warnings</code>: Umgang mit Clippy (z. B. <code>error</code> oder <code>allow</code>).</li>
+<li><code>docs_required</code>: Erzwingt Dokumentationskommentare an Funktionen (z. B. <code>true</code>).</li>
+</ul>
+</li>
+<li><code>[markdown]</code>
+<ul>
+<li><code>formatting</code>: Markdown-Standard (z. B. <code>gfm</code>).</li>
+<li><code>link_style</code>: Format für lokale Dateilinks (z. B. <code>standard</code> für <code>file://</code>).</li>
+<li><code>always_use_hierarchical_headers</code>: Erzwingt strenge Überschriften-Hierarchien (z. B. <code>true</code>).</li>
+<li><code>keep_bullet_points_concise</code>: Verhindert ausufernde Listenpunkte (z. B. <code>true</code>).</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="4-glossarymd"><a class="header" href="#4-glossarymd">4. <code>glossary.md</code></a></h4>
+<p>Sichert die begriffliche Konsistenz der Lehrmaterialien. Alle dort definierten Begriffe müssen vom Agenten exakt so verwendet werden.</p>
+<ul>
+<li><strong>Syntax</strong>: Markdown-Definitionsliste oder Tabellenform.</li>
+<li><strong>Wichtige Abschnitte</strong>:
+<ul>
+<li>Begriff und Definition.</li>
+</ul>
+</li>
+<li><strong>Beispiel</strong>:
+<pre><code class="language-markdown">* **Ownership (Besitzrecht)**: Das System zur Speicherverwaltung in Rust.
+</code></pre>
+</li>
 </ul>
 <hr>
-<h2 id="3-das-antigravity-cli-agy-im-schnelldurchlauf"><a class="header" href="#3-das-antigravity-cli-agy-im-schnelldurchlauf">3. Das Antigravity CLI (<code>agy</code>) im Schnelldurchlauf</a></h2>
-<p>Das Antigravity CLI ist Googles Befehlszeilenschnittstelle zur Interaktion mit fortschrittlichen KI-Agenten. Im Gegensatz zu einfachen Chat-Websites arbeitet <code>agy</code> direkt auf deinem lokalen Dateisystem – geschützt in einer sicheren <strong>Sandbox</strong>.</p>
-<h3 id="31-installation"><a class="header" href="#31-installation">3.1 Installation</a></h3>
-<p>Die Installation erfolgt einfach über ein kurzes Skript im Terminal:</p>
+<h3 id="systemebene-thread-safety--performance"><a class="header" href="#systemebene-thread-safety--performance">Systemebene, Thread-Safety &amp; Performance</a></h3>
+<h4 id="workspace-modi-inherit-share-branch"><a class="header" href="#workspace-modi-inherit-share-branch">Workspace-Modi (<code>inherit</code>, <code>share</code>, <code>branch</code>)</a></h4>
 <ul>
-<li><strong>Linux / macOS</strong>:
-<pre><code class="language-bash">curl -fsSL https://antigravity.google/cli/install.sh | bash
-</code></pre>
+<li><strong><code>inherit</code></strong>: Der Subagent arbeitet direkt auf den Dateien des Haupt-Workspaces. Änderungen werden sofort physisch geschrieben. Eignet sich für kleine Anpassungen.</li>
+<li><strong><code>share</code></strong>: Ein geteilter Workspace, auf den mehrere Subagenten parallel lesend zugreifen können, während Schreibzugriffe über File-Locks koordiniert werden.</li>
+<li><strong><code>branch</code></strong>: Der Agent erstellt eine isolierte Kopie des Workspaces. Änderungen werden erst nach Freigabe des Entwicklers (Proceed-Befehl) in den Haupt-Workspace zurückgeschrieben.</li>
+</ul>
+<h4 id="thread-safety-und-nebenläufigkeit-des-cli"><a class="header" href="#thread-safety-und-nebenläufigkeit-des-cli">Thread-Safety und Nebenläufigkeit des CLI</a></h4>
+<p>Das Antigravity CLI ist in sicherem Rust implementiert. Parallele Subagenten-Sitzungen laufen in voneinander isolierten Betriebssystemprozessen. Eventuelle Race Conditions beim Schreiben auf Dateien werden durch transaktionale Schreibvorgänge und den Einsatz von Dateisperren (<code>flock</code> unter Unix) auf Kernel-Ebene ausgeschlossen.</p>
+<h4 id="performance"><a class="header" href="#performance">Performance</a></h4>
+<p>Das CLI ist als native Binärdatei kompiliert. Durch LLVM-Optimierungen (Release-Profil, Link-Time Optimization <code>lto = true</code>, Reduzierung der Codegen-Units auf <code>1</code>) wird eine minimale Startzeit von unter 5 Millisekunden erreicht. Der Speicherbedarf zur Laufzeit ist extrem gering, da keine virtuellen Maschinen (wie bei Node.js) benötigt werden.</p>
+<hr>
+<h3 id="die-drei-didaktischen-ausbildungsstufen"><a class="header" href="#die-drei-didaktischen-ausbildungsstufen">Die drei didaktischen Ausbildungsstufen</a></h3>
+<h4 id="1-anfänger-niveau-grundlagen"><a class="header" href="#1-anfänger-niveau-grundlagen">1. Anfänger-Niveau (Grundlagen)</a></h4>
+<p>Auf dieser Stufe deklarieren wir Pfade direkt als statische Zeichenketten und wandeln sie in ein <code>Path</code>-Objekt um. Dies zeigt den einfachsten Weg, mit Pfaden im Code zu interagieren.</p>
+<ul>
+<li><strong>Syntax &amp; Deklaration</strong>:
+<pre class="playground"><code class="language-rust edition2021">use std::path::Path;
+
+fn main() {
+    // Deklaration eines unveränderlichen Pfades aus einem String-Literal
+    let pfad = Path::new("Tutorial/daten.txt");
+    println!("Pfad deklariert: {:?}", pfad);
+}</code></pre>
 </li>
-<li><strong>Windows (PowerShell)</strong>:
-<pre><code class="language-powershell">irm https://antigravity.google/cli/install.ps1 | iex
-</code></pre>
+<li><strong>Standard-Anwendungsfall</strong>: Prüfen, ob eine Datei im aktuellen Arbeitsverzeichnis existiert.</li>
+</ul>
+<h4 id="2-fortgeschrittenen-niveau-komposition"><a class="header" href="#2-fortgeschrittenen-niveau-komposition">2. Fortgeschrittenen-Niveau (Komposition)</a></h4>
+<p>Fortgeschrittene Anwendungen erfordern die Einbettung von Pfaden in eigene Datenstrukturen und das Handling von Gültigkeitsbereichen (Lifetimes). Hier tritt der Unterschied zwischen der geliehenen Struktur <code>&amp;Path</code> und der besitzenden Struktur <code>PathBuf</code> in den Vordergrund.</p>
+<ul>
+<li><strong>Komposition</strong>:
+<pre class="playground"><code class="language-rust edition2021">use std::path::PathBuf;
+
+// Ein Struct, das den Pfad besitzt (PathBuf), da die Lebensdauer des Structs
+// nicht an eine externe Referenz gebunden sein soll.
+struct Konfiguration {
+    projekt_name: String,
+    speicher_pfad: PathBuf,
+}
+
+fn main() {
+    let konfig = Konfiguration {
+        projekt_name: String::from("Zahlenraten"),
+        speicher_pfad: PathBuf::from("Tutorial/zahlenraten"),
+    };
+    println!("Projekt {} speichert in: {:?}", konfig.projekt_name, konfig.speicher_pfad);
+}</code></pre>
+</li>
+<li><strong>Stolpersteine &amp; Alias-Probleme</strong>: Ein häufiger Fehler ist die Annahme, dass relative Pfade immer vom Verzeichnis der ausführbaren Datei aus aufgelöst werden. Sie werden jedoch immer vom aktuellen Arbeitsverzeichnis des aufrufenden Prozesses (<code>std::env::current_dir()</code>) aus ausgewertet. Wenn ein Anwender das Programm aus einem anderen Ordner startet, schlagen Dateizugriffe fehl.</li>
+<li><strong>Konvertierungen</strong>:
+<pre class="playground"><code class="language-rust edition2021">use std::path::{Path, PathBuf};
+
+fn main() {
+    let pfad_ref: &amp;Path = Path::new("daten.txt");
+    // Konvertierung von &amp;Path zu PathBuf (Besitzer-Typ)
+    let pfad_buf: PathBuf = pfad_ref.to_path_buf();
+    // Konvertierung zurück zu &amp;Path
+    let pfad_ref_wieder: &amp;Path = pfad_buf.as_path();
+    println!("Pfad: {:?}", pfad_ref_wieder);
+}</code></pre>
 </li>
 </ul>
-<p>Nach der Installation steht dir das CLI weltweit über den Befehl <code>agy</code> zur Verfügung.</p>
-<h3 id="32-cli-befehlsübersicht-start-optionen"><a class="header" href="#32-cli-befehlsübersicht-start-optionen">3.2 CLI-Befehlsübersicht (Start-Optionen)</a></h3>
-<p>Beim Starten von <code>agy</code> im Terminal kannst du verschiedene Unterbefehle und Parameter nutzen:</p>
+<h4 id="3-profi-niveau-speicherlayout--systemebene"><a class="header" href="#3-profi-niveau-speicherlayout--systemebene">3. Profi-Niveau (Speicherlayout &amp; Systemebene)</a></h4>
+<p>Auf Profi-Ebene betrachten wir das Speicherlayout und die Performance-Eigenschaften von <code>Path</code> und <code>PathBuf</code>.</p>
 <ul>
-<li><strong><code>agy</code></strong>: Startet die interaktive TUI (Terminal User Interface) im aktuellen Verzeichnis.</li>
-<li><strong><code>agy inspect</code></strong>: Analysiert den aktuellen Projekt-Workspace, listet gefundene Regeln (<code>.agentrules</code>, <code>AGENTS.md</code>) auf und zeigt an, welcher Kontext aktiv geladen ist. Sehr nützlich zur Fehlerdiagnose.</li>
-<li><strong><code>agy plugin import gemini</code></strong>: Importiert Einstellungen, API-Schlüssel und benutzerdefinierte Skripte vom Vorgänger (Gemini CLI) in deine neue Antigravity-Umgebung.</li>
+<li><strong>Speicherlayout</strong>:
+<ul>
+<li><code>Path</code> ist ein unsized Typ (DST, Dynamically Sized Type). Er wird fast ausschließlich als Referenz <code>&amp;Path</code> genutzt. Auf einem 64-Bit-System belegt diese Referenz <strong>16 Bytes</strong> auf dem Stack (8 Bytes für den Zeiger auf die Daten, 8 Bytes für die Länge des Pfades). Er verhält sich wie ein Fat Pointer.</li>
+<li><code>PathBuf</code> besitzt seine Daten und wird auf dem Heap allokiert. Auf dem Stack belegt die Struktur <strong>24 Bytes</strong> (8 Bytes Zeiger, 8 Bytes Kapazität, 8 Bytes Länge), da sie intern auf <code>OsString</code> (und somit auf einem <code>Vec&lt;u8&gt;</code>) aufbaut.</li>
 </ul>
-<h3 id="33-nützliche-slash-befehle-in-der-tui"><a class="header" href="#33-nützliche-slash-befehle-in-der-tui">3.3 Nützliche Slash-Befehle in der TUI</a></h3>
-<p>Wenn du das CLI gestartet hast, kannst du folgende Steuerungsbefehle (Slash-Commands) im Eingabefeld eintippen:</p>
+</li>
+<li><strong>Thread-Safety</strong>: <code>Path</code> und <code>PathBuf</code> implementieren die Auto-Traits <code>Send</code> und <code>Sync</code>. Da sie keine geteilten, veränderlichen Zustände (wie <code>Rc</code> oder <code>RefCell</code>) verwenden, können sie sicher an andere Threads übergeben (<code>Send</code>) und von mehreren Threads parallel gelesen werden (<code>Sync</code>).</li>
+<li><strong>Performance &amp; Laufzeitkomplexität</strong>:
+<ul>
+<li><code>Path::new()</code> ist eine O(1)-Operation, da keine Heap-Allokation stattfindet; es wird lediglich ein Zeiger erzeugt.</li>
+<li><code>PathBuf::push()</code> hat eine amortisierte Komplexität von O(N), da bei einer Überschreitung der Kapazität Speicher auf dem Heap neu allokiert und der bestehende Pfad kopiert werden muss.</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="381-exhaustive-api-reference"><a class="header" href="#381-exhaustive-api-reference">3.8.1 Exhaustive API-Reference</a></h2>
+<p>In diesem Abschnitt werden alle wichtigen Methoden der Typen <code>std::path::Path</code> und <code>std::path::PathBuf</code> lückenlos dokumentiert.</p>
+<h3 id="methoden-von-stdpathpath"><a class="header" href="#methoden-von-stdpathpath">Methoden von <code>std::path::Path</code></a></h3>
+<h4 id="1-new"><a class="header" href="#1-new">1. <code>new</code></a></h4>
+<ul>
+<li><strong>Signatur</strong>: <code>pub fn new&lt;S: AsRef&lt;OsStr&gt; + ?Sized&gt;(s: &amp;S) -&gt; &amp;Path</code></li>
+<li><strong>Parameter</strong>: <code>s</code> (Referenz auf einen Typ, der als <code>OsStr</code> interpretiert werden kann, z. B. <code>&amp;str</code> oder <code>&amp;String</code>).</li>
+<li><strong>Rückgabetyp</strong>: <code>&amp;Path</code> (Eine Referenz auf das erstellte Path-Objekt).</li>
+<li><strong>Sicherheitsaspekte &amp; Panics</strong>: Keine. Die Methode allokiert keinen Speicher und validiert nicht, ob der Pfad im Dateisystem existiert.</li>
+<li><strong>Minicode-Beispiel</strong>:
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>use std::path::Path;
+let pfad = Path::new("daten.txt");
+<span class="boring">}</span></code></pre>
+</li>
+</ul>
+<h4 id="2-as_os_str"><a class="header" href="#2-as_os_str">2. <code>as_os_str</code></a></h4>
+<ul>
+<li><strong>Signatur</strong>: <code>pub fn as_os_str(&amp;self) -&gt; &amp;OsStr</code></li>
+<li><strong>Parameter</strong>: Keine.</li>
+<li><strong>Rückgabetyp</strong>: <code>&amp;OsStr</code> (Die rohe Betriebssystem-Repräsentation des Pfades).</li>
+<li><strong>Sicherheitsaspekte &amp; Panics</strong>: Keine.</li>
+<li><strong>Minicode-Beispiel</strong>:
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>use std::path::Path;
+let pfad = Path::new("daten.txt");
+let os_str = pfad.as_os_str();
+<span class="boring">}</span></code></pre>
+</li>
+</ul>
+<h4 id="3-to_str"><a class="header" href="#3-to_str">3. <code>to_str</code></a></h4>
+<ul>
+<li><strong>Signatur</strong>: <code>pub fn to_str(&amp;self) -&gt; Option&lt;&amp;str&gt;</code></li>
+<li><strong>Parameter</strong>: Keine.</li>
+<li><strong>Rückgabetyp</strong>: <code>Option&lt;&amp;str&gt;</code> (Gibt <code>Some(&amp;str)</code> zurück, falls der Pfad valides UTF-8 ist, andernfalls <code>None</code>).</li>
+<li><strong>Sicherheitsaspekte &amp; Panics</strong>: Keine. Wichtig für die Konvertierung bei Pfaden, die ungültige Unicode-Zeichen enthalten.</li>
+<li><strong>Minicode-Beispiel</strong>:
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>use std::path::Path;
+let pfad = Path::new("daten.txt");
+let text = pfad.to_str().unwrap();
+<span class="boring">}</span></code></pre>
+</li>
+</ul>
+<h4 id="4-to_string_lossy"><a class="header" href="#4-to_string_lossy">4. <code>to_string_lossy</code></a></h4>
+<ul>
+<li><strong>Signatur</strong>: <code>pub fn to_string_lossy(&amp;self) -&gt; Cow&lt;'_, str&gt;</code></li>
+<li><strong>Parameter</strong>: Keine.</li>
+<li><strong>Rückgabetyp</strong>: <code>Cow&lt;'_, str&gt;</code> (Ein Copy-on-Write-String. Ungültige UTF-8-Zeichen werden durch das Unicode-Ersatzzeichen ersetzt).</li>
+<li><strong>Sicherheitsaspekte &amp; Panics</strong>: Keine.</li>
+<li><strong>Minicode-Beispiel</strong>:
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>use std::path::Path;
+let pfad = Path::new("daten.txt");
+let string_verlustfrei = pfad.to_string_lossy();
+<span class="boring">}</span></code></pre>
+</li>
+</ul>
+<h4 id="5-is_absolute"><a class="header" href="#5-is_absolute">5. <code>is_absolute</code></a></h4>
+<ul>
+<li><strong>Signatur</strong>: <code>pub fn is_absolute(&amp;self) -&gt; bool</code></li>
+<li><strong>Parameter</strong>: Keine.</li>
+<li><strong>Rückgabetyp</strong>: <code>bool</code> (Gibt <code>true</code> zurück, wenn der Pfad absolut ist, d. h. am System-Wurzelverzeichnis beginnt).</li>
+<li><strong>Sicherheitsaspekte &amp; Panics</strong>: Keine.</li>
+<li><strong>Minicode-Beispiel</strong>:
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>use std::path::Path;
+let pfad = Path::new("/etc/hosts");
+let absolut = pfad.is_absolute();
+<span class="boring">}</span></code></pre>
+</li>
+</ul>
+<h4 id="6-is_relative"><a class="header" href="#6-is_relative">6. <code>is_relative</code></a></h4>
+<ul>
+<li><strong>Signatur</strong>: <code>pub fn is_relative(&amp;self) -&gt; bool</code></li>
+<li><strong>Parameter</strong>: Keine.</li>
+<li><strong>Rückgabetyp</strong>: <code>bool</code> (Gibt <code>true</code> zurück, wenn der Pfad relativ ist).</li>
+<li><strong>Sicherheitsaspekte &amp; Panics</strong>: Keine.</li>
+<li><strong>Minicode-Beispiel</strong>:
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>use std::path::Path;
+let pfad = Path::new("Tutorial/daten.txt");
+let relativ = pfad.is_relative();
+<span class="boring">}</span></code></pre>
+</li>
+</ul>
+<h4 id="7-has_root"><a class="header" href="#7-has_root">7. <code>has_root</code></a></h4>
+<ul>
+<li><strong>Signatur</strong>: <code>pub fn has_root(&amp;self) -&gt; bool</code></li>
+<li><strong>Parameter</strong>: Keine.</li>
+<li><strong>Rückgabetyp</strong>: <code>bool</code> (Gibt <code>true</code> zurück, wenn der Pfad ein Stammverzeichnis-Präfix enthält).</li>
+<li><strong>Sicherheitsaspekte &amp; Panics</strong>: Keine.</li>
+<li><strong>Minicode-Beispiel</strong>:
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>use std::path::Path;
+let pfad = Path::new("/usr/bin");
+let wurzel = pfad.has_root();
+<span class="boring">}</span></code></pre>
+</li>
+</ul>
+<h4 id="8-parent"><a class="header" href="#8-parent">8. <code>parent</code></a></h4>
+<ul>
+<li><strong>Signatur</strong>: <code>pub fn parent(&amp;self) -&gt; Option&lt;&amp;Path&gt;</code></li>
+<li><strong>Parameter</strong>: Keine.</li>
+<li><strong>Rückgabetyp</strong>: <code>Option&lt;&amp;Path&gt;</code> (Gibt den übergeordneten Pfad zurück, oder <code>None</code>, wenn kein übergeordnetes Verzeichnis existiert).</li>
+<li><strong>Sicherheitsaspekte &amp; Panics</strong>: Keine.</li>
+<li><strong>Minicode-Beispiel</strong>:
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>use std::path::Path;
+let pfad = Path::new("Tutorial/zahlenraten/src");
+let eltern = pfad.parent();
+<span class="boring">}</span></code></pre>
+</li>
+</ul>
+<h4 id="9-ancestors"><a class="header" href="#9-ancestors">9. <code>ancestors</code></a></h4>
+<ul>
+<li><strong>Signatur</strong>: <code>pub fn ancestors(&amp;self) -&gt; Ancestors&lt;'_&gt;</code></li>
+<li><strong>Parameter</strong>: Keine.</li>
+<li><strong>Rückgabetyp</strong>: <code>Ancestors&lt;'_&gt;</code> (Ein Iterator über alle übergeordneten Verzeichnisse des Pfades).</li>
+<li><strong>Sicherheitsaspekte &amp; Panics</strong>: Keine.</li>
+<li><strong>Minicode-Beispiel</strong>:
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>use std::path::Path;
+let pfad = Path::new("Tutorial/zahlenraten/src");
+for vorfahre in pfad.ancestors() {
+    println!("{:?}", vorfahre);
+}
+<span class="boring">}</span></code></pre>
+</li>
+</ul>
+<h4 id="10-file_name"><a class="header" href="#10-file_name">10. <code>file_name</code></a></h4>
+<ul>
+<li><strong>Signatur</strong>: <code>pub fn file_name(&amp;self) -&gt; Option&lt;&amp;OsStr&gt;</code></li>
+<li><strong>Parameter</strong>: Keine.</li>
+<li><strong>Rückgabetyp</strong>: <code>Option&lt;&amp;OsStr&gt;</code> (Der Dateiname oder das letzte Segment des Pfades. Gibt <code>None</code> zurück, falls der Pfad auf <code>..</code> endet).</li>
+<li><strong>Sicherheitsaspekte &amp; Panics</strong>: Keine.</li>
+<li><strong>Minicode-Beispiel</strong>:
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>use std::path::Path;
+let pfad = Path::new("Tutorial/daten.txt");
+let dateiname = pfad.file_name();
+<span class="boring">}</span></code></pre>
+</li>
+</ul>
+<h4 id="11-strip_prefix"><a class="header" href="#11-strip_prefix">11. <code>strip_prefix</code></a></h4>
+<ul>
+<li><strong>Signatur</strong>: <code>pub fn strip_prefix&lt;P&gt;(&amp;self, base: P) -&gt; Result&lt;&amp;Path, StripPrefixError&gt; where P: AsRef&lt;Path&gt;</code></li>
+<li><strong>Parameter</strong>: <code>base</code> (Das Präfix, das vom aktuellen Pfad entfernt werden soll).</li>
+<li><strong>Rückgabetyp</strong>: <code>Result&lt;&amp;Path, StripPrefixError&gt;</code> (Der verbleibende Pfad nach Entfernung des Präfixes, oder ein Fehler, falls der Pfad nicht mit dem Präfix beginnt).</li>
+<li><strong>Sicherheitsaspekte &amp; Panics</strong>: Keine.</li>
+<li><strong>Minicode-Beispiel</strong>:
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>use std::path::Path;
+let pfad = Path::new("Tutorial/zahlenraten/src");
+let rest = pfad.strip_prefix("Tutorial").unwrap();
+<span class="boring">}</span></code></pre>
+</li>
+</ul>
+<h4 id="12-starts_with"><a class="header" href="#12-starts_with">12. <code>starts_with</code></a></h4>
+<ul>
+<li><strong>Signatur</strong>: <code>pub fn starts_with&lt;P&gt;(&amp;self, base: P) -&gt; bool where P: AsRef&lt;Path&gt;</code></li>
+<li><strong>Parameter</strong>: <code>base</code> (Der zu prüfende Anfangspfad).</li>
+<li><strong>Rückgabetyp</strong>: <code>bool</code> (Gibt <code>true</code> zurück, wenn der Pfad mit dem übergebenen Pfad beginnt).</li>
+<li><strong>Sicherheitsaspekte &amp; Panics</strong>: Keine.</li>
+<li><strong>Minicode-Beispiel</strong>:
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>use std::path::Path;
+let pfad = Path::new("Tutorial/zahlenraten/src");
+let check = pfad.starts_with("Tutorial");
+<span class="boring">}</span></code></pre>
+</li>
+</ul>
+<h4 id="13-ends_with"><a class="header" href="#13-ends_with">13. <code>ends_with</code></a></h4>
+<ul>
+<li><strong>Signatur</strong>: <code>pub fn ends_with&lt;P&gt;(&amp;self, child: P) -&gt; bool where P: AsRef&lt;Path&gt;</code></li>
+<li><strong>Parameter</strong>: <code>child</code> (Der zu prüfende Endpfad).</li>
+<li><strong>Rückgabetyp</strong>: <code>bool</code> (Gibt <code>true</code> zurück, wenn der Pfad mit dem übergebenen Pfad endet).</li>
+<li><strong>Sicherheitsaspekte &amp; Panics</strong>: Keine.</li>
+<li><strong>Minicode-Beispiel</strong>:
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>use std::path::Path;
+let pfad = Path::new("Tutorial/zahlenraten/src");
+let check = pfad.ends_with("src");
+<span class="boring">}</span></code></pre>
+</li>
+</ul>
+<h4 id="14-file_stem"><a class="header" href="#14-file_stem">14. <code>file_stem</code></a></h4>
+<ul>
+<li><strong>Signatur</strong>: <code>pub fn file_stem(&amp;self) -&gt; Option&lt;&amp;OsStr&gt;</code></li>
+<li><strong>Parameter</strong>: Keine.</li>
+<li><strong>Rückgabetyp</strong>: <code>Option&lt;&amp;OsStr&gt;</code> (Gibt den Dateinamen ohne die Erweiterung zurück).</li>
+<li><strong>Sicherheitsaspekte &amp; Panics</strong>: Keine.</li>
+<li><strong>Minicode-Beispiel</strong>:
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>use std::path::Path;
+let pfad = Path::new("Tutorial/daten.tar.gz");
+let stamm = pfad.file_stem();
+<span class="boring">}</span></code></pre>
+</li>
+</ul>
+<h4 id="15-extension"><a class="header" href="#15-extension">15. <code>extension</code></a></h4>
+<ul>
+<li><strong>Signatur</strong>: <code>pub fn extension(&amp;self) -&gt; Option&lt;&amp;OsStr&gt;</code></li>
+<li><strong>Parameter</strong>: Keine.</li>
+<li><strong>Rückgabetyp</strong>: <code>Option&lt;&amp;OsStr&gt;</code> (Die Dateiendung, falls vorhanden).</li>
+<li><strong>Sicherheitsaspekte &amp; Panics</strong>: Keine.</li>
+<li><strong>Minicode-Beispiel</strong>:
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>use std::path::Path;
+let pfad = Path::new("Tutorial/daten.txt");
+let endung = pfad.extension();
+<span class="boring">}</span></code></pre>
+</li>
+</ul>
+<h4 id="16-join"><a class="header" href="#16-join">16. <code>join</code></a></h4>
+<ul>
+<li><strong>Signatur</strong>: <code>pub fn join&lt;P&gt;(&amp;self, path: P) -&gt; PathBuf where P: AsRef&lt;Path&gt;</code></li>
+<li><strong>Parameter</strong>: <code>path</code> (Der Pfad, der angehängt werden soll).</li>
+<li><strong>Rückgabetyp</strong>: <code>PathBuf</code> (Ein neues, eigenständiges Pfadobjekt auf dem Heap).</li>
+<li><strong>Sicherheitsaspekte &amp; Panics</strong>: Keine.</li>
+<li><strong>Minicode-Beispiel</strong>:
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>use std::path::Path;
+let basis = Path::new("Tutorial");
+let voll = basis.join("zahlenraten");
+<span class="boring">}</span></code></pre>
+</li>
+</ul>
+<h4 id="17-with_file_name"><a class="header" href="#17-with_file_name">17. <code>with_file_name</code></a></h4>
+<ul>
+<li><strong>Signatur</strong>: <code>pub fn with_file_name&lt;S: AsRef&lt;OsStr&gt;&gt;(&amp;self, file_name: S) -&gt; PathBuf</code></li>
+<li><strong>Parameter</strong>: <code>file_name</code> (Der neue Dateiname, der das letzte Segment ersetzen soll).</li>
+<li><strong>Rückgabetyp</strong>: <code>PathBuf</code> (Der geänderte Pfad).</li>
+<li><strong>Sicherheitsaspekte &amp; Panics</strong>: Keine.</li>
+<li><strong>Minicode-Beispiel</strong>:
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>use std::path::Path;
+let pfad = Path::new("Tutorial/daten.txt");
+let neuer_pfad = pfad.with_file_name("daten_neu.txt");
+<span class="boring">}</span></code></pre>
+</li>
+</ul>
+<h4 id="18-with_extension"><a class="header" href="#18-with_extension">18. <code>with_extension</code></a></h4>
+<ul>
+<li><strong>Signatur</strong>: <code>pub fn with_extension&lt;S: AsRef&lt;OsStr&gt;&gt;(&amp;self, extension: S) -&gt; PathBuf</code></li>
+<li><strong>Parameter</strong>: <code>extension</code> (Die neue Dateiendung, die die alte ersetzen oder hinzugefügt werden soll).</li>
+<li><strong>Rückgabetyp</strong>: <code>PathBuf</code> (Der geänderte Pfad).</li>
+<li><strong>Sicherheitsaspekte &amp; Panics</strong>: Keine.</li>
+<li><strong>Minicode-Beispiel</strong>:
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>use std::path::Path;
+let pfad = Path::new("Tutorial/daten.txt");
+let neuer_pfad = pfad.with_extension("log");
+<span class="boring">}</span></code></pre>
+</li>
+</ul>
+<h4 id="19-components"><a class="header" href="#19-components">19. <code>components</code></a></h4>
+<ul>
+<li><strong>Signatur</strong>: <code>pub fn components(&amp;self) -&gt; Components&lt;'_&gt;</code></li>
+<li><strong>Parameter</strong>: Keine.</li>
+<li><strong>Rückgabetyp</strong>: <code>Components&lt;'_&gt;</code> (Ein Iterator über die logischen Segmente des Pfades, z. B. Root, Normal, ParentDir).</li>
+<li><strong>Sicherheitsaspekte &amp; Panics</strong>: Keine.</li>
+<li><strong>Minicode-Beispiel</strong>:
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>use std::path::Path;
+let pfad = Path::new("/Tutorial/zahlenraten");
+let komponenten = pfad.components();
+<span class="boring">}</span></code></pre>
+</li>
+</ul>
+<h4 id="20-iter"><a class="header" href="#20-iter">20. <code>iter</code></a></h4>
+<ul>
+<li><strong>Signatur</strong>: <code>pub fn iter(&amp;self) -&gt; Iter&lt;'_&gt;</code></li>
+<li><strong>Parameter</strong>: Keine.</li>
+<li><strong>Rückgabetyp</strong>: <code>Iter&lt;'_&gt;</code> (Ein Iterator über die Pfadsegmente als <code>OsStr</code>).</li>
+<li><strong>Sicherheitsaspekte &amp; Panics</strong>: Keine.</li>
+<li><strong>Minicode-Beispiel</strong>:
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>use std::path::Path;
+let pfad = Path::new("Tutorial/zahlenraten");
+let iterator = pfad.iter();
+<span class="boring">}</span></code></pre>
+</li>
+</ul>
+<h4 id="21-display"><a class="header" href="#21-display">21. <code>display</code></a></h4>
+<ul>
+<li><strong>Signatur</strong>: <code>pub fn display(&amp;self) -&gt; Display&lt;'_&gt;</code></li>
+<li><strong>Parameter</strong>: Keine.</li>
+<li><strong>Rückgabetyp</strong>: <code>Display&lt;'_&gt;</code> (Ein Hilfsobjekt, das das Formatieren und Ausgeben von Pfaden über <code>println!</code> erleichtert).</li>
+<li><strong>Sicherheitsaspekte &amp; Panics</strong>: Keine.</li>
+<li><strong>Minicode-Beispiel</strong>:
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>use std::path::Path;
+let pfad = Path::new("Tutorial/daten.txt");
+println!("Pfad ist: {}", pfad.display());
+<span class="boring">}</span></code></pre>
+</li>
+</ul>
+<h4 id="22-metadata"><a class="header" href="#22-metadata">22. <code>metadata</code></a></h4>
+<ul>
+<li><strong>Signatur</strong>: <code>pub fn metadata(&amp;self) -&gt; Result&lt;Metadata, Error&gt;</code></li>
+<li><strong>Parameter</strong>: Keine.</li>
+<li><strong>Rückgabetyp</strong>: <code>Result&lt;Metadata, Error&gt;</code> (Die Metadaten der Datei, z. B. Dateigröße und Berechtigungen).</li>
+<li><strong>Sicherheitsaspekte &amp; Panics</strong>: Führt E/A-Operationen aus. Löst Fehler aus, wenn die Datei nicht existiert oder die Berechtigungen in der Sandbox fehlen.</li>
+<li><strong>Minicode-Beispiel</strong>:
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>use std::path::Path;
+let pfad = Path::new("Tutorial/hosts_lokal.txt");
+let daten = pfad.metadata();
+<span class="boring">}</span></code></pre>
+</li>
+</ul>
+<h4 id="23-symlink_metadata"><a class="header" href="#23-symlink_metadata">23. <code>symlink_metadata</code></a></h4>
+<ul>
+<li><strong>Signatur</strong>: <code>pub fn symlink_metadata(&amp;self) -&gt; Result&lt;Metadata, Error&gt;</code></li>
+<li><strong>Parameter</strong>: Keine.</li>
+<li><strong>Rückgabetyp</strong>: <code>Result&lt;Metadata, Error&gt;</code> (Die Metadaten. Im Gegensatz zu <code>metadata</code> folgt diese Methode keinen symbolischen Links).</li>
+<li><strong>Sicherheitsaspekte &amp; Panics</strong>: E/A-Operation. Kann in der Sandbox fehlschlagen, wenn der Pfad außerhalb des erlaubten Bereichs liegt.</li>
+<li><strong>Minicode-Beispiel</strong>:
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>use std::path::Path;
+let pfad = Path::new("Tutorial/symlink");
+let daten = pfad.symlink_metadata();
+<span class="boring">}</span></code></pre>
+</li>
+</ul>
+<h4 id="24-canonicalize"><a class="header" href="#24-canonicalize">24. <code>canonicalize</code></a></h4>
+<ul>
+<li><strong>Signatur</strong>: <code>pub fn canonicalize(&amp;self) -&gt; Result&lt;PathBuf, Error&gt;</code></li>
+<li><strong>Parameter</strong>: Keine.</li>
+<li><strong>Rückgabetyp</strong>: <code>Result&lt;PathBuf, Error&gt;</code> (Der absolut aufgelöste, normalisierte Pfad ohne relative Segmente wie <code>.</code> oder <code>..</code>).</li>
+<li><strong>Sicherheitsaspekte &amp; Panics</strong>: E/A-Operation. Schlägt fehl, wenn Teile des Pfades nicht existieren oder außerhalb des Sandbox-Roots liegen.</li>
+<li><strong>Minicode-Beispiel</strong>:
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>use std::path::Path;
+let pfad = Path::new("Tutorial/../Tutorial/daten.txt");
+let absolut = pfad.canonicalize();
+<span class="boring">}</span></code></pre>
+</li>
+</ul>
+<h4 id="25-read_link"><a class="header" href="#25-read_link">25. <code>read_link</code></a></h4>
+<ul>
+<li><strong>Signatur</strong>: <code>pub fn read_link(&amp;self) -&gt; Result&lt;PathBuf, Error&gt;</code></li>
+<li><strong>Parameter</strong>: Keine.</li>
+<li><strong>Rückgabetyp</strong>: <code>Result&lt;PathBuf, Error&gt;</code> (Der Pfad, auf den der symbolische Link verweist).</li>
+<li><strong>Sicherheitsaspekte &amp; Panics</strong>: E/A-Operation. Schlägt fehl, wenn der Pfad kein symbolischer Link ist oder nicht gelesen werden darf.</li>
+<li><strong>Minicode-Beispiel</strong>:
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>use std::path::Path;
+let pfad = Path::new("Tutorial/link.lnk");
+let ziel = pfad.read_link();
+<span class="boring">}</span></code></pre>
+</li>
+</ul>
+<h4 id="26-read_dir"><a class="header" href="#26-read_dir">26. <code>read_dir</code></a></h4>
+<ul>
+<li><strong>Signatur</strong>: <code>pub fn read_dir(&amp;self) -&gt; Result&lt;ReadDir, Error&gt;</code></li>
+<li><strong>Parameter</strong>: Keine.</li>
+<li><strong>Rückgabetyp</strong>: <code>Result&lt;ReadDir, Error&gt;</code> (Ein Iterator über die Einträge eines Verzeichnisses).</li>
+<li><strong>Sicherheitsaspekte &amp; Panics</strong>: E/A-Operation. Löst einen Fehler aus, wenn der Pfad kein Verzeichnis ist oder Berechtigungen fehlen.</li>
+<li><strong>Minicode-Beispiel</strong>:
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>use std::path::Path;
+let pfad = Path::new("Tutorial");
+let inhalt = pfad.read_dir();
+<span class="boring">}</span></code></pre>
+</li>
+</ul>
+<h4 id="27-exists"><a class="header" href="#27-exists">27. <code>exists</code></a></h4>
+<ul>
+<li><strong>Signatur</strong>: <code>pub fn exists(&amp;self) -&gt; bool</code></li>
+<li><strong>Parameter</strong>: Keine.</li>
+<li><strong>Rückgabetyp</strong>: <code>bool</code> (Gibt <code>true</code> zurück, wenn der Pfad im Dateisystem existiert).</li>
+<li><strong>Sicherheitsaspekte &amp; Panics</strong>: Führt im Hintergrund eine E/A-Operation aus. Liefert in der Sandbox für gesperrte Pfade immer <code>false</code> oder einen Zugriffsfehler.</li>
+<li><strong>Minicode-Beispiel</strong>:
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>use std::path::Path;
+let existiert = Path::new("Tutorial/daten.txt").exists();
+<span class="boring">}</span></code></pre>
+</li>
+</ul>
+<h4 id="28-is_file"><a class="header" href="#28-is_file">28. <code>is_file</code></a></h4>
+<ul>
+<li><strong>Signatur</strong>: <code>pub fn is_file(&amp;self) -&gt; bool</code></li>
+<li><strong>Parameter</strong>: Keine.</li>
+<li><strong>Rückgabetyp</strong>: <code>bool</code> (Gibt <code>true</code> zurück, wenn der Pfad existiert und eine reguläre Datei ist).</li>
+<li><strong>Sicherheitsaspekte &amp; Panics</strong>: E/A-Operation.</li>
+<li><strong>Minicode-Beispiel</strong>:
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>use std::path::Path;
+let datei = Path::new("Tutorial/daten.txt").is_file();
+<span class="boring">}</span></code></pre>
+</li>
+</ul>
+<h4 id="29-is_dir"><a class="header" href="#29-is_dir">29. <code>is_dir</code></a></h4>
+<ul>
+<li><strong>Signatur</strong>: <code>pub fn is_dir(&amp;self) -&gt; bool</code></li>
+<li><strong>Parameter</strong>: Keine.</li>
+<li><strong>Rückgabetyp</strong>: <code>bool</code> (Gibt <code>true</code> zurück, wenn der Pfad existiert und ein Verzeichnis ist).</li>
+<li><strong>Sicherheitsaspekte &amp; Panics</strong>: E/A-Operation.</li>
+<li><strong>Minicode-Beispiel</strong>:
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>use std::path::Path;
+let ordner = Path::new("Tutorial").is_dir();
+<span class="boring">}</span></code></pre>
+</li>
+</ul>
+<h4 id="30-is_symlink"><a class="header" href="#30-is_symlink">30. <code>is_symlink</code></a></h4>
+<ul>
+<li><strong>Signatur</strong>: <code>pub fn is_symlink(&amp;self) -&gt; bool</code></li>
+<li><strong>Parameter</strong>: Keine.</li>
+<li><strong>Rückgabetyp</strong>: <code>bool</code> (Gibt <code>true</code> zurück, wenn der Pfad ein symbolischer Link ist).</li>
+<li><strong>Sicherheitsaspekte &amp; Panics</strong>: E/A-Operation.</li>
+<li><strong>Minicode-Beispiel</strong>:
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>use std::path::Path;
+let link = Path::new("Tutorial/symlink").is_symlink();
+<span class="boring">}</span></code></pre>
+</li>
+</ul>
+<h4 id="31-into_path_buf"><a class="header" href="#31-into_path_buf">31. <code>into_path_buf</code></a></h4>
+<ul>
+<li><strong>Signatur</strong>: <code>pub fn into_path_buf(self: Box&lt;Path&gt;) -&gt; PathBuf</code></li>
+<li><strong>Parameter</strong>: <code>self</code> (Ein im Heap allokiertes <code>Path</code>-Objekt in einer <code>Box</code>).</li>
+<li><strong>Rückgabetyp</strong>: <code>PathBuf</code> (Das konvertierte, besitzende PathBuf-Objekt).</li>
+<li><strong>Sicherheitsaspekte &amp; Panics</strong>: Keine.</li>
+<li><strong>Minicode-Beispiel</strong>:
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>use std::path::Path;
+let boxed_path: Box&lt;Path&gt; = Path::new("daten.txt").into();
+let pfad_buf = boxed_path.into_path_buf();
+<span class="boring">}</span></code></pre>
+</li>
+</ul>
+<hr>
+<h3 id="methoden-von-stdpathpathbuf"><a class="header" href="#methoden-von-stdpathpathbuf">Methoden von <code>std::path::PathBuf</code></a></h3>
+<h4 id="1-new-1"><a class="header" href="#1-new-1">1. <code>new</code></a></h4>
+<ul>
+<li><strong>Signatur</strong>: <code>pub fn new() -&gt; PathBuf</code></li>
+<li><strong>Parameter</strong>: Keine.</li>
+<li><strong>Rückgabetyp</strong>: <code>PathBuf</code> (Ein leeres, veränderliches Pfadobjekt).</li>
+<li><strong>Sicherheitsaspekte &amp; Panics</strong>: Keine. Allokiert noch keinen Heap-Speicher.</li>
+<li><strong>Minicode-Beispiel</strong>:
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>use std::path::PathBuf;
+let mut pfad = PathBuf::new();
+<span class="boring">}</span></code></pre>
+</li>
+</ul>
+<h4 id="2-with_capacity"><a class="header" href="#2-with_capacity">2. <code>with_capacity</code></a></h4>
+<ul>
+<li><strong>Signatur</strong>: <code>pub fn with_capacity(capacity: usize) -&gt; PathBuf</code></li>
+<li><strong>Parameter</strong>: <code>capacity</code> (Die Anzahl an Bytes, die im Heap vorallokiert werden sollen).</li>
+<li><strong>Rückgabetyp</strong>: <code>PathBuf</code> (Ein leeres Pfadobjekt mit reserviertem Speicher).</li>
+<li><strong>Sicherheitsaspekte &amp; Panics</strong>: Löst eine Panic aus, wenn das System keinen Heap-Speicher mehr allokieren kann.</li>
+<li><strong>Minicode-Beispiel</strong>:
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>use std::path::PathBuf;
+let pfad = PathBuf::with_capacity(100);
+<span class="boring">}</span></code></pre>
+</li>
+</ul>
+<h4 id="3-as_path"><a class="header" href="#3-as_path">3. <code>as_path</code></a></h4>
+<ul>
+<li><strong>Signatur</strong>: <code>pub fn as_path(&amp;self) -&gt; &amp;Path</code></li>
+<li><strong>Parameter</strong>: Keine.</li>
+<li><strong>Rückgabetyp</strong>: <code>&amp;Path</code> (Eine geliehene Referenz auf den Pfad).</li>
+<li><strong>Sicherheitsaspekte &amp; Panics</strong>: Keine.</li>
+<li><strong>Minicode-Beispiel</strong>:
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>use std::path::PathBuf;
+let pfad_buf = PathBuf::from("Tutorial/daten.txt");
+let pfad_ref = pfad_buf.as_path();
+<span class="boring">}</span></code></pre>
+</li>
+</ul>
+<h4 id="4-push"><a class="header" href="#4-push">4. <code>push</code></a></h4>
+<ul>
+<li><strong>Signatur</strong>: <code>pub fn push&lt;P: AsRef&lt;Path&gt;&gt;(&amp;mut self, path: P)</code></li>
+<li><strong>Parameter</strong>: <code>path</code> (Der anzuhängende Pfad).</li>
+<li><strong>Rückgabetyp</strong>: Keine.</li>
+<li><strong>Sicherheitsaspekte &amp; Panics</strong>: Kann den Heap-Speicher vergrößern. Falls ein absoluter Pfad übergeben wird, ersetzt dieser den bisherigen Inhalt komplett.</li>
+<li><strong>Minicode-Beispiel</strong>:
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>use std::path::PathBuf;
+let mut pfad = PathBuf::from("Tutorial");
+pfad.push("zahlenraten");
+<span class="boring">}</span></code></pre>
+</li>
+</ul>
+<h4 id="5-pop"><a class="header" href="#5-pop">5. <code>pop</code></a></h4>
+<ul>
+<li><strong>Signatur</strong>: <code>pub fn pop(&amp;mut self) -&gt; bool</code></li>
+<li><strong>Parameter</strong>: Keine.</li>
+<li><strong>Rückgabetyp</strong>: <code>bool</code> (Gibt <code>true</code> zurück, wenn ein Element erfolgreich entfernt wurde, andernfalls <code>false</code>).</li>
+<li><strong>Sicherheitsaspekte &amp; Panics</strong>: Keine.</li>
+<li><strong>Minicode-Beispiel</strong>:
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>use std::path::PathBuf;
+let mut pfad = PathBuf::from("Tutorial/zahlenraten");
+let gelöscht = pfad.pop();
+<span class="boring">}</span></code></pre>
+</li>
+</ul>
+<h4 id="6-set_file_name"><a class="header" href="#6-set_file_name">6. <code>set_file_name</code></a></h4>
+<ul>
+<li><strong>Signatur</strong>: <code>pub fn set_file_name&lt;S: AsRef&lt;OsStr&gt;&gt;(&amp;mut self, file_name: S)</code></li>
+<li><strong>Parameter</strong>: <code>file_name</code> (Der neue Dateiname).</li>
+<li><strong>Rückgabetyp</strong>: Keine.</li>
+<li><strong>Sicherheitsaspekte &amp; Panics</strong>: Keine. Wenn der Pfad keinen Dateinamen enthält, wird dieser hinzugefügt.</li>
+<li><strong>Minicode-Beispiel</strong>:
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>use std::path::PathBuf;
+let mut pfad = PathBuf::from("Tutorial/daten.txt");
+pfad.set_file_name("daten_neu.txt");
+<span class="boring">}</span></code></pre>
+</li>
+</ul>
+<h4 id="7-set_extension"><a class="header" href="#7-set_extension">7. <code>set_extension</code></a></h4>
+<ul>
+<li><strong>Signatur</strong>: <code>pub fn set_extension&lt;S: AsRef&lt;OsStr&gt;&gt;(&amp;mut self, extension: S) -&gt; bool</code></li>
+<li><strong>Parameter</strong>: <code>extension</code> (Die neue Dateiendung).</li>
+<li><strong>Rückgabetyp</strong>: <code>bool</code> (Gibt <code>true</code> zurück, falls die Endung erfolgreich aktualisiert oder hinzugefügt wurde. Gibt <code>false</code> zurück, wenn der Pfad keinen Dateinamen besitzt).</li>
+<li><strong>Sicherheitsaspekte &amp; Panics</strong>: Keine.</li>
+<li><strong>Minicode-Beispiel</strong>:
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>use std::path::PathBuf;
+let mut pfad = PathBuf::from("Tutorial/daten.txt");
+pfad.set_extension("log");
+<span class="boring">}</span></code></pre>
+</li>
+</ul>
+<h4 id="8-into_boxed_path"><a class="header" href="#8-into_boxed_path">8. <code>into_boxed_path</code></a></h4>
+<ul>
+<li><strong>Signatur</strong>: <code>pub fn into_boxed_path(self) -&gt; Box&lt;Path&gt;</code></li>
+<li><strong>Parameter</strong>: <code>self</code> (Konsumiert das PathBuf-Objekt).</li>
+<li><strong>Rückgabetyp</strong>: <code>Box&lt;Path&gt;</code> (Ein im Heap liegender, nicht mehr vergrößerbarer Pfad).</li>
+<li><strong>Sicherheitsaspekte &amp; Panics</strong>: Keine.</li>
+<li><strong>Minicode-Beispiel</strong>:
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>use std::path::PathBuf;
+let pfad_buf = PathBuf::from("Tutorial/daten.txt");
+let boxed_path = pfad_buf.into_boxed_path();
+<span class="boring">}</span></code></pre>
+</li>
+</ul>
+<h4 id="9-capacity"><a class="header" href="#9-capacity">9. <code>capacity</code></a></h4>
+<ul>
+<li><strong>Signatur</strong>: <code>pub fn capacity(&amp;self) -&gt; usize</code></li>
+<li><strong>Parameter</strong>: Keine.</li>
+<li><strong>Rückgabetyp</strong>: <code>usize</code> (Die Anzahl an Bytes, die der Pfad auf dem Heap belegen kann, ohne neu zu allokieren).</li>
+<li><strong>Sicherheitsaspekte &amp; Panics</strong>: Keine.</li>
+<li><strong>Minicode-Beispiel</strong>:
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>use std::path::PathBuf;
+let pfad = PathBuf::with_capacity(50);
+let kapazität = pfad.capacity();
+<span class="boring">}</span></code></pre>
+</li>
+</ul>
+<h4 id="10-reserve"><a class="header" href="#10-reserve">10. <code>reserve</code></a></h4>
+<ul>
+<li><strong>Signatur</strong>: <code>pub fn reserve(&amp;mut self, additional: usize)</code></li>
+<li><strong>Parameter</strong>: <code>additional</code> (Die Anzahl an zusätzlichen Bytes, die reserviert werden sollen).</li>
+<li><strong>Rückgabetyp</strong>: Keine.</li>
+<li><strong>Sicherheitsaspekte &amp; Panics</strong>: Löst eine Panic aus, wenn die Allokation fehlschlägt.</li>
+<li><strong>Minicode-Beispiel</strong>:
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>use std::path::PathBuf;
+let mut pfad = PathBuf::from("Tutorial");
+pfad.reserve(100);
+<span class="boring">}</span></code></pre>
+</li>
+</ul>
+<h4 id="11-reserve_exact"><a class="header" href="#11-reserve_exact">11. <code>reserve_exact</code></a></h4>
+<ul>
+<li><strong>Signatur</strong>: <code>pub fn reserve_exact(&amp;mut self, additional: usize)</code></li>
+<li><strong>Parameter</strong>: <code>additional</code> (Die exakte Anzahl an zusätzlichen Bytes, die reserviert werden sollen).</li>
+<li><strong>Rückgabetyp</strong>: Keine.</li>
+<li><strong>Sicherheitsaspekte &amp; Panics</strong>: Allokationsfehler führen zur Panic.</li>
+<li><strong>Minicode-Beispiel</strong>:
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>use std::path::PathBuf;
+let mut pfad = PathBuf::from("Tutorial");
+pfad.reserve_exact(50);
+<span class="boring">}</span></code></pre>
+</li>
+</ul>
+<h4 id="12-shrink_to_fit"><a class="header" href="#12-shrink_to_fit">12. <code>shrink_to_fit</code></a></h4>
+<ul>
+<li><strong>Signatur</strong>: <code>pub fn shrink_to_fit(&amp;mut self)</code></li>
+<li><strong>Parameter</strong>: Keine.</li>
+<li><strong>Rückgabetyp</strong>: Keine.</li>
+<li><strong>Sicherheitsaspekte &amp; Panics</strong>: Keine. Reduziert die Heap-Kapazität auf die tatsächlich benötigte Länge des Pfades.</li>
+<li><strong>Minicode-Beispiel</strong>:
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>use std::path::PathBuf;
+let mut pfad = PathBuf::with_capacity(100);
+pfad.push("Tutorial");
+pfad.shrink_to_fit();
+<span class="boring">}</span></code></pre>
+</li>
+</ul>
+<h4 id="13-clear"><a class="header" href="#13-clear">13. <code>clear</code></a></h4>
+<ul>
+<li><strong>Signatur</strong>: <code>pub fn clear(&amp;mut self)</code></li>
+<li><strong>Parameter</strong>: Keine.</li>
+<li><strong>Rückgabetyp</strong>: Keine.</li>
+<li><strong>Sicherheitsaspekte &amp; Panics</strong>: Keine. Setzt die Länge des Pfades auf 0 zurück, behält jedoch die Heap-Allokation bei.</li>
+<li><strong>Minicode-Beispiel</strong>:
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>use std::path::PathBuf;
+let mut pfad = PathBuf::from("Tutorial");
+pfad.clear();
+<span class="boring">}</span></code></pre>
+</li>
+</ul>
+<hr>
+<h2 id="39-drei-praktische-übungen"><a class="header" href="#39-drei-praktische-übungen">3.9 Drei praktische Übungen</a></h2>
+<h3 id="übung-1-leicht---syntax-festigen"><a class="header" href="#übung-1-leicht---syntax-festigen">Übung 1 (Leicht - Syntax festigen)</a></h3>
+<ul>
+<li><strong>Anforderung</strong>: Öffnen Sie die Datei <a href="file:///home/thorsten/RustKurs/.agentrules">.agentrules</a> in Ihrem Workspace und fügen Sie im Bereich <code>[markdown]</code> den Parameter <code>enforce_german_sie = true</code> hinzu. Rufen Sie anschließend im Stammverzeichnis das Antigravity CLI mit der Option <code>inspect</code> auf und verifizieren Sie in der Konsolenausgabe, dass das CLI die Konfiguration fehlerfrei eingelesen hat.</li>
+<li><strong>Lösungshinweis</strong>: Die Datei <a href="file:///home/thorsten/RustKurs/.agentrules">.agentrules</a> folgt der INI-Syntax. Der Befehl für das Terminal lautet <code>agy inspect</code>.</li>
+</ul>
+<h3 id="übung-2-mittel---logik-erweitern"><a class="header" href="#übung-2-mittel---logik-erweitern">Übung 2 (Mittel - Logik erweitern)</a></h3>
+<ul>
+<li><strong>Anforderung</strong>: Schreiben Sie eine Rust-Funktion mit der Signatur <code>fn logge_ereignis(nachricht: &amp;str) -&gt; Result&lt;(), std::io::Error&gt;</code>. Diese Funktion soll eine übergebene Textnachricht an eine Protokolldatei namens <code>app.log</code> anhängen. Der Pfad zu dieser Datei muss sich dynamisch im Unterverzeichnis <code>Tutorial/logs/</code> Ihres Workspaces befinden. Stellen Sie sicher, dass das Verzeichnis <code>logs</code> automatisch angelegt wird, falls es nicht existiert.</li>
+<li><strong>Lösungshinweis</strong>: Verwenden Sie <code>std::env::current_dir()</code>, um den Workspace-Pfad zu ermitteln, <code>std::fs::create_dir_all()</code> zur Verzeichniserstellung und <code>std::fs::OpenOptions</code> mit <code>.create(true).append(true)</code>.</li>
+</ul>
+<h3 id="übung-3-schwer---transferleistung"><a class="header" href="#übung-3-schwer---transferleistung">Übung 3 (Schwer - Transferleistung)</a></h3>
+<ul>
+<li><strong>Anforderung</strong>: Erstellen Sie in der Datei <a href="file:///home/thorsten/RustKurs/skills.md">skills.md</a> einen neuen Skill mit der Bezeichnung <code>## Skill: @generate-ascii-log</code>. Formulieren Sie darin präzise didaktische Anweisungen für die KI, wie ein tabellarisches ASCII-Art-Protokoll formatiert werden soll (z. B. Rahmenzeichen, Spaltenbreiten). Schreiben Sie anschließend ein Rust-Programm, das die Datei <a href="file:///home/thorsten/RustKurs/skills.md">skills.md</a> einliest, diesen Skill parst und ein Protokoll ausgibt, das exakt den Regeln entspricht. Fangen Sie Lesefehler ab.</li>
+<li><strong>Lösungshinweis</strong>: Suchen Sie beim zeilenweisen Lesen der Datei <a href="file:///home/thorsten/RustKurs/skills.md">skills.md</a> nach dem Token <code>## Skill: @generate-ascii-log</code>. Nutzen Sie String-Vergleiche, um die nachfolgenden Textzeilen bis zur nächsten Skill-Definition zu extrahieren.</li>
+</ul>
+<hr>
+<h2 id="310-lernstrategie-selbsteinschätzung--merkzettel"><a class="header" href="#310-lernstrategie-selbsteinschätzung--merkzettel">3.10 Lernstrategie, Selbsteinschätzung &amp; Merkzettel</a></h2>
+<h3 id="cli-spickzettel-cheat-sheet"><a class="header" href="#cli-spickzettel-cheat-sheet">CLI-Spickzettel (Cheat Sheet)</a></h3>
+<h4 id="start-optionen"><a class="header" href="#start-optionen">Start-Optionen</a></h4>
 <div class="table-wrapper">
 <table>
 <thead>
 <tr><th style="text-align: left">Befehl</th><th style="text-align: left">Beschreibung</th></tr>
 </thead>
 <tbody>
-<tr><td style="text-align: left"><strong><code>/settings</code> / <code>/config</code></strong></td><td style="text-align: left">Konfiguriert das CLI (Farben, Tastenkombinationen, API-Keys).</td></tr>
-<tr><td style="text-align: left"><strong><code>/permissions</code></strong></td><td style="text-align: left">Zeigt an, welche Lese- und Schreibrechte der Agent im aktuellen Ordner besitzt.</td></tr>
-<tr><td style="text-align: left"><strong><code>/skills</code></strong></td><td style="text-align: left">Listet alle geladenen Skills aus der <code>skills.md</code> oder dem Ordner <code>.agents/skills/</code> auf.</td></tr>
-<tr><td style="text-align: left"><strong><code>/clear</code></strong></td><td style="text-align: left">Setzt den aktuellen Kontext und Chatverlauf zurück (Gedächtnis löschen).</td></tr>
-<tr><td style="text-align: left"><strong><code>/rewind</code></strong></td><td style="text-align: left">Ermöglicht es, im Kontext zurückzuspringen, falls die KI einen falschen Pfad eingeschlagen hat.</td></tr>
-<tr><td style="text-align: left"><strong><code>/resume</code></strong></td><td style="text-align: left">Nimmt eine zuvor abgebrochene oder beendete Sitzung wieder auf.</td></tr>
-<tr><td style="text-align: left"><strong><code>/fork</code></strong></td><td style="text-align: left">Erstellt einen neuen Entwicklungs-Zweig der aktuellen Agenten-Sitzung zum Experimentieren.</td></tr>
-<tr><td style="text-align: left"><strong><code>/exit</code></strong></td><td style="text-align: left">Beendet die aktuelle Sitzung des CLI.</td></tr>
-<tr><td style="text-align: left"><strong><code>!</code></strong></td><td style="text-align: left">Führt einen Terminalbefehl direkt aus (z. B. <code>!cargo test</code>).</td></tr>
-<tr><td style="text-align: left"><strong><code>@</code></strong></td><td style="text-align: left">Sucht nach Dateien oder Verzeichnissen im Projekt, um sie der KI als direkten Kontext mitzugeben.</td></tr>
+<tr><td style="text-align: left"><code>agy</code></td><td style="text-align: left">Startet die interaktive TUI im aktuellen Verzeichnis.</td></tr>
+<tr><td style="text-align: left"><code>agy inspect</code></td><td style="text-align: left">Analysiert den Workspace und gibt geladene Regeln und Konfigurationen aus.</td></tr>
+<tr><td style="text-align: left"><code>agy plugin import gemini</code></td><td style="text-align: left">Importiert Einstellungen und API-Schlüssel aus einer Gemini-Installation.</td></tr>
 </tbody>
 </table>
 </div>
-<h3 id="34-der-interaktive-kommentar--und-feedback-workflow"><a class="header" href="#34-der-interaktive-kommentar--und-feedback-workflow">3.4 Der interaktive Kommentar- und Feedback-Workflow</a></h3>
-<p>Ein wesentliches Feature des CLI ist die Möglichkeit, <strong>Kommentare und Feedback zu vorgeschlagenen Änderungen</strong> einzugeben. So kannst du den Agenten präzise steuern:</p>
-<ol>
-<li><strong>Vorgeschlagene Änderungen prüfen (<code>ctrl+r</code>)</strong>:
-Wenn der Agent Dateien ändert oder neu erstellt, siehst du im TUI-Interface die Liste der vorgeschlagenen Modifikationen. Drücke <strong><code>ctrl+r</code></strong>, um das Review-Panel zu öffnen.</li>
-<li><strong>Kommentare eingeben (Feedback Loop)</strong>:
-Statt die Änderungen direkt zu akzeptieren (<code>Proceed</code>) oder komplett abzulehnen, kannst du im Textfeld des Review-Panels <strong>Kommentare und Korrekturwünsche eingeben</strong>.
+<h4 id="slash-befehle-tui"><a class="header" href="#slash-befehle-tui">Slash-Befehle (TUI)</a></h4>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th style="text-align: left">Befehl</th><th style="text-align: left">Beschreibung</th></tr>
+</thead>
+<tbody>
+<tr><td style="text-align: left"><code>/permissions</code></td><td style="text-align: left">Zeigt die Lese- und Schreibrechte des Agenten in der Sandbox an.</td></tr>
+<tr><td style="text-align: left"><code>/skills</code></td><td style="text-align: left">Listet alle geladenen Skills aus <a href="file:///home/thorsten/RustKurs/skills.md">skills.md</a> auf.</td></tr>
+<tr><td style="text-align: left"><code>/rewind</code></td><td style="text-align: left">Springt im Chatverlauf und Kontext des Agenten zurück.</td></tr>
+<tr><td style="text-align: left"><code>/clear</code></td><td style="text-align: left">Löscht den aktuellen Sitzungsverlauf und leert das Kontext-Gedächtnis.</td></tr>
+<tr><td style="text-align: left"><code>/resume</code></td><td style="text-align: left">Setzt eine zuvor unterbrochene Sitzung fort.</td></tr>
+<tr><td style="text-align: left"><code>/fork</code></td><td style="text-align: left">Erstellt einen neuen experimentellen Zweig der aktuellen Sitzung.</td></tr>
+<tr><td style="text-align: left"><code>/exit</code></td><td style="text-align: left">Beendet das Antigravity CLI.</td></tr>
+<tr><td style="text-align: left"><code>!</code></td><td style="text-align: left">Führt einen Shell-Befehl direkt aus (z. B. <code>!cargo build</code>).</td></tr>
+</tbody>
+</table>
+</div>
+<h4 id="tastenkombinationen"><a class="header" href="#tastenkombinationen">Tastenkombinationen</a></h4>
 <ul>
-<li><em>Beispiel</em>: <em>“Der Code in <code>src/main.rs</code> ist korrekt, aber bitte füge am Anfang der Datei einen doc-comment hinzu, der die Funktionsweise erklärt.”</em></li>
-<li><em>Beispiel</em>: <em>“Die Fehlerbehandlung in Zeile 42 wirft ein Panic. Bitte fange den Fehler ab und gib ein <code>Result::Err</code> zurück.”</em></li>
+<li><strong><code>ctrl+r</code></strong>: Öffnet das Review-Panel zur Inspektion von Datei-Entwürfen vor der Freigabe.</li>
+<li><strong><code>ctrl+c</code></strong>: Bricht die aktuelle Generierung oder Befehlsausführung ab.</li>
 </ul>
-</li>
-<li><strong>Iterative Anpassung</strong>:
-Nachdem du den Kommentar abgeschickt hast, analysiert der Agent dein Feedback, passt den Code in der Sandbox an und präsentiert dir eine neue Version der Datei zur Überprüfung.</li>
-<li><strong>Code-Kommentar-Richtlinien (<code>.agentrules</code>)</strong>:
-Über die Konfiguration <code>always_preserve_comments = true</code> in deiner <code>.agentrules</code> stellst du sicher, dass die KI bei ihren Code-Änderungen niemals deine manuell geschriebenen Kommentare oder Dokumentationen löscht.</li>
+<hr>
+<h3 id="active-recall-selbsttestfragen"><a class="header" href="#active-recall-selbsttestfragen">Active Recall (Selbsttestfragen)</a></h3>
+<ol>
+<li><em>Warum scheitert das Öffnen der Datei <code>/etc/hosts</code> in der Sandbox auf Systemebene und wie lautet der zugehörige Linux-Fehlercode?</em></li>
+<li><em>Welcher fundamentale Unterschied besteht im Speicherlayout (Stack vs. Heap) zwischen <code>&amp;Path</code> und <code>PathBuf</code>?</em></li>
+<li><em>Wie unterscheidet sich der Workspace-Modus <code>branch</code> vom Modus <code>inherit</code> hinsichtlich der Sicherheit und des Datenflusses?</em></li>
+<li><em>Welche Aufgabe übernimmt die Governance-Datei <a href="file:///home/thorsten/RustKurs/glossary.md">glossary.md</a> bei der KI-gestützten Dokumentationserstellung?</em></li>
+<li><em>Mit welcher Tastenkombination öffnen Sie das Review-Panel im Antigravity CLI und wie geben Sie Korrektur-Feedback an den Agenten zurück?</em></li>
 </ol>
 <hr>
-<h2 id="4-tutorial-unterverzeichnis-tutorial-erstellen-und-einbauen-mit-agy"><a class="header" href="#4-tutorial-unterverzeichnis-tutorial-erstellen-und-einbauen-mit-agy">4. Tutorial: Unterverzeichnis “Tutorial” erstellen und einbauen mit <code>agy</code></a></h2>
-<p>Jetzt zeigen wir dir praktisch, wie du die Power des Antigravity CLI nutzt, um ein neues Unterverzeichnis namens <code>Tutorial</code> zu erstellen, darin ein Rust-Lernprojekt anzulegen und es in dein mdBook-Lehrbuch zu integrieren.</p>
-<h3 id="schritt-1-das-cli-im-projektordner-starten"><a class="header" href="#schritt-1-das-cli-im-projektordner-starten">Schritt 1: Das CLI im Projektordner starten</a></h3>
-<p>Öffne dein Terminal, navigiere in dein Projektverzeichnis und starte das CLI:</p>
-<pre><code class="language-bash">cd /home/thorsten/RustKurs
-agy
-</code></pre>
-<h3 id="schritt-2-der-prompt-zur-verzeichniserstellung"><a class="header" href="#schritt-2-der-prompt-zur-verzeichniserstellung">Schritt 2: Der Prompt zur Verzeichniserstellung</a></h3>
-<p>Tippe nun den folgenden Prompt in das Eingabefeld des CLI ein:</p>
+<h3 id="die-feynman-methode"><a class="header" href="#die-feynman-methode">Die Feynman-Methode</a></h3>
+<p>Erklären Sie das Prinzip des Antigravity CLI und der Sandbox einem Anfänger in drei einfachen Sätzen:</p>
 <blockquote>
-<p>💬 <em>“Erstelle ein neues Unterverzeichnis <code>Tutorial</code> im Projekt-Root. Initialisiere darin ein neues Cargo-Projekt namens <code>zahlenraten</code>. Schreibe in <code>Tutorial/zahlenraten/src/main.rs</code> ein einfaches, gut kommentiertes Zahlenratespiel in Rust und lege im Ordner <code>Tutorial</code> eine ausführliche <code>README.md</code> an, die erklärt, wie man das Spiel baut und startet.”</em></p>
+<p>Das Antigravity CLI ist ein intelligenter Assistent, mit dem Sie über Befehle direkt an Ihrem Projekt arbeiten können. Damit der Assistent keine Fehler auf Ihrem Computer macht, läuft er in einem geschützten “Sandkasten” (Sandbox), der Zugriffe außerhalb des Projektordners blockiert. So können Sie gefahrlos Code entwickeln, testen und bei Bedarf über ein Review-Fenster korrigieren.</p>
 </blockquote>
-<h3 id="schritt-3-der-arbeitsablauf-der-ki"><a class="header" href="#schritt-3-der-arbeitsablauf-der-ki">Schritt 3: Der Arbeitsablauf der KI</a></h3>
-<p>Die KI analysiert deine Anfrage und führt im Hintergrund folgende Schritte in ihrer Sandbox aus:</p>
-<ol>
-<li><strong>Verzeichniserstellung</strong>: Sie erstellt den Ordner <code>Tutorial</code>.</li>
-<li><strong>Cargo-Init</strong>: Sie wechselt in den Ordner und ruft <code>cargo new zahlenraten</code> auf.</li>
-<li><strong>Code-Erstellung</strong>: Sie schreibt das Spiel in <code>Tutorial/zahlenraten/src/main.rs</code>.</li>
-<li><strong>Dokumentation</strong>: Sie generiert die Datei <code>Tutorial/README.md</code>.</li>
-</ol>
-<h3 id="schritt-4-überprüfung-der-änderungen-artifact-review"><a class="header" href="#schritt-4-überprüfung-der-änderungen-artifact-review">Schritt 4: Überprüfung der Änderungen (Artifact Review)</a></h3>
-<p>Sobald die KI fertig ist, wird dir im CLI die Option zur Überprüfung der generierten Dateien angeboten.</p>
-<ul>
-<li>Drücke <strong><code>ctrl+r</code></strong>, um das <em>Artifact Review Panel</em> to öffnen.</li>
-<li>Hier siehst du alle neu erstellten Dateien und deren Inhalt.</li>
-<li>Wenn alles passt, bestätige die Änderungen mit <strong>Proceed</strong> (oder <strong>Approve</strong>), um sie aus der Sandbox in dein echtes Dateisystem zu übernehmen.</li>
-</ul>
-<h3 id="schritt-5-das-spiel-testen"><a class="header" href="#schritt-5-das-spiel-testen">Schritt 5: Das Spiel testen</a></h3>
-<p>Du kannst der KI direkt im Chat befehlen, das erstellte Projekt zu testen:</p>
-<blockquote>
-<p>💬 <em>“Wechsle in das Verzeichnis <code>Tutorial/zahlenraten</code>, baue das Projekt und führe die Tests aus.”</em></p>
-</blockquote>
-<p>Die KI führt den Befehl aus (entspricht <code>cargo check</code> und <code>cargo test</code>) und gibt dir das Testergebnis im Chat aus. Alternativ kannst du den Test über das Präfix <code>!</code> selbst triggern:</p>
-<pre><code class="language-bash">!cd Tutorial/zahlenraten &amp;&amp; cargo run
-</code></pre>
-<h3 id="schritt-6-der-generierte-code-und-seine-erläuterung"><a class="header" href="#schritt-6-der-generierte-code-und-seine-erläuterung">Schritt 6: Der generierte Code und seine Erläuterung</a></h3>
-<p>Nachdem der Agent das Cargo-Projekt erstellt hat, enthält die Datei <code>Tutorial/zahlenraten/src/main.rs</code> den folgenden lauffähigen Rust-Code:</p>
-<pre class="playground"><code class="language-rust edition2021">use std::io;
-use std::cmp::Ordering;
-use rand::Rng; // Wichtig: Das rand-Crate muss in Cargo.toml eingetragen sein!
-
-fn main() {
-    println!("Willkommen beim Zahlenratespiel!");
-
-    // Generiere eine geheime Zufallszahl zwischen 1 und 100
-    let geheimzahl = rand::thread_rng().gen_range(1..=100);
-
-    println!("Ich habe an eine Zahl zwischen 1 und 100 gedacht.");
-
-    loop {
-        println!("Bitte gib deinen Tipp ein:");
-
-        let mut tipp = String::new();
-
-        // Lese die Eingabe von der Konsole ein
-        io::stdin()
-            .read_line(&amp;mut tipp)
-            .expect("Fehler beim Lesen der Zeile");
-
-        // Konvertiere die Eingabe in eine Zahl (u32)
-        // Fehlerhafte Eingaben werden durch 'continue' abgefangen
-        let tipp: u32 = match tipp.trim().parse() {
-            Ok(zahl) =&gt; zahl,
-            Err(_) =&gt; {
-                println!("Bitte gib eine gültige Zahl ein!");
-                continue;
-            }
-        };
-
-        println!("Dein Tipp: {}", tipp);
-
-        // Vergleiche den Tipp mit der Geheimzahl
-        match tipp.cmp(&amp;geheimzahl) {
-            Ordering::Less =&gt; println!("Zu klein!"),
-            Ordering::Greater =&gt; println!("Zu groß!"),
-            Ordering::Equal =&gt; {
-                println!("Du hast gewonnen! 🎉");
-                break; // Schleife beenden und Spiel beenden
-            }
-        }
-    }
-}</code></pre>
-<h4 id="beschreibung-der-funktionsweise"><a class="header" href="#beschreibung-der-funktionsweise">Beschreibung der Funktionsweise:</a></h4>
-<ol>
-<li><strong>Bibliotheken einbinden</strong>: Über <code>use std::io</code> binden wir das Standard-Eingabe/Ausgabe-Modul ein. <code>std::cmp::Ordering</code> importiert ein Enum mit den Varianten <code>Less</code>, <code>Greater</code> und <code>Equal</code> für Vergleiche.</li>
-<li><strong>Zufallszahl generieren</strong>: Mit <code>rand::thread_rng().gen_range(1..=100)</code> erzeugt das Programm eine zufällige Ganzzahl zwischen 1 und 100.</li>
-<li><strong>Schleife (<code>loop</code>)</strong>: Ein unendlicher Loop sorgt dafür, dass der Spieler so oft tippen kann, bis er die richtige Zahl errät.</li>
-<li><strong>Fehlertolerante Eingabe</strong>: Die Eingabe wird als String eingelesen und mittels <code>tipp.trim().parse()</code> in eine Ganzzahl (<code>u32</code>) umgewandelt. Durch das Pattern Matching (<code>match</code>) fängt das Programm Konvertierungsfehler (z. B. bei der Eingabe von Buchstaben) ab: Bei einem Fehler (<code>Err(_)</code>) gibt es eine Meldung aus und startet den nächsten Schleifendurchlauf mit <code>continue</code>, statt abzustürzen.</li>
-<li><strong>Vergleich und Spielende</strong>: Mit <code>tipp.cmp(&amp;geheimzahl)</code> vergleichen wir den Tipp mit der Geheimzahl. Stimmt der Wert überein (<code>Ordering::Equal</code>), bricht <code>break</code> die Schleife ab und das Spiel endet.</li>
-</ol>
-<p>Gleichzeitig wurde im Verzeichnis <code>Tutorial/README.md</code> die folgende Dokumentation angelegt:</p>
-<pre><code class="language-markdown"># Zahlenratespiel in Rust
-
-Ein einfaches Konsolenspiel, bei dem der Spieler eine geheime Zahl zwischen 1 und 100 erraten muss.
-
-## Anforderungen
-* Rust &amp; Cargo installiert (siehe Kapitel 2)
-
-## Projekt ausführen
-Wechsle in das Verzeichnis und starte das Spiel:
-```bash
-cd zahlenraten
-cargo run
-</code></pre>
-<pre><code>
-Durch diese saubere Generierung im Unterordner `Tutorial` hast du ein voll funktionsfähiges Übungsbeispiel erstellt, ohne die Quelldateien deines Hauptprojekts zu verändern.
-
----
-
-## 5. Code-Beispiele für die Governance-Dateien
-
-Damit du direkt siehst, wie die vier Governance-Dateien in der Praxis aufgebaut sind, findest du hier vollständige, gebrauchsfertige Vorlagen.
-
-### 5.1 Vorlage: `AGENTS.md` (Auszug)
-Diese Datei liegt im Projekt-Root und dokumentiert den Zustand.
-
-```markdown
-# Rust-Videokurs: Workspace Governance
-
-**Tech Stack:** Manim (Python), Blender 3D, Kokoro-onnx TTS, Remotion.
-**Status:** 
-- Kapitel 1–23: Abgeschlossen (Video &amp; Audio bereit).
-- Kapitel 24: In Bearbeitung (Professionalisierung &amp; Antigravity CLI).
-
-## Rollen &amp; Zuständigkeiten
-- **Hauptagent**: Koordination, Erstellung der Lehrbuchkapitel (`.md`-Dateien).
-- **Subagent 'Video-Generator'**: Erstellung der Manim- und Blender-Python-Skripte.
-- **Subagent 'Audio-Generator'**: Triggerung des Kokoro-onnx TTS-Systems.
-</code></pre>
-<h3 id="52-vorlage-skillsmd"><a class="header" href="#52-vorlage-skillsmd">5.2 Vorlage: <code>skills.md</code></a></h3>
-<p>Hier wird das fehlerfreie Bedienen unserer Video- und Audio-Tools dokumentiert.</p>
-<pre><code class="language-markdown"># Agent Skills – Tool-Steuerung
-
-## Skill: @generate-manim
-Verwende diesen Ablauf, um fehlerfreie Manim-Skripte zu schreiben:
-1. Verwende immer die Klasse `video_scene.py` als Basisklasse.
-2. Code-Hervorhebungen müssen über die `Pygments`-Bibliothek vorgenommen werden.
-3. Rendere Szenen vorab mit niedriger Auflösung (`manim -ql scene.py`) zum Testen.
-4. **Dynamische Videolänge**: Videos nicht künstlich auf 5 Minuten (300s) strecken. Die Länge richtet sich dynamisch nach der echten Audiozeit plus 1,0–1,5s Übergangspause pro Abschnitt.
-
-## Skill: @generate-audio
-Ablauf zur Erstellung von Audio-Voiceovers mit Kokoro-onnx:
-1. Text in Sätze aufteilen (maximal 150 Zeichen pro Segment für optimalen Flow).
-2. Nutze das Skript `generate_audio.py` mit dem Parameter `--speed 1.0` und `--voice af_bella`.
-3. Speichere das Ergebnis im Ordner `audio/` als `.wav`.
-4. **Dynamische Zusammenführung**: Mische die Audiospuren mit einer festen Lücke von 1,0–1,5s zwischen Abschnitten, ohne künstliches Padding auf 300s.
-</code></pre>
-<h3 id="53-vorlage-agentrules"><a class="header" href="#53-vorlage-agentrules">5.3 Vorlage: <code>.agentrules</code></a></h3>
-<p>Verhaltensregeln für den KI-Assistenten im Projekt.</p>
-<pre><code class="language-ini"># Allgemeine Verhaltensregeln für KI-Agenten
-[behavior]
-language = de
-tone = professional_and_educational
-allow_network = false
-
-[code_edition]
-always_preserve_comments = true
-always_preserve_docstrings = true
-preferred_indentation = spaces_4
-modify_mode = precision_replace # Keine vollständigen Datei-Überschreibungen!
-
-[rust_guidelines]
-idiomatic_rust = true
-clippy_warnings = error
-docs_required = true
-
-[markdown]
-formatting = gfm # GitHub Flavored Markdown
-link_style = standard # Keine Backticks um Linktexte (z.B. [link](url) statt [`link`](url))
-always_use_hierarchical_headers = true
-keep_bullet_points_concise = true
-</code></pre>
-<h3 id="54-vorlage-glossarymd"><a class="header" href="#54-vorlage-glossarymd">5.4 Vorlage: <code>glossary.md</code></a></h3>
-<p>Die zentralen Rust-Begriffsdefinitionen.</p>
-<pre><code class="language-markdown"># Glossar: Rust Kernbegriffe
-
-*   **Ownership (Besitzrecht)**: Das Kernprinzip der Speicherverwaltung in Rust. Jeder Wert hat genau einen Besitzer (Variable). Verlässt der Besitzer den Gültigkeitsbereich (Scope), wird der Wert automatisch gelöscht.
-*   **Borrowing (Ausleihen)**: Das zeitweise Ausleihen eines Wertes über Referenzen (`&amp;` für unveränderlich, `&amp;mut` für veränderlich), ohne das Ownership zu übertragen.
-*   **Borrow Checker**: Die Compiler-Komponente, die zur Kompilierzeit prüft, ob alle Referenz- und Ausleihregeln eingehalten werden (z. B. keine veränderliche Ausleihe neben unveränderlichen Ausleihen).
-*   **Lifetimes (Lebensdauern)**: Die Zeitspanne, in der eine Referenz auf einen Wert gültig ist. Wird vom Compiler geprüft, um "Dangling References" (Verweise auf gelöschten Speicher) zu verhindern.
-</code></pre>
 <hr>
-<h2 id="-zusammenfassung-für-die-hosentasche"><a class="header" href="#-zusammenfassung-für-die-hosentasche">💡 Zusammenfassung für die Hosentasche</a></h2>
+<h3 id="gezielte-fehlerprovokation-compiler-guided-learning"><a class="header" href="#gezielte-fehlerprovokation-compiler-guided-learning">Gezielte Fehlerprovokation (Compiler-Guided Learning)</a></h3>
+<p>Führen Sie die folgenden Schritte aus, um eine Sandbox-Verletzung absichtlich zu provozieren:</p>
+<ol>
+<li>Erstellen Sie ein neues Rust-Projekt.</li>
+<li>Fügen Sie einen Codeabschnitt ein, der versucht, eine Datei unter <code>/var/log/syslog</code> zu öffnen.</li>
+<li>Starten Sie das Programm über das CLI mittels <code>!cargo run</code>.</li>
+<li>Analysieren Sie die resultierende <code>PermissionDenied</code>-Fehlermeldung.</li>
+<li>Tippen Sie den Befehl <code>/permissions</code> in das CLI-Eingabefeld, um zu visualisieren, warum der Zugriff blockiert wurde.</li>
+</ol>
+<hr>
+<h3 id="metakognitiver-selbsttest"><a class="header" href="#metakognitiver-selbsttest">Metakognitiver Selbsttest</a></h3>
+<p>Wechseln Sie erst zum nächsten Kapitel (<a href="file:///home/thorsten/RustKurs/25.md">Ch25: Der Slice-Typ (Slices)</a>), wenn Sie folgende Punkte mit “Ja” beantworten können:</p>
 <ul>
-<li><strong>Workspace-Governance</strong>: Ein professionelles Projekt nutzt <code>AGENTS.md</code> (Status), <code>skills.md</code> (Spezialwissen), <code>.agentrules</code> (KI-Verhaltensregeln) und <code>glossary.md</code> (Fachbegriffe), um KI-Agenten optimal zu steuern.</li>
-<li><strong>Antigravity CLI</strong>: Der Befehl <code>agy</code> öffnet ein TUI-Interface zur direkten Entwicklung in einer sicheren Sandbox.</li>
-<li><strong>Slash-Befehle</strong>: Mit <code>/settings</code> oder <code>/permissions</code> steuerst du das CLI, während <code>!</code> Terminalkommandos ausführt.</li>
-<li><strong>Praxis-Workflow</strong>: Erstelle Unterordner (wie <code>Tutorial</code>) direkt über einen TUI-Prompt, überprüfe die generierten Dateien mit <strong><code>ctrl+r</code></strong> (Artifact Review) und teste sie direkt in der Sandbox.</li>
+<li><input disabled="" type="checkbox"> Sie können den Unterschied zwischen <code>&amp;Path</code> und <code>PathBuf</code> bezüglich Speicherallokation und Ownership erklären.</li>
+<li><input disabled="" type="checkbox"> Sie wissen, warum relative Pfade innerhalb eines sandboxed Cargo-Projekts zwingend erforderlich sind.</li>
+<li><input disabled="" type="checkbox"> Sie haben die Governance-Dateien erfolgreich angelegt und über <code>agy inspect</code> verifiziert.</li>
+<li><input disabled="" type="checkbox"> Sie können das Review-Panel (<code>ctrl+r</code>) bedienen und den Feedback-Workflow steuern.</li>
 </ul>
+<hr>
+<h2 id="311-zusammenfassung"><a class="header" href="#311-zusammenfassung">3.11 Zusammenfassung</a></h2>
+<ul>
+<li><strong>Antigravity CLI</strong>: Ein Werkzeug zur lokalen, KI-gestützten Softwareentwicklung innerhalb einer sicheren Sandbox.</li>
+<li><strong>Sandbox-Sicherheit</strong>: Verhindert unautorisierte Systemzugriffe außerhalb des Workspaces (z. B. <code>/etc/hosts</code>) mittels Linux-Namespaces (nsjail).</li>
+<li><strong>Workspace Governance</strong>: Sichert die Konsistenz und Strukturierung über vier Konfigurationsdateien: <a href="file:///home/thorsten/RustKurs/AGENTS.md">AGENTS.md</a> (Status), <a href="file:///home/thorsten/RustKurs/skills.md">skills.md</a> (Tool-Skills), <a href="file:///home/thorsten/RustKurs/.agentrules">.agentrules</a> (Richtlinien) und <a href="file:///home/thorsten/RustKurs/glossary.md">glossary.md</a> (Glossar).</li>
+<li><strong>Review-Workflow</strong>: Ermöglicht eine feingranulare Qualitätskontrolle vorgeschlagener Codeänderungen vor dem physischen Schreiben durch das Drücken von <strong><code>ctrl+r</code></strong> im CLI.</li>
+<li><strong>Speicherverwaltung in Rust</strong>: Pfade werden über die Typen <code>&amp;Path</code> (unkopierbare Referenz, Fat Pointer auf dem Stack) und <code>PathBuf</code> (besitzender Pfad auf dem Heap) abgebildet.</li>
+</ul>
+<hr>
+<p><strong>Lizenz- und Attributionshinweis</strong>:
+Teile dieses Kapitels basieren auf Übersetzungen und didaktischen Anpassungen des offiziellen Buches <a href="https://doc.rust-lang.org/book/">The Rust Programming Language</a> von Steve Klabnik und Carol Nichols (sowie Beiträgen der Rust-Community), lizenziert unter <a href="https://opensource.org/licenses/MIT">MIT</a> und <a href="https://www.apache.org/licenses/LICENSE-2.0">Apache 2.0</a>.</p>
 
                     </main>
 

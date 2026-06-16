@@ -35,7 +35,7 @@
             const path_to_root = "";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "searchindex-a9440cc5.js";
+            window.path_to_searchindex_js = "searchindex-76719c3e.js";
         </script>
         <!-- Start loading toc.js asap -->
         <script src="toc-dedbbe6e.js"></script>
@@ -174,84 +174,694 @@
 
                 <div id="mdbook-content" class="content">
                     <main>
-                        <h1 id="funktionen-in-rust"><a class="header" href="#funktionen-in-rust">Funktionen in Rust</a></h1>
-<p>Eine Funktion ist ein wiederverwendbarer Code-Block, der eine bestimmte Aufgabe erledigt. Du definierst sie einmal und kannst sie beliebig oft aufrufen. Das spart doppelten Code und hält dein Programm sauber.</p>
+                        <h1 id="kapitel-10-funktionen"><a class="header" href="#kapitel-10-funktionen">Kapitel 10: Funktionen</a></h1>
+<p>Funktionen sind die fundamentalen Bausteine der strukturierten Programmierung. Sie erlauben es Ihnen, Code in logische, wiederverwendbare und isolierte Einheiten zu unterteilen. In Rust sind Funktionen nicht nur ein Mittel zur Code-Organisation, sondern sie sind eng in das Typsystem und das Sicherheitsmodell der Sprache integriert. Dieses Kapitel vermittelt Ihnen ein tiefgehendes Verständnis dafür, wie Funktionen in Rust strukturiert sind, wie sich Anweisungen von Ausdrücken unterscheiden und wie der Compiler die Typsicherheit an den Grenzen von Funktionen garantiert.</p>
 <hr>
-<h2 id="1-die-main-funktion-und-eigene-funktionen"><a class="header" href="#1-die-main-funktion-und-eigene-funktionen">1. Die <code>main</code>-Funktion und eigene Funktionen</a></h2>
-<p>Jedes Rust-Programm startet in der <code>main</code>-Funktion. Eigene Funktionen werden mit dem Schlüsselwort <code>fn</code> definiert.</p>
+<h2 id="1-lernziele--lernplan"><a class="header" href="#1-lernziele--lernplan">1. Lernziele &amp; Lernplan</a></h2>
+<h3 id="lernziele"><a class="header" href="#lernziele">Lernziele</a></h3>
 <ul>
-<li><strong>Reihenfolge:</strong> Es ist egal, ob deine eigenen Funktionen vor oder nach der <code>main</code>-Funktion stehen. Rust findet sie überall in derselben Datei.</li>
-<li><strong>Definition vs. Aufruf:</strong> Das bloße Aufschreiben einer Funktion tut noch nichts. Erst wenn du sie mit <code>()</code> aufrufst, wird sie ausgeführt.</li>
+<li><strong>Sie können</strong> den fundamentalen Unterschied zwischen Anweisungen (Statements) und Ausdrücken (Expressions) im Rust-Typsystem erklären und analysieren, wie sich das Fehlen oder Vorhandensein eines Semikolons auf die Auswertung auswirkt.</li>
+<li><strong>Sie können</strong> präzise Funktionssignaturen deklarieren, indem Sie Parameter, explizite Typannotationen und Rückgabetypen gemäß den syntaktischen Konventionen von Rust definieren.</li>
+<li><strong>Sie können</strong> Compiler-Fehler des Typs <code>mismatched types</code> (insbesondere im Kontext des Unit-Typs <code>()</code>) selbstständig diagnostizieren, die Ursachen im Quellcode verorten und beheben.</li>
+<li><strong>Sie können</strong> das Speicherverhalten (Stack Frames) und den Kontrollfluss bei Funktionsaufrufen auf Systemebene nachvollziehen und beschreiben.</li>
 </ul>
-<pre class="playground"><code class="language-rust edition2021">fn main() {
-    gruss_schreiben(); // Aufruf der Funktion
-}
-
-fn gruss_schreiben() {
-    println!("Hallo Welt!");
-}</code></pre>
-<hr>
-<h2 id="2-parameter-und-argumente-eingaben"><a class="header" href="#2-parameter-und-argumente-eingaben">2. Parameter und Argumente (Eingaben)</a></h2>
-<p>Um Funktionen flexibel zu machen, kannst du ihnen Werte übergeben:</p>
+<h3 id="lernplan"><a class="header" href="#lernplan">Lernplan</a></h3>
 <ul>
-<li><strong>Parameter:</strong> Der Platzhalter in der Funktionsdefinition (z. B. <code>name: &amp;str</code>). In Rust <strong>musst</strong> du für jeden Parameter einen Datentyp angeben.</li>
-<li><strong>Argument:</strong> Der tatsächliche Wert, den du beim Aufruf übergibst (z. B. <code>"Anna"</code>).</li>
-<li><strong>Strikte Kontrolle:</strong> Der Compiler prüft genau, ob die Anzahl und die Typen der Argumente exakt mit den Parametern übereinstimmen.</li>
+<li><input disabled="" type="checkbox"> <strong>2. Die Definition</strong>: Präzise Etablierung der Begrifflichkeiten rund um Funktionen, Signaturen, Statements, Expressions und implizite Rückgaben sowie eine alltagsnahe Metapher.</li>
+<li><input disabled="" type="checkbox"> <strong>3. Das Problem &amp; Die Motivation</strong>: Warum Spaghetti-Code vermieden werden muss, wieso Rust explizite Signaturen erzwingt und warum das ausdrucksstarke Expression-Modell die Sicherheit erhöht.</li>
+<li><input disabled="" type="checkbox"> <strong>4. Der naive Versuch</strong>: Ein typischer syntaktischer Fehler (der Semikolon-Fehler) in einer mathematischen Hilfsfunktion.</li>
+<li><input disabled="" type="checkbox"> <strong>5. Die Anatomie des Fehlers</strong>: Analyse des Compiler-Feedbacks und genaue Erklärung des Speicherverhaltens (Stack Frames und CPU-Register).</li>
+<li><input disabled="" type="checkbox"> <strong>6. Die Lösung</strong>: Der korrekte, idiomatische Code nach dem EVA-Prinzip sowie eine Gegenüberstellung von impliziter Rückgabe und der expliziten <code>return</code>-Anweisung.</li>
+<li><input disabled="" type="checkbox"> <strong>7. Kleines Tutorial</strong>: Schritt-für-Schritt-Entwicklung eines CLI-Umrechners für physikalische Temperatureinheiten unter Verwendung von Funktionen und Block-Expressions.</li>
+<li><input disabled="" type="checkbox"> <strong>8. Mentale Modelle &amp; Deep Dive</strong>:
+<ul>
+<li><strong>10.1 Strukturierung von Funktionen</strong>
+<ul>
+<li><strong>10.1.1 Signaturdeklaration</strong>: Das Schlüsselwort <code>fn</code>, Namenskonventionen, Parameter vs. Argumente, Typannotationen, das Verbot lokaler Typinferenz an Schnittstellen, divergierende Funktionen (<code>!</code>) und Funktionszeiger (<code>fn</code>).</li>
 </ul>
-<pre class="playground"><code class="language-rust edition2021">fn main() {
-    alter_anzeigen("Anna", 25); // Argumente
-}
-
-fn alter_anzeigen(name: &amp;str, alter: i32) { // Parameter mit Typen
-    println!("{} ist {} Jahre alt.", name, alter);
-}</code></pre>
+</li>
+<li><strong>10.2 Anweisungen und Ausdrücke</strong>
+<ul>
+<li><strong>10.2.1 Statements vs. Expressions</strong>: Deklarations-Statements, Expression-Statements und die Mächtigkeit von Block-Ausdrücken.</li>
+<li><strong>10.2.2 Implizite Rückgabe</strong>: Der interne Mechanismus des Stack-Speichers bei der Wertübergabe (ABI), Early Returns vs. Tail Expressions.</li>
+</ul>
+</li>
+<li><strong>Exhaustive API-Reference</strong>: Dokumentation von Methoden der Standardbibliothek, die Funktionen als Callbacks oder Argumente akzeptieren (<code>Option::map</code>, <code>Iterator::filter</code>, <code>Result::and_then</code>, <code>std::thread::spawn</code>).</li>
+</ul>
+</li>
+<li><input disabled="" type="checkbox"> <strong>9. Drei praktische Übungen</strong>: Aufgaben mit ansteigendem Schwierigkeitsgrad (Leicht, Mittel, Schwer) inklusive Anforderungen und Lösungshinweisen.</li>
+<li><input disabled="" type="checkbox"> <strong>10. Lernstrategie, Selbsteinschätzung &amp; Merkzettel</strong>: Syntaktischer Spickzettel, Active Recall Verständnisfragen, Feynman-Methode, gezielte Compiler-Fehlerprovokation und Selbsttest-Checkliste.</li>
+<li><input disabled="" type="checkbox"> <strong>11. Zusammenfassung</strong>: Kernpunkte kompakt zusammengefasst.</li>
+</ul>
 <hr>
-<h2 id="3-rückgabewerte-ausgaben"><a class="header" href="#3-rückgabewerte-ausgaben">3. Rückgabewerte (Ausgaben)</a></h2>
-<p>Eine Funktion kann ein Ergebnis an den Aufrufer zurückgeben.</p>
+<h2 id="2-die-definition"><a class="header" href="#2-die-definition">2. Die Definition</a></h2>
+<ul>
+<li><strong>Funktion (<code>fn</code>)</strong>: Ein benannter, wiederverwendbarer Block von Anweisungen und Ausdrücken, der optional Eingabewerte (Parameter) akzeptiert, Berechnungen durchführt und einen Ausgabewert (Rückgabetyp) zurückgibt.</li>
+<li><strong>Funktionssignatur (Signaturdeklaration)</strong>: Die äußere Schnittstelle einer Funktion. Sie definiert den Namen der Funktion, ihre Sichtbarkeit, die Liste der Parameter (inklusive ihrer Namen und Typen) sowie den Rückgabetyp. Sie stellt einen unveränderlichen Vertrag zwischen dem Aufrufer und der Funktion dar.</li>
+<li><strong>Parameter vs. Argument</strong>: Ein <em>Parameter</em> ist die in der Funktionssignatur deklarierte Variable (der Platzhalter). Ein <em>Argument</em> ist der konkrete Wert, der beim Aufrufen der Funktion an diesen Parameter übergeben wird.</li>
+<li><strong>Anweisung (Statement)</strong>: Eine syntaktische Einheit, die eine Aktion ausführt, aber keinen Wert zurückgibt. In Rust enden Statements fast immer mit einem Semikolon <code>;</code> (z. B. Variablenbindungen mit <code>let</code>).</li>
+<li><strong>Ausdruck (Expression)</strong>: Eine syntaktische Einheit, die ausgewertet wird und einen Wert an das umgebende Programm liefert. Fast alles in Rust is ein Ausdruck, beispielsweise mathematische Operationen, Funktionsaufrufe oder Code-Blöcke.</li>
+<li><strong>Implizite Rückgabe (Tail Expression)</strong>: Der Wert des letzten Ausdrucks in einem Code-Block (oder Funktionskörper), der <em>kein</em> Semikolon besitzt. Dieser Wert wird automatisch als Rückgabewert des Blocks oder der Funktion verwendet.</li>
+<li><strong>Unit-Typ <code>()</code></strong>: Ein spezieller Typ in Rust, der genau einen Wert (ebenfalls <code>()</code>) besitzt. Er drückt das Fehlen eines Werts aus (vergleichbar mit <code>void</code> in C/C++ oder Java). Jedes Statement in Rust wertet syntaktisch zum Unit-Typ <code>()</code> aus.</li>
+</ul>
+<h3 id="alltagsnahe-metapher"><a class="header" href="#alltagsnahe-metapher">Alltagsnahe Metapher</a></h3>
+<blockquote class="blockquote-tag blockquote-tag-note">
+<p class="blockquote-tag-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>Note</p>
+<p><strong>Die Backautomaten-Metapher</strong>: Stellen Sie sich eine Funktion wie einen programmierbaren Backautomaten vor.</p>
+<ul>
+<li>Die <strong>Signatur</strong> des Automaten ist das Bedienfeld an der Außenseite: Sie zeigt genau an, welche Zutaten hineingeschüttet werden müssen (z. B. <code>mehl_gramm: i32</code>, <code>wasser_ml: i32</code>) und was am Ende herauskommt (<code>-&gt; Brot</code>). Diese Schnittstelle ist unveränderlich. Sie können nicht einfach Kieselsteine hineinwerfen, da die Maschine dies physikalisch verhindert (Compilezeit-Prüfung).</li>
+<li>Die <strong>Zutaten</strong>, die Sie tatsächlich hineinfüllen (z. B. 500 Gramm Weizenmehl und 300 ml Wasser), sind die <strong>Argumente</strong>.</li>
+<li>Die internen mechanischen Schritte (Kneten, Gehenlassen, Backen) sind die <strong>Anweisungen (Statements)</strong>. Sie tun etwas, aber Sie können kein fertiges Brot aus dem bloßen Kneten herausholen.</li>
+<li>Der Moment, in dem die Klappe aufgeht und das fertige, warme Brot herausgleitet, ist die <strong>Expression (der Ausdruck)</strong>. Das Brot wird an Sie ausgegeben. Wenn der Automat am Ende der Backzeit einfach stoppt und die Klappe geschlossen hält (weil ein Semikolon den Ausgabeprozess blockiert), haben Sie zwar Energie verbraucht, erhalten aber kein Ergebnis – die Maschine gibt Ihnen quasi ein leeres Blech (<strong>Unit-Typ <code>()</code></strong>) zurück.</li>
+</ul>
+</blockquote>
+<hr>
+<h2 id="3-das-problem--die-motivation"><a class="header" href="#3-das-problem--die-motivation">3. Das Problem &amp; Die Motivation</a></h2>
+<p>In den Anfängen der Softwareentwicklung (den 1950er und 1960er Jahren) wurden Programme oft linear geschrieben. Verzweigungen und Wiederholungen wurden durch unstrukturierte Sprungbefehle (wie <code>GOTO</code> auf Assembler-Ebene) realisiert. Dies führte rasch zu sogenanntem “Spaghetti-Code”, der extrem schwer zu verstehen, zu warten und zu debuggen war. Edsger W. Dijkstra läutete 1968 mit seinem Aufsatz <em>Go To Statement Considered Harmful</em> eine Wende hin zur strukturierten Programmierung ein. Die Zerlegung von Programmen in modular abgrenzbare Subroutinen (Funktionen) wurde zum Standard.</p>
+<p>Rust führt dieses Prinzip fort, verbindet es jedoch mit strengen Sicherheitsgarantien. In vielen dynamischen Programmiersprachen (wie Python oder JavaScript) können Funktionen beliebige Typen annehmen und zurückgeben:</p>
+<pre><code class="language-javascript">// JavaScript: Keine Typsicherheit an der Funktionsgrenze
+function berechne(x) {
+    return x * 2;
+}
+</code></pre>
+<p>Wenn Sie dieser JavaScript-Funktion eine Zeichenkette <code>"hallo"</code> übergeben, stürzt das Programm nicht ab, sondern liefert das verwirrende Ergebnis <code>NaN</code> (Not a Number) oder verhält sich unerwartet. Erst zur Laufzeit fallen solche Fehler auf – oft beim Endanwender.</p>
+<p>Rust löst dieses Problem durch <strong>strikte Signaturdeklarationen</strong>. Der Compiler erzwingt, dass jeder Parameter und jeder Rückgabetyp explizit deklariert werden muss. Dies hat zwei fundamentale Vorteile:</p>
 <ol>
-<li><strong>Der Rückgabetyp (<code>-&gt;</code>):</strong> Wird mit einem Pfeil hinter den Klammern definiert.</li>
-<li><strong>Die Rückgabe:</strong> In Rust gibt es zwei Wege, einen Wert zurückzugeben:
+<li><strong>Module als isolierte Verträge</strong>: Der Compiler muss beim Übersetzen eines Funktionsaufrufs nicht den gesamten Körper der aufgerufenen Funktion analysieren. Er prüft lediglich, ob die übergebenen Argumente mit der Signatur übereinstimmen. Dies ermöglicht eine extrem schnelle, inkrementelle Kompilierung.</li>
+<li><strong>Compilezeit-Garantien</strong>: Typfehler an Schnittstellen werden vollständig ausgeschlossen, bevor das Programm überhaupt ausgeführt wird.</li>
+</ol>
+<p>Zusätzlich unterscheidet Rust streng zwischen <strong>Statements</strong> (Anweisungen) und <strong>Expressions</strong> (Ausdrücken). Während viele imperative Sprachen wie C oder Java fast ausschließlich auf Statements basieren, ist Rust eine ausdrucksorientierte Sprache. Nahezu jeder Code-Block ist ein Ausdruck, der einen Wert produzieren kann. Dies ermöglicht es Ihnen, prägnanten, funktionalen Code zu schreiben und Variablen direkt mit dem Ergebnis von Kontrollstrukturen zu initialisieren, ohne auf unsichere, temporäre Standardwerte angewiesen zu sein.</p>
+<hr>
+<h2 id="4-der-naive-versuch"><a class="header" href="#4-der-naive-versuch">4. Der naive Versuch</a></h2>
+<p>Ein Anfänger möchte eine mathematische Hilfsfunktion schreiben, die das Quadrat einer übergebenen Ganzzahl berechnet. Da er aus anderen Sprachen (wie Java, C++ oder PHP) gewohnt ist, dass jede Zeile mit einem Semikolon enden muss, fügt er auch am Ende des Funktionskörpers ein Semikolon ein, obwohl er das Schlüsselwort <code>return</code> weggelassen hat.</p>
+<p>Hier ist der fehlerhafte Code:</p>
+<pre class="playground"><code class="language-rust edition2021">// Der naive Versuch eines quadratischen Berechners
+fn quadrat_berechnen(zahl: i32) -&gt; i32 {
+    zahl * zahl; // Fehler! Das Semikolon unterdrückt die Wertabgabe.
+}
+
+fn main() {
+    let ergebnis = quadrat_berechnen(5);
+    println!("Das Quadrat von 5 ist: {}", ergebnis);
+}</code></pre>
+<hr>
+<h2 id="5-die-anatomie-des-fehlers"><a class="header" href="#5-die-anatomie-des-fehlers">5. Die Anatomie des Fehlers</a></h2>
+<h3 id="das-compiler-feedback"><a class="header" href="#das-compiler-feedback">Das Compiler-Feedback</a></h3>
+<p>Wenn Sie versuchen, diesen Code mit <code>cargo check</code> oder <code>cargo build</code> zu kompilieren, verweigert der Compiler den Dienst und gibt folgende Fehlermeldung aus:</p>
+<pre><code class="language-text">error[E0308]: mismatched types
+ --&gt; src/main.rs:2:36
+  |
+2 | fn quadrat_berechnen(zahl: i32) -&gt; i32 {
+  |    -----------------               ^^^ expected `i32`, found `()`
+  |    |
+  |    implicitly returns `()` as its body has no tail or `return` expression
+3 |     zahl * zahl;
+  |                - help: remove this semicolon to return this value
+</code></pre>
+<h3 id="der-blick-hinter-die-kulissen-was-passiert-hier-technisch"><a class="header" href="#der-blick-hinter-die-kulissen-was-passiert-hier-technisch">Der Blick hinter die Kulissen: Was passiert hier technisch?</a></h3>
+<ol>
+<li>
+<p><strong>Die Auswertung der Signatur</strong>:
+Der Compiler liest die Signatur <code>fn quadrat_berechnen(zahl: i32) -&gt; i32</code>. Damit geht die Funktion einen bindenden Vertrag ein: “Wenn du mir eine 32-Bit Ganzzahl (<code>i32</code>) übergibst, garantiere ich dir, dass ich ebenfalls eine 32-Bit Ganzzahl (<code>i32</code>) zurückliefere.”</p>
+</li>
+<li>
+<p><strong>Die Umwandlung in ein Statement</strong>:
+Im Inneren der Funktion steht der Ausdruck <code>zahl * zahl</code>. Dieser berechnet das Quadrat. Da der Programmierer jedoch ein Semikolon <code>;</code> an das Ende dieser Zeile setzt, transformiert er die <em>Expression</em> (den Ausdruck) in ein <em>Statement</em> (eine Anweisung).</p>
+</li>
+<li>
+<p><strong>Der Unit-Typ <code>()</code> im Speicher</strong>:
+Statements in Rust haben per Definition keinen Rückgabewert. Um die syntaktische Konsistenz im Compiler zu wahren, gibt jedes Statement den Unit-Typ <code>()</code> zurück. Der Unit-Typ besitzt keine Daten und belegt 0 Bytes im Speicher. Er ist ein reines Signal für den Compiler: “Hier wurde eine Aktion ausgeführt, aber es gibt kein Ergebnis.”</p>
+</li>
+<li>
+<p><strong>Das Speicherlayout und CPU-Register</strong>:
+Wenn eine Funktion aufgerufen wird, legt das Betriebssystem einen <strong>Stack Frame</strong> (Stapelspeicherbereich) für diese Funktion an. In diesem Stack Frame werden lokale Variablen und Parameter gespeichert. Der Rückgabewert einer Funktion wird gemäß der System-ABI (Application Binary Interface) üblicherweise in einem bestimmten CPU-Register abgelegt (z. B. dem <code>rax</code>-Register bei x86_64-Prozessoren).</p>
 <ul>
-<li><strong>Mit <code>return</code>:</strong> Das Schlüsselwort <code>return</code> gibt den Wert zurück und beendet die Funktion sofort. Jede Codezeile danach ist unerreichbar.</li>
-<li><strong>Als Ausdruck (Expression):</strong> Wenn du die letzte Zeile einer Funktion ohne <code>return</code> und <strong>ohne</strong> Semikolon <code>;</code> schreibst, wird dieser Wert automatisch zurückgegeben. Dies ist der typische Rust-Stil!</li>
+<li>Bei einer korrekten Rückgabe schreibt die Funktion das Rechenergebnis in dieses Register, damit die aufrufende Funktion (<code>main</code>) es dort auslesen kann.</li>
+<li>Durch das Semikolon signalisiert die Funktion dem Compiler, dass das Register nicht mit dem Ergebnis der Multiplikation befüllt werden soll. Die Funktion liefert stattdessen nichts (<code>()</code>) zurück.</li>
+<li>Der Compiler stellt fest: Der Vertrag verlangt, dass ein <code>i32</code>-Wert aus dem Register gelesen wird. Die Funktion liefert aber das Register ungefüllt (bzw. ohne mathematischen Wert) zurück. Um zu verhindern, dass die <code>main</code>-Funktion “Müll” aus dem Register liest (was zu undefiniertem Verhalten oder Sicherheitslücken führen würde), bricht der Compiler den Kompilierungsprozess mit einem Typkonflikt (<code>mismatched types</code>) ab.</li>
 </ul>
 </li>
 </ol>
-<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>// Weg A: Mit return
-fn addieren_a(a: i32, b: i32) -&gt; i32 {
-    return a + b;
+<hr>
+<h2 id="6-die-lösung"><a class="header" href="#6-die-lösung">6. Die Lösung</a></h2>
+<p>Um den Fehler zu beheben, müssen wir den Funktionskörper so anpassen, dass der letzte Ausdruck tatsächlich ausgewertet und an den Aufrufer zurückgegeben wird. Dies geschieht in Rust idiomatisch, indem das Semikolon am Ende der letzten Zeile weggelassen wird. Alternativ kann das explizite Schlüsselwort <code>return</code> verwendet werden.</p>
+<h3 id="der-korrekte-lauffähige-code-idiomatische-lösung"><a class="header" href="#der-korrekte-lauffähige-code-idiomatische-lösung">Der korrekte, lauffähige Code (Idiomatische Lösung)</a></h3>
+<pre class="playground"><code class="language-rust edition2021">// Idiomatische Lösung: Die letzte Zeile ist eine Expression ohne Semikolon
+fn quadrat_berechnen(zahl: i32) -&gt; i32 {
+    zahl * zahl // Expression! Der Wert wird implizit zurückgegeben.
 }
 
-// Weg B: Implizite Rückgabe (typischer Rust-Stil: kein return, kein Semikolon!)
-fn addieren_b(a: i32, b: i32) -&gt; i32 {
-    a + b
+fn main() {
+    let ergebnis = quadrat_berechnen(5);
+    println!("Das Quadrat von 5 ist: {}", ergebnis);
+}</code></pre>
+<h3 id="die-alternative-lösung-explizites-return"><a class="header" href="#die-alternative-lösung-explizites-return">Die alternative Lösung (Explizites Return)</a></h3>
+<pre class="playground"><code class="language-rust edition2021">// Alternative Lösung mit dem expliziten Schlüsselwort 'return'
+fn quadrat_berechnen_explizit(zahl: i32) -&gt; i32 {
+    return zahl * zahl; // Mit return MUSS ein Semikolon gesetzt werden
 }
-<span class="boring">}</span></code></pre>
-<hr>
-<h2 id="-merkzettel-alles-über-funktionen-in-rust"><a class="header" href="#-merkzettel-alles-über-funktionen-in-rust">💡 Merkzettel: Alles über Funktionen in Rust</a></h2>
+
+fn main() {
+    let ergebnis = quadrat_berechnen_explizit(5);
+    println!("Das Quadrat von 5 ist (explizit): {}", ergebnis);
+}</code></pre>
+<h3 id="zeile-für-zeile-erklärung-nach-dem-eva-prinzip-eingabe-verarbeitung-ausgabe"><a class="header" href="#zeile-für-zeile-erklärung-nach-dem-eva-prinzip-eingabe-verarbeitung-ausgabe">Zeile-für-Zeile-Erklärung nach dem EVA-Prinzip (Eingabe-Verarbeitung-Ausgabe)</a></h3>
+<p>Am Beispiel der idiomatischen Lösung (<code>quadrat_berechnen</code>):</p>
+<ol>
+<li><strong>Eingabe (Input)</strong>:
 <ul>
-<li><strong>Grundsyntax:</strong>
+<li><strong>Syntax</strong>: <code>zahl: i32</code> in der Parameterliste.</li>
+<li><strong>Besitzverhältnisse</strong>: Der Typ <code>i32</code> implementiert das <code>Copy</code>-Trait. Das bedeutet, dass beim Aufruf <code>quadrat_berechnen(5)</code> der Wert <code>5</code> kopiert und direkt auf den Stack der Funktion gelegt wird. Es findet kein Besitzübergang (Move-Semantik) statt. Die Variable <code>ergebnis</code> in <code>main</code> besitzt nach dem Aufruf das Ergebnis unabhängig von den Berechnungen.</li>
+</ul>
+</li>
+<li><strong>Verarbeitung (Processing)</strong>:
+<ul>
+<li><strong>Syntax</strong>: <code>zahl * zahl</code> im Funktionskörper.</li>
+<li><strong>Logik</strong>: Der Prozessor holt den Wert aus dem Stack-Bereich der Funktion, führt die Multiplikation auf ALU-Ebene (Arithmetic Logic Unit) aus und hält das Ergebnis bereit.</li>
+</ul>
+</li>
+<li><strong>Ausgabe (Output)</strong>:
+<ul>
+<li><strong>Syntax</strong>: <code>zahl * zahl</code> ohne abschließendes Semikolon.</li>
+<li><strong>Logik</strong>: Da kein Semikolon folgt, wird dieser Wert als <em>Tail Expression</em> (Endausdruck) klassifiziert. Der Compiler generiert den Maschinencode so, dass das Ergebnis der Multiplikation im CPU-Rückgaberegister abgelegt und der Stack Frame von <code>quadrat_berechnen</code> sicher abgebaut wird. Die Kontrolle kehrt zur <code>main</code>-Funktion zurück, die den Wert aus dem Register liest und an <code>ergebnis</code> bindet.</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h2 id="7-kleines-tutorial-cli-temperaturumrechner"><a class="header" href="#7-kleines-tutorial-cli-temperaturumrechner">7. Kleines Tutorial: CLI-Temperaturumrechner</a></h2>
+<p>In diesem Tutorial erstellen wir einen kleinen Kommandozeilen-Umrechner für physikalische Einheiten. Das Programm soll Celsius-Temperaturen in Fahrenheit und Kelvin konvertieren. Hierbei nutzen wir intensiv strukturierte Funktionen, explizite Signaturen, Block-Expressions und implizite Rückgaben.</p>
+<h3 id="schritt-1-die-signaturen-deklarieren-und-leere-funktionsrümpfe-anlegen"><a class="header" href="#schritt-1-die-signaturen-deklarieren-und-leere-funktionsrümpfe-anlegen">Schritt 1: Die Signaturen deklarieren und leere Funktionsrümpfe anlegen</a></h3>
+<p>Wir beginnen mit dem Entwurf der Schnittstellen. Da wir Fließkommazahlen präzise umrechnen wollen, nutzen wir den Typ <code>f64</code>.</p>
 <pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
-</span>fn name(parameter: Typ) -&gt; RueckgabeTyp {
-    // Code
-    ergebnis // ohne Semikolon für automatische Rückgabe
+</span>// Wir deklarieren die Funktionen zuerst mit dem Makro todo!().
+// Dies erlaubt es uns, den Code zu kompilieren, ohne dass die Logik fertig ist.
+fn celsius_in_fahrenheit(c: f64) -&gt; f64 {
+    todo!()
+}
+
+fn celsius_in_kelvin(c: f64) -&gt; f64 {
+    todo!()
+}
+<span class="boring">}</span></code></pre>
+<h3 id="schritt-2-die-konvertierungslogik-mit-impliziter-rückgabe-implementieren"><a class="header" href="#schritt-2-die-konvertierungslogik-mit-impliziter-rückgabe-implementieren">Schritt 2: Die Konvertierungslogik mit impliziter Rückgabe implementieren</a></h3>
+<p>Nun füllen wir die Funktionen mit Leben. Wir nutzen die mathematischen Formeln und verzichten auf das Schlüsselwort <code>return</code> sowie auf Semikola am Ende, um den typischen Rust-Stil anzuwenden.</p>
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>fn celsius_in_fahrenheit(c: f64) -&gt; f64 {
+    c * 1.8 + 32.0 // Implizite Rückgabe der Fahrenheit-Berechnung
+}
+
+fn celsius_in_kelvin(c: f64) -&gt; f64 {
+    c + 273.15 // Implizite Rückgabe der Kelvin-Berechnung
+}
+<span class="boring">}</span></code></pre>
+<h3 id="schritt-3-nutzung-einer-block-expression-zur-datenaufbereitung"><a class="header" href="#schritt-3-nutzung-einer-block-expression-zur-datenaufbereitung">Schritt 3: Nutzung einer Block-Expression zur Datenaufbereitung</a></h3>
+<p>In der Hauptfunktion wollen wir die Ausgabe schön formatieren. Wir nutzen eine Block-Expression <code>{ ... }</code>, um den Eingabewert vorzubereiten und zu validieren. Ein Block in Rust ist selbst ein Ausdruck und gibt den Wert seiner letzten Zeile zurück.</p>
+<pre class="playground"><code class="language-rust edition2021">fn main() {
+    let eingabe_celsius = 25.0;
+
+    // Eine Block-Expression zur Kapselung von Hilfsberechnungen
+    let status_meldung = {
+        let ist_heiss = eingabe_celsius &gt; 30.0;
+        if ist_heiss {
+            "Achtung: Es ist sehr warm!"
+        } else {
+            "Die Temperatur liegt im angenehmen Bereich."
+        } // Die if-else-Expression gibt den String-Slice zurück
+    }; // Das Semikolon beendet die Zuweisung (let-Statement)
+
+    // Aufruf unserer Funktionen und Zuweisung der Ergebnisse
+    let fahrenheit = celsius_in_fahrenheit(eingabe_celsius);
+    let kelvin = celsius_in_kelvin(eingabe_celsius);
+
+    // Ausgabe der Ergebnisse auf der Konsole
+    println!("=== Temperaturumrechner ===");
+    println!("Eingabe: {} °C", eingabe_celsius);
+    println!("Fahrenheit: {} °F", fahrenheit);
+    println!("Kelvin: {} K", kelvin);
+    println!("Status: {}", status_meldung);
+}</code></pre>
+<h3 id="vollständiger-lauffähiger-code-des-tutorials"><a class="header" href="#vollständiger-lauffähiger-code-des-tutorials">Vollständiger, lauffähiger Code des Tutorials</a></h3>
+<p>Hier ist der gesamte Code in einem Block zusammengefasst, den Sie direkt ausführen können:</p>
+<pre class="playground"><code class="language-rust edition2021">fn celsius_in_fahrenheit(c: f64) -&gt; f64 {
+    c * 1.8 + 32.0
+}
+
+fn celsius_in_kelvin(c: f64) -&gt; f64 {
+    c + 273.15
+}
+
+fn main() {
+    let eingabe_celsius = 25.0;
+
+    let status_meldung = {
+        let ist_heiss = eingabe_celsius &gt; 30.0;
+        if ist_heiss {
+            "Achtung: Es ist sehr warm!"
+        } else {
+            "Die Temperatur liegt im angenehmen Bereich."
+        }
+    };
+
+    let fahrenheit = celsius_in_fahrenheit(eingabe_celsius);
+    let kelvin = celsius_in_kelvin(eingabe_celsius);
+
+    println!("=== Temperaturumrechner ===");
+    println!("Eingabe: {} °C", eingabe_celsius);
+    println!("Fahrenheit: {} °F", fahrenheit);
+    println!("Kelvin: {} K", kelvin);
+    println!("Status: {}", status_meldung);
+}</code></pre>
+<hr>
+<h2 id="8-mentale-modelle--deep-dive"><a class="header" href="#8-mentale-modelle--deep-dive">8. Mentale Modelle &amp; Deep Dive</a></h2>
+<h3 id="101-strukturierung-von-funktionen"><a class="header" href="#101-strukturierung-von-funktionen">10.1 Strukturierung von Funktionen</a></h3>
+<h4 id="1011-signaturdeklaration"><a class="header" href="#1011-signaturdeklaration">10.1.1 Signaturdeklaration</a></h4>
+<p>Die Deklaration einer Funktion in Rust folgt einem strengen syntaktischen Schema. Jede Komponente der Signatur erfüllt eine wichtige Schutzfunktion für den Code.</p>
+<pre><code class="language-text">Sichtbarkeit  Schlüsselwort  Name       Parameterliste (mit Typen)      Rückgabetyp
+  │             │             │                 │                            │
+  ▼             ▼             ▼                 ▼                            ▼
+ pub           fn       addieren(a: i32, b: i32)                       -&gt;   i32
+</code></pre>
+<ol>
+<li>
+<p><strong>Sichtbarkeit (<code>pub</code>)</strong>:
+Standardmäßig sind alle Funktionen in Rust privat. Das bedeutet, sie können nur innerhalb des Moduls aufgerufen werden, in dem sie definiert sind. Durch das Voranstellen von <code>pub</code> (public) wird die Funktion für andere Module und externe Crates sichtbar gemacht.</p>
+</li>
+<li>
+<p><strong>Das Schlüsselwort <code>fn</code></strong>:
+Es reserviert Speicher im Instruktionssegment des Programms und signalisiert dem Compiler den Beginn einer Funktionsdefinition.</p>
+</li>
+<li>
+<p><strong>Der Funktionsname</strong>:
+Rust erzwingt die Namenskonvention <code>snake_case</code> (Kleinbuchstaben, Wörter getrennt durch Unterstriche). Falls Sie davon abweichen, erzeugt der Compiler eine Warnung (z. B. <code>warn: function ... should have a snake_case name</code>).</p>
+</li>
+<li>
+<p><strong>Die Parameterliste</strong>:
+Jeder Parameter besteht aus einem Namen und einem Typ, getrennt durch einen Doppelpunkt (z. B. <code>name: Typ</code>). Mehrere Parameter werden durch Kommata getrennt.</p>
+<blockquote class="blockquote-tag blockquote-tag-important">
+<p class="blockquote-tag-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 1.75C0 .784.784 0 1.75 0h12.5C15.216 0 16 .784 16 1.75v9.5A1.75 1.75 0 0 1 14.25 13H8.06l-2.573 2.573A1.458 1.458 0 0 1 3 14.543V13H1.75A1.75 1.75 0 0 1 0 11.25Zm1.75-.25a.25.25 0 0 0-.25.25v9.5c0 .138.112.25.25.25h2a.75.75 0 0 1 .75.75v2.19l2.72-2.72a.749.749 0 0 1 .53-.22h6.5a.25.25 0 0 0 .25-.25v-9.5a.25.25 0 0 0-.25-.25Zm7 2.25v2.5a.75.75 0 0 1-1.5 0v-2.5a.75.75 0 0 1 1.5 0ZM9 9a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"></path></svg>Important</p>
+<p><strong>Das Verbot lokaler Typinferenz</strong>: Innerhalb von Funktionen kann Rust Typen oft automatisch ableiten (z. B. <code>let x = 5;</code> wird zu <code>i32</code>). An den Funktionsgrenzen (in der Parameterliste) ist dies jedoch streng untersagt. Sie <strong>müssen</strong> jeden Typ explizit hinschreiben. Dies stellt sicher, dass Funktionen als eigenständige Verträge fungieren und eine Code-Änderung in einer Funktion nicht unbemerkt zu Typverschiebungen in völlig anderen Teilen des Programms führt.</p>
+</blockquote>
+</li>
+<li>
+<p><strong>Der Rückgabetyp (<code>-&gt;</code>)</strong>:
+Der Rückgabetyp wird mit einem Pfeil deklariert. Wenn eine Funktion keinen Wert zurückgibt, wird der Pfeil samt Typ weggelassen. Syntaktisch gibt die Funktion dann den Unit-Typ <code>()</code> zurück. Folgende zwei Deklarationen sind für den Compiler absolut identisch:</p>
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>// Kurzschreibweise (üblich für Funktionen ohne Rückgabewert)
+fn ausgabe_kurz() {
+    println!("Hallo");
+}
+
+// Explizite Schreibweise (äquivalent zu oben)
+fn ausgabe_explizit() -&gt; () {
+    println!("Hallo");
 }
 <span class="boring">}</span></code></pre>
 </li>
-<li><strong>Namenskonvention:</strong> Funktionsnamen werden immer in <code>snake_case</code> geschrieben (z. B. <code>berechne_preis</code>).</li>
-<li><strong>Typzwang:</strong> Jeder Parameter braucht zwingend einen Typ (<code>name: Typ</code>). Der Rückgabetyp wird mit <code>-&gt; Typ</code> definiert (fehlt der Pfeil, gibt die Funktion nichts zurück).</li>
-<li><strong>Return-Verhalten:</strong>
+</ol>
+<h5 id="divergierende-funktionen-der-never-type-"><a class="header" href="#divergierende-funktionen-der-never-type-">Divergierende Funktionen: Der Never-Type (<code>!</code>)</a></h5>
+<p>Ein besonderer Aspekt der Signaturdeklaration sind Funktionen, die <em>niemals</em> zum Aufrufer zurückkehren. Solche Funktionen werden als divergierende Funktionen bezeichnet. Ihr Rückgabetyp wird mit dem Ausrufezeichen <code>!</code> (dem sogenannten Never-Type) deklariert.</p>
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>// Diese Funktion kehrt nie zurück, da sie das Programm sofort beendet
+fn fataler_fehler(nachricht: &amp;str) -&gt; ! {
+    println!("Kritischer Systemfehler: {}", nachricht);
+    panic!("Programmabbruch"); // crash des Threads, keine Rückkehr möglich
+}
+<span class="boring">}</span></code></pre>
+<p>Divergierende Funktionen sind nützlich bei:</p>
 <ul>
-<li><code>return wert;</code> beendet die Funktion sofort.</li>
-<li>Ein Ausdruck am Ende ohne Semikolon (<code>wert</code>) ist der implizite Rückgabewert (Standard in Rust).</li>
+<li>Unendlichen Kontrollschleifen (z. B. in Embedded Systems oder Webservern).</li>
+<li>Funktionen, die das Programm absichtlich beenden (<code>std::process::exit</code> oder <code>panic!</code>).</li>
+</ul>
+<h5 id="funktionszeiger-der-typ-fn"><a class="header" href="#funktionszeiger-der-typ-fn">Funktionszeiger (Der Typ <code>fn</code>)</a></h5>
+<p>Funktionen sind in Rust “First-Class Citizens”. Das bedeutet, Sie können Funktionen wie normale Werte behandeln. Sie können Funktionen an Variablen zuweisen, sie als Argumente an andere Funktionen übergeben oder sie von Funktionen zurückgeben lassen. Der Typ einer Funktion wird durch ihre Signatur bestimmt und als kleingeschriebenes <code>fn</code> deklariert:</p>
+<pre class="playground"><code class="language-rust edition2021">fn verdoppeln(x: i32) -&gt; i32 {
+    x * 2
+}
+
+fn main() {
+    // Zuweisung einer Funktion an eine Variable.
+    // Der Typ von 'operation' is: fn(i32) -&gt; i32
+    let operation: fn(i32) -&gt; i32 = verdoppeln;
+
+    let ergebnis = operation(10); // Aufruf über den Funktionszeiger
+    println!("Ergebnis über Funktionszeiger: {}", ergebnis); // Ausgabe: 20
+}</code></pre>
+<hr>
+<h3 id="102-anweisungen-und-ausdrücke"><a class="header" href="#102-anweisungen-und-ausdrücke">10.2 Anweisungen und Ausdrücke</a></h3>
+<h4 id="1021-statements-vs-expressions"><a class="header" href="#1021-statements-vs-expressions">10.2.1 Statements vs. Expressions</a></h4>
+<p>Das Programmiermodell von Rust unterscheidet präzise zwischen Statements (Anweisungen) und Expressions (Ausdrücken). Diese Unterscheidung ist der Schlüssel zur Eleganz und Ausdrucksstärke von Rust.</p>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th style="text-align: left">Merkmal</th><th style="text-align: left">Statement (Anweisung)</th><th style="text-align: left">Expression (Ausdruck)</th></tr>
+</thead>
+<tbody>
+<tr><td style="text-align: left"><strong>Zweck</strong></td><td style="text-align: left">Führt eine Aktion aus</td><td style="text-align: left">Berechnet einen Wert</td></tr>
+<tr><td style="text-align: left"><strong>Rückgabewert</strong></td><td style="text-align: left">Keiner (liefert immer den Unit-Typ <code>()</code>)</td><td style="text-align: left">Liefert das Ergebnis der Auswertung</td></tr>
+<tr><td style="text-align: left"><strong>Syntax</strong></td><td style="text-align: left">Endet meist mit einem Semikolon <code>;</code></td><td style="text-align: left">Endet nicht mit einem Semikolon</td></tr>
+<tr><td style="text-align: left"><strong>Beispiele</strong></td><td style="text-align: left"><code>let x = 5;</code>, <code>fn main() {}</code></td><td style="text-align: left"><code>5 + 3</code>, <code>x * 2</code>, <code>celsius_in_kelvin(20.0)</code></td></tr>
+</tbody>
+</table>
+</div>
+<h5 id="deklarations-statements"><a class="header" href="#deklarations-statements">Deklarations-Statements</a></h5>
+<p>Das häufigste Statement in Rust ist das Deklarations-Statement mittels <code>let</code>. Es bindet einen Namen an einen Wert:</p>
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let x = 5;
+<span class="boring">}</span></code></pre>
+<p>Da es sich hierbei um ein Statement handelt, gibt es keinen Wert zurück. Aus diesem Grund ist folgende Zuweisung in Rust syntaktisch verboten und führt zu einem Compilerfehler:</p>
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>// In C/C++ oder Python ist dies erlaubt, in Rust jedoch illegal:
+let y = (let x = 5); 
+<span class="boring">}</span></code></pre>
+<p>Der Compiler bricht hier ab, weil das Statement <code>let x = 5</code> keinen Wert liefert, den man an <code>y</code> binden könnte. Dies verhindert eine berüchtigte Fehlerklasse aus Sprachen wie C, bei der versehentlich eine Zuweisung statt eines Vergleichs in einer Bedingung geschrieben wird (z. B. <code>if (x = 5)</code> statt <code>if (x == 5)</code>). In Rust ist <code>x = 5</code> ein Statement, liefert <code>()</code> zurück, und <code>()</code> kann nicht als Wahrheitswert (<code>bool</code>) in einer <code>if</code>-Bedingung verwendet werden.</p>
+<h5 id="expression-statements"><a class="header" href="#expression-statements">Expression-Statements</a></h5>
+<p>Ein Expression-Statement ist ein Ausdruck, an den ein Semikolon angehängt wurde. Dadurch wird der Wert des Ausdrucks verworfen und der Typ zu <code>()</code> umgewandelt.</p>
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>// Die mathematische Berechnung ist eine Expression:
+5 + 3 // wertet zu 8 aus
+
+// Durch das Semikolon wird sie zu einem Statement:
+5 + 3; // wertet zu () aus (der Wert 8 wird verworfen)
+<span class="boring">}</span></code></pre>
+<h5 id="die-mächtigkeit-von-block-ausdrücken"><a class="header" href="#die-mächtigkeit-von-block-ausdrücken">Die Mächtigkeit von Block-Ausdrücken</a></h5>
+<p>In Rust ist ein mit geschweiften Klammern <code>{}</code> eingefasster Block ein Ausdruck. Das bedeutet, dass er einen Wert zurückgibt. Der Wert des Blocks entspricht dem Wert des letzten Ausdrucks innerhalb des Blocks.</p>
+<pre class="playground"><code class="language-rust edition2021">fn main() {
+    let y = {
+        let x = 3;
+        x + 1 // Expression! Kein Semikolon!
+    }; // Das Semikolon schließt das let-Statement für y ab
+
+    println!("y hat den Wert: {}", y); // Ausgabe: 4
+}</code></pre>
+<ul>
+<li><strong>Stack-Verhalten</strong>: Die Variable <code>x</code> ist nur innerhalb des Blocks <code>{ ... }</code> gültig. Sobald der Block verlassen wird, wird der Speicher für <code>x</code> auf dem Stack freigegeben. Der Wert <code>x + 1</code> (also <code>4</code>) wird jedoch an <code>y</code> übergeben, welches im äußeren Stack Frame weiterlebt.</li>
+</ul>
+<hr>
+<h4 id="1022-implizite-rückgabe"><a class="header" href="#1022-implizite-rückgabe">10.2.2 Implizite Rückgabe</a></h4>
+<p>Die implizite Rückgabe (auch <em>Tail Expression</em> genannt) ist ein zentrales Stilmittel in Rust. Sie basiert direkt auf der ausdrucksorientierten Natur der Sprache. Wenn der letzte Ausdruck im Rumpf einer Funktion kein Semikolon besitzt, wertet der Compiler diesen als den Rückgabewert der Funktion.</p>
+<h5 id="der-cpu--und-register-ablauf-system-schnittstelle"><a class="header" href="#der-cpu--und-register-ablauf-system-schnittstelle">Der CPU- und Register-Ablauf (System-Schnittstelle)</a></h5>
+<p>Um zu verstehen, warum die implizite Rückgabe so effizient ist, müssen wir betrachten, wie der Prozessor (CPU) und der Speicher beim Aufruf einer Funktion zusammenarbeiten.</p>
+<ol>
+<li><strong>Stack Frame Setup</strong>:
+Wenn <code>main</code> die Funktion <code>quadrat_berechnen(5)</code> aufruft:
+<ul>
+<li>Die CPU schiebt das Argument <code>5</code> in ein dafür vorgesehenes Register (z. B. <code>rdi</code> unter der x86_64 System-V-ABI) oder auf den Stack.</li>
+<li>Die CPU führt den Befehl <code>CALL</code> aus. Dadurch wird die Rücksprungadresse (die Stelle in <code>main</code>, an der es nach der Funktion weitergehen soll) auf den Stack gelegt.</li>
+<li>Ein neuer <strong>Stack Frame</strong> für <code>quadrat_berechnen</code> wird erstellt. Der Stack-Pointer (<code>rsp</code>) verschiebt sich nach unten, um Platz für lokale Berechnungen zu schaffen.</li>
 </ul>
 </li>
-<li><strong>Compiler-Sicherheit:</strong> Falsche Argument-Typen oder eine falsche Anzahl an Argumenten führen zu einem Kompilierfehler (rote Wellenlinie).</li>
+</ol>
+<pre><code class="language-text">Stapelspeicher (Stack) bei Aufruf von 'quadrat_berechnen(5)':
+┌────────────────────────────────────────────────────────┐
+│ ... (Lokale Variablen von main)                        │
+├────────────────────────────────────────────────────────┤
+│ Rücksprungadresse (Adresse in main nach dem Call)      │ &lt;-- Stack-Grenze main
+├────────────────────────────────────────────────────────┤
+│ Parameter 'zahl' (Wert: 5)                             │ &lt;-- Stack Frame von
+│ Lokaler Berechnungsbereich                             │     quadrat_berechnen
+└────────────────────────────────────────────────────────┘
+</code></pre>
+<ol start="2">
+<li><strong>Die Berechnung und das Rückgaberegister</strong>:
+<ul>
+<li>Die CPU berechnet <code>5 * 5 = 25</code>.</li>
+<li>Da es sich um eine Expression handelt (implizite Rückgabe), generiert der Rust-Compiler den Maschinencode so, dass das Ergebnis <code>25</code> direkt in das Akkumulator-Register (z. B. <code>rax</code> bei x86_64) geschrieben wird.</li>
+<li>Es sind keine zusätzlichen Kopiervorgänge im RAM nötig.</li>
 </ul>
-<h2 id="die-nächste-lektion-wird-funktionen-behandeln"><a class="header" href="#die-nächste-lektion-wird-funktionen-behandeln">Die nächste Lektion wird Funktionen behandeln.</a></h2>
+</li>
+<li><strong>Der Stack Frame Abbau</strong>:
+<ul>
+<li>Die CPU führt den Befehl <code>RET</code> (Return) aus.</li>
+<li>Der Stack Frame von <code>quadrat_berechnen</code> wird sofort ungültig gemacht (der Stack-Pointer <code>rsp</code> springt wieder nach oben).</li>
+<li>Die CPU liest die Rücksprungadresse und setzt die Ausführung in <code>main</code> fort.</li>
+<li><code>main</code> liest den Wert <code>25</code> direkt aus dem <code>rax</code>-Register und weist ihn der Variablen <code>ergebnis</code> zu.</li>
+</ul>
+</li>
+</ol>
+<h5 id="wann-ist-ein-explizites-return-notwendig"><a class="header" href="#wann-ist-ein-explizites-return-notwendig">Wann ist ein explizites <code>return</code> notwendig?</a></h5>
+<p>Obwohl die implizite Rückgabe bevorzugt wird, gibt es Szenarien, in denen Sie das Schlüsselwort <code>return</code> explizit verwenden müssen. Dies betrifft vor allem sogenannte <strong>Early Returns</strong> (vorzeitige Rückgaben), bei denen eine Funktion aufgrund einer Bedingung abgebrochen werden soll, bevor das eigentliche Ende des Funktionskörpers erreicht ist.</p>
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>fn dividieren(dividend: f64, divisor: f64) -&gt; Result&lt;f64, String&gt; {
+    // Vorzeitige Prüfung (Early Return)
+    if divisor == 0.0 {
+        return Err("Division durch Null ist mathematisch nicht definiert!".to_string());
+    }
+
+    // Wenn die Bedingung nicht zutrifft, läuft die Funktion normal weiter.
+    // Am Ende nutzen wir wieder die implizite Rückgabe.
+    Ok(dividend / divisor) 
+}
+<span class="boring">}</span></code></pre>
+<p>Wenn Sie in Zeile 3 das <code>return</code> weglassen würden, würde der Compiler versuchen, den restlichen Code der Funktion auszuführen. Das würde zu logischen und syntaktischen Fehlern führen, da der Typ der <code>if</code>-Verzweigung nicht mit dem Rest der Funktion harmonieren würde.</p>
+<hr>
+<h3 id="exhaustive-api-reference-funktionen-als-argumente-in-der-standardbibliothek"><a class="header" href="#exhaustive-api-reference-funktionen-als-argumente-in-der-standardbibliothek">Exhaustive API-Reference: Funktionen als Argumente in der Standardbibliothek</a></h3>
+<p>Da der Basistyp einer Funktion (<code>fn</code>) direkt keine Methoden besitzt, zeigt sich die Stärke von Funktionssignaturen und Funktionstypen vor allem dann, wenn sie als Parameter an Standardbibliotheksmethoden übergeben werden. Nachfolgend sind die wichtigsten Methoden aufgeführt, die Funktionen über die Traits <code>Fn</code>, <code>FnMut</code> oder <code>FnOnce</code> als Callbacks verarbeiten.</p>
+<h4 id="1-optionmap"><a class="header" href="#1-optionmap">1. <code>Option::map</code></a></h4>
+<ul>
+<li><strong>Signatur</strong>: <code>pub fn map&lt;U, F&gt;(self, f: F) -&gt; Option&lt;U&gt; where F: FnOnce(T) -&gt; U</code></li>
+<li><strong>Parameter</strong>:
+<ul>
+<li><code>self</code>: Das <code>Option&lt;T&gt;</code>-Objekt, auf dem die Methode aufgerufen wird. Übergibt den Besitz (Ownership).</li>
+<li><code>f</code>: Eine Funktion (oder Closure), die den inneren Wert des Typs <code>T</code> konsumiert und einen neuen Wert des Typs <code>U</code> zurückgibt. Implementiert das Trait <code>FnOnce</code>, kann also nur einmal aufgerufen werden.</li>
+</ul>
+</li>
+<li><strong>Rückgabetyp</strong>: <code>Option&lt;U&gt;</code>. Wenn das Original <code>Some(T)</code> war, wird <code>Some(U)</code> zurückgegeben. Wenn es <code>None</code> war, wird <code>None</code> zurückgegeben.</li>
+<li><strong>Panics</strong>: Keine direkten Panics durch die Methode selbst.</li>
+<li><strong>Minicode-Beispiel</strong>:
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let wert: Option&lt;i32&gt; = Some(10);
+let verdoppelt = wert.map(|x| x * 2); // Gibt Some(20) zurück
+assert_eq!(verdoppelt, Some(20));
+<span class="boring">}</span></code></pre>
+</li>
+</ul>
+<h4 id="2-iteratorfilter"><a class="header" href="#2-iteratorfilter">2. <code>Iterator::filter</code></a></h4>
+<ul>
+<li><strong>Signatur</strong>: <code>pub fn filter&lt;P&gt;(self, predicate: P) -&gt; Filter&lt;Self, P&gt; where Self: Sized, P: FnMut(&amp;Self::Item) -&gt; bool</code></li>
+<li><strong>Parameter</strong>:
+<ul>
+<li><code>self</code>: Der Iterator, auf dem gearbeitet wird.</li>
+<li><code>predicate</code>: Eine Funktion, die eine Referenz auf das aktuelle Element (<code>&amp;Self::Item</code>) entgegennimmt und einen Wahrheitswert (<code>bool</code>) zurückgibt. Implementiert <code>FnMut</code>, kann also interne Zustände verändern und mehrfach aufgerufen werden.</li>
+</ul>
+</li>
+<li><strong>Rückgabetyp</strong>: Ein neuer Iterator vom Typ <code>Filter&lt;Self, P&gt;</code>, der nur die Elemente liefert, für die die Funktion <code>true</code> zurückgegeben hat.</li>
+<li><strong>Panics</strong>: Keine inhärenten Panics.</li>
+<li><strong>Minicode-Beispiel</strong>:
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let zahlen = vec![1, 2, 3, 4, 5];
+let gerade_zahlen: Vec&lt;i32&gt; = zahlen.into_iter().filter(|x| x % 2 == 0).collect();
+assert_eq!(gerade_zahlen, vec![2, 4]);
+<span class="boring">}</span></code></pre>
+</li>
+</ul>
+<h4 id="3-resultand_then"><a class="header" href="#3-resultand_then">3. <code>Result::and_then</code></a></h4>
+<ul>
+<li><strong>Signatur</strong>: <code>pub fn and_then&lt;U, F&gt;(self, op: F) -&gt; Result&lt;U, E&gt; where F: FnOnce(T) -&gt; Result&lt;U, E&gt;</code></li>
+<li><strong>Parameter</strong>:
+<ul>
+<li><code>self</code>: Das <code>Result&lt;T, E&gt;</code>-Objekt (Ownership).</li>
+<li><code>op</code>: Eine Funktion, die den inneren Erfolgswert <code>T</code> nimmt und ein neues <code>Result&lt;U, E&gt;</code> zurückgibt.</li>
+</ul>
+</li>
+<li><strong>Rückgabetyp</strong>: <code>Result&lt;U, E&gt;</code>. Ermöglicht das Verketten von Operationen, die fehlschlagen können.</li>
+<li><strong>Panics</strong>: Keine.</li>
+<li><strong>Minicode-Beispiel</strong>:
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let ok_wert: Result&lt;i32, &amp;str&gt; = Ok(4);
+let ergebnis = ok_wert.and_then(|x| Ok(x + 1));
+assert_eq!(ergebnis, Ok(5));
+<span class="boring">}</span></code></pre>
+</li>
+</ul>
+<h4 id="4-stdthreadspawn"><a class="header" href="#4-stdthreadspawn">4. <code>std::thread::spawn</code></a></h4>
+<ul>
+<li><strong>Signatur</strong>: <code>pub fn spawn&lt;F, T&gt;(f: F) -&gt; JoinHandle&lt;T&gt; where F: FnOnce() -&gt; T, F: Send + 'static, T: Send + 'static</code></li>
+<li><strong>Parameter</strong>:
+<ul>
+<li><code>f</code>: Eine parameterlose Funktion, die den Thread-Körper definiert. Sie gibt einen Wert des Typs <code>T</code> zurück. Sie muss die Traits <code>Send</code> (kann über Threadgrenzen verschickt werden) und <code>'static</code> (lebt unbegrenzt lang) erfüllen.</li>
+</ul>
+</li>
+<li><strong>Rückgabetyp</strong>: Ein <code>JoinHandle&lt;T&gt;</code>, mit dem auf das Ende des Threads gewartet und dessen Rückgabewert ausgelesen werden kann.</li>
+<li><strong>Panics</strong>: Kann panicken, wenn das Betriebssystem keinen neuen Thread erstellen kann (z. B. wegen Ressourcenerschöpfung).</li>
+<li><strong>Minicode-Beispiel</strong>:
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>use std::thread;
+let handle = thread::spawn(|| {
+    "Hallo aus dem Thread!"
+});
+assert_eq!(handle.join().unwrap(), "Hallo aus dem Thread!");
+<span class="boring">}</span></code></pre>
+</li>
+</ul>
+<hr>
+<h2 id="9-drei-praktische-übungen"><a class="header" href="#9-drei-praktische-übungen">9. Drei praktische Übungen</a></h2>
+<h3 id="übung-1-leicht---syntax-festigen"><a class="header" href="#übung-1-leicht---syntax-festigen">Übung 1 (Leicht - Syntax festigen)</a></h3>
+<p><strong>Aufgabe</strong>: Schreiben Sie eine Funktion zur Berechnung des Umfangs eines Kreises.</p>
+<ul>
+<li><strong>Anforderungen</strong>:
+<ul>
+<li>Funktionsname: <code>kreis_umfang</code></li>
+<li>Parameter: <code>radius</code> vom Typ <code>f64</code></li>
+<li>Rückgabetyp: <code>f64</code></li>
+<li>Nutzen Sie für die Kreiszahl Pi die Konstante <code>std::f64::consts::PI</code>.</li>
+<li>Verwenden Sie die implizite Rückgabe (kein <code>return</code>, kein Semikolon am Ende).</li>
+</ul>
+</li>
+<li><strong>Beispiel-Inputs/Outputs</strong>:
+<ul>
+<li><code>kreis_umfang(1.0)</code> -&gt; ca. <code>6.283185307179586</code></li>
+<li><code>kreis_umfang(5.0)</code> -&gt; ca. <code>31.41592653589793</code></li>
+</ul>
+</li>
+<li><strong>Lösungshinweis (Hint)</strong>: Die mathematische Formel lautet: \( U = 2 \cdot \pi \cdot r \). Stellen Sie sicher, dass Sie die Konstante importieren oder mit ihrem vollen Pfad ansprechen.</li>
+</ul>
+<hr>
+<h3 id="übung-2-mittel---logik-erweitern"><a class="header" href="#übung-2-mittel---logik-erweitern">Übung 2 (Mittel - Logik erweitern)</a></h3>
+<p><strong>Aufgabe</strong>: Entwickeln Sie eine Funktion für einen Onlineshop, die den Endpreis eines Artikels nach Abzug eines Rabatts berechnet.</p>
+<ul>
+<li><strong>Anforderungen</strong>:
+<ul>
+<li>Funktionsname: <code>berechne_rabattierten_preis</code></li>
+<li>Parameter:
+<ul>
+<li><code>bruttopreis</code>: <code>f64</code></li>
+<li><code>rabatt_prozent</code>: <code>f64</code> (z. B. <code>15.0</code> für 15 %)</li>
+<li><code>mindestbestellwert</code>: <code>f64</code></li>
+</ul>
+</li>
+<li>Rückgabetyp: <code>f64</code></li>
+<li><strong>Logik</strong>: Wenn der <code>bruttopreis</code> kleiner als der <code>mindestbestellwert</code> ist, darf kein Rabatt abgezogen werden (es wird der unveränderte Bruttopreis zurückgegeben). Nutzen Sie hierfür ein <strong>Early Return</strong> mit dem Schlüsselwort <code>return</code>. Wenn die Bedingung nicht zutrifft, berechnen Sie den Preis über eine <strong>Block-Expression</strong> mit impliziter Rückgabe.</li>
+</ul>
+</li>
+<li><strong>Beispiel-Inputs/Outputs</strong>:
+<ul>
+<li><code>berechne_rabattierten_preis(100.0, 10.0, 50.0)</code> -&gt; <code>90.0</code> (Bruttopreis &gt;= Mindestbestellwert, Rabatt wird gewährt)</li>
+<li><code>berechne_rabattierten_preis(40.0, 10.0, 50.0)</code> -&gt; <code>40.0</code> (Bruttopreis &lt; Mindestbestellwert, kein Rabatt gewährt)</li>
+</ul>
+</li>
+<li><strong>Lösungshinweis (Hint)</strong>: Prüfen Sie zuerst <code>if bruttopreis &lt; mindestbestellwert</code>. Nutzen Sie in diesem Zweig ein explizites <code>return bruttopreis;</code>. Dahinter definieren Sie eine Variable <code>let endpreis = { ... };</code> und führen dort die Rabattberechnung durch.</li>
+</ul>
+<hr>
+<h3 id="übung-3-schwer---transferleistung"><a class="header" href="#übung-3-schwer---transferleistung">Übung 3 (Schwer - Transferleistung)</a></h3>
+<p><strong>Aufgabe</strong>: Schreiben Sie einen extrem einfachen mathematischen Interpreter für Textbefehle.</p>
+<ul>
+<li><strong>Anforderungen</strong>:
+<ul>
+<li>Funktionsname: <code>kommando_auswerten</code></li>
+<li>Parameter:
+<ul>
+<li><code>operation</code>: <code>&amp;str</code> (erlaubte Werte: <code>"add"</code>, <code>"sub"</code>, <code>"mul"</code>, <code>"div"</code>)</li>
+<li><code>wert_a</code>: <code>i32</code></li>
+<li><code>wert_b</code>: <code>i32</code></li>
+</ul>
+</li>
+<li>Rückgabetyp: <code>Result&lt;i32, String&gt;</code></li>
+<li><strong>Logik</strong>:
+<ul>
+<li>Nutzen Sie eine <code>match</code>-Struktur zur Unterscheidung der Operationen.</li>
+<li>Bei der Division (<code>"div"</code>) müssen Sie prüfen, ob der <code>wert_b</code> Null ist. Falls ja, geben Sie per Early Return einen Fehler im <code>Err</code>-Zweig zurück.</li>
+<li>Alle Match-Arme müssen als Expressions (ohne Semikolon) den berechneten Wert im <code>Ok</code>-Zweig zurückgeben.</li>
+<li>Unbekannte Operationen müssen als <code>Err</code> mit einer passenden Fehlermeldung abgefangen werden.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>Beispiel-Inputs/Outputs</strong>:
+<ul>
+<li><code>kommando_auswerten("add", 10, 5)</code> -&gt; <code>Ok(15)</code></li>
+<li><code>kommando_auswerten("div", 10, 0)</code> -&gt; <code>Err("Fehler: Division durch Null ist ungültig!".to_string())</code></li>
+<li><code>kommando_auswerten("mod", 10, 5)</code> -&gt; <code>Err("Fehler: Unbekannte Operation: mod".to_string())</code></li>
+</ul>
+</li>
+<li><strong>Lösungshinweis (Hint)</strong>: Das Grundgerüst der Funktion sieht so aus:
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>fn kommando_auswerten(operation: &amp;str, wert_a: i32, wert_b: i32) -&gt; Result&lt;i32, String&gt; {
+    // Ihre Implementierung mit match und impliziten Rückgaben
+}
+<span class="boring">}</span></code></pre>
+Denken Sie daran, dass jeder Match-Arm denselben Typ (<code>Result&lt;i32, String&gt;</code>) zurückliefern muss.</li>
+</ul>
+<hr>
+<h2 id="10-lernstrategie-selbsteinschätzung--merkzettel"><a class="header" href="#10-lernstrategie-selbsteinschätzung--merkzettel">10. Lernstrategie, Selbsteinschätzung &amp; Merkzettel</a></h2>
+<h3 id="spickzettel-cheat-sheet-funktionssyntax-auf-einen-glance"><a class="header" href="#spickzettel-cheat-sheet-funktionssyntax-auf-einen-glance">Spickzettel (Cheat Sheet): Funktionssyntax auf einen glance</a></h3>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th style="text-align: left">Konstrukt</th><th style="text-align: left">Code-Beispiel</th><th style="text-align: left">Erklärung</th></tr>
+</thead>
+<tbody>
+<tr><td style="text-align: left"><strong>Standard-Definition</strong></td><td style="text-align: left"><code>fn add(a: i32, b: i32) -&gt; i32 { a + b }</code></td><td style="text-align: left">Zwei Parameter, explizite Typen, implizite Rückgabe</td></tr>
+<tr><td style="text-align: left"><strong>Ohne Rückgabewert</strong></td><td style="text-align: left"><code>fn log(msg: &amp;str) { println!("{}", msg); }</code></td><td style="text-align: left">Rückgabetyp ist implizit <code>()</code>, kein <code>-&gt;</code> nötig</td></tr>
+<tr><td style="text-align: left"><strong>Explizites Return</strong></td><td style="text-align: left"><code>fn check(x: i32) { if x &lt; 0 { return; } ... }</code></td><td style="text-align: left">Early Return zum vorzeitigen Verlassen der Funktion</td></tr>
+<tr><td style="text-align: left"><strong>Block-Expression</strong></td><td style="text-align: left"><code>let val = { let tmp = 3; tmp * 2 };</code></td><td style="text-align: left">Lokaler Gültigkeitsbereich, gibt <code>6</code> zurück</td></tr>
+<tr><td style="text-align: left"><strong>Divergierend</strong></td><td style="text-align: left"><code>fn panic_exit() -&gt; ! { panic!("Exit"); }</code></td><td style="text-align: left">Funktion kehrt niemals zum Aufrufer zurück</td></tr>
+</tbody>
+</table>
+</div>
+<h3 id="active-recall-selbsttestfragen"><a class="header" href="#active-recall-selbsttestfragen">Active Recall (Selbsttestfragen)</a></h3>
+<ol>
+<li><strong>Frage</strong>: Warum führt die Zuweisung <code>let x = (let y = 10);</code> zu einem Compilerfehler?
+<ul>
+<li><em>Antwort</em>: Weil <code>let y = 10</code> ein Statement ist. Statements in Rust produzieren keinen Wert (bzw. werten zu <code>()</code> aus) und können daher nicht an andere Variablen zugewiesen werden.</li>
+</ul>
+</li>
+<li><strong>Frage</strong>: Was ist der Unterschied zwischen den Typen <code>()</code> und <code>!</code> in einer Funktionssignatur?
+<ul>
+<li><em>Antwort</em>: <code>()</code> (Unit-Typ) bedeutet, dass die Funktion erfolgreich fertiggestellt wird, aber keinen mathematischen Wert zurückgibt. <code>!</code> (Never-Type) bedeutet, dass die Funktion niemals zum Aufrufer zurückkehrt (weil sie abstürzt oder in einer Endlosschleife läuft).</li>
+</ul>
+</li>
+<li><strong>Frage</strong>: Warum erzwingt Rust Typen in Funktionssignaturen, obwohl es innerhalb von Funktionen Typen automatisch ableiten kann?
+<ul>
+<li><em>Antwort</em>: Um Funktionen als stabile, isolierte Verträge zu etablieren. Dies verhindert unbeabsichtigte Typfehler bei Code-Änderungen und beschleunigt die Kompilierungszeiten durch modulare Analyse drastisch.</li>
+</ul>
+</li>
+<li><strong>Frage</strong>: Wie unterscheidet sich eine Expression von einem Statement bezüglich des Semikolons?
+<ul>
+<li><em>Antwort</em>: Ein Ausdruck (Expression) hat kein abschließendes Semikolon und gibt einen Wert ab. Hängt man ein Semikolon an einen Ausdruck an, wird er zu einem Statement und gibt nur noch den leeren Unit-Typ <code>()</code> zurück.</li>
+</ul>
+</li>
+</ol>
+<h3 id="die-feynman-methode"><a class="header" href="#die-feynman-methode">Die Feynman-Methode</a></h3>
+<p>Erklären Sie einem Programmier-Anfänger, warum Rust-Entwickler fast nie das Wort <code>return</code> am Ende einer Funktion schreiben und warum das kein syntaktischer Fehler ist. Schreiben Sie die Erklärung in maximal drei einfachen Sätzen auf.</p>
+<h3 id="gezielte-fehlerprovokation-compiler-guided-learning"><a class="header" href="#gezielte-fehlerprovokation-compiler-guided-learning">Gezielte Fehlerprovokation (Compiler-Guided Learning)</a></h3>
+<p>Kopieren Sie den funktionierenden Code aus der Lösung (Abschnitt 6) in Ihr Cargo-Projekt.</p>
+<ol>
+<li>Fügen Sie nun absichtlich ein Semikolon am Ende von <code>zahl * zahl;</code> ein. Beobachten Sie die Fehlermeldung des Compilers.</li>
+<li>Entfernen Sie nun zusätzlich die Typannotation im Parameter: <code>fn quadrat_berechnen(zahl) -&gt; i32</code>. Was meldet der Compiler jetzt?</li>
+<li>Entfernen Sie den Rückgabetyp komplett: <code>fn quadrat_berechnen(zahl: i32)</code>. Welche Fehlermeldung tritt auf, wenn <code>main</code> versucht, das Ergebnis an <code>let ergebnis = ...</code> zu binden?</li>
+</ol>
+<h3 id="metakognitiver-selbsttest"><a class="header" href="#metakognitiver-selbsttest">Metakognitiver Selbsttest</a></h3>
+<p>Wechseln Sie erst zum nächsten Kapitel, wenn Sie:</p>
+<ul>
+<li><input disabled="" type="checkbox"> Den Unterschied zwischen <code>let x = 5;</code> und <code>5 + 3</code> im Hinblick auf Wertabgabe verstanden haben.</li>
+<li><input disabled="" type="checkbox"> Die Fehlermeldung <code>mismatched types: expected i32, found ()</code> sofort der Ursache (einem vergessenen oder falsch gesetzten Semikolon) zuordnen können.</li>
+<li><input disabled="" type="checkbox"> Erfolgreich die drei Übungen in Ihrer lokalen IDE implementiert haben und alle Tests fehlerfrei durchlaufen.</li>
+</ul>
+<hr>
+<h2 id="11-zusammenfassung"><a class="header" href="#11-zusammenfassung">11. Zusammenfassung</a></h2>
+<ul>
+<li><strong>Strukturierte Bausteine</strong>: Funktionen (<code>fn</code>) kapseln Logik und machen sie wiederverwendbar. In Rust gelten strenge Namensregeln (<code>snake_case</code>) und standardmäßige Kapselung (Funktionen sind privat, sofern sie nicht mit <code>pub</code> markiert sind).</li>
+<li><strong>Vertragssicherheit</strong>: Funktionssignaturen müssen zwingend alle Parameter- und Rückgabetypen explizit deklarieren. Dies garantiert Typsicherheit an den Schnittstellen und ermöglicht inkrementelle Kompilierung.</li>
+<li><strong>Statements vs. Expressions</strong>: Rust ist ausdrucksorientiert. Während Statements (<code>let x = 5;</code>) Aktionen ausführen und keinen Wert liefern (Rückgabe <code>()</code>), werten Expressions (<code>5 + 3</code>) zu konkreten Werten aus.</li>
+<li><strong>Implizite Rückgabe</strong>: Das Weglassen des Semikolons bei der letzten Zeile eines Blocks macht diese zur <em>Tail Expression</em>. Ihr Wert wird direkt als Rückgabewert des Blocks oder der Funktion verwendet.</li>
+<li><strong>Explizites Return</strong>: Das Schlüsselwort <code>return</code> wird in Rust fast ausschließlich für <em>Early Returns</em> verwendet, um eine Funktion bei Eintreffen einer Bedingung vorzeitig zu verlassen.</li>
+</ul>
+<hr>
+<p><strong>Lizenz- und Attributionshinweis</strong>:
+Teile dieses Kapitels basieren auf Übersetzungen und didaktischen Anpassungen des offiziellen Buches <a href="https://doc.rust-lang.org/book/">The Rust Programming Language</a> von Steve Klabnik und Carol Nichols (sowie Beiträgen der Rust-Community), lizenziert unter <a href="https://opensource.org/licenses/MIT">MIT</a> und <a href="https://www.apache.org/licenses/LICENSE-2.0">Apache 2.0</a>.</p>
 
                     </main>
 

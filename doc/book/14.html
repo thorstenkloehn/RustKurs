@@ -35,7 +35,7 @@
             const path_to_root = "";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "searchindex-a9440cc5.js";
+            window.path_to_searchindex_js = "searchindex-76719c3e.js";
         </script>
         <!-- Start loading toc.js asap -->
         <script src="toc-dedbbe6e.js"></script>
@@ -174,171 +174,865 @@
 
                 <div id="mdbook-content" class="content">
                     <main>
-                        <h1 id="kapitel-14-das-antigravity-cli--arbeiten-mit-ki-agenten--subagenten"><a class="header" href="#kapitel-14-das-antigravity-cli--arbeiten-mit-ki-agenten--subagenten">Kapitel 14: Das Antigravity CLI – Arbeiten mit KI-Agenten &amp; Subagenten</a></h1>
-<p>Stell dir vor, du hättest einen virtuellen Co-Entwickler direkt in deiner Konsole sitzen, der auf Knopfdruck Dateien erstellt, Code schreibt und Fehler sucht. Genau das ist das <strong>Antigravity CLI</strong> (aufrufbar über den Befehl <code>agy</code>).</p>
-<p>In diesem Kapitel lernst du Schritt für Schritt, wie du das CLI installierst, es im Terminal steuerst und wie du durch Regeln bestimmst, was die KI-Agenten in deinem Projekt tun dürfen – und was nicht.</p>
+                        <h1 id="kapitel-14-das-kurs-cli-antigravity-cli"><a class="header" href="#kapitel-14-das-kurs-cli-antigravity-cli">Kapitel 14: Das Kurs-CLI (Antigravity CLI)</a></h1>
+<p>In diesem Kapitel lernen Sie das zentrale Softwarewerkzeug unseres Kurses kennen: das <strong>Kurs-CLI</strong> (Befehlszeilenaufruf: <code>agy</code>). Dieses Tool fungiert als Ihr persönlicher digitaler Tutor. Es automatisiert die Überprüfung Ihrer Übungsaufgaben, fängt Compiler-Fehlermeldungen ab, analysiert logische Abweichungen in Ihren Programmausgaben und gibt Ihnen in Echtzeit präzises Feedback. Die Vermittlung dieses Werkzeugs bereitet Sie optimal auf das professionelle Arbeiten mit autonomen Software-Agenten und modernen CI/CD-Pipelines (Continuous Integration / Continuous Delivery) vor.</p>
 <hr>
-<h2 id="1-was-ist-das-antigravity-cli"><a class="header" href="#1-was-ist-das-antigravity-cli">1. Was ist das Antigravity CLI?</a></h2>
-<p>Bevor wir loslegen, klären wir kurz ein paar grundlegende Begriffe:</p>
+<h2 id="1-lernziele--lernplan"><a class="header" href="#1-lernziele--lernplan">1. Lernziele &amp; Lernplan</a></h2>
+<h3 id="lernziele"><a class="header" href="#lernziele">Lernziele</a></h3>
 <ul>
-<li><strong>CLI (Command Line Interface)</strong>: Ein Programm, das du über Textbefehle im Terminal steuerst (auf Deutsch: Befehlszeilenschnittstelle).</li>
-<li><strong>KI-Agent</strong>: Ein intelligenter Assistent, der nicht nur deine Fragen beantwortet, sondern eigenständig Werkzeuge (Tools) benutzen kann, um z. B. Dateien zu lesen, zu editieren oder Befehle auszuführen.</li>
-<li><strong>Sandbox</strong>: Alle Befehle, die der Agent ausführt, laufen in einer abgesicherten Testumgebung (z. B. <code>nsjail</code> unter Linux). So kann der Agent dein echtes System nicht beschädigen.</li>
+<li><strong>Sie können</strong> das Kurs-CLI auf Ihrem lokalen Betriebssystem (Linux, macOS oder Windows) installieren, in der globalen Umgebungskonfiguration registrieren und die erfolgreiche Einrichtung verifizieren.</li>
+<li><strong>Sie können</strong> den automatisierten Test- und Überprüfungsprozess für eine gegebene Übungsaufgabe initiieren und die Auswertung des CLI-Testrunners (Erfolgsmeldungen vs. logische Abweichungen) interpretieren.</li>
+<li><strong>Sie können</strong> das Konzept der Interprozesskommunikation (IPC) mittels Standard-Streams (Stdin, Stdout, Stderr) und Pipes erklären und dieses Wissen zur Fehlerdiagnose bei abweichenden Programmausgaben nutzen.</li>
+<li><strong>Sie können</strong> unter Verwendung der Rust-Standardbibliothek (<code>std::process::Command</code>) selbstständig einen minimalen Testrunner programmieren, der ein externes Rust-Programm kompiliert, ausführt, mit Testdaten füttert und dessen Ausgaben verifiziert.</li>
+</ul>
+<h3 id="lernplan"><a class="header" href="#lernplan">Lernplan</a></h3>
+<ul>
+<li><input disabled="" type="checkbox"> <strong>2. Die Definition</strong>: 14.1 Das Kurs-CLI und seine Kernbegriffe.</li>
+<li><input disabled="" type="checkbox"> <strong>3. Das Problem &amp; Die Motivation</strong>: Warum die manuelle Überprüfung von Programmausgaben ineffizient und fehleranfällig is.</li>
+<li><input disabled="" type="checkbox"> <strong>4. Der naive Versuch</strong>: Ein fehlerhafter, aber kompilierbares Programm zur Generierung des Einmaleins.</li>
+<li><input disabled="" type="checkbox"> <strong>5. Die Anatomie des Fehlers</strong>: Analyse der fehlerhaften Formatierung und des Verhaltens von Ausgabepuffern im Betriebssystem.</li>
+<li><input disabled="" type="checkbox"> <strong>6. Die Lösung</strong>: 14.1.1 Installation des globalen Tools und 14.1.2 Funktionsweise des Test- und Überprüfungsprozesses.</li>
+<li><input disabled="" type="checkbox"> <strong>7. Kleines Tutorial</strong>: Schritt-für-Schritt-Installation und Validierung einer ersten Übungsaufgabe.</li>
+<li><input disabled="" type="checkbox"> <strong>8. Mentale Modelle &amp; Deep Dive</strong>: Prozess-Sandboxen, IPC und eine exhaustive API-Referenz der Rust-Prozesssteuerung.</li>
+<li><input disabled="" type="checkbox"> <strong>9. Drei praktische Übungen</strong>: Aufgaben zur Festigung (Leicht, Mittel, Schwer) mit vollständigen Lösungshinweisen.</li>
+<li><input disabled="" type="checkbox"> <strong>10. Lernstrategie, Selbsteinschätzung &amp; Merkzettel</strong>: Cheat Sheet, Active-Recall-Fragen und metakognitive Checkliste.</li>
+<li><input disabled="" type="checkbox"> <strong>11. Zusammenfassung</strong>: Die wichtigsten Erkenntnisse im schnellen Überblick.</li>
 </ul>
 <hr>
-<h2 id="2-installation-wie-bekomme-ich-agy"><a class="header" href="#2-installation-wie-bekomme-ich-agy">2. Installation (Wie bekomme ich <code>agy</code>?)</a></h2>
-<p>Die Installation ist sehr einfach und erfordert nur einen einzigen Befehl in deinem Terminal:</p>
+<h2 id="2-die-definition-141-das-kurs-cli"><a class="header" href="#2-die-definition-141-das-kurs-cli">2. Die Definition: 14.1 Das Kurs-CLI</a></h2>
+<p>Das <strong>Kurs-CLI</strong> (Command Line Interface, aufrufbar über den Befehl <code>agy</code>) ist ein globales, terminalbasiertes Validierungs- und Entwicklungswerkzeug. Es kombiniert eine interaktive Node.js-Steuerungsschicht für die Benutzeroberfläche (TUI) mit einem in Rust geschriebenen, hochperformanten Testrunner im Hintergrund.</p>
+<p>Die Kernbegriffe des Kurs-CLI sind:</p>
 <ul>
-<li>
-<p><strong>Linux / macOS</strong>:</p>
+<li><strong>Globale Installation</strong>: Die Registrierung des ausführbaren Programms im Systempfad (<code>PATH</code>), sodass es aus jedem beliebigen Verzeichnis im Terminal aufgerufen werden kann.</li>
+<li><strong>Testrunner</strong>: Ein Softwaremodul, das den Rust-Compiler (<code>rustc</code> bzw. <code>cargo</code>) steuert, die zu testende Anwendung übersetzt und eine Reihe vordefinierter Testfälle automatisiert durchführt.</li>
+<li><strong>Interprozesskommunikation (IPC)</strong>: Der Datenaustausch zwischen dem Kurs-CLI (Elternprozess) und Ihrem auszuführenden Programm (Kindprozess) über die Standard-Streams des Betriebssystems.</li>
+<li><strong>Sandbox-Ausführung</strong>: Die Ausführung Ihres Programms in einer isolierten Laufzeitumgebung (unter Linux z. B. mittels Namespaces und Control Groups über Tools wie <code>nsjail</code>), um das Wirtssystem vor Endlosschleifen, übermäßigem Ressourcenverbrauch oder unerlaubten Dateisystemzugriffen zu schützen.</li>
+</ul>
+<h3 id="alltagsnahe-metapher"><a class="header" href="#alltagsnahe-metapher">Alltagsnahe Metapher</a></h3>
+<blockquote class="blockquote-tag blockquote-tag-note">
+<p class="blockquote-tag-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>Note</p>
+<p><strong>Der Prüfstand in der Autowerkstatt</strong>:
+Stellen Sie sich vor, Sie bauen einen Motor (Ihr Rust-Programm). Anstatt den Motor einfach einzubauen und auf gut Glück auf die Autobahn zu fahren (manueller Test), stellen Sie ihn auf einen digitalisierten Motorenprüfstand (das Kurs-CLI).</p>
+<p>Der Prüfstand dockt Schläuche an die Kraftstoffzufuhr (Stdin) und Sensoren an den Auspuff (Stdout/Stderr) an. Nun startet der Prüfstand ein fest definiertes Testprogramm: Er gibt Gas, simuliert Steigungen und misst exakt die Drehzahl und die Abgaswerte.
+Weichen die Messwerte auch nur minimal von den Sollwerten ab (z. B. eine Fehlzündung oder ein falscher Schadstoffausstoß), bricht der Prüfstand ab und druckt ein präzises Fehlerprotokoll aus. Der Motor läuft zwar physikalisch, entspricht aber nicht den Zulassungsregeln.</p>
+</blockquote>
+<hr>
+<h2 id="3-das-problem--die-motivation"><a class="header" href="#3-das-problem--die-motivation">3. Das Problem &amp; Die Motivation</a></h2>
+<p>Wenn Sie Programmieren lernen, besteht die größte Herausforderung in einer schnellen und präzisen Rückkopplungsschleife (Feedback Loop). Nach dem Schreiben des Codes stellen sich zwei Fragen:</p>
+<ol>
+<li>Kompiliert der Code fehlerfrei? (Dies beantwortet der Rust-Compiler).</li>
+<li>Verhält sich der Code bei allen denkbaren Eingaben logisch korrekt? (Dies muss durch Tests verifiziert werden).</li>
+</ol>
+<p>Ohne ein automatisiertes Kurs-CLI müssten Sie Ihre Programme manuell überprüfen. Dieser manuelle Prozess weist erhebliche Defizite auf:</p>
+<ul>
+<li><strong>Whitespaces und unsichtbare Zeichen</strong>: Computer vergleichen Zeichenketten exakt. Ein fehlendes Leerzeichen am Zeilenende oder die Verwendung eines falschen Zeilenumbruch-Zeichens (<code>\r\n</code> unter Windows vs. <code>\n</code> unter Unix) führt dazu, dass eine Ausgabe für das menschliche Auge korrekt aussieht, maschinell aber fehlerhaft ist.</li>
+<li><strong>Randfälle (Edge Cases)</strong>: Ein manueller Tester neigt dazu, nur die “Schönwetter-Pfade” (Happy Paths) auszuprobieren. Extremwerte (z. B. leere Eingaben, negative Zahlen, Integer-Überläufe) werden oft vergessen.</li>
+<li><strong>Skalierbarkeit</strong>: Jedes Mal, wenn Sie Ihren Code ändern, müssen Sie alle manuellen Testschritte erneut durchführen (Regressionstest). Dies ist zeitraubend und führt dazu, dass Tests vernachlässigt werden.</li>
+<li><strong>Sicherheitsrisiken bei Fehlern</strong>: Endlosschleifen (z. B. <code>loop {}</code> ohne Abbruchbedingung) können ein System zum Absturz bringen oder die CPU blockieren. Ohne eine zeitliche Überwachung (Timeout) und Isolation durch ein Test-Tool müssen Sie Prozesse manuell über System-Monitore beenden.</li>
+</ul>
+<p>Das Kurs-CLI solves diese Probleme, indem es eine standardisierte Test-Infrastruktur bereitstellt, die in Millisekunden Dutzende Testfälle simuliert, Eingaben einspeist, Ausgaben abfängt, Diffs berechnet und Prozesse bei Zeitüberschreitung sicher terminiert.</p>
+<hr>
+<h2 id="4-der-naive-versuch"><a class="header" href="#4-der-naive-versuch">4. Der naive Versuch</a></h2>
+<p>Nehmen wir an, Ihre Aufgabe aus Kapitel 7 lautet: <em>„Schreiben Sie ein Programm, das das kleine Einmaleins (1 bis 10) in einem quadratischen Raster auf der Konsole ausgibt. Jede Zahl muss in einer Spalte mit einer festen Breite von 4 Zeichen rechtsbündig formatiert sein. Jede Zeile muss mit einem harten Zeilenumbruch enden.“</em></p>
+<p>Hier ist der naive Versuch einer Umsetzung in der Datei <code>src/main.rs</code>:</p>
+<pre class="playground"><code class="language-rust edition2021">fn main() {
+    // Äußere Schleife für die Zeilen (1 bis 10)
+    for zeile in 1..11 {
+        // Innere Schleife für die Spalten (1 bis 10)
+        for spalte in 1..11 {
+            let ergebnis = zeile * spalte;
+            // Naiver Versuch der Formatierung: Wir drucken das Ergebnis 
+            // und hängen manuell zwei Leerzeichen an.
+            print!("{}  ", ergebnis);
+        }
+        // Nach jeder Zeile machen wir einen manuellen Zeilenumbruch
+        print!("\n");
+    }
+}</code></pre>
+<h3 id="warum-dieser-code-problematisch-ist"><a class="header" href="#warum-dieser-code-problematisch-ist">Warum dieser Code problematisch ist</a></h3>
+<p>Dieser Code kompiliert einwandfrei und erzeugt eine strukturierte Ausgabe. Er erfüllt jedoch nicht die exakten Spezifikationen der Aufgabe:</p>
+<ol>
+<li>Die Breite der Spalten ist nicht konstant 4 Zeichen. Einstellige Ergebnisse (z. B. <code>1 * 1 = 1</code>) gefolgt von zwei Leerzeichen belegen 3 Zeichen Breite. Zweistellige Ergebnisse (z. B. <code>2 * 5 = 10</code>) belegen 4 Zeichen. Das dreistellige Ergebnis <code>100</code> belegt 5 Zeichen. Das Raster verschiebt sich.</li>
+<li>Am Ende jeder Zeile wird nach der letzten Zahl ebenfalls ein Leerzeichen-Paar gedruckt, bevor der Zeilenumbruch <code>\n</code> erfolgt. Dies erzeugt unnötigen Whitespace am Zeilenende.</li>
+</ol>
+<p>Wenn Sie dieses Programm starten, sieht die Ausgabe im Terminal für Sie vielleicht “akzeptabel” aus. Ein automatisierter Test des Kurs-CLI wird diese Lösung jedoch ablehnen.</p>
+<hr>
+<h2 id="5-die-anatomie-des-fehlers"><a class="header" href="#5-die-anatomie-des-fehlers">5. Die Anatomie des Fehlers</a></h2>
+<h3 id="was-sagt-das-system"><a class="header" href="#was-sagt-das-system">Was sagt das System?</a></h3>
+<p>Wenn Sie die automatisierte Überprüfung des Kurs-CLI über den Befehl <code>agy verify</code> starten, meldet das System einen Fehlschlag:</p>
+<pre><code class="language-text">[INFO] Starte Überprüfung für Übung: "Einmaleins-Raster"
+[INFO] Kompiliere Projekt...
+   Compiling uebung_2 v0.1.0 (/home/thorsten/RustKurs/Uebung/Uebung_2)
+    Finished dev [unoptimized + debuginfo] target(s) in 0.42s
+[INFO] Führe Testfälle aus...
+
+[FAIL] Testfall 1: Formatierung des Einmaleins-Rasters fehlgeschlagen!
+
+--- AUSGABE-DIFF (Soll vs. Ist) ---
+Zeile 1:
+Soll: "   1   2   3   4   5   6   7   8   9  10"
+Ist:  "1  2  3  4  5  6  7  8  9  10  "
+       ^
+       Fehler: Zeichen weicht ab.
+       Erwartet: "   1" (Länge: 4, rechtsbündig)
+       Erhalten: "1  " (Länge: 3, linksbündig mit statischem Abstand)
+
+Zeile 10:
+Soll: "  10  20  30  40  50  60  70  80  90 100"
+Ist:  "10  20  30  40  50  60  70  80  90  100  "
+                                         ^
+                                         Fehler: Spaltenverschiebung durch fehlende Breitenformatierung.
+
+[ERROR] Die Validierung der Konsolenausgabe war nicht erfolgreich.
+[TIP] Nutzen Sie die Formatierungs-Makros von Rust, um eine feste Spaltenbreite zu erzwingen (z. B. '{:4}').
+</code></pre>
+<h3 id="der-blick-hinter-die-kulissen-was-passiert-im-speicher-und-im-betriebssystem"><a class="header" href="#der-blick-hinter-die-kulissen-was-passiert-im-speicher-und-im-betriebssystem">Der Blick hinter die Kulissen: Was passiert im Speicher und im Betriebssystem?</a></h3>
+<p>Um zu verstehen, wie das CLI diesen Fehler erkennt und warum die naive Lösung scheitert, müssen wir die Funktionsweise des Betriebssystems und der Standard-Streams betrachten:</p>
+<pre><code>+-----------------------------------------------------------------------+
+|                            BETRIEBSSYSTEM                             |
+|                                                                       |
+|  +------------------+                   +--------------------------+  |
+|  |   Elternprozess  |                   |        Kindprozess       |  |
+|  |    (Kurs-CLI)    |                   |      (Ihre Anwendung)    |  |
+|  |                  |                   |                          |  |
+|  |  +------------+  |  /======Read====\ |  +--------------------+  |  |
+|  |  | Read-Puffer|&lt;=|==|  Stdout-Pipe  |&lt;=|==| Stdout-Schreib-    |  |  |
+|  |  |            |  |  \==============/ |  | puffer (Line Buffered|  |  |
+|  |  +------------+  |                   |  +--------------------+  |  |
+|  +------------------+                   +--------------------------+  |
++-----------------------------------------------------------------------+
+</code></pre>
+<ol>
+<li><strong>Prozess-Erzeugung</strong>: Wenn Sie <code>agy verify</code> ausführen, startet das CLI einen Elternprozess. Dieser erzeugt über das Systemkommando <code>fork()</code> (unter Unix) bzw. <code>CreateProcess()</code> (unter Windows) einen Kindprozess, der Ihre kompilierte Binärdatei ausführt.</li>
+<li><strong>Pipe-Umleitung</strong>: Standardmäßig schreibt ein Terminal-Programm seine Ausgaben in den Standard-Ausgabe-Stream (<code>stdout</code>), der direkt mit dem Bildschirm (TTY/PTY) verbunden ist. Das Kurs-CLI trennt diese Verbindung auf. Es erstellt eine <strong>Pipe</strong> (einen unidirektionalen Datenkanal im Kernel des Betriebssystems) und biegt den File-Deskriptor <code>1</code> (<code>stdout</code>) des Kindprozesses auf das Schreib-Ende dieser Pipe um.</li>
+<li><strong>Pufferung</strong>: Wenn Ihr Programm <code>print!("{}  ", ergebnis)</code> aufruft, werden die Bytes (<code>0x31</code>, <code>0x20</code>, <code>0x20</code> für <code>"1  "</code>) nicht sofort gesendet. Rusts Standardbibliothek verwendet für <code>stdout</code> einen Puffer. Bei interaktiven Terminals ist dieser meist zeilenpuffert (Line-Buffered), d.h. er wird erst beim Auftreten eines Zeilenumbruchs (<code>\n</code>) oder bei explizitem Aufruf von <code>stdout().flush()</code> geleert. Das bedeutet, dass alle Ausgaben einer Zeile gesammelt und als großer Block in die Pipe geschrieben werden.</li>
+<li><strong>Vergleichs-Algorithmus (Diffing)</strong>: Das Kurs-CLI liest das Lese-Ende der Pipe aus, konvertiert die empfangenen Bytes in einen UTF-8-String und teilt diesen anhand der Zeilenumbrüche (<code>\n</code> bzw. <code>\r\n</code>) in ein Array von Zeilen auf. Anschließend vergleicht ein exakter String-Vergleichs-Algorithmus jede Zeile mit der im Testfall hinterlegten Soll-Zeile. Da Ihr naiver Code statische Leerzeichen anhängt, statt eine feste Breite zu erzwingen, stimmen die Längen und die Positionen der Zeichen nicht überein. Das CLI bricht den Testlauf ab und gibt die genaue Differenz aus.</li>
+</ol>
+<hr>
+<h2 id="6-die-lösung"><a class="header" href="#6-die-lösung">6. Die Lösung</a></h2>
+<p>Die Lösung besteht aus zwei Teilen: Zuerst beheben wir den Formatierungsfehler in Rust unter Verwendung des EVA-Prinzips, und danach betrachten wir die Details zur Installation und zum Überprüfungsprozess des Kurs-CLI.</p>
+<h3 id="der-korrekte-rust-code"><a class="header" href="#der-korrekte-rust-code">Der korrekte Rust-Code</a></h3>
+<p>Wir nutzen das EVA-Prinzip, um unser Programm sauber zu strukturieren:</p>
+<ul>
+<li><strong>Eingabe (Input)</strong>: In diesem Fall statisch (die Zahlen von 1 bis 10).</li>
+<li><strong>Verarbeitung (Processing)</strong>: Die Berechnung der Multiplikation in den verschachtelten Schleifen.</li>
+<li><strong>Ausgabe (Output)</strong>: Das formatierte Drucken unter Verwendung des Format-Spezifizierers <code>{:4}</code>. Dieser sorgt dafür, dass Rust jede Zahl rechtsbündig in ein Feld von genau 4 Zeichen Breite schreibt. Führende Leerzeichen werden automatisch eingefügt.</li>
+</ul>
+<p>Hier ist der korrigierte Code in <code>src/main.rs</code>:</p>
+<pre class="playground"><code class="language-rust edition2021">use std::io::{self, Write};
+
+fn main() {
+    // 1. Eingabe &amp; Initialisierung (EVA: E)
+    let start = 1;
+    let ende = 11; // Exklusive Obergrenze für den Range-Operator
+
+    // 2. Verarbeitung &amp; Ausgabe (EVA: V &amp; A)
+    for zeile in start..ende {
+        for spalte in start..ende {
+            let ergebnis = zeile * spalte;
+            
+            // Die Lösung für das Formatierungsproblem:
+            // '{:4}' reserviert genau 4 Zeichen Breite für die Zahl.
+            // Die Zahl wird standardmäßig rechtsbündig ausgerichtet.
+            // '1' wird zu '   1', '10' zu '  10', '100' zu ' 100'.
+            print!("{:4}", ergebnis);
+        }
+        
+        // Nach jeder vollständigen Zeile führen wir einen Zeilenumbruch aus.
+        // Um sicherzustellen, dass die Daten sofort an das Betriebssystem
+        // übergeben werden, flushen wir den Stdout-Puffer manuell.
+        println!();
+        if let Err(fehler) = io::stdout().flush() {
+            eprintln!("Fehler beim Leeren des Ausgabepuffers: {}", fehler);
+        }
+    }
+}</code></pre>
+<hr>
+<h3 id="1411-installation"><a class="header" href="#1411-installation">14.1.1 Installation</a></h3>
+<p>Um das Kurs-CLI auf Ihrem System einzurichten, stellt das Kursteam eine automatisierte Installationsroutine zur Verfügung. Diese lädt die passende vorkompilierte Binärdatei für Ihre Systemarchitektur herunter, konfiguriert die Sandbox-Abhängigkeiten und fügt den Suchpfad zu Ihren System-Umgebungsvariablen hinzu.</p>
+<h4 id="systemvoraussetzungen"><a class="header" href="#systemvoraussetzungen">Systemvoraussetzungen</a></h4>
+<ul>
+<li><strong>Betriebssystem</strong>: Ubuntu/Linux (20.04 LTS oder neuer), macOS (Big Sur oder neuer) oder Windows (10/11 mit PowerShell 5.1+).</li>
+<li><strong>Laufzeitumgebungen</strong>: Node.js (Version 18.x oder neuer) zur Ausführung des UI-Zweigs und Rust (Toolchain 1.70.0 oder neuer via <code>rustup</code>).</li>
+</ul>
+<h4 id="a-installation-unter-linux-und-macos"><a class="header" href="#a-installation-unter-linux-und-macos">A) Installation unter Linux und macOS</a></h4>
+<p>Öffnen Sie Ihr Terminal und führen Sie den folgenden Befehl aus:</p>
 <pre><code class="language-bash">curl -fsSL https://antigravity.google/cli/install.sh | bash
 </code></pre>
-<p><em>Was passiert hier?</em> Das Skript lädt das Programm herunter und installiert es im Ordner <code>~/.local/bin/agy</code>, damit du es überall im Terminal aufrufen kannst.</p>
-</li>
-<li>
-<p><strong>Windows (PowerShell)</strong>:</p>
+<blockquote class="blockquote-tag blockquote-tag-important">
+<p class="blockquote-tag-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 1.75C0 .784.784 0 1.75 0h12.5C15.216 0 16 .784 16 1.75v9.5A1.75 1.75 0 0 1 14.25 13H8.06l-2.573 2.573A1.458 1.458 0 0 1 3 14.543V13H1.75A1.75 1.75 0 0 1 0 11.25Zm1.75-.25a.25.25 0 0 0-.25.25v9.5c0 .138.112.25.25.25h2a.75.75 0 0 1 .75.75v2.19l2.72-2.72a.749.749 0 0 1 .53-.22h6.5a.25.25 0 0 0 .25-.25v-9.5a.25.25 0 0 0-.25-.25Zm7 2.25v2.5a.75.75 0 0 1-1.5 0v-2.5a.75.75 0 0 1 1.5 0ZM9 9a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"></path></svg>Important</p>
+<p><strong>Was macht dieses Installationsskript im Detail?</strong></p>
+<ol>
+<li><strong>Architektur-Erkennung</strong>: Es prüft über <code>uname -s</code> und <code>uname -m</code>, welches Betriebssystem und welche CPU-Architektur (z. B. <code>x86_64</code> oder <code>arm64</code>) vorliegen.</li>
+<li><strong>Download</strong>: Es lädt die entsprechende Binärdatei herunter und speichert sie im Benutzerverzeichnis unter <code>~/.local/bin/agy</code>.</li>
+<li><strong>Berechtigungen</strong>: Es macht die Datei ausführbar mit dem Befehl <code>chmod +x ~/.local/bin/agy</code>.</li>
+<li><strong>Shell-Konfiguration</strong>: Es prüft, welche Shell aktiv ist (z. B. Bash oder Zsh), und fügt die Zeile <code>export PATH="$HOME/.local/bin:$PATH"</code> an das Ende der Konfigurationsdatei (<code>~/.bashrc</code> bzw. <code>~/.zshrc</code>) an.</li>
+</ol>
+</blockquote>
+<p>Um die Änderungen in Ihrer aktuellen Terminalsitzung sofort zu aktivieren, laden Sie Ihre Shell-Konfiguration neu:</p>
+<pre><code class="language-bash">source ~/.bashrc  # Für Bash-Nutzer
+source ~/.zshrc   # Für Zsh-Nutzer
+</code></pre>
+<h4 id="b-installation-unter-windows-powershell"><a class="header" href="#b-installation-unter-windows-powershell">B) Installation unter Windows (PowerShell)</a></h4>
+<p>Starten Sie die PowerShell als Administrator und führen Sie folgenden Befehl aus:</p>
 <pre><code class="language-powershell">irm https://antigravity.google/cli/install.ps1 | iex
 </code></pre>
-</li>
+<blockquote class="blockquote-tag blockquote-tag-important">
+<p class="blockquote-tag-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 1.75C0 .784.784 0 1.75 0h12.5C15.216 0 16 .784 16 1.75v9.5A1.75 1.75 0 0 1 14.25 13H8.06l-2.573 2.573A1.458 1.458 0 0 1 3 14.543V13H1.75A1.75 1.75 0 0 1 0 11.25Zm1.75-.25a.25.25 0 0 0-.25.25v9.5c0 .138.112.25.25.25h2a.75.75 0 0 1 .75.75v2.19l2.72-2.72a.749.749 0 0 1 .53-.22h6.5a.25.25 0 0 0 .25-.25v-9.5a.25.25 0 0 0-.25-.25Zm7 2.25v2.5a.75.75 0 0 1-1.5 0v-2.5a.75.75 0 0 1 1.5 0ZM9 9a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"></path></svg>Important</p>
+<p><strong>Windows-Spezifika</strong>:</p>
+<ul>
+<li><code>irm</code> ist das Alias für <code>Invoke-RestMethod</code>, welches das Installationsskript herunterlädt.</li>
+<li><code>iex</code> (<code>Invoke-Expression</code>) führt das heruntergeladene Skript direkt in Ihrer PowerShell-Sitzung aus.</li>
+<li>Das Skript speichert die Binärdatei unter <code>C:\Users\&lt;IhrName&gt;\.gemini\antigravity-cli\bin\agy.exe</code> und modifiziert die <code>Path</code>-Umgebungsvariable im Windows-Benutzerprofil. Nach der Installation müssen Sie das Terminal-Fenster schließen und neu öffnen.</li>
 </ul>
-<hr>
-<h2 id="3-erste-schritte--dein-erster-prompt"><a class="header" href="#3-erste-schritte--dein-erster-prompt">3. Erste Schritte – Dein erster Prompt</a></h2>
-<p>Um das CLI zu starten, öffnest du dein Terminal, wechselst in dein Projektverzeichnis und tippst einfach <code>agy</code> ein:</p>
-<pre><code class="language-bash">cd /pfad/zu/deinem/projekt
-agy
-</code></pre>
-<h3 id="der-interaktive-modus-tui"><a class="header" href="#der-interaktive-modus-tui">Der interaktive Modus (TUI)</a></h3>
-<p>Beim ersten Start öffnet sich ein kurzer Einrichtungsassistent (für Farben und Tastatursteuerung). Danach landest du in einer interaktiven Benutzeroberfläche direkt im Terminal.
-Du kannst dem Agenten nun Aufgaben in ganz normaler deutscher oder englischer Sprache stellen:</p>
-<blockquote>
-<p>💬 <em>“Erstelle eine neue Rust-Datei unter <code>src/helper.rs</code> und schreibe eine Funktion, die Fließkommazahlen rundet.”</em></p>
 </blockquote>
-<p>Der Agent wird daraufhin selbstständig die Datei anlegen und den Code hineinschreiben.</p>
+<h4 id="c-verifikation-der-installation"><a class="header" href="#c-verifikation-der-installation">C) Verifikation der Installation</a></h4>
+<p>Überprüfen Sie, ob das System das CLI erfolgreich registriert hat, indem Sie nach der Version fragen:</p>
+<pre><code class="language-bash">agy --version
+</code></pre>
+<p>Sie sollten eine Bestätigungsausgabe erhalten, die der folgenden ähnelt:</p>
+<pre><code class="language-text">antigravity-cli v2.4.1 (target: x86_64-unknown-linux-gnu, compiled: 2026-05-12)
+</code></pre>
 <hr>
-<h2 id="4-die-fernsteuerung-slash-befehle"><a class="header" href="#4-die-fernsteuerung-slash-befehle">4. Die Fernsteuerung: Slash-Befehle</a></h2>
-<p>Slash-Befehle sind wie Kurzwahltasten. Wenn du im Eingabefeld ein <code>/</code> tippst, öffnet sich ein Menü mit nützlichen Steuerungsbefehlen für dich:</p>
+<h3 id="1412-test--und-überprüfungsprozess"><a class="header" href="#1412-test--und-überprüfungsprozess">14.1.2 Test- und Überprüfungsprozess</a></h3>
+<p>Sobald das Kurs-CLI global installiert ist, können Sie den automatisierten Überprüfungsprozess für Ihre Übungsaufgaben nutzen. Das CLI navigiert durch Ihr Projekt, analysiert den Code und führt Tests in einer sicheren Umgebung aus.</p>
+<h4 id="der-detaillierte-ablauf-des-überprüfungsprozesses"><a class="header" href="#der-detaillierte-ablauf-des-überprüfungsprozesses">Der detaillierte Ablauf des Überprüfungsprozesses</a></h4>
+<p>Wenn Sie in Ihrem Projektverzeichnis den Befehl <code>agy verify</code> eingeben, startet eine fest definierte Kette von Operationen:</p>
+<pre><code>+-----------------------------------------------------------------------------+
+|                            START: agy verify                                |
++-----------------------------------------------------------------------------+
+                                      |
+                                      v
++-----------------------------------------------------------------------------+
+| 1. WORKSPACE-ANALYSE:                                                       |
+| - Sucht nach Cargo.toml, .agentrules und AGENTS.md                          |
+| - Identifiziert die aktuelle Kapitel-Übungsnummer                           |
++-----------------------------------------------------------------------------+
+                                      |
+                                      v
++-----------------------------------------------------------------------------+
+| 2. STATISCHE PRÜFUNG:                                                       |
+| - Führt 'cargo check' aus (Syntax- und Typprüfung)                          |
+| - Führt 'cargo clippy' aus (Stil- und Qualitäts-Lints)                      |
++-----------------------------------------------------------------------------+
+                                      |
+                      +---------------+---------------+
+                      |                               |
+                 [Erfolgreich]                  [Fehlgeschlagen]
+                      |                               |
+                      v                               v
++---------------------------------------------+ +-----------------------------+
+| 3. COMPILATION:                             | | ABBRUCH:                    |
+| - Baut die Binärdatei für die Sandbox       | | Gibt Compiler- / Linter-    |
++---------------------------------------------+ | Fehler im Terminal aus      |
+                      |                         +-----------------------------+
+                      v
++-----------------------------------------------------------------------------+
+| 4. SANDBOX-EXECUTION (Isoliert):                                            |
+| - Startet das Programm in geschützter Umgebung                             |
+| - Setzt CPU- und Memory-Limits (z.B. max. 128 MB RAM)                       |
+| - Setzt einen harten Timeout (standardmäßig 2000 ms gegen Endlosschleifen)   |
++-----------------------------------------------------------------------------+
+                                      |
+                                      v
++-----------------------------------------------------------------------------+
+| 5. INPUT/OUTPUT VALIDIERUNG:                                                |
+| - Sendet definierte Test-Eingaben via stdin                                 |
+| - Fängt stdout und stderr ab                                                |
+| - Führt Zeilenvergleich (Diff) und Regex-Überprüfung durch                  |
++-----------------------------------------------------------------------------+
+                                      |
+                      +---------------+---------------+
+                      |                               |
+                  [Bestanden]                     [Fehlgeschlagen]
+                      |                               |
+                      v                               v
++---------------------------------------------+ +-----------------------------+
+| 6. ERFOLGSMELDUNG:                          | | FEHLERMELDUNG:              |
+| - Gibt Erfolgs-Token aus                    | | - Zeigt exakte Abweichungen |
+| - Aktualisiert Fortschritt in AGENTS.md     | | - Bietet Hilfestellungen    |
++---------------------------------------------+ +-----------------------------+
+</code></pre>
+<ol>
+<li><strong>Workspace-Analyse und Kontext-Erkennung</strong>:
+Das Tool durchsucht das aktuelle Verzeichnis nach der Konfigurationsdatei <code>Cargo.toml</code>. Es liest den Paketnamen aus und prüft über die im Workspace vorhandene Steuerungsdatei <code>AGENTS.md</code> (file:///home/thorsten/RustKurs/AGENTS.md) und <code>.agentrules</code>, um welches Kapitel und welche Übungsnummer es sich handelt.</li>
+<li><strong>Statische Codeanalyse (Linting)</strong>:
+Bevor das Programm ausgeführt wird, startet das CLI <code>cargo check</code> und <code>cargo clippy</code>. Damit wird sichergestellt, dass der Code den strengen Qualitätsrichtlinien des Kurses entspricht (z. B. keine ungenutzten Variablen, keine unsicheren Typkonvertierungen).</li>
+<li><strong>Kompilierung</strong>:
+Die Anwendung wird im Debug-Modus kompiliert, um eventuelle Laufzeit-Assertions und Panics mit vollständigen Debug-Symbolen (Backtrace) abfangen zu können.</li>
+<li><strong>Umgebungs-Isolation (Sandboxing)</strong>:
+Das Kurs-CLI startet die kompilierte Binärdatei nicht direkt auf Ihrem Betriebssystem, sondern kapselt sie.
+<ul>
+<li><em>Unter Linux</em>: Es isoliert den Prozess über Kernel-Namespaces (Netzwerk-Isolation, Dateisystem-Chroot und Prozess-PID-Namespaces).</li>
+<li><em>Ressourcen-Begrenzung</em>: Der Prozess wird mit harten Limits gestartet: Maximal 128 Megabyte RAM-Nutzung und ein striktes CPU-Limit.</li>
+<li><em>Timeout</em>: Ein Watchdog-Thread überwacht die Ausführungszeit. Wenn das Programm nach 2000 Millisekunden nicht terminiert (z. B. durch eine Endlosschleife bei Benutzereingaben), wird der Prozess mit dem Signal <code>SIGKILL</code> zwangsweise beendet.</li>
+</ul>
+</li>
+<li><strong>Eingabesimulation und Auswertung</strong>:
+Das CLI sendet Testdaten an den Standard-Eingabekanal (<code>stdin</code>) des Programms. Während der Ausführung liest es die Bytes aus <code>stdout</code> und <code>stderr</code> und vergleicht diese mit den erwarteten Test-Templates.</li>
+<li><strong>Ergebnisprotokollierung</strong>:
+War der Test erfolgreich, generiert das CLI ein verschlüsseltes Erfolgs-Token und trägt den Fortschritt automatisch in Ihre lokale <code>AGENTS.md</code> ein, sodass nachfolgende KI-Agenten wissen, dass dieser Lernabschnitt erfolgreich abgeschlossen wurde.</li>
+</ol>
+<hr>
+<h2 id="7-kleines-tutorial-schritt-für-schritt-durch-die-übungsüberprüfung"><a class="header" href="#7-kleines-tutorial-schritt-für-schritt-durch-die-übungsüberprüfung">7. Kleines Tutorial: Schritt für Schritt durch die Übungsüberprüfung</a></h2>
+<p>In diesem Tutorial installieren wir das Kurs-CLI, richten ein fehlerhaftes Übungsprojekt ein, lassen den Test scheitern, analysieren den Fehler und führen die Aufgabe zu einem erfolgreichen Abschluss.</p>
+<h3 id="schritt-1-cli-installieren-und-pfad-überprüfen"><a class="header" href="#schritt-1-cli-installieren-und-pfad-überprüfen">Schritt 1: CLI installieren und Pfad überprüfen</a></h3>
+<p>Führen Sie das Installationskommando für Ihr System aus (siehe Abschnitt 6). Nach der Installation überprüfen wir im Terminal, ob das Tool gefunden wird und einsatzbereit ist:</p>
+<pre><code class="language-bash">agy inspect
+</code></pre>
+<p><strong>Erwartete Ausgabe</strong>:</p>
+<pre><code class="language-text">[OK] Antigravity CLI ist betriebsbereit.
+[INFO] Geladene Konfigurationsdateien:
+       - /home/thorsten/RustKurs/.agentrules
+       - /home/thorsten/RustKurs/AGENTS.md
+[INFO] Aktueller Workspace: /home/thorsten/RustKurs
+</code></pre>
+<h3 id="schritt-2-ein-neues-übungsverzeichnis-betreten"><a class="header" href="#schritt-2-ein-neues-übungsverzeichnis-betreten">Schritt 2: Ein neues Übungsverzeichnis betreten</a></h3>
+<p>Navigieren Sie in den Übungsordner für dieses Kapitel. Wenn dieser noch nicht existiert, erstellen Sie ihn:</p>
+<pre><code class="language-bash">mkdir -p /home/thorsten/RustKurs/Uebung/Uebung_14
+cd /home/thorsten/RustKurs/Uebung/Uebung_14
+cargo init --bin --name uebung_14
+</code></pre>
+<h3 id="schritt-3-einen-fehlerhaften-code-implementieren"><a class="header" href="#schritt-3-einen-fehlerhaften-code-implementieren">Schritt 3: Einen fehlerhaften Code implementieren</a></h3>
+<p>Öffnen Sie <code>src/main.rs</code> in Ihrem Editor und fügen Sie ein Programm ein, das den Benutzer nach seinem Namen fragt und ihn begrüßt. Wir bauen absichtlich einen Fehler ein: Wir vergessen das Ausrufezeichen bei der Begrüßung.</p>
+<pre class="playground"><code class="language-rust edition2021">use std::io::{self, Write};
+
+fn main() {
+    print!("Bitte geben Sie Ihren Namen ein: ");
+    io::stdout().flush().unwrap();
+
+    let mut name = String::new();
+    io::stdin().read_line(&amp;mut name).unwrap();
+    let name = name.trim();
+
+    // Fehler: Wir geben "Hallo &lt;Name&gt;" statt "Hallo &lt;Name&gt;!" aus.
+    println!("Hallo {}", name);
+}</code></pre>
+<h3 id="schritt-4-den-testlauf-starten-und-den-fehler-analysieren"><a class="header" href="#schritt-4-den-testlauf-starten-und-den-fehler-analysieren">Schritt 4: Den Testlauf starten und den Fehler analysieren</a></h3>
+<p>Führen Sie die Überprüfung im Projektverzeichnis aus:</p>
+<pre><code class="language-bash">agy verify
+</code></pre>
+<p>Das CLI blickt in die Test-Spezifikationen für Kapitel 14 und stellt fest, dass eine Eingabe von <code>"Thorsten"</code> die Ausgabe <code>"Hallo Thorsten!"</code> (mit Ausrufezeichen) erzeugen muss.</p>
+<p><strong>Ausgabe des CLI</strong>:</p>
+<pre><code class="language-text">[INFO] Kompiliere uebung_14 v0.1.0...
+[FAIL] Testfall 1: Begrüßungs-Formatierung
+       Eingabe: "Thorsten"
+       Erwartet (Soll): "Bitte geben Sie Ihren Namen ein: Hallo Thorsten!\n"
+       Erhalten (Ist):  "Bitte geben Sie Ihren Namen ein: Hallo Thorsten\n"
+                                                                        ^
+       Fehler: Zeichen fehlt am Zeilenende. Erwartet: '!', Erhalten: '\n'
+</code></pre>
+<h3 id="schritt-5-den-code-korrigieren-und-erfolgreich-validieren"><a class="header" href="#schritt-5-den-code-korrigieren-und-erfolgreich-validieren">Schritt 5: Den Code korrigieren und erfolgreich validieren</a></h3>
+<p>Ändern Sie die Zeile in <code>src/main.rs</code>, um das Ausrufezeichen hinzuzufügen:</p>
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>    // Korrigierte Zeile:
+    println!("Hallo {}!", name);
+<span class="boring">}</span></code></pre>
+<p>Starten Sie die Überprüfung erneut:</p>
+<pre><code class="language-bash">agy verify
+</code></pre>
+<p><strong>Erfolgreiche Ausgabe</strong>:</p>
+<pre><code class="language-text">[INFO] Kompiliere uebung_14 v0.1.0...
+[OK] Testfall 1: Begrüßungs-Formatierung bestanden!
+[OK] Alle Tests erfolgreich abgeschlossen!
+[INFO] Fortschritt wurde in /home/thorsten/RustKurs/AGENTS.md aktualisiert.
+       Status: Kapitel 14 abgeschlossen.
+</code></pre>
+<hr>
+<h2 id="8-mentale-modelle--deep-dive"><a class="header" href="#8-mentale-modelle--deep-dive">8. Mentale Modelle &amp; Deep Dive</a></h2>
+<h3 id="das-konzept-der-interprozesskommunikation-ipc-über-pipes"><a class="header" href="#das-konzept-der-interprozesskommunikation-ipc-über-pipes">Das Konzept der Interprozesskommunikation (IPC) über Pipes</a></h3>
+<p>Ein wichtiges mentales Modell ist das Verständnis von File-Deskriptoren und Standard-Streams unter Betriebssystemen. Jedes Mal, wenn ein Prozess gestartet wird, stellt das Betriebssystem ihm standardmäßig drei Kanäle (Kanäle zur Außenwelt) zur Verfügung:</p>
 <div class="table-wrapper">
 <table>
 <thead>
-<tr><th style="text-align: left">Befehl</th><th style="text-align: left">Was er macht</th></tr>
+<tr><th style="text-align: left">Deskriptor</th><th style="text-align: left">Name</th><th style="text-align: left">Standard-Ziel</th><th style="text-align: left">Verwendung in Rust</th></tr>
 </thead>
 <tbody>
-<tr><td style="text-align: left"><strong><code>/settings</code></strong> (oder <code>/config</code>)</td><td style="text-align: left">Öffnet die Einstellungen (Farben, Profile etc.).</td></tr>
-<tr><td style="text-align: left"><strong><code>/keybindings</code></strong></td><td style="text-align: left">Öffnet einen Editor für Tastatur-Shortcuts.</td></tr>
-<tr><td style="text-align: left"><strong><code>/permissions</code></strong></td><td style="text-align: left">Zeigt an, welche Rechte der Agent gerade hat (z. B. Schreibrechte).</td></tr>
-<tr><td style="text-align: left"><strong><code>/skills</code></strong></td><td style="text-align: left">Listet alle geladenen Fähigkeiten (Custom Skills) auf.</td></tr>
-<tr><td style="text-align: left"><strong><code>/clear</code></strong></td><td style="text-align: left">Löscht den aktuellen Chat-Verlauf und setzt das Gedächtnis des Agenten zurück.</td></tr>
-<tr><td style="text-align: left"><strong><code>/exit</code></strong></td><td style="text-align: left">Beendet das Programm.</td></tr>
+<tr><td style="text-align: left"><code>0</code></td><td style="text-align: left"><code>stdin</code></td><td style="text-align: left">Tastatur (Eingabe)</td><td style="text-align: left"><code>std::io::stdin()</code></td></tr>
+<tr><td style="text-align: left"><code>1</code></td><td style="text-align: left"><code>stdout</code></td><td style="text-align: left">Bildschirm (Ausgabe)</td><td style="text-align: left"><code>print!</code>, <code>println!</code></td></tr>
+<tr><td style="text-align: left"><code>2</code></td><td style="text-align: left"><code>stderr</code></td><td style="text-align: left">Bildschirm (Fehlerausgabe)</td><td style="text-align: left"><code>eprint!</code>, <code>eprintln!</code></td></tr>
 </tbody>
 </table>
 </div>
+<p>Das Kurs-CLI manipuliert diese Deskriptoren vor dem Start Ihres Programms. Es nutzt Systemaufrufe (wie <code>dup2</code> unter Unix), um die Standardkanäle des neu erzeugten Kindprozesses in Puffer-Speicherbereiche des CLI-Elternprozesses umzuleiten.</p>
+<p>Dadurch wird eine <strong>Sandbox</strong> realisiert. Ihr Programm weiß nicht, dass es in einer Sandbox läuft; es schreibt weiterhin naiv auf Deskriptor <code>1</code>. Aber das Betriebssystem leitet die geschriebenen Bytes physikalisch in den Speicher des CLI um, wo sie analysiert werden können.</p>
 <hr>
-<h2 id="5-wo-werden-einstellungen-und-protokolle-gespeichert-pfade"><a class="header" href="#5-wo-werden-einstellungen-und-protokolle-gespeichert-pfade">5. Wo werden Einstellungen und Protokolle gespeichert? (Pfade)</a></h2>
-<p>Das CLI legt alle wichtigen Konfigurationen und Logdaten an einem zentralen Ort in deinem Benutzerverzeichnis ab: <code>~/.gemini/antigravity-cli/</code> (unter Windows <code>C:\Users\DeinName\.gemini\antigravity-cli\</code>).</p>
-<p>Dort findest du:</p>
+<h3 id="exhaustive-api-referenz-der-rust-prozesssteuerung"><a class="header" href="#exhaustive-api-referenz-der-rust-prozesssteuerung">Exhaustive API-Referenz der Rust-Prozesssteuerung</a></h3>
+<p>Wenn Sie ein eigenes CLI-Tool schreiben möchten, das andere Programme steuert und testet, stellt Ihnen die Standardbibliothek von Rust im Modul <code>std::process</code> alle notwendigen Werkzeuge bereit. Im Folgenden werden alle relevanten Typen und Methoden dieses Moduls detailliert dokumentiert.</p>
+<h4 id="1-stdprocesscommand"><a class="header" href="#1-stdprocesscommand">1. <code>std::process::Command</code></a></h4>
+<p>Dieser Struct dient als Builder für die Konfiguration und das Starten von Betriebssystem-Prozessen.</p>
+<hr>
+<h5 id="methode-commandnew"><a class="header" href="#methode-commandnew">Methode: <code>Command::new</code></a></h5>
+<ul>
+<li><strong>Signatur</strong>: <code>pub fn new&lt;S: AsRef&lt;OsStr&gt;&gt;(program: S) -&gt; Command</code></li>
+<li><strong>Parameter</strong>:
+<ul>
+<li><code>program</code>: Der Name oder Pfad des auszuführenden Programms (z. B. <code>"cargo"</code> oder <code>"/usr/bin/git"</code>). Übergabe als Referenz, die in ein Betriebssystem-spezifisches String-Format (<code>OsStr</code>) konvertiert werden kann.</li>
+</ul>
+</li>
+<li><strong>Rückgabetyp</strong>: Eine neue <code>Command</code>-Instanz mit Standard-Konfigurationen.</li>
+<li><strong>Sicherheitsaspekte &amp; Panics</strong>: Panikt nicht selbst, aber der spätere Start schlägt fehl, wenn das Programm nicht existiert oder die Berechtigungen fehlen.</li>
+<li><strong>Kurzbeispiel</strong>:
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>use std::process::Command;
+let mut cmd = Command::new("cargo");
+<span class="boring">}</span></code></pre>
+</li>
+</ul>
+<hr>
+<h5 id="methode-commandarg"><a class="header" href="#methode-commandarg">Methode: <code>Command::arg</code></a></h5>
+<ul>
+<li><strong>Signatur</strong>: <code>pub fn arg&lt;S: AsRef&lt;OsStr&gt;&gt;(&amp;mut self, arg: S) -&gt; &amp;mut Command</code></li>
+<li><strong>Parameter</strong>:
+<ul>
+<li><code>arg</code>: Ein einzelnes Argument, das an das Programm übergeben werden soll (z. B. <code>"build"</code>).</li>
+</ul>
+</li>
+<li><strong>Rückgabetyp</strong>: Eine veränderbare Referenz auf sich selbst (<code>&amp;mut Command</code>), um Methoden-Chaining zu ermöglichen.</li>
+<li><strong>Sicherheitsaspekte &amp; Panics</strong>: Argumente werden sicher an das Betriebssystem übergeben. Es besteht keine Gefahr von Command Injection (wie bei Systemaufrufen in C/C++), da Argumente nicht über eine Shell geparst werden.</li>
+<li><strong>Kurzbeispiel</strong>:
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>use std::process::Command;
+let mut cmd = Command::new("cargo");
+cmd.arg("build").arg("--release");
+<span class="boring">}</span></code></pre>
+</li>
+</ul>
+<hr>
+<h5 id="methode-commandargs"><a class="header" href="#methode-commandargs">Methode: <code>Command::args</code></a></h5>
+<ul>
+<li><strong>Signatur</strong>: <code>pub fn args&lt;I, S&gt;(&amp;mut self, args: I) -&gt; &amp;mut Command where I: IntoIterator&lt;Item = S&gt;, S: AsRef&lt;OsStr&gt;</code></li>
+<li><strong>Parameter</strong>:
+<ul>
+<li><code>args</code>: Ein Iterator über mehrere Argumente (z. B. ein Array oder ein Vektor von Strings).</li>
+</ul>
+</li>
+<li><strong>Rückgabetyp</strong>: Eine veränderbare Referenz auf sich selbst (<code>&amp;mut Command</code>).</li>
+<li><strong>Sicherheitsaspekte &amp; Panics</strong>: Keine.</li>
+<li><strong>Kurzbeispiel</strong>:
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>use std::process::Command;
+let mut cmd = Command::new("cargo");
+cmd.args(["test", "--no-run"]);
+<span class="boring">}</span></code></pre>
+</li>
+</ul>
+<hr>
+<h5 id="methode-commandstdout"><a class="header" href="#methode-commandstdout">Methode: <code>Command::stdout</code></a></h5>
+<ul>
+<li><strong>Signatur</strong>: <code>pub fn stdout&lt;T: Into&lt;Stdio&gt;&gt;(&amp;mut self, cfg: T) -&gt; &amp;mut Command</code></li>
+<li><strong>Parameter</strong>:
+<ul>
+<li><code>cfg</code>: Die Konfiguration für den Standard-Ausgabe-Stream. Kann ein <code>Stdio</code>-Objekt sein (z. B. <code>Stdio::piped()</code>, <code>Stdio::null()</code>, <code>Stdio::inherit()</code>).</li>
+</ul>
+</li>
+<li><strong>Rückgabetyp</strong>: Eine veränderbare Referenz auf sich selbst (<code>&amp;mut Command</code>).</li>
+<li><strong>Sicherheitsaspekte &amp; Panics</strong>: Keine.</li>
+<li><strong>Kurzbeispiel</strong>:
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>use std::process::{Command, Stdio};
+let mut cmd = Command::new("cargo");
+cmd.stdout(Stdio::piped());
+<span class="boring">}</span></code></pre>
+</li>
+</ul>
+<hr>
+<h5 id="methode-commandoutput"><a class="header" href="#methode-commandoutput">Methode: <code>Command::output</code></a></h5>
+<ul>
+<li><strong>Signatur</strong>: <code>pub fn output(&amp;mut self) -&gt; Result&lt;Output, Error&gt;</code></li>
+<li><strong>Parameter</strong>: Keine.</li>
+<li><strong>Rückgabetyp</strong>: <code>Result&lt;Output, std::io::Error&gt;</code>. Im Erfolgsfall enthält das <code>Output</code>-Objekt den Exit-Status, alle stdout-Bytes und alle stderr-Bytes.</li>
+<li><strong>Sicherheitsaspekte &amp; Panics</strong>: Blockiert den aktuellen Thread vollständig, bis der gestartete Prozess beendet ist. Achtung bei unendlichen Schleifen im Kindprozess: Dies blockiert auch Ihr Hauptprogramm dauerhaft.</li>
+<li><strong>Kurzbeispiel</strong>:
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>use std::process::Command;
+let output = Command::new("rustc").arg("--version").output().unwrap();
+assert!(output.status.success());
+<span class="boring">}</span></code></pre>
+</li>
+</ul>
+<hr>
+<h5 id="methode-commandstatus"><a class="header" href="#methode-commandstatus">Methode: <code>Command::status</code></a></h5>
+<ul>
+<li><strong>Signatur</strong>: <code>pub fn status(&amp;mut self) -&gt; Result&lt;ExitStatus, Error&gt;</code></li>
+<li><strong>Parameter</strong>: Keine.</li>
+<li><strong>Rückgabetyp</strong>: <code>Result&lt;ExitStatus, std::io::Error&gt;</code>. Gibt nur den Beendigungsstatus zurück, leitet aber stdout und stderr an das übergeordnete Terminal weiter.</li>
+<li><strong>Sicherheitsaspekte &amp; Panics</strong>: Blockiert ebenfalls bis zur Beendigung des Prozesses.</li>
+<li><strong>Kurzbeispiel</strong>:
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>use std::process::Command;
+let status = Command::new("cargo").arg("check").status().unwrap();
+println!("Kompiliert mit Status: {}", status);
+<span class="boring">}</span></code></pre>
+</li>
+</ul>
+<hr>
+<h5 id="methode-commandspawn"><a class="header" href="#methode-commandspawn">Methode: <code>Command::spawn</code></a></h5>
+<ul>
+<li><strong>Signatur</strong>: <code>pub fn spawn(&amp;mut self) -&gt; Result&lt;Child, Error&gt;</code></li>
+<li><strong>Parameter</strong>: Keine.</li>
+<li><strong>Rückgabetyp</strong>: <code>Result&lt;Child, std::io::Error&gt;</code>. Startet den Prozess asynchron im Hintergrund und gibt ein <code>Child</code>-Handle zurück, mit dem der Prozess kontrolliert werden kann.</li>
+<li><strong>Sicherheitsaspekte &amp; Panics</strong>: Blockiert nicht. Wenn das Kind-Handle fallengelassen wird (<code>drop</code>), läuft der Prozess im Hintergrund weiter. Er wird zum Zombie-Prozess, wenn er endet und nicht über <code>wait()</code> abgerufen wird.</li>
+<li><strong>Kurzbeispiel</strong>:
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>use std::process::Command;
+let child = Command::new("cargo").arg("run").spawn().unwrap();
+<span class="boring">}</span></code></pre>
+</li>
+</ul>
+<hr>
+<h4 id="2-stdprocesschild"><a class="header" href="#2-stdprocesschild">2. <code>std::process::Child</code></a></h4>
+<p>Repräsentiert einen im Hintergrund laufenden Prozess.</p>
+<hr>
+<h5 id="methode-childwait"><a class="header" href="#methode-childwait">Methode: <code>Child::wait</code></a></h5>
+<ul>
+<li><strong>Signatur</strong>: <code>pub fn wait(&amp;mut self) -&gt; Result&lt;ExitStatus, Error&gt;</code></li>
+<li><strong>Parameter</strong>: Keine.</li>
+<li><strong>Rückgabetyp</strong>: <code>Result&lt;ExitStatus, std::io::Error&gt;</code>. Blockiert den aufrufenden Thread, bis der Kindprozess beendet ist, und gibt den Exit-Status zurück. Bereinigt die Systemressourcen des Prozesses.</li>
+<li><strong>Sicherheitsaspekte &amp; Panics</strong>: Zwingend erforderlich, um Zombie-Prozesse unter Unix-Systemen zu vermeiden.</li>
+<li><strong>Kurzbeispiel</strong>:
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>use std::process::Command;
+let mut child = Command::new("sleep").arg("1").spawn().unwrap();
+let status = child.wait().unwrap();
+<span class="boring">}</span></code></pre>
+</li>
+</ul>
+<hr>
+<h5 id="methode-childkill"><a class="header" href="#methode-childkill">Methode: <code>Child::kill</code></a></h5>
+<ul>
+<li><strong>Signatur</strong>: <code>pub fn kill(&amp;mut self) -&gt; Result&lt;(), Error&gt;</code></li>
+<li><strong>Parameter</strong>: Keine.</li>
+<li><strong>Rückgabetyp</strong>: <code>Result&lt;(), std::io::Error&gt;</code>. Sendet das Signal zum sofortigen Abbruch an den Prozess (unter Unix <code>SIGKILL</code>, unter Windows <code>TerminateProcess</code>).</li>
+<li><strong>Sicherheitsaspekte &amp; Panics</strong>: Der Prozess wird augenblicklich beendet. Eventuell geöffnete Dateien oder Netzwerkverbindungen im Kindprozess werden vom Betriebssystem geschlossen, können aber in unsauberem Zustand verbleiben.</li>
+<li><strong>Kurzbeispiel</strong>:
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>use std::process::Command;
+let mut child = Command::new("loop_forever").spawn().unwrap();
+child.kill().unwrap();
+<span class="boring">}</span></code></pre>
+</li>
+</ul>
+<hr>
+<h5 id="methode-childwait_with_output"><a class="header" href="#methode-childwait_with_output">Methode: <code>Child::wait_with_output</code></a></h5>
+<ul>
+<li><strong>Signatur</strong>: <code>pub fn wait_with_output(self) -&gt; Result&lt;Output, Error&gt;</code></li>
+<li><strong>Parameter</strong>:
+<ul>
+<li><code>self</code>: Konsumiert das <code>Child</code>-Objekt (Besitzübernahme).</li>
+</ul>
+</li>
+<li><strong>Rückgabetyp</strong>: <code>Result&lt;Output, std::io::Error&gt;</code>. Sammelt alle verbleibenden Ausgaben aus den Pipes und beendet die Überwachung.</li>
+<li><strong>Sicherheitsaspekte &amp; Panics</strong>: Verhindert Deadlocks, die auftreten können, wenn der Kindprozess blockiert, weil sein Ausgabepuffer voll ist, während der Elternprozess auf das Ende wartet.</li>
+<li><strong>Kurzbeispiel</strong>:
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>use std::process::{Command, Stdio};
+let child = Command::new("rustc").arg("--version").stdout(Stdio::piped()).spawn().unwrap();
+let output = child.wait_with_output().unwrap();
+<span class="boring">}</span></code></pre>
+</li>
+</ul>
+<hr>
+<h4 id="3-stdprocessstdio"><a class="header" href="#3-stdprocessstdio">3. <code>std::process::Stdio</code></a></h4>
+<p>Definiert das Verhalten der Standard-Datenströme eines Kindprozesses.</p>
+<ul>
+<li><strong><code>Stdio::piped()</code></strong>: Erstellt eine Pipe zwischen Eltern- und Kindprozess. Ermöglicht dem Elternprozess das Schreiben nach <code>stdin</code> und das Lesen aus <code>stdout</code>/<code>stderr</code>.</li>
+<li><strong><code>Stdio::null()</code></strong>: Leitet den Stream in das Null-Gerät des Betriebssystems um (z. B. <code>/dev/null</code> unter Linux, <code>NUL</code> unter Windows). Alle geschriebenen Daten verpuffen, Eingaben liefern sofort ein EOF (End of File).</li>
+<li><strong><code>Stdio::inherit()</code></strong>: Der Kindprozess erbt die Streams des Elternprozesses. Ausgaben werden direkt in dasselbe Terminal geschrieben.</li>
+</ul>
+<hr>
+<h4 id="4-stdprocessexitstatus"><a class="header" href="#4-stdprocessexitstatus">4. <code>std::process::ExitStatus</code></a></h4>
+<p>Repräsentiert das Ergebnis der Beendigung eines Prozesses.</p>
+<ul>
+<li><strong><code>ExitStatus::success(&amp;self)</code></strong>: Gibt <code>true</code> zurück, wenn der Prozess erfolgreich beendet wurde (Exit-Code <code>0</code>).</li>
+<li><strong><code>ExitStatus::code(&amp;self)</code></strong>: Gibt den tatsächlichen Exit-Code als <code>Option&lt;i32&gt;</code> zurück. Kann unter Unix <code>None</code> sein, wenn der Prozess durch ein Signal (z. B. <code>SIGKILL</code>) gewaltsam beendet wurde.</li>
+</ul>
+<hr>
+<h2 id="9-drei-praktische-übungen"><a class="header" href="#9-drei-praktische-übungen">9. Drei praktische Übungen</a></h2>
+<h3 id="übung-1-leicht-cli-status-auslesen-und-analysieren"><a class="header" href="#übung-1-leicht-cli-status-auslesen-und-analysieren">Übung 1 (Leicht): CLI-Status auslesen und analysieren</a></h3>
+<ul>
+<li><strong>Anforderung</strong>: Schreiben Sie ein kurzes Rust-Programm, das das Kurs-CLI aufruft, um dessen Konfiguration und Version im JSON-Format auszulesen. Das Programm soll prüfen, ob der Aufruf erfolgreich war. Wenn ja, soll die rohe JSON-Ausgabe auf der Konsole ausgegeben werden. Wenn nein, soll eine Fehlermeldung ausgegeben werden.</li>
+<li><strong>Erwartete CLI-Befehlskette</strong>: <code>agy inspect --format=json</code></li>
+<li><strong>Lösungshinweis</strong>: Nutzen Sie <code>Command::new("agy")</code> und übergeben Sie die Argumente <code>inspect</code> und <code>--format=json</code>. Fangen Sie die Ausgabe mit <code>output()</code> ab und konvertieren Sie die Bytes in einen UTF-8-String.</li>
+</ul>
+<hr>
+<h3 id="übung-2-mittel-cargo-test-integration"><a class="header" href="#übung-2-mittel-cargo-test-integration">Übung 2 (Mittel): Cargo-Test-Integration</a></h3>
+<ul>
+<li><strong>Anforderung</strong>: Erweitern Sie Ihre Übungsaufgabe 14 so, dass Sie einen echten, automatisierten Unit-Test in den Rust-Code integrieren. Schreiben Sie eine Hilfsfunktion <code>begruessung(name: &amp;str) -&gt; String</code>, die den Begrüßungstext generiert. Schreiben Sie einen Unit-Test unter dem Attribut <code>#[test]</code>, der verifiziert, dass die Eingabe <code>"Thorsten"</code> exakt <code>"Hallo Thorsten!"</code> ergibt. Das Kurs-CLI wird beim Testlauf diesen Test automatisch ausführen.</li>
+<li><strong>Lösungshinweis</strong>: Erstellen Sie ein Test-Modul <code>tests</code> mit der Annotation <code>#[cfg(test)]</code> und einer Testfunktion, die mit <code>assert_eq!</code> arbeitet.</li>
+</ul>
+<hr>
+<h3 id="übung-3-schwer-ein-eigener-mini-testrunner-in-rust"><a class="header" href="#übung-3-schwer-ein-eigener-mini-testrunner-in-rust">Übung 3 (Schwer): Ein eigener Mini-Testrunner in Rust</a></h3>
+<ul>
+<li>
+<p><strong>Anforderung</strong>: Schreiben Sie ein vollständiges, eigenständiges Rust-Programm, das als Mini-Testrunner fungiert. Ihr Programm soll:</p>
 <ol>
-<li><strong><code>settings.json</code></strong>: Deine persönlichen Einstellungen (z. B. Farbthema).</li>
-<li><strong><code>brain/&lt;sitzungs-id&gt;/</code></strong>: Die Protokolle (Transkripte) deiner Chats. Sehr nützlich, um später nachzulesen, was der Agent getan hat.</li>
-<li><strong><code>plugins/</code></strong>: Ordner für Erweiterungen und Anbindungen an andere Tools (MCP-Server).</li>
+<li>Das Rust-Projekt im Unterordner <code>/home/thorsten/RustKurs/Uebung/Uebung_14</code> kompilieren, indem es <code>cargo build</code> ausführt.</li>
+<li>Den Exit-Code der Kompilierung prüfen. War er nicht erfolgreich, soll das Programm abbrechen.</li>
+<li>Die kompilierte Binärdatei asynchron im Hintergrund starten (<code>spawn</code>).</li>
+<li>Dem gestarteten Prozess den String <code>"Peter\n"</code> an seinen <code>stdin</code>-Kanal senden.</li>
+<li>Einen Timeout-Mechanismus implementieren: Wartet maximal 2 Sekunden auf die Beendigung des Prozesses. Läuft er länger, soll er gewaltsam beendet werden (<code>kill</code>).</li>
+<li>Die Ausgabe (<code>stdout</code>) des Prozesses abfangen und prüfen, ob sie die Zeichenkette <code>"Hallo Peter!"</code> enthält.</li>
+<li>Das Ergebnis auf dem Bildschirm ausgeben (“Test BESTANDEN” oder “Test FEHLGESCHLAGEN”).</li>
 </ol>
-<hr>
-<h2 id="6-leitplanken-setzen-agentsmd--skillsmd"><a class="header" href="#6-leitplanken-setzen-agentsmd--skillsmd">6. Leitplanken setzen: <code>AGENTS.md</code> &amp; <code>SKILLS.md</code></a></h2>
-<p>Damit der Agent nicht unkontrolliert Dateien in deinem Projekt ändert, kannst du ihm über zwei einfache Textdateien in deinem Projektordner feste Regeln und Fähigkeiten vorgeben.</p>
-<h3 id="61-agentsmd--die-hausordnung-für-dein-projekt"><a class="header" href="#61-agentsmd--die-hausordnung-für-dein-projekt">6.1 <code>AGENTS.md</code> – Die Hausordnung für dein Projekt</a></h3>
-<p>Diese Datei legst du direkt im Hauptverzeichnis deines Projekts ab. Der Agent liest sie bei jedem Start automatisch.</p>
-<ul>
-<li><strong>Zweck</strong>: Du sagst dem Agenten, wie er Code formatieren soll, wo er schreiben darf und welche Verzeichnisbereiche für ihn tabu sind.</li>
-<li><strong>Vorteil</strong>: Er hält sich automatisch an deine Programmierstandards.</li>
-</ul>
-<h3 id="62-skillsmd--die-arbeitsanweisungen-playbooks"><a class="header" href="#62-skillsmd--die-arbeitsanweisungen-playbooks">6.2 <code>SKILLS.md</code> – Die Arbeitsanweisungen (Playbooks)</a></h3>
-<p>Hier definierst du feste Arbeitsabläufe (sogenannte Skills), die der Agent auf Knopfdruck ausführen kann.</p>
-<ul>
-<li><strong>Beispiel</strong>: Ein Skill namens <code>@run-tests</code>, der erst das Projekt kompiliert und dann die Tests startet.</li>
-<li><em>Tipp</em>: Eigene Skills werden im Projektordner unter <code>.agents/skills/</code> abgelegt und können im Prompt mit <code>@name</code> aufgerufen werden.</li>
+</li>
+<li>
+<p><strong>Lösungshinweis</strong>:
+Sie müssen <code>Stdio::piped()</code> für alle drei Streams verwenden. Um Daten an <code>stdin</code> zu senden, greifen Sie auf <code>child.stdin.as_mut()</code> zu und schreiben Sie Bytes hinein. Nutzen Sie einen separaten Thread oder die Methode <code>std::thread::sleep</code>, um den Timeout zu simulieren, falls das Betriebssystem keine asynchronen Timeouts unterstützt.</p>
+</li>
 </ul>
 <hr>
-<h2 id="7-subagenten-arbeit-im-team-delegieren"><a class="header" href="#7-subagenten-arbeit-im-team-delegieren">7. Subagenten: Arbeit im Team delegieren</a></h2>
-<p>Manche Aufgaben sind zu groß oder riskant für einen einzelnen Agenten. Deshalb kann der Hauptagent im Hintergrund <strong>Subagenten</strong> (Unter-Agenten) starten und ihnen Teilaufgaben übertragen.</p>
-<h3 id="71-die-3-workspace-modi-wo-arbeitet-der-subagent"><a class="header" href="#71-die-3-workspace-modi-wo-arbeitet-der-subagent">7.1 Die 3 Workspace-Modi (Wo arbeitet der Subagent?)</a></h3>
-<p>Damit ein Subagent nicht versehentlich deinen Code überschreibt, während er etwas testet, gibt es drei Modi für seine Arbeitsumgebung:</p>
+<h2 id="lösungen-zu-den-übungen"><a class="header" href="#lösungen-zu-den-übungen">Lösungen zu den Übungen</a></h2>
+<p>Hier finden Sie die vollständigen, lauffähigen Implementierungen zu den Übungen.</p>
+<h3 id="lösung-zu-übung-1-leicht"><a class="header" href="#lösung-zu-übung-1-leicht">Lösung zu Übung 1 (Leicht)</a></h3>
+<pre class="playground"><code class="language-rust edition2021">use std::process::Command;
+use std::str;
+
+fn main() {
+    println!("Lese CLI-Konfiguration aus...");
+
+    // Wir konfigurieren den Befehl: 'agy inspect --format=json'
+    let ergebnis = Command::new("agy")
+        .arg("inspect")
+        .arg("--format=json")
+        .output();
+
+    match ergebnis {
+        Ok(output) =&gt; {
+            if output.status.success() {
+                // Konvertierung der stdout-Bytes in einen String
+                match str::from_utf8(&amp;output.stdout) {
+                    Ok(json_text) =&gt; {
+                        println!("Erfolgreich ausgelesen. JSON-Ausgabe:\n{}", json_text);
+                    }
+                    Err(fehler) =&gt; {
+                        eprintln!("Fehler bei der UTF-8 Konvertierung: {}", fehler);
+                    }
+                }
+            } else {
+                // Der Prozess lieferte einen Exit-Code != 0
+                let fehler_text = str::from_utf8(&amp;output.stderr)
+                    .unwrap_or("Unbekannter Fehler im Stderr-Kanal");
+                eprintln!("CLI meldete einen Fehler (Exit-Code: {:?}):", output.status.code());
+                eprintln!("{}", fehler_text);
+            }
+        }
+        Err(fehler) =&gt; {
+            // Der Prozess konnte gar nicht erst gestartet werden
+            eprintln!("Das Kurs-CLI 'agy' konnte nicht gestartet werden.");
+            eprintln!("Ist das Tool installiert und im PATH registriert?");
+            eprintln!("Details zum Systemfehler: {}", fehler);
+        }
+    }
+}</code></pre>
+<hr>
+<h3 id="lösung-zu-übung-2-mittel"><a class="header" href="#lösung-zu-übung-2-mittel">Lösung zu Übung 2 (Mittel)</a></h3>
+<pre class="playground"><code class="language-rust edition2021">use std::io::{self, Write};
+
+// Die ausgelagerte Business-Logik
+pub fn generiere_begruessung(name: &amp;str) -&gt; String {
+    format!("Hallo {}!", name)
+}
+
+fn main() {
+    print!("Bitte geben Sie Ihren Namen ein: ");
+    if let Err(fehler) = io::stdout().flush() {
+        eprintln!("Fehler beim Flushen von stdout: {}", fehler);
+        return;
+    }
+
+    let mut name = String::new();
+    if let Err(fehler) = io::stdin().read_line(&amp;mut name) {
+        eprintln!("Fehler beim Lesen der Eingabe: {}", fehler);
+        return;
+    }
+    
+    let name_bereinigt = name.trim();
+    let ausgabe = generiere_begruessung(name_bereinigt);
+    println!("{}", ausgabe);
+}
+
+// Das Test-Modul für die automatisierte Überprüfung
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_begruessung_standard() {
+        let ergebnis = generiere_begruessung("Thorsten");
+        assert_eq!(ergebnis, "Hallo Thorsten!");
+    }
+
+    #[test]
+    fn test_begruessung_leer() {
+        let ergebnis = generiere_begruessung("");
+        assert_eq!(ergebnis, "Hallo !");
+    }
+}</code></pre>
+<hr>
+<h3 id="lösung-zu-übung-3-schwer"><a class="header" href="#lösung-zu-übung-3-schwer">Lösung zu Übung 3 (Schwer)</a></h3>
+<pre class="playground"><code class="language-rust edition2021">use std::io::{Read, Write};
+use std::process::{Command, Stdio};
+use std::thread;
+use std::time::Duration;
+
+fn main() {
+    println!("=== EIGENER MINI-TESTRUNNER ===");
+
+    // Schritt 1: Kompilierung des Zielprojekts
+    println!("1. Kompiliere das Zielprojekt...");
+    let compile_status = Command::new("cargo")
+        .args(["build", "--manifest-path", "/home/thorsten/RustKurs/Uebung/Uebung_14/Cargo.toml"])
+        .status();
+
+    match compile_status {
+        Ok(status) if status.success() =&gt; {
+            println!("[OK] Kompilierung erfolgreich.");
+        }
+        _ =&gt; {
+            eprintln!("[FAIL] Kompilierung fehlgeschlagen. Abbruch.");
+            return;
+        }
+    }
+
+    // Schritt 2: Kindprozess asynchron starten und Pipes einrichten
+    println!("2. Starte die Binärdatei...");
+    let binary_path = "/home/thorsten/RustKurs/Uebung/Uebung_14/target/debug/uebung_14";
+    let child_res = Command::new(binary_path)
+        .stdin(Stdio::piped())
+        .stdout(Stdio::piped())
+        .stderr(Stdio::piped())
+        .spawn();
+
+    let mut child = match child_res {
+        Ok(c) =&gt; c,
+        Err(e) =&gt; {
+            eprintln!("[FAIL] Prozess konnte nicht gestartet werden: {}", e);
+            return;
+        }
+    };
+
+    // Schritt 3: Eingabe an den Kindprozess senden
+    println!("3. Sende Eingabe 'Peter'...");
+    {
+        // Wir begrenzen den Scope, damit stdin nach dem Schreiben geschlossen (drop) wird.
+        // Das signalisiert dem Kindprozess das Ende der Eingabe.
+        let child_stdin = child.stdin.as_mut().expect("Kanal stdin konnte nicht geöffnet werden");
+        if let Err(e) = child_stdin.write_all(b"Peter\n") {
+            eprintln!("[FAIL] Schreiben in stdin fehlgeschlagen: {}", e);
+            let _ = child.kill();
+            return;
+        }
+    }
+
+    // Schritt 4: Timeout-Mechanismus implementieren (2 Sekunden)
+    println!("4. Überwache Prozess (Timeout: 2s)...");
+    let mut prozess_beendet = false;
+    for _ in 0..20 { // 20 * 100ms = 2000ms
+        match child.try_wait() {
+            Ok(Some(_status)) =&gt; {
+                prozess_beendet = true;
+                break;
+            }
+            Ok(None) =&gt; {
+                thread::sleep(Duration::from_millis(100));
+            }
+            Err(e) =&gt; {
+                eprintln!("Fehler beim Abfragen des Prozessstatus: {}", e);
+                let _ = child.kill();
+                return;
+            }
+        }
+    }
+
+    if !prozess_beendet {
+        eprintln!("[FAIL] Timeout überschritten! Beende Prozess gewaltsam.");
+        let _ = child.kill();
+        return;
+    }
+
+    // Schritt 5: Ausgaben auslesen und validieren
+    println!("5. Analysiere Programmausgabe...");
+    let mut output = Vec::new();
+    if let Some(mut child_stdout) = child.stdout {
+        if let Err(e) = child_stdout.read_to_end(&amp;mut output) {
+            eprintln!("Fehler beim Lesen von stdout: {}", e);
+            return;
+        }
+    }
+
+    let ausgabe_str = String::from_utf8_lossy(&amp;output);
+    println!("Erhaltene Programmausgabe:\n-----------------\n{}\n-----------------", ausgabe_str);
+
+    // Validierungs-Prüfung
+    if ausgabe_str.contains("Hallo Peter!") {
+        println!("\n&gt;&gt;&gt; Ergebnis: Test BESTANDEN! &lt;&lt;&lt;");
+    } else {
+        println!("\n&gt;&gt;&gt; Ergebnis: Test FEHLGESCHLAGEN! (Erwarteter String nicht gefunden) &lt;&lt;&lt;");
+    }
+}</code></pre>
+<hr>
+<h2 id="10-lernstrategie-selbsteinschätzung--merkzettel"><a class="header" href="#10-lernstrategie-selbsteinschätzung--merkzettel">10. Lernstrategie, Selbsteinschätzung &amp; Merkzettel</a></h2>
+<h3 id="spickzettel-cheat-sheet"><a class="header" href="#spickzettel-cheat-sheet">Spickzettel (Cheat Sheet)</a></h3>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th style="text-align: left">Befehl</th><th style="text-align: left">Parameter / Option</th><th style="text-align: left">Beschreibung</th></tr>
+</thead>
+<tbody>
+<tr><td style="text-align: left"><code>agy inspect</code></td><td style="text-align: left">Keine</td><td style="text-align: left">Analysiert den aktuellen Workspace und listet aktive Governance-Regeln auf.</td></tr>
+<tr><td style="text-align: left"><code>agy inspect</code></td><td style="text-align: left"><code>--format=json</code></td><td style="text-align: left">Gibt die Workspace-Konfiguration im maschinenlesbaren JSON-Format aus.</td></tr>
+<tr><td style="text-align: left"><code>agy verify</code></td><td style="text-align: left">Keine</td><td style="text-align: left">Startet den automatisierten Kompilierungs-, Linter- und Testlauf für das Projekt.</td></tr>
+<tr><td style="text-align: left"><code>agy verify</code></td><td style="text-align: left"><code>--timeout &lt;ms&gt;</code></td><td style="text-align: left">Definiert ein abweichendes Zeitlimit für die Sandbox-Ausführung (in Millisekunden).</td></tr>
+<tr><td style="text-align: left"><code>agy --version</code></td><td style="text-align: left">Keine</td><td style="text-align: left">Gibt die installierte Versionsnummer des Kurs-CLI und die Zielarchitektur aus.</td></tr>
+</tbody>
+</table>
+</div>
+<h3 id="active-recall-selbsttest"><a class="header" href="#active-recall-selbsttest">Active Recall (Selbsttest)</a></h3>
+<p>Formulieren Sie im Kopf oder schriftlich Antworten auf folgende Fragen:</p>
 <ol>
-<li><strong><code>inherit</code> (Vererben/Teilen)</strong>:
-<ul>
-<li><em>Wie es funktioniert</em>: Der Subagent arbeitet im selben Ordner wie du und der Hauptagent.</li>
-<li><em>Ideal für</em>: Schnelle Suchen oder kleine Dateiänderungen.</li>
-</ul>
-</li>
-<li><strong><code>branch</code> (Kopie erstellen)</strong>:
-<ul>
-<li><em>Wie es funktioniert</em>: Es wird eine komplette, isolierte Kopie deines Projektordners erstellt.</li>
-<li><em>Ideal für</em>: Riskante Experimente. Der Subagent kann dort Code ändern und kompilieren, ohne dass deine Arbeitsdateien verändert werden.</li>
-</ul>
-</li>
-<li><strong><code>share</code> (Geteiltes Arbeiten)</strong>:
-<ul>
-<li><em>Wie es funktioniert</em>: Ähnlich wie ein <code>git worktree</code>. Der Subagent arbeitet auf einem anderen Zweig (Branch) deines Git-Projekts im selben Speicherplatz.</li>
-<li><em>Ideal für</em>: Paralleles Arbeiten an verschiedenen Features ohne Datenmüll oder lange Kopierzeiten.</li>
-</ul>
-</li>
+<li><strong>Warum ist die Sandbox-Umgebung des Kurs-CLI für die Ausführung fremden oder fehlerhaften Codes wichtig?</strong>
+<em>(Antwort: Sie isoliert das Programm vom Wirtssystem. Dadurch wird verhindert, dass eine Endlosschleife die CPU blockiert, das Programm zu viel RAM verbraucht oder versehentlich wichtige Systemdateien modifiziert oder löscht.)</em></li>
+<li><strong>Was unterscheidet eine Pipe im Betriebssystem von einer normalen Umleitung in eine Datei?</strong>
+<em>(Antwort: Eine Pipe ist ein flüchtiger Puffer im RAM des Kernels. Die Daten werden direkt im Speicher vom Schreibprozess an den Leseprozess übergeben, ohne dass sie auf die Festplatte geschrieben werden müssen. Das ist extrem schnell und hinterlässt keine Reste im Dateisystem.)</em></li>
+<li><strong>Wie verhält sich ein Rust-Programm bezüglich der Ausgabepufferung, wenn es direkt im interaktiven Terminal gestartet wird, im Vergleich zu einer Ausführung über eine Pipe?</strong>
+<em>(Antwort: Im interaktiven Terminal ist <code>stdout</code> meist Line-Buffered (Ausgabe erfolgt spätestens beim <code>\n</code>). Wird es in eine Pipe umgeleitet, schaltet das Betriebssystem oft auf Block-Buffering um (Ausgabe erfolgt erst, wenn der Puffer mit z. B. 4 KB voll ist). Ein manueller Aufruf von <code>io::stdout().flush()</code> stellt sicher, dass die Ausgaben in beiden Modi sofort gesendet werden.)</em></li>
 </ol>
-<h3 id="72-regeln-für-subagenten-in-agentsmd-definieren"><a class="header" href="#72-regeln-für-subagenten-in-agentsmd-definieren">7.2 Regeln für Subagenten in <code>AGENTS.md</code> definieren</a></h3>
-<p>Du kannst in deiner <code>AGENTS.md</code> festlegen, was Subagenten dürfen. Hier ist ein konkretes Beispiel:</p>
-<pre><code class="language-markdown">## Regeln für Subagenten (Subagent Policies)
-- Alle Subagenten müssen standardmäßig im sicheren Modus 'branch' gestartet werden.
-- Subagenten vom Typ 'Linter' dürfen Dateien nur LESEN, nicht schreiben.
-- Subagenten vom Typ 'Refactoring' dürfen nur im Ordner '/src/helpers' schreiben.
-- Die Ausführung von externen Netzwerkbefehlen (z. B. wget) ist für Subagenten deaktiviert.
-</code></pre>
-<hr>
-<h2 id="8-praktisches-beispiel-subagenten-steuern"><a class="header" href="#8-praktisches-beispiel-subagenten-steuern">8. Praktisches Beispiel: Subagenten steuern</a></h2>
-<h3 id="a-automatisches-playbook-in-skillsmd"><a class="header" href="#a-automatisches-playbook-in-skillsmd">A) Automatisches Playbook in <code>SKILLS.md</code></a></h3>
-<p>Du kannst in deiner <code>SKILLS.md</code> einen Arbeitsablauf beschreiben, den der Agent Schritt für Schritt ausführen soll:</p>
-<pre><code class="language-markdown"># Skill: @code-review
-
-Führe eine automatisierte Code-Review durch:
-1. Starte einen Subagenten vom Typ "Review-Experte" im Modus `branch`.
-2. Lasse den Subagenten alle Dateien im Ordner `src/` auf Fehler prüfen.
-3. Lass ihn ein Protokoll erstellen.
-4. Schließe den Subagenten und zeige das Ergebnis im Hauptchat an.
-</code></pre>
-<h3 id="b-steuerung-per-python-code"><a class="header" href="#b-steuerung-per-python-code">B) Steuerung per Python-Code</a></h3>
-<p>Wenn du eigene Skripte schreiben willst, kannst du das offizielle Python-SDK (<code>google-antigravity</code>) nutzen:</p>
-<pre><code class="language-python">import asyncio
-from google.antigravity import Agent, LocalAgentConfig
-
-async def main():
-    # 1. Konfiguration für den Haupt-Agenten erstellen
-    config = LocalAgentConfig(
-        system_instructions=(
-            "Du bist der Chef-Agent. Wenn Aufgaben zu kompliziert werden, "
-            "delegiere sie an spezialisierte Subagenten."
-        ),
-        tools=[]  # Hier könnten eigene Werkzeuge stehen
-    )
-
-    # 2. Den Agenten starten
-    async with Agent(config) as main_agent:
-        # 3. Dem Agenten eine Aufgabe geben
-        # Der Agent entscheidet selbstständig, wann er Subagenten startet!
-        response = await main_agent.chat(
-            "Analysiere die Rust-Dateien in src/ und verbessere den Code."
-        )
-        
-        # 4. Antwort ausgeben
-        print("Antwort des Agenten:")
-        print(await response.text())
-
-if __name__ == "__main__":
-    asyncio.run(main())
-</code></pre>
-<hr>
-<h2 id="-zusammenfassung-für-die-hosentasche"><a class="header" href="#-zusammenfassung-für-die-hosentasche">💡 Zusammenfassung für die Hosentasche</a></h2>
+<h3 id="die-feynman-methode"><a class="header" href="#die-feynman-methode">Die Feynman-Methode</a></h3>
+<p>Erklären Sie einem Programmier-Anfänger in maximal drei einfachen Sätzen, was das Kurs-CLI macht und wie es feststellt, ob Ihre Hausaufgabe richtig gelöst wurde.</p>
+<h3 id="gezielte-fehlerprovokation"><a class="header" href="#gezielte-fehlerprovokation">Gezielte Fehlerprovokation</a></h3>
+<p>Provozieren Sie bewusst einen Fehler, um das CLI-Verhalten kennenzulernen:</p>
+<ol>
+<li>Bauen Sie in Ihrer korrekten Lösung aus Abschnitt 6 eine Endlosschleife ein (<code>loop {}</code> direkt am Anfang von <code>main</code>).</li>
+<li>Führen Sie <code>agy verify</code> aus und messen Sie die Zeit. Sie werden sehen, dass das CLI nach exakt 2000 Millisekunden abbricht und meldet: <code>[FAIL] Timeout überschritten. Prozess wurde gewaltsam beendet.</code></li>
+</ol>
+<h3 id="metakognitiver-selbsttest"><a class="header" href="#metakognitiver-selbsttest">Metakognitiver Selbsttest</a></h3>
+<p>Wechseln Sie erst zum nächsten Kapitel des Lehrbuchs, wenn Sie folgende Checkliste erfolgreich abarbeiten können:</p>
 <ul>
-<li><strong>Befehl</strong>: Mit <code>agy</code> startest du das CLI im Projektordner.</li>
-<li><strong>Regeln</strong>: In <a href="file:///home/thorsten/RustKurs/AGENTS.md">AGENTS.md</a> legst du fest, was die Agenten tun dürfen.</li>
-<li><strong>Fähigkeiten</strong>: In <code>SKILLS.md</code> hinterlegst du Arbeitsabläufe (z. B. <code>@review</code>).</li>
-<li><strong>Delegieren</strong>: Subagenten teilen sich die Arbeit und nutzen wahlweise den Modus <code>inherit</code>, <code>branch</code> oder <code>share</code>.</li>
-<li><strong>Sicherheit</strong>: Alles läuft sicher verpackt in einer Sandbox.</li>
+<li><input disabled="" type="checkbox"> Sie haben das Kurs-CLI global auf Ihrem Betriebssystem installiert und können <code>agy --version</code> ohne Fehler aufrufen.</li>
+<li><input disabled="" type="checkbox"> Sie verstehen den Unterschied zwischen einem Syntax-Fehler (Compiler blockiert) und einem logischen Formatierungsfehler (CLI-Testrunner schlägt fehl).</li>
+<li><input disabled="" type="checkbox"> Sie können erklären, was <code>stdout</code> und <code>stdin</code> sind und wie Daten über Pipes fließen.</li>
+</ul>
+<hr>
+<h2 id="11-zusammenfassung"><a class="header" href="#11-zusammenfassung">11. Zusammenfassung</a></h2>
+<ul>
+<li><strong>Das Kurs-CLI</strong> (<code>agy</code>) ist das zentrale Validierungswerkzeug zur automatisierten Bewertung Ihrer Rust-Übungen.</li>
+<li><strong>Die Installation</strong> erfolgt komfortabel über automatisierte Shell-Skripte (Unix) bzw. PowerShell-Kommandos (Windows) und registriert das Tool im Systempfad (<code>PATH</code>).</li>
+<li><strong>Der Test- und Überprüfungsprozess</strong> (<code>agy verify</code>) läuft vollautomatisch ab: Er analysiert den Workspace, lichtet den Code via Linter, kompiliert die Anwendung und führt sie kontrolliert in einer isolierten Sandbox aus.</li>
+<li><strong>Sandbox-Sicherheit</strong>: Die Sandbox schützt Ihr System durch Limits (max. 128 MB RAM) und Timeouts (max. 2000 ms) vor kritischen Programmierfehlern (z. B. unendlichen Schleifen).</li>
+<li><strong>Interprozesskommunikation</strong>: Das CLI steuert das Test-Programm über Standard-Streams. Es füttert <code>stdin</code> mit Testeingaben und liest <code>stdout</code>/<code>stderr</code> über Pipes aus, um Abweichungen im Soll/Ist-Vergleich millimetergenau aufzudecken.</li>
+<li><strong>Rust-Prozesssteuerung</strong>: Die Rust-Standardbibliothek bietet über das Modul <code>std::process</code> (insbesondere <code>Command</code>, <code>Child</code> und <code>Stdio</code>) alle systemnahen Werkzeuge, um Prozesse im Hintergrund zu starten, deren Datenströme umzulenken und deren Ausführung asynchron zu überwachen.</li>
 </ul>
 
                     </main>

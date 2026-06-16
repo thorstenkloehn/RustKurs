@@ -35,7 +35,7 @@
             const path_to_root = "";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "searchindex-a9440cc5.js";
+            window.path_to_searchindex_js = "searchindex-76719c3e.js";
         </script>
         <!-- Start loading toc.js asap -->
         <script src="toc-dedbbe6e.js"></script>
@@ -174,10 +174,638 @@
 
                 <div id="mdbook-content" class="content">
                     <main>
-                        <p>Erkläre, was Rust ist, vergleiche es mit anderen Programmiersprachen und nenne die Vor- und Nachteile für Anfänger.</p>
+                        <h1 id="kapitel-1-was-ist-rust"><a class="header" href="#kapitel-1-was-ist-rust">Kapitel 1: Was ist Rust?</a></h1>
+<p>Die Wahl der richtigen Programmiersprache bestimmt maßgeblich die Architektur, Sicherheit und Performance eines Softwaresystems. Seit Jahrzehnten steht die Softwareentwicklung vor einem scheinbaren Widerspruch: Entweder entscheidet man sich für maximale Performance und direkte Hardwarekontrolle (wie in C oder C++), nimmt dabei jedoch das Risiko schwerwiegender Speicherfehler in Kauf. Oder man wählt maximale Sicherheit und Entwicklungsgeschwindigkeit (wie in Java, C# oder Go), zahlt dafür jedoch einen Preis in Form von Laufzeit-Overhead und unvorhersehbaren Pausen durch eine automatische Speicherbereinigung (Garbage Collection).</p>
+<p>Rust wurde entwickelt, um dieses Dilemma aufzulösen. Dieses Kapitel führt Sie in die Ursprünge, die Kernkonzepte und die Philosophie dieser modernen Systemprogrammiersprache ein.</p>
+<hr>
+<h2 id="1-lernziele--lernplan"><a class="header" href="#1-lernziele--lernplan">1. Lernziele &amp; Lernplan</a></h2>
+<h3 id="lernziele"><a class="header" href="#lernziele">Lernziele</a></h3>
 <ul>
-<li>Wo genau wird Rust im IT-Sektor eingesetzt? Bitte erkläre dies ausführlich und gib Beispiele.</li>
+<li><strong>Sie können</strong> die Entstehungsgeschichte von Rust, insbesondere die Rolle von Graydon Hoare und die Motivation des Mozilla-Projekts (Servo-Engine), im historischen Kontext der Softwareentwicklung beschreiben und einordnen.</li>
+<li><strong>Sie können</strong> Speicherfehler auf Hardware-Ebene (wie Use-After-Free, Double Free und Buffer Overflows) detailliert analysieren und erklären, wie das Typsystem von Rust diese Fehler bereits zur Kompilierzeit mathematisch ausschließt.</li>
+<li><strong>Sie können</strong> das Ownership-Modell von Rust mit dem Garbage-Collection-Ansatz anderer Sprachen (z. B. Go und Java) vergleichen und die Auswirkungen auf Arbeitsspeichernutzung, Latenz und Determinismus bewerten.</li>
+<li><strong>Sie können</strong> das Prinzip der „Zero-Cost Abstractions“ erklären und nachvollziehen, wie der LLVM-Compiler Hochwert-Abstraktionen in hochoptimierten Maschinencode übersetzt.</li>
+<li><strong>Sie können</strong> die primären Einsatzgebiete von Rust (System- &amp; Netzwerkprogrammierung, WebAssembly, Embedded Systems) benennen und die spezifischen Vorteile der Sprache für diese Bereiche begründen.</li>
 </ul>
+<h3 id="lernplan"><a class="header" href="#lernplan">Lernplan</a></h3>
+<ul>
+<li><input disabled="" type="checkbox"> <strong>2. Die Definition</strong>: Präzise Begriffsbestimmung von Rust, Einblick in seine Entstehung und die Definition der Kernziele der Sprache (Abschnitt 1.1).</li>
+<li><input disabled="" type="checkbox"> <strong>3. Das Problem &amp; Die Motivation</strong>: Detaillierter Vergleich mit anderen Sprachfamilien, Analyse klassischer Speicher- und Nebenläufigkeitsfehler (Abschnitt 1.3).</li>
+<li><input disabled="" type="checkbox"> <strong>4. Der naive Versuch</strong>: Demonstration eines typischen Speicherfehlers anhand eines fehlerhaften C-Programms und des konzeptionell analogen Versuchs in Rust.</li>
+<li><input disabled="" type="checkbox"> <strong>5. Die Anatomie des Fehlers</strong>: Zeile-für-Zeile-Analyse des naiven Versuchs auf Hardware-Ebene (Stack-Verhalten) sowie die Interpretation der Compiler-Fehlermeldungen.</li>
+<li><input disabled="" type="checkbox"> <strong>6. Die Lösung</strong>: Implementierung des sicheren Beispiels in Rust, Erläuterung der statischen Typprüfung und des Konzepts der Zero-Cost Abstractions (Abschnitt 1.2).</li>
+<li><input disabled="" type="checkbox"> <strong>7. Kleines Tutorial</strong>: Schritt-für-Schritt-Entwicklung eines einfachen, typsicheren Konsolenprogramms zur Demonstration des EVA-Prinzips.</li>
+<li><input disabled="" type="checkbox"> <strong>8. Mentale Modelle &amp; Deep Dive</strong>: Visualisierung des Speichers (Stack vs. Heap), Erörterung der Anwendungsgebiete (Abschnitt 1.4) und eine lückenlose API-Referenz der fundamentalen Basismethoden.</li>
+<li><input disabled="" type="checkbox"> <strong>9. Drei praktische Übungen</strong>: Programmier- und Analyseaufgaben mit ansteigendem Schwierigkeitsgrad (Leicht, Mittel, Schwer) inklusive Hilfestellungen.</li>
+<li><input disabled="" type="checkbox"> <strong>10. Lernstrategie, Selbsteinschätzung &amp; Merkzettel</strong>: Ein Spickzettel für den Schnellzugriff, Verständnisfragen zur Metakognition und strukturierte Selbsttests.</li>
+<li><input disabled="" type="checkbox"> <strong>11. Zusammenfassung</strong>: Kompakter Überblick über die Kernpunkte des Kapitels.</li>
+</ul>
+<hr>
+<h2 id="2-die-definition"><a class="header" href="#2-die-definition">2. Die Definition</a></h2>
+<ul>
+<li><strong>Rust</strong>: Eine statisch typisierte, kompilierte Multi-Paradigmen-Systemprogrammiersprache, die sich auf Speichersicherheit, Ausführungsgeschwindigkeit und datenrennenfreie Nebenläufigkeit konzentriert. Sie erreicht diese Garantien ohne die Verwendung eines Garbage Collectors (GC) oder einer virtuellen Laufzeitumgebung (Runtime VM), indem sie den Lebenszyklus von Ressourcen zur Kompilierzeit über ein strenges Regelwerk (Ownership-System) analysiert.</li>
+</ul>
+<h3 id="11-die-evolution-von-rust"><a class="header" href="#11-die-evolution-von-rust">1.1 Die Evolution von Rust</a></h3>
+<h4 id="111-graydon-hoare-und-das-mozilla-projekt"><a class="header" href="#111-graydon-hoare-und-das-mozilla-projekt">1.1.1 Graydon Hoare und das Mozilla-Projekt</a></h4>
+<p>Die Entstehung von Rust ist eng mit einem konkreten Softwareentwickler und einer alltäglichen Frustration verbunden. Im Jahr 2006 arbeitete der kanadische Programmierer Graydon Hoare bei der Mozilla Corporation. Eines Abends kehrte er in sein Apartmentgebäude in Vancouver zurück und stellte fest, dass der Aufzug des Gebäudes außer Betrieb war. Der Grund dafür war kein mechanischer Verschleiß, sondern ein Software-Absturz der Aufzugssteuerung, verursacht durch einen Speicherfehler (einen sogenannten Speicherzugriffsfehler oder „Segmentation Fault“). Hoare musste den Weg in den 21. Stock zu Fuß über das Treppenhaus bewältigen.</p>
+<p>Während dieses Aufstiegs reifte in ihm der Entschluss, eine Programmiersprache zu entwerfen, die genau solche Fehler systemisch verhindert. Hoare stellte fest, dass ein Großteil der kritischen Infrastruktur der modernen Welt – von Betriebssystem-Kerneln über Webbrowser bis hin zu Aufzugssteuerungen – in C oder C++ geschrieben war. Diese Sprachen bieten zwar die notwendige Hardwarenähe und Performance, bürden dem Entwickler jedoch die vollständige, manuelle Verantwortung für die Speicherverwaltung auf. Ein einziger vergessener Zeiger oder ein minimaler Indexfehler kann das gesamte System zum Absturz bringen oder Tür und Tor für Hacker öffnen.</p>
+<p>Hoare begann, in seiner Freizeit an einer neuen Sprache zu arbeiten, die er nach den extrem widerstandsfähigen Rostpilzen (engl. <em>rust fungi</em>) benannte. Diese Pilze sind biologisch auf maximale Überlebensfähigkeit optimiert und schwer wieder loszuwerden – eine Metapher für robusten Code, der ohne ständige Systemabstürze läuft.</p>
+<p>Im Jahr 2009 wurde Mozilla offiziell auf Hoares privates Projekt aufmerksam. Der Browser Firefox, Mozillas Flaggschiff, litt unter den typischen C++-Problemen. Browser sind hochkomplexen Angriffsszenarien ausgesetzt: Sie müssen unvertrauten Code aus dem Internet parsen, Bilder und Layouts berechnen und JavaScript-Dateien ausführen. Ein Speicherfehler im Browser-Code ermöglicht es Angreifern häufig, Schadcode mit den Rechten des Benutzers auszuführen. Mozilla wollte Servo so konzipieren, dass moderne Mehrkernprozessoren optimal ausgenutzt werden (Massive Parallelität). In C++ war das Schreiben von hochgradig parallelem Code in C++ war jedoch ein technologisches Minenfeld, da unkoordinierte Speicherzugriffe verschiedener Threads (Datenrennen) zu extrem schwer auffindbaren Fehlern führten.</p>
+<p>Mozilla beschloss, Graydon Hoares Projekt finanziell und personell zu unterstützen. Aus der ursprünglichen Idee entwickelte sich ein kollaboratives Open-Source-Projekt, an dem Hunderte von Entwicklern weltweit mitwirkten. Im Laufe der Jahre veränderte sich das Design von Rust erheblich:</p>
+<ul>
+<li><strong>2010</strong>: Erste offizielle Präsentation der Sprache. Rust besaß zu diesem Zeitpunkt noch einen integrierten Garbage Collector, ein leichtgewichtiges Threading-Modell (Greenthreads) und ein komplexeres Typsystem.</li>
+<li><strong>2013–2015</strong>: Radikaler Umbau. Um Rust als echte Systemprogrammiersprache ohne jeglichen Laufzeit-Overhead zu etablieren, wurde der Garbage Collector vollständig aus der Sprache entfernt. Stattdessen wurde das Ownership-System mit dem Konzept der Lebensdauern (Lifetimes) und dem Borrow Checker verfeinert. Das leichtgewichtige Threading-Modell wurde zugunsten nativer System-Threads aufgegeben, um eine minimale Runtime zu garantieren.</li>
+<li><strong>15. Mai 2015</strong>: Veröffentlichung von Rust 1.0. Dies markierte die Stabilität der Sprache. Seitdem gilt das Versprechen der Rückwärtskompatibilität: Code, der mit Version 1.0 kompiliert, muss auch mit jeder neueren Version der Stable-Toolchain fehlerfrei übersetzt werden.</li>
+</ul>
+<h4 id="112-kernziele-von-rust"><a class="header" href="#112-kernziele-von-rust">1.1.2 Kernziele von Rust</a></h4>
+<p>Das Design von Rust stützt sich auf drei fundamentale Säulen, die sich gegenseitig stützen und die Entwicklung sicherer Software leiten:</p>
+<pre><code class="language-text">               +----------------------------------------+
+               |            Rust Kernziele              |
+               +----------------------------------------+
+                                   |
+         +-------------------------+-------------------------+
+         |                         |                         |
+         v                         v                         v
++-----------------+       +-----------------+       +-----------------+
+|Speichersicherheit|       |   Performance   |       |Nebenläufigkeit  |
+|  ohne Garbage   |       | auf Augenhöhe   |       |  ohne Daten-    |
+|    Collector    |       |   mit C / C++   |       |     rennen      |
++-----------------+       +-----------------+       +-----------------+
+</code></pre>
+<ol>
+<li><strong>Speichersicherheit ohne Garbage Collector (Safety)</strong>:
+Rust garantiert mathematisch, dass ein Programm keinen unzulässigen Speicherzugriff durchführen kann. Alle Variablenzugriffe werden zur Kompilierzeit validiert. Es gibt keine uninitialisierten Variablen, keine ungültigen Zeiger (Dangling Pointers) und keine Speicherzugriffe außerhalb der Array-Grenzen (Bounds Checking). Dass dies ohne die Performance-Einbußen eines Garbage Collectors gesieht, ist die eigentliche Innovation von Rust.</li>
+<li><strong>Maximale Ausführungsgeschwindigkeit (Speed / Performance)</strong>:
+Rust-Code kompiliert direkt in nativen Maschinencode über das LLVM-Compiler-Backend. Die Sprache verzichtet auf eine virtuelle Maschine (wie die JVM) und auf einen Laufzeit-Interpreter. Die Abstraktionen, die Rust bietet (z. B. Iteratoren, Generics, Closures), sind so konzipiert, dass sie vom Compiler vollständig aufgelöst werden (Zero-Cost Abstractions). Der erzeugte Maschinencode ist in Bezug auf Geschwindigkeit und Speicherverbrauch absolut konkurrenzfähig mit optimiertem C oder C++.</li>
+<li><strong>Datenrennenfreie Nebenläufigkeit (Fearless Concurrency)</strong>:
+Das Schreiben von Multithreaded-Programmen ist in vielen Sprachen extrem fehleranfällig. Wenn zwei Threads gleichzeitig auf denselben Speicher zugreifen und mindestens einer davon schreibt, entsteht ein Datenrennen (Data Race). Rust verhindert dies durch sein Typsystem. Das Konzept von Ownership und Borrowing stellt sicher, dass Daten entweder von einem einzelnen Thread exklusiv verändert werden können oder von mehreren Threads schreibgeschützt geteilt werden. Diese Garantien werden vollständig zur Kompilierzeit überprüft. Entwickler können somit parallelisierte Algorithmen implementieren, ohne Angst vor unvorhersehbaren Race Conditions haben zu müssen.</li>
+</ol>
+<h3 id="alltagsnahe-analogie"><a class="header" href="#alltagsnahe-analogie">Alltagsnahe Analogie</a></h3>
+<blockquote class="blockquote-tag blockquote-tag-note">
+<p class="blockquote-tag-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>Note</p>
+<p><strong>Die Sicherheitsinspektor-Metapher</strong>: Stellen Sie sich vor, Sie möchten ein großes Gebäude errichten (ein Softwareprojekt).</p>
+<ul>
+<li><strong>Der C/C++-Ansatz</strong>: Die Arbeiter bauen das Haus ohne Bauaufsicht (keine Typprüfung zur Compilezeit). Sie können Wände hochziehen, wo sie wollen. Der Bau ist extrem schnell fertig, aber wenn ein Arbeiter versehentlich ein tragendes Fundament weglässt (ein Speicherfehler), stürzt das Gebäude erst Monate später im laufenden Betrieb ein, wenn Menschen darin wohnen (Laufzeit-Crash).</li>
+<li><strong>Der Java/Go-Ansatz (Garbage Collector)</strong>: Um Einstürze zu verhindern, fährt permanent ein Trupp von Statikern und Aufräumern durch das fertige Haus (der Garbage Collector). Sie prüfen ständig jede Säule und tragen Müll weg. Das Haus ist sicher, aber die Bewohner müssen regelmäßig stehen bleiben und warten, bis die Statiker ihre Arbeit beendet haben (GC-Pausen). Zudem verbrauchen die Statiker viel Platz und Ressourcen (Speicher-Overhead).</li>
+<li><strong>Der Rust-Ansatz</strong>: Bevor auch nur ein einziger Stein gelegt wird, prüft ein extrem penibler Sicherheitsinspektor den gesamten Bauplan (der Rust-Compiler). Er markiert jeden kleinsten Fehler: „Diese Säule wird das Dach in Phase 3 nicht tragen können.“ Der Architekt muss den Plan so lange korrigieren, bis er mathematisch nachweisbar sicher ist. Erst dann wird das Gebäude gebaut. Das fertige Haus benötigt im Betrieb keine Statiker mehr, läuft mit maximaler Effizienz und stürzt niemals ein.</li>
+</ul>
+</blockquote>
+<hr>
+<h2 id="3-das-problem--die-motivation"><a class="header" href="#3-das-problem--die-motivation">3. Das Problem &amp; Die Motivation</a></h2>
+<p>Um die Existenzberechtigung von Rust zu verstehen, müssen wir die Probleme analysieren, mit denen sich Softwareentwickler in anderen Sprachen täglich konfrontieren.</p>
+<h3 id="13-rust-im-sprachenvergleich"><a class="header" href="#13-rust-im-sprachenvergleich">1.3 Rust im Sprachenvergleich</a></h3>
+<h4 id="131-rust-vs-cc"><a class="header" href="#131-rust-vs-cc">1.3.1 Rust vs. C/C++</a></h4>
+<p>C und C++ wurden in den 1970er und 1980er Jahren entwickelt. Damals war Arbeitsspeicher extrem knapp und teuer, und CPUs waren um Größenordnungen langsamer als heute. Die Sprachen wurden so entworfen, dass der geschriebene Code möglichst eins zu eins in CPU-Instruktionen übersetzt werden konnte. Der Programmierer erhielt direkten Zugriff auf Speicheradresse über Zeiger (Pointer).</p>
+<p>Diese Freiheit hat jedoch einen fatalen Preis: Der Compiler vertraut dem Programmierer blind. Macht der Entwickler auch nur einen minimalen Fehler in der Pointer-Arithmetik oder vergisst er, eine Ressource freizugeben, führt dies zu undefiniertem Verhalten (Undefined Behavior). Die häufigsten Speicherfehler in C/C++ sind:</p>
+<ol>
+<li><strong>Buffer Overflow (Pufferüberlauf)</strong>:
+Ein Programm schreibt mehr Daten in ein Array, als dieses aufnehmen kann. Die überschüssigen Daten fließen in benachbarte Speicherbereiche. Auf dem Stack liegen dort oft Rücksprungadresse von Funktionen. Ein Angreifer kann diese gezielt überschreiben, um den Kontrollfluss des Programms zu kaptern.</li>
+<li><strong>Use-After-Free (Nutzung nach Freigabe)</strong>:
+Ein Speicherbereich auf dem Heap wird freigegeben (z. B. mit <code>free()</code> oder <code>delete</code>). Das Programm behält jedoch den Zeiger auf diesen Speicher und greift später lesend oder schreibend darauf zu. In der Zwischenzeit kann der Speichermanager diesen Bereich für eine ganz andere Datenstruktur neu vergeben haben. Das führt zu schwerer Datenkorruption oder Sicherheitslücken.</li>
+<li><strong>Double Free (Doppelte Freigabe)</strong>:
+Das Programm versucht, denselben Heap-Speicherbereich zweimal freizugeben. Dies korrumpiert die internen Listen des Speichermanagers und erlaubt es Angreifern häufig, beliebigen Code in den Speicher einzuschleusen.</li>
+<li><strong>Dangling Pointer (Hängende Zeiger)</strong>:
+Ein Zeiger verweist auf eine Speicheradresse, deren Inhalt bereits gelöscht oder freigegeben wurde. Der Zugriff auf einen Dangling Pointer führt entweder zu einem sofortigen Programmabsturz (Segmentation Fault) oder zu unvorhersehbaren Werten.</li>
+</ol>
+<p>Statistiken von Microsoft (für Windows) und Google (für Chrome und Android) zeigen übereinstimmend, dass seit Jahrzehnten <strong>ca. 70 % aller sicherheitsrelevanten Schwachstellen</strong> in Software direkt auf solche Speicherfehler zurückzuführen sind. C++ versucht zwar, durch moderne Konzepte wie Smart Pointer (<code>std::unique_ptr</code>, <code>std::shared_ptr</code>) die manuelle Speicherverwaltung zu vereinfachen, diese Mechanismen sind jedoch nicht im Compiler erzwungen. Ein Entwickler kann jederzeit in alte, unsichere C-Muster zurückfallen.</p>
+<p>Rust löst dieses Problem fundamental, indem es den Zugriff auf den Speicher über ein strenges Regelwerk kontrolliert: das <strong>Ownership-System</strong>. Der Compiler prüft zur Laufzeit unlesbare Regeln zur Compilezeit und garantiert, dass keiner dieser klassischen Speicherfehler in sicherem Rust-Code existieren kann.</p>
+<h4 id="132-rust-vs-garbage-collected-sprachen-gojava"><a class="header" href="#132-rust-vs-garbage-collected-sprachen-gojava">1.3.2 Rust vs. Garbage-Collected Sprachen (Go/Java)</a></h4>
+<p>Um die Speicherunsicherheit von C/C++ zu umgehen, nutzen Sprachen wie Java, C#, Go oder Python einen <strong>Garbage Collector (GC)</strong>. Der Programmierer alloziert Speicher für Objekte auf dem Heap, muss sich aber nicht um deren Freigabe kümmern. Der Garbage Collector läuft als Hintergrundprozess und sucht periodisch nach Objekten, auf die keine Referenzen mehr im Programm verweisen, um diese zu löschen.</p>
+<p>Obwohl dieser Ansatz Speichersicherheit bietet, bringt er erhebliche Nachteile für System- und Hochleistungssoftware mit sich:</p>
+<ul>
+<li><strong>Nicht-Determinismus und Latenz (GC-Pausen)</strong>:
+Die meisten GC-Implementierungen nutzen ein Tracing-Verfahren (z. B. Mark-and-Sweep). Um den Speicher sicher zu bereinigen, muss der GC oft die Ausführung des gesamten Programms kurzzeitig anhalten (Stop-the-world-Phase). Diese Pausen können von Mikrosekunden bis zu mehreren Sekunden dauern. Für Echtzeitsysteme (z. B. Audio-Synthesizer, Robotik, autonome Fahrzeuge), Videospiele oder Hochleistungs-Webserver sind solche Pausen inakzeptabel.</li>
+<li><strong>Hoher Speicher-Overhead</strong>:
+Damit ein Garbage Collector effizient arbeiten kann, benötigt er viel freien Speicher. Als Faustregel gilt, dass ein GC-gesteuertes Programm etwa das <strong>Zwei- bis Dreifache</strong> des tatsächlich genutzten Speichers benötigt, um die GC-Zyklen nicht zu häufig anstoßen zu müssen. Rust benötigt keinen solchen Overhead. Der Speicherbedarf entspricht exakt den tatsächlich genutzten Daten.</li>
+<li><strong>Ressourcenverbrauch auf Mobilgeräten und Servern</strong>:
+Der ständige Hintergrundbetrieb des GC verbraucht CPU-Zyklen und damit Energie. Auf Mobilgeräten verkürzt dies die Akkulaufzeit. Im Cloud-Bereich führt der erhöhte CPU- und Speicherbedarf direkt zu höheren Serverkosten.</li>
+</ul>
+<p>Rust geht einen anderen Weg. Es nutzt das <strong>RAII-Prinzip</strong> (Resource Acquisition Is Initialization) aus C++, erhebt es aber zum strikten Compiler-Gesetz. Sobald eine Variable ihren Gültigkeitsbereich (Scope) verlässt, fügt der Rust-Compiler an genau dieser Stelle im Maschinencode den Befehl zur Speicherfreigabe ein. Die Freigabe erfolgt somit <strong>deterministisch</strong> (exakt vorhersehbar) und ohne jeden Laufzeit-Overhead.</p>
+<p>Hier ist ein direkter Vergleich der drei Sprachwelten:</p>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th style="text-align: left">Eigenschaft</th><th style="text-align: left">C / C++</th><th style="text-align: left">Java / Go / C#</th><th style="text-align: left">Rust</th></tr>
+</thead>
+<tbody>
+<tr><td style="text-align: left"><strong>Speicherverwaltung</strong></td><td style="text-align: left">Manuell</td><td style="text-align: left">Automatisch (Garbage Collector)</td><td style="text-align: left">Automatisch (Compilezeit-RAII)</td></tr>
+<tr><td style="text-align: left"><strong>Speichersicherheit</strong></td><td style="text-align: left">Nein (manuell fehleranfällig)</td><td style="text-align: left">Ja (durch Laufzeit-GC)</td><td style="text-align: left"><strong>Ja (durch Compilezeit-Prüfung)</strong></td></tr>
+<tr><td style="text-align: left"><strong>Laufzeit-Performance</strong></td><td style="text-align: left">Maximal</td><td style="text-align: left">Mittel bis Hoch (GC-Overhead)</td><td style="text-align: left"><strong>Maximal (LLVM-optimiert)</strong></td></tr>
+<tr><td style="text-align: left"><strong>Vorhersehbarkeit (Latenz)</strong></td><td style="text-align: left">Hoch (determinischtisch)</td><td style="text-align: left">Niedrig (unvorhersehbare GC-Pausen)</td><td style="text-align: left"><strong>Hoch (deterministisch)</strong></td></tr>
+<tr><td style="text-align: left"><strong>Speicher-Overhead</strong></td><td style="text-align: left">Minimal</td><td style="text-align: left">Hoch (GC benötigt Puffer)</td><td style="text-align: left"><strong>Minimal (kein GC)</strong></td></tr>
+<tr><td style="text-align: left"><strong>Fehlervermeidung</strong></td><td style="text-align: left">Erst zur Laufzeit (Tests, Debugging)</td><td style="text-align: left">Zur Laufzeit (Exceptions, GC)</td><td style="text-align: left"><strong>Zur Compilezeit (Borrow Checker)</strong></td></tr>
+</tbody>
+</table>
+</div>
+<hr>
+<h2 id="4-der-naive-versuch"><a class="header" href="#4-der-naive-versuch">4. Der naive Versuch</a></h2>
+<p>Um den Kontrast zwischen traditioneller Speicherverwaltung und der Funktionsweise von Rust zu demonstrieren, betrachten wir ein klassisches Speicherproblem: den <strong>Dangling Pointer</strong> (einen Zeiger, der ins Leere zeigt).</p>
+<p>Wir schreiben eine Funktion, die eine Zahl im Speicher anlegen und einen Zeiger darauf zurückgeben soll. Nach Beendigung der Funktion wird der Speicher der lokalen Variablen jedoch abgebaut. Der zurückgegebene Zeiger zeigt auf einen ungültigen Speicherbereich.</p>
+<h3 id="der-naive-versuch-in-c"><a class="header" href="#der-naive-versuch-in-c">Der naive Versuch in C</a></h3>
+<p>Der folgende Code zeigt dieses Problem in der Programmiersprache C:</p>
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+
+// Diese Funktion versucht, die Adresse einer lokalen Stack-Variable zurückzugeben.
+int* get_dangling_pointer() {
+    int local_val = 42; 
+    return &amp;local_val; // FEHLER: Adresse einer lokalen Variable wird zurückgegeben!
+}
+
+int main() {
+    // ptr erhält die Speicheradresse von local_val
+    int* ptr = get_dangling_pointer();
+    
+    // Wir rufen eine andere Funktion auf. Dadurch wird der Stack-Speicher 
+    // überschrieben, auf den ptr zeigt.
+    printf("Der Stack-Bereich wird nun ueberschrieben.\n");
+    
+    // Der Zugriff auf ptr ist nun Undefined Behavior.
+    // Das Programm stürzt entweder ab oder gibt einen zufälligen Wert aus.
+    printf("Wert hinter ptr: %d\n", *ptr); 
+    
+    return 0;
+}
+</code></pre>
+<h3 id="der-naive-versuch-in-rust"><a class="header" href="#der-naive-versuch-in-rust">Der naive Versuch in Rust</a></h3>
+<p>Ein Programmierer, der neu bei Rust ist, versucht nun instinktiv, denselben Algorithmus in Rust zu schreiben:</p>
+<pre class="playground"><code class="language-rust edition2021">// Diese Funktion soll eine Referenz auf eine Zahl zurückgeben
+fn get_dangling_pointer() -&gt; &amp;i32 {
+    let local_val: i32 = 42;
+    &amp;local_val // FEHLER: Wir versuchen, eine Referenz auf einen lokalen Wert zurückzugeben
+}
+
+fn main() {
+    let ptr = get_dangling_pointer();
+    println!("Wert hinter ptr: {}", ptr);
+}</code></pre>
+<p>Dieser naive Versuch kompiliert in Rust nicht. Der Compiler erkennt das Sicherheitsrisiko sofort und bricht den Build-Vorgang mit einer detaillierten Fehlermeldung ab.</p>
+<hr>
+<h2 id="5-die-anatomie-des-fehlers"><a class="header" href="#5-die-anatomie-des-fehlers">5. Die Anatomie des Fehlers</a></h2>
+<h3 id="compiler-feedback-des-rust-compilers"><a class="header" href="#compiler-feedback-des-rust-compilers">Compiler-Feedback des Rust-Compilers</a></h3>
+<p>Wenn wir versuchen, den obigen Rust-Code zu kompilieren, verweigert der Compiler den Dienst und gibt folgende Fehlermeldung aus:</p>
+<pre><code class="language-text">error[E0515]: cannot return reference to local variable `local_val`
+ --&gt; src/main.rs:4:5
+  |
+4 |     &amp;local_val
+  |     ^^^^^^^^^^ returns a reference to data owned by the current function
+</code></pre>
+<p>Der Compiler erklärt uns das Problem präzise: Die Variable <code>local_val</code> „gehört“ (is owned by) der Funktion <code>get_dangling_pointer</code>. Da die Funktion nach Erreichen der schließenden geschweiften Klammer beendet wird, wird auch <code>local_val</code> zerstört. Eine Referenz auf diese Daten zurückzugeben, würde in der aufrufenden Funktion <code>main</code> zu einem Dangling Pointer führen. Rust verhindert dies.</p>
+<h3 id="zeile-für-zeile-erklärung-des-speicherverhaltens"><a class="header" href="#zeile-für-zeile-erklärung-des-speicherverhaltens">Zeile-für-Zeile-Erklärung des Speicherverhaltens</a></h3>
+<p>Um zu verstehen, warum dieses Verhalten so gefährlich ist, müssen wir das Speicherlayout auf Hardware-Ebene (dem Stack) analysieren:</p>
+<pre><code class="language-text">Schritt 1: Aufruf von `get_dangling_pointer()`
+Stack wächst nach unten
++-----------------------------------+
+| Stack Frame: main()               |
+| - ptr (noch nicht initialisiert)  |
++-----------------------------------+
+| Stack Frame: get_dangling_pointer()| &lt;--- Aktueller Frame-Pointer
+| - local_val = 42 (Adresse: 0x7FFF)|
++-----------------------------------+
+
+Schritt 2: Die Funktion endet und gibt 0x7FFF zurück
+Der Stack-Frame von get_dangling_pointer() wird ungültig!
++-----------------------------------+
+| Stack Frame: main()               |
+| - ptr = 0x7FFF                    | &lt;--- ptr zeigt auf 0x7FFF (Dangling Pointer!)
++-----------------------------------+
+| (Ungültiger Speicherbereich)      |
+| [ local_val (42) ]                | &lt;--- Daten liegen noch physisch da, sind aber freigegeben
++-----------------------------------+
+
+Schritt 3: Aufruf von `println!` überschreibt den Stack
++-----------------------------------+
+| Stack Frame: main()               |
+| - ptr = 0x7FFF                    |
++-----------------------------------+
+| Stack Frame: println! (...)       | &lt;--- Überschreibt den Speicher an 0x7FFF!
+| - Interne Daten = 9999            |
++-----------------------------------+
+</code></pre>
+<ol>
+<li><strong>Stack-Frame-Allokation</strong>:
+Jedes Mal, wenn eine Funktion aufgerufen wird, reserviert die CPU einen Speicherbereich auf dem Stack für die lokalen Variablen dieser Funktion – den sogenannten <strong>Stack Frame</strong>. Beim Aufruf von <code>get_dangling_pointer</code> wird ein Stack-Frame erstellt. Die Variable <code>local_val</code> wird an einer bestimmten Adresse (z. B. <code>0x7FFF</code>) mit dem Wert <code>42</code> abgelegt.</li>
+<li><strong>Der Rückgabeversuch</strong>:
+Die Funktion versucht, die Speicheradresse <code>0x7FFF</code> als Referenz (<code>&amp;i32</code>) zurückzugeben.</li>
+<li><strong>Stack-Deallokation</strong>:
+Sobald die Funktion <code>get_dangling_pointer</code> endet, verschiebt die CPU den Stack-Pointer zurück. Der Stack-Frame der Funktion wird freigegeben. Der Speicherbereich ab <code>0x7FFF</code> gilt nun als frei und kann bei jedem folgenden Funktionsaufruf (z. B. für die Formatierung des Ausgabetextes in <code>println!</code>) mit neuen Daten überschrieben werden.</li>
+<li><strong>Der illegale Zugriff</strong>:
+Die Variable <code>ptr</code> in <code>main</code> hält nun die Adresse <code>0x7FFF</code>. Würde das Programm nun versuchen, den Wert an <code>0x7FFF</code> zu lesen, würde es nicht mehr die <code>42</code> auslesen, sondern die überschriebenen Daten der <code>println!</code>-Funktion oder zufälligen Speichermüll. In C führt dies zu schwer zu findenden Bugs. In Rust verhindert der Compiler diesen Speicherzugriff bereits beim Kompilieren.</li>
+</ol>
+<hr>
+<h2 id="6-die-lösung"><a class="header" href="#6-die-lösung">6. Die Lösung</a></h2>
+<p>Um dieses Problem zu lösen, müssen wir das Konzept von <strong>Ownership</strong> (Besitz) verstehen. In Rust hat jeder Wert zu jedem Zeitpunkt genau einen Besitzer (eine Variable). Verlässt dieser Besitzer seinen Gültigkeitsbereich, wird der Wert zerstört.</p>
+<p>Wenn wir Daten aus einer Funktion zurückgeben wollen, haben wir zwei sichere Möglichkeiten:</p>
+<ol>
+<li><strong>Rückgabe per Wert (Ownership Transfer / Move)</strong>: Wir geben nicht die Adresse der lokalen Variable zurück, sondern verschieben den Wert selbst in die aufrufende Funktion.</li>
+<li><strong>Heap-Allokation via Smart Pointer (<code>Box&lt;T&gt;</code>)</strong>: Wir legen den Wert auf dem Heap ab und übergeben den Besitz an einen Smart Pointer auf dem Stack.</li>
+</ol>
+<h3 id="lösung-1-rückgabe-per-wert-move-semantik"><a class="header" href="#lösung-1-rückgabe-per-wert-move-semantik">Lösung 1: Rückgabe per Wert (Move-Semantik)</a></h3>
+<p>Die einfachste und performanteste Lösung in Rust ist die Rückgabe des Werts selbst. Der Besitz an der Zahl <code>42</code> wird dabei von der Funktion an die Variable <code>ptr</code> in <code>main</code> übertragen.</p>
+<pre class="playground"><code class="language-rust edition2021">// Die Funktion gibt nun den Wert direkt zurück (i32 statt &amp;i32)
+fn get_safe_value() -&gt; i32 {
+    let local_val: i32 = 42;
+    local_val // Der Wert wird aus der Funktion heraus "bewegt" (Move)
+}
+
+fn main() {
+    let ptr = get_safe_value(); // ptr übernimmt den Besitz des Werts 42
+    println!("Wert von ptr: {}", ptr);
+}</code></pre>
+<h3 id="lösung-2-sichere-heap-allokation-mit-boxt"><a class="header" href="#lösung-2-sichere-heap-allokation-mit-boxt">Lösung 2: Sichere Heap-Allokation mit <code>Box&lt;T&gt;</code></a></h3>
+<p>Möchten wir den Wert explizit im Heap-Speicher ablegen und eine Referenzstruktur behalten, nutzen wir <code>Box&lt;T&gt;</code>. Die <code>Box</code> ist ein Smart Pointer, der die Daten auf dem Heap speichert. Wenn die <code>Box</code> in <code>main</code> ihren Scope verlässt, wird der Heap-Speicher automatisch freigegeben.</p>
+<pre class="playground"><code class="language-rust edition2021">// Die Box alloziiert Speicher auf dem Heap und hält die Adresse.
+fn get_heap_value() -&gt; Box&lt;i32&gt; {
+    let val_on_heap = Box::new(42); // 42 wird auf dem Heap gespeichert
+    val_on_heap // Die Box (Besitz des Heap-Speichers) wird zurückgegeben
+}
+
+fn main() {
+    let heap_ptr = get_heap_value();
+    // Über den Dereferenzierungs-Operator greifen wir auf den Wert auf dem Heap zu
+    println!("Wert auf dem Heap: {}", heap_ptr); 
+} // Hier endet main. heap_ptr verlässt den Scope. Der Heap-Speicher wird automatisch bereinigt!</code></pre>
+<h3 id="zeile-für-zeile-erklärung-nach-dem-eva-prinzip"><a class="header" href="#zeile-für-zeile-erklärung-nach-dem-eva-prinzip">Zeile-für-Zeile-Erklärung nach dem EVA-Prinzip</a></h3>
+<p>Wir analysieren <strong>Lösung 2</strong> anhand des didaktischen EVA-Prinzips (Eingabe - Verarbeitung - Ausgabe):</p>
+<ul>
+<li><strong>Eingabe (Input)</strong>:
+Die Funktion <code>get_heap_value</code> benötigt keine Parameter. Sie startet im leeren Zustand.</li>
+<li><strong>Verarbeitung (Processing)</strong>:
+<ol>
+<li>Mit <code>Box::new(42)</code> fordert das Programm Speicher auf dem Heap an, der groß genug für eine 32-Bit-Ganzzahl (<code>i32</code> = 4 Bytes) ist.</li>
+<li>Der Wert <code>42</code> wird in diesen Heap-Speicherbereich geschrieben.</li>
+<li>Auf dem Stack der Funktion <code>get_heap_value</code> wird die Variable <code>val_on_heap</code> angelegt. Sie ist ein Zeiger, der die Heap-Adresse (z. B. <code>0x10A0</code>) speichert.</li>
+</ol>
+</li>
+<li><strong>Ausgabe (Output)</strong>:
+<ol>
+<li>Die Funktion gibt das Objekt <code>val_on_heap</code> zurück (Typ <code>Box&lt;i32&gt;</code>). Dabei wird der Zeiger auf dem Stack an die aufrufende Funktion <code>main</code> übergeben (Move).</li>
+<li>In <code>main</code> wird die Variable <code>heap_ptr</code> mit diesem Zeiger initialisiert.</li>
+<li>Der Compiler garantiert, dass der Heap-Speicher an <code>0x10A0</code> so lange gültig bleibt, wie <code>heap_ptr</code> existiert.</li>
+<li>Am Ende der <code>main</code>-Funktion verlässt <code>heap_ptr</code> den Gültigkeitsbereich. Der Compiler hat automatisch Code injiziert, der die Freigabe des Speichers an <code>0x10A0</code> anstößt. Es gibt kein Speicherleck und keinen Dangling Pointer.</li>
+</ol>
+</li>
+</ul>
+<hr>
+<h3 id="12-technische-kernkonzepte"><a class="header" href="#12-technische-kernkonzepte">1.2 Technische Kernkonzepte</a></h3>
+<p>Die beiden Lösungen demonstrieren zwei fundamentale technische Konzepte von Rust, die tief in der Compiler-Architektur verankert sind.</p>
+<h4 id="121-statische-typprüfung"><a class="header" href="#121-statische-typprüfung">1.2.1 Statische Typprüfung</a></h4>
+<p>Rust ist eine <strong>stark und statisch typisierte</strong> Sprache. Das bedeutet:</p>
+<ul>
+<li><strong>Statisch</strong>: Der Datentyp jeder Variable muss bereits zur Kompilierzeit feststehen. Zur Laufzeit des Programms können keine Typänderungen vorgenommen werden.</li>
+<li><strong>Stark</strong>: Der Compiler erlaubt keine impliziten Typkonvertierungen. In C können Sie ein <code>char</code> (1 Byte) problemlos zu einem <code>int</code> (4 Bytes) addieren oder einen Zeiger blind in eine Zahl casten. Rust verbietet dies strengstens, um Programmierfehler auszuschließen. Jede Konvertierung muss explizit deklariert werden.</li>
+</ul>
+<p>Dank des Mechanismus der <strong>Typinferenz</strong> müssen Sie jedoch nicht jeden Typ manuell deklarieren. Der Rust-Compiler ist intelligent genug, den Typ einer Variablen anhand ihrer Zuweisung und Verwendung zu erraten:</p>
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let x = 42; // Der Compiler erkennt automatisch, dass x den Typ i32 hat
+<span class="boring">}</span></code></pre>
+<p>Möchten Sie den Typ explizit vorgeben, nutzen Sie die Typannotation mit einem Doppelpunkt:</p>
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let x: u64 = 42; // Explizite Zuweisung als vorzeichenloser 64-Bit-Integer
+<span class="boring">}</span></code></pre>
+<p>Diese statische Typprüfung sorgt dafür, dass logische Typkonflikte (z. B. der Versuch, eine Zeichenkette mit einer Zahl zu multiplizieren) bereits vor der Code-Ausführung erkannt und korrigiert werden müssen.</p>
+<h4 id="122-zero-cost-abstractions"><a class="header" href="#122-zero-cost-abstractions">1.2.2 Zero-Cost Abstractions</a></h4>
+<p>Eines der wichtigsten Versprechen von Rust lautet: <strong>„Zero-Cost Abstractions“</strong> (kostenfreie Abstraktionen). Dieses Prinzip wurde ursprünglich von Bjarne Stroustrup (dem Erfinder von C++) formuliert und besagt:</p>
+<ol>
+<li>Was Sie nicht nutzen, dafür zahlen Sie auch nicht (kein ungenutzter Code oder Overhead in der Binärdatei).</li>
+<li>Was Sie nutzen, könnten Sie von Hand im Assemblercode nicht effizienter oder schneller schreiben.</li>
+</ol>
+<p>Rust bietet hochmoderne Sprachelemente wie funktionale Iteratoren, Closures, Generics und Pattern Matching. In vielen anderen Sprachen (wie Python oder Java) führen solche Abstraktionen zu Laufzeit-Overhead, da Objekte instanziiert und Methoden dynamisch zur Laufzeit gesucht werden müssen.</p>
+<p>Rusts Compiler löst diese Abstraktionen durch Optimierungen des LLVM-Compiler-Backends vollständig auf:</p>
+<ul>
+<li><strong>Monomorphisierung</strong>:
+Wenn Sie eine generische Funktion schreiben, die mit verschiedenen Datentypen arbeiten kann, generiert der Compiler zur Compilezeit für jeden verwendeten Typ eine eigene, spezialisierte Kopie der Funktion. Zur Laufzeit gibt es keinen dynamischen Typ-Lookup-Overhead.</li>
+<li><strong>Inlining</strong>:
+Kleine Funktionen (wie z. B. der Zugriff auf ein Element über einen Iterator) werden vom Compiler direkt an die Stelle des Aufrufs kopiert. Der Overhead des Funktionsaufrufs (Stack-Frame-Aufbau, Register-Sicherung) entfällt komplett.</li>
+<li><strong>Loop Unrolling (Schleifenentrollung)</strong>:
+Schleifen über feste Bereiche werden vom Compiler in lineare Befehlssequenzen zerlegt, um Sprungbefehle auf CPU-Ebene zu minimieren und die CPU-Pipeline optimal auszulasten.</li>
+</ul>
+<p>Durch diese Techniken läuft ein hochgradig abstrakt geschriebenes Rust-Programm (z. B. unter Verwendung von funktionalen Ketten wie <code>.iter().filter().map()</code>) exakt so schnell wie eine manuell optimierte, iterative Schleife in C.</p>
+<hr>
+<h2 id="7-kleines-tutorial"><a class="header" href="#7-kleines-tutorial">7. Kleines Tutorial</a></h2>
+<p>Wir entwickeln nun Schritt für Schritt ein kleines, interaktives Konsolenprogramm. Das Programm liest den Namen eines Benutzers und sein Geburtsjahr ein, berechnet sein Alter und gibt eine personalisierte Meldung aus.</p>
+<p>Dieses Tutorial demonstriert das <strong>EVA-Prinzip</strong> (Eingabe, Verarbeitung, Ausgabe), die Typkonvertierung und die grundlegende Syntax von Rust.</p>
+<h3 id="schritt-1-das-grundgerüst-erstellen"><a class="header" href="#schritt-1-das-grundgerüst-erstellen">Schritt 1: Das Grundgerüst erstellen</a></h3>
+<p>Jedes ausführbare Rust-Programm beginnt mit die Funktion <code>main</code>. Diese Funktion ist der Einstiegspunkt für das Betriebssystem. Wir importieren zudem das Ein-/Ausgabemodul <code>io</code> aus der Standardbibliothek (<code>std</code>).</p>
+<pre class="playground"><code class="language-rust edition2021">use std::io; // Importiert das Eingabe-/Ausgabe-Modul
+
+fn main() {
+    println!("Willkommen beim Rust-Altersrechner!");
+}</code></pre>
+<h3 id="schritt-2-den-namen-einlesen-eingabe"><a class="header" href="#schritt-2-den-namen-einlesen-eingabe">Schritt 2: Den Namen einlesen (Eingabe)</a></h3>
+<p>Wir erstellen einen veränderbaren String (<code>String::new()</code>), um den Namen des Benutzers zu speichern. Mit <code>io::stdin().read_line()</code> lesen wir die Eingabe von der Tastatur ein.</p>
+<pre class="playground"><code class="language-rust edition2021">use std::io;
+
+fn main() {
+    println!("Willkommen beim Rust-Altersrechner!");
+    
+    // Wir erstellen eine veränderbare Variable für den Namen.
+    // 'mut' ist zwingend erforderlich, da wir den Inhalt der Variable ändern.
+    let mut name = String::new();
+    
+    println!("Bitte geben Sie Ihren Namen ein:");
+    
+    // Wir lesen die Zeile ein. read_line erwartet eine veränderbare Referenz (&amp;mut name).
+    // expect() fängt eventuelle Hardware-Fehler beim Lesen ab.
+    io::stdin()
+        .read_line(&amp;mut name)
+        .expect("Fehler beim Lesen der Zeile");
+        
+    // trim() entfernt Leerzeichen und das Zeilenumbruch-Zeichen (\n) am Ende.
+    let name = name.trim();
+    
+    println!("Hallo, {}!", name);
+}</code></pre>
+<h3 id="schritt-3-das-geburtsjahr-einlesen-und-parsen-eingabe--verarbeitung"><a class="header" href="#schritt-3-das-geburtsjahr-einlesen-und-parsen-eingabe--verarbeitung">Schritt 3: Das Geburtsjahr einlesen und parsen (Eingabe &amp; Verarbeitung)</a></h3>
+<p>Nun lesen wir das Geburtsjahr als String ein und konvertieren (parsen) es in eine Ganzzahl des Typs <code>i32</code>.</p>
+<pre class="playground"><code class="language-rust edition2021">use std::io;
+
+fn main() {
+    println!("Willkommen beim Rust-Altersrechner!");
+    
+    let mut name = String::new();
+    println!("Bitte geben Sie Ihren Namen ein:");
+    io::stdin().read_line(&amp;mut name).expect("Fehler beim Lesen");
+    let name = name.trim().to_string(); // In festen String konvertieren
+    
+    // Variable für das Geburtsjahr erstellen
+    let mut jahr_str = String::new();
+    println!("In welchem Jahr wurden Sie geboren?");
+    
+    io::stdin()
+        .read_line(&amp;mut jahr_str)
+        .expect("Fehler beim Lesen");
+        
+    // Typkonvertierung: Wir parsen den String in einen 32-Bit Integer (i32).
+    // trim() ist nötig, da read_line das Enter-Zeichen (\n) mitspeichert.
+    let geburtsjahr: i32 = jahr_str
+        .trim()
+        .parse()
+        .expect("Bitte geben Sie eine gültige Jahreszahl ein!");
+        
+    // Verarbeitung: Berechnung des Alters (angenommenes aktuelles Jahr: 2026)
+    let aktuelles_jahr = 2026;
+    let alter = aktuelles_jahr - geburtsjahr;
+    
+    // Ausgabe (Output)
+    println!("{}, Sie sind oder werden dieses Jahr {} Jahre alt.", name, alter);
+}</code></pre>
+<h3 id="schritt-4-zeile-für-zeile-erklärung-des-codes"><a class="header" href="#schritt-4-zeile-für-zeile-erklärung-des-codes">Schritt 4: Zeile-für-Zeile-Erklärung des Codes</a></h3>
+<ol>
+<li><code>use std::io;</code>:
+Weist den Compiler an, das Modul für Standard-Ein- und Ausgaben aus der Standardbibliothek (<code>std</code>) einzubinden. Ohne diesen Import müssten wir im Code schreiben: <code>std::io::stdin()</code>.</li>
+<li><code>let mut name = String::new();</code>:
+Erstellt eine veränderbare Variable <code>name</code> und bindet sie an eine neue, leere Instanz des Typs <code>String</code>. Dieser Typ wächst dynamisch auf dem Heap. Standardmäßig sind alle Variablen in Rust unveränderlich (immutable). Das Schlüsselwort <code>mut</code> erlaubt es uns, den Inhalt später zu überschreiben.</li>
+<li><code>io::stdin().read_line(&amp;mut name)...</code>:
+Ruft die Funktion <code>stdin()</code> auf, die einen Handle auf den Standard-Eingabestrom des Betriebssystems zurückgibt. <code>.read_line</code> liest die Eingabe bis zum Drücken der Enter-Taste. Wir übergeben <code>&amp;mut name</code> (eine veränderbare Referenz). Dadurch schreibt die Funktion die Eingabe direkt in den Speicher von <code>name</code>, ohne die Daten kopieren zu müssen.</li>
+<li><code>.expect("Fehler beim Lesen");</code>:
+<code>read_line</code> gibt einen Typ namens <code>Result</code> zurück. Dieser kann entweder <code>Ok</code> (Erfolg) oder <code>Err</code> (Fehler) sein. Rust zwingt uns, mit potenziellen Fehlern umzugehen. <code>.expect</code> stürzt das Programm ab und gibt die Fehlermeldung aus, falls ein Fehler (z. B. ein fehlerhafter Terminal-Stream) auftritt.</li>
+<li><code>let name = name.trim().to_string();</code>:
+Hier nutzen wir <strong>Shadowing</strong> (Beschattung). Wir deklarieren eine neue Variable mit demselben Namen <code>name</code>. Dies erlaubt es uns, den Typ oder Inhalt zu transformieren, ohne neue Variablennamen erfinden zu müssen. <code>.trim()</code> entfernt führende und folgende Whitespaces sowie das durch Enter entstandene Newline-Zeichen (<code>\n</code>).</li>
+<li><code>let geburtsjahr: i32 = jahr_str.trim().parse().expect(...);</code>:
+Wir rufen <code>.parse()</code> auf dem bereinigten String auf. Der Compiler weiß durch die explizite Typannotation <code>: i32</code>, in welchen Zieltyp der String konvertiert werden soll. Schlägt das Parsen fehl (weil der Benutzer z. B. „einhundert“ statt „100“ eingegeben hat), bricht <code>.expect</code> das Programm kontrolliert ab.</li>
+</ol>
+<hr>
+<h2 id="8-mentale-modelle--deep-dive"><a class="header" href="#8-mentale-modelle--deep-dive">8. Mentale Modelle &amp; Deep Dive</a></h2>
+<p>Um fehlerfreien Code in Rust zu schreiben, müssen wir zwei mentale Modelle verinnerlichen: den Aufbau des Arbeitsspeichers und die Struktur des Ökosystems.</p>
+<h3 id="das-speicherlayout-stack-vs-heap"><a class="header" href="#das-speicherlayout-stack-vs-heap">Das Speicherlayout (Stack vs. Heap)</a></h3>
+<p>Der physikalische Arbeitsspeicher (RAM) wird von einem Rust-Programm in zwei Hauptbereiche unterteilt, die sich in ihrer Funktionsweise und Zugriffsgeschwindigkeit drastisch unterscheiden.</p>
+<pre><code class="language-text">+-----------------------------------------------------------------+
+|                         Arbeitsspeicher                         |
++-----------------------------------------------------------------+
+| STACK (LIFO - Last In, First Out)                               |
+| * Extrem schnell (nur Register-Verschiebung)                     |
+| * Feste, zur Compilezeit bekannte Größen                         |
+| * Automatische Bereinigung bei Funktionsende                    |
+|                                                                 |
+|   [ Stack-Frame main() ]                                        |
+|   - x: i32 (4 Bytes)                                            |
+|   - ptr: Box-Zeiger (8 Bytes) ------&gt; +-----------------------+ |
+|                                       | HEAP (Dynamisch)      | |
+|                                       | * Suchaufwand im RAM  | |
+|                                       | * Variable Größen     | |
+|                                       | * Fragmentierung      | |
+|                                       |                       | |
+|                                       |   Adresse 0x10A0:     | |
+|                                       |   [ 42 (i32 - Heap) ] | |
+|                                       |                       | |
++---------------------------------------+-----------------------+ |
+|                                                                 |
++-----------------------------------------------------------------+
+</code></pre>
+<h4 id="der-stack-stapelspeicher"><a class="header" href="#der-stack-stapelspeicher">Der Stack (Stapelspeicher)</a></h4>
+<ul>
+<li><strong>Funktionsweise</strong>: Der Stack arbeitet nach dem LIFO-Prinzip (Last In, First Out). Sie können sich das vorstellen wie einen Stapel Teller in einer Kantine: Der letzte Teller, der auf den Stapel gelegt wird, wird als erster wieder heruntergenommen.</li>
+<li><strong>Eigenschaften</strong>:
+<ul>
+<li>Alle Daten auf dem Stack müssen eine <strong>feste, bekannte Größe</strong> haben, die bereits zur Compilezeit feststeht (z. B. einfache Zahlen wie <code>i32</code> oder feste Arrays wie <code>[i32; 4]</code>).</li>
+<li>Die Speicherallokation ist extrem schnell. Die CPU muss lediglich einen internen Zeiger (den Stack Pointer) verschieben.</li>
+<li>Jeder Thread in einem Betriebssystem besitzt seinen eigenen Stack (typischerweise einige Megabyte groß).</li>
+<li>Verlässt eine Funktion ihren Scope, wird ihr gesamter Stack Frame mit einem einzigen CPU-Befehl abgebaut.</li>
+</ul>
+</li>
+</ul>
+<h4 id="der-heap-haufenspeicher"><a class="header" href="#der-heap-haufenspeicher">Der Heap (Haufenspeicher)</a></h4>
+<ul>
+<li><strong>Funktionsweise</strong>: Der Heap wird für Daten genutzt, deren Größe sich zur Laufzeit ändern kann (z. B. Texte vom Benutzer, wachsende Vektor-Listen) oder die länger leben müssen als die Funktion, die sie erstellt hat.</li>
+<li><strong>Eigenschaften</strong>:
+<ul>
+<li>Wenn Sie Daten auf dem Heap ablegen wollen (z. B. mit <code>Box::new()</code>), fordert Ihr Programm Speicher beim Betriebssystem an. Der Speichermanager sucht eine freie Stelle im Heap, markiert diese als belegt und gibt einen <strong>Zeiger</strong> (eine Speicheradresse) zurück.</li>
+<li>Dieser Zeiger selbst hat eine feste Größe (8 Bytes auf einem 64-Bit-System) und wird auf dem <strong>Stack</strong> gespeichert. Er verweist auf die tatsächlichen Daten auf dem <strong>Heap</strong>.</li>
+<li>Der Zugriff auf den Heap ist langsamer als auf den Stack, da die CPU dem Zeiger folgen muss (Dereferenzierung), was zu Cache-Misses führen kann. Zudem ist die Allokation auf dem Heap aufwendiger, da der Speichermanager nach freien Speicherblöcken suchen muss.</li>
+</ul>
+</li>
+</ul>
+<h3 id="14-anwendungsgebiete-und-ökosystem"><a class="header" href="#14-anwendungsgebiete-und-ökosystem">1.4 Anwendungsgebiete und Ökosystem</a></h3>
+<p>Rust ist keine Nischensprache mehr, sondern hat sich fest in der IT-Industrie etabliert.</p>
+<h4 id="141-system---netzwerkprogrammierung"><a class="header" href="#141-system---netzwerkprogrammierung">1.4.1 System- &amp; Netzwerkprogrammierung</a></h4>
+<p>Dies ist das klassische Terrain von Rust. Überall dort, wo maximale Performance, niedrige Latenz und absolute Zuverlässigkeit gefordert sind, ersetzt Rust zunehmend C und C++.</p>
+<ul>
+<li><strong>Kommandozeilenwerkzeuge (CLI-Tools)</strong>:
+Rust eignet sich hervorragend für CLI-Tools. Durch das statische Linken werden alle Abhängigkeiten in eine einzige, ausführbare Binärdatei kompiliert. Der Benutzer muss keine Laufzeitumgebung (wie Java oder Python) installieren. Zudem starten Rust-Programme in Millisekunden. Bekannte Tools wie <code>ripgrep</code> (eine extrem schnelle Alternative zu <code>grep</code>) oder <code>fd</code> (Alternative zu <code>find</code>) dominieren diese Kategorie.</li>
+<li><strong>Netzwerk- und Cloud-Infrastruktur</strong>:
+Hochperformante, asynchrone Frameworks wie <code>tokio</code> und Webserver wie <code>hyper</code>, <code>actix-web</code> oder <code>axum</code> ermöglichen es, Millionen von Anfragen pro Sekunde bei minimalem Speicherverbrauch zu verarbeiten. Cloud-Giganten wie Amazon Web Services (AWS) nutzen Rust für ihre Virtualisierungs-Infrastruktur (z. B. <em>Firecracker</em>, das die Basis für AWS Lambda bildet), da Rust die Hardwarekosten im Vergleich zu Java oder Go dramatisch senkt.</li>
+<li><strong>Betriebssysteme</strong>:
+Seit der Kernel-Version 6.1 ist Rust neben C die einzige offiziell zugelassene Programmiersprache für die Entwicklung von Treibern im <strong>Linux-Kernel</strong>. Microsoft schreibt kritische Teile des Windows-Kernels in Rust neu, um Sicherheitslücken zu schließen.</li>
+</ul>
+<h4 id="142-webassembly-wasm--embedded-systems"><a class="header" href="#142-webassembly-wasm--embedded-systems">1.4.2 WebAssembly (Wasm) &amp; Embedded Systems</a></h4>
+<ul>
+<li><strong>WebAssembly (Wasm)</strong>:
+WebAssembly ist ein Standard, der es ermöglicht, Code in Webbrowsern mit nahezu nativer Geschwindigkeit auszuführen. Da Rust keinen Garbage Collector benötigt und eine extrem kleine Laufzeitumgebung besitzt, können Rust-Binärdateien in winzige Wasm-Module kompiliert werden. Diese Module werden im Browser geladen und laufen dort sicher in einer Sandbox. Unternehmen wie Figma oder Cloudflare nutzen Rust-Wasm, um komplexe Grafik- und Rechenoperationen direkt im Browser des Benutzers auszuführen.</li>
+<li><strong>Embedded Systems (Eingebettete Systeme)</strong>:
+In der Welt der Mikrocontroller (z. B. ARM Cortex-M, RISC-V) zählt jedes Byte Arbeitsspeicher. Rust bietet eine offizielle Unterstützung für „Bare-Metal“-Programmierung (<code>#[no_std]</code>). Das bedeutet, dass der Code ohne ein zugrundeliegendes Betriebssystem direkt auf der Hardware läuft. Der Borrow Checker verhindert hier folgenschwere Fehler wie Speicherüberläufe, die in Steuergeräten von Autos, medizinischen Geräten oder IoT-Sensoren katastrophale Folgen haben könnten.</li>
+</ul>
+<hr>
+<h3 id="exhaustive-api-reference-lückenlos"><a class="header" href="#exhaustive-api-reference-lückenlos">Exhaustive API-Reference (Lückenlos)</a></h3>
+<p>In diesem Abschnitt dokumentieren wir die fundamentalen Standardbibliotheksfunktionen, die für die Veranschaulichung der Typprüfung, Speichergrößenbestimmung und Heap-Allokation in Kapitel 1 verwendet wurden.</p>
+<h4 id="1-stdanytype_name"><a class="header" href="#1-stdanytype_name">1. <code>std::any::type_name</code></a></h4>
+<ul>
+<li><strong>Signatur</strong>:
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>pub const fn type_name&lt;T&gt;() -&gt; &amp;'static str
+<span class="boring">}</span></code></pre>
+</li>
+<li><strong>Parameter</strong>:
+Die Funktion benötigt keine Laufzeit-Parameter. Sie nutzt einen generischen Typparameter <code>T</code>, der zur Compilezeit aufgelöst wird.</li>
+<li><strong>Rückgabetyp</strong>:
+<code>&amp;'static str</code> – Eine Referenz auf eine Zeichenkette mit dem vollständigen Namen des Typs <code>T</code> zur Compilezeit (z. B. <code>"i32"</code>, <code>"std::string::String"</code>).</li>
+<li><strong>Sicherheitsaspekte &amp; Panics</strong>:
+Diese Funktion ist als <code>const fn</code> deklariert und kann zur Compilezeit ausgewertet werden. Sie stürzt unter keinen Umständen abstürzen.</li>
+<li><strong>Kurzbeispiel</strong>:
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let x = 42.0f64;
+println!("Typ von x: {}", std::any::type_name::&lt;f64&gt;()); // Ausgabe: "f64"
+<span class="boring">}</span></code></pre>
+</li>
+</ul>
+<h4 id="2-stdmemsize_of"><a class="header" href="#2-stdmemsize_of">2. <code>std::mem::size_of</code></a></h4>
+<ul>
+<li><strong>Signatur</strong>:
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>pub const fn size_of&lt;T&gt;() -&gt; usize
+<span class="boring">}</span></code></pre>
+</li>
+<li><strong>Parameter</strong>:
+Keine Laufzeit-Parameter. Die Typauflösung erfolgt vollständig zur Compilezeit über den generischen Typparameter <code>T</code>.</li>
+<li><strong>Rückgabetyp</strong>:
+<code>usize</code> – Die genaue Größe des Typs <code>T</code> im Stack-Speicher in Bytes.</li>
+<li><strong>Sicherheitsaspekte &amp; Panics</strong>:
+Panikt nie. Die Größe wird vom Compiler berechnet und als Konstante in den Maschinencode eingefügt.</li>
+<li><strong>Kurzbeispiel</strong>:
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let groese = std::mem::size_of::&lt;i32&gt;();
+println!("Ein i32 belegt {} Bytes auf dem Stack.", groese); // Ausgabe: 4
+<span class="boring">}</span></code></pre>
+</li>
+</ul>
+<h4 id="3-stdboxedboxnew"><a class="header" href="#3-stdboxedboxnew">3. <code>std::boxed::Box::new</code></a></h4>
+<ul>
+<li><strong>Signatur</strong>:
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>pub fn new(x: T) -&gt; Box&lt;T&gt;
+<span class="boring">}</span></code></pre>
+</li>
+<li><strong>Parameter</strong>:
+<ul>
+<li><code>x</code>: Der Wert des Typs <code>T</code>, der auf den Heap-Speicher verschoben werden soll.</li>
+</ul>
+</li>
+<li><strong>Rückgabetyp</strong>:
+<code>Box&lt;T&gt;</code> – Ein Smart Pointer, der die Eigentümerschaft über den zugewiesenen Heap-Speicher repräsentiert und auf den Wert verweist.</li>
+<li><strong>Sicherheitsaspekte &amp; Panics</strong>:
+Die Allokation kann zu einem Programmabsturz (OOM - Out of Memory) führen, wenn das System über keinen freien Arbeitsspeicher mehr verfügt. Dies ist jedoch auf modernen Betriebssystemen extrem selten.</li>
+<li><strong>Kurzbeispiel</strong>:
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let heap_zahl = Box::new(100u8);
+println!("Wert auf dem Heap: {}", *heap_zahl); // Ausgabe: 100
+<span class="boring">}</span></code></pre>
+</li>
+</ul>
+<hr>
+<h2 id="9-drei-praktische-übungen"><a class="header" href="#9-drei-praktische-übungen">9. Drei praktische Übungen</a></h2>
+<h3 id="übung-1-speicherfehler-in-c-code-analysieren-leicht"><a class="header" href="#übung-1-speicherfehler-in-c-code-analysieren-leicht">Übung 1: Speicherfehler in C-Code analysieren (Leicht)</a></h3>
+<p><strong>Aufgabe</strong>:
+Betrachten Sie das folgende C-Code-Snippet. Analysieren Sie den Code und identifizieren Sie den Speicherfehler. Erklären Sie, warum dieser Fehler auftritt und wie der Rust-Compiler ein äquivalentes Programm bereits zur Compilezeit stoppen würde.</p>
+<pre><code class="language-c">#include &lt;stdlib.h&gt;
+#include &lt;stdio.h&gt;
+
+int main() {
+    int* array = (int*)malloc(5 * sizeof(int));
+    array[0] = 10;
+    
+    free(array);
+    
+    printf("Der Wert bei Index 0 lautet: %d\n", array[0]);
+    return 0;
+}
+</code></pre>
+<ul>
+<li><strong>Lösungshinweis (Hint)</strong>:
+Achten Sie darauf, wann der Speicher mit <code>free()</code> freigegeben wird und wann das Programm versucht, auf den Inhalt von <code>array</code> zuzugreifen. In Rust würde dieser Fehler unter die Kategorie „Use-After-Free“ fallen. Denken Sie an das Ownership-Gesetz.</li>
+</ul>
+<hr>
+<h3 id="übung-2-statische-typprüfung-simulieren-mittel"><a class="header" href="#übung-2-statische-typprüfung-simulieren-mittel">Übung 2: Statische Typprüfung simulieren (Mittel)</a></h3>
+<p><strong>Aufgabe</strong>:
+Schreiben Sie ein kleines Rust-Programm (oder skizzieren Sie den Code), das zeigt, wie streng die Typkonvertierung in Rust ist. Versuchen Sie, eine Variable des Typs <code>i32</code> (32-Bit Integer) und eine Variable des Typs <code>f64</code> (64-Bit Fließkommazahl) ohne explizite Konvertierung zu addieren. Dokumentieren Sie die Fehlermeldung des Compilers und beheben Sie den Fehler mithilfe des <code>as</code>-Operators zur expliziten Konvertierung.</p>
+<ul>
+<li><strong>Lösungshinweis (Hint)</strong>:
+Der Rust-Compiler erlaubt keine arithmetischen Operationen zwischen unterschiedlichen Typen. Sie müssen eine der Variablen konvertieren, z. B. <code>let summe = x as f64 + y;</code>.</li>
+</ul>
+<hr>
+<h3 id="übung-3-speichermodell-zeichnen--box-größen-ermitteln-schwer"><a class="header" href="#übung-3-speichermodell-zeichnen--box-größen-ermitteln-schwer">Übung 3: Speichermodell zeichnen &amp; Box-Größen ermitteln (Schwer)</a></h3>
+<p><strong>Aufgabe</strong>:
+Schreiben Sie ein Rust-Programm, das die Größe einer <code>Box&lt;i32&gt;</code> und die Größe eines normalen <code>i32</code>-Werts auf dem Stack ermittelt. Nutzen Sie dafür die Funktion <code>std::mem::size_of</code>. Erklären Sie das Ergebnis anhand des Speicherlayouts (Stack vs. Heap). Warum unterscheidet sich die Größe der Box auf dem Stack nicht, selbst wenn Sie den Wert in der Box verändern oder vergrößern?</p>
+<ul>
+<li><strong>Lösungshinweis (Hint)</strong>:
+Denken Sie daran, dass eine <code>Box</code> auf dem Stack lediglich ein Zeiger (Speicheradresse) ist. Auf einem 64-Bit-Betriebssystem ist jede Speicheradresse genau 8 Bytes groß, unabhängig davon, wie groß die Daten auf dem Heap sind, auf die sie verweist.</li>
+</ul>
+<hr>
+<h2 id="10-lernstrategie-selbsteinschätzung--merkzettel"><a class="header" href="#10-lernstrategie-selbsteinschätzung--merkzettel">10. Lernstrategie, Selbsteinschätzung &amp; Merkzettel</a></h2>
+<h3 id="spickzettel-cheat-sheet"><a class="header" href="#spickzettel-cheat-sheet">Spickzettel (Cheat Sheet)</a></h3>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th style="text-align: left">Befehl / Syntax</th><th style="text-align: left">Beschreibung</th><th style="text-align: left">Beispiel</th></tr>
+</thead>
+<tbody>
+<tr><td style="text-align: left"><code>let x = 5;</code></td><td style="text-align: left">Deklaration einer unveränderlichen Variable</td><td style="text-align: left"><code>let mut age = 25;</code></td></tr>
+<tr><td style="text-align: left"><code>let mut x = 5;</code></td><td style="text-align: left">Deklaration einer veränderbaren Variable</td><td style="text-align: left"><code>age = 26;</code></td></tr>
+<tr><td style="text-align: left"><code>Box::new(x)</code></td><td style="text-align: left">Alloziert Speicher auf dem Heap für <code>x</code></td><td style="text-align: left"><code>let b = Box::new(42);</code></td></tr>
+<tr><td style="text-align: left"><code>as</code></td><td style="text-align: left">Operator für explizite Typkonvertierung</td><td style="text-align: left"><code>let y = x as f64;</code></td></tr>
+<tr><td style="text-align: left"><code>std::mem::size_of::&lt;T&gt;()</code></td><td style="text-align: left">Ermittelt die Stack-Größe des Typs <code>T</code> in Bytes</td><td style="text-align: left"><code>size_of::&lt;Box&lt;i32&gt;&gt;()</code></td></tr>
+<tr><td style="text-align: left"><code>std::any::type_name::&lt;T&gt;()</code></td><td style="text-align: left">Gibt den Namen des Typs <code>T</code> als Text zurück</td><td style="text-align: left"><code>type_name::&lt;f32&gt;()</code></td></tr>
+</tbody>
+</table>
+</div>
+<h3 id="active-recall-verständnisfragen"><a class="header" href="#active-recall-verständnisfragen">Active Recall (Verständnisfragen)</a></h3>
+<ol>
+<li><strong>Frage</strong>: Warum war das Projekt <em>Servo</em> der Auslöser dafür, dass Mozilla ein besonderes Interesse an einer neuen Sprache wie Rust hatte?
+<ul>
+<li><em>Antwort (im Kopf formulieren)</em>: Servo sollte Layouts parallel berechnen. In C++ führen unkoordinierte parallele Zugriffe zu Datenrennen, die extrem schwer zu verhindern sind. Rusts Typsystem garantiert Thread-Sicherheit.</li>
+</ul>
+</li>
+<li><strong>Frage</strong>: Was versteht man unter einer „Zero-Cost Abstraction“? Nennen Sie zwei Compiler-Optimierungen, die dies ermöglichen.
+<ul>
+<li><em>Antwort</em>: Abstraktionen, die zur Laufzeit keinen Overhead verursachen. Optimierungen: Monomorphisierung (Generics auflösen) und Inlining (Funktionsaufrufe ersetzen).</li>
+</ul>
+</li>
+<li><strong>Frage</strong>: Erklären Sie, warum ein Garbage Collector in Echtzeitsystemen problematisch sein kann.
+<ul>
+<li><em>Antwort</em>: Weil er unvorhersehbare Pausen (Stop-the-world) verursacht, um Speicher freizugeben, was Latenzen erzeugt.</li>
+</ul>
+</li>
+</ol>
+<h3 id="die-feynman-methode"><a class="header" href="#die-feynman-methode">Die Feynman-Methode</a></h3>
+<p>Erklären Sie einem absoluten Anfänger das Konzept des <strong>Borrow Checkers</strong> in Rust in drei einfachen Sätzen, ohne Fachbegriffe wie „Kompilierung“ oder „Referenz“ zu nutzen.</p>
+<h3 id="gezielte-fehlerprovokation"><a class="header" href="#gezielte-fehlerprovokation">Gezielte Fehlerprovokation</a></h3>
+<p>Schreiben Sie nach der Installation der Toolchain (in Kapitel 2) das fehlerhafte C-Programm zur Rückgabe einer lokalen Adresse in Rust. Versuchen Sie, den Compiler durch Tricks (z. B. Zuweisen an globale Variablen) auszutricksen, und beobachten Sie, wie der Borrow Checker jede Lücke schließt.</p>
+<h3 id="metakognitiver-selbsttest"><a class="header" href="#metakognitiver-selbsttest">Metakognitiver Selbsttest</a></h3>
+<p>Wechseln Sie erst zu <a href="file:///home/thorsten/RustKurs/doc/src/2.md">Kapitel 2: Installation &amp; Systemkonfiguration</a>, wenn Sie:</p>
+<ul>
+<li><input disabled="" type="checkbox"> Den genauen Unterschied zwischen Stack und Heap erklären können.</li>
+<li><input disabled="" type="checkbox"> Verstanden haben, warum C/C++-Code anfällig für Use-After-Free-Fehler ist.</li>
+<li><input disabled="" type="checkbox"> Begreifen, warum Rust keinen Garbage Collector benötigt, um speichersicher zu sein.</li>
+</ul>
+<hr>
+<h2 id="11-zusammenfassung"><a class="header" href="#11-zusammenfassung">11. Zusammenfassung</a></h2>
+<ul>
+<li><strong>Evolution</strong>: Rust wurde von Graydon Hoare initiiert und ab 2009 von Mozilla gesponsert, um eine sichere, parallele Browser-Engine (Servo) zu entwickeln.</li>
+<li><strong>Kernziele</strong>: Die Sprache strebt Speichersicherheit, maximale Performance und datenrennenfreie Nebenläufigkeit an.</li>
+<li><strong>Speichergarantien</strong>: Im Gegensatz zu C/C++ schließt Rust Speicherfehler wie Use-After-Free oder Buffer Overflows zur Compilezeit aus.</li>
+<li><strong>GC-Freiheit</strong>: Statt eines Garbage Collectors nutzt Rust das Ownership-Prinzip und RAII zur deterministischen Freigabe von Ressourcen ohne Laufzeit-Overhead.</li>
+<li><strong>Typsystem</strong>: Die statische und starke Typprüfung verhindert logische Typkonflikte und Programmierfehler vor der Ausführung.</li>
+<li><strong>Einsatzbereiche</strong>: Typische Anwendungsgebiete sind die System- und Netzwerkprogrammierung, WebAssembly im Browser sowie ressourcensparende Embedded Systems.</li>
+</ul>
+<hr>
+<p><strong>Lizenz- und Attributionshinweis</strong>:
+Teile dieses Kapitels basieren auf Übersetzungen und didaktischen Anpassungen des offiziellen Buches <a href="https://doc.rust-lang.org/book/">The Rust Programming Language</a> von Steve Klabnik und Carol Nichols (sowie Beiträgen der Rust-Community), lizenziert unter <a href="https://opensource.org/licenses/MIT">MIT</a> und <a href="https://www.apache.org/licenses/LICENSE-2.0">Apache 2.0</a>.</p>
 
                     </main>
 

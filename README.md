@@ -1,6 +1,6 @@
 # 🎬 Media- & Grafik-Tools Installationsanleitung (Linux/Ubuntu)
 
-Dieses Dokument beschreibt die Installation und Konfiguration von **VLC Media Player**, **OBS Studio**, **Kdenlive**, **Inkscape**, **GIMP**, **Gromit-MPX**, **Flameshot**, **Glaxnimate**, **OpenBoard**, **Xournal++**, **Audacity**, **mdBook**, **Blender 3D** und dem **Model Context Protocol (MCP) VS Code Command Server** auf einem Ubuntu- bzw. Linux-System. Diese Tools bilden die Grundlage für die Wiedergabe, Aufnahme, den Schnitt, die grafische Gestaltung, 3D-Modellierung, die Live-Präsentation, handschriftliche Erklärungen, das Audio-Mastering, das Hosten und die KI-gestützte Steuerung deines Rust-Videokurses.
+Dieses Dokument beschreibt die Installation und Konfiguration von **VLC Media Player**, **OBS Studio**, **Kdenlive**, **Inkscape**, **GIMP**, **Gromit-MPX**, **Flameshot**, **Glaxnimate**, **OpenBoard**, **Xournal++**, **Audacity**, **mdBook**, **Blender 3D** und dem **Model Context Protocol (MCP) VS Code Command Server** auf einem Ubuntu- bzw. Linux-System. Diese Tools bilden die Grundlage für die Wiedergabe, Aufnahme, den Schnitt, die grafische Gestaltung, 3D-Modellierung, die Live-Präsentation, handschriftliche Erklärungen, das Audio-Mastering, das Hosten und die KI-gestützte Steuerung Ihres Rust-Videokurses.
 
 ---
 
@@ -24,7 +24,7 @@ sudo apt update
 sudo apt install -y vlc
 ```
 > [!TIP]
-> Um sicherzustellen, dass alle gängigen Audio- und Videocodecs vorhanden sind, installiere die Restricted Extras mit:
+> Um sicherzustellen, dass alle gängigen Audio- und Videocodecs vorhanden sind, installieren Sie die Restricted Extras mit:
 > `sudo apt install -y ubuntu-restricted-extras`
 
 #### Methode B: Installation über Snap
@@ -78,7 +78,7 @@ sudo snap install obs-studio
 ```
 
 #### 📸 Virtuelle Kamera aktivieren (Virtual Camera)
-* Unter Ubuntu/Linux benötigst du dafür das Kernel-Modul `v4l2loopback`:
+* Unter Ubuntu/Linux benötigen Sie dafür das Kernel-Modul `v4l2loopback`:
   ```bash
   sudo apt install -y v4l2loopback-dkms
   ```
@@ -107,7 +107,7 @@ sudo apt install -y kdenlive
 
 ### 🎞️ Vektor-Animationen über Videos zeichnen (Glaxnimate)
 
-Um 2D-Vektor-Animationen (wie wandernde Pfeile, Einkreisungen oder Hervorhebungen) direkt über deine Videos in Kdenlive zu zeichnen, kannst du **Glaxnimate** als Erweiterung nutzen.
+Um 2D-Vektor-Animationen (wie wandernde Pfeile, Einkreisungen oder Hervorhebungen) direkt über Ihre Videos in Kdenlive zu zeichnen, können Sie **Glaxnimate** als Erweiterung nutzen.
 
 #### 1. Glaxnimate via Snap installieren:
 ```bash
@@ -124,7 +124,7 @@ sudo snap install glaxnimate
 
 ## 🎨 4. Grafik-Software (Inkscape & GIMP)
 
-Für die Erstellung von visuellen Assets, Diagrammen und Vorschaubildern (Thumbnails) für deinen Videokurs sind folgende Grafikprogramme sehr zu empfehlen:
+Für die Erstellung von visuellen Assets, Diagrammen und Vorschaubildern (Thumbnails) für Ihren Videokurs sind folgende Grafikprogramme sehr zu empfehlen:
 
 ### 📊 Grafik-Tools im Überblick
 
@@ -145,10 +145,10 @@ sudo apt install -y inkscape gimp
 
 ## 🖌️ 5. Bildschirm-Präsentation & Annotation (Gromit-MPX)
 
-Wenn du deinen Bildschirm mit OBS Studio aufnimmst und live Code erklärst, ist es extrem hilfreich, direkt auf dem Bildschirm zeichnen zu können, um wichtige Zeilen hervorzuheben.
+Wenn Sie Ihren Bildschirm mit OBS Studio aufnehmen und live Code erklären, ist es extrem hilfreich, direkt auf dem Bildschirm zeichnen zu können, um wichtige Zeilen hervorzuheben.
 
 ### 📊 Gromit-MPX Übersicht
-* **Was es ist:** Ein Desktop-Annotationstool, mit dem du per Tastendruck auf dem gesamten Bildschirm (über allen Fenstern wie VS Code oder dem Browser) zeichnen kannst.
+* **Was es ist:** Ein Desktop-Annotationstool, mit dem Sie per Tastendruck auf dem gesamten Bildschirm (über allen Fenstern wie VS Code oder dem Browser) zeichnen können.
 * **Vorteile:** 
   - Funktioniert nahtlos während der OBS-Aufnahme.
   - Unterstützt verschiedene Farben (Rot, Blau, Gelb, Grün), Linienstärken und Radiergummis.
@@ -163,11 +163,11 @@ sudo apt install -y gromit-mpx
 ```
 
 ### 🚀 Verwendung & Hotkeys
-1. Starte Gromit-MPX über das Anwendungsmenü oder das Terminal (`gromit-mpx`).
-2. **Zeichnen aktivieren/deaktivieren:** Drücke die Taste **`F9`** (der Cursor verwandelt sich in ein Fadenkreuz).
-3. **Zeichnen:** Halte die linke Maustaste gedrückt und zeichne.
-4. **Radieren:** Halte die rechte Maustaste gedrückt oder nutze `Umschalt` + linke Maustaste.
-5. **Alles löschen:** Drücke **`Mittelklick`** oder **`Strg + F9`** (je nach Konfiguration), um alle Zeichnungen zu leeren.
+1. Starten Sie Gromit-MPX über das Anwendungsmenü oder das Terminal (`gromit-mpx`).
+2. **Zeichnen aktivieren/deaktivieren:** Drücken Sie die Taste **`F9`** (der Cursor verwandelt sich in ein Fadenkreuz).
+3. **Zeichnen:** Halten Sie die linke Maustaste gedrückt und zeichnen Sie.
+4. **Radieren:** Halten Sie die rechte Maustaste gedrückt oder nutzen Sie `Umschalt` + linke Maustaste.
+5. **Alles löschen:** Drücken Sie **`Mittelklick`** oder **`Strg + F9`** (je nach Konfiguration), um alle Zeichnungen zu leeren.
 
 ---
 
@@ -176,7 +176,7 @@ sudo apt install -y gromit-mpx
 Für die Erstellung von Dokumentationen, Kursunterlagen oder Präsentationen ist ein gutes Screenshot-Tool unerlässlich.
 
 ### 📊 Flameshot Übersicht
-* **Was es ist:** Ein hochentwickeltes Open-Source-Screenshot-Tool, mit dem du direkt beim Aufnehmen Markierungen vornehmen kannst.
+* **Was es ist:** Ein hochentwickeltes Open-Source-Screenshot-Tool, mit dem Sie direkt beim Aufnehmen Markierungen vornehmen können.
 * **Vorteile:**
   - **Zeichenwerkzeuge:** Pfeile, Linien, Kreise, Rechtecke, Freihandzeichnen.
   - **Annotation:** Textwerkzeuge und Nummerierungen (Zähler) für Schritte.
@@ -192,11 +192,11 @@ sudo apt install -y flameshot
 ```
 
 ### 🚀 Verwendung & Shortcuts
-1. Starte Flameshot über das Terminal: `flameshot gui`.
+1. Starten Sie Flameshot über das Terminal: `flameshot gui`.
 2. **Tastenkombination einrichten (Empfohlen):**
-   Um Flameshot auf die Taste `Druck` (PrintScreen) zu legen, gehe unter Ubuntu auf:
+   Um Flameshot auf die Taste `Druck` (PrintScreen) zu legen, gehen Sie unter Ubuntu auf:
    * **Einstellungen** > **Tastatur** > **Tastaturkürzel anzeigen und anpassen** > **Eigene Kürzel**.
-   * Füge ein neues Kürzel hinzu:
+   * Fügen Sie ein neues Kürzel hinzu:
      - **Name:** Flameshot
      - **Befehl:** `flameshot gui`
      - **Tastenkombination:** `Druck` (PrintScreen) festlegen.
@@ -205,7 +205,7 @@ sudo apt install -y flameshot
 
 ## 📝 7. Whiteboard- & Notizen-Software (OpenBoard & Xournal++)
 
-Für handschriftliche Erklärungen, Zeichnungen mit einem Grafiktablett oder interaktive Tafelbilder während deines Videokurses eignen sich OpenBoard und Xournal++ perfekt.
+Für handschriftliche Erklärungen, Zeichnungen mit einem Grafiktablett oder interaktive Tafelbilder während Ihres Videokurses eignen sich OpenBoard und Xournal++ perfekt.
 
 ### 📊 Whiteboard-Tools im Überblick
 
@@ -224,14 +224,14 @@ sudo apt install -y openboard xournalpp
 ```
 
 ### 🚀 Verwendungstipps
-* **OpenBoard:** Bietet eine integrierte "Podcast"-Funktion, mit der du deine Whiteboard-Aktivitäten direkt aufzeichnen kannst. Für die beste Videoqualität empfiehlt es sich jedoch, OpenBoard als Fensterquelle in **OBS Studio** aufzunehmen.
-* **Xournal++:** Unterstützt den Export deiner handschriftlichen Notizen als **SVG-Vektorgrafik**. Diese SVGs kannst du anschließend direkt in **Manim** als `SVGMobject` importieren und programmgesteuert animieren!
+* **OpenBoard:** Bietet eine integrierte "Podcast"-Funktion, mit der Sie Ihre Whiteboard-Aktivitäten direkt aufzeichnen können. Für die beste Videoqualität empfiehlt es sich jedoch, OpenBoard als Fensterquelle in **OBS Studio** aufzunehmen.
+* **Xournal++:** Unterstützt den Export Ihrer handschriftlichen Notizen als **SVG-Vektorgrafik**. Diese SVGs können Sie anschließend direkt in **Manim** als `SVGMobject` importieren und programmgesteuert animieren!
 
 ---
 
 ## 🎧 8. Audio-Nachbearbeitung (Audacity)
 
-Für das Mastering und die Feinabstimmung deiner mit Kokoro TTS generierten Sprachspuren ist Audacity das Standardwerkzeug.
+Für das Mastering und die Feinabstimmung Ihrer mit Kokoro TTS generierten Sprachspuren ist Audacity das Standardwerkzeug.
 
 ### 📊 Audacity Übersicht
 * **Was es ist:** Ein freier, quelloffener Audio-Editor.
@@ -252,7 +252,7 @@ sudo apt install -y audacity
 
 ## 📖 9. Kursplattform-Generator (mdBook)
 
-Um deine Markdown-Kurskapitel (`1.md`, `2.md`...) in eine ansprechende, durchsuchbare Weboberfläche zu verwandeln, wird das Rust-native Tool **mdBook** verwendet.
+Um Ihre Markdown-Kurskapitel (`1.md`, `2.md`...) in eine ansprechende, durchsuchbare Weboberfläche zu verwandeln, wird das Rust-native Tool **mdBook** verwendet.
 
 ### 📊 mdBook Übersicht
 * **Was es ist:** Ein in Rust geschriebenes Tool, das Markdown-Dateien in eine statische HTML-Website kompiliert (wie das offizielle Rust-Buch).
@@ -286,7 +286,7 @@ sudo apt install -y mdbook
 
 ## 🧡 10. Blender 3D
 
-Blender ist eine freie, quelloffene 3D-Grafiksoftware. Sie eignet sich hervorragend für 3D-Animationen, Modellierung, Rendering und visuelle Effekte. Im Rahmen deines Videokurses kann Blender für 3D-Intros, komplexe grafische Veranschaulichungen oder erweiterte visuelle Elemente verwendet werden.
+Blender ist eine freie, quelloffene 3D-Grafiksoftware. Sie eignet sich hervorragend für 3D-Animationen, Modellierung, Rendering und visuelle Effekte. Im Rahmen Ihres Videokurses kann Blender für 3D-Intros, komplexe grafische Veranschaulichungen oder erweiterte visuelle Elemente verwendet werden.
 
 ### 📊 Blender Installationsmethoden im Vergleich
 
@@ -321,7 +321,7 @@ flatpak install flathub org.blender.Blender
 Um die Generierungsskripte für Video und Audio auszuführen, wurde eine isolierte virtuelle Umgebung (`.venv`) eingerichtet. Dies verhindert Konflikte mit dem restlichen System.
 
 ### 🛠️ Inbetriebnahme (Einmalig eingerichtet)
-Falls du die Umgebung auf einem anderen Rechner neu erstellen möchtest, kannst du folgende Befehle nutzen:
+Falls Sie die Umgebung auf einem anderen Rechner neu erstellen möchten, können Sie folgende Befehle nutzen:
 ```bash
 python3 -m venv .venv
 source .venv/bin/activate
@@ -331,11 +331,11 @@ pip install -r requirements.txt
 ### 🚀 Ausführung der Skripte
 
 #### 1. Virtuelle Umgebung aktivieren:
-Vor jeder Ausführung im Terminal musst du die virtuelle Umgebung aktivieren:
+Vor jeder Ausführung im Terminal müssen Sie die virtuelle Umgebung aktivieren:
 ```bash
 source .venv/bin/activate
 ```
-*(Dein Terminal-Prompt zeigt danach `(.venv)` als Präfix an).*
+*(Ihr Terminal-Prompt zeigt danach `(.venv)` als Präfix an).*
 
 #### 2. Audio-Sprachspuren generieren (Kokoro TTS):
 Generiere die Audiodateien der Lektionen über Python. Diese Skripte nutzen das Kokoro-ONNX-Modell mit der deutschen Stimme "Martin", um hochqualitative, rauschfreie Audiodateien in dem Ordner `audio/` zu erstellen:
@@ -350,7 +350,7 @@ python generate_audio_ch6.py
 ```
 
 #### 3. Videoszenen rendern (Manim & FFmpeg):
-Rendere deine Animations-Skripte und verbinde sie mit der Tonspur bzw. mische externe Videos ab.
+Rendern Sie Ihre Animations-Skripte und verbinden Sie sie mit der Tonspur bzw. mischen Sie externe Videos ab.
 
 * **Kapitel 1 (Einführung):**
   ```bash
@@ -473,10 +473,10 @@ Ab Kapitel 20 wird ein dreistufiger Build-Prozess mit einem FFmpeg-Mischskript (
   *(Ersetzen Sie 'ch26', 'RustAgentsVideo' und 'build_ch26_audio.py' durch die entsprechenden Dateinamen und Klassennamen des jeweiligen Kapitels. Die Klassennamen lauten: Ch20: RustReferencesVideo, Ch21: RustSummaryVideo, Ch22: RustPlanningVideo, Ch23: RustLearningStrategyVideo, Ch24: RustProfessionalizationVideo, Ch25: RustSlicesVideo, Ch26: RustAgentsVideo)*
 
 > [!TIP]
-> Der Schalter `-pql` rendert das Video schnell in niedriger Vorschauqualität (480p/15fps oder 720p/30fps, je nach Konfiguration). Benutze `-pqh` für Full-HD-Produktionsqualität (1080p/60fps).
+> Der Schalter `-pql` rendert das Video schnell in niedriger Vorschauqualität (480p/15fps oder 720p/30fps, je nach Konfiguration). Benutzen Sie `-pqh` für Full-HD-Produktionsqualität (1080p/60fps).
 
 #### 4. Virtuelle Umgebung wieder deaktivieren:
-Wenn du fertig bist, kannst du die Umgebung wieder verlassen:
+Wenn Sie fertig sind, können Sie die Umgebung wieder verlassen:
 ```bash
 deactivate
 ```
@@ -485,7 +485,7 @@ deactivate
 
 ## 🌐 12. Model Context Protocol (MCP) VS Code Command Server
 
-Der **Model Context Protocol (MCP) VS Code Command Server** ermöglicht es KI-Assistenten, Befehle direkt innerhalb deiner laufenden VS Code-Instanz auszuführen. Dies verbessert die Integration von KI-Tools in deinen Entwicklungs- und Aufnahmeworkflow erheblich.
+Der **Model Context Protocol (MCP) VS Code Command Server** ermöglicht es KI-Assistenten, Befehle direkt innerhalb Ihrer laufenden VS Code-Instanz auszuführen. Dies verbessert die Integration von KI-Tools in Ihren Entwicklungs- und Aufnahmeworkflow erheblich.
 
 ### 🛠️ Global installieren
 Der Server wird global über Node.js (NPM) auf deinem Linux-System installiert:
@@ -494,7 +494,7 @@ npm install -g @modelcontextprotocol/server-vscode-command
 ```
 
 ### 🚀 Konfiguration & Einbindung
-Füge den Server in die globale Konfigurationsdatei deines MCP-Clients (z. B. Claude Desktop unter `~/.config/Claude/claude_desktop_config.json` oder in den Einstellungen deines jeweiligen Agenten) ein:
+Fügen Sie den Server in die globale Konfigurationsdatei Ihres MCP-Clients (z. B. Claude Desktop unter `~/.config/Claude/claude_desktop_config.json` oder in den Einstellungen Ihres jeweiligen Agenten) ein:
 
 ```json
 {
