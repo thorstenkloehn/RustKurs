@@ -36,7 +36,7 @@
             const path_to_root = "";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "searchindex-76719c3e.js";
+            window.path_to_searchindex_js = "searchindex-fc688792.js";
         </script>
         <!-- Start loading toc.js asap -->
         <script src="toc-dedbbe6e.js"></script>
@@ -177,14 +177,14 @@
                     <main>
                         <h1 id="rust-videokurs-für-anfänger"><a class="header" href="#rust-videokurs-für-anfänger">Rust-Videokurs für Anfänger</a></h1>
 <p>Willkommen beim begleitenden Lehrbuch für den <strong>Rust-Videokurs für Anfänger</strong>!</p>
-<p>Dieses Lehrbuch führt dich Schritt für Schritt durch alle grundlegenden Konzepte der Programmiersprache Rust. Die Inhalte sind auf maximale Verständlichkeit ausgelegt und begleiten die videobasierten Lektionen.</p>
+<p>Dieses Lehrbuch führt Sie Schritt für Schritt durch alle grundlegenden Konzepte der Programmiersprache Rust. Die Inhalte sind auf maximale Verständlichkeit ausgelegt und begleiten die videobasierten Lektionen.</p>
 <h2 id="inhaltsübersicht"><a class="header" href="#inhaltsübersicht">Inhaltsübersicht</a></h2>
 <p>Dieses Lehrbuch ist in 18 praxisnahe Lektionen aufgeteilt:</p>
 <ol>
 <li><strong>Was ist Rust?</strong>: Einführung in die Konzepte und Vorteile von Rust (Ownership, Speichersicherheit).</li>
 <li><strong>Installation &amp; Systemkonfiguration</strong>: Schritt-für-Schritt-Anleitung zur Einrichtung unter Linux/Windows sowie VS Code.</li>
 <li><strong>KI-Assistenten &amp; Tools</strong>: Nutzung moderner Assistenten (GitHub Copilot, Gemini Code Assist).</li>
-<li><strong>Erstes Projekt</strong>: Erstellung und Ausführung deines ersten “Hello World”-Programms.</li>
+<li><strong>Erstes Projekt</strong>: Erstellung und Ausführung Ihres ersten “Hello World”-Programms.</li>
 <li><strong>Variablen &amp; Scopes</strong>: Deklarationen, Mutabilität, Scopes und Shadowing.</li>
 <li><strong>Skalare &amp; zusammengesetzte Typen</strong>: Alles über Integers, Floats, Chars, Booleans und Zeichenketten.</li>
 <li><strong>Übungsprojekt</strong>: Erste praktische Anwendung der gelernten Grundlagen.</li>
@@ -1620,7 +1620,7 @@ code .
 <h4 id="321-prompt-engineering-für-rust"><a class="header" href="#321-prompt-engineering-für-rust">3.2.1 Prompt-Engineering für Rust</a></h4>
 <h5 id="schritt-5-das-strukturierte-system-prompt-template"><a class="header" href="#schritt-5-das-strukturierte-system-prompt-template">Schritt 5: Das strukturierte System-Prompt-Template</a></h5>
 <p>Wenn Sie auf ein Compiler-Problem stoßen, das Sie nicht sofort verstehen, nutzen Sie das folgende strukturierte Prompt-Template. Kopieren Sie es und füllen Sie die markierten Bereiche aus.</p>
-<pre><code class="language-text">Rolle: Du bist ein Senior-Softwarearchitekt und Experte für die Programmiersprache Rust. Dein Fokus liegt auf Speichersicherheit, Zero-Cost-Abstractions und idiomatischem Code.
+<pre><code class="language-text">Rolle: Sie sind ein Senior-Softwarearchitekt und Experte für die Programmiersprache Rust. Ihr Fokus liegt auf Speichersicherheit, Zero-Cost-Abstractions und idiomatischem Code.
 
 Kontext: Ich entwickle eine Anwendung in Rust. Ich möchte folgenden logischen Ablauf implementieren:
 [BESCHREIBUNG DES GEPLANTEN ABLAUFS]
@@ -1916,9 +1916,9 @@ fn main() {
 </table>
 </div>
 <h4 id="universelles-rust-system-prompt"><a class="header" href="#universelles-rust-system-prompt">Universelles Rust-System-Prompt</a></h4>
-<pre><code class="language-text">System-Rolle: Du bist ein hochqualifizierter Rust-Compiler und Performance-Analyst.
-Ziel: Hilf mir, Compiler-Fehler zu beheben und gleichzeitig die Zero-Cost-Garantien einzuhalten.
-Regel: Bevorzuge Referenzen (&amp;) und Slices (&amp;str) vor Heap-Kopien (.clone(), .to_owned()).
+<pre><code class="language-text">System-Rolle: Sie sind ein hochqualifizierter Rust-Compiler und Performance-Analyst.
+Ziel: Helfen Sie mir, Compiler-Fehler zu beheben und gleichzeitig die Zero-Cost-Garantien einzuhalten.
+Regel: Bevorzugen Sie Referenzen (&amp;) und Slices (&amp;str) vor Heap-Kopien (.clone(), .to_owned()).
 </code></pre>
 <h3 id="active-recall-selbsttest-fragen"><a class="header" href="#active-recall-selbsttest-fragen">Active Recall (Selbsttest-Fragen)</a></h3>
 <ol>
@@ -6578,7 +6578,7 @@ fn main() {
 <ol>
 <li>
 <p><strong>Die Auswertung der Signatur</strong>:
-Der Compiler liest die Signatur <code>fn quadrat_berechnen(zahl: i32) -&gt; i32</code>. Damit geht die Funktion einen bindenden Vertrag ein: “Wenn du mir eine 32-Bit Ganzzahl (<code>i32</code>) übergibst, garantiere ich dir, dass ich ebenfalls eine 32-Bit Ganzzahl (<code>i32</code>) zurückliefere.”</p>
+Der Compiler liest die Signatur <code>fn quadrat_berechnen(zahl: i32) -&gt; i32</code>. Damit geht die Funktion einen bindenden Vertrag ein: “Wenn Sie mir eine 32-Bit Ganzzahl (<code>i32</code>) übergeben, garantiere ich Ihnen, dass ich ebenfalls eine 32-Bit Ganzzahl (<code>i32</code>) zurückliefere.”</p>
 </li>
 <li>
 <p><strong>Die Umwandlung in ein Statement</strong>:
@@ -13228,7 +13228,7 @@ fn main() {
     println!("a: {}, b: {}", a, b); // ✅ Beide sind voll funktionsfähig!
 }</code></pre>
 <h4 id="der-copy-trait-als-marker"><a class="header" href="#der-copy-trait-als-marker">Der <code>Copy</code>-Trait als Marker</a></h4>
-<p>Das Verhalten wird durch das Vorhandensein des <code>Copy</code>-Traits gesteuert. Dies ist ein sogenannter <strong>Marker-Trait</strong>. Er enthält keine Methoden, die implementiert werden müssen, sondern dient dem Compiler lediglich als Signal: <em>“Diesen Typ darfst du bei Zuweisungen einfach byteweise kopieren.”</em></p>
+<p>Das Verhalten wird durch das Vorhandensein des <code>Copy</code>-Traits gesteuert. Dies ist ein sogenannter <strong>Marker-Trait</strong>. Er enthält keine Methoden, die implementiert werden müssen, sondern dient dem Compiler lediglich als Signal: <em>“Diesen Typ dürfen Sie bei Zuweisungen einfach byteweise kopieren.”</em></p>
 <p>Folgende Typen sind standardmäßig <code>Copy</code>:</p>
 <ul>
 <li>Alle ganzzahligen Typen (<code>i8</code> bis <code>i128</code>, <code>u8</code> bis <code>u128</code>, <code>isize</code>, <code>usize</code>).</li>
@@ -14337,7 +14337,7 @@ Stellen Sie sich ein wertvolles Buch in einer Bibliothek vor (der Speicherwert).
 <blockquote class="blockquote-tag blockquote-tag-tip">
 <p class="blockquote-tag-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M8 1.5c-2.363 0-4 1.69-4 3.75 0 .984.424 1.625.984 2.304l.214.253c.223.264.47.556.673.848.284.411.537.896.621 1.49a.75.75 0 0 1-1.484.211c-.04-.282-.163-.547-.37-.847a8.456 8.456 0 0 0-.542-.68c-.084-.1-.173-.205-.268-.32C3.201 7.75 2.5 6.766 2.5 5.25 2.5 2.31 4.863 0 8 0s5.5 2.31 5.5 5.25c0 1.516-.701 2.5-1.328 3.259-.095.115-.184.22-.268.319-.207.245-.383.453-.541.681-.208.3-.33.565-.37.847a.751.751 0 0 1-1.485-.212c.084-.593.337-1.078.621-1.489.203-.292.45-.584.673-.848.075-.088.147-.173.213-.253.561-.679.985-1.32.985-2.304 0-2.06-1.637-3.75-4-3.75ZM5.75 12h4.5a.75.75 0 0 1 0 1.5h-4.5a.75.75 0 0 1 0-1.5ZM6 15.25a.75.75 0 0 1 .75-.75h2.5a.75.75 0 0 1 0 1.5h-2.5a.75.75 0 0 1-.75-.75Z"></path></svg>Tip</p>
 <p><strong>Das geliehene Werkzeug (Lebensdauer &amp; NLL)</strong>:
-Vor der Einführung von NLL (lexikalische Lebensdauer) war das Ausleihen einer Bohrmaschine wie ein Vertrag, der besagte: „Du musst die Bohrmaschine bis Punkt 18:00 Uhr behalten, selbst wenn du dein einziges Loch um 10:05 Uhr gebohrt hast.“ Niemand anderes durfte sie in der Zwischenzeit anfassen. Mit NLL ist das System intelligent: Sobald Sie das letzte Loch gebohrt und die Maschine zur Seite gelegt haben (letzte tatsächliche Nutzung im Code), gilt die Ausleihe als beendet. Ihr Nachbar darf die Bohrmaschine sofort ausleihen, selbst wenn es erst 10:06 Uhr ist.</p>
+Vor der Einführung von NLL (lexikalische Lebensdauer) war das Ausleihen einer Bohrmaschine wie ein Vertrag, der besagte: „Sie müssen die Bohrmaschine bis Punkt 18:00 Uhr behalten, selbst wenn Sie Ihr einziges Loch um 10:05 Uhr gebohrt haben.“ Niemand anderes durfte sie in der Zwischenzeit anfassen. Mit NLL ist das System intelligent: Sobald Sie das letzte Loch gebohrt und die Maschine zur Seite gelegt haben (letzte tatsächliche Nutzung im Code), gilt die Ausleihe als beendet. Ihr Nachbar darf die Bohrmaschine sofort ausleihen, selbst wenn es erst 10:06 Uhr ist.</p>
 </blockquote>
 <hr>
 <h2 id="3-das-problem--die-motivation-12"><a class="header" href="#3-das-problem--die-motivation-12">3. Das Problem &amp; Die Motivation</a></h2>
@@ -15102,21 +15102,21 @@ Analysieren Sie die Compiler-Ausgabe. Welche Fehlernummer (<code>E0xxx</code>) w
 Teile dieses Kapitels basieren auf Übersetzungen und didaktischen Anpassungen des offiziellen Buches <a href="https://doc.rust-lang.org/book/">The Rust Programming Language</a> von Steve Klabnik und Carol Nichols (sowie Beiträgen der Rust-Community), lizenziert unter <a href="https://opensource.org/licenses/MIT">MIT</a> und <a href="https://www.apache.org/licenses/LICENSE-2.0">Apache 2.0</a>.</p>
 <div style="break-before: page; page-break-before: always;"></div>
 <h1 id="kapitel-21-zusammenfassung-der-grundlagen--das-heilige-dreigestirn"><a class="header" href="#kapitel-21-zusammenfassung-der-grundlagen--das-heilige-dreigestirn">Kapitel 21: Zusammenfassung der Grundlagen &amp; Das “Heilige Dreigestirn”</a></h1>
-<p>Herzlichen Glückwunsch! Wenn du an diesem Punkt angelangt bist, hast du das Fundament der Programmiersprache Rust erfolgreich erlernt. Du hast die grundlegenden Programmierkonzepte verinnerlicht und die berühmt-berüchtigte Speicherverwaltung von Rust verstanden.</p>
+<p>Herzlichen Glückwunsch! Wenn Sie an diesem Punkt angelangt sind, haben Sie das Fundament der Programmiersprache Rust erfolgreich erlernt. Sie haben die grundlegenden Programmierkonzepte verinnerlicht und die berühmt-berüchtigte Speicherverwaltung von Rust verstanden.</p>
 <p><em>Hinweis: Komplexe Datenstrukturen wie <strong>Strukturen (Structs)</strong> und dynamische Listen (<strong>Vektoren</strong>) haben wir in diesem Kurs bis jetzt noch nicht gelernt. Das ist Absicht! Diese fortgeschrittenen Themen folgen in den nächsten Kapiteln. In diesem Kapitel fassen wir nur das zusammen, was wir bisher gelernt haben, und nutzen für die Projekte ausschließlich Variablen, Arrays, Tupel, Strings und Referenzen.</em></p>
-<p>Dieses Kapitel zieht ein Fazit über die bisher gelernten Inhalte, präzisiert das Zusammenspiel der wichtigsten Säulen und liefert dir konkrete Projektvorschläge, um dein Wissen in der Praxis zu festigen.</p>
+<p>Dieses Kapitel zieht ein Fazit über die bisher gelernten Inhalte, präzisiert das Zusammenspiel der wichtigsten Säulen und liefert Ihnen konkrete Projektvorschläge, um Ihr Wissen in der Praxis zu festigen.</p>
 <hr>
-<h2 id="1-rückblick-die-basics-deine-werkzeuge"><a class="header" href="#1-rückblick-die-basics-deine-werkzeuge">1. Rückblick: Die Basics (Deine Werkzeuge)</a></h2>
+<h2 id="1-rückblick-die-basics-ihre-werkzeuge"><a class="header" href="#1-rückblick-die-basics-ihre-werkzeuge">1. Rückblick: Die Basics (Ihre Werkzeuge)</a></h2>
 <p>In den ersten Kapiteln haben wir die grundlegenden Bausteine von Rust kennengelernt. Diese Werkzeuge bilden das Fundament für jedes Rust-Programm:</p>
 <ul>
-<li><strong>Variablen &amp; Scopes (Gültigkeitsbereiche):</strong> Rust-Variablen sind standardmäßig unveränderlich. Mit <code>let mut</code> erlaubst du Änderungen. Variablen leben immer nur in dem Block <code>{}</code>, in dem sie deklariert wurden.</li>
+<li><strong>Variablen &amp; Scopes (Gültigkeitsbereiche):</strong> Rust-Variablen sind standardmäßig unveränderlich. Mit <code>let mut</code> erlauben Sie Änderungen. Variablen leben immer nur in dem Block <code>{}</code>, in dem sie deklariert wurden.</li>
 <li><strong>Skalare &amp; zusammengesetzte Datentypen:</strong> Wir unterscheiden einfache Typen wie Ganzzahlen (<code>i32</code>, <code>u64</code>), Fließkommazahlen (<code>f64</code>), Booleans (<code>bool</code>) und Zeichen (<code>char</code>) von zusammengesetzten Typen wie Arrays (feste Länge, gleicher Typ) und Tupeln (feste Länge, unterschiedliche Typen).</li>
 <li><strong>Kontrollstrukturen:</strong> Mit <code>if</code> und <code>else</code> treffen wir Entscheidungen. Das mächtige <code>match</code> erlaubt uns den sicheren Musterabgleich (Pattern Matching). Schleifen (<code>loop</code>, <code>while</code>, <code>for</code>) wiederholen Codeblöcke effizient.</li>
 <li><strong>Funktionen &amp; Operatoren:</strong> Funktionen gliedern unseren Code in wiederverwendbare Blöcke, definieren Parameter und geben Werte zurück. Operatoren ermöglichen mathematische und logische Verknüpfungen.</li>
 </ul>
 <hr>
 <h2 id="2-das-heilige-dreigestirn-von-rust-die-wichtigste-hürde"><a class="header" href="#2-das-heilige-dreigestirn-von-rust-die-wichtigste-hürde">2. Das “Heilige Dreigestirn” von Rust (Die wichtigste Hürde)</a></h2>
-<p>Rust unterscheidet sich von fast allen anderen Programmiersprachen durch seine Speicherverwaltung. Diese ruht auf drei untrennbaren Säulen – dem sogenannten <strong>“Heiligen Dreigestirn”</strong>. Nimm dir für diese Hürde extra viel Zeit, da sie das Herzstück von Rust bildet:</p>
+<p>Rust unterscheidet sich von fast allen anderen Programmiersprachen durch seine Speicherverwaltung. Diese ruht auf drei untrennbaren Säulen – dem sogenannten <strong>“Heiligen Dreigestirn”</strong>. Nehmen Sie sich für diese Hürde extra viel Zeit, da sie das Herzstück von Rust bildet:</p>
 <pre class="mermaid">graph TD
     A[Das Heilige Dreigestirn] --&gt; B(Säule 1: Ownership)
     A --&gt; C(Säule 2: Borrowing)
@@ -15143,7 +15143,7 @@ Teile dieses Kapitels basieren auf Übersetzungen und didaktischen Anpassungen d
 <li>Verlässt der Besitzer seinen Gültigkeitsbereich (Scope), wird der Wert automatisch und sicher gelöscht (<code>drop</code>).</li>
 </ol>
 </li>
-<li><strong>Der Move-Effekt:</strong> Übergibst du eine Heap-Variable (wie einen <code>String</code>) an eine Funktion oder eine andere Variable, wird das Eigentum verschoben. Die alte Variable ist ab diesem Moment ungültig.</li>
+<li><strong>Der Move-Effekt:</strong> Übergeben Sie eine Heap-Variable (wie einen <code>String</code>) an eine Funktion oder eine andere Variable, wird das Eigentum verschoben. Die alte Variable ist ab diesem Moment ungültig.</li>
 </ul>
 <h3 id="säule-2-borrowing-ausleihen"><a class="header" href="#säule-2-borrowing-ausleihen">Säule 2: Borrowing (Ausleihen)</a></h3>
 <ul>
@@ -15151,8 +15151,8 @@ Teile dieses Kapitels basieren auf Übersetzungen und didaktischen Anpassungen d
 <li><strong>Die Lösung:</strong> Wir nutzen <strong>Referenzen</strong> (gekennzeichnet durch das kaufmännische Und <code>&amp;</code>). Die Funktion erhält nur die Speicheradresse.</li>
 <li><strong>Die Regeln des Ausleihens:</strong>
 <ul>
-<li><strong>Viele Leser (<code>&amp;T</code>):</strong> Du darfst beliebig viele unveränderliche Referenzen gleichzeitig aktiv haben.</li>
-<li><strong>Ein Schreiber (<code>&amp;mut T</code>):</strong> Du darfst nur eine einzige veränderliche Referenz zur selben Zeit haben. Währenddessen sind keine anderen Referenzen (weder Leser noch Schreiber) erlaubt.</li>
+<li><strong>Viele Leser (<code>&amp;T</code>):</strong> Sie dürfen beliebig viele unveränderliche Referenzen gleichzeitig aktiv haben.</li>
+<li><strong>Ein Schreiber (<code>&amp;mut T</code>):</strong> Sie dürfen nur eine einzige veränderliche Referenz zur selben Zeit haben. Währenddessen sind keine anderen Referenzen (weder Leser noch Schreiber) erlaubt.</li>
 <li><strong>Exklusivität:</strong> Entweder viele Leser ODER ein Schreiber. Niemals beides gleichzeitig!</li>
 </ul>
 </li>
@@ -15165,7 +15165,7 @@ Teile dieses Kapitels basieren auf Übersetzungen und didaktischen Anpassungen d
 </ul>
 <hr>
 <h2 id="3-ausführliche-merkzettel--schnellübersichten-der-kernkonzepte"><a class="header" href="#3-ausführliche-merkzettel--schnellübersichten-der-kernkonzepte">3. Ausführliche Merkzettel &amp; Schnellübersichten der Kernkonzepte</a></h2>
-<p>Nutze diese ausführlichen Spickzettel, um die wichtigsten Konzepte noch einmal auf einen Blick zu verstehen und als Referenz für deine Programmieraufgaben parat zu haben.</p>
+<p>Nutzen Sie diese ausführlichen Spickzettel, um die wichtigsten Konzepte noch einmal auf einen Blick zu verstehen und als Referenz für Ihre Programmieraufgaben parat zu haben.</p>
 <h3 id="-merkzettel-a-variablen--scopes-gültigkeitsbereiche"><a class="header" href="#-merkzettel-a-variablen--scopes-gültigkeitsbereiche">📌 Merkzettel A: Variablen &amp; Scopes (Gültigkeitsbereiche)</a></h3>
 <ol>
 <li>
@@ -15234,7 +15234,7 @@ let x = x + 1;
 </li>
 <li>
 <p><strong>Die goldene Merkregel / Eselsbrücke (Mnemonic):</strong>
-<em>„Variablen in Rust sind wie in Stein gemeißelt. Willst du sie kneten, musst du <code>mut</code> beitreten. Am Ende des Blocks <code>{}</code> fällt der Vorhang – die Variablen sterben ohne Erbarmen.“</em></p>
+<em>„Variablen in Rust sind wie in Stein gemeißelt. Wollen Sie sie kneten, müssen Sie <code>mut</code> beitreten. Am Ende des Blocks <code>{}</code> fällt der Vorhang – die Variablen sterben ohne Erbarmen.“</em></p>
 </li>
 </ol>
 <hr>
@@ -15242,7 +15242,7 @@ let x = x + 1;
 <ol>
 <li>
 <p><strong>Warum dieses Konzept? (Motivation):</strong>
-Computer speichern unterschiedliche Informationen verschieden ab (Zahlen auf dem Stack, Texte variabler Länge auf dem Heap). Zu verstehen, welcher Typ wie viel Speicher belegt und wo er liegt, ist essenziell für die Performance und Speichersicherheit deines Programms.</p>
+Computer speichern unterschiedliche Informationen verschieden ab (Zahlen auf dem Stack, Texte variabler Länge auf dem Heap). Zu verstehen, welcher Typ wie viel Speicher belegt und wo er liegt, ist essenziell für die Performance und Speichersicherheit Ihres Programms.</p>
 </li>
 <li>
 <p><strong>Schlüsselbegriffe (Definitions):</strong></p>
@@ -15309,7 +15309,7 @@ text.push_str(" Welt"); // Erlaubt, da String dynamisch auf dem Heap wachsen kan
 </li>
 <li>
 <p><strong>Die goldene Merkregel / Eselsbrücke (Mnemonic):</strong>
-<em>„Arrays und Tupel haben feste Ketten, sie liegen brav auf Stack-Betten. Ein <code>String</code> gehört dir ganz allein und darf auf dem Heap dynamisch sein; ein <code>&amp;str</code> schaut nur kurz hinein und muss als Gast bescheiden sein.“</em></p>
+<em>„Arrays und Tupel haben feste Ketten, sie liegen brav auf Stack-Betten. Ein <code>String</code> gehört Ihnen ganz allein und darf auf dem Heap dynamisch sein; ein <code>&amp;str</code> schaut nur kurz hinein und muss als Gast bescheiden sein.“</em></p>
 </li>
 </ol>
 <hr>
@@ -15377,7 +15377,7 @@ let ergebnis = match note {
 </li>
 <li>
 <p><strong>Die goldene Merkregel / Eselsbrücke (Mnemonic):</strong>
-<em>„Ist das Semikolon fort, fließt der Wert zum Zuweisungsort. Und beim <code>match</code> gilt: Vergiss nie den Unterstrich <code>_</code>, sonst lässt der Compiler dich im Stich!“</em></p>
+<em>„Ist das Semikolon fort, fließt der Wert zum Zuweisungsort. Und beim <code>match</code> gilt: Vergessen Sie nie den Unterstrich <code>_</code>, sonst lässt der Compiler Sie im Stich!“</em></p>
 </li>
 </ol>
 <hr>
@@ -15448,7 +15448,7 @@ fn main() {
 </li>
 <li>
 <p><strong>Die goldene Merkregel / Eselsbrücke (Mnemonic):</strong>
-<em>„Eigentum ist exklusiv: Es kann nur einen geben! Schenkst du Heap-Daten weg (Move), verliert deine alte Variable ihr Leben. Stack-Daten hingegen klonen sich im Nu (Copy) – da guckt keine Variable traurig zu.“</em></p>
+<em>„Eigentum ist exklusiv: Es kann nur einen geben! Schenken Sie Heap-Daten weg (Move), verliert Ihre alte Variable ihr Leben. Stack-Daten hingegen klonen sich im Nu (Copy) – da guckt keine Variable traurig zu.“</em></p>
 </li>
 </ol>
 <hr>
@@ -15587,20 +15587,18 @@ Gib den Wert selbst (das Eigentum) zurück, anstatt eine Referenz auf lokale Dat
 </li>
 <li>
 <p><strong>Die goldene Merkregel / Eselsbrücke (Mnemonic):</strong>
-<em>„Die Referenz darf niemals länger leben als das Original, andernfalls wird der Zugriff zur Qual. Schenkst du den Wert nach draußen her, freut sich der Compiler gar sehr.“</em></p>
+<em>„Die Referenz darf niemals länger leben als das Original, andernfalls wird der Zugriff zur Qual. Schenken Sie den Wert nach draußen her, freut sich der Compiler gar sehr.“</em></p>
 </li>
 </ol>
 <hr>
 <h2 id="4-40-projektvorschläge-zur-festigung-der-grundlagen"><a class="header" href="#4-40-projektvorschläge-zur-festigung-der-grundlagen">4. 40 Projektvorschläge zur Festigung der Grundlagen</a></h2>
-<p>Um deine Programmierfähigkeiten praktisch zu festigen, findest du hier <strong>40 verschiedene Projektvorschläge</strong>. Alle Projekte kommen komplett <strong>ohne</strong> Structs und Vektoren aus. Sie nutzen ausschließlich Arrays, Tupel, Strings, Schleifen, Mustermatching und Referenzen.</p>
-<hr>
-<h3 id="-leitfaden-für-projektbasiertes-lernen-wie-du-diese-projekte-meisterst"><a class="header" href="#-leitfaden-für-projektbasiertes-lernen-wie-du-diese-projekte-meisterst">💡 Leitfaden für Projektbasiertes Lernen (Wie du diese Projekte meisterst)</a></h3>
-<p>Das bloße Lesen von Code oder theoretischen Beispielen reicht nicht aus, um Rust zu erlernen. <strong>Projektbasiertes Lernen</strong> ist der effektivste Weg, da du durch das Schreiben von eigenem Code gezwungen bist, dich intensiv mit dem Compiler und dem Speicherverhalten von Rust auseinanderzusetzen.</p>
-<p>Nutze diesen 4-Schritte-Prozess für jedes der folgenden Projekte:</p>
+<p>Um Ihre Programmierfähigkeiten prakt### 💡 Leitfaden für Projektbasiertes Lernen (Wie Sie diese Projekte meistern)</p>
+<p>Das bloße Lesen von Code oder theoretischen Beispielen reicht nicht aus, um Rust zu erlernen. <strong>Projektbasiertes Lernen</strong> ist der effektivste Weg, da Sie durch das Schreiben von eigenem Code gezwungen sind, sich intensiv mit dem Compiler und dem Speicherverhalten von Rust auseinanderzusetzen.</p>
+<p>Nutzen Sie diesen 4-Schritte-Prozess für jedes der folgenden Projekte:</p>
 <h4 id="1-schritt-planung--pseudocode-zuerst-denken-dann-tippen"><a class="header" href="#1-schritt-planung--pseudocode-zuerst-denken-dann-tippen">1. Schritt: Planung &amp; Pseudocode (Zuerst denken, dann tippen)</a></h4>
 <ul>
 <li>Beginne <strong>nicht</strong> direkt mit dem Schreiben von Rust-Code.</li>
-<li>Schreibe dir stichpunktartig auf Deutsch oder als Pseudocode auf, wie das Programm ablaufen soll:
+<li>Schreiben Sie sich stichpunktartig auf Deutsch oder als Pseudocode auf, wie das Programm ablaufen soll:
 <ul>
 <li>Welche Daten müssen gespeichert werden? (z. B. ein Array von Zahlen, ein String für Text).</li>
 <li>Welche Entscheidungen müssen getroffen werden? (<code>if-else</code> oder <code>match</code>).</li>
@@ -15610,15 +15608,15 @@ Gib den Wert selbst (das Eigentum) zurück, anstatt eine Referenz auf lokale Dat
 </ul>
 <h4 id="2-schritt-das-mvp-bauen-minimal-viable-product"><a class="header" href="#2-schritt-das-mvp-bauen-minimal-viable-product">2. Schritt: Das MVP bauen (Minimal Viable Product)</a></h4>
 <ul>
-<li>Schreibe zuerst die einfachste funktionierende Version deines Programms direkt in die <code>main</code>-Funktion.</li>
-<li>Verzichte in diesem ersten Schritt auf komplexe Strukturierung (keine Hilfsfunktionen, keine komplizierten Referenzen). Das Ziel ist es, die Programmlogik zum Laufen zu bringen.</li>
+<li>Schreiben Sie zuerst die einfachste funktionierende Version Ihres Programms direkt in die <code>main</code>-Funktion.</li>
+<li>Verzichten Sie in diesem ersten Schritt auf komplexe Strukturierung (keine Hilfsfunktionen, keine komplizierten Referenzen). Das Ziel ist es, die Programmlogik zum Laufen zu bringen.</li>
 </ul>
 <h4 id="3-schritt-refactoring--modularer-code-auslagern-in-funktionen"><a class="header" href="#3-schritt-refactoring--modularer-code-auslagern-in-funktionen">3. Schritt: Refactoring &amp; modularer Code (Auslagern in Funktionen)</a></h4>
 <ul>
-<li>Sobald dein MVP läuft, strukturiere den Code um:
+<li>Sobald Ihr MVP läuft, strukturieren Sie den Code um:
 <ul>
 <li>Lagere logische Blöcke (z. B. Berechnungen, Menüanzeigen, Eingabeüberprüfungen) in eigene Hilfsfunktionen aus.</li>
-<li><strong>Jetzt kommt Rust ins Spiel:</strong> Übergib deine Daten an diese Funktionen. Überlege dir genau: Muss die Funktion den Wert besitzen (Move) oder reicht eine Lese-Referenz (<code>&amp;T</code>) oder veränderliche Schreib-Referenz (<code>&amp;mut T</code>)?</li>
+<li><strong>Jetzt kommt Rust ins Spiel:</strong> Übergeben Sie Ihre Daten an diese Funktionen. Überlegen Sie sich genau: Muss die Funktion den Wert besitzen (Move) oder reicht eine Lese-Referenz (<code>&amp;T</code>) oder veränderliche Schreib-Referenz (<code>&amp;mut T</code>)?</li>
 <li>Halte dich an das Prinzip: <strong>So restriktiv wie möglich ausleihen.</strong> Wenn eine Funktion den Wert nur ausgeben muss, reicht eine unveränderliche Ausleihe (<code>&amp;</code>).</li>
 </ul>
 </li>
@@ -15627,45 +15625,45 @@ Gib den Wert selbst (das Eigentum) zurück, anstatt eine Referenz auf lokale Dat
 <ul>
 <li>Wenn der Compiler (besonders der Borrow Checker) Fehlermeldungen ausgibt:
 <ul>
-<li>Lies die Fehlermeldung aufmerksam durch. Rust-Fehlermeldungen sind extrem detailliert, zeigen exakt auf die Stelle im Code, an der die Ausleihe scheitert, und bieten oft bereits Korrekturvorschläge an.</li>
-<li>Verwende dein Wissen aus den Spickzetteln (Merkzettel E &amp; F), um Aliasing-Konflikte (gleichzeitiges Lesen und Schreiben) oder Lifetime-Probleme zu lösen.</li>
-<li>Nutze KI-Tools wie Copilot oder <code>agy</code> nur als Mentoren, indem du Fragen stellst wie: <em>“Warum meckert der Compiler an dieser Stelle und wie kann ich meine Referenzen umstrukturieren?”</em> statt den kompletten Code neu generieren zu lassen.</li>
+<li>Lesen Sie die Fehlermeldung aufmerksam durch. Rust-Fehlermeldungen sind extrem detailliert, zeigen exakt auf die Stelle im Code, an der die Ausleihe scheitert, und bieten oft bereits Korrekturvorschläge an.</li>
+<li>Verwenden Sie Ihr Wissen aus den Spickzetteln (Merkzettel E &amp; F), um Aliasing-Konflikte (gleichzeitiges Lesen und Schreiben) oder Lifetime-Probleme zu lösen.</li>
+<li>Nutzen Sie KI-Tools wie Copilot oder <code>agy</code> nur als Mentoren, indem Sie Fragen stellen wie: <em>“Warum meckert der Compiler an dieser Stelle und wie kann ich meine Referenzen umstrukturieren?”</em> statt den kompletten Code neu generieren zu lassen.</li>
 </ul>
 </li>
 </ul>
 <hr>
 <h3 id="-coding-challenge-plattformen--software-für-rust"><a class="header" href="#-coding-challenge-plattformen--software-für-rust">🛠️ Coding-Challenge-Plattformen &amp; Software für Rust</a></h3>
-<p>Neben unseren 40 Projektvorschlägen gibt es hervorragende Software-Tools und interaktive Plattformen, die speziell darauf ausgelegt sind, dir durch kleine Coding-Challenges die Rust-Syntax und das Ownership-System spielerisch beizubringen.</p>
-<p>Diese drei Plattformen sind besonders empfehlenswert für deinen aktuellen Lernstand:</p>
+<p>Neben unseren 40 Projektvorschlägen gibt es hervorragende Software-Tools und interaktive Plattformen, die speziell darauf ausgelegt sind, Ihnen durch kleine Coding-Challenges die Rust-Syntax und das Ownership-System spielerisch beizubringen.</p>
+<p>Diese drei Plattformen sind besonders empfehlenswert für Ihren aktuellen Lernstand:</p>
 <h4 id="1-rustlings-die-offizielle-übungs-software"><a class="header" href="#1-rustlings-die-offizielle-übungs-software">1. Rustlings (Die offizielle Übungs-Software)</a></h4>
 <ul>
-<li><strong>Was es ist:</strong> Das offizielle interaktive Kommandozeilen-Tool (CLI) des Rust-Teams. Es führt dich durch Hunderte von kleinen, absichtlich fehlerhaften Code-Dateien, die du reparieren musst.</li>
-<li><strong>Warum es genial ist:</strong> Du installierst es lokal und arbeitest direkt in deinem eigenen Code-Editor. Es reagiert in Echtzeit auf jede Code-Änderung und gibt dir direkt Compiler-Feedback.</li>
-<li><strong>So startest du:</strong>
+<li><strong>Was es ist:</strong> Das offizielle interaktive Kommandozeilen-Tool (CLI) des Rust-Teams. Es führt Sie durch Hunderte von kleinen, absichtlich fehlerhaften Code-Dateien, die du reparieren musst.</li>
+<li><strong>Warum es genial ist:</strong> Sie installieren es lokal und arbeiten direkt in Ihrem eigenen Code-Editor. Es reagiert in Echtzeit auf jede Code-Änderung und gibt Ihnen direkt Compiler-Feedback.</li>
+<li><strong>So starten Sie:</strong>
 <ol>
-<li>Öffne dein Terminal und führe den Installationsbefehl aus:
+<li>Öffnen Sie Ihr Terminal und führen Sie den Installationsbefehl aus:
 <pre><code class="language-bash">curl -L https://raw.githubusercontent.com/rust-lang/rustlings/main/install.sh | bash
 # Oder über Cargo:
 cargo install rustlings
 </code></pre>
 </li>
-<li>Initialisiere Rustlings und starte die Software:
+<li>Initialisieren Sie Rustlings und starten Sie die Software:
 <pre><code class="language-bash">rustlings watch
 </code></pre>
 </li>
-<li>Löse die Übungen Schritt für Schritt in deinem Editor.</li>
+<li>Lösen Sie die Übungen Schritt für Schritt in Ihrem Editor.</li>
 </ol>
 </li>
 </ul>
 <h4 id="2-exercism-rust-lernpfad-mit-echtem-feedback"><a class="header" href="#2-exercism-rust-lernpfad-mit-echtem-feedback">2. Exercism (Rust-Lernpfad mit echtem Feedback)</a></h4>
 <ul>
 <li><strong>Was es ist:</strong> Eine kostenlose Open-Source-Plattform mit einem eigenen, strukturierten Rust-Pfad (Rust Track) mit über 140 Übungen.</li>
-<li><strong>Warum es genial ist:</strong> Jede Aufgabe wird lokal auf deinem PC gelöst und mit <code>cargo test</code> geprüft. Das Besondere: Nach dem Einreichen deiner Lösung kannst du kostenloses Feedback von erfahrenen, echten Rust-Mentoren anfordern, die deinen Code auf “Rust-Idiome” (Best Practices) prüfen.</li>
-<li><strong>So startest du:</strong>
+<li><strong>Warum es genial ist:</strong> Jede Aufgabe wird lokal auf Ihrem PC gelöst und mit <code>cargo test</code> geprüft. Das Besondere: Nach dem Einreichen Ihrer Lösung können Sie kostenloses Feedback von erfahrenen, echten Rust-Mentoren anfordern, die Ihren Code auf “Rust-Idiome” (Best Practices) prüfen.</li>
+<li><strong>So starten Sie:</strong>
 <ol>
-<li>Erstelle einen Account auf <a href="https://exercism.org">exercism.org</a>.</li>
-<li>Installiere das Exercism-CLI auf deinem PC (oder nutze den Online-Editor).</li>
-<li>Lade eine Aufgabe herunter, löse sie in VS Code und lade sie hoch:
+<li>Erstellen Sie einen Account auf <a href="https://exercism.org">exercism.org</a>.</li>
+<li>Installieren Sie das Exercism-CLI auf Ihrem PC (oder nutzen Sie den Online-Editor).</li>
+<li>Laden Sie eine Aufgabe herunter, lösen Sie sie in VS Code und laden Sie sie hoch:
 <pre><code class="language-bash">exercism submit src/lib.rs
 </code></pre>
 </li>
@@ -15675,10 +15673,10 @@ cargo install rustlings
 <h4 id="3-codewars-spielerische-algorithmen-herausforderungen"><a class="header" href="#3-codewars-spielerische-algorithmen-herausforderungen">3. Codewars (Spielerische Algorithmen-Herausforderungen)</a></h4>
 <ul>
 <li><strong>Was es ist:</strong> Eine spielerische Online-Plattform, auf der du Programmierrätsel (genannt <em>Katas</em>) in verschiedenen Schwierigkeitsstufen (von 8 kyu bis 1 kyu) löst.</li>
-<li><strong>Warum es genial ist:</strong> Perfekt, um deine Syntaxkenntnisse, Schleifen, Kontrollstrukturen und String-Verarbeitung in Rust im Browser zu trainieren. Nach dem Lösen eines Rätsels kannst du die Lösungen anderer Entwickler sehen, was extrem lehrreich ist, um elegante Rust-Einzeiler zu verstehen.</li>
-<li><strong>So startest du:</strong>
+<li><strong>Warum es genial ist:</strong> Perfekt, um Ihre Syntaxkenntnisse, Schleifen, Kontrollstrukturen und String-Verarbeitung in Rust im Browser zu trainieren. Nach dem Lösen eines Rätsels können Sie die Lösungen anderer Entwickler sehen, was extrem lehrreich ist, um elegante Rust-Einzeiler zu verstehen.</li>
+<li><strong>So starten Sie:</strong>
 <ul>
-<li>Registriere dich auf <a href="https://www.codewars.com">codewars.com</a>, wähle Rust als deine Hauptsprache aus und löse die Einstiegs-Herausforderungen.</li>
+<li>Registrieren Sie sich auf <a href="https://www.codewars.com">codewars.com</a>, wählen Sie Rust als Ihre Hauptsprache aus und lösen Sie die Einstiegs-Herausforderungen.</li>
 </ul>
 </li>
 </ul>
@@ -15816,7 +15814,7 @@ cargo install rustlings
 <h4 id="26-morse-code-übersetzer"><a class="header" href="#26-morse-code-übersetzer">26. Morse-Code-Übersetzer</a></h4>
 <ul>
 <li><strong>Ziel:</strong> Übersetze einfache Textbuchstaben in Morsezeichen (z. B. <code>A</code> $\rightarrow$ <code>.-</code>).</li>
-<li><strong>Lerneffekt:</strong> Zeichenweiser Abgleich mittels <code>match</code> und String-Zusammensetzung.</li>
+<li><strong>Lerneffekt:</strong> Zeichenweiser Abgleich mittels <code>match</code> and String-Zusammensetzung.</li>
 </ul>
 <h4 id="27-url-parser-vereinfacht"><a class="header" href="#27-url-parser-vereinfacht">27. URL-Parser (vereinfacht)</a></h4>
 <ul>
@@ -15891,8 +15889,8 @@ cargo install rustlings
 <li><strong>Lerneffekt:</strong> Veränderliche Kontostand-Referenzen (<code>&amp;mut f64</code>), die in Funktionen modifiziert werden.</li>
 </ul>
 <hr>
-<h2 id="5-strukturierter-lernplan--lernziele-dein-fahrplan"><a class="header" href="#5-strukturierter-lernplan--lernziele-dein-fahrplan">5. Strukturierter Lernplan &amp; Lernziele (Dein Fahrplan)</a></h2>
-<p>Dieser Lernplan zeigt dir Schritt für Schritt, wie du die Kapitel 1 bis 19 am besten durcharbeitest, welche Syntax du beherrschen musst, welche Lernziele du verfolgst und welche praktischen Übungen du <strong>zwischendurch</strong> einschieben solltest.</p>
+<h2 id="5-strukturierter-lernplan--lernziele-ihr-fahrplan"><a class="header" href="#5-strukturierter-lernplan--lernziele-ihr-fahrplan">5. Strukturierter Lernplan &amp; Lernziele (Ihr Fahrplan)</a></h2>
+<p>Dieser Lernplan zeigt Ihnen Schritt für Schritt, wie Sie die Kapitel 1 bis 19 am besten durcharbeiten, welche Syntax Sie beherrschen müssen, welche Lernziele Sie verfolgen und welche praktischen Übungen Sie <strong>zwischendurch</strong> einschieben sollten.</p>
 <h3 id="-übersicht-der-lernphasen"><a class="header" href="#-übersicht-der-lernphasen">🗺️ Übersicht der Lernphasen</a></h3>
 <div class="table-wrapper">
 <table>
@@ -15928,7 +15926,7 @@ cargo install rustlings
 </li>
 <li><strong>Zwischendurch-Übung:</strong>
 <ul>
-<li>Erstelle dein erstes Projekt manuell über das Terminal und bearbeite die <code>main.rs</code> in VS Code. Lass dir von <code>agy</code> oder Copilot erklären, was die Zeilen in <code>Cargo.toml</code> bedeuten.</li>
+<li>Erstellen Sie Ihr erstes Projekt manuell über das Terminal und bearbeiten Sie die <code>main.rs</code> in VS Code. Lassen Sie sich von <code>agy</code> oder Copilot erklären, was die Zeilen in <code>Cargo.toml</code> bedeuten.</li>
 </ul>
 </li>
 </ul>
@@ -15951,7 +15949,7 @@ cargo install rustlings
 </li>
 <li><strong>Zwischendurch-Übung:</strong>
 <ul>
-<li><strong>Übung:</strong> Schreibe ein kurzes Programm, das ein Tupel mit deinem Namen und Alter deklariert, und gib die Werte über Indizes (<code>tupel.0</code>, <code>tupel.1</code>) aus. Verwende Shadowing, um das Alter danach als Text-String zu speichern.</li>
+<li><strong>Übung:</strong> Schreiben Sie ein kurzes Programm, das ein Tupel mit Ihrem Namen und Alter deklariert, und geben Sie die Werte über Indizes (<code>tupel.0</code>, <code>tupel.1</code>) aus. Verwenden Sie Shadowing, um das Alter danach als Text-String zu speichern.</li>
 </ul>
 </li>
 </ul>
@@ -15974,7 +15972,7 @@ cargo install rustlings
 </li>
 <li><strong>Zwischendurch-Übung:</strong>
 <ul>
-<li><strong>Übung:</strong> Implementiere den <strong>Temperatur-Konverter (Projekt 8)</strong>. Nutze eine Schleife, um das Eingabemenü anzuzeigen, und ein <code>match</code>-Statement, um die entsprechende Umrechnungsfunktion aufzurufen.</li>
+<li><strong>Übung:</strong> Implementieren Sie den <strong>Temperatur-Konverter (Projekt 8)</strong>. Nutzen Sie eine Schleife, um das Eingabemenü anzuzeigen, und ein <code>match</code>-Statement, um die entsprechende Umrechnungsfunktion aufzurufen.</li>
 </ul>
 </li>
 </ul>
@@ -15998,75 +15996,75 @@ cargo install rustlings
 </li>
 <li><strong>Zwischendurch-Übung:</strong>
 <ul>
-<li><strong>Übung:</strong> Implementiere die <strong>Einkaufsliste mit fester Größe (Projekt 31)</strong>. Schreibe eine Funktion, die eine veränderliche Referenz auf ein Array von Strings (<code>&amp;mut [String; 5]</code>) entgegennimmt und neue Elemente hinzufügt. Behebe alle vom Borrow Checker gemeldeten Konflikte.</li>
+<li><strong>Übung:</strong> Implementieren Sie die <strong>Einkaufsliste mit fester Größe (Projekt 31)</strong>. Schreiben Sie eine Funktion, die eine veränderliche Referenz auf ein Array von Strings (<code>&amp;mut [String; 5]</code>) entgegennimmt und neue Elemente hinzufügt. Beheben Sie alle vom Borrow Checker gemeldeten Konflikte.</li>
 </ul>
 </li>
 </ul>
 <hr>
 <h2 id="6-micro-learning-rust-in-5-minuten-am-tag-effektive-lerngewohnheiten"><a class="header" href="#6-micro-learning-rust-in-5-minuten-am-tag-effektive-lerngewohnheiten">6. Micro-Learning: Rust in 5 Minuten am Tag (Effektive Lerngewohnheiten)</a></h2>
-<p>Rust hat eine steile Lernkurve. Statt dich stundenlang am Wochenende durch komplexe Konzepte zu quälen (was oft zu Frustration führt), ist <strong>Micro-Learning</strong> – das tägliche Lernen in sehr kleinen, mundgerechten Portionen – der Schlüssel zum Erfolg.</p>
-<p>Das Gehirn baut das komplexe Speicher- und Sicherheitsmodell von Rust (Ownership &amp; Borrowing) am besten durch regelmäßige, kurze Impulse auf. Hier sind vier einfache Gewohnheiten für dein tägliches 5-Minuten-Micro-Learning:</p>
+<p>Rust hat eine steile Lernkurve. Statt sich stundenlang am Wochenende durch komplexe Konzepte zu quälen (was oft zu Frustration führt), ist <strong>Micro-Learning</strong> – das tägliche Lernen in sehr kleinen, mundgerechten Portionen – der Schlüssel zum Erfolg.</p>
+<p>Das Gehirn baut das komplexe Speicher- und Sicherheitsmodell von Rust (Ownership &amp; Borrowing) am besten durch regelmäßige, kurze Impulse auf. Hier sind vier einfache Gewohnheiten für Ihr tägliches 5-Minuten-Micro-Learning:</p>
 <h4 id="-gewohnheit-1-eine-mini-herausforderung-lösen-dauer-5-min"><a class="header" href="#-gewohnheit-1-eine-mini-herausforderung-lösen-dauer-5-min">⏱️ Gewohnheit 1: Eine Mini-Herausforderung lösen (Dauer: 5 Min.)</a></h4>
 <ul>
-<li>Nimm dir täglich vor, genau <strong>eine</strong> kleine Datei im <code>rustlings watch</code>-Modus zu lösen.</li>
-<li>Wenn du an einem Tag keine Zeit hast, öffne einfach die nächste fehlerhafte Übung und lies nur den Compiler-Fehler. Das sensibilisiert dein Gehirn für Fehlermeldungen, auch wenn du die Zeile erst am nächsten Tag korrigierst.</li>
+<li>Nehmen Sie sich täglich vor, genau <strong>eine</strong> kleine Datei im <code>rustlings watch</code>-Modus zu lösen.</li>
+<li>Wenn Sie an einem Tag keine Zeit haben, öffnen Sie einfach die nächste fehlerhafte Übung und lesen Sie nur den Compiler-Fehler. Das sensibilisiert Ihr Gehirn für Fehlermeldungen, auch wenn Sie die Zeile erst am nächsten Tag korrigierst.</li>
 </ul>
 <h4 id="-gewohnheit-2-fehler-mustererkennung-dauer-3-min"><a class="header" href="#-gewohnheit-2-fehler-mustererkennung-dauer-3-min">⏱️ Gewohnheit 2: Fehler-Mustererkennung (Dauer: 3 Min.)</a></h4>
 <ul>
-<li>Nimm eine Fehlermeldung des Borrow Checkers (z. B. aus deinen vorherigen Projekten oder online) und vollziehe die Argumentation des Compilers nach.</li>
-<li>Frage dich: <em>Wer besitzt den Speicher? Wer leiht ihn aus? Wo kollidieren Lese- und Schreibrechte?</em> Das Lesen der Fehlermeldung ist oft lehrreicher als das Schreiben von fehlerfreiem Code.</li>
+<li>Nehmen Sie eine Fehlermeldung des Borrow Checkers (z. B. aus Ihren vorherigen Projekten oder online) und vollziehen Sie die Argumentation des Compilers nach.</li>
+<li>Fragen Sie sich: <em>Wer besitzt den Speicher? Wer leiht ihn aus? Wo kollidieren Lese- und Schreibrechte?</em> Das Lesen der Fehlermeldung ist oft lehrreicher als das Schreiben von fehlerfreiem Code.</li>
 </ul>
 <h4 id="-gewohnheit-3-code-reading-dauer-5-min"><a class="header" href="#-gewohnheit-3-code-reading-dauer-5-min">⏱️ Gewohnheit 3: Code-Reading (Dauer: 5 Min.)</a></h4>
 <ul>
-<li>Wenn du eine Aufgabe auf Exercism oder Codewars gelöst hast, schließe das Browserfenster nicht sofort.</li>
-<li>Schau dir die am besten bewerteten Lösungen anderer Entwickler an. Analysiere 5 Minuten lang einen einzigen, eleganten Einzeiler. Versuche herauszufinden, welche Standard-Bibliotheksfunktion genutzt wurde, um Schleifen einzusparen.</li>
+<li>Wenn Sie eine Aufgabe auf Exercism oder Codewars gelöst haben, schließen Sie das Browserfenster nicht sofort.</li>
+<li>Schauen Sie sich die am besten bewerteten Lösungen anderer Entwickler an. Analysieren Sie 5 Minuten lang einen einzigen, eleganten Einzeiler. Versuche herauszufinden, welche Standard-Bibliotheksfunktion genutzt wurde, um Schleifen einzusparen.</li>
 </ul>
 <h4 id="-gewohnheit-4-die-1-merkzettel-methode-dauer-2-min"><a class="header" href="#-gewohnheit-4-die-1-merkzettel-methode-dauer-2-min">⏱️ Gewohnheit 4: Die 1-Merkzettel-Methode (Dauer: 2 Min.)</a></h4>
 <ul>
-<li>Lies jeden Tag genau einen der Merkzettel (A bis F) aus diesem Kapitel.</li>
-<li>Sage die dazugehörige goldene Merkregel laut auf. Wenn du zum Beispiel Merkzettel E liest, wiederhole die Regel: <em>„Viele Leser dürfen rein, doch Schreiber müssen einsam sein!“</em></li>
+<li>Lesen Sie jeden Tag genau einen der Merkzettel (A bis F) aus diesem Kapitel.</li>
+<li>Sagen Sie die dazugehörige goldene Merkregel laut auf. Wenn Sie zum Beispiel Merkzettel E lesen, wiederholen Sie die Regel: <em>„Viele Leser dürfen rein, doch Schreiber müssen einsam sein!“</em></li>
 </ul>
 <hr>
-<h2 id="7-wie-du-ki-assistenten-github-copilot--antigravity-cli-für-deine-projekte-nutzt"><a class="header" href="#7-wie-du-ki-assistenten-github-copilot--antigravity-cli-für-deine-projekte-nutzt">7. Wie du KI-Assistenten (GitHub Copilot &amp; Antigravity CLI) für deine Projekte nutzt</a></h2>
-<p>KI-Assistenten wie <strong>GitHub Copilot</strong> oder das <strong>Antigravity CLI</strong> (<code>agy</code>) sind hervorragende Mentoren beim Erlernen von Rust. Sie können dir helfen, wenn du bei den Projektvorschlägen feststeckst, Compiler-Fehlermeldungen nicht verstehst oder deinen Code mit Kommentaren strukturieren möchtest.</p>
+<h2 id="7-wie-sie-ki-assistenten-github-copilot--antigravity-cli-für-ihre-projekte-nutzen"><a class="header" href="#7-wie-sie-ki-assistenten-github-copilot--antigravity-cli-für-ihre-projekte-nutzen">7. Wie Sie KI-Assistenten (GitHub Copilot &amp; Antigravity CLI) für Ihre Projekte nutzen</a></h2>
+<p>KI-Assistenten wie <strong>GitHub Copilot</strong> oder das <strong>Antigravity CLI</strong> (<code>agy</code>) sind hervorragende Mentoren beim Erlernen von Rust. Sie können Ihnen helfen, wenn Sie bei den Projektvorschlägen feststecken, Compiler-Fehlermeldungen nicht verstehen oder Ihren Code mit Kommentaren strukturieren möchten.</p>
 <h3 id="wie-funktioniert-github-copilot-beim-schreiben-hinter-den-kulissen"><a class="header" href="#wie-funktioniert-github-copilot-beim-schreiben-hinter-den-kulissen">Wie funktioniert GitHub Copilot beim Schreiben? (Hinter den Kulissen)</a></h3>
-<p>Damit du Copilot optimal nutzen kannst, hilft es zu verstehen, was im Hintergrund passiert, während du tippst:</p>
+<p>Damit Sie Copilot optimal nutzen können, hilft es zu verstehen, was im Hintergrund passiert, während Sie tippen:</p>
 <ol>
-<li><strong>Kontext-Analyse (Was Copilot sieht):</strong> Copilot schaut sich nicht nur die Zeile an, in der dein Cursor steht. Es analysiert den Dateinamen (z. B. <code>main.rs</code>), die Programmiersprache (Rust), deine importierten Bibliotheken sowie deine anderen geöffneten Tabs im Code-Editor. So versteht die KI deinen Programmierstil.</li>
-<li><strong>Geistertext (Vorschläge in Echtzeit):</strong> Während du tippst, schlägt dir Copilot grau hinterlegten Text vor (sogenannten <em>Ghost Text</em>).
+<li><strong>Kontext-Analyse (Was Copilot sieht):</strong> Copilot schaut sich nicht nur die Zeile an, in der Ihr Cursor steht. Es analysiert den Dateinamen (z. B. <code>main.rs</code>), die Programmiersprache (Rust), Ihre importierten Bibliotheken sowie Ihre anderen geöffneten Tabs im Code-Editor. So versteht die KI Ihren Programmierstil.</li>
+<li><strong>Geistertext (Vorschläge in Echtzeit):</strong> Während Sie tippen, schlägt Ihnen Copilot grau hinterlegten Text vor (sogenannten <em>Ghost Text</em>).
 <ul>
-<li>Drückst du die <strong>Tab-Taste</strong>, nimmst du den Vorschlag an.</li>
-<li>Drückst du <strong>Esc</strong> oder tippst einfach weiter, ignorierst du ihn.</li>
+<li>Drücken Sie die <strong>Tab-Taste</strong>, nehmen Sie den Vorschlag an.</li>
+<li>Drücken Sie <strong>Esc</strong> oder tippen Sie einfach weiter, ignorieren Sie ihn.</li>
 </ul>
 </li>
-<li><strong>Kommentare als Anweisungen:</strong> Wenn du einen deutschen Kommentar schreibst (z. B. <code>// Berechne die Summe des Arrays</code>), liest Copilot diesen Kommentar als Arbeitsauftrag (Prompt). Es schlägt dir in der nächsten Zeile automatisch den dazu passenden Programmcode vor.</li>
-<li><strong>Statistische Mustererkennung:</strong> Copilot “denkt” nicht wie ein Mensch. Es wurde mit Milliarden Zeilen Open-Source-Code trainiert und ermittelt statistisch, welche Code-Zeilen am besten zu deinem aktuellen Kontext passen. Da dies fehleranfällig sein kann, solltest du jeden Vorschlag <strong>immer kritisch prüfen</strong>, bevor du ihn mit Tab übernimmst!</li>
+<li><strong>Kommentare als Anweisungen:</strong> Wenn Sie einen deutschen Kommentar schreiben (z. B. <code>// Berechne die Summe des Arrays</code>), lesen Copilot diesen Kommentar als Arbeitsauftrag (Prompt). Es schlägt Ihnen in der nächsten Zeile automatisch den dazu passenden Programmcode vor.</li>
+<li><strong>Statistische Mustererkennung:</strong> Copilot “denkt” nicht wie ein Mensch. Es wurde mit Milliarden Zeilen Open-Source-Code trainiert und ermittelt statistisch, welche Code-Zeilen am besten zu Ihrem aktuellen Kontext passen. Da dies fehleranfällig sein kann, sollten Sie jeden Vorschlag <strong>immer kritisch prüfen</strong>, bevor Sie ihn mit Tab übernehmen!</li>
 </ol>
 <hr>
 <h3 id="wie-funktioniert-das-antigravity-cli-agy-hinter-den-kulissen"><a class="header" href="#wie-funktioniert-das-antigravity-cli-agy-hinter-den-kulissen">Wie funktioniert das Antigravity CLI (agy)? (Hinter den Kulissen)</a></h3>
 <p>Während GitHub Copilot primär ein Text-Vervollständiger ist, ist das <strong>Antigravity CLI</strong> (<code>agy</code>) ein eigenständiger <strong>KI-Agent</strong>. So arbeitet das CLI im Hintergrund:</p>
 <ol>
-<li><strong>Planung &amp; Agentic Loop:</strong> Wenn du <code>agy</code> eine komplexe Aufgabe gibst (z. B. <em>“Erstelle ein Notenrechner-Projekt ohne Vektoren”</em>), tippt die KI nicht einfach blind los. Sie überlegt sich einen Schritt-für-Schritt-Plan. Sie liest zuerst bestehende Dateien, analysiert die Struktur und führt dann gezielt Aktionen aus.</li>
-<li><strong>Werkzeugnutzung (Tools):</strong> Der Agent im CLI hat Zugriff auf spezielle Programmier-Werkzeuge. Er kann eigenständig Dateien öffnen (<code>view_file</code>), neue Dateien erstellen (<code>write_to_file</code>) und Befehle in deiner Konsole ausführen (<code>run_command</code>), um deinen Code automatisch zu testen (z. B. mit <code>cargo check</code>).</li>
-<li><strong>Die Sandbox (Sicherheit):</strong> Alle Konsolenbefehle, die der Agent ausführt, laufen in einer geschützten Sandbox (Testumgebung). Der Agent kann also keine schädlichen Aktionen auf deinem eigentlichen Betriebssystem ausführen.</li>
-<li><strong>Berechtigungen &amp; Kontrolle:</strong> Bevor der Agent eine Datei verändert oder einen Befehl ausführt, fragt er dich um Erlaubnis. Du siehst genau, was er tun möchte, und kannst den Schritt bestätigen oder ablehnen. Du behältst immer die volle Kontrolle.</li>
-<li><strong>Kontext über das gesamte Projekt:</strong> Der CLI-Agent sieht dein komplettes Projektverzeichnis. Er weiß, welche Kapiteldateien existieren und wie sie miteinander zusammenhängen, um dir passende Lösungen anzubieten.</li>
+<li><strong>Planung &amp; Agentic Loop:</strong> Wenn Sie <code>agy</code> eine komplexe Aufgabe geben (z. B. <em>“Erstelle ein Notenrechner-Projekt ohne Vektoren”</em>), tippt die KI nicht einfach blind los. Sie überlegt sich einen Schritt-für-Schritt-Plan. Sie liest zuerst bestehende Dateien, analysiert die Struktur und führt dann gezielt Aktionen aus.</li>
+<li><strong>Werkzeugnutzung (Tools):</strong> Der Agent im CLI hat Zugriff auf spezielle Programmier-Werkzeuge. Er kann eigenständig Dateien öffnen (<code>view_file</code>), neue Dateien erstellen (<code>write_to_file</code>) und Befehle in Ihrer Konsole ausführen (<code>run_command</code>), um Ihren Code automatisch zu testen (z. B. mit <code>cargo check</code>).</li>
+<li><strong>Die Sandbox (Sicherheit):</strong> Alle Konsolenbefehle, die der Agent ausführt, laufen in einer geschützten Sandbox (Testumgebung). Der Agent kann also keine schädlichen Aktionen auf Ihrem eigentlichen Betriebssystem ausführen.</li>
+<li><strong>Berechtigungen &amp; Kontrolle:</strong> Bevor der Agent eine Datei verändert oder einen Befehl ausführt, fragt er Sie um Erlaubnis. Sie sehen genau, was er tun möchte, und kannst den Schritt bestätigen oder ablehnen. Sie behalten immer die volle Kontrolle.</li>
+<li><strong>Kontext über das gesamte Projekt:</strong> Der CLI-Agent sieht Ihr komplettes Projektverzeichnis. Er weiß, welche Kapiteldateien existieren und wie sie miteinander zusammenhängen, um Ihnen passende Lösungen anzubieten.</li>
 </ol>
 <hr>
-<p>Hier sind praktische Tipps, wie du die KI optimal in deinen Programmieralltag integrierst:</p>
+<p>Hier sind praktische Tipps, wie Sie die KI optimal in Ihren Programmieralltag integrieren:</p>
 <h3 id="tipp-a-fragen-stellen-und-erklärungen-anfordern-chat--prompts"><a class="header" href="#tipp-a-fragen-stellen-und-erklärungen-anfordern-chat--prompts">Tipp A: Fragen stellen und Erklärungen anfordern (Chat &amp; Prompts)</a></h3>
-<p>Wenn du eine Frage zur Syntax hast oder nicht weißt, wie ein Konzept funktioniert, kannst du der KI konkrete Fragen stellen.</p>
+<p>Wenn Sie eine Frage zur Syntax haben oder nicht wissen, wie ein Konzept funktioniert, können Sie der KI konkrete Fragen stellen.</p>
 <ul>
 <li><strong>Beispiel-Prompts:</strong>
 <ul>
 <li><em>“Wie deklariere ich ein veränderliches Array von Strings mit der festen Größe 5 in Rust?”</em></li>
-<li><em>“Was ist der Unterschied zwischen <code>&amp;String</code> und <code>&amp;str</code> in Rust? Erkläre es einfach für Anfänger.”</em></li>
+<li><em>“Was ist der Unterschied zwischen <code>&amp;String</code> und <code>&amp;str</code> in Rust? Erklären Sie es einfach für Anfänger.”</em></li>
 <li><em>“Wie lese ich in Rust eine Benutzereingabe über die Konsole ein, ohne Vektoren zu nutzen?”</em></li>
 </ul>
 </li>
 </ul>
 <h3 id="tipp-b-lösungsvorschläge-und-code-snippets-generieren"><a class="header" href="#tipp-b-lösungsvorschläge-und-code-snippets-generieren">Tipp B: Lösungsvorschläge und Code-Snippets generieren</a></h3>
-<p>Du kannst die KI bitten, dir strukturierte Entwürfe oder Hilfestellungen für Funktionen zu schreiben. Versuche jedoch, nicht das gesamte Projekt generieren zu lassen, um den Lerneffekt nicht zu schmälern.</p>
+<p>Sie können die KI bitten, Ihnen strukturierte Entwürfe oder Hilgestellungen für Funktionen zu schreiben. Versuchen Sie jedoch, nicht das gesamte Projekt generieren zu lassen, um den Lerneffekt nicht zu schmälern.</p>
 <ul>
 <li><strong>Beispiel-Prompts:</strong>
 <ul>
@@ -16076,7 +16074,7 @@ cargo install rustlings
 </li>
 </ul>
 <h3 id="tipp-c-code-kommentieren-und-dokumentieren-lassen"><a class="header" href="#tipp-c-code-kommentieren-und-dokumentieren-lassen">Tipp C: Code kommentieren und dokumentieren lassen</a></h3>
-<p>Ein gut kommentierter Code hilft dir, deine eigene Logik auch Wochen später noch zu verstehen. Du kannst Copilot bitten, Kommentare in deinem Code zu ergänzen.</p>
+<p>Ein gut kommentierter Code hilft Ihnen, Ihre eigene Logik auch Wochen später noch zu verstehen. Sie können Copilot bitten, Kommentare in Ihrem Code zu ergänzen.</p>
 <ul>
 <li><strong>Beispiel-Prompts:</strong>
 <ul>
@@ -16084,32 +16082,32 @@ cargo install rustlings
 <li><em>“Ergänze Dokumentationskommentare für diese Rust-Funktion.”</em></li>
 </ul>
 </li>
-<li><strong>In-Editor-Tipp (Copilot):</strong> Schreibe einfach einen Kommentar wie <code>// Funktion, die den Durchschnitt eines u32-Arrays berechnet</code> und drücke Enter. Copilot wird dir die Funktionssignatur und den passenden Code automatisch vorschlagen.</li>
+<li><strong>In-Editor-Tipp (Copilot):</strong> Schreiben Sie einfach einen Kommentar wie <code>// Funktion, die den Durchschnitt eines u32-Arrays berechnet</code> und drücken Sie Enter. Copilot wird Ihnen die Funktionssignatur und den passenden Code automatisch vorschlagen.</li>
 </ul>
 <h3 id="tipp-d-compiler-fehler-erklären-und-beheben-lassen"><a class="header" href="#tipp-d-compiler-fehler-erklären-und-beheben-lassen">Tipp D: Compiler-Fehler erklären und beheben lassen</a></h3>
-<p>Der Borrow Checker kann anfangs frustrierend sein. Wenn dein Code nicht kompiliert, nutze die KI als Fehler-Übersetzer. Kopiere dazu einfach die Fehlermeldung aus deinem Terminal.</p>
+<p>Der Borrow Checker kann anfangs frustrierend sein. Wenn Ihr Code nicht kompiliert, nutzen Sie die KI als Fehler-Übersetzer. Kopieren Sie dazu einfach die Fehlermeldung aus Ihrem Terminal.</p>
 <ul>
 <li><strong>Beispiel-Prompt:</strong>
 <ul>
 <li><em>“Mein Rust-Code kompiliert nicht. Der Compiler gibt folgenden Fehler aus: [Fehlermeldung kopieren]. Mein Code lautet: [Code kopieren]. Warum meckert Rust hier und wie löse ich das Problem?”</em></li>
 </ul>
 </li>
-<li>Die KI wird dir genau erklären, welche Borrowing-Regel verletzt wurde (z. B. Überschneidung von Lese- und Schreibreferenzen) und dir den korrigierten Code vorschlagen.</li>
+<li>Die KI wird Ihnen genau erklären, welche Borrowing-Regel verletzt wurde (z. B. Überschneidung von Lese- und Schreibreferenzen) und Ihnen den korrigierten Code vorschlagen.</li>
 </ul>
 <hr>
 <h2 id="8-wie-geht-es-weiter"><a class="header" href="#8-wie-geht-es-weiter">8. Wie geht es weiter?</a></h2>
-<p>Mit diesem Fundament bist du bereit für den nächsten großen Schritt. In den kommenden Kapiteln verlassen wir die reinen Prozeduren und widmen uns den <strong>fortgeschrittenen Strukturierungswerkzeugen</strong> von Rust, die wir bisher ausgelassen haben:</p>
+<p>Mit diesem Fundament sind Sie bereit für den nächsten großen Schritt. In den kommenden Kapiteln verlassen wir die reinen Prozeduren und widmen uns den <strong>fortgeschrittenen Strukturierungswerkzeugen</strong> von Rust, die wir bisher ausgelassen haben:</p>
 <ol>
 <li><strong>Strukturen (Structs) &amp; Methoden:</strong> Zum Erstellen eigener, komplexer Datentypen (z. B. zur Bündelung von zusammengehörigen Werten).</li>
 <li><strong>Vektoren (Vec):</strong> Dynamische Listen, die im Gegensatz zu Arrays ihre Größe zur Laufzeit verändern können.</li>
 <li><strong>Aufzählungen (Enums) &amp; Pattern Matching:</strong> Zur Modellierung komplexer Zustände.</li>
 <li><strong>Traits &amp; Generics:</strong> Zur Erstellung von flexiblem, wiederverwendbarem Code.</li>
 </ol>
-<p>Bleib dran, experimentiere mit den Projektvorschlägen und mach dir keine Sorgen, wenn der Compiler anfangs meckert – er ist dein bester Verbündeter auf dem Weg zu robustem und sicherem Code!</p>
+<p>Bleiben Sie dran, experimentieren Sie mit den Projektvorschlägen und machen Sie sich keine Sorgen, wenn der Compiler anfangs meckert – er ist Ihr bester Verbündeter auf dem Weg zu robustem und sicherem Code!</p>
 <hr>
-<h2 id="9-deine-persönlichen-notizen--mitschriften-deine-lern-ecke"><a class="header" href="#9-deine-persönlichen-notizen--mitschriften-deine-lern-ecke">9. Deine persönlichen Notizen &amp; Mitschriften (Deine Lern-Ecke)</a></h2>
-<p>Nutze diesen Bereich, um deine eigenen Erkenntnisse, Notizen und persönlichen Gedanken zu den Grundlagen von Rust festzuhalten. Das aktive Dokumentieren ist der beste Weg, um die Konzepte des Ownership-Systems und des Borrow Checkers dauerhaft zu verinnerlichen.</p>
-<h3 id="-vorlage-für-deine-notizen-kopiere-diese-in-deine-notiz-app-oder-editiere-sie-hier"><a class="header" href="#-vorlage-für-deine-notizen-kopiere-diese-in-deine-notiz-app-oder-editiere-sie-hier">📝 Vorlage für deine Notizen (Kopiere diese in deine Notiz-App oder editiere sie hier):</a></h3>
+<h2 id="9-ihre-persönlichen-notizen--mitschriften-ihre-lern-ecke"><a class="header" href="#9-ihre-persönlichen-notizen--mitschriften-ihre-lern-ecke">9. Ihre persönlichen Notizen &amp; Mitschriften (Ihre Lern-Ecke)</a></h2>
+<p>Nutzen Sie diesen Bereich, um Ihre eigenen Erkenntnisse, Notizen und persönlichen Gedanken zu den Grundlagen von Rust festzuhalten. Das aktive Dokumentieren ist der beste Weg, um die Konzepte des Ownership-Systems und des Borrow Checkers dauerhaft zu verinnerlichen.</p>
+<h3 id="-vorlage-für-ihre-notizen-kopieren-sie-diese-in-ihre-notiz-app-oder-editieren-sie-sie-hier"><a class="header" href="#-vorlage-für-ihre-notizen-kopieren-sie-diese-in-ihre-notiz-app-oder-editieren-sie-sie-hier">📝 Vorlage für Ihre Notizen (Kopieren Sie diese in Ihre Notiz-App oder editieren Sie sie hier):</a></h3>
 <blockquote>
 <h4 id="-variablen-datentypen--scopes"><a class="header" href="#-variablen-datentypen--scopes">💡 Variablen, Datentypen &amp; Scopes</a></h4>
 <ul>
@@ -16140,42 +16138,51 @@ cargo install rustlings
 <li><input disabled="" type="checkbox"> Ich kann die 3 Gesetze von Ownership fehlerfrei aufsagen.</li>
 <li><input disabled="" type="checkbox"> Ich weiß genau, wann ein <code>Move</code> stattfindet und wann ein <code>Copy</code>.</li>
 <li><input disabled="" type="checkbox"> Ich kann die Aliasing-Regel (“Viele Leser ODER ein Schreiber”) im Schlaf anwenden.</li>
+<li><input disabled="" type="checkbox"> Ich verstehe, warum eine Referenz niemals länger leben darf als ihr Besitzer.g bei meinem Lieblingsprojekt:*</li>
+</ul>
+<h3 id="-checkliste-zum-selbsttest-bin-ich-bereit-für-kapitel-22-1"><a class="header" href="#-checkliste-zum-selbsttest-bin-ich-bereit-für-kapitel-22-1">🔍 Checkliste zum Selbsttest (Bin ich bereit für Kapitel 22?):</a></h3>
+<ul>
+<li><input disabled="" type="checkbox"> Ich kann erklären, warum Variablen in Rust standardmäßig unveränderlich sind.</li>
+<li><input disabled="" type="checkbox"> Ich kenne den Unterschied zwischen einem <code>String</code> (Heap) und einem <code>&amp;str</code> (Slice).</li>
+<li><input disabled="" type="checkbox"> Ich kann die 3 Gesetze von Ownership fehlerfrei aufsagen.</li>
+<li><input disabled="" type="checkbox"> Ich weiß genau, wann ein <code>Move</code> stattfindet und wann ein <code>Copy</code>.</li>
+<li><input disabled="" type="checkbox"> Ich kann die Aliasing-Regel (“Viele Leser ODER ein Schreiber”) im Schlaf anwenden.</li>
 <li><input disabled="" type="checkbox"> Ich verstehe, warum eine Referenz niemals länger leben darf als ihr Besitzer.</li>
 </ul>
 <div style="break-before: page; page-break-before: always;"></div>
 <h1 id="kapitel-22-der-vs-code-planungs-workflow-strukturierte-softwareentwicklung"><a class="header" href="#kapitel-22-der-vs-code-planungs-workflow-strukturierte-softwareentwicklung">Kapitel 22: Der VS Code Planungs-Workflow (Strukturierte Softwareentwicklung)</a></h1>
-<p>In den bisherigen Kapiteln dieses Kurses hast du die grundlegenden Bausteine von Rust kennengelernt: Variablen, Datentypen, Funktionen, Kontrollstrukturen und das Ownership-System. Du hast wahrscheinlich oft direkt mit dem Tippen von Rust-Code begonnen, sobald eine Aufgabe gestellt wurde. Bei kleinen Programmen funktioniert das gut. Sobald deine Projekte jedoch größer werden, stößt dieser “Code-First”-Ansatz an seine Grenzen.</p>
-<p>In diesem Kapitel lernen wir den VS Code Planungs-Workflow kennen. Wir besprechen ausführlich, warum die Planung vor dem Schreiben von Code für professionelle Entwickler unerlässlich ist, wie man Algorithmen visuell darstellt und wie man strukturierten Pseudocode schreibt. Am Ende dieses Kapitels wirst du in der Lage sein, komplexe Softwareprojekte systematisch zu planen und fehlerfrei in Rust umzusetzen.</p>
+<p>In den bisherigen Kapiteln dieses Kurses haben Sie die grundlegenden Bausteine von Rust kennengelernt: Variablen, Datentypen, Funktionen, Kontrollstrukturen und das Ownership-System. Sie haben wahrscheinlich oft direkt mit dem Tippen von Rust-Code begonnen, sobald eine Aufgabe gestellt wurde. Bei kleinen Programmen funktioniert das gut. Sobald Ihre Projekte jedoch größer werden, stößt dieser “Code-First”-Ansatz an seine Grenzen.</p>
+<p>In diesem Kapitel lernen wir den VS Code Planungs-Workflow kennen. Wir besprechen ausführlich, warum die Planung vor dem Schreiben von Code für professionelle Entwickler unerlässlich ist, wie man Algorithmen visuell darstellt und wie man strukturierten Pseudocode schreibt. Am Ende dieses Kapitels werden Sie in der Lage sein, komplexe Softwareprojekte systematisch zu planen und fehlerfrei in Rust umzusetzen.</p>
 <h2 id="1-warum-planung-der-schlüssel-zum-erfolg-ist-die-theorie"><a class="header" href="#1-warum-planung-der-schlüssel-zum-erfolg-ist-die-theorie">1. Warum Planung der Schlüssel zum Erfolg ist (Die Theorie)</a></h2>
 <p>Viele Programmieranfänger glauben, dass ein Programmierer am produktivsten ist, wenn er Code tippt. Das ist ein Trugschluss. Das Schreiben von Code ist nur der letzte Schritt in einem langen Denkprozess. Wer ohne Plan loslegt, tappt schnell in die “Code-First-Falle”.</p>
 <h3 id="die-gefahren-des-code-first-ansatzes-die-code-first-falle"><a class="header" href="#die-gefahren-des-code-first-ansatzes-die-code-first-falle">Die Gefahren des Code-First-Ansatzes (Die Code-First-Falle)</a></h3>
-<p>Wenn du sofort mit dem Tippen von Rust-Code beginnst, musst du zwei komplexe Probleme gleichzeitig lösen:</p>
+<p>Wenn Sie sofort mit dem Tippen von Rust-Code beginnen, müssen Sie zwei komplexe Probleme gleichzeitig lösen:</p>
 <ol>
 <li><strong>Die Programmlogik:</strong> Wie löse ich das fachliche Problem? Welche Schritte sind in welcher Reihenfolge nötig?</li>
 <li><strong>Die Rust-Syntax:</strong> Wie überzeuge ich den Compiler? Welche Typen brauche ich? Wie halte ich die Ownership-Regeln ein?</li>
 </ol>
-<p>Das Gehirn ist nicht dafür gemacht, beide Probleme simultan auf hohem Niveau zu lösen. Die Folge sind logische Fehler im Code, die schwer zu finden sind, da sie sich hinter Compiler-Warnungen oder Borrow-Checker-Konflikten verstecken. Du verbringst Stunden damit, Code umzuschreiben, nur um festzustellen, dass dein grundlegender Ansatz falsch war.</p>
+<p>Das Gehirn ist nicht dafür gemacht, beide Probleme simultan auf hohem Niveau zu lösen. Die Folge sind logische Fehler im Code, die schwer zu finden sind, da sie sich hinter Compiler-Warnungen oder Borrow-Checker-Konflikten verstecken. Sie verbringen Stunden damit, Code umzuschreiben, nur um festzustellen, dass Ihr grundlegender Ansatz falsch war.</p>
 <h3 id="das-zeitspar-paradoxon-the-time-saving-paradox"><a class="header" href="#das-zeitspar-paradoxon-the-time-saving-paradox">Das Zeitspar-Paradoxon (The Time-Saving Paradox)</a></h3>
 <p>Es gibt eine alte Entwickler-Weisheit: <em>“Eine Stunde Planung spart vier Stunden Fehlersuche.”</em>
-Wenn du dir vor dem Programmieren 10 bis 15 Minuten Zeit nimmst, um den Ablauf visuell darzustellen und in Pseudocode aufzuschreiben, wirst du:</p>
+Wenn Sie sich vor dem Programmieren 10 bis 15 Minuten Zeit nehmen, um den Ablauf visuell darzustellen und in Pseudocode aufzuschreiben, werden Sie:</p>
 <ul>
-<li><strong>Logikfehler frühzeitig erkennen:</strong> Bevor du eine einzige Zeile Rust-Code schreibst, siehst du im Diagramm, ob du einen Fall (z. B. eine leere Eingabe) vergessen hast.</li>
-<li><strong>Denken auf einer höheren Ebene:</strong> Im Pseudocode musst du dich nicht um Semikolons, Typkonvertierungen oder Referenzen kümmern. Du konzentrierst dich rein auf das “Was” und “Wie” des Algorithmus.</li>
-<li><strong>Weniger Frustration erleben:</strong> Wenn die Logik einmal auf dem Papier steht, ist das Schreiben des Rust-Codes nur noch eine reine Übersetzungsarbeit. Der Compiler wird dein Freund, weil du dich voll auf die Syntax konzentrieren kannst.</li>
+<li><strong>Logikfehler frühzeitig erkennen:</strong> Bevor Sie eine einzige Zeile Rust-Code schreiben, sehen Sie im Diagramm, ob Sie einen Fall (z. B. eine leere Eingabe) vergessen haben.</li>
+<li><strong>Denken auf einer höheren Ebene:</strong> Im Pseudocode müssen Sie sich nicht um Semikolons, Typkonvertierungen oder Referenzen kümmern. Sie konzentrieren sich rein auf das “Was” und “Wie” des Algorithmus.</li>
+<li><strong>Weniger Frustration erleben:</strong> Wenn die Logik einmal auf dem Papier steht, ist das Schreiben des Rust-Codes nur noch eine reine Übersetzungsarbeit. Der Compiler wird Ihr Freund, weil Sie sich voll auf die Syntax konzentrieren können.</li>
 </ul>
 <h3 id="warum-planung-in-rust-besonders-wichtig-ist"><a class="header" href="#warum-planung-in-rust-besonders-wichtig-ist">Warum Planung in Rust besonders wichtig ist</a></h3>
-<p>Rust ist eine sehr strikte Sprache. Der Borrow Checker wacht penibel über den Speicher. Wenn du in Rust ohne Plan drauflos programmierst, baust du schnell Strukturen auf, die gegen die Aliasing-Regeln (“Ein Schreiber oder viele Leser”) verstoßen. Ein guter Plan zeigt dir vorab, welche Variablen verändert werden müssen (<code>mut</code>) und wo Daten ausgeliehen oder kopiert werden sollten.</p>
+<p>Rust ist eine sehr strikte Sprache. Der Borrow Checker wacht penibel über den Speicher. Wenn Sie in Rust ohne Plan drauflos programmieren, bauen Sie schnell Strukturen auf, die gegen die Aliasing-Regeln (“Ein Schreiber oder viele Leser”) verstoßen. Ein guter Plan zeigt Ihnen vorab, welche Variablen verändert werden müssen (<code>mut</code>) und wo Daten ausgeliehen oder kopiert werden sollten.</p>
 <h2 id="2-die-5-schritte-des-planungs-workflows"><a class="header" href="#2-die-5-schritte-des-planungs-workflows">2. Die 5 Schritte des Planungs-Workflows</a></h2>
 <p>Unser empfohlener Workflow besteht aus fünf klar definierten Phasen. Wir führen diese Schritte in einer eigenen Markdown-Datei namens <code>planung.md</code> direkt in VS Code durch.</p>
 <h3 id="schritt-1-anforderungsanalyse-das-eva-prinzip"><a class="header" href="#schritt-1-anforderungsanalyse-das-eva-prinzip">Schritt 1: Anforderungsanalyse (Das EVA-Prinzip)</a></h3>
-<p>Bevor du einen Algorithmus entwirfst, musst du das Problem verstehen. Nutze das klassische <strong>EVA-Prinzip</strong>:</p>
+<p>Bevor Sie einen Algorithmus entwerfen, müssen Sie das Problem verstehen. Nutzen Sie das klassische <strong>EVA-Prinzip</strong>:</p>
 <ul>
 <li><strong>Eingabe (Input):</strong> Welche Daten fließen in das Programm? (z. B. Benutzereingaben, Arrays, Dateien)</li>
 <li><strong>Verarbeitung (Processing):</strong> Was passiert mit den Daten? Welche Berechnungen oder Transformationen sind nötig?</li>
 <li><strong>Ausgabe (Output):</strong> Was gibt das Programm zurück? (z. B. Text im Terminal, Dateien, Rückgabewerte)</li>
 </ul>
 <h3 id="schritt-2-ablauf-visualisierung-mermaid-diagramme"><a class="header" href="#schritt-2-ablauf-visualisierung-mermaid-diagramme">Schritt 2: Ablauf-Visualisierung (Mermaid-Diagramme)</a></h3>
-<p>Bilder sagen mehr als tausend Worte. Ein Flussdiagramm (Flowchart) hilft dir, Verzweigungen (<code>if/else</code>) und Schleifen (<code>loop</code>, <code>while</code>, <code>for</code>) visuell zu erfassen. In VS Code nutzen wir dafür <strong>Mermaid</strong>, ein Tool, mit dem man Diagramme direkt als Text definieren kann.</p>
+<p>Bilder sagen mehr als tausend Worte. Ein Flussdiagramm (Flowchart) hilft Ihnen, Verzweigungen (<code>if/else</code>) und Schleifen (<code>loop</code>, <code>while</code>, <code>for</code>) visuell zu erfassen. In VS Code nutzen wir dafür <strong>Mermaid</strong>, ein Tool, mit dem man Diagramme direkt als Text definieren kann.</p>
 <h3 id="schritt-3-strukturierter-pseudocode"><a class="header" href="#schritt-3-strukturierter-pseudocode">Schritt 3: Strukturierter Pseudocode</a></h3>
 <p>Pseudocode ist eine Mischung aus menschlicher Sprache und Programmiersprache. Er ist strukturiert wie Code, nutzt aber keine konkrete Syntax. Dadurch bleibt er leicht verständlich und universell einsetzbar.</p>
 <h3 id="schritt-4-die-implementierungs-to-do-liste"><a class="header" href="#schritt-4-die-implementierungs-to-do-liste">Schritt 4: Die Implementierungs-To-Do-Liste</a></h3>
@@ -16226,7 +16233,7 @@ Verbindungen werden mit einfachen Pfeilen dargestellt:</p>
 <h3 id="warum-einrückung-wichtig-ist"><a class="header" href="#warum-einrückung-wichtig-ist">Warum Einrückung wichtig ist</a></h3>
 <p>Genau wie in echten Programmiersprachen nutzen wir im Pseudocode Einrückungen (Indentations), um zu zeigen, welche Anweisungen zu welchem Block gehören (z. B. innerhalb einer Schleife oder einer Bedingung). Das erhöht die Lesbarkeit massiv.</p>
 <h3 id="der-trockenlauf-desk-checking"><a class="header" href="#der-trockenlauf-desk-checking">Der Trockenlauf (Desk Checking)</a></h3>
-<p>Bevor du den Pseudocode in Rust übersetzt, solltest du einen sogenannten “Trockenlauf” machen. Nimm dir ein Blatt Papier, schreibe die Variablennamen auf und gehe den Pseudocode Zeile für Zeile mit Beispielwerten im Kopf durch. Ändere die Werte der Variablen auf deinem Blatt entsprechend. So merkst du sofort, ob deine Schleife zum Beispiel ein Element zu früh stoppt (ein sogenannter “Off-by-one”-Fehler).</p>
+<p>Bevor Sie den Pseudocode in Rust übersetzen, sollten Sie einen sogenannten “Trockenlauf” machen. Nehmen Sie sich ein Blatt Papier, schreiben Sie die Variablennamen auf und gehen Sie den Pseudocode Zeile für Zeile mit Beispielwerten im Kopf durch. Ändern Sie die Werte der Variablen auf Ihrem Blatt entsprechend. So merken Sie sofort, ob Ihre Schleife zum Beispiel ein Element zu früh stoppt (ein sogenannter “Off-by-one”-Fehler).</p>
 <h2 id="5-ausführliches-praxisbeispiel-der-notendurchschnitt-rechner"><a class="header" href="#5-ausführliches-praxisbeispiel-der-notendurchschnitt-rechner">5. Ausführliches Praxisbeispiel: Der Notendurchschnitt-Rechner</a></h2>
 <p>Um den Workflow in Aktion zu sehen, planen wir ein Programm, das den Durchschnitt aus einem festen Noten-Array berechnet und ausgibt.</p>
 <h3 id="schritt-1-anforderungsanalyse-eva"><a class="header" href="#schritt-1-anforderungsanalyse-eva">Schritt 1: Anforderungsanalyse (EVA)</a></h3>
@@ -16256,7 +16263,7 @@ Output –&gt; End([ENDE])</p>
 </dd>
 </dl>
 <h3 id="schritt-3-pseudocode"><a class="header" href="#schritt-3-pseudocode">Schritt 3: Pseudocode</a></h3>
-<p>Der Pseudocode übersetzt das Diagramm in eine textuelle Struktur. Beachte die Großbuchstaben bei den Kontrollstrukturen:</p>
+<p>Der Pseudocode übersetzt das Diagramm in eine textuelle Struktur. Beachten Sie die Großbuchstaben bei den Kontrollstrukturen:</p>
 <pre><code class="language-text">FUNKTION main:
     DEFINIERE notendurchschnitt = [1, 2, 4, 5, 2]
     INITIALISIERE summe = 0.0
@@ -16307,7 +16314,7 @@ ENDE FUNKTION
     println!("Der Notendurchschnitt beträgt: {:.2}", ergebnis);
 }</code></pre>
 <h2 id="6-ausführliche-merkzettel-zum-planungs-workflow"><a class="header" href="#6-ausführliche-merkzettel-zum-planungs-workflow">6. Ausführliche Merkzettel zum Planungs-Workflow</a></h2>
-<p>Verwende diese Spickzettel als Referenz für deine eigenen Projekte. Sie fassen die wichtigsten Elemente übersichtlich zusammen.</p>
+<p>Verwenden Sie diese Spickzettel als Referenz für Ihre eigenen Projekte. Sie fassen die wichtigsten Elemente übersichtlich zusammen.</p>
 <h3 id="-merkzettel-a-die-mermaid-elemente-im-detail"><a class="header" href="#-merkzettel-a-die-mermaid-elemente-im-detail">📌 Merkzettel A: Die Mermaid-Elemente im Detail</a></h3>
 <ol>
 <li><strong>Warum dieses Konzept? (Motivation):</strong>
@@ -16336,7 +16343,7 @@ Damit Programmierer Flussdiagramme schnell schreiben und anpassen können, ohne 
 C{Bedingung} -- Ja --&gt; D (Wenn Textzeichen wie Klammern im Knotentext ungequotet sind)
 </code></pre>
 <em>Korrektur:</em>
-Nutze immer doppelte Anführungszeichen für Sonderzeichen in Knotentexten: <code>Node{"Bedingung (x &gt; 5)"}</code>.</li>
+Nutzen Sie immer doppelte Anführungszeichen für Sonderzeichen in Knotentexten: <code>Node{"Bedingung (x &gt; 5)"}</code>.</li>
 <li><strong>Die goldene Merkregel / Eselsbrücke (Mnemonic):</strong>
 <em>„Eckig ist die Tat (Aktion), rund der Start und das Ende, rautenförmig die Weiche (Entscheidung).“</em></li>
 </ol>
@@ -16368,7 +16375,7 @@ ENDE FUNKTION
 (Zu unstrukturiert, ähnelt einem Fließtext und lässt sich schwer in echten Code übersetzen)
 </code></pre>
 <em>Korrektur:</em>
-Nutze strukturierte Einrückungen und festgelegte Schlüsselwörter:
+Nutzen Sie strukturierte Einrückungen und festgelegte Schlüsselwörter:
 <pre><code class="language-text">FALLS x &gt; 10:
     MACH das_hier
 </code></pre>
@@ -16378,7 +16385,7 @@ Nutze strukturierte Einrückungen und festgelegte Schlüsselwörter:
 </ol>
 <hr>
 <h3 id="-merkzettel-c-die-planungs-checkliste-template"><a class="header" href="#-merkzettel-c-die-planungs-checkliste-template">📌 Merkzettel C: Die Planungs-Checkliste (Template)</a></h3>
-<p>Kopiere diese Vorlage in jede deiner <code>planung.md</code>-Dateien, wenn du ein neues Projekt startest:</p>
+<p>Kopieren Sie diese Vorlage in jede Ihrer <code>planung.md</code>-Dateien, wenn Sie ein neues Projekt starten:</p>
 <pre><code class="language-markdown"># Planung: [Projektname]
 
 ## 1. Anforderungen (EVA)
@@ -16405,89 +16412,89 @@ graph TD
 Selbst erfahrene Entwickler machen Fehler bei der Planung. Hier sind die vier typischsten Stolpersteine für Anfänger:
 
 ### Fehler 1: Unendliche Schleifen im Diagramm (Infinite Loop Trap)
-* **Das Problem:** Du zeichnest einen Pfeil zurück zu einer Bedingung, veränderst aber innerhalb der Schleife die Kontrollvariable nicht. Dein Diagramm (und später dein Code) läuft ewig.
-* **Vermeidung:** Stelle bei jedem Schleifendurchlauf im Diagramm sicher, dass eine Aktion stattfindet, die die Bedingung beeinflusst (z. B. `Zähler = Zähler + 1`).
+* **Das Problem:** Sie zeichnen einen Pfeil zurück zu einer Bedingung, verändern aber innerhalb der Schleife die Kontrollvariable nicht. Ihr Diagramm (und später Ihr Code) läuft ewig.
+* **Vermeidung:** Stellen Sie bei jedem Schleifendurchlauf im Diagramm sicher, dass eine Aktion stattfindet, die die Bedingung beeinflusst (z. B. `Zähler = Zähler + 1`).
 
 ### Fehler 2: Fehlende Behandlung von Sonderfällen (Edge Cases)
-* **Das Problem:** Du planst nur für den Optimalfall (Happy Path). Was passiert, wenn der Notenrechner ein leeres Array übergeben bekommt? Im Rust-Code führt eine Division durch Null zum Absturz (Panic).
-* **Vermeidung:** Frage dich bei jedem Schritt im Diagramm: *„Was ist, wenn der Wert null ist? Was ist, wenn das Array leer ist? Was ist bei negativen Werten?“* Baue entsprechende `if`-Abzweigungen ein.
+* **Das Problem:** Sie planen nur für den Optimalfall (Happy Path). Was passiert, wenn der Notenrechner ein leeres Array übergeben bekommt? Im Rust-Code führt eine Division durch Null zum Absturz (Panic).
+* **Vermeidung:** Fragen Sie sich bei jedem Schritt im Diagramm: *„Was ist, wenn der Wert null ist? Was ist, wenn das Array leer ist? Was ist bei negativen Werten?“* Bauen Sie entsprechende `if`-Abzweigungen ein.
 
 ### Fehler 3: Zu detaillierter Pseudocode (Rust-Syntax im Pseudocode)
-* **Das Problem:** Du schreibst bereits Typen wie `as f64`, Referenzen `&amp;` oder Imports in deinen Pseudocode. Das blockiert das kreative Denken über die Logik.
-* **Vermeidung:** Halte den Pseudocode einfach. Schreibe `Länge des Arrays` statt `.len() as f64`. Die Details klärst du erst beim Schreiben des Rust-Codes.
+* **Das Problem:** Sie schreiben bereits Typen wie `as f64`, Referenzen `&amp;` oder Imports in Ihren Pseudocode. Das blockiert das kreative Denken über die Logik.
+* **Vermeidung:** Halten Sie den Pseudocode einfach. Schreiben Sie `Länge des Arrays` statt `.len() as f64`. Die Details klären Sie erst beim Schreiben des Rust-Codes.
 
 ### Fehler 4: Die To-Do-Liste ist zu grob
-* **Das Problem:** Deine To-Do-Liste hat nur einen Punkt: *"1. Schreibe das Programm"*. Das hilft dir nicht bei der Strukturierung.
-* **Vermeidung:** Zerlege die Aufgabe in kleine Portionen, die du in maximal 5 bis 10 Minuten erledigen kannst. Ein Punkt wie *"Schreibe die Schleife für die Summe"* ist viel besser.
+* **Das Problem:** Ihre To-Do-Liste hat nur einen Punkt: *"1. Schreiben Sie das Programm"*. Das hilft Ihnen nicht bei der Strukturierung.
+* **Vermeidung:** Zerlegen Sie die Aufgabe in kleine Portionen, die Sie in maximal 5 bis 10 Minuten erledigen können. Ein Punkt wie *"Schreiben Sie die Schleife für die Summe"* ist viel besser.
 
 ## 8.1 VS Code optimal für den Planungs-Workflow einrichten
 
-Um den Planungs-Workflow so flüssig und angenehm wie möglich zu gestalten, solltest du deine VS Code-Umgebung mit den passenden Erweiterungen ausstatten. Dies ermöglicht es dir, Diagramme und Markdown-Dateien direkt im Editor live zu visualisieren und zu bearbeiten.
+Um den Planungs-Workflow so flüssig und angenehm wie möglich zu gestalten, sollten Sie Ihre VS Code-Umgebung mit den passenden Erweiterungen ausstatten. Dies ermöglicht es Ihnen, Diagramme und Markdown-Dateien direkt im Editor live zu visualisieren und zu bearbeiten.
 
 ### Empfohlene VS Code-Erweiterungen:
 1. **Markdown Preview Mermaid Support:**
    * Diese Erweiterung sorgt dafür, dass die standardmäßige Markdown-Vorschau von VS Code Mermaid-Diagramme (`:::mermaid`) direkt rendern kann.
-   * *Nutzung:* Drücke `Strg + Shift + V` in einer geöffneten Markdown-Datei, um die Live-Vorschau an der Seite anzuzeigen. Jede Änderung am Mermaid-Code wird sofort aktualisiert.
+   * *Nutzung:* Drücken Sie Strg + Shift + V in einer geöffneten Markdown-Datei, um die Live-Vorschau an der Seite anzuzeigen. Jede Änderung am Mermaid-Code wird sofort aktualisiert.
 2. **Markdown All in One:**
    * Bietet nützliche Tastenkombinationen, automatische Erstellung von To-Do-Listen (beim Drücken von Enter in einer Checkliste) und automatische Formatierung.
 3. **Mermaid Chart:**
-   * Die offizielle Erweiterung zur visuellen Erstellung und Bearbeitung von Mermaid-Diagrammen mit einem integrierten Editor, falls du die Syntax nicht auswendig lernen möchtest.
+   * Die offizielle Erweiterung zur visuellen Erstellung und Bearbeitung von Mermaid-Diagrammen mit einem integrierten Editor, falls Sie die Syntax nicht auswendig lernen möchten.
 
 ### Hilfreiche Tastenkombinationen in VS Code für die Planung:
 * **`Strg + Shift + V`:** Öffnet die Markdown-Vorschau im Vollbild.
-* **`Strg + K, danach V`:** Öffnet die Vorschau in einem geteilten Fenster direkt neben deinem Code (Split-Screen-Modus). Dies ist das ideale Setup für die Implementierungsphase.
+* **`Strg + K, danach V`:** Öffnet die Vorschau in einem geteilten Fenster direkt neben Ihrem Code (Split-Screen-Modus). Dies ist das ideale Setup für die Implementierungsphase.
 * **`Alt + Z`:** Aktiviert den automatischen Zeilenumbruch (Word Wrap), damit längere Abschnitte im Pseudocode oder in den Notizen nicht horizontal aus dem Bildschirm laufen.
 
 ## 8.2 Synergie: GitHub Copilot und das Antigravity CLI im Tandem nutzen
 
-Während GitHub Copilot hervorragend als schneller Autocomplete-Assistent direkt in der Zeile arbeitet, glänzt das Antigravity CLI (`agy`) bei der projektweiten Planung und der Durchführung größerer Codeänderungen. Wenn du beide Tools intelligent kombinierst, entwickelst du ein tiefes Verständnis für Rust und vermeidest typische Fehler.
+Während GitHub Copilot hervorragend als schneller Autocomplete-Assistent direkt in der Zeile arbeitet, glänzt das Antigravity CLI (`agy`) bei der projektweiten Planung und der Durchführung größerer Codeänderungen. Wenn Sie beide Tools intelligent kombinierst, entwickeln Sie ein tiefes Verständnis für Rust und vermeiden typische Fehler.
 
 ### Die Arbeitsteilung im Detail:
 * **Der Navigator (Antigravity CLI):**
-  - Nutze das CLI in der Planungsphase. Der Agent kann dir helfen, logische Fehler in deinem Mermaid-Diagramm zu finden oder deinen Entwurf in `planung.md` zu strukturieren.
-  - Gib dem CLI Befehle wie: *"Analysiere meinen Entwurf in planung.md und erstelle die grundlegenden Funktions-Signaturen in src/main.rs."*
+  - Nutzen Sie das CLI in der Planungsphase. Der Agent kann Ihnen helfen, logische Fehler in Ihrem Mermaid-Diagramm zu finden oder Ihren Entwurf in `planung.md` zu strukturieren.
+  - Geben Sie dem CLI Befehle wie: *"Analysiere meinen Entwurf in planung.md und erstelle die grundlegenden Funktions-Signaturen in src/main.rs."*
 * **Der Autopilot (GitHub Copilot):**
-  - Nutze Copilot in der Tippphase innerhalb deiner Code-Dateien. Sobald du eine Funktion implementierst, schlägt dir Copilot den passenden Code auf Zeilenebene vor.
-  - *Achtung:* Verlasse dich nicht blind auf Copilots Vorschläge. Wenn Copilot Code generiert, der nicht kompiliert, kopiere die Fehlermeldung und frage das CLI nach einer strukturierten Erklärung des zugrunde liegenden Speicherproblems (z. B. Borrowing-Konflikte).
+  - Nutzen Sie Copilot in der Tippphase innerhalb Ihrer Code-Dateien. Sobald Sie eine Funktion implementieren, schlägt Ihnen Copilot den passenden Code auf Zeilenebene vor.
+  - *Achtung:* Verlassen Sie sich nicht blind auf Copilots Vorschläge. Wenn Copilot Code generiert, der nicht kompiliert, kopieren Sie die Fehlermeldung und fragen Sie das CLI nach einer strukturierten Erklärung des zugrunde liegenden Speicherproblems (z. B. Borrowing-Konflikte).
 
 ## 8.3 KI-Assistenten im Planungs-Workflow einbinden (AI-Assisted Planning)
 
 Künstliche Intelligenz (wie GitHub Copilot, ChatGPT, Claude oder das Antigravity CLI) kann im Planungs-Workflow als exzellenter Sparringspartner dienen. Der Schlüssel liegt darin, die KI **nicht** den gesamten Code schreiben zu lassen, sondern sie gezielt in jeder einzelnen Planungsphase um Feedback zu bitten.
 
 ### Schritt 1: Anforderungen &amp; Edge Cases hinterfragen (EVA-Phase)
-Nutze die KI, um Lücken in deinem Verständnis oder in den Anforderungen zu finden.
-* **Tipp:** Beschreibe der KI dein Vorhaben und frage nach Sonderfällen.
+Nutzen Sie die KI, um Lücken in Ihrem Verständnis oder in den Anforderungen zu finden.
+* **Tipp:** Beschreiben Sie der KI Ihr Vorhaben und fragen Sie nach Sonderfällen.
 * **Beispiel-Prompt:**
   &gt; *"Ich plane ein Rust-Programm, das [Aufgabe beschreiben] macht. Welche technischen oder fachlichen Edge Cases (Sonderfälle) sollte ich bei der Anforderungsanalyse (Eingabe, Verarbeitung, Ausgabe) berücksichtigen?"*
 
 ### Schritt 2: Mermaid-Diagramme entwerfen und korrigieren
-Wenn du dir unsicher bist, wie der logische Fluss aussehen soll, kannst du die KI bitten, dir einen Mermaid-Entwurf zu erstellen.
-* **Tipp:** Wenn du bereits ein Diagramm hast, kannst du es auf Syntax- oder Logikfehler prüfen lassen.
+Wenn Sie sich unsicher sind, wie der logische Fluss aussehen soll, können Sie die KI bitten, Ihnen einen Mermaid-Entwurf zu erstellen.
+* **Tipp:** Wenn Sie bereits ein Diagramm haben, können Sie es auf Syntax- oder Logikfehler prüfen lassen.
 * **Beispiel-Prompt:**
-  &gt; *"Erstelle ein Mermaid-Flussdiagramm im 'graph TD'-Format für folgende Logik: [Logikbeschreibung, z. B. Summiere ein Array und ziehe bei über 50 Euro 10% Rabatt ab]. Gib nur den Mermaid-Code aus."*
+  &gt; *"Erstellen Sie ein Mermaid-Flussdiagramm im 'graph TD'-Format für folgende Logik: [Logikbeschreibung, z. B. Summiere ein Array und ziehe bei über 50 Euro 10% Rabatt ab]. Geben Sie nur den Mermaid-Code aus."*
 
 ### Schritt 3: Pseudocode-Reviews (Logik-Prüfung)
-Bevor du den ersten Rust-Code schreibst, solltest du deinen Pseudocode von der KI überprüfen lassen. Da die KI hier keine Syntaxfehler korrigieren muss, kann sie sich ganz auf Logikfehler oder mögliche Endlosschleifen konzentrieren.
+Bevor Sie den ersten Rust-Code schreiben, sollten Sie Ihren Pseudocode von der KI überprüfen lassen. Da die KI hier keine Syntaxfehler korrigieren muss, kann sie sich ganz auf Logikfehler oder mögliche Endlosschleifen konzentrieren.
 * **Beispiel-Prompt:**
-  &gt; *"Hier ist mein Pseudocode für [Aufgabe]: [Pseudocode einfügen]. Findest du darin logische Fehler, Endlosschleifen oder Fälle, in denen das Programm abstürzen könnte? Schlage Verbesserungen vor, ohne echten Code zu schreiben."*
+  &gt; *"Hier ist mein Pseudocode für [Aufgabe]: [Pseudocode einfügen]. Finden Sie darin logische Fehler, Endlosschleifen oder Fälle, in denen das Programm abstürzen könnte? Schlagen Sie Verbesserungen vor, ohne echten Code zu schreiben."*
 
 ### Schritt 4: To-Do-Checkliste erstellen
-Du kannst die KI bitten, deinen Pseudocode in eine konkrete, kleinteilige Implementierungs-Checkliste für Rust zu übersetzen.
+Sie können die KI bitten, Ihren Pseudocode in eine konkrete, kleinteilige Implementierungs-Checkliste für Rust zu übersetzen.
 * **Beispiel-Prompt:**
-  &gt; *"Basierend auf diesem Pseudocode: [Pseudocode einfügen]. Erstelle mir eine strukturierte To-Do-Liste mit kleinen Schritten für die Implementierung in Rust, beginnend bei 'cargo new'."*
+  &gt; *"Basierend auf diesem Pseudocode: [Pseudocode einfügen]. Erstellen Sie mir eine strukturierte To-Do-Liste mit kleinen Schritten für die Implementierung in Rust, beginnend bei 'cargo new'."*
 
 ### Schritt 5: Strukturierte Dokumentation der KI-Vorschläge
-Es ist eine bewährte Praxis, die Ideen und Code-Vorschläge der KI nicht direkt blind in dein Projekt zu kopieren, sondern sie strukturiert in deiner `planung.md` zu sammeln.
-* **Empfohlene Struktur in deiner `planung.md`:**
+Es ist eine bewährte Praxis, die Ideen und Code-Vorschläge der KI nicht direkt blind in Ihr Projekt zu kopieren, sondern sie strukturiert in Ihrer `planung.md` zu sammeln.
+* **Empfohlene Struktur in Ihrer `planung.md`:**
   ```markdown
   ## 5. KI-Vorschläge &amp; Alternativen
   * **Idee A (Vorgeschlagen von Copilot):** Nutzung einer `for`-Schleife über `.iter()`.
   * **Idee B (Vorgeschlagen von Claude):** Nutzung von funktionalen Iteratoren wie `.iter().sum::&lt;f64&gt;()`.
   * **Entscheidung:** Ich wähle Idee A, um die imperativen Konzepte und den Dereferenzierungs-Operator `*` besser zu üben.
 </code></pre>
-<p>Das Sammeln und Abwägen dieser Vorschläge macht dich zu einem mündigen Entwickler, der die Kontrolle über seinen Code behält, statt der KI blind zu vertrauen.</p>
+<p>Das Sammeln und Abwägen dieser Vorschläge macht Sie zu einem mündigen Entwickler, der die Kontrolle über seinen Code behält, statt der KI blind zu vertrauen.</p>
 <h2 id="9-übung-der-warenkorb-rabatt-rechner"><a class="header" href="#9-übung-der-warenkorb-rabatt-rechner">9. Übung: Der Warenkorb-Rabatt-Rechner</a></h2>
-<p>Jetzt bist du an der Reihe! Wende den gelernten Workflow an, um ein praktisches Problem zu lösen.</p>
+<p>Jetzt sind Sie an der Reihe! Wenden Sie den gelernten Workflow an, um ein praktisches Problem zu lösen.</p>
 <h3 id="die-aufgabenstellung"><a class="header" href="#die-aufgabenstellung">Die Aufgabenstellung</a></h3>
 <p>Ein Online-Shop benötigt ein Modul zur Berechnung des finalen Warenkorb-Preises. Das Programm soll eine Liste von Preisen einlesen, einen Rabatt gewähren, falls der Gesamtwert eine Grenze überschreitet, und schließlich die Mehrwertsteuer berechnen.</p>
 <p><strong>Die Anforderungen im Detail:</strong></p>
@@ -16510,50 +16517,50 @@ Es ist eine bewährte Praxis, die Ideen und Code-Vorschläge der KI nicht direkt
 </ul>
 </li>
 </ol>
-<h3 id="deine-aufgabenschritte-workflow"><a class="header" href="#deine-aufgabenschritte-workflow">Deine Aufgabenschritte (Workflow)</a></h3>
+<h3 id="ihre-aufgabenschritte-workflow"><a class="header" href="#ihre-aufgabenschritte-workflow">Ihre Aufgabenschritte (Workflow)</a></h3>
 <ol>
-<li>Erstelle einen neuen Ordner <code>warenkorb_rechner</code> und darin eine Datei <code>planung.md</code>.</li>
-<li>Führe die Anforderungen als EVA-Analyse in <code>planung.md</code> auf.</li>
-<li>Erstelle das Mermaid-Ablaufdiagramm in <code>planung.md</code>.</li>
-<li>Schreibe den Pseudocode auf.</li>
-<li>Erstelle die To-Do-Liste.</li>
-<li>Erstelle das Cargo-Projekt mit <code>cargo new warenkorb_rechner</code>.</li>
-<li>Setze das Projekt in <code>src/main.rs</code> um. Teste dein Programm mit verschiedenen Werten im Array (unter 50 € und über 50 €), um sicherzustellen, dass die Rabatt-Logik korrekt funktioniert!</li>
+<li>Erstellen Sie einen neuen Ordner <code>warenkorb_rechner</code> und darin eine Datei <code>planung.md</code>.</li>
+<li>Führen Sie die Anforderungen als EVA-Analyse in <code>planung.md</code> auf.</li>
+<li>Erstellen Sie das Mermaid-Ablaufdiagramm in <code>planung.md</code>.</li>
+<li>Schreiben Sie den Pseudocode auf.</li>
+<li>Erstellen Sie die To-Do-Liste.</li>
+<li>Erstellen Sie das Cargo-Projekt mit <code>cargo new warenkorb_rechner</code>.</li>
+<li>Setzen Sie das Projekt in <code>src/main.rs</code> um. Testen Sie Ihr Programm mit verschiedenen Werten im Array (unter 50 € und über 50 €), um sicherzustellen, dass die Rabatt-Logik korrekt funktioniert!</li>
 </ol>
-<h2 id="91-fünf-weitere-planungs-herausforderungen-für-dein-training"><a class="header" href="#91-fünf-weitere-planungs-herausforderungen-für-dein-training">9.1 Fünf weitere Planungs-Herausforderungen für dein Training</a></h2>
-<p>Um den Workflow in Fleisch und Blut übergehen zu lassen, findest du hier fünf Übungsszenarien mit unterschiedlichen Schwierigkeitsgraden. Wende bei jedem Szenario zuerst die 5 Schritte des Workflows an, bevor du programmierst.</p>
+<h2 id="91-fünf-weitere-planungs-herausforderungen-für-ihr-training"><a class="header" href="#91-fünf-weitere-planungs-herausforderungen-für-ihr-training">9.1 Fünf weitere Planungs-Herausforderungen für Ihr Training</a></h2>
+<p>Um den Workflow in Fleisch und Blut übergehen zu lassen, finden Sie hier fünf Übungsszenarien mit unterschiedlichen Schwierigkeitsgraden. Wenden Sie bei jedem Szenario zuerst die 5 Schritte des Workflows an, bevor Sie programmieren.</p>
 <h3 id="challenge-1-der-temperatur-konverter-einfach"><a class="header" href="#challenge-1-der-temperatur-konverter-einfach">Challenge 1: Der Temperatur-Konverter (Einfach)</a></h3>
 <ul>
 <li><strong>Ziel:</strong> Ein Programm, das eine Liste von Celsius-Werten in Fahrenheit umrechnet.</li>
-<li><strong>Besonderheit:</strong> Verwende ein festes Array von 5 Werten.</li>
+<li><strong>Besonderheit:</strong> Verwenden Sie ein festes Array von 5 Werten.</li>
 <li><strong>Fokus:</strong> Einfache Schleife, mathematische Formel und Zuweisungen.</li>
 </ul>
 <h3 id="challenge-2-der-palindrom-tester-mittel"><a class="header" href="#challenge-2-der-palindrom-tester-mittel">Challenge 2: Der Palindrom-Tester (Mittel)</a></h3>
 <ul>
-<li><strong>Ziel:</strong> Prüfe, ob ein eingegebenes Wort vorwärts und rückwärts gleich gelesen wird (z. B. “Lagerregal”).</li>
+<li><strong>Ziel:</strong> Prüfen Sie, ob ein eingegebenes Wort vorwärts und rückwärts gleich gelesen wird (z. B. “Lagerregal”).</li>
 <li><strong>Besonderheit:</strong> Groß- und Kleinschreibung sowie Leerzeichen müssen ignoriert werden.</li>
 <li><strong>Fokus:</strong> String-Manipulation und Zeichenvergleiche.</li>
 </ul>
 <h3 id="challenge-3-die-digitaluhr-mittel"><a class="header" href="#challenge-3-die-digitaluhr-mittel">Challenge 3: Die Digitaluhr (Mittel)</a></h3>
 <ul>
-<li><strong>Ziel:</strong> Simuliere eine tickende Uhr im Terminal (Stunden, Minuten, Sekunden).</li>
-<li><strong>Besonderheit:</strong> Nutze eine Endlosschleife und Thread-Sleep (<code>std::thread::sleep</code>) für den Sekundentakt.</li>
+<li><strong>Ziel:</strong> Simulieren Sie eine tickende Uhr im Terminal (Stunden, Minuten, Sekunden).</li>
+<li><strong>Besonderheit:</strong> Nutzen Sie eine Endlosschleife und Thread-Sleep (<code>std::thread::sleep</code>) für den Sekundentakt.</li>
 <li><strong>Fokus:</strong> Kontrollstrukturen und Zeitsteuerung.</li>
 </ul>
 <h3 id="challenge-4-der-text-zensor-schwer"><a class="header" href="#challenge-4-der-text-zensor-schwer">Challenge 4: Der Text-Zensor (Schwer)</a></h3>
 <ul>
-<li><strong>Ziel:</strong> Ersetze verbotene Wörter in einem Satz durch <code>***</code>.</li>
+<li><strong>Ziel:</strong> Ersetzen Sie verbotene Wörter in einem Satz durch <code>***</code>.</li>
 <li><strong>Besonderheit:</strong> Die Liste der verbotenen Wörter liegt in einem Array.</li>
 <li><strong>Fokus:</strong> String-Methoden und Speicherverwaltung.</li>
 </ul>
 <h3 id="challenge-5-der-vereinfachte-bankautomat-schwer"><a class="header" href="#challenge-5-der-vereinfachte-bankautomat-schwer">Challenge 5: Der vereinfachte Bankautomat (Schwer)</a></h3>
 <ul>
-<li><strong>Ziel:</strong> Simuliere Kontostandsabfragen, Einzahlungen und Auszahlungen über ein einfaches Menü.</li>
-<li><strong>Besonderheit:</strong> Verwalte den Kontostand über eine veränderliche Referenz in Funktionen.</li>
+<li><strong>Ziel:</strong> Simulieren Sie Kontostandsabfragen, Einzahlungen und Auszahlungen über ein einfaches Menü.</li>
+<li><strong>Besonderheit:</strong> Verwalten Sie den Kontostand über eine veränderliche Referenz in Funktionen.</li>
 <li><strong>Fokus:</strong> Zustandssteuerung und Referenzen/Borrowing.</li>
 </ul>
 <h2 id="10-musterlösung-für-den-warenkorb-rabatt-rechner"><a class="header" href="#10-musterlösung-für-den-warenkorb-rabatt-rechner">10. Musterlösung für den Warenkorb-Rabatt-Rechner</a></h2>
-<p>Vergleiche deine Lösung erst mit dieser Musterlösung, nachdem du es selbst versucht hast. Das eigenständige Lösen und das Suchen nach Fehlern hat den größten Lerneffekt!</p>
+<p>Vergleichen Sie Ihre Lösung erst mit dieser Musterlösung, nachdem Sie es selbst versucht haben. Das eigenständige Lösen und das Suchen nach Fehlern hat den größten Lerneffekt!</p>
 <h3 id="muster-planungsdatei-planungmd"><a class="header" href="#muster-planungsdatei-planungmd">Muster-Planungsdatei (<code>planung.md</code>)</a></h3>
 <pre><code class="language-markdown"># Planung: Warenkorb-Rabatt-Rechner
 
@@ -16655,15 +16662,15 @@ fn main() {
     println!("Endbetrag (Brutto):     {:8.2} €", brutto);
 }
 </code></pre>
-<h2 id="11-zusammenfassung--deine-lernnotizen"><a class="header" href="#11-zusammenfassung--deine-lernnotizen">11. Zusammenfassung &amp; Deine Lernnotizen</a></h2>
-<p>Herzlichen Glückwunsch! Du hast nun gelernt, wie wichtig es ist, komplexe Probleme strukturiert anzugehen und zu planen, bevor du Code schreibst. Der Planungs-Workflow wird dir in deiner Karriere als Softwareentwickler extrem viel Zeit und Kopfzerbrechen ersparen.</p>
+<h2 id="11-zusammenfassung--ihre-lernnotizen"><a class="header" href="#11-zusammenfassung--ihre-lernnotizen">11. Zusammenfassung &amp; Ihre Lernnotizen</a></h2>
+<p>Herzlichen Glückwunsch! Sie haben nun gelernt, wie wichtig es ist, komplexe Probleme strukturiert anzugehen und zu planen, bevor Sie Code schreiben. Der Planungs-Workflow wird Ihnen in Ihrer Karriere als Softwareentwickler extrem viel Zeit und Kopfzerbrechen ersparen.</p>
 <h3 id="wichtigste-erkenntnisse-dieses-kapitels"><a class="header" href="#wichtigste-erkenntnisse-dieses-kapitels">Wichtigste Erkenntnisse dieses Kapitels:</a></h3>
 <ol>
 <li><strong>Der Plan steht zuerst:</strong> Codiere niemals ohne Ablaufdiagramm und Pseudocode bei nicht-trivialen Aufgaben.</li>
-<li><strong>Klares Aufteilen:</strong> Durch das EVA-Prinzip zerlegst du jedes Problem in seine drei Grundkomponenten.</li>
-<li><strong>To-Do-Listen geben Struktur:</strong> Kleine Teilaufgaben verhindern Überforderung und halten dich fokussiert.</li>
+<li><strong>Klares Aufteilen:</strong> Durch das EVA-Prinzip zerlegen Sie jedes Problem in seine drei Grundkomponenten.</li>
+<li><strong>To-Do-Listen geben Struktur:</strong> Kleine Teilaufgaben verhindern Überforderung und halten Sie fokussiert.</li>
 </ol>
-<p>Nutze das untenstehende Feld in deiner eigenen Markdown-Datei, um deine Gedanken, Notizen und persönlichen Aha-Momente aus diesem Kapitel festzuhalten.</p>
+<p>Nutzen Sie das untenstehende Feld in Ihrer eigenen Markdown-Datei, um Ihre Gedanken, Notizen und persönlichen Aha-Momente aus diesem Kapitel festzuhalten.</p>
 <pre><code class="language-text">💡 MEINE NOTIZEN ZU KAPITEL 22:
 - Was war mein größter Aha-Moment beim Zeichnen von Mermaid-Diagrammen?
 - Konnte ich den Warenkorb-Rechner ohne Probleme in Rust übersetzen?

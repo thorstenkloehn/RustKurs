@@ -35,7 +35,7 @@
             const path_to_root = "";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "searchindex-76719c3e.js";
+            window.path_to_searchindex_js = "searchindex-fc688792.js";
         </script>
         <!-- Start loading toc.js asap -->
         <script src="toc-dedbbe6e.js"></script>
@@ -175,38 +175,38 @@
                 <div id="mdbook-content" class="content">
                     <main>
                         <h1 id="kapitel-22-der-vs-code-planungs-workflow-strukturierte-softwareentwicklung"><a class="header" href="#kapitel-22-der-vs-code-planungs-workflow-strukturierte-softwareentwicklung">Kapitel 22: Der VS Code Planungs-Workflow (Strukturierte Softwareentwicklung)</a></h1>
-<p>In den bisherigen Kapiteln dieses Kurses hast du die grundlegenden Bausteine von Rust kennengelernt: Variablen, Datentypen, Funktionen, Kontrollstrukturen und das Ownership-System. Du hast wahrscheinlich oft direkt mit dem Tippen von Rust-Code begonnen, sobald eine Aufgabe gestellt wurde. Bei kleinen Programmen funktioniert das gut. Sobald deine Projekte jedoch größer werden, stößt dieser “Code-First”-Ansatz an seine Grenzen.</p>
-<p>In diesem Kapitel lernen wir den VS Code Planungs-Workflow kennen. Wir besprechen ausführlich, warum die Planung vor dem Schreiben von Code für professionelle Entwickler unerlässlich ist, wie man Algorithmen visuell darstellt und wie man strukturierten Pseudocode schreibt. Am Ende dieses Kapitels wirst du in der Lage sein, komplexe Softwareprojekte systematisch zu planen und fehlerfrei in Rust umzusetzen.</p>
+<p>In den bisherigen Kapiteln dieses Kurses haben Sie die grundlegenden Bausteine von Rust kennengelernt: Variablen, Datentypen, Funktionen, Kontrollstrukturen und das Ownership-System. Sie haben wahrscheinlich oft direkt mit dem Tippen von Rust-Code begonnen, sobald eine Aufgabe gestellt wurde. Bei kleinen Programmen funktioniert das gut. Sobald Ihre Projekte jedoch größer werden, stößt dieser “Code-First”-Ansatz an seine Grenzen.</p>
+<p>In diesem Kapitel lernen wir den VS Code Planungs-Workflow kennen. Wir besprechen ausführlich, warum die Planung vor dem Schreiben von Code für professionelle Entwickler unerlässlich ist, wie man Algorithmen visuell darstellt und wie man strukturierten Pseudocode schreibt. Am Ende dieses Kapitels werden Sie in der Lage sein, komplexe Softwareprojekte systematisch zu planen und fehlerfrei in Rust umzusetzen.</p>
 <h2 id="1-warum-planung-der-schlüssel-zum-erfolg-ist-die-theorie"><a class="header" href="#1-warum-planung-der-schlüssel-zum-erfolg-ist-die-theorie">1. Warum Planung der Schlüssel zum Erfolg ist (Die Theorie)</a></h2>
 <p>Viele Programmieranfänger glauben, dass ein Programmierer am produktivsten ist, wenn er Code tippt. Das ist ein Trugschluss. Das Schreiben von Code ist nur der letzte Schritt in einem langen Denkprozess. Wer ohne Plan loslegt, tappt schnell in die “Code-First-Falle”.</p>
 <h3 id="die-gefahren-des-code-first-ansatzes-die-code-first-falle"><a class="header" href="#die-gefahren-des-code-first-ansatzes-die-code-first-falle">Die Gefahren des Code-First-Ansatzes (Die Code-First-Falle)</a></h3>
-<p>Wenn du sofort mit dem Tippen von Rust-Code beginnst, musst du zwei komplexe Probleme gleichzeitig lösen:</p>
+<p>Wenn Sie sofort mit dem Tippen von Rust-Code beginnen, müssen Sie zwei komplexe Probleme gleichzeitig lösen:</p>
 <ol>
 <li><strong>Die Programmlogik:</strong> Wie löse ich das fachliche Problem? Welche Schritte sind in welcher Reihenfolge nötig?</li>
 <li><strong>Die Rust-Syntax:</strong> Wie überzeuge ich den Compiler? Welche Typen brauche ich? Wie halte ich die Ownership-Regeln ein?</li>
 </ol>
-<p>Das Gehirn ist nicht dafür gemacht, beide Probleme simultan auf hohem Niveau zu lösen. Die Folge sind logische Fehler im Code, die schwer zu finden sind, da sie sich hinter Compiler-Warnungen oder Borrow-Checker-Konflikten verstecken. Du verbringst Stunden damit, Code umzuschreiben, nur um festzustellen, dass dein grundlegender Ansatz falsch war.</p>
+<p>Das Gehirn ist nicht dafür gemacht, beide Probleme simultan auf hohem Niveau zu lösen. Die Folge sind logische Fehler im Code, die schwer zu finden sind, da sie sich hinter Compiler-Warnungen oder Borrow-Checker-Konflikten verstecken. Sie verbringen Stunden damit, Code umzuschreiben, nur um festzustellen, dass Ihr grundlegender Ansatz falsch war.</p>
 <h3 id="das-zeitspar-paradoxon-the-time-saving-paradox"><a class="header" href="#das-zeitspar-paradoxon-the-time-saving-paradox">Das Zeitspar-Paradoxon (The Time-Saving Paradox)</a></h3>
 <p>Es gibt eine alte Entwickler-Weisheit: <em>“Eine Stunde Planung spart vier Stunden Fehlersuche.”</em>
-Wenn du dir vor dem Programmieren 10 bis 15 Minuten Zeit nimmst, um den Ablauf visuell darzustellen und in Pseudocode aufzuschreiben, wirst du:</p>
+Wenn Sie sich vor dem Programmieren 10 bis 15 Minuten Zeit nehmen, um den Ablauf visuell darzustellen und in Pseudocode aufzuschreiben, werden Sie:</p>
 <ul>
-<li><strong>Logikfehler frühzeitig erkennen:</strong> Bevor du eine einzige Zeile Rust-Code schreibst, siehst du im Diagramm, ob du einen Fall (z. B. eine leere Eingabe) vergessen hast.</li>
-<li><strong>Denken auf einer höheren Ebene:</strong> Im Pseudocode musst du dich nicht um Semikolons, Typkonvertierungen oder Referenzen kümmern. Du konzentrierst dich rein auf das “Was” und “Wie” des Algorithmus.</li>
-<li><strong>Weniger Frustration erleben:</strong> Wenn die Logik einmal auf dem Papier steht, ist das Schreiben des Rust-Codes nur noch eine reine Übersetzungsarbeit. Der Compiler wird dein Freund, weil du dich voll auf die Syntax konzentrieren kannst.</li>
+<li><strong>Logikfehler frühzeitig erkennen:</strong> Bevor Sie eine einzige Zeile Rust-Code schreiben, sehen Sie im Diagramm, ob Sie einen Fall (z. B. eine leere Eingabe) vergessen haben.</li>
+<li><strong>Denken auf einer höheren Ebene:</strong> Im Pseudocode müssen Sie sich nicht um Semikolons, Typkonvertierungen oder Referenzen kümmern. Sie konzentrieren sich rein auf das “Was” und “Wie” des Algorithmus.</li>
+<li><strong>Weniger Frustration erleben:</strong> Wenn die Logik einmal auf dem Papier steht, ist das Schreiben des Rust-Codes nur noch eine reine Übersetzungsarbeit. Der Compiler wird Ihr Freund, weil Sie sich voll auf die Syntax konzentrieren können.</li>
 </ul>
 <h3 id="warum-planung-in-rust-besonders-wichtig-ist"><a class="header" href="#warum-planung-in-rust-besonders-wichtig-ist">Warum Planung in Rust besonders wichtig ist</a></h3>
-<p>Rust ist eine sehr strikte Sprache. Der Borrow Checker wacht penibel über den Speicher. Wenn du in Rust ohne Plan drauflos programmierst, baust du schnell Strukturen auf, die gegen die Aliasing-Regeln (“Ein Schreiber oder viele Leser”) verstoßen. Ein guter Plan zeigt dir vorab, welche Variablen verändert werden müssen (<code>mut</code>) und wo Daten ausgeliehen oder kopiert werden sollten.</p>
+<p>Rust ist eine sehr strikte Sprache. Der Borrow Checker wacht penibel über den Speicher. Wenn Sie in Rust ohne Plan drauflos programmieren, bauen Sie schnell Strukturen auf, die gegen die Aliasing-Regeln (“Ein Schreiber oder viele Leser”) verstoßen. Ein guter Plan zeigt Ihnen vorab, welche Variablen verändert werden müssen (<code>mut</code>) und wo Daten ausgeliehen oder kopiert werden sollten.</p>
 <h2 id="2-die-5-schritte-des-planungs-workflows"><a class="header" href="#2-die-5-schritte-des-planungs-workflows">2. Die 5 Schritte des Planungs-Workflows</a></h2>
 <p>Unser empfohlener Workflow besteht aus fünf klar definierten Phasen. Wir führen diese Schritte in einer eigenen Markdown-Datei namens <code>planung.md</code> direkt in VS Code durch.</p>
 <h3 id="schritt-1-anforderungsanalyse-das-eva-prinzip"><a class="header" href="#schritt-1-anforderungsanalyse-das-eva-prinzip">Schritt 1: Anforderungsanalyse (Das EVA-Prinzip)</a></h3>
-<p>Bevor du einen Algorithmus entwirfst, musst du das Problem verstehen. Nutze das klassische <strong>EVA-Prinzip</strong>:</p>
+<p>Bevor Sie einen Algorithmus entwerfen, müssen Sie das Problem verstehen. Nutzen Sie das klassische <strong>EVA-Prinzip</strong>:</p>
 <ul>
 <li><strong>Eingabe (Input):</strong> Welche Daten fließen in das Programm? (z. B. Benutzereingaben, Arrays, Dateien)</li>
 <li><strong>Verarbeitung (Processing):</strong> Was passiert mit den Daten? Welche Berechnungen oder Transformationen sind nötig?</li>
 <li><strong>Ausgabe (Output):</strong> Was gibt das Programm zurück? (z. B. Text im Terminal, Dateien, Rückgabewerte)</li>
 </ul>
 <h3 id="schritt-2-ablauf-visualisierung-mermaid-diagramme"><a class="header" href="#schritt-2-ablauf-visualisierung-mermaid-diagramme">Schritt 2: Ablauf-Visualisierung (Mermaid-Diagramme)</a></h3>
-<p>Bilder sagen mehr als tausend Worte. Ein Flussdiagramm (Flowchart) hilft dir, Verzweigungen (<code>if/else</code>) und Schleifen (<code>loop</code>, <code>while</code>, <code>for</code>) visuell zu erfassen. In VS Code nutzen wir dafür <strong>Mermaid</strong>, ein Tool, mit dem man Diagramme direkt als Text definieren kann.</p>
+<p>Bilder sagen mehr als tausend Worte. Ein Flussdiagramm (Flowchart) hilft Ihnen, Verzweigungen (<code>if/else</code>) und Schleifen (<code>loop</code>, <code>while</code>, <code>for</code>) visuell zu erfassen. In VS Code nutzen wir dafür <strong>Mermaid</strong>, ein Tool, mit dem man Diagramme direkt als Text definieren kann.</p>
 <h3 id="schritt-3-strukturierter-pseudocode"><a class="header" href="#schritt-3-strukturierter-pseudocode">Schritt 3: Strukturierter Pseudocode</a></h3>
 <p>Pseudocode ist eine Mischung aus menschlicher Sprache und Programmiersprache. Er ist strukturiert wie Code, nutzt aber keine konkrete Syntax. Dadurch bleibt er leicht verständlich und universell einsetzbar.</p>
 <h3 id="schritt-4-die-implementierungs-to-do-liste"><a class="header" href="#schritt-4-die-implementierungs-to-do-liste">Schritt 4: Die Implementierungs-To-Do-Liste</a></h3>
@@ -257,7 +257,7 @@ Verbindungen werden mit einfachen Pfeilen dargestellt:</p>
 <h3 id="warum-einrückung-wichtig-ist"><a class="header" href="#warum-einrückung-wichtig-ist">Warum Einrückung wichtig ist</a></h3>
 <p>Genau wie in echten Programmiersprachen nutzen wir im Pseudocode Einrückungen (Indentations), um zu zeigen, welche Anweisungen zu welchem Block gehören (z. B. innerhalb einer Schleife oder einer Bedingung). Das erhöht die Lesbarkeit massiv.</p>
 <h3 id="der-trockenlauf-desk-checking"><a class="header" href="#der-trockenlauf-desk-checking">Der Trockenlauf (Desk Checking)</a></h3>
-<p>Bevor du den Pseudocode in Rust übersetzt, solltest du einen sogenannten “Trockenlauf” machen. Nimm dir ein Blatt Papier, schreibe die Variablennamen auf und gehe den Pseudocode Zeile für Zeile mit Beispielwerten im Kopf durch. Ändere die Werte der Variablen auf deinem Blatt entsprechend. So merkst du sofort, ob deine Schleife zum Beispiel ein Element zu früh stoppt (ein sogenannter “Off-by-one”-Fehler).</p>
+<p>Bevor Sie den Pseudocode in Rust übersetzen, sollten Sie einen sogenannten “Trockenlauf” machen. Nehmen Sie sich ein Blatt Papier, schreiben Sie die Variablennamen auf und gehen Sie den Pseudocode Zeile für Zeile mit Beispielwerten im Kopf durch. Ändern Sie die Werte der Variablen auf Ihrem Blatt entsprechend. So merken Sie sofort, ob Ihre Schleife zum Beispiel ein Element zu früh stoppt (ein sogenannter “Off-by-one”-Fehler).</p>
 <h2 id="5-ausführliches-praxisbeispiel-der-notendurchschnitt-rechner"><a class="header" href="#5-ausführliches-praxisbeispiel-der-notendurchschnitt-rechner">5. Ausführliches Praxisbeispiel: Der Notendurchschnitt-Rechner</a></h2>
 <p>Um den Workflow in Aktion zu sehen, planen wir ein Programm, das den Durchschnitt aus einem festen Noten-Array berechnet und ausgibt.</p>
 <h3 id="schritt-1-anforderungsanalyse-eva"><a class="header" href="#schritt-1-anforderungsanalyse-eva">Schritt 1: Anforderungsanalyse (EVA)</a></h3>
@@ -287,7 +287,7 @@ Output –&gt; End([ENDE])</p>
 </dd>
 </dl>
 <h3 id="schritt-3-pseudocode"><a class="header" href="#schritt-3-pseudocode">Schritt 3: Pseudocode</a></h3>
-<p>Der Pseudocode übersetzt das Diagramm in eine textuelle Struktur. Beachte die Großbuchstaben bei den Kontrollstrukturen:</p>
+<p>Der Pseudocode übersetzt das Diagramm in eine textuelle Struktur. Beachten Sie die Großbuchstaben bei den Kontrollstrukturen:</p>
 <pre><code class="language-text">FUNKTION main:
     DEFINIERE notendurchschnitt = [1, 2, 4, 5, 2]
     INITIALISIERE summe = 0.0
@@ -338,7 +338,7 @@ ENDE FUNKTION
     println!("Der Notendurchschnitt beträgt: {:.2}", ergebnis);
 }</code></pre>
 <h2 id="6-ausführliche-merkzettel-zum-planungs-workflow"><a class="header" href="#6-ausführliche-merkzettel-zum-planungs-workflow">6. Ausführliche Merkzettel zum Planungs-Workflow</a></h2>
-<p>Verwende diese Spickzettel als Referenz für deine eigenen Projekte. Sie fassen die wichtigsten Elemente übersichtlich zusammen.</p>
+<p>Verwenden Sie diese Spickzettel als Referenz für Ihre eigenen Projekte. Sie fassen die wichtigsten Elemente übersichtlich zusammen.</p>
 <h3 id="-merkzettel-a-die-mermaid-elemente-im-detail"><a class="header" href="#-merkzettel-a-die-mermaid-elemente-im-detail">📌 Merkzettel A: Die Mermaid-Elemente im Detail</a></h3>
 <ol>
 <li><strong>Warum dieses Konzept? (Motivation):</strong>
@@ -367,7 +367,7 @@ Damit Programmierer Flussdiagramme schnell schreiben und anpassen können, ohne 
 C{Bedingung} -- Ja --&gt; D (Wenn Textzeichen wie Klammern im Knotentext ungequotet sind)
 </code></pre>
 <em>Korrektur:</em>
-Nutze immer doppelte Anführungszeichen für Sonderzeichen in Knotentexten: <code>Node{"Bedingung (x &gt; 5)"}</code>.</li>
+Nutzen Sie immer doppelte Anführungszeichen für Sonderzeichen in Knotentexten: <code>Node{"Bedingung (x &gt; 5)"}</code>.</li>
 <li><strong>Die goldene Merkregel / Eselsbrücke (Mnemonic):</strong>
 <em>„Eckig ist die Tat (Aktion), rund der Start und das Ende, rautenförmig die Weiche (Entscheidung).“</em></li>
 </ol>
@@ -399,7 +399,7 @@ ENDE FUNKTION
 (Zu unstrukturiert, ähnelt einem Fließtext und lässt sich schwer in echten Code übersetzen)
 </code></pre>
 <em>Korrektur:</em>
-Nutze strukturierte Einrückungen und festgelegte Schlüsselwörter:
+Nutzen Sie strukturierte Einrückungen und festgelegte Schlüsselwörter:
 <pre><code class="language-text">FALLS x &gt; 10:
     MACH das_hier
 </code></pre>
@@ -409,7 +409,7 @@ Nutze strukturierte Einrückungen und festgelegte Schlüsselwörter:
 </ol>
 <hr>
 <h3 id="-merkzettel-c-die-planungs-checkliste-template"><a class="header" href="#-merkzettel-c-die-planungs-checkliste-template">📌 Merkzettel C: Die Planungs-Checkliste (Template)</a></h3>
-<p>Kopiere diese Vorlage in jede deiner <code>planung.md</code>-Dateien, wenn du ein neues Projekt startest:</p>
+<p>Kopieren Sie diese Vorlage in jede Ihrer <code>planung.md</code>-Dateien, wenn Sie ein neues Projekt starten:</p>
 <pre><code class="language-markdown"># Planung: [Projektname]
 
 ## 1. Anforderungen (EVA)
@@ -436,89 +436,89 @@ graph TD
 Selbst erfahrene Entwickler machen Fehler bei der Planung. Hier sind die vier typischsten Stolpersteine für Anfänger:
 
 ### Fehler 1: Unendliche Schleifen im Diagramm (Infinite Loop Trap)
-* **Das Problem:** Du zeichnest einen Pfeil zurück zu einer Bedingung, veränderst aber innerhalb der Schleife die Kontrollvariable nicht. Dein Diagramm (und später dein Code) läuft ewig.
-* **Vermeidung:** Stelle bei jedem Schleifendurchlauf im Diagramm sicher, dass eine Aktion stattfindet, die die Bedingung beeinflusst (z. B. `Zähler = Zähler + 1`).
+* **Das Problem:** Sie zeichnen einen Pfeil zurück zu einer Bedingung, verändern aber innerhalb der Schleife die Kontrollvariable nicht. Ihr Diagramm (und später Ihr Code) läuft ewig.
+* **Vermeidung:** Stellen Sie bei jedem Schleifendurchlauf im Diagramm sicher, dass eine Aktion stattfindet, die die Bedingung beeinflusst (z. B. `Zähler = Zähler + 1`).
 
 ### Fehler 2: Fehlende Behandlung von Sonderfällen (Edge Cases)
-* **Das Problem:** Du planst nur für den Optimalfall (Happy Path). Was passiert, wenn der Notenrechner ein leeres Array übergeben bekommt? Im Rust-Code führt eine Division durch Null zum Absturz (Panic).
-* **Vermeidung:** Frage dich bei jedem Schritt im Diagramm: *„Was ist, wenn der Wert null ist? Was ist, wenn das Array leer ist? Was ist bei negativen Werten?“* Baue entsprechende `if`-Abzweigungen ein.
+* **Das Problem:** Sie planen nur für den Optimalfall (Happy Path). Was passiert, wenn der Notenrechner ein leeres Array übergeben bekommt? Im Rust-Code führt eine Division durch Null zum Absturz (Panic).
+* **Vermeidung:** Fragen Sie sich bei jedem Schritt im Diagramm: *„Was ist, wenn der Wert null ist? Was ist, wenn das Array leer ist? Was ist bei negativen Werten?“* Bauen Sie entsprechende `if`-Abzweigungen ein.
 
 ### Fehler 3: Zu detaillierter Pseudocode (Rust-Syntax im Pseudocode)
-* **Das Problem:** Du schreibst bereits Typen wie `as f64`, Referenzen `&amp;` oder Imports in deinen Pseudocode. Das blockiert das kreative Denken über die Logik.
-* **Vermeidung:** Halte den Pseudocode einfach. Schreibe `Länge des Arrays` statt `.len() as f64`. Die Details klärst du erst beim Schreiben des Rust-Codes.
+* **Das Problem:** Sie schreiben bereits Typen wie `as f64`, Referenzen `&amp;` oder Imports in Ihren Pseudocode. Das blockiert das kreative Denken über die Logik.
+* **Vermeidung:** Halten Sie den Pseudocode einfach. Schreiben Sie `Länge des Arrays` statt `.len() as f64`. Die Details klären Sie erst beim Schreiben des Rust-Codes.
 
 ### Fehler 4: Die To-Do-Liste ist zu grob
-* **Das Problem:** Deine To-Do-Liste hat nur einen Punkt: *"1. Schreibe das Programm"*. Das hilft dir nicht bei der Strukturierung.
-* **Vermeidung:** Zerlege die Aufgabe in kleine Portionen, die du in maximal 5 bis 10 Minuten erledigen kannst. Ein Punkt wie *"Schreibe die Schleife für die Summe"* ist viel besser.
+* **Das Problem:** Ihre To-Do-Liste hat nur einen Punkt: *"1. Schreiben Sie das Programm"*. Das hilft Ihnen nicht bei der Strukturierung.
+* **Vermeidung:** Zerlegen Sie die Aufgabe in kleine Portionen, die Sie in maximal 5 bis 10 Minuten erledigen können. Ein Punkt wie *"Schreiben Sie die Schleife für die Summe"* ist viel besser.
 
 ## 8.1 VS Code optimal für den Planungs-Workflow einrichten
 
-Um den Planungs-Workflow so flüssig und angenehm wie möglich zu gestalten, solltest du deine VS Code-Umgebung mit den passenden Erweiterungen ausstatten. Dies ermöglicht es dir, Diagramme und Markdown-Dateien direkt im Editor live zu visualisieren und zu bearbeiten.
+Um den Planungs-Workflow so flüssig und angenehm wie möglich zu gestalten, sollten Sie Ihre VS Code-Umgebung mit den passenden Erweiterungen ausstatten. Dies ermöglicht es Ihnen, Diagramme und Markdown-Dateien direkt im Editor live zu visualisieren und zu bearbeiten.
 
 ### Empfohlene VS Code-Erweiterungen:
 1. **Markdown Preview Mermaid Support:**
    * Diese Erweiterung sorgt dafür, dass die standardmäßige Markdown-Vorschau von VS Code Mermaid-Diagramme (`:::mermaid`) direkt rendern kann.
-   * *Nutzung:* Drücke `Strg + Shift + V` in einer geöffneten Markdown-Datei, um die Live-Vorschau an der Seite anzuzeigen. Jede Änderung am Mermaid-Code wird sofort aktualisiert.
+   * *Nutzung:* Drücken Sie Strg + Shift + V in einer geöffneten Markdown-Datei, um die Live-Vorschau an der Seite anzuzeigen. Jede Änderung am Mermaid-Code wird sofort aktualisiert.
 2. **Markdown All in One:**
    * Bietet nützliche Tastenkombinationen, automatische Erstellung von To-Do-Listen (beim Drücken von Enter in einer Checkliste) und automatische Formatierung.
 3. **Mermaid Chart:**
-   * Die offizielle Erweiterung zur visuellen Erstellung und Bearbeitung von Mermaid-Diagrammen mit einem integrierten Editor, falls du die Syntax nicht auswendig lernen möchtest.
+   * Die offizielle Erweiterung zur visuellen Erstellung und Bearbeitung von Mermaid-Diagrammen mit einem integrierten Editor, falls Sie die Syntax nicht auswendig lernen möchten.
 
 ### Hilfreiche Tastenkombinationen in VS Code für die Planung:
 * **`Strg + Shift + V`:** Öffnet die Markdown-Vorschau im Vollbild.
-* **`Strg + K, danach V`:** Öffnet die Vorschau in einem geteilten Fenster direkt neben deinem Code (Split-Screen-Modus). Dies ist das ideale Setup für die Implementierungsphase.
+* **`Strg + K, danach V`:** Öffnet die Vorschau in einem geteilten Fenster direkt neben Ihrem Code (Split-Screen-Modus). Dies ist das ideale Setup für die Implementierungsphase.
 * **`Alt + Z`:** Aktiviert den automatischen Zeilenumbruch (Word Wrap), damit längere Abschnitte im Pseudocode oder in den Notizen nicht horizontal aus dem Bildschirm laufen.
 
 ## 8.2 Synergie: GitHub Copilot und das Antigravity CLI im Tandem nutzen
 
-Während GitHub Copilot hervorragend als schneller Autocomplete-Assistent direkt in der Zeile arbeitet, glänzt das Antigravity CLI (`agy`) bei der projektweiten Planung und der Durchführung größerer Codeänderungen. Wenn du beide Tools intelligent kombinierst, entwickelst du ein tiefes Verständnis für Rust und vermeidest typische Fehler.
+Während GitHub Copilot hervorragend als schneller Autocomplete-Assistent direkt in der Zeile arbeitet, glänzt das Antigravity CLI (`agy`) bei der projektweiten Planung und der Durchführung größerer Codeänderungen. Wenn Sie beide Tools intelligent kombinierst, entwickeln Sie ein tiefes Verständnis für Rust und vermeiden typische Fehler.
 
 ### Die Arbeitsteilung im Detail:
 * **Der Navigator (Antigravity CLI):**
-  - Nutze das CLI in der Planungsphase. Der Agent kann dir helfen, logische Fehler in deinem Mermaid-Diagramm zu finden oder deinen Entwurf in `planung.md` zu strukturieren.
-  - Gib dem CLI Befehle wie: *"Analysiere meinen Entwurf in planung.md und erstelle die grundlegenden Funktions-Signaturen in src/main.rs."*
+  - Nutzen Sie das CLI in der Planungsphase. Der Agent kann Ihnen helfen, logische Fehler in Ihrem Mermaid-Diagramm zu finden oder Ihren Entwurf in `planung.md` zu strukturieren.
+  - Geben Sie dem CLI Befehle wie: *"Analysiere meinen Entwurf in planung.md und erstelle die grundlegenden Funktions-Signaturen in src/main.rs."*
 * **Der Autopilot (GitHub Copilot):**
-  - Nutze Copilot in der Tippphase innerhalb deiner Code-Dateien. Sobald du eine Funktion implementierst, schlägt dir Copilot den passenden Code auf Zeilenebene vor.
-  - *Achtung:* Verlasse dich nicht blind auf Copilots Vorschläge. Wenn Copilot Code generiert, der nicht kompiliert, kopiere die Fehlermeldung und frage das CLI nach einer strukturierten Erklärung des zugrunde liegenden Speicherproblems (z. B. Borrowing-Konflikte).
+  - Nutzen Sie Copilot in der Tippphase innerhalb Ihrer Code-Dateien. Sobald Sie eine Funktion implementieren, schlägt Ihnen Copilot den passenden Code auf Zeilenebene vor.
+  - *Achtung:* Verlassen Sie sich nicht blind auf Copilots Vorschläge. Wenn Copilot Code generiert, der nicht kompiliert, kopieren Sie die Fehlermeldung und fragen Sie das CLI nach einer strukturierten Erklärung des zugrunde liegenden Speicherproblems (z. B. Borrowing-Konflikte).
 
 ## 8.3 KI-Assistenten im Planungs-Workflow einbinden (AI-Assisted Planning)
 
 Künstliche Intelligenz (wie GitHub Copilot, ChatGPT, Claude oder das Antigravity CLI) kann im Planungs-Workflow als exzellenter Sparringspartner dienen. Der Schlüssel liegt darin, die KI **nicht** den gesamten Code schreiben zu lassen, sondern sie gezielt in jeder einzelnen Planungsphase um Feedback zu bitten.
 
 ### Schritt 1: Anforderungen &amp; Edge Cases hinterfragen (EVA-Phase)
-Nutze die KI, um Lücken in deinem Verständnis oder in den Anforderungen zu finden.
-* **Tipp:** Beschreibe der KI dein Vorhaben und frage nach Sonderfällen.
+Nutzen Sie die KI, um Lücken in Ihrem Verständnis oder in den Anforderungen zu finden.
+* **Tipp:** Beschreiben Sie der KI Ihr Vorhaben und fragen Sie nach Sonderfällen.
 * **Beispiel-Prompt:**
   &gt; *"Ich plane ein Rust-Programm, das [Aufgabe beschreiben] macht. Welche technischen oder fachlichen Edge Cases (Sonderfälle) sollte ich bei der Anforderungsanalyse (Eingabe, Verarbeitung, Ausgabe) berücksichtigen?"*
 
 ### Schritt 2: Mermaid-Diagramme entwerfen und korrigieren
-Wenn du dir unsicher bist, wie der logische Fluss aussehen soll, kannst du die KI bitten, dir einen Mermaid-Entwurf zu erstellen.
-* **Tipp:** Wenn du bereits ein Diagramm hast, kannst du es auf Syntax- oder Logikfehler prüfen lassen.
+Wenn Sie sich unsicher sind, wie der logische Fluss aussehen soll, können Sie die KI bitten, Ihnen einen Mermaid-Entwurf zu erstellen.
+* **Tipp:** Wenn Sie bereits ein Diagramm haben, können Sie es auf Syntax- oder Logikfehler prüfen lassen.
 * **Beispiel-Prompt:**
-  &gt; *"Erstelle ein Mermaid-Flussdiagramm im 'graph TD'-Format für folgende Logik: [Logikbeschreibung, z. B. Summiere ein Array und ziehe bei über 50 Euro 10% Rabatt ab]. Gib nur den Mermaid-Code aus."*
+  &gt; *"Erstellen Sie ein Mermaid-Flussdiagramm im 'graph TD'-Format für folgende Logik: [Logikbeschreibung, z. B. Summiere ein Array und ziehe bei über 50 Euro 10% Rabatt ab]. Geben Sie nur den Mermaid-Code aus."*
 
 ### Schritt 3: Pseudocode-Reviews (Logik-Prüfung)
-Bevor du den ersten Rust-Code schreibst, solltest du deinen Pseudocode von der KI überprüfen lassen. Da die KI hier keine Syntaxfehler korrigieren muss, kann sie sich ganz auf Logikfehler oder mögliche Endlosschleifen konzentrieren.
+Bevor Sie den ersten Rust-Code schreiben, sollten Sie Ihren Pseudocode von der KI überprüfen lassen. Da die KI hier keine Syntaxfehler korrigieren muss, kann sie sich ganz auf Logikfehler oder mögliche Endlosschleifen konzentrieren.
 * **Beispiel-Prompt:**
-  &gt; *"Hier ist mein Pseudocode für [Aufgabe]: [Pseudocode einfügen]. Findest du darin logische Fehler, Endlosschleifen oder Fälle, in denen das Programm abstürzen könnte? Schlage Verbesserungen vor, ohne echten Code zu schreiben."*
+  &gt; *"Hier ist mein Pseudocode für [Aufgabe]: [Pseudocode einfügen]. Finden Sie darin logische Fehler, Endlosschleifen oder Fälle, in denen das Programm abstürzen könnte? Schlagen Sie Verbesserungen vor, ohne echten Code zu schreiben."*
 
 ### Schritt 4: To-Do-Checkliste erstellen
-Du kannst die KI bitten, deinen Pseudocode in eine konkrete, kleinteilige Implementierungs-Checkliste für Rust zu übersetzen.
+Sie können die KI bitten, Ihren Pseudocode in eine konkrete, kleinteilige Implementierungs-Checkliste für Rust zu übersetzen.
 * **Beispiel-Prompt:**
-  &gt; *"Basierend auf diesem Pseudocode: [Pseudocode einfügen]. Erstelle mir eine strukturierte To-Do-Liste mit kleinen Schritten für die Implementierung in Rust, beginnend bei 'cargo new'."*
+  &gt; *"Basierend auf diesem Pseudocode: [Pseudocode einfügen]. Erstellen Sie mir eine strukturierte To-Do-Liste mit kleinen Schritten für die Implementierung in Rust, beginnend bei 'cargo new'."*
 
 ### Schritt 5: Strukturierte Dokumentation der KI-Vorschläge
-Es ist eine bewährte Praxis, die Ideen und Code-Vorschläge der KI nicht direkt blind in dein Projekt zu kopieren, sondern sie strukturiert in deiner `planung.md` zu sammeln.
-* **Empfohlene Struktur in deiner `planung.md`:**
+Es ist eine bewährte Praxis, die Ideen und Code-Vorschläge der KI nicht direkt blind in Ihr Projekt zu kopieren, sondern sie strukturiert in Ihrer `planung.md` zu sammeln.
+* **Empfohlene Struktur in Ihrer `planung.md`:**
   ```markdown
   ## 5. KI-Vorschläge &amp; Alternativen
   * **Idee A (Vorgeschlagen von Copilot):** Nutzung einer `for`-Schleife über `.iter()`.
   * **Idee B (Vorgeschlagen von Claude):** Nutzung von funktionalen Iteratoren wie `.iter().sum::&lt;f64&gt;()`.
   * **Entscheidung:** Ich wähle Idee A, um die imperativen Konzepte und den Dereferenzierungs-Operator `*` besser zu üben.
 </code></pre>
-<p>Das Sammeln und Abwägen dieser Vorschläge macht dich zu einem mündigen Entwickler, der die Kontrolle über seinen Code behält, statt der KI blind zu vertrauen.</p>
+<p>Das Sammeln und Abwägen dieser Vorschläge macht Sie zu einem mündigen Entwickler, der die Kontrolle über seinen Code behält, statt der KI blind zu vertrauen.</p>
 <h2 id="9-übung-der-warenkorb-rabatt-rechner"><a class="header" href="#9-übung-der-warenkorb-rabatt-rechner">9. Übung: Der Warenkorb-Rabatt-Rechner</a></h2>
-<p>Jetzt bist du an der Reihe! Wende den gelernten Workflow an, um ein praktisches Problem zu lösen.</p>
+<p>Jetzt sind Sie an der Reihe! Wenden Sie den gelernten Workflow an, um ein praktisches Problem zu lösen.</p>
 <h3 id="die-aufgabenstellung"><a class="header" href="#die-aufgabenstellung">Die Aufgabenstellung</a></h3>
 <p>Ein Online-Shop benötigt ein Modul zur Berechnung des finalen Warenkorb-Preises. Das Programm soll eine Liste von Preisen einlesen, einen Rabatt gewähren, falls der Gesamtwert eine Grenze überschreitet, und schließlich die Mehrwertsteuer berechnen.</p>
 <p><strong>Die Anforderungen im Detail:</strong></p>
@@ -541,50 +541,50 @@ Es ist eine bewährte Praxis, die Ideen und Code-Vorschläge der KI nicht direkt
 </ul>
 </li>
 </ol>
-<h3 id="deine-aufgabenschritte-workflow"><a class="header" href="#deine-aufgabenschritte-workflow">Deine Aufgabenschritte (Workflow)</a></h3>
+<h3 id="ihre-aufgabenschritte-workflow"><a class="header" href="#ihre-aufgabenschritte-workflow">Ihre Aufgabenschritte (Workflow)</a></h3>
 <ol>
-<li>Erstelle einen neuen Ordner <code>warenkorb_rechner</code> und darin eine Datei <code>planung.md</code>.</li>
-<li>Führe die Anforderungen als EVA-Analyse in <code>planung.md</code> auf.</li>
-<li>Erstelle das Mermaid-Ablaufdiagramm in <code>planung.md</code>.</li>
-<li>Schreibe den Pseudocode auf.</li>
-<li>Erstelle die To-Do-Liste.</li>
-<li>Erstelle das Cargo-Projekt mit <code>cargo new warenkorb_rechner</code>.</li>
-<li>Setze das Projekt in <code>src/main.rs</code> um. Teste dein Programm mit verschiedenen Werten im Array (unter 50 € und über 50 €), um sicherzustellen, dass die Rabatt-Logik korrekt funktioniert!</li>
+<li>Erstellen Sie einen neuen Ordner <code>warenkorb_rechner</code> und darin eine Datei <code>planung.md</code>.</li>
+<li>Führen Sie die Anforderungen als EVA-Analyse in <code>planung.md</code> auf.</li>
+<li>Erstellen Sie das Mermaid-Ablaufdiagramm in <code>planung.md</code>.</li>
+<li>Schreiben Sie den Pseudocode auf.</li>
+<li>Erstellen Sie die To-Do-Liste.</li>
+<li>Erstellen Sie das Cargo-Projekt mit <code>cargo new warenkorb_rechner</code>.</li>
+<li>Setzen Sie das Projekt in <code>src/main.rs</code> um. Testen Sie Ihr Programm mit verschiedenen Werten im Array (unter 50 € und über 50 €), um sicherzustellen, dass die Rabatt-Logik korrekt funktioniert!</li>
 </ol>
-<h2 id="91-fünf-weitere-planungs-herausforderungen-für-dein-training"><a class="header" href="#91-fünf-weitere-planungs-herausforderungen-für-dein-training">9.1 Fünf weitere Planungs-Herausforderungen für dein Training</a></h2>
-<p>Um den Workflow in Fleisch und Blut übergehen zu lassen, findest du hier fünf Übungsszenarien mit unterschiedlichen Schwierigkeitsgraden. Wende bei jedem Szenario zuerst die 5 Schritte des Workflows an, bevor du programmierst.</p>
+<h2 id="91-fünf-weitere-planungs-herausforderungen-für-ihr-training"><a class="header" href="#91-fünf-weitere-planungs-herausforderungen-für-ihr-training">9.1 Fünf weitere Planungs-Herausforderungen für Ihr Training</a></h2>
+<p>Um den Workflow in Fleisch und Blut übergehen zu lassen, finden Sie hier fünf Übungsszenarien mit unterschiedlichen Schwierigkeitsgraden. Wenden Sie bei jedem Szenario zuerst die 5 Schritte des Workflows an, bevor Sie programmieren.</p>
 <h3 id="challenge-1-der-temperatur-konverter-einfach"><a class="header" href="#challenge-1-der-temperatur-konverter-einfach">Challenge 1: Der Temperatur-Konverter (Einfach)</a></h3>
 <ul>
 <li><strong>Ziel:</strong> Ein Programm, das eine Liste von Celsius-Werten in Fahrenheit umrechnet.</li>
-<li><strong>Besonderheit:</strong> Verwende ein festes Array von 5 Werten.</li>
+<li><strong>Besonderheit:</strong> Verwenden Sie ein festes Array von 5 Werten.</li>
 <li><strong>Fokus:</strong> Einfache Schleife, mathematische Formel und Zuweisungen.</li>
 </ul>
 <h3 id="challenge-2-der-palindrom-tester-mittel"><a class="header" href="#challenge-2-der-palindrom-tester-mittel">Challenge 2: Der Palindrom-Tester (Mittel)</a></h3>
 <ul>
-<li><strong>Ziel:</strong> Prüfe, ob ein eingegebenes Wort vorwärts und rückwärts gleich gelesen wird (z. B. “Lagerregal”).</li>
+<li><strong>Ziel:</strong> Prüfen Sie, ob ein eingegebenes Wort vorwärts und rückwärts gleich gelesen wird (z. B. “Lagerregal”).</li>
 <li><strong>Besonderheit:</strong> Groß- und Kleinschreibung sowie Leerzeichen müssen ignoriert werden.</li>
 <li><strong>Fokus:</strong> String-Manipulation und Zeichenvergleiche.</li>
 </ul>
 <h3 id="challenge-3-die-digitaluhr-mittel"><a class="header" href="#challenge-3-die-digitaluhr-mittel">Challenge 3: Die Digitaluhr (Mittel)</a></h3>
 <ul>
-<li><strong>Ziel:</strong> Simuliere eine tickende Uhr im Terminal (Stunden, Minuten, Sekunden).</li>
-<li><strong>Besonderheit:</strong> Nutze eine Endlosschleife und Thread-Sleep (<code>std::thread::sleep</code>) für den Sekundentakt.</li>
+<li><strong>Ziel:</strong> Simulieren Sie eine tickende Uhr im Terminal (Stunden, Minuten, Sekunden).</li>
+<li><strong>Besonderheit:</strong> Nutzen Sie eine Endlosschleife und Thread-Sleep (<code>std::thread::sleep</code>) für den Sekundentakt.</li>
 <li><strong>Fokus:</strong> Kontrollstrukturen und Zeitsteuerung.</li>
 </ul>
 <h3 id="challenge-4-der-text-zensor-schwer"><a class="header" href="#challenge-4-der-text-zensor-schwer">Challenge 4: Der Text-Zensor (Schwer)</a></h3>
 <ul>
-<li><strong>Ziel:</strong> Ersetze verbotene Wörter in einem Satz durch <code>***</code>.</li>
+<li><strong>Ziel:</strong> Ersetzen Sie verbotene Wörter in einem Satz durch <code>***</code>.</li>
 <li><strong>Besonderheit:</strong> Die Liste der verbotenen Wörter liegt in einem Array.</li>
 <li><strong>Fokus:</strong> String-Methoden und Speicherverwaltung.</li>
 </ul>
 <h3 id="challenge-5-der-vereinfachte-bankautomat-schwer"><a class="header" href="#challenge-5-der-vereinfachte-bankautomat-schwer">Challenge 5: Der vereinfachte Bankautomat (Schwer)</a></h3>
 <ul>
-<li><strong>Ziel:</strong> Simuliere Kontostandsabfragen, Einzahlungen und Auszahlungen über ein einfaches Menü.</li>
-<li><strong>Besonderheit:</strong> Verwalte den Kontostand über eine veränderliche Referenz in Funktionen.</li>
+<li><strong>Ziel:</strong> Simulieren Sie Kontostandsabfragen, Einzahlungen und Auszahlungen über ein einfaches Menü.</li>
+<li><strong>Besonderheit:</strong> Verwalten Sie den Kontostand über eine veränderliche Referenz in Funktionen.</li>
 <li><strong>Fokus:</strong> Zustandssteuerung und Referenzen/Borrowing.</li>
 </ul>
 <h2 id="10-musterlösung-für-den-warenkorb-rabatt-rechner"><a class="header" href="#10-musterlösung-für-den-warenkorb-rabatt-rechner">10. Musterlösung für den Warenkorb-Rabatt-Rechner</a></h2>
-<p>Vergleiche deine Lösung erst mit dieser Musterlösung, nachdem du es selbst versucht hast. Das eigenständige Lösen und das Suchen nach Fehlern hat den größten Lerneffekt!</p>
+<p>Vergleichen Sie Ihre Lösung erst mit dieser Musterlösung, nachdem Sie es selbst versucht haben. Das eigenständige Lösen und das Suchen nach Fehlern hat den größten Lerneffekt!</p>
 <h3 id="muster-planungsdatei-planungmd"><a class="header" href="#muster-planungsdatei-planungmd">Muster-Planungsdatei (<code>planung.md</code>)</a></h3>
 <pre><code class="language-markdown"># Planung: Warenkorb-Rabatt-Rechner
 
@@ -686,15 +686,15 @@ fn main() {
     println!("Endbetrag (Brutto):     {:8.2} €", brutto);
 }
 </code></pre>
-<h2 id="11-zusammenfassung--deine-lernnotizen"><a class="header" href="#11-zusammenfassung--deine-lernnotizen">11. Zusammenfassung &amp; Deine Lernnotizen</a></h2>
-<p>Herzlichen Glückwunsch! Du hast nun gelernt, wie wichtig es ist, komplexe Probleme strukturiert anzugehen und zu planen, bevor du Code schreibst. Der Planungs-Workflow wird dir in deiner Karriere als Softwareentwickler extrem viel Zeit und Kopfzerbrechen ersparen.</p>
+<h2 id="11-zusammenfassung--ihre-lernnotizen"><a class="header" href="#11-zusammenfassung--ihre-lernnotizen">11. Zusammenfassung &amp; Ihre Lernnotizen</a></h2>
+<p>Herzlichen Glückwunsch! Sie haben nun gelernt, wie wichtig es ist, komplexe Probleme strukturiert anzugehen und zu planen, bevor Sie Code schreiben. Der Planungs-Workflow wird Ihnen in Ihrer Karriere als Softwareentwickler extrem viel Zeit und Kopfzerbrechen ersparen.</p>
 <h3 id="wichtigste-erkenntnisse-dieses-kapitels"><a class="header" href="#wichtigste-erkenntnisse-dieses-kapitels">Wichtigste Erkenntnisse dieses Kapitels:</a></h3>
 <ol>
 <li><strong>Der Plan steht zuerst:</strong> Codiere niemals ohne Ablaufdiagramm und Pseudocode bei nicht-trivialen Aufgaben.</li>
-<li><strong>Klares Aufteilen:</strong> Durch das EVA-Prinzip zerlegst du jedes Problem in seine drei Grundkomponenten.</li>
-<li><strong>To-Do-Listen geben Struktur:</strong> Kleine Teilaufgaben verhindern Überforderung und halten dich fokussiert.</li>
+<li><strong>Klares Aufteilen:</strong> Durch das EVA-Prinzip zerlegen Sie jedes Problem in seine drei Grundkomponenten.</li>
+<li><strong>To-Do-Listen geben Struktur:</strong> Kleine Teilaufgaben verhindern Überforderung und halten Sie fokussiert.</li>
 </ol>
-<p>Nutze das untenstehende Feld in deiner eigenen Markdown-Datei, um deine Gedanken, Notizen und persönlichen Aha-Momente aus diesem Kapitel festzuhalten.</p>
+<p>Nutzen Sie das untenstehende Feld in Ihrer eigenen Markdown-Datei, um Ihre Gedanken, Notizen und persönlichen Aha-Momente aus diesem Kapitel festzuhalten.</p>
 <pre><code class="language-text">💡 MEINE NOTIZEN ZU KAPITEL 22:
 - Was war mein größter Aha-Moment beim Zeichnen von Mermaid-Diagrammen?
 - Konnte ich den Warenkorb-Rechner ohne Probleme in Rust übersetzen?

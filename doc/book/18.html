@@ -35,7 +35,7 @@
             const path_to_root = "";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "searchindex-76719c3e.js";
+            window.path_to_searchindex_js = "searchindex-fc688792.js";
         </script>
         <!-- Start loading toc.js asap -->
         <script src="toc-dedbbe6e.js"></script>
@@ -464,7 +464,7 @@ fn main() {
     println!("a: {}, b: {}", a, b); // ✅ Beide sind voll funktionsfähig!
 }</code></pre>
 <h4 id="der-copy-trait-als-marker"><a class="header" href="#der-copy-trait-als-marker">Der <code>Copy</code>-Trait als Marker</a></h4>
-<p>Das Verhalten wird durch das Vorhandensein des <code>Copy</code>-Traits gesteuert. Dies ist ein sogenannter <strong>Marker-Trait</strong>. Er enthält keine Methoden, die implementiert werden müssen, sondern dient dem Compiler lediglich als Signal: <em>“Diesen Typ darfst du bei Zuweisungen einfach byteweise kopieren.”</em></p>
+<p>Das Verhalten wird durch das Vorhandensein des <code>Copy</code>-Traits gesteuert. Dies ist ein sogenannter <strong>Marker-Trait</strong>. Er enthält keine Methoden, die implementiert werden müssen, sondern dient dem Compiler lediglich als Signal: <em>“Diesen Typ dürfen Sie bei Zuweisungen einfach byteweise kopieren.”</em></p>
 <p>Folgende Typen sind standardmäßig <code>Copy</code>:</p>
 <ul>
 <li>Alle ganzzahligen Typen (<code>i8</code> bis <code>i128</code>, <code>u8</code> bis <code>u128</code>, <code>isize</code>, <code>usize</code>).</li>
