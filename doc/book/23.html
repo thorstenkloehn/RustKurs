@@ -7,25 +7,26 @@
 
 
         <!-- Custom HTML head -->
-
+        
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="theme-color" content="#ffffff">
 
-        <link rel="icon" href="favicon-de23e50b.svg">
-        <link rel="shortcut icon" href="favicon-8114d1fc.png">
-        <link rel="stylesheet" href="css/variables-8adf115d.css">
-        <link rel="stylesheet" href="css/general-0392ca55.css">
-        <link rel="stylesheet" href="css/chrome-fc474251.css">
-        <link rel="stylesheet" href="css/print-9e4910d8.css" media="print">
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
 
         <!-- Fonts -->
-        <link rel="stylesheet" href="fonts/fonts-9644e21d.css">
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
 
         <!-- Highlight.js Stylesheets -->
-        <link rel="stylesheet" id="mdbook-highlight-css" href="highlight-493f70e1.css">
-        <link rel="stylesheet" id="mdbook-tomorrow-night-css" href="tomorrow-night-4c0ae647.css">
-        <link rel="stylesheet" id="mdbook-ayu-highlight-css" href="ayu-highlight-3fdfc3ac.css">
+        <link rel="stylesheet" id="highlight-css" href="highlight.css">
+        <link rel="stylesheet" id="tomorrow-night-css" href="tomorrow-night.css">
+        <link rel="stylesheet" id="ayu-highlight-css" href="ayu-highlight.css">
 
         <!-- Custom theme stylesheets -->
 
@@ -35,10 +36,10 @@
             const path_to_root = "";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "searchindex-fc688792.js";
+            window.path_to_searchindex_js = "searchindex.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="toc-dedbbe6e.js"></script>
+        <script src="toc.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -52,7 +53,7 @@
             </div>
         </div>
     </div>
-    <div id="mdbook-body-container">
+    <div id="body-container">
         <!-- Work around some values being stored in localStorage wrapped in quotes -->
         <script>
             try {
@@ -81,12 +82,12 @@
             html.classList.add("js");
         </script>
 
-        <input type="checkbox" id="mdbook-sidebar-toggle-anchor" class="hidden">
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
 
         <!-- Hide / unhide sidebar before it is displayed -->
         <script>
             let sidebar = null;
-            const sidebar_toggle = document.getElementById("mdbook-sidebar-toggle-anchor");
+            const sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
             if (document.body.clientWidth >= 1080) {
                 try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
                 sidebar = sidebar || 'visible';
@@ -101,39 +102,39 @@
             }
         </script>
 
-        <nav id="mdbook-sidebar" class="sidebar" aria-label="Table of contents">
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <!-- populated by js -->
             <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
             <noscript>
                 <iframe class="sidebar-iframe-outer" src="toc.html"></iframe>
             </noscript>
-            <div id="mdbook-sidebar-resize-handle" class="sidebar-resize-handle">
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
                 <div class="sidebar-resize-indicator"></div>
             </div>
         </nav>
 
-        <div id="mdbook-page-wrapper" class="page-wrapper">
+        <div id="page-wrapper" class="page-wrapper">
 
             <div class="page">
-                <div id="mdbook-menu-bar-hover-placeholder"></div>
-                <div id="mdbook-menu-bar" class="menu-bar sticky">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
                     <div class="left-buttons">
-                        <label id="mdbook-sidebar-toggle" class="icon-button" for="mdbook-sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="mdbook-sidebar">
-                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"/></svg></span>
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
                         </label>
-                        <button id="mdbook-theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="mdbook-theme-list">
-                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M371.3 367.1c27.3-3.9 51.9-19.4 67.2-42.9L600.2 74.1c12.6-19.5 9.4-45.3-7.6-61.2S549.7-4.4 531.1 9.6L294.4 187.2c-24 18-38.2 46.1-38.4 76.1L371.3 367.1zm-19.6 25.4l-116-104.4C175.9 290.3 128 339.6 128 400c0 3.9 .2 7.8 .6 11.6c1.8 17.5-10.2 36.4-27.8 36.4H96c-17.7 0-32 14.3-32 32s14.3 32 32 32H240c61.9 0 112-50.1 112-112c0-2.5-.1-5-.2-7.5z"/></svg></span>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
                         </button>
-                        <ul id="mdbook-theme-list" class="theme-popup" aria-label="Themes" role="menu">
-                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-default_theme">Auto</button></li>
-                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-light">Light</button></li>
-                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-rust">Rust</button></li>
-                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-coal">Coal</button></li>
-                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-navy">Navy</button></li>
-                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-ayu">Ayu</button></li>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="default_theme">Auto</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
                         </ul>
-                        <button id="mdbook-search-toggle" class="icon-button" type="button" title="Search (`/`)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="/ s" aria-controls="mdbook-searchbar">
-                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352c79.5 0 144-64.5 144-144s-64.5-144-144-144S64 128.5 64 208s64.5 144 144 144z"/></svg></span>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search (`/`)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="/ s" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
                         </button>
                     </div>
 
@@ -141,38 +142,38 @@
 
                     <div class="right-buttons">
                         <a href="print.html" title="Print this book" aria-label="Print this book">
-                            <span class=fa-svg id="print-button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M128 0C92.7 0 64 28.7 64 64v96h64V64H354.7L384 93.3V160h64V93.3c0-17-6.7-33.3-18.7-45.3L400 18.7C388 6.7 371.7 0 354.7 0H128zM384 352v32 64H128V384 368 352H384zm64 32h32c17.7 0 32-14.3 32-32V256c0-35.3-28.7-64-64-64H64c-35.3 0-64 28.7-64 64v96c0 17.7 14.3 32 32 32H64v64c0 35.3 28.7 64 64 64H384c35.3 0 64-28.7 64-64V384zm-16-88c-13.3 0-24-10.7-24-24s10.7-24 24-24s24 10.7 24 24s-10.7 24-24 24z"/></svg></span>
+                            <i id="print-button" class="fa fa-print"></i>
                         </a>
 
                     </div>
                 </div>
 
-                <div id="mdbook-search-wrapper" class="hidden">
-                    <form id="mdbook-searchbar-outer" class="searchbar-outer">
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
                         <div class="search-wrapper">
-                            <input type="search" id="mdbook-searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="mdbook-searchresults-outer" aria-describedby="searchresults-header">
+                            <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
                             <div class="spinner-wrapper">
-                                <span class=fa-svg id="fa-spin"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M304 48c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zm0 416c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zM48 304c26.5 0 48-21.5 48-48s-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48zm464-48c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zM142.9 437c18.7-18.7 18.7-49.1 0-67.9s-49.1-18.7-67.9 0s-18.7 49.1 0 67.9s49.1 18.7 67.9 0zm0-294.2c18.7-18.7 18.7-49.1 0-67.9S93.7 56.2 75 75s-18.7 49.1 0 67.9s49.1 18.7 67.9 0zM369.1 437c18.7 18.7 49.1 18.7 67.9 0s18.7-49.1 0-67.9s-49.1-18.7-67.9 0s-18.7 49.1 0 67.9z"/></svg></span>
+                                <i class="fa fa-spinner fa-spin"></i>
                             </div>
                         </div>
                     </form>
-                    <div id="mdbook-searchresults-outer" class="searchresults-outer hidden">
-                        <div id="mdbook-searchresults-header" class="searchresults-header"></div>
-                        <ul id="mdbook-searchresults">
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
                         </ul>
                     </div>
                 </div>
 
                 <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
                 <script>
-                    document.getElementById('mdbook-sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
-                    document.getElementById('mdbook-sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
-                    Array.from(document.querySelectorAll('#mdbook-sidebar a')).forEach(function(link) {
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
                         link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
                     });
                 </script>
 
-                <div id="mdbook-content" class="content">
+                <div id="content" class="content">
                     <main>
                         <h1 id="kapitel-23-lernstrategie-lernportale-und-ki-prompts--rust-effektiv-meistern"><a class="header" href="#kapitel-23-lernstrategie-lernportale-und-ki-prompts--rust-effektiv-meistern">Kapitel 23: Lernstrategie, Lernportale und KI-Prompts – Rust effektiv meistern</a></h1>
 <p>Herzlichen Glückwunsch! Du hast die wesentlichen Grundlagen von Rust durchgearbeitet. Du kennst Variablen, Datentypen, Funktionen, Kontrollstrukturen, das Ownership-System sowie den Planungs-Workflow in VS Code. Jetzt stehst du an der Schwelle zum fortgeschrittenen Bereich von Rust. Um diesen Übergang erfolgreich zu meistern, reicht es nicht mehr aus, nur Code abzutippen. Du brauchst eine effektive Strategie.</p>
@@ -219,7 +220,7 @@
 </ul>
 <h2 id="2-lernportale-im-detail-und-wie-du-sie-am-besten-nutzen-kannst"><a class="header" href="#2-lernportale-im-detail-und-wie-du-sie-am-besten-nutzen-kannst">2. Lernportale im Detail und wie du sie am besten nutzen kannst</a></h2>
 <p>Es gibt hervorragende, kostenlose Lernplattformen für Rust. Um den maximalen Lerneffekt zu erzielen, solltest du wissen, wie diese Portale funktionieren und wie du sie in deinen Alltag integrierst.</p>
-<h3 id="a-rustlings--die-interaktive-übungssammlung"><a class="header" href="#a-rustlings--die-interaktive-übungssammlung">A) Rustlings – Die interaktive Übungssammlung</a></h3>
+<h3 id="a-rustlings--die-interaktive-Übungssammlung"><a class="header" href="#a-rustlings--die-interaktive-Übungssammlung">A) Rustlings – Die interaktive Übungssammlung</a></h3>
 <p>Rustlings ist das offizielle Übungsprojekt der Rust-Community. Es besteht aus über 100 kleinen, fehlerhaften Code-Dateien, die du Schritt für Schritt reparieren musst.</p>
 <ul>
 <li><strong>Wie du es nutzt:</strong>
@@ -245,7 +246,7 @@
 <ul>
 <li><strong>Wie du es nutzt:</strong>
 <ul>
-<li>Nutze die integrierte Suchfunktion (Lupe oben links im Browser), um gezielt nach Begriffen wie “Borrowing” oder “Mermaid” zu suchen.</li>
+<li>Nutze die integrierte Suchfunktion (Lupe oben links im Browser), um gezielt nach Begriffen wie "Borrowing" oder "Mermaid" zu suchen.</li>
 <li>Kopiere die Code-Beispiele aus den Cheat Sheets und experimentiere in einem separat angelegten Cargo-Projekt damit.</li>
 </ul>
 </li>
@@ -298,7 +299,7 @@
 <ul>
 <li><strong>Muster-Prompt:</strong>
 <blockquote>
-<p><em>“Ich lerne gerade Rust. Mein Code wirft beim Kompilieren den folgenden Fehler: [Fehlermeldung]. Hier ist mein Code: [Code]. Erkläre mir bitte verständlich für Anfänger, welche Borrowing- oder Ownership-Regel ich verletzt habe und wie ich das Problem löse.”</em></p>
+<p><em>"Ich lerne gerade Rust. Mein Code wirft beim Kompilieren den folgenden Fehler: [Fehlermeldung]. Hier ist mein Code: [Code]. Erkläre mir bitte verständlich für Anfänger, welche Borrowing- oder Ownership-Regel ich verletzt habe und wie ich das Problem löse."</em></p>
 </blockquote>
 </li>
 </ul>
@@ -307,16 +308,16 @@
 <ul>
 <li><strong>Muster-Prompt:</strong>
 <blockquote>
-<p><em>“Hier ist meine funktionierende Lösung für [Aufgabe]: [Code]. Wie kann ich diesen Code in Rust idiomatischer schreiben? Gibt es Standard-Bibliotheksfunktionen, die den Code sicherer oder kompakter machen? Bitte erkläre die Vorschläge.”</em></p>
+<p><em>"Hier ist meine funktionierende Lösung für [Aufgabe]: [Code]. Wie kann ich diesen Code in Rust idiomatischer schreiben? Gibt es Standard-Bibliotheksfunktionen, die den Code sicherer oder kompakter machen? Bitte erkläre die Vorschläge."</em></p>
 </blockquote>
 </li>
 </ul>
-<h4 id="3-der-übungs-generator-prompt-maßgeschneiderte-aufgaben"><a class="header" href="#3-der-übungs-generator-prompt-maßgeschneiderte-aufgaben">3. Der Übungs-Generator-Prompt (Maßgeschneiderte Aufgaben)</a></h4>
+<h4 id="3-der-Übungs-generator-prompt-maßgeschneiderte-aufgaben"><a class="header" href="#3-der-Übungs-generator-prompt-maßgeschneiderte-aufgaben">3. Der Übungs-Generator-Prompt (Maßgeschneiderte Aufgaben)</a></h4>
 <p>Bitte die KI, dir eine Übungsaufgabe auf deinem aktuellen Niveau zu erstellen.</p>
 <ul>
 <li><strong>Muster-Prompt:</strong>
 <blockquote>
-<p><em>“Ich habe gerade die Kapitel über Kontrollstrukturen und Arrays in Rust abgeschlossen. Erstelle mir eine kleine, praktische Übungsaufgabe auf diesem Niveau. Die Aufgabe sollte eine Anforderungsbeschreibung enthalten, aber noch keinen Rust-Code oder Lösungen. Gib mir auch drei optionale Tipps für die Umsetzung.”</em></p>
+<p><em>"Ich habe gerade die Kapitel über Kontrollstrukturen und Arrays in Rust abgeschlossen. Erstelle mir eine kleine, praktische Übungsaufgabe auf diesem Niveau. Die Aufgabe sollte eine Anforderungsbeschreibung enthalten, aber noch keinen Rust-Code oder Lösungen. Gib mir auch drei optionale Tipps für die Umsetzung."</em></p>
 </blockquote>
 </li>
 </ul>
@@ -330,7 +331,7 @@
 <li><strong>Regel 4: Vergleiche deine Lösungen.</strong> Schau dir nach jeder gelösten Aufgabe auf Exercism die Ansätze anderer an.</li>
 <li><strong>Regel 5: Nutze KI als Tutor, nicht als Schreiber.</strong> Lass dir Konzepte erklären, statt fertigen Code zu kopieren.</li>
 </ol>
-<hr>
+<hr />
 <h3 id="-merkzettel-b-prompt-templates-für-deinen-ki-tutor"><a class="header" href="#-merkzettel-b-prompt-templates-für-deinen-ki-tutor">📌 Merkzettel B: Prompt-Templates für deinen KI-Tutor</a></h3>
 <p>Kopiere diese Vorlagen direkt in deinen Chat mit der KI:</p>
 <h4 id="template-a-logik-erklärung"><a class="header" href="#template-a-logik-erklärung">Template A: Logik-Erklärung</a></h4>
@@ -360,14 +361,14 @@ Erkläre mir den Fehler und gib mir zwei verschiedene Lösungsansätze.
 <li><strong>Das Problem:</strong> Du liest das gesamte Rust-Buch von vorne bis hinten durch, ohne jemals ein eigenes Programm geschrieben zu haben.</li>
 <li><strong>Lösung:</strong> Setze dir nach jedem Kapitel ein kleines Projekt als Ziel (z. B. einen Notenrechner nach Kapitel 9).</li>
 </ul>
-<h2 id="6-übung-richte-dein-persönliches-lern-setup-ein"><a class="header" href="#6-übung-richte-dein-persönliches-lern-setup-ein">6. Übung: Richte dein persönliches Lern-Setup ein</a></h2>
+<h2 id="6-Übung-richte-dein-persönliches-lern-setup-ein"><a class="header" href="#6-Übung-richte-dein-persönliches-lern-setup-ein">6. Übung: Richte dein persönliches Lern-Setup ein</a></h2>
 <p>In dieser Übung setzt du die gelernten Strategien direkt in die Tat um und erstellst deine persönliche Lernumgebung.</p>
 <h3 id="die-aufgabenstellung"><a class="header" href="#die-aufgabenstellung">Die Aufgabenstellung</a></h3>
 <p>Bereite deine zukünftigen Lerneinheiten strukturiert vor.</p>
 <p><strong>Die Anforderungen im Detail:</strong></p>
 <ol>
 <li><strong>Lernplan erstellen:</strong> Erstelle eine Datei namens <code>lernplan.md</code> in deinem Workspace.</li>
-<li><strong>Lernziele definieren:</strong> Formuliere drei konkrete Themen, die du als nächstes lernen möchtest (z. B. “Structs”, “Vektoren”, “Fehlerbehandlung”).</li>
+<li><strong>Lernziele definieren:</strong> Formuliere drei konkrete Themen, die du als nächstes lernen möchtest (z. B. "Structs", "Vektoren", "Fehlerbehandlung").</li>
 <li><strong>Tägliche Routine festlegen:</strong> Definiere eine feste Uhrzeit und Dauer für dein tägliches Micro-Learning (z. B. jeden Morgen um 08:00 Uhr für 15 Minuten).</li>
 <li><strong>KI-Prompts vorbereiten:</strong> Schreibe in deine <code>lernplan.md</code> drei fertige Prompts, mit denen du die KI bei deinen nächsten Übungen als Tutor befragen möchtest.</li>
 <li><strong>Erste Übung planen:</strong> Nutze die KI, um dir eine kleine Übung zu erstellen, und füge die Anforderungen in deine <code>lernplan.md</code> ein.</li>
@@ -427,10 +428,10 @@ Erkläre mir den Fehler und gib mir zwei verschiedene Lösungsansätze.
 <p><code>## 1. Meine Lernziele (Die nächsten Schritte)</code> - Hier definierst du, was du als Nächstes erreichen möchtest.</p>
 </li>
 <li>
-<p>Halte die Ziele so konkret wie möglich. Ein Ziel wie ‘Rust lernen’ ist zu schwammig.</p>
+<p>Halte die Ziele so konkret wie möglich. Ein Ziel wie 'Rust lernen' ist zu schwammig.</p>
 </li>
 <li>
-<p>Ein Ziel wie ‘Structs definieren’ ist dagegen messbar und in einer Lerneinheit erreichbar.</p>
+<p>Ein Ziel wie 'Structs definieren' ist dagegen messbar und in einer Lerneinheit erreichbar.</p>
 </li>
 <li>
 <p>Begrenze deine aktiven Ziele auf maximal drei, um dich nicht zu verzetteln.</p>
@@ -439,7 +440,7 @@ Erkläre mir den Fehler und gib mir zwei verschiedene Lösungsansätze.
 <p><code>## 2. Meine Routine (Micro-Learning)</code> - Hier legst du den zeitlichen und räumlichen Rahmen fest.</p>
 </li>
 <li>
-<p>Die Definition von ‘Wann’ und ‘Wo’ erhöht die Wahrscheinlichkeit der Einhaltung um ein Vielfaches.</p>
+<p>Die Definition von 'Wann' und 'Wo' erhöht die Wahrscheinlichkeit der Einhaltung um ein Vielfaches.</p>
 </li>
 <li>
 <p>Halte die Dauer kurz (z. B. 15 bis 20 Minuten), damit die Hemmschwelle zum Starten niedrig bleibt.</p>
@@ -454,13 +455,13 @@ Erkläre mir den Fehler und gib mir zwei verschiedene Lösungsansätze.
 <p>Indem du die Prompts vorab formulierst, verhinderst du, dass du in einer Lerneinheit lange überlegen musst.</p>
 </li>
 <li>
-<p>Der ‘Fehler-Erklärer’-Prompt hilft dir, die Logik hinter Compiler-Fehlern zu verstehen.</p>
+<p>Der 'Fehler-Erklärer'-Prompt hilft dir, die Logik hinter Compiler-Fehlern zu verstehen.</p>
 </li>
 <li>
-<p>Der ‘Refactoring-Tutor’-Prompt zeigt dir, wie du deinen Code sauberer und professioneller schreiben kannst.</p>
+<p>Der 'Refactoring-Tutor'-Prompt zeigt dir, wie du deinen Code sauberer und professioneller schreiben kannst.</p>
 </li>
 <li>
-<p>Der ‘Aufgaben-Generator’-Prompt versorgt dich permanent mit frischem Übungsmaterial.</p>
+<p>Der 'Aufgaben-Generator'-Prompt versorgt dich permanent mit frischem Übungsmaterial.</p>
 </li>
 <li>
 <p><code>## 4. Generierte Übung für morgen</code> - Die konkrete Aufgabe für deine nächste Lerneinheit.</p>
@@ -511,7 +512,7 @@ Erkläre mir den Fehler und gib mir zwei verschiedene Lösungsansätze.
 <li><strong>Planungsfrage 08:</strong> In welchen Situationen hilft dir ein Alltagsbeispiel, Rust-Konzepte zu begreifen?</li>
 <li><strong>Planungsfrage 09:</strong> Wie viel Zeit nimmst du dir für Code-Reviews deiner eigenen Lösungen auf Exercism?</li>
 <li><strong>Planungsfrage 10:</strong> Welche Vorteile siehst du im Micro-Learning gegenüber dem Block-Lernen am Wochenende?</li>
-<li><strong>Planungsfrage 11:</strong> Wie verhinderst du, dass du in die ‘Tutorial-Hölle’ gerätst?</li>
+<li><strong>Planungsfrage 11:</strong> Wie verhinderst du, dass du in die 'Tutorial-Hölle' gerätst?</li>
 <li><strong>Planungsfrage 12:</strong> Welches kleine Projekt möchtest du als Nächstes mit dem gelernten Wissen umsetzen?</li>
 <li><strong>Planungsfrage 13:</strong> Wie gehst du mit Frustration um, wenn der Borrow Checker deine Zuweisungen ablehnt?</li>
 <li><strong>Planungsfrage 14:</strong> Welche Rolle spielt das aktive Tippen von Code im Vergleich zum passiven Lesen für dich?</li>
@@ -549,7 +550,7 @@ Erkläre mir den Fehler und gib mir zwei verschiedene Lösungsansätze.
 <li><strong>Erweiterte Reflexionsfrage 08:</strong> In welchen Situationen hilft dir ein Alltagsbeispiel, Rust-Konzepte zu begreifen?</li>
 <li><strong>Erweiterte Reflexionsfrage 09:</strong> Wie viel Zeit nimmst du dir für Code-Reviews deiner eigenen Lösungen auf Exercism?</li>
 <li><strong>Erweiterte Reflexionsfrage 10:</strong> Welche Vorteile siehst du im Micro-Learning gegenüber dem Block-Lernen am Wochenende?</li>
-<li><strong>Erweiterte Reflexionsfrage 11:</strong> Wie verhinderst du, dass du in die ‘Tutorial-Hölle’ gerätst?</li>
+<li><strong>Erweiterte Reflexionsfrage 11:</strong> Wie verhinderst du, dass du in die 'Tutorial-Hölle' gerätst?</li>
 <li><strong>Erweiterte Reflexionsfrage 12:</strong> Welches kleine Projekt möchtest du als Nächstes mit dem gelernten Wissen umsetzen?</li>
 <li><strong>Erweiterte Reflexionsfrage 13:</strong> Wie gehst du mit Frustration um, wenn der Borrow Checker deine Zuweisungen ablehnt?</li>
 <li><strong>Erweiterte Reflexionsfrage 14:</strong> Welche Rolle spielt das aktive Tippen von Code im Vergleich zum passiven Lesen für dich?</li>
@@ -569,7 +570,7 @@ Erkläre mir den Fehler und gib mir zwei verschiedene Lösungsansätze.
 <li><strong>Erweiterte Reflexionsfrage 28:</strong> In welchen Situationen hilft dir ein Alltagsbeispiel, Rust-Konzepte zu begreifen?</li>
 <li><strong>Erweiterte Reflexionsfrage 29:</strong> Wie viel Zeit nimmst du dir für Code-Reviews deiner eigenen Lösungen auf Exercism?</li>
 <li><strong>Erweiterte Reflexionsfrage 30:</strong> Welche Vorteile siehst du im Micro-Learning gegenüber dem Block-Lernen am Wochenende?</li>
-<li><strong>Erweiterte Reflexionsfrage 31:</strong> Wie verhinderst du, dass du in die ‘Tutorial-Hölle’ gerätst?</li>
+<li><strong>Erweiterte Reflexionsfrage 31:</strong> Wie verhinderst du, dass du in die 'Tutorial-Hölle' gerätst?</li>
 <li><strong>Erweiterte Reflexionsfrage 32:</strong> Welches kleine Projekt möchtest du als Nächstes mit dem gelernten Wissen umsetzen?</li>
 <li><strong>Erweiterte Reflexionsfrage 33:</strong> Wie gehst du mit Frustration um, wenn der Borrow Checker deine Zuweisungen ablehnt?</li>
 <li><strong>Erweiterte Reflexionsfrage 34:</strong> Welche Rolle spielt das aktive Tippen von Code im Vergleich zum passiven Lesen für dich?</li>
@@ -589,7 +590,7 @@ Erkläre mir den Fehler und gib mir zwei verschiedene Lösungsansätze.
 <li><strong>Erweiterte Reflexionsfrage 48:</strong> In welchen Situationen hilft dir ein Alltagsbeispiel, Rust-Konzepte zu begreifen?</li>
 <li><strong>Erweiterte Reflexionsfrage 49:</strong> Wie viel Zeit nimmst du dir für Code-Reviews deiner eigenen Lösungen auf Exercism?</li>
 <li><strong>Erweiterte Reflexionsfrage 50:</strong> Welche Vorteile siehst du im Micro-Learning gegenüber dem Block-Lernen am Wochenende?</li>
-<li><strong>Erweiterte Reflexionsfrage 51:</strong> Wie verhinderst du, dass du in die ‘Tutorial-Hölle’ gerätst?</li>
+<li><strong>Erweiterte Reflexionsfrage 51:</strong> Wie verhinderst du, dass du in die 'Tutorial-Hölle' gerätst?</li>
 <li><strong>Erweiterte Reflexionsfrage 52:</strong> Welches kleine Projekt möchtest du als Nächstes mit dem gelernten Wissen umsetzen?</li>
 <li><strong>Erweiterte Reflexionsfrage 53:</strong> Wie gehst du mit Frustration um, wenn der Borrow Checker deine Zuweisungen ablehnt?</li>
 <li><strong>Erweiterte Reflexionsfrage 54:</strong> Welche Rolle spielt das aktive Tippen von Code im Vergleich zum passiven Lesen für dich?</li>
@@ -609,7 +610,7 @@ Erkläre mir den Fehler und gib mir zwei verschiedene Lösungsansätze.
 <li><strong>Erweiterte Reflexionsfrage 68:</strong> In welchen Situationen hilft dir ein Alltagsbeispiel, Rust-Konzepte zu begreifen?</li>
 <li><strong>Erweiterte Reflexionsfrage 69:</strong> Wie viel Zeit nimmst du dir für Code-Reviews deiner eigenen Lösungen auf Exercism?</li>
 <li><strong>Erweiterte Reflexionsfrage 70:</strong> Welche Vorteile siehst du im Micro-Learning gegenüber dem Block-Lernen am Wochenende?</li>
-<li><strong>Erweiterte Reflexionsfrage 71:</strong> Wie verhinderst du, dass du in die ‘Tutorial-Hölle’ gerätst?</li>
+<li><strong>Erweiterte Reflexionsfrage 71:</strong> Wie verhinderst du, dass du in die 'Tutorial-Hölle' gerätst?</li>
 <li><strong>Erweiterte Reflexionsfrage 72:</strong> Welches kleine Projekt möchtest du als Nächstes mit dem gelernten Wissen umsetzen?</li>
 <li><strong>Erweiterte Reflexionsfrage 73:</strong> Wie gehst du mit Frustration um, wenn der Borrow Checker deine Zuweisungen ablehnt?</li>
 <li><strong>Erweiterte Reflexionsfrage 74:</strong> Welche Rolle spielt das aktive Tippen von Code im Vergleich zum passiven Lesen für dich?</li>
@@ -629,7 +630,7 @@ Erkläre mir den Fehler und gib mir zwei verschiedene Lösungsansätze.
 <li><strong>Erweiterte Reflexionsfrage 88:</strong> In welchen Situationen hilft dir ein Alltagsbeispiel, Rust-Konzepte zu begreifen?</li>
 <li><strong>Erweiterte Reflexionsfrage 89:</strong> Wie viel Zeit nimmst du dir für Code-Reviews deiner eigenen Lösungen auf Exercism?</li>
 <li><strong>Erweiterte Reflexionsfrage 90:</strong> Welche Vorteile siehst du im Micro-Learning gegenüber dem Block-Lernen am Wochenende?</li>
-<li><strong>Erweiterte Reflexionsfrage 91:</strong> Wie verhinderst du, dass du in die ‘Tutorial-Hölle’ gerätst?</li>
+<li><strong>Erweiterte Reflexionsfrage 91:</strong> Wie verhinderst du, dass du in die 'Tutorial-Hölle' gerätst?</li>
 <li><strong>Erweiterte Reflexionsfrage 92:</strong> Welches kleine Projekt möchtest du als Nächstes mit dem gelernten Wissen umsetzen?</li>
 <li><strong>Erweiterte Reflexionsfrage 93:</strong> Wie gehst du mit Frustration um, wenn der Borrow Checker deine Zuweisungen ablehnt?</li>
 <li><strong>Erweiterte Reflexionsfrage 94:</strong> Welche Rolle spielt das aktive Tippen von Code im Vergleich zum passiven Lesen für dich?</li>
@@ -649,7 +650,7 @@ Erkläre mir den Fehler und gib mir zwei verschiedene Lösungsansätze.
 <li><strong>Erweiterte Reflexionsfrage 108:</strong> In welchen Situationen hilft dir ein Alltagsbeispiel, Rust-Konzepte zu begreifen?</li>
 <li><strong>Erweiterte Reflexionsfrage 109:</strong> Wie viel Zeit nimmst du dir für Code-Reviews deiner eigenen Lösungen auf Exercism?</li>
 <li><strong>Erweiterte Reflexionsfrage 110:</strong> Welche Vorteile siehst du im Micro-Learning gegenüber dem Block-Lernen am Wochenende?</li>
-<li><strong>Erweiterte Reflexionsfrage 111:</strong> Wie verhinderst du, dass du in die ‘Tutorial-Hölle’ gerätst?</li>
+<li><strong>Erweiterte Reflexionsfrage 111:</strong> Wie verhinderst du, dass du in die 'Tutorial-Hölle' gerätst?</li>
 <li><strong>Erweiterte Reflexionsfrage 112:</strong> Welches kleine Projekt möchtest du als Nächstes mit dem gelernten Wissen umsetzen?</li>
 <li><strong>Erweiterte Reflexionsfrage 113:</strong> Wie gehst du mit Frustration um, wenn der Borrow Checker deine Zuweisungen ablehnt?</li>
 <li><strong>Erweiterte Reflexionsfrage 114:</strong> Welche Rolle spielt das aktive Tippen von Code im Vergleich zum passiven Lesen für dich?</li>
@@ -669,7 +670,7 @@ Erkläre mir den Fehler und gib mir zwei verschiedene Lösungsansätze.
 <li><strong>Erweiterte Reflexionsfrage 128:</strong> In welchen Situationen hilft dir ein Alltagsbeispiel, Rust-Konzepte zu begreifen?</li>
 <li><strong>Erweiterte Reflexionsfrage 129:</strong> Wie viel Zeit nimmst du dir für Code-Reviews deiner eigenen Lösungen auf Exercism?</li>
 <li><strong>Erweiterte Reflexionsfrage 130:</strong> Welche Vorteile siehst du im Micro-Learning gegenüber dem Block-Lernen am Wochenende?</li>
-<li><strong>Erweiterte Reflexionsfrage 131:</strong> Wie verhinderst du, dass du in die ‘Tutorial-Hölle’ gerätst?</li>
+<li><strong>Erweiterte Reflexionsfrage 131:</strong> Wie verhinderst du, dass du in die 'Tutorial-Hölle' gerätst?</li>
 <li><strong>Erweiterte Reflexionsfrage 132:</strong> Welches kleine Projekt möchtest du als Nächstes mit dem gelernten Wissen umsetzen?</li>
 <li><strong>Erweiterte Reflexionsfrage 133:</strong> Wie gehst du mit Frustration um, wenn der Borrow Checker deine Zuweisungen ablehnt?</li>
 <li><strong>Erweiterte Reflexionsfrage 134:</strong> Welche Rolle spielt das aktive Tippen von Code im Vergleich zum passiven Lesen für dich?</li>
@@ -689,7 +690,7 @@ Erkläre mir den Fehler und gib mir zwei verschiedene Lösungsansätze.
 <li><strong>Erweiterte Reflexionsfrage 148:</strong> In welchen Situationen hilft dir ein Alltagsbeispiel, Rust-Konzepte zu begreifen?</li>
 <li><strong>Erweiterte Reflexionsfrage 149:</strong> Wie viel Zeit nimmst du dir für Code-Reviews deiner eigenen Lösungen auf Exercism?</li>
 <li><strong>Erweiterte Reflexionsfrage 150:</strong> Welche Vorteile siehst du im Micro-Learning gegenüber dem Block-Lernen am Wochenende?</li>
-<li><strong>Erweiterte Reflexionsfrage 151:</strong> Wie verhinderst du, dass du in die ‘Tutorial-Hölle’ gerätst?</li>
+<li><strong>Erweiterte Reflexionsfrage 151:</strong> Wie verhinderst du, dass du in die 'Tutorial-Hölle' gerätst?</li>
 <li><strong>Erweiterte Reflexionsfrage 152:</strong> Welches kleine Projekt möchtest du als Nächstes mit dem gelernten Wissen umsetzen?</li>
 <li><strong>Erweiterte Reflexionsfrage 153:</strong> Wie gehst du mit Frustration um, wenn der Borrow Checker deine Zuweisungen ablehnt?</li>
 <li><strong>Erweiterte Reflexionsfrage 154:</strong> Welche Rolle spielt das aktive Tippen von Code im Vergleich zum passiven Lesen für dich?</li>
@@ -709,7 +710,7 @@ Erkläre mir den Fehler und gib mir zwei verschiedene Lösungsansätze.
 <li><strong>Erweiterte Reflexionsfrage 168:</strong> In welchen Situationen hilft dir ein Alltagsbeispiel, Rust-Konzepte zu begreifen?</li>
 <li><strong>Erweiterte Reflexionsfrage 169:</strong> Wie viel Zeit nimmst du dir für Code-Reviews deiner eigenen Lösungen auf Exercism?</li>
 <li><strong>Erweiterte Reflexionsfrage 170:</strong> Welche Vorteile siehst du im Micro-Learning gegenüber dem Block-Lernen am Wochenende?</li>
-<li><strong>Erweiterte Reflexionsfrage 171:</strong> Wie verhinderst du, dass du in die ‘Tutorial-Hölle’ gerätst?</li>
+<li><strong>Erweiterte Reflexionsfrage 171:</strong> Wie verhinderst du, dass du in die 'Tutorial-Hölle' gerätst?</li>
 <li><strong>Erweiterte Reflexionsfrage 172:</strong> Welches kleine Projekt möchtest du als Nächstes mit dem gelernten Wissen umsetzen?</li>
 <li><strong>Erweiterte Reflexionsfrage 173:</strong> Wie gehst du mit Frustration um, wenn der Borrow Checker deine Zuweisungen ablehnt?</li>
 <li><strong>Erweiterte Reflexionsfrage 174:</strong> Welche Rolle spielt das aktive Tippen von Code im Vergleich zum passiven Lesen für dich?</li>
@@ -729,7 +730,7 @@ Erkläre mir den Fehler und gib mir zwei verschiedene Lösungsansätze.
 <li><strong>Erweiterte Reflexionsfrage 188:</strong> In welchen Situationen hilft dir ein Alltagsbeispiel, Rust-Konzepte zu begreifen?</li>
 <li><strong>Erweiterte Reflexionsfrage 189:</strong> Wie viel Zeit nimmst du dir für Code-Reviews deiner eigenen Lösungen auf Exercism?</li>
 <li><strong>Erweiterte Reflexionsfrage 190:</strong> Welche Vorteile siehst du im Micro-Learning gegenüber dem Block-Lernen am Wochenende?</li>
-<li><strong>Erweiterte Reflexionsfrage 191:</strong> Wie verhinderst du, dass du in die ‘Tutorial-Hölle’ gerätst?</li>
+<li><strong>Erweiterte Reflexionsfrage 191:</strong> Wie verhinderst du, dass du in die 'Tutorial-Hölle' gerätst?</li>
 <li><strong>Erweiterte Reflexionsfrage 192:</strong> Welches kleine Projekt möchtest du als Nächstes mit dem gelernten Wissen umsetzen?</li>
 <li><strong>Erweiterte Reflexionsfrage 193:</strong> Wie gehst du mit Frustration um, wenn der Borrow Checker deine Zuweisungen ablehnt?</li>
 <li><strong>Erweiterte Reflexionsfrage 194:</strong> Welche Rolle spielt das aktive Tippen von Code im Vergleich zum passiven Lesen für dich?</li>
@@ -749,7 +750,7 @@ Erkläre mir den Fehler und gib mir zwei verschiedene Lösungsansätze.
 <li><strong>Erweiterte Reflexionsfrage 208:</strong> In welchen Situationen hilft dir ein Alltagsbeispiel, Rust-Konzepte zu begreifen?</li>
 <li><strong>Erweiterte Reflexionsfrage 209:</strong> Wie viel Zeit nimmst du dir für Code-Reviews deiner eigenen Lösungen auf Exercism?</li>
 <li><strong>Erweiterte Reflexionsfrage 210:</strong> Welche Vorteile siehst du im Micro-Learning gegenüber dem Block-Lernen am Wochenende?</li>
-<li><strong>Erweiterte Reflexionsfrage 211:</strong> Wie verhinderst du, dass du in die ‘Tutorial-Hölle’ gerätst?</li>
+<li><strong>Erweiterte Reflexionsfrage 211:</strong> Wie verhinderst du, dass du in die 'Tutorial-Hölle' gerätst?</li>
 <li><strong>Erweiterte Reflexionsfrage 212:</strong> Welches kleine Projekt möchtest du als Nächstes mit dem gelernten Wissen umsetzen?</li>
 <li><strong>Erweiterte Reflexionsfrage 213:</strong> Wie gehst du mit Frustration um, wenn der Borrow Checker deine Zuweisungen ablehnt?</li>
 <li><strong>Erweiterte Reflexionsfrage 214:</strong> Welche Rolle spielt das aktive Tippen von Code im Vergleich zum passiven Lesen für dich?</li>
@@ -769,7 +770,7 @@ Erkläre mir den Fehler und gib mir zwei verschiedene Lösungsansätze.
 <li><strong>Erweiterte Reflexionsfrage 228:</strong> In welchen Situationen hilft dir ein Alltagsbeispiel, Rust-Konzepte zu begreifen?</li>
 <li><strong>Erweiterte Reflexionsfrage 229:</strong> Wie viel Zeit nimmst du dir für Code-Reviews deiner eigenen Lösungen auf Exercism?</li>
 <li><strong>Erweiterte Reflexionsfrage 230:</strong> Welche Vorteile siehst du im Micro-Learning gegenüber dem Block-Lernen am Wochenende?</li>
-<li><strong>Erweiterte Reflexionsfrage 231:</strong> Wie verhinderst du, dass du in die ‘Tutorial-Hölle’ gerätst?</li>
+<li><strong>Erweiterte Reflexionsfrage 231:</strong> Wie verhinderst du, dass du in die 'Tutorial-Hölle' gerätst?</li>
 <li><strong>Erweiterte Reflexionsfrage 232:</strong> Welches kleine Projekt möchtest du als Nächstes mit dem gelernten Wissen umsetzen?</li>
 <li><strong>Erweiterte Reflexionsfrage 233:</strong> Wie gehst du mit Frustration um, wenn der Borrow Checker deine Zuweisungen ablehnt?</li>
 <li><strong>Erweiterte Reflexionsfrage 234:</strong> Welche Rolle spielt das aktive Tippen von Code im Vergleich zum passiven Lesen für dich?</li>
@@ -789,7 +790,7 @@ Erkläre mir den Fehler und gib mir zwei verschiedene Lösungsansätze.
 <li><strong>Erweiterte Reflexionsfrage 248:</strong> In welchen Situationen hilft dir ein Alltagsbeispiel, Rust-Konzepte zu begreifen?</li>
 <li><strong>Erweiterte Reflexionsfrage 249:</strong> Wie viel Zeit nimmst du dir für Code-Reviews deiner eigenen Lösungen auf Exercism?</li>
 <li><strong>Erweiterte Reflexionsfrage 250:</strong> Welche Vorteile siehst du im Micro-Learning gegenüber dem Block-Lernen am Wochenende?</li>
-<li><strong>Erweiterte Reflexionsfrage 251:</strong> Wie verhinderst du, dass du in die ‘Tutorial-Hölle’ gerätst?</li>
+<li><strong>Erweiterte Reflexionsfrage 251:</strong> Wie verhinderst du, dass du in die 'Tutorial-Hölle' gerätst?</li>
 <li><strong>Erweiterte Reflexionsfrage 252:</strong> Welches kleine Projekt möchtest du als Nächstes mit dem gelernten Wissen umsetzen?</li>
 <li><strong>Erweiterte Reflexionsfrage 253:</strong> Wie gehst du mit Frustration um, wenn der Borrow Checker deine Zuweisungen ablehnt?</li>
 <li><strong>Erweiterte Reflexionsfrage 254:</strong> Welche Rolle spielt das aktive Tippen von Code im Vergleich zum passiven Lesen für dich?</li>
@@ -809,7 +810,7 @@ Erkläre mir den Fehler und gib mir zwei verschiedene Lösungsansätze.
 <li><strong>Erweiterte Reflexionsfrage 268:</strong> In welchen Situationen hilft dir ein Alltagsbeispiel, Rust-Konzepte zu begreifen?</li>
 <li><strong>Erweiterte Reflexionsfrage 269:</strong> Wie viel Zeit nimmst du dir für Code-Reviews deiner eigenen Lösungen auf Exercism?</li>
 <li><strong>Erweiterte Reflexionsfrage 270:</strong> Welche Vorteile siehst du im Micro-Learning gegenüber dem Block-Lernen am Wochenende?</li>
-<li><strong>Erweiterte Reflexionsfrage 271:</strong> Wie verhinderst du, dass du in die ‘Tutorial-Hölle’ gerätst?</li>
+<li><strong>Erweiterte Reflexionsfrage 271:</strong> Wie verhinderst du, dass du in die 'Tutorial-Hölle' gerätst?</li>
 <li><strong>Erweiterte Reflexionsfrage 272:</strong> Welches kleine Projekt möchtest du als Nächstes mit dem gelernten Wissen umsetzen?</li>
 <li><strong>Erweiterte Reflexionsfrage 273:</strong> Wie gehst du mit Frustration um, wenn der Borrow Checker deine Zuweisungen ablehnt?</li>
 <li><strong>Erweiterte Reflexionsfrage 274:</strong> Welche Rolle spielt das aktive Tippen von Code im Vergleich zum passiven Lesen für dich?</li>
@@ -829,7 +830,7 @@ Erkläre mir den Fehler und gib mir zwei verschiedene Lösungsansätze.
 <li><strong>Erweiterte Reflexionsfrage 288:</strong> In welchen Situationen hilft dir ein Alltagsbeispiel, Rust-Konzepte zu begreifen?</li>
 <li><strong>Erweiterte Reflexionsfrage 289:</strong> Wie viel Zeit nimmst du dir für Code-Reviews deiner eigenen Lösungen auf Exercism?</li>
 <li><strong>Erweiterte Reflexionsfrage 290:</strong> Welche Vorteile siehst du im Micro-Learning gegenüber dem Block-Lernen am Wochenende?</li>
-<li><strong>Erweiterte Reflexionsfrage 291:</strong> Wie verhinderst du, dass du in die ‘Tutorial-Hölle’ gerätst?</li>
+<li><strong>Erweiterte Reflexionsfrage 291:</strong> Wie verhinderst du, dass du in die 'Tutorial-Hölle' gerätst?</li>
 <li><strong>Erweiterte Reflexionsfrage 292:</strong> Welches kleine Projekt möchtest du als Nächstes mit dem gelernten Wissen umsetzen?</li>
 <li><strong>Erweiterte Reflexionsfrage 293:</strong> Wie gehst du mit Frustration um, wenn der Borrow Checker deine Zuweisungen ablehnt?</li>
 <li><strong>Erweiterte Reflexionsfrage 294:</strong> Welche Rolle spielt das aktive Tippen von Code im Vergleich zum passiven Lesen für dich?</li>
@@ -849,7 +850,7 @@ Erkläre mir den Fehler und gib mir zwei verschiedene Lösungsansätze.
 <li><strong>Erweiterte Reflexionsfrage 308:</strong> In welchen Situationen hilft dir ein Alltagsbeispiel, Rust-Konzepte zu begreifen?</li>
 <li><strong>Erweiterte Reflexionsfrage 309:</strong> Wie viel Zeit nimmst du dir für Code-Reviews deiner eigenen Lösungen auf Exercism?</li>
 <li><strong>Erweiterte Reflexionsfrage 310:</strong> Welche Vorteile siehst du im Micro-Learning gegenüber dem Block-Lernen am Wochenende?</li>
-<li><strong>Erweiterte Reflexionsfrage 311:</strong> Wie verhinderst du, dass du in die ‘Tutorial-Hölle’ gerätst?</li>
+<li><strong>Erweiterte Reflexionsfrage 311:</strong> Wie verhinderst du, dass du in die 'Tutorial-Hölle' gerätst?</li>
 <li><strong>Erweiterte Reflexionsfrage 312:</strong> Welches kleine Projekt möchtest du als Nächstes mit dem gelernten Wissen umsetzen?</li>
 <li><strong>Erweiterte Reflexionsfrage 313:</strong> Wie gehst du mit Frustration um, wenn der Borrow Checker deine Zuweisungen ablehnt?</li>
 <li><strong>Erweiterte Reflexionsfrage 314:</strong> Welche Rolle spielt das aktive Tippen von Code im Vergleich zum passiven Lesen für dich?</li>
@@ -869,7 +870,7 @@ Erkläre mir den Fehler und gib mir zwei verschiedene Lösungsansätze.
 <li><strong>Erweiterte Reflexionsfrage 328:</strong> In welchen Situationen hilft dir ein Alltagsbeispiel, Rust-Konzepte zu begreifen?</li>
 <li><strong>Erweiterte Reflexionsfrage 329:</strong> Wie viel Zeit nimmst du dir für Code-Reviews deiner eigenen Lösungen auf Exercism?</li>
 <li><strong>Erweiterte Reflexionsfrage 330:</strong> Welche Vorteile siehst du im Micro-Learning gegenüber dem Block-Lernen am Wochenende?</li>
-<li><strong>Erweiterte Reflexionsfrage 331:</strong> Wie verhinderst du, dass du in die ‘Tutorial-Hölle’ gerätst?</li>
+<li><strong>Erweiterte Reflexionsfrage 331:</strong> Wie verhinderst du, dass du in die 'Tutorial-Hölle' gerätst?</li>
 <li><strong>Erweiterte Reflexionsfrage 332:</strong> Welches kleine Projekt möchtest du als Nächstes mit dem gelernten Wissen umsetzen?</li>
 <li><strong>Erweiterte Reflexionsfrage 333:</strong> Wie gehst du mit Frustration um, wenn der Borrow Checker deine Zuweisungen ablehnt?</li>
 <li><strong>Erweiterte Reflexionsfrage 334:</strong> Welche Rolle spielt das aktive Tippen von Code im Vergleich zum passiven Lesen für dich?</li>
@@ -889,7 +890,7 @@ Erkläre mir den Fehler und gib mir zwei verschiedene Lösungsansätze.
 <li><strong>Erweiterte Reflexionsfrage 348:</strong> In welchen Situationen hilft dir ein Alltagsbeispiel, Rust-Konzepte zu begreifen?</li>
 <li><strong>Erweiterte Reflexionsfrage 349:</strong> Wie viel Zeit nimmst du dir für Code-Reviews deiner eigenen Lösungen auf Exercism?</li>
 <li><strong>Erweiterte Reflexionsfrage 350:</strong> Welche Vorteile siehst du im Micro-Learning gegenüber dem Block-Lernen am Wochenende?</li>
-<li><strong>Erweiterte Reflexionsfrage 351:</strong> Wie verhinderst du, dass du in die ‘Tutorial-Hölle’ gerätst?</li>
+<li><strong>Erweiterte Reflexionsfrage 351:</strong> Wie verhinderst du, dass du in die 'Tutorial-Hölle' gerätst?</li>
 <li><strong>Erweiterte Reflexionsfrage 352:</strong> Welches kleine Projekt möchtest du als Nächstes mit dem gelernten Wissen umsetzen?</li>
 <li><strong>Erweiterte Reflexionsfrage 353:</strong> Wie gehst du mit Frustration um, wenn der Borrow Checker deine Zuweisungen ablehnt?</li>
 <li><strong>Erweiterte Reflexionsfrage 354:</strong> Welche Rolle spielt das aktive Tippen von Code im Vergleich zum passiven Lesen für dich?</li>
@@ -909,7 +910,7 @@ Erkläre mir den Fehler und gib mir zwei verschiedene Lösungsansätze.
 <li><strong>Erweiterte Reflexionsfrage 368:</strong> In welchen Situationen hilft dir ein Alltagsbeispiel, Rust-Konzepte zu begreifen?</li>
 <li><strong>Erweiterte Reflexionsfrage 369:</strong> Wie viel Zeit nimmst du dir für Code-Reviews deiner eigenen Lösungen auf Exercism?</li>
 <li><strong>Erweiterte Reflexionsfrage 370:</strong> Welche Vorteile siehst du im Micro-Learning gegenüber dem Block-Lernen am Wochenende?</li>
-<li><strong>Erweiterte Reflexionsfrage 371:</strong> Wie verhinderst du, dass du in die ‘Tutorial-Hölle’ gerätst?</li>
+<li><strong>Erweiterte Reflexionsfrage 371:</strong> Wie verhinderst du, dass du in die 'Tutorial-Hölle' gerätst?</li>
 <li><strong>Erweiterte Reflexionsfrage 372:</strong> Welches kleine Projekt möchtest du als Nächstes mit dem gelernten Wissen umsetzen?</li>
 <li><strong>Erweiterte Reflexionsfrage 373:</strong> Wie gehst du mit Frustration um, wenn der Borrow Checker deine Zuweisungen ablehnt?</li>
 <li><strong>Erweiterte Reflexionsfrage 374:</strong> Welche Rolle spielt das aktive Tippen von Code im Vergleich zum passiven Lesen für dich?</li>
@@ -929,7 +930,7 @@ Erkläre mir den Fehler und gib mir zwei verschiedene Lösungsansätze.
 <li><strong>Erweiterte Reflexionsfrage 388:</strong> In welchen Situationen hilft dir ein Alltagsbeispiel, Rust-Konzepte zu begreifen?</li>
 <li><strong>Erweiterte Reflexionsfrage 389:</strong> Wie viel Zeit nimmst du dir für Code-Reviews deiner eigenen Lösungen auf Exercism?</li>
 <li><strong>Erweiterte Reflexionsfrage 390:</strong> Welche Vorteile siehst du im Micro-Learning gegenüber dem Block-Lernen am Wochenende?</li>
-<li><strong>Erweiterte Reflexionsfrage 391:</strong> Wie verhinderst du, dass du in die ‘Tutorial-Hölle’ gerätst?</li>
+<li><strong>Erweiterte Reflexionsfrage 391:</strong> Wie verhinderst du, dass du in die 'Tutorial-Hölle' gerätst?</li>
 <li><strong>Erweiterte Reflexionsfrage 392:</strong> Welches kleine Projekt möchtest du als Nächstes mit dem gelernten Wissen umsetzen?</li>
 <li><strong>Erweiterte Reflexionsfrage 393:</strong> Wie gehst du mit Frustration um, wenn der Borrow Checker deine Zuweisungen ablehnt?</li>
 <li><strong>Erweiterte Reflexionsfrage 394:</strong> Welche Rolle spielt das aktive Tippen von Code im Vergleich zum passiven Lesen für dich?</li>
@@ -949,7 +950,7 @@ Erkläre mir den Fehler und gib mir zwei verschiedene Lösungsansätze.
 <li><strong>Erweiterte Reflexionsfrage 408:</strong> In welchen Situationen hilft dir ein Alltagsbeispiel, Rust-Konzepte zu begreifen?</li>
 <li><strong>Erweiterte Reflexionsfrage 409:</strong> Wie viel Zeit nimmst du dir für Code-Reviews deiner eigenen Lösungen auf Exercism?</li>
 <li><strong>Erweiterte Reflexionsfrage 410:</strong> Welche Vorteile siehst du im Micro-Learning gegenüber dem Block-Lernen am Wochenende?</li>
-<li><strong>Erweiterte Reflexionsfrage 411:</strong> Wie verhinderst du, dass du in die ‘Tutorial-Hölle’ gerätst?</li>
+<li><strong>Erweiterte Reflexionsfrage 411:</strong> Wie verhinderst du, dass du in die 'Tutorial-Hölle' gerätst?</li>
 <li><strong>Erweiterte Reflexionsfrage 412:</strong> Welches kleine Projekt möchtest du als Nächstes mit dem gelernten Wissen umsetzen?</li>
 <li><strong>Erweiterte Reflexionsfrage 413:</strong> Wie gehst du mit Frustration um, wenn der Borrow Checker deine Zuweisungen ablehnt?</li>
 <li><strong>Erweiterte Reflexionsfrage 414:</strong> Welche Rolle spielt das aktive Tippen von Code im Vergleich zum passiven Lesen für dich?</li>
@@ -969,7 +970,7 @@ Erkläre mir den Fehler und gib mir zwei verschiedene Lösungsansätze.
 <li><strong>Erweiterte Reflexionsfrage 428:</strong> In welchen Situationen hilft dir ein Alltagsbeispiel, Rust-Konzepte zu begreifen?</li>
 <li><strong>Erweiterte Reflexionsfrage 429:</strong> Wie viel Zeit nimmst du dir für Code-Reviews deiner eigenen Lösungen auf Exercism?</li>
 <li><strong>Erweiterte Reflexionsfrage 430:</strong> Welche Vorteile siehst du im Micro-Learning gegenüber dem Block-Lernen am Wochenende?</li>
-<li><strong>Erweiterte Reflexionsfrage 431:</strong> Wie verhinderst du, dass du in die ‘Tutorial-Hölle’ gerätst?</li>
+<li><strong>Erweiterte Reflexionsfrage 431:</strong> Wie verhinderst du, dass du in die 'Tutorial-Hölle' gerätst?</li>
 <li><strong>Erweiterte Reflexionsfrage 432:</strong> Welches kleine Projekt möchtest du als Nächstes mit dem gelernten Wissen umsetzen?</li>
 <li><strong>Erweiterte Reflexionsfrage 433:</strong> Wie gehst du mit Frustration um, wenn der Borrow Checker deine Zuweisungen ablehnt?</li>
 <li><strong>Erweiterte Reflexionsfrage 434:</strong> Welche Rolle spielt das aktive Tippen von Code im Vergleich zum passiven Lesen für dich?</li>
@@ -989,7 +990,7 @@ Erkläre mir den Fehler und gib mir zwei verschiedene Lösungsansätze.
 <li><strong>Erweiterte Reflexionsfrage 448:</strong> In welchen Situationen hilft dir ein Alltagsbeispiel, Rust-Konzepte zu begreifen?</li>
 <li><strong>Erweiterte Reflexionsfrage 449:</strong> Wie viel Zeit nimmst du dir für Code-Reviews deiner eigenen Lösungen auf Exercism?</li>
 <li><strong>Erweiterte Reflexionsfrage 450:</strong> Welche Vorteile siehst du im Micro-Learning gegenüber dem Block-Lernen am Wochenende?</li>
-<li><strong>Erweiterte Reflexionsfrage 451:</strong> Wie verhinderst du, dass du in die ‘Tutorial-Hölle’ gerätst?</li>
+<li><strong>Erweiterte Reflexionsfrage 451:</strong> Wie verhinderst du, dass du in die 'Tutorial-Hölle' gerätst?</li>
 <li><strong>Erweiterte Reflexionsfrage 452:</strong> Welches kleine Projekt möchtest du als Nächstes mit dem gelernten Wissen umsetzen?</li>
 <li><strong>Erweiterte Reflexionsfrage 453:</strong> Wie gehst du mit Frustration um, wenn der Borrow Checker deine Zuweisungen ablehnt?</li>
 <li><strong>Erweiterte Reflexionsfrage 454:</strong> Welche Rolle spielt das aktive Tippen von Code im Vergleich zum passiven Lesen für dich?</li>
@@ -1009,7 +1010,7 @@ Erkläre mir den Fehler und gib mir zwei verschiedene Lösungsansätze.
 <li><strong>Erweiterte Reflexionsfrage 468:</strong> In welchen Situationen hilft dir ein Alltagsbeispiel, Rust-Konzepte zu begreifen?</li>
 <li><strong>Erweiterte Reflexionsfrage 469:</strong> Wie viel Zeit nimmst du dir für Code-Reviews deiner eigenen Lösungen auf Exercism?</li>
 <li><strong>Erweiterte Reflexionsfrage 470:</strong> Welche Vorteile siehst du im Micro-Learning gegenüber dem Block-Lernen am Wochenende?</li>
-<li><strong>Erweiterte Reflexionsfrage 471:</strong> Wie verhinderst du, dass du in die ‘Tutorial-Hölle’ gerätst?</li>
+<li><strong>Erweiterte Reflexionsfrage 471:</strong> Wie verhinderst du, dass du in die 'Tutorial-Hölle' gerätst?</li>
 <li><strong>Erweiterte Reflexionsfrage 472:</strong> Welches kleine Projekt möchtest du als Nächstes mit dem gelernten Wissen umsetzen?</li>
 <li><strong>Erweiterte Reflexionsfrage 473:</strong> Wie gehst du mit Frustration um, wenn der Borrow Checker deine Zuweisungen ablehnt?</li>
 <li><strong>Erweiterte Reflexionsfrage 474:</strong> Welche Rolle spielt das aktive Tippen von Code im Vergleich zum passiven Lesen für dich?</li>
@@ -1029,7 +1030,7 @@ Erkläre mir den Fehler und gib mir zwei verschiedene Lösungsansätze.
 <li><strong>Erweiterte Reflexionsfrage 488:</strong> In welchen Situationen hilft dir ein Alltagsbeispiel, Rust-Konzepte zu begreifen?</li>
 <li><strong>Erweiterte Reflexionsfrage 489:</strong> Wie viel Zeit nimmst du dir für Code-Reviews deiner eigenen Lösungen auf Exercism?</li>
 <li><strong>Erweiterte Reflexionsfrage 490:</strong> Welche Vorteile siehst du im Micro-Learning gegenüber dem Block-Lernen am Wochenende?</li>
-<li><strong>Erweiterte Reflexionsfrage 491:</strong> Wie verhinderst du, dass du in die ‘Tutorial-Hölle’ gerätst?</li>
+<li><strong>Erweiterte Reflexionsfrage 491:</strong> Wie verhinderst du, dass du in die 'Tutorial-Hölle' gerätst?</li>
 <li><strong>Erweiterte Reflexionsfrage 492:</strong> Welches kleine Projekt möchtest du als Nächstes mit dem gelernten Wissen umsetzen?</li>
 <li><strong>Erweiterte Reflexionsfrage 493:</strong> Wie gehst du mit Frustration um, wenn der Borrow Checker deine Zuweisungen ablehnt?</li>
 <li><strong>Erweiterte Reflexionsfrage 494:</strong> Welche Rolle spielt das aktive Tippen von Code im Vergleich zum passiven Lesen für dich?</li>
@@ -1049,7 +1050,7 @@ Erkläre mir den Fehler und gib mir zwei verschiedene Lösungsansätze.
 <li><strong>Erweiterte Reflexionsfrage 508:</strong> In welchen Situationen hilft dir ein Alltagsbeispiel, Rust-Konzepte zu begreifen?</li>
 <li><strong>Erweiterte Reflexionsfrage 509:</strong> Wie viel Zeit nimmst du dir für Code-Reviews deiner eigenen Lösungen auf Exercism?</li>
 <li><strong>Erweiterte Reflexionsfrage 510:</strong> Welche Vorteile siehst du im Micro-Learning gegenüber dem Block-Lernen am Wochenende?</li>
-<li><strong>Erweiterte Reflexionsfrage 511:</strong> Wie verhinderst du, dass du in die ‘Tutorial-Hölle’ gerätst?</li>
+<li><strong>Erweiterte Reflexionsfrage 511:</strong> Wie verhinderst du, dass du in die 'Tutorial-Hölle' gerätst?</li>
 <li><strong>Erweiterte Reflexionsfrage 512:</strong> Welches kleine Projekt möchtest du als Nächstes mit dem gelernten Wissen umsetzen?</li>
 <li><strong>Erweiterte Reflexionsfrage 513:</strong> Wie gehst du mit Frustration um, wenn der Borrow Checker deine Zuweisungen ablehnt?</li>
 <li><strong>Erweiterte Reflexionsfrage 514:</strong> Welche Rolle spielt das aktive Tippen von Code im Vergleich zum passiven Lesen für dich?</li>
@@ -1069,7 +1070,7 @@ Erkläre mir den Fehler und gib mir zwei verschiedene Lösungsansätze.
 <li><strong>Erweiterte Reflexionsfrage 528:</strong> In welchen Situationen hilft dir ein Alltagsbeispiel, Rust-Konzepte zu begreifen?</li>
 <li><strong>Erweiterte Reflexionsfrage 529:</strong> Wie viel Zeit nimmst du dir für Code-Reviews deiner eigenen Lösungen auf Exercism?</li>
 <li><strong>Erweiterte Reflexionsfrage 530:</strong> Welche Vorteile siehst du im Micro-Learning gegenüber dem Block-Lernen am Wochenende?</li>
-<li><strong>Erweiterte Reflexionsfrage 531:</strong> Wie verhinderst du, dass du in die ‘Tutorial-Hölle’ gerätst?</li>
+<li><strong>Erweiterte Reflexionsfrage 531:</strong> Wie verhinderst du, dass du in die 'Tutorial-Hölle' gerätst?</li>
 <li><strong>Erweiterte Reflexionsfrage 532:</strong> Welches kleine Projekt möchtest du als Nächstes mit dem gelernten Wissen umsetzen?</li>
 <li><strong>Erweiterte Reflexionsfrage 533:</strong> Wie gehst du mit Frustration um, wenn der Borrow Checker deine Zuweisungen ablehnt?</li>
 <li><strong>Erweiterte Reflexionsfrage 534:</strong> Welche Rolle spielt das aktive Tippen von Code im Vergleich zum passiven Lesen für dich?</li>
@@ -1089,7 +1090,7 @@ Erkläre mir den Fehler und gib mir zwei verschiedene Lösungsansätze.
 <li><strong>Erweiterte Reflexionsfrage 548:</strong> In welchen Situationen hilft dir ein Alltagsbeispiel, Rust-Konzepte zu begreifen?</li>
 <li><strong>Erweiterte Reflexionsfrage 549:</strong> Wie viel Zeit nimmst du dir für Code-Reviews deiner eigenen Lösungen auf Exercism?</li>
 <li><strong>Erweiterte Reflexionsfrage 550:</strong> Welche Vorteile siehst du im Micro-Learning gegenüber dem Block-Lernen am Wochenende?</li>
-<li><strong>Erweiterte Reflexionsfrage 551:</strong> Wie verhinderst du, dass du in die ‘Tutorial-Hölle’ gerätst?</li>
+<li><strong>Erweiterte Reflexionsfrage 551:</strong> Wie verhinderst du, dass du in die 'Tutorial-Hölle' gerätst?</li>
 <li><strong>Erweiterte Reflexionsfrage 552:</strong> Welches kleine Projekt möchtest du als Nächstes mit dem gelernten Wissen umsetzen?</li>
 <li><strong>Erweiterte Reflexionsfrage 553:</strong> Wie gehst du mit Frustration um, wenn der Borrow Checker deine Zuweisungen ablehnt?</li>
 <li><strong>Erweiterte Reflexionsfrage 554:</strong> Welche Rolle spielt das aktive Tippen von Code im Vergleich zum passiven Lesen für dich?</li>
@@ -1109,7 +1110,7 @@ Erkläre mir den Fehler und gib mir zwei verschiedene Lösungsansätze.
 <li><strong>Erweiterte Reflexionsfrage 568:</strong> In welchen Situationen hilft dir ein Alltagsbeispiel, Rust-Konzepte zu begreifen?</li>
 <li><strong>Erweiterte Reflexionsfrage 569:</strong> Wie viel Zeit nimmst du dir für Code-Reviews deiner eigenen Lösungen auf Exercism?</li>
 <li><strong>Erweiterte Reflexionsfrage 570:</strong> Welche Vorteile siehst du im Micro-Learning gegenüber dem Block-Lernen am Wochenende?</li>
-<li><strong>Erweiterte Reflexionsfrage 571:</strong> Wie verhinderst du, dass du in die ‘Tutorial-Hölle’ gerätst?</li>
+<li><strong>Erweiterte Reflexionsfrage 571:</strong> Wie verhinderst du, dass du in die 'Tutorial-Hölle' gerätst?</li>
 <li><strong>Erweiterte Reflexionsfrage 572:</strong> Welches kleine Projekt möchtest du als Nächstes mit dem gelernten Wissen umsetzen?</li>
 <li><strong>Erweiterte Reflexionsfrage 573:</strong> Wie gehst du mit Frustration um, wenn der Borrow Checker deine Zuweisungen ablehnt?</li>
 <li><strong>Erweiterte Reflexionsfrage 574:</strong> Welche Rolle spielt das aktive Tippen von Code im Vergleich zum passiven Lesen für dich?</li>
@@ -1129,7 +1130,7 @@ Erkläre mir den Fehler und gib mir zwei verschiedene Lösungsansätze.
 <li><strong>Erweiterte Reflexionsfrage 588:</strong> In welchen Situationen hilft dir ein Alltagsbeispiel, Rust-Konzepte zu begreifen?</li>
 <li><strong>Erweiterte Reflexionsfrage 589:</strong> Wie viel Zeit nimmst du dir für Code-Reviews deiner eigenen Lösungen auf Exercism?</li>
 <li><strong>Erweiterte Reflexionsfrage 590:</strong> Welche Vorteile siehst du im Micro-Learning gegenüber dem Block-Lernen am Wochenende?</li>
-<li><strong>Erweiterte Reflexionsfrage 591:</strong> Wie verhinderst du, dass du in die ‘Tutorial-Hölle’ gerätst?</li>
+<li><strong>Erweiterte Reflexionsfrage 591:</strong> Wie verhinderst du, dass du in die 'Tutorial-Hölle' gerätst?</li>
 <li><strong>Erweiterte Reflexionsfrage 592:</strong> Welches kleine Projekt möchtest du als Nächstes mit dem gelernten Wissen umsetzen?</li>
 <li><strong>Erweiterte Reflexionsfrage 593:</strong> Wie gehst du mit Frustration um, wenn der Borrow Checker deine Zuweisungen ablehnt?</li>
 <li><strong>Erweiterte Reflexionsfrage 594:</strong> Welche Rolle spielt das aktive Tippen von Code im Vergleich zum passiven Lesen für dich?</li>
@@ -1149,7 +1150,7 @@ Erkläre mir den Fehler und gib mir zwei verschiedene Lösungsansätze.
 <li><strong>Erweiterte Reflexionsfrage 608:</strong> In welchen Situationen hilft dir ein Alltagsbeispiel, Rust-Konzepte zu begreifen?</li>
 <li><strong>Erweiterte Reflexionsfrage 609:</strong> Wie viel Zeit nimmst du dir für Code-Reviews deiner eigenen Lösungen auf Exercism?</li>
 <li><strong>Erweiterte Reflexionsfrage 610:</strong> Welche Vorteile siehst du im Micro-Learning gegenüber dem Block-Lernen am Wochenende?</li>
-<li><strong>Erweiterte Reflexionsfrage 611:</strong> Wie verhinderst du, dass du in die ‘Tutorial-Hölle’ gerätst?</li>
+<li><strong>Erweiterte Reflexionsfrage 611:</strong> Wie verhinderst du, dass du in die 'Tutorial-Hölle' gerätst?</li>
 <li><strong>Erweiterte Reflexionsfrage 612:</strong> Welches kleine Projekt möchtest du als Nächstes mit dem gelernten Wissen umsetzen?</li>
 <li><strong>Erweiterte Reflexionsfrage 613:</strong> Wie gehst du mit Frustration um, wenn der Borrow Checker deine Zuweisungen ablehnt?</li>
 <li><strong>Erweiterte Reflexionsfrage 614:</strong> Welche Rolle spielt das aktive Tippen von Code im Vergleich zum passiven Lesen für dich?</li>
@@ -1169,7 +1170,7 @@ Erkläre mir den Fehler und gib mir zwei verschiedene Lösungsansätze.
 <li><strong>Erweiterte Reflexionsfrage 628:</strong> In welchen Situationen hilft dir ein Alltagsbeispiel, Rust-Konzepte zu begreifen?</li>
 <li><strong>Erweiterte Reflexionsfrage 629:</strong> Wie viel Zeit nimmst du dir für Code-Reviews deiner eigenen Lösungen auf Exercism?</li>
 <li><strong>Erweiterte Reflexionsfrage 630:</strong> Welche Vorteile siehst du im Micro-Learning gegenüber dem Block-Lernen am Wochenende?</li>
-<li><strong>Erweiterte Reflexionsfrage 631:</strong> Wie verhinderst du, dass du in die ‘Tutorial-Hölle’ gerätst?</li>
+<li><strong>Erweiterte Reflexionsfrage 631:</strong> Wie verhinderst du, dass du in die 'Tutorial-Hölle' gerätst?</li>
 <li><strong>Erweiterte Reflexionsfrage 632:</strong> Welches kleine Projekt möchtest du als Nächstes mit dem gelernten Wissen umsetzen?</li>
 <li><strong>Erweiterte Reflexionsfrage 633:</strong> Wie gehst du mit Frustration um, wenn der Borrow Checker deine Zuweisungen ablehnt?</li>
 <li><strong>Erweiterte Reflexionsfrage 634:</strong> Welche Rolle spielt das aktive Tippen von Code im Vergleich zum passiven Lesen für dich?</li>
@@ -1189,7 +1190,7 @@ Erkläre mir den Fehler und gib mir zwei verschiedene Lösungsansätze.
 <li><strong>Erweiterte Reflexionsfrage 648:</strong> In welchen Situationen hilft dir ein Alltagsbeispiel, Rust-Konzepte zu begreifen?</li>
 <li><strong>Erweiterte Reflexionsfrage 649:</strong> Wie viel Zeit nimmst du dir für Code-Reviews deiner eigenen Lösungen auf Exercism?</li>
 <li><strong>Erweiterte Reflexionsfrage 650:</strong> Welche Vorteile siehst du im Micro-Learning gegenüber dem Block-Lernen am Wochenende?</li>
-<li><strong>Erweiterte Reflexionsfrage 651:</strong> Wie verhinderst du, dass du in die ‘Tutorial-Hölle’ gerätst?</li>
+<li><strong>Erweiterte Reflexionsfrage 651:</strong> Wie verhinderst du, dass du in die 'Tutorial-Hölle' gerätst?</li>
 <li><strong>Erweiterte Reflexionsfrage 652:</strong> Welches kleine Projekt möchtest du als Nächstes mit dem gelernten Wissen umsetzen?</li>
 <li><strong>Erweiterte Reflexionsfrage 653:</strong> Wie gehst du mit Frustration um, wenn der Borrow Checker deine Zuweisungen ablehnt?</li>
 <li><strong>Erweiterte Reflexionsfrage 654:</strong> Welche Rolle spielt das aktive Tippen von Code im Vergleich zum passiven Lesen für dich?</li>
@@ -1209,7 +1210,7 @@ Erkläre mir den Fehler und gib mir zwei verschiedene Lösungsansätze.
 <li><strong>Erweiterte Reflexionsfrage 668:</strong> In welchen Situationen hilft dir ein Alltagsbeispiel, Rust-Konzepte zu begreifen?</li>
 <li><strong>Erweiterte Reflexionsfrage 669:</strong> Wie viel Zeit nimmst du dir für Code-Reviews deiner eigenen Lösungen auf Exercism?</li>
 <li><strong>Erweiterte Reflexionsfrage 670:</strong> Welche Vorteile siehst du im Micro-Learning gegenüber dem Block-Lernen am Wochenende?</li>
-<li><strong>Erweiterte Reflexionsfrage 671:</strong> Wie verhinderst du, dass du in die ‘Tutorial-Hölle’ gerätst?</li>
+<li><strong>Erweiterte Reflexionsfrage 671:</strong> Wie verhinderst du, dass du in die 'Tutorial-Hölle' gerätst?</li>
 <li><strong>Erweiterte Reflexionsfrage 672:</strong> Welches kleine Projekt möchtest du als Nächstes mit dem gelernten Wissen umsetzen?</li>
 </ul>
 
@@ -1218,11 +1219,11 @@ Erkläre mir den Fehler und gib mir zwei verschiedene Lösungsansätze.
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
                             <a rel="prev" href="22.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
-                                <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
+                                <i class="fa fa-angle-left"></i>
                             </a>
 
                             <a rel="next prefetch" href="24.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
-                                <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
+                                <i class="fa fa-angle-right"></i>
                             </a>
 
                         <div style="clear: both"></div>
@@ -1232,21 +1233,16 @@ Erkläre mir den Fehler und gib mir zwei verschiedene Lösungsansätze.
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
                     <a rel="prev" href="22.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
-                        <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
+                        <i class="fa fa-angle-left"></i>
                     </a>
 
                     <a rel="next prefetch" href="24.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
-                        <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
+                        <i class="fa fa-angle-right"></i>
                     </a>
             </nav>
 
         </div>
 
-        <template id=fa-eye><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M288 32c-80.8 0-145.5 36.8-192.6 80.6C48.6 156 17.3 208 2.5 243.7c-3.3 7.9-3.3 16.7 0 24.6C17.3 304 48.6 356 95.4 399.4C142.5 443.2 207.2 480 288 480s145.5-36.8 192.6-80.6c46.8-43.5 78.1-95.4 93-131.1c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C433.5 68.8 368.8 32 288 32zM432 256c0 79.5-64.5 144-144 144s-144-64.5-144-144s64.5-144 144-144s144 64.5 144 144zM288 192c0 35.3-28.7 64-64 64c-11.5 0-22.3-3-31.6-8.4c-.2 2.8-.4 5.5-.4 8.4c0 53 43 96 96 96s96-43 96-96s-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6z"/></svg></span></template>
-        <template id=fa-eye-slash><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M38.8 5.1C28.4-3.1 13.3-1.2 5.1 9.2S-1.2 34.7 9.2 42.9l592 464c10.4 8.2 25.5 6.3 33.7-4.1s6.3-25.5-4.1-33.7L525.6 386.7c39.6-40.6 66.4-86.1 79.9-118.4c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C465.5 68.8 400.8 32 320 32c-68.2 0-125 26.3-169.3 60.8L38.8 5.1zM223.1 149.5C248.6 126.2 282.7 112 320 112c79.5 0 144 64.5 144 144c0 24.9-6.3 48.3-17.4 68.7L408 294.5c5.2-11.8 8-24.8 8-38.5c0-53-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6c0 10.2-2.4 19.8-6.6 28.3l-90.3-70.8zm223.1 298L373 389.9c-16.4 6.5-34.3 10.1-53 10.1c-79.5 0-144-64.5-144-144c0-6.9 .5-13.6 1.4-20.2L83.1 161.5C60.3 191.2 44 220.8 34.5 243.7c-3.3 7.9-3.3 16.7 0 24.6c14.9 35.7 46.2 87.7 93 131.1C174.5 443.2 239.2 480 320 480c47.8 0 89.9-12.9 126.2-32.5z"/></svg></span></template>
-        <template id=fa-copy><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M502.6 70.63l-61.25-61.25C435.4 3.371 427.2 0 418.7 0H255.1c-35.35 0-64 28.66-64 64l.0195 256C192 355.4 220.7 384 256 384h192c35.2 0 64-28.8 64-64V93.25C512 84.77 508.6 76.63 502.6 70.63zM464 320c0 8.836-7.164 16-16 16H255.1c-8.838 0-16-7.164-16-16L239.1 64.13c0-8.836 7.164-16 16-16h128L384 96c0 17.67 14.33 32 32 32h47.1V320zM272 448c0 8.836-7.164 16-16 16H63.1c-8.838 0-16-7.164-16-16L47.98 192.1c0-8.836 7.164-16 16-16H160V128H63.99c-35.35 0-64 28.65-64 64l.0098 256C.002 483.3 28.66 512 64 512h192c35.2 0 64-28.8 64-64v-32h-47.1L272 448z"/></svg></span></template>
-        <template id=fa-play><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80V432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"/></svg></span></template>
-        <template id=fa-clock-rotate-left><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M75 75L41 41C25.9 25.9 0 36.6 0 57.9V168c0 13.3 10.7 24 24 24H134.1c21.4 0 32.1-25.9 17-41l-30.8-30.8C155 85.5 203 64 256 64c106 0 192 86 192 192s-86 192-192 192c-40.8 0-78.6-12.7-109.7-34.4c-14.5-10.1-34.4-6.6-44.6 7.9s-6.6 34.4 7.9 44.6C151.2 495 201.7 512 256 512c141.4 0 256-114.6 256-256S397.4 0 256 0C185.3 0 121.3 28.7 75 75zm181 53c-13.3 0-24 10.7-24 24V256c0 6.4 2.5 12.5 7 17l72 72c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-65-65V152c0-13.3-10.7-24-24-24z"/></svg></span></template>
 
 
 
@@ -1255,17 +1251,17 @@ Erkläre mir den Fehler und gib mir zwei verschiedene Lösungsansätze.
         </script>
 
 
-        <script src="elasticlunr-ef4e11c1.min.js"></script>
-        <script src="mark-09e88c2c.min.js"></script>
-        <script src="searcher-09f2665d.js"></script>
+        <script src="elasticlunr.min.js"></script>
+        <script src="mark.min.js"></script>
+        <script src="searcher.js"></script>
 
-        <script src="clipboard-1626706a.min.js"></script>
-        <script src="highlight-abc7f01d.js"></script>
-        <script src="book-c22b7243.js"></script>
+        <script src="clipboard.min.js"></script>
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
 
         <!-- Custom JS scripts -->
-        <script src="mermaid-eefea253.min.js"></script>
-        <script src="mermaid-init-ccf746f1.js"></script>
+        <script src="mermaid.min.js"></script>
+        <script src="mermaid-init.js"></script>
 
 
 

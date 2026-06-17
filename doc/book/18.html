@@ -7,25 +7,26 @@
 
 
         <!-- Custom HTML head -->
-
+        
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="theme-color" content="#ffffff">
 
-        <link rel="icon" href="favicon-de23e50b.svg">
-        <link rel="shortcut icon" href="favicon-8114d1fc.png">
-        <link rel="stylesheet" href="css/variables-8adf115d.css">
-        <link rel="stylesheet" href="css/general-0392ca55.css">
-        <link rel="stylesheet" href="css/chrome-fc474251.css">
-        <link rel="stylesheet" href="css/print-9e4910d8.css" media="print">
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
 
         <!-- Fonts -->
-        <link rel="stylesheet" href="fonts/fonts-9644e21d.css">
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
 
         <!-- Highlight.js Stylesheets -->
-        <link rel="stylesheet" id="mdbook-highlight-css" href="highlight-493f70e1.css">
-        <link rel="stylesheet" id="mdbook-tomorrow-night-css" href="tomorrow-night-4c0ae647.css">
-        <link rel="stylesheet" id="mdbook-ayu-highlight-css" href="ayu-highlight-3fdfc3ac.css">
+        <link rel="stylesheet" id="highlight-css" href="highlight.css">
+        <link rel="stylesheet" id="tomorrow-night-css" href="tomorrow-night.css">
+        <link rel="stylesheet" id="ayu-highlight-css" href="ayu-highlight.css">
 
         <!-- Custom theme stylesheets -->
 
@@ -35,10 +36,10 @@
             const path_to_root = "";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "searchindex-fc688792.js";
+            window.path_to_searchindex_js = "searchindex.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="toc-dedbbe6e.js"></script>
+        <script src="toc.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -52,7 +53,7 @@
             </div>
         </div>
     </div>
-    <div id="mdbook-body-container">
+    <div id="body-container">
         <!-- Work around some values being stored in localStorage wrapped in quotes -->
         <script>
             try {
@@ -81,12 +82,12 @@
             html.classList.add("js");
         </script>
 
-        <input type="checkbox" id="mdbook-sidebar-toggle-anchor" class="hidden">
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
 
         <!-- Hide / unhide sidebar before it is displayed -->
         <script>
             let sidebar = null;
-            const sidebar_toggle = document.getElementById("mdbook-sidebar-toggle-anchor");
+            const sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
             if (document.body.clientWidth >= 1080) {
                 try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
                 sidebar = sidebar || 'visible';
@@ -101,39 +102,39 @@
             }
         </script>
 
-        <nav id="mdbook-sidebar" class="sidebar" aria-label="Table of contents">
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <!-- populated by js -->
             <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
             <noscript>
                 <iframe class="sidebar-iframe-outer" src="toc.html"></iframe>
             </noscript>
-            <div id="mdbook-sidebar-resize-handle" class="sidebar-resize-handle">
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
                 <div class="sidebar-resize-indicator"></div>
             </div>
         </nav>
 
-        <div id="mdbook-page-wrapper" class="page-wrapper">
+        <div id="page-wrapper" class="page-wrapper">
 
             <div class="page">
-                <div id="mdbook-menu-bar-hover-placeholder"></div>
-                <div id="mdbook-menu-bar" class="menu-bar sticky">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
                     <div class="left-buttons">
-                        <label id="mdbook-sidebar-toggle" class="icon-button" for="mdbook-sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="mdbook-sidebar">
-                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"/></svg></span>
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
                         </label>
-                        <button id="mdbook-theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="mdbook-theme-list">
-                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M371.3 367.1c27.3-3.9 51.9-19.4 67.2-42.9L600.2 74.1c12.6-19.5 9.4-45.3-7.6-61.2S549.7-4.4 531.1 9.6L294.4 187.2c-24 18-38.2 46.1-38.4 76.1L371.3 367.1zm-19.6 25.4l-116-104.4C175.9 290.3 128 339.6 128 400c0 3.9 .2 7.8 .6 11.6c1.8 17.5-10.2 36.4-27.8 36.4H96c-17.7 0-32 14.3-32 32s14.3 32 32 32H240c61.9 0 112-50.1 112-112c0-2.5-.1-5-.2-7.5z"/></svg></span>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
                         </button>
-                        <ul id="mdbook-theme-list" class="theme-popup" aria-label="Themes" role="menu">
-                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-default_theme">Auto</button></li>
-                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-light">Light</button></li>
-                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-rust">Rust</button></li>
-                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-coal">Coal</button></li>
-                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-navy">Navy</button></li>
-                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-ayu">Ayu</button></li>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="default_theme">Auto</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
                         </ul>
-                        <button id="mdbook-search-toggle" class="icon-button" type="button" title="Search (`/`)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="/ s" aria-controls="mdbook-searchbar">
-                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352c79.5 0 144-64.5 144-144s-64.5-144-144-144S64 128.5 64 208s64.5 144 144 144z"/></svg></span>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search (`/`)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="/ s" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
                         </button>
                     </div>
 
@@ -141,43 +142,43 @@
 
                     <div class="right-buttons">
                         <a href="print.html" title="Print this book" aria-label="Print this book">
-                            <span class=fa-svg id="print-button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M128 0C92.7 0 64 28.7 64 64v96h64V64H354.7L384 93.3V160h64V93.3c0-17-6.7-33.3-18.7-45.3L400 18.7C388 6.7 371.7 0 354.7 0H128zM384 352v32 64H128V384 368 352H384zm64 32h32c17.7 0 32-14.3 32-32V256c0-35.3-28.7-64-64-64H64c-35.3 0-64 28.7-64 64v96c0 17.7 14.3 32 32 32H64v64c0 35.3 28.7 64 64 64H384c35.3 0 64-28.7 64-64V384zm-16-88c-13.3 0-24-10.7-24-24s10.7-24 24-24s24 10.7 24 24s-10.7 24-24 24z"/></svg></span>
+                            <i id="print-button" class="fa fa-print"></i>
                         </a>
 
                     </div>
                 </div>
 
-                <div id="mdbook-search-wrapper" class="hidden">
-                    <form id="mdbook-searchbar-outer" class="searchbar-outer">
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
                         <div class="search-wrapper">
-                            <input type="search" id="mdbook-searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="mdbook-searchresults-outer" aria-describedby="searchresults-header">
+                            <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
                             <div class="spinner-wrapper">
-                                <span class=fa-svg id="fa-spin"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M304 48c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zm0 416c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zM48 304c26.5 0 48-21.5 48-48s-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48zm464-48c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zM142.9 437c18.7-18.7 18.7-49.1 0-67.9s-49.1-18.7-67.9 0s-18.7 49.1 0 67.9s49.1 18.7 67.9 0zm0-294.2c18.7-18.7 18.7-49.1 0-67.9S93.7 56.2 75 75s-18.7 49.1 0 67.9s49.1 18.7 67.9 0zM369.1 437c18.7 18.7 49.1 18.7 67.9 0s18.7-49.1 0-67.9s-49.1-18.7-67.9 0s-18.7 49.1 0 67.9z"/></svg></span>
+                                <i class="fa fa-spinner fa-spin"></i>
                             </div>
                         </div>
                     </form>
-                    <div id="mdbook-searchresults-outer" class="searchresults-outer hidden">
-                        <div id="mdbook-searchresults-header" class="searchresults-header"></div>
-                        <ul id="mdbook-searchresults">
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
                         </ul>
                     </div>
                 </div>
 
                 <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
                 <script>
-                    document.getElementById('mdbook-sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
-                    document.getElementById('mdbook-sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
-                    Array.from(document.querySelectorAll('#mdbook-sidebar a')).forEach(function(link) {
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
                         link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
                     });
                 </script>
 
-                <div id="mdbook-content" class="content">
+                <div id="content" class="content">
                     <main>
                         <h1 id="kapitel-18-das-ownership-system-in-rust"><a class="header" href="#kapitel-18-das-ownership-system-in-rust">Kapitel 18: Das Ownership-System in Rust</a></h1>
 <p>Das Ownership-System (Besitzrecht-System) ist das fundamentale und am stärksten charakterisierende Merkmal der Programmiersprache Rust. Es unterscheidet sich grundlegend von den Speicherverwaltungsmethoden anderer populärer Sprachen und ermöglicht es Rust, absolute Speichersicherheit (Memory Safety) bei maximaler Ausführungsgeschwindigkeit (Zero-Cost Abstractions) zu garantieren – und das ohne die Notwendigkeit eines Garbage Collectors oder eines manuellen Deallokationsprozesses zur Laufzeit.</p>
 <p>In diesem Kapitel dringen wir tief in das mechanische Herz von Rust vor. Sie werden lernen, wie der Compiler den Code analysiert, wie Daten physikalisch im Speicher (Stack und Heap) abgelegt und verschoben werden und wie Sie die strengen Gesetze des Ownership-Systems für die Konstruktion hochperformanter und sicherer Software nutzen können.</p>
-<hr>
+<hr />
 <h2 id="lernziele--lernplan"><a class="header" href="#lernziele--lernplan">Lernziele &amp; Lernplan</a></h2>
 <h3 id="lernziele"><a class="header" href="#lernziele">Lernziele</a></h3>
 <ul>
@@ -197,7 +198,7 @@
 <li><strong>Praktische Anwendung &amp; Deep Dive</strong>: Wir festigen das Wissen in einem Schritt-für-Schritt-Tutorial und einem tiefen technischen Deep Dive (Hardware, Alignment, API-Referenz).</li>
 <li><strong>Transferleistung &amp; Festigung</strong>: Sie lösen drei ansteigende Übungsaufgaben und nutzen metakognitive Lernwerkzeuge.</li>
 </ol>
-<hr>
+<hr />
 <h2 id="die-definition-der-präzise-einstieg"><a class="header" href="#die-definition-der-präzise-einstieg">Die Definition (Der präzise Einstieg)</a></h2>
 <p>Um eine klare gemeinsame Basis zu schaffen, definieren wir die Kernkonzepte formal:</p>
 <ul>
@@ -206,7 +207,7 @@
 <li><strong>Copy-Semantik (Kopie-Semantik)</strong>: Die implizite, byteweise Duplizierung von Daten auf dem Stack. Sie wird für Typen angewendet, die das <code>Copy</code>-Trait implementieren. Beide Variablen bleiben unabhängig voneinander gültig.</li>
 <li><strong>Clone-Trait</strong>: Eine in der Standardbibliothek definierte Schnittstelle (<code>std::clone::Clone</code>), die eine explizite und potenziell laufzeitintensive tiefe Kopie (Deep Copy) eines Objekts und aller seiner referenzierten Heap-Daten ermöglicht.</li>
 </ul>
-<hr>
+<hr />
 <h2 id="das-problem--die-motivation"><a class="header" href="#das-problem--die-motivation">Das Problem &amp; Die Motivation</a></h2>
 <p>Um die Genialität des Ownership-Systems zu verstehen, müssen wir uns die historische Speicher-Krise der Softwareentwicklung ansehen. Programme müssen während ihrer Laufzeit Daten verarbeiten. Diese Daten benötigen physikalischen Platz im RAM. Wird dieser Platz nicht mehr benötigt, muss er unverzüglich freigegeben werden. Bisherige Programmiersprachen nutzen dafür zwei Ansätze, die beide gravierende Nachteile haben:</p>
 <h3 id="1-das-cc-dilemma-manuelle-speicherverwaltung"><a class="header" href="#1-das-cc-dilemma-manuelle-speicherverwaltung">1. Das C/C++-Dilemma: Manuelle Speicherverwaltung</a></h3>
@@ -228,10 +229,10 @@
 </ul>
 <h3 id="die-lösung-von-rust"><a class="header" href="#die-lösung-von-rust">Die Lösung von Rust</a></h3>
 <p>Rust eliminiert beide Problemklassen, indem es das Speichermanagement komplett in die <strong>Kompilierzeit</strong> verlagert. Der Compiler analysiert den Code statisch anhand der Ownership-Regeln. Wenn der Code die Regeln einhält, fügt der Compiler die exakten Freigabebefehle direkt an den passenden Stellen in die Binärdatei ein. Das Programm is so performant und vorhersagbar wie in C, aber so speichersicher wie in Java.</p>
-<hr>
+<hr />
 <h2 id="der-naive-versuch"><a class="header" href="#der-naive-versuch">Der naive Versuch</a></h2>
 <p>Wir wollen nun untersuchen, wie sich ein typischer Programmieransatz aus anderen Sprachen in Rust verhält. In Sprachen wie Java oder Python ist es völlig normal, ein Objekt einer neuen Variablen zuzuweisen und danach das Originalobjekt weiterzuverwenden. Wir versuchen, dies in Rust mit einem dynamischen <code>String</code> umzusetzen, dessen Daten auf dem Heap liegen:</p>
-<pre class="playground"><code class="language-rust edition2021">fn main() {
+<pre><code class="language-rust">fn main() {
     // Schritt 1: Wir erstellen einen dynamischen String auf dem Heap.
     let original = String::from("Rust Lehrbuch");
 
@@ -243,7 +244,7 @@
     println!("Das Ziel lautet: {}", ziel);
 }</code></pre>
 <p>Wenn Sie versuchen, diesen Code mit <code>cargo check</code> oder <code>cargo run</code> zu kompilieren, wird der Vorgang mit einer klaren Fehlermeldung abgebrochen.</p>
-<hr>
+<hr />
 <h2 id="die-anatomie-des-fehlers"><a class="header" href="#die-anatomie-des-fehlers">Die Anatomie des Fehlers</a></h2>
 <p>Der Compiler verweigert den Dienst und gibt folgenden Fehler aus:</p>
 <pre><code class="language-text">error[E0382]: borrow of moved value: `original`
@@ -279,7 +280,7 @@
 </code></pre>
 <h4 id="zustand-nach-schritt-2-let-ziel--original"><a class="header" href="#zustand-nach-schritt-2-let-ziel--original">Zustand nach Schritt 2 (<code>let ziel = original;</code>)</a></h4>
 <p>Wenn wir <code>ziel = original</code> schreiben, kopiert Rust die 24 Bytes Metadaten (Pointer, Length, Capacity) vom Stack-Bereich von <code>original</code> in den Stack-Bereich von <code>ziel</code>. Die Nutzdaten auf dem Heap werden <strong>nicht</strong> kopiert, da dies eine extrem teure Operation ($O(N)$) wäre, falls der String megabyte- oder gigabytegroß wäre.</p>
-<p>Nun haben wir eine Situation, die in anderen Sprachen als “Shallow Copy” (flache Kopie) bezeichnet wird. Zwei Stack-Variablen (<code>original</code> und <code>ziel</code>) besitzen denselben Zeiger auf die Heap-Adresse <code>0x00A0</code>.</p>
+<p>Nun haben wir eine Situation, die in anderen Sprachen als "Shallow Copy" (flache Kopie) bezeichnet wird. Zwei Stack-Variablen (<code>original</code> und <code>ziel</code>) besitzen denselben Zeiger auf die Heap-Adresse <code>0x00A0</code>.</p>
 <pre><code>STACK (original) 
 ┌──────────┬──────────────┐
 │ Pointer  │ 0x00A0       ├──┐
@@ -293,7 +294,7 @@ STACK (ziel)                 ├─► ┌────────────�
 <p><strong>Das Problem</strong>: Wenn beide Variablen ihren Scope am Ende von <code>main</code> verletzen und gelöscht werden, würde Rust für beide Variablen den Destruktor aufrufen. Es gäbe einen <code>drop(original)</code> und einen <code>drop(ziel)</code>. Beide würden versuchen, den Heap-Speicher bei <code>0x00A0</code> freizugeben. Dies ist der berüchtigte <strong>Double-Free-Fehler</strong>.</p>
 <p><strong>Die Rust-Lösung</strong>: Um diesen Fehler zur Compilezeit unmöglich zu machen, führt Rust bei der Zuweisung einen <strong>Move</strong> (Verschiebung) aus. Das Eigentum wird vollständig auf <code>ziel</code> übertragen. Die Variable <code>original</code> wird im internen Compiler-Zustand (AST) als <strong>ungültig</strong> markiert.</p>
 <p>Wenn Sie nun in Schritt 3 versuchen, auf <code>original</code> zuzugreifen, fängt der Compiler dies ab und meldet: <code>borrow of moved value</code>. Es gibt zur Laufzeit keinen Double Free, da am Scope-Ende nur der Destruktor für die aktive Variable <code>ziel</code> aufgerufen wird.</p>
-<hr>
+<hr />
 <h2 id="die-lösung"><a class="header" href="#die-lösung">Die Lösung</a></h2>
 <p>Um diesen Code kompilierbar zu machen, müssen wir dem Compiler mitteilen, wie er mit dem Speicher verfahren soll. Wir wollen eine echte, tiefe Kopie (Deep Copy) erstellen. Das bedeutet, wir kopieren nicht nur das Parkticket (den Pointer), sondern allokieren neuen Speicher auf dem Heap und kopieren den gesamten Textinhalt.</p>
 <h3 id="didaktischer-pseudocode"><a class="header" href="#didaktischer-pseudocode">Didaktischer Pseudocode</a></h3>
@@ -307,7 +308,7 @@ AUSGABE: Zwei funktionsfähige Variablen, die unabhängig voneinander existieren
 </code></pre>
 <h3 id="die-rust-implementierung"><a class="header" href="#die-rust-implementierung">Die Rust-Implementierung</a></h3>
 <p>Hier nutzen wir die explizite Methode <code>.clone()</code> des <code>Clone</code>-Traits:</p>
-<pre class="playground"><code class="language-rust edition2021">fn main() {
+<pre><code class="language-rust">fn main() {
     // Eingabe: Erstellen des ersten Strings
     let original = String::from("Rust Lehrbuch");
 
@@ -352,14 +353,14 @@ AUSGABE: Zwei funktionsfähige Variablen, die unabhängig voneinander existieren
 </ul>
 </li>
 </ol>
-<hr>
+<hr />
 <h2 id="181-die-drei-gesetze-von-ownership"><a class="header" href="#181-die-drei-gesetze-von-ownership">18.1 Die drei Gesetze von Ownership</a></h2>
 <p>Das gesamte System zur statischen Speicherverwaltung in Rust ruht auf drei einfachen, aber absolut unnachgiebigen Säulen. Jedes Code-Fragment, das Sie schreiben, wird vom Compiler anhand dieser Kriterien bewertet.</p>
-<hr>
+<hr />
 <h3 id="1811-gesetz-1"><a class="header" href="#1811-gesetz-1">18.1.1 Gesetz 1</a></h3>
 <p><strong>Jeder Wert besitzt einen Bindungsnamen (Besitzer).</strong></p>
 <p>In Rust existiert kein Wert im luftleeren Raum. Jedes Bit im Arbeitsspeicher – sei es eine Ganzzahl auf dem Stack, ein Vektor auf dem Heap oder ein komplexes Objekt – ist an einen eindeutigen Bezeichner gebunden, der als sein Besitzer (Owner) deklariert ist.</p>
-<pre class="playground"><code class="language-rust edition2021">fn main() {
+<pre><code class="language-rust">fn main() {
     let x = 42; // 'x' ist der Besitzer des Werts 42 auf dem Stack.
     let daten = vec![1, 2, 3]; // 'daten' ist der Besitzer des Vektors auf dem Heap.
 }</code></pre>
@@ -369,12 +370,12 @@ AUSGABE: Zwei funktionsfähige Variablen, die unabhängig voneinander existieren
 <li><strong>Auf Hardware-Ebene</strong>: Dies kann ein bestimmtes CPU-Register sein (z. B. <code>RAX</code> für temporäre Berechnungen) oder eine exakte relative Adresse im aktuellen Stack-Frame (z. B. <code>[RBP - 8]</code>).</li>
 <li><strong>Das Konzept der Inhaberschaft</strong>: Der Besitzer trägt die alleinige Verantwortung für den Lebenszyklus des Werts. Er bestimmt, wann der Wert gelesen werden darf und wann er vernichtet werden muss. Es ist nicht möglich, einen Wert ohne Besitzer zu erzeugen.</li>
 </ul>
-<hr>
+<hr />
 <h3 id="1812-gesetz-2"><a class="header" href="#1812-gesetz-2">18.1.2 Gesetz 2</a></h3>
 <p><strong>Es gibt zu jedem Zeitpunkt exakt einen Besitzer.</strong></p>
 <p>Dieses Gesetz ist der eigentliche Schutzschild von Rust gegen Datenkorruption. In traditionellen Sprachen können beliebig viele Variablen (Zeiger) auf dieselbe Heap-Adresse verweisen und diese manipulieren. Das führt zu unvorhersehbaren Zuständen und Datenrennen (Data Races) im Multithreading.</p>
 <p>Rust erzwingt absolute Monogamie im Besitzverhältnis:</p>
-<pre class="playground"><code class="language-rust edition2021">fn main() {
+<pre><code class="language-rust">fn main() {
     let s1 = String::from("Exklusiv");
     let s2 = s1; // Das Eigentum wird exklusiv an s2 übergeben.
     // s1 verliert jegliche Rechte an dem Wert!
@@ -382,11 +383,11 @@ AUSGABE: Zwei funktionsfähige Variablen, die unabhängig voneinander existieren
 <h4 id="warum-ist-dieses-gesetz-so-kritisch"><a class="header" href="#warum-ist-dieses-gesetz-so-kritisch">Warum ist dieses Gesetz so kritisch?</a></h4>
 <p>Stellen Sie sich vor, zwei Threads würden unabhängig voneinander versuchen, denselben String auf dem Heap zu manipulieren. Wenn Thread A ein Zeichen anhängt und eine Reallokation (Speicherumzug) erzwingt, zeigt der Zeiger von Thread B plötzlich ins Leere (Dangling Pointer).</p>
 <p>Dadurch, dass zu jedem Zeitpunkt exakt <strong>ein</strong> Besitzer definiert ist, weiß Rust immer genau, wer das Schreibrecht besitzt und wer für das Löschen verantwortlich ist. Es gibt keine geteilte Verantwortung.</p>
-<hr>
+<hr />
 <h3 id="1813-gesetz-3"><a class="header" href="#1813-gesetz-3">18.1.3 Gesetz 3</a></h3>
 <p><strong>Verlässt der Besitzer den Gültigkeitsbereich, wird der Wert automatisch freigegeben (Drop-Funktion).</strong></p>
 <p>Dieses Gesetz verknüpft das Konzept der lexikalischen Gültigkeit (Scopes) direkt mit dem physischen RAM-Cleanup. In Rust müssen Sie niemals manuell Speicher freigeben.</p>
-<pre class="playground"><code class="language-rust edition2021">fn main() {
+<pre><code class="language-rust">fn main() {
     let a = String::from("Außen");
     {
         let b = String::from("Innen");
@@ -408,24 +409,21 @@ AUSGABE: Zwei funktionsfähige Variablen, die unabhängig voneinander existieren
                allokiert                                durch drop()
 </code></pre>
 <p>Dies garantiert, dass kein ungenutzter Speicher im System verbleibt. Es geschieht völlig automatisch, ohne die Laufzeit-Kosten eines Garbage Collectors.</p>
-<hr>
+<hr />
 <h2 id="182-speicherverschiebungen-und-kopien"><a class="header" href="#182-speicherverschiebungen-und-kopien">18.2 Speicherverschiebungen und Kopien</a></h2>
 <p>Wir wollen nun analysieren, wie Rust mit Zuweisungen (<code>=</code>) und der Übergabe von Parameter an Funktionen auf Systemebene umgeht. Je nach Datentyp unterscheidet Rust strikt zwischen <strong>Move-Semantik</strong>, <strong>Copy-Semantik</strong> und <strong>Clone-Semantik</strong>.</p>
-<hr>
+<hr />
 <h3 id="1821-move-semantik"><a class="header" href="#1821-move-semantik">18.2.1 Move-Semantik</a></h3>
 <p>Die Move-Semantik wird standardmäßig für alle Typen angewendet, die nicht das <code>Copy</code>-Trait implementieren. Dies betrifft in der Regel alle Typen, die dynamische Ressourcen auf dem Heap verwalten (z. B. <code>String</code>, <code>Vec&lt;T&gt;</code>, <code>HashMap&lt;K, V&gt;</code>, <code>Box&lt;T&gt;</code>).</p>
 <h4 id="was-passiert-auf-hardware-ebene-bei-einem-move"><a class="header" href="#was-passiert-auf-hardware-ebene-bei-einem-move">Was passiert auf Hardware-Ebene bei einem Move?</a></h4>
 <p>Wenn Sie schreiben:</p>
-<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>let v1 = vec![1, 2, 3];
-let v2 = v1;
-<span class="boring">}</span></code></pre>
+<pre><code class="language-rust">let v1 = vec![1, 2, 3];
+let v2 = v1;</code></pre>
 <p>Passen auf Systemebene folgende Schritte an:</p>
 <ol>
 <li><strong>Metadaten-Kopie</strong>: Die Stack-Metadaten von <code>v1</code> (Pointer auf die Heap-Daten, Länge, Kapazität = 24 Bytes bei 64-Bit) werden in den Stack-Bereich von <code>v2</code> kopiert. Das ist ein extrem schneller Kopiervorgang im L1-Cache der CPU.</li>
 <li><strong>Heap bleibt unberührt</strong>: Die eigentlichen Array-Daten auf dem Heap (<code>[1, 2, 3]</code>) werden an ihrer physikalischen Adresse belassen. Es gibt keine teure Speicherallokation.</li>
-<li><strong>Ungültig-Markierung</strong>: Der Compiler markiert <code>v1</code> in seiner internen Tabelle als “deinitialisiert”. Jede weitere Lese- oder Schreiboperation auf <code>v1</code> wird vom Compiler mit dem Fehler <code>E0382</code> verhindert.</li>
+<li><strong>Ungültig-Markierung</strong>: Der Compiler markiert <code>v1</code> in seiner internen Tabelle als "deinitialisiert". Jede weitere Lese- oder Schreiboperation auf <code>v1</code> wird vom Compiler mit dem Fehler <code>E0382</code> verhindert.</li>
 </ol>
 <pre><code>VOR DEM MOVE:
 v1 (Stack) ──► [ ptr: 0x5500, len: 3, cap: 3 ] ──► Heap (0x5500): [1, 2, 3]
@@ -434,9 +432,9 @@ NACH DEM MOVE:
 v1 (Stack) ──► [ UNGÜLTIG / DEINITIALISIERT ]
 v2 (Stack) ──► [ ptr: 0x5500, len: 3, cap: 3 ] ──► Heap (0x5500): [1, 2, 3]
 </code></pre>
-<h4 id="das-konzept-des-partial-move-teilweises-verschieben"><a class="header" href="#das-konzept-des-partial-move-teilweises-verschieben">Das Konzept des “Partial Move” (Teilweises Verschieben)</a></h4>
+<h4 id="das-konzept-des-partial-move-teilweises-verschieben"><a class="header" href="#das-konzept-des-partial-move-teilweises-verschieben">Das Konzept des "Partial Move" (Teilweises Verschieben)</a></h4>
 <p>Ein interessanter Spezialfall tritt bei Strukturen auf. Wenn eine Struktur Felder besitzt, die keine <code>Copy</code>-Typen sind, können Sie einzelne Felder aus der Struktur herausbewegen.</p>
-<pre class="playground"><code class="language-rust edition2021">struct Benutzer {
+<pre><code class="language-rust">struct Benutzer {
     name: String,
     id: u32,
 }
@@ -455,16 +453,16 @@ fn main() {
     // println!("{:?}", user);    // ❌ Fehler: Die Struktur ist teilweise verschoben (unvollständig).
 }</code></pre>
 <p>In diesem Fall erlaubt der Compiler den Zugriff auf das verbleibende Feld <code>id</code> (das <code>Copy</code> ist), sperrt jedoch den Zugriff auf die gesamte Struktur, da diese nicht mehr konsistent ist.</p>
-<hr>
+<hr />
 <h3 id="1822-copy-semantik"><a class="header" href="#1822-copy-semantik">18.2.2 Copy-Semantik</a></h3>
 <p>Nicht alle Typen verlangen einen Move. Bei primitiven Datentypen, die vollständig auf dem Stack liegen, wäre ein Move unpraktisch und ineffizient. Hier greift die <strong>Copy-Semantik</strong>.</p>
-<pre class="playground"><code class="language-rust edition2021">fn main() {
+<pre><code class="language-rust">fn main() {
     let a: i32 = 10;
     let b: i32 = a; // Copy!
     println!("a: {}, b: {}", a, b); // ✅ Beide sind voll funktionsfähig!
 }</code></pre>
 <h4 id="der-copy-trait-als-marker"><a class="header" href="#der-copy-trait-als-marker">Der <code>Copy</code>-Trait als Marker</a></h4>
-<p>Das Verhalten wird durch das Vorhandensein des <code>Copy</code>-Traits gesteuert. Dies ist ein sogenannter <strong>Marker-Trait</strong>. Er enthält keine Methoden, die implementiert werden müssen, sondern dient dem Compiler lediglich als Signal: <em>“Diesen Typ dürfen Sie bei Zuweisungen einfach byteweise kopieren.”</em></p>
+<p>Das Verhalten wird durch das Vorhandensein des <code>Copy</code>-Traits gesteuert. Dies ist ein sogenannter <strong>Marker-Trait</strong>. Er enthält keine Methoden, die implementiert werden müssen, sondern dient dem Compiler lediglich als Signal: <em>"Diesen Typ dürfen Sie bei Zuweisungen einfach byteweise kopieren."</em></p>
 <p>Folgende Typen sind standardmäßig <code>Copy</code>:</p>
 <ul>
 <li>Alle ganzzahligen Typen (<code>i8</code> bis <code>i128</code>, <code>u8</code> bis <code>u128</code>, <code>isize</code>, <code>usize</code>).</li>
@@ -479,26 +477,23 @@ fn main() {
 <li>Würde dieser Typ gleichzeitig <code>Copy</code> erlauben, könnte er ohne explizite Aufforderung byteweise auf dem Stack verdoppelt werden. Beide Instanzen würden am Scope-Ende versuchen, dieselbe Ressource freizugeben. Das würde unweigerlich zum Double Free führen.</li>
 <li>Deshalb verbietet der Compiler diese Kombination strikt.</li>
 </ul>
-<hr>
+<hr />
 <h3 id="1823-das-clone-trait"><a class="header" href="#1823-das-clone-trait">18.2.3 Das Clone-Trait</a></h3>
 <p>Wenn Sie für einen Typen, der nicht <code>Copy</code> ist, eine vollständige, unabhängige Kopie seiner Daten erzeugen wollen, müssen Sie das <code>Clone</code>-Trait verwenden. Klonen ist im Gegensatz zum Kopieren immer ein <strong>expliziter</strong> Vorgang, den Sie im Code durch den Aufruf von <code>.clone()</code> sichtbar machen müssen.</p>
-<pre class="playground"><code class="language-rust edition2021">fn main() {
+<pre><code class="language-rust">fn main() {
     let s1 = String::from("Daten");
     let s2 = s1.clone(); // Tiefe Kopie!
     // s1 und s2 zeigen nun auf unterschiedliche Heap-Bereiche.
 }</code></pre>
 <h4 id="api-spezifikation-von-stdcloneclone"><a class="header" href="#api-spezifikation-von-stdcloneclone">API-Spezifikation von <code>std::clone::Clone</code></a></h4>
 <p>Der <code>Clone</code>-Trait ist in der Standardbibliothek wie folgt definiert:</p>
-<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>pub trait Clone : Sized {
+<pre><code class="language-rust">pub trait Clone : Sized {
     fn clone(&amp;self) -&gt; Self;
 
     fn clone_from(&amp;mut self, source: &amp;Self) {
         *self = source.clone();
     }
-}
-<span class="boring">}</span></code></pre>
+}</code></pre>
 <h5 id="1-methode-clone"><a class="header" href="#1-methode-clone">1. Methode <code>clone</code></a></h5>
 <ul>
 <li><strong>Signatur</strong>: <code>fn clone(&amp;self) -&gt; Self</code></li>
@@ -511,11 +506,8 @@ fn main() {
 </ul>
 </li>
 <li><strong>Kurzbeispiel</strong>:
-<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>let original = String::from("A");
-let kopie = original.clone();
-<span class="boring">}</span></code></pre>
+<pre><code class="language-rust">let original = String::from("A");
+let kopie = original.clone();</code></pre>
 </li>
 </ul>
 <h5 id="2-methode-clone_from"><a class="header" href="#2-methode-clone_from">2. Methode <code>clone_from</code></a></h5>
@@ -536,22 +528,17 @@ let kopie = original.clone();
 </ul>
 </li>
 <li><strong>Kurzbeispiel</strong>:
-<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>let mut ziel = String::with_capacity(50);
+<pre><code class="language-rust">let mut ziel = String::with_capacity(50);
 let quelle = String::from("Neuer Text");
-ziel.clone_from(&amp;quelle); // Wiederverwendung der Kapazität von 'ziel'!
-<span class="boring">}</span></code></pre>
+ziel.clone_from(&amp;quelle); // Wiederverwendung der Kapazität von 'ziel'!</code></pre>
 </li>
 </ul>
-<hr>
+<hr />
 <h2 id="kleines-tutorial-schritt-für-schritt-praxis"><a class="header" href="#kleines-tutorial-schritt-für-schritt-praxis">Kleines Tutorial (Schritt-für-Schritt-Praxis)</a></h2>
 <p>In diesem Tutorial bauen wir eine kleine, praxisnahe Ressourcenverwaltung für ein hypothetisches Text-Terminal auf. Wir erstellen ein System, das Verbindungssitzungen (<code>TerminalSession</code>) verwaltet. Dabei wenden wir die Gesetze des Ownership-Systems, die Move-Semantik und das Clone-Trait an, um zu verstehen, wie Rust die Ressourcensicherheit garantiert.</p>
 <h3 id="schritt-1-definition-der-datenstrukturen"><a class="header" href="#schritt-1-definition-der-datenstrukturen">Schritt 1: Definition der Datenstrukturen</a></h3>
 <p>Wir legen eine Struktur für eine Verbindungssitzung und ein Enum für den Sicherheitsstatus an.</p>
-<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>#[derive(Debug, Clone)]
+<pre><code class="language-rust">#[derive(Debug, Clone)]
 enum SicherheitsLevel {
     Niedrig,
     Hoch,
@@ -562,17 +549,14 @@ struct TerminalSession {
     id: u32,
     benutzername: String,
     sicherheit: SicherheitsLevel,
-}
-<span class="boring">}</span></code></pre>
+}</code></pre>
 <ul>
 <li><code>SicherheitsLevel</code> implementiert das <code>Clone</code>-Trait (über das Attribut <code>#[derive(Clone)]</code>).</li>
 <li><code>TerminalSession</code> hat kein <code>Copy</code>-Trait, da es ein <code>String</code>-Feld besitzt.</li>
 </ul>
 <h3 id="schritt-2-eine-funktion-zur-verarbeitung-erstellen"><a class="header" href="#schritt-2-eine-funktion-zur-verarbeitung-erstellen">Schritt 2: Eine Funktion zur Verarbeitung erstellen</a></h3>
-<p>Wir schreiben eine Funktion, die die Sitzung “konsumiert” (Move) und eine geänderte Sitzung zurückgibt.</p>
-<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>fn upgrade_sitzung(mut session: TerminalSession) -&gt; TerminalSession {
+<p>Wir schreiben eine Funktion, die die Sitzung "konsumiert" (Move) und eine geänderte Sitzung zurückgibt.</p>
+<pre><code class="language-rust">fn upgrade_sitzung(mut session: TerminalSession) -&gt; TerminalSession {
     println!("[Upgrade] Verarbeite Sitzung ID: {}", session.id);
     
     // Wir ändern das Sicherheitslevel
@@ -580,11 +564,10 @@ struct TerminalSession {
     
     // Wir geben die Sitzung (und damit das Ownership) wieder zurück
     session
-}
-<span class="boring">}</span></code></pre>
+}</code></pre>
 <h3 id="schritt-3-der-hauptablauf-in-der-main-funktion"><a class="header" href="#schritt-3-der-hauptablauf-in-der-main-funktion">Schritt 3: Der Hauptablauf in der <code>main</code>-Funktion</a></h3>
 <p>Wir bauen nun die Logik auf. Wir erstellen eine Sitzung, klonen sie für Protokollzwecke, übergeben sie an das Upgrade und verarbeiten das Ergebnis.</p>
-<pre class="playground"><code class="language-rust edition2021">fn main() {
+<pre><code class="language-rust">fn main() {
     // Schritt 3.1: Erstellen der ursprünglichen Sitzung
     let session_original = TerminalSession {
         id: 1001,
@@ -642,7 +625,7 @@ struct TerminalSession {
 </ul>
 </li>
 </ol>
-<hr>
+<hr />
 <h2 id="mentale-modelle--deep-dive"><a class="header" href="#mentale-modelle--deep-dive">Mentale Modelle &amp; Deep Dive</a></h2>
 <p>Um das Ownership-System auf Profi-Niveau zu durchdringen, betrachten wir die Mechanismen auf der Systemebene und analysieren die Implementierungsdetails der Standardbibliothek.</p>
 <h3 id="das-ram-layout-im-direkten-vergleich-move-vs-copy-vs-clone"><a class="header" href="#das-ram-layout-im-direkten-vergleich-move-vs-copy-vs-clone">Das RAM-Layout im direkten Vergleich (Move vs. Copy vs. Clone)</a></h3>
@@ -662,32 +645,27 @@ let s3 =      s3: [ptr: 0x22, len: 4, cap: 4] ────────►   0x22
 s1.clone();   (Zusätzliche Heap-Allokation bei 0x22)
 ────────────────────────────────────────────────────────────────────────────────
 </code></pre>
-<hr>
+<hr />
 <h3 id="der-drop-trait-und-die-freigabe-reihenfolge"><a class="header" href="#der-drop-trait-und-die-freigabe-reihenfolge">Der <code>Drop</code>-Trait und die Freigabe-Reihenfolge</a></h3>
 <p>Der <code>Drop</code>-Trait ist das Gegenstück zum Destruktor in objektorientierten Sprachen. Er ist in der Standardbibliothek wie folgt definiert:</p>
-<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>pub trait Drop {
+<pre><code class="language-rust">pub trait Drop {
     fn drop(&amp;mut self);
-}
-<span class="boring">}</span></code></pre>
+}</code></pre>
 <h4 id="wichtige-technische-details-zu-drop"><a class="header" href="#wichtige-technische-details-zu-drop">Wichtige technische Details zu <code>Drop</code></a></h4>
 <ul>
 <li><strong>Signatur</strong>: <code>fn drop(&amp;mut self)</code></li>
 <li><strong>Parameter</strong>: <code>&amp;mut self</code> – Eine veränderliche Referenz auf das Objekt, dessen Speicher abgebaut wird.</li>
 <li><strong>Keine explizite Rückgabe</strong>: Rückgabetyp ist <code>()</code>.</li>
 <li><strong>Panics in <code>drop</code></strong>:
-<blockquote class="blockquote-tag blockquote-tag-caution">
-<p class="blockquote-tag-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M4.47.22A.749.749 0 0 1 5 0h6c.199 0 .389.079.53.22l4.25 4.25c.141.14.22.331.22.53v6a.749.749 0 0 1-.22.53l-4.25 4.25A.749.749 0 0 1 11 16H5a.749.749 0 0 1-.53-.22L.22 11.53A.749.749 0 0 1 0 11V5c0-.199.079-.389.22-.53Zm.84 1.28L1.5 5.31v5.38l3.81 3.81h5.38l3.81-3.81V5.31L10.69 1.5ZM8 4a.75.75 0 0 1 .75.75v3.5a.75.75 0 0 1-1.5 0v-3.5A.75.75 0 0 1 8 4Zm0 8a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>Caution</p>
-<p>Vermeiden Sie unbedingt Panics innerhalb einer <code>drop</code>-Implementierung! Wenn das Programm bereits aufgrund eines Fehlers einen Stack-Unwind (Stack-Abbau) durchführt und dabei ein weiteres Objekt beim Löschen paniziert, bricht Rust das Programm augenblicklich mit einem unkontrollierten <code>abort</code> (Programmabbruch) ab, da ein doppelter Panic-Zustand nicht sicher verwaltet werden kann.</p>
+<blockquote>
+<p>[!CAUTION]
+Vermeiden Sie unbedingt Panics innerhalb einer <code>drop</code>-Implementierung! Wenn das Programm bereits aufgrund eines Fehlers einen Stack-Unwind (Stack-Abbau) durchführt und dabei ein weiteres Objekt beim Löschen paniziert, bricht Rust das Programm augenblicklich mit einem unkontrollierten <code>abort</code> (Programmabbruch) ab, da ein doppelter Panic-Zustand nicht sicher verwaltet werden kann.</p>
 </blockquote>
 </li>
 <li><strong>Manuelles Aufrufen</strong>: Sie dürfen <code>x.drop()</code> <strong>niemals</strong> manuell aufrufen! Der Compiler verbietet dies, um einen Double Free zu verhindern. Wenn Sie ein Objekt vorzeitig löschen wollen, müssen Sie die globale Funktion <code>std::mem::drop(x)</code> verwenden, die den Besitz an dem Objekt übernimmt und es in ihrem eigenen leeren Scope versterben lässt.</li>
 </ul>
 <h4 id="beispiel-für-eine-eigene-drop-implementierung"><a class="header" href="#beispiel-für-eine-eigene-drop-implementierung">Beispiel für eine eigene <code>Drop</code>-Implementierung</a></h4>
-<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>struct Dateischreiber {
+<pre><code class="language-rust">struct Dateischreiber {
     pfad: String,
 }
 
@@ -695,8 +673,7 @@ impl Drop for Dateischreiber {
     fn drop(&amp;mut self) {
         println!("[Cleanup] Schließe Datei und gebe Ressourcen frei für: {}", self.pfad);
     }
-}
-<span class="boring">}</span></code></pre>
+}</code></pre>
 <h4 id="die-exakte-lösch-reihenfolge-destruktions-reihenfolge"><a class="header" href="#die-exakte-lösch-reihenfolge-destruktions-reihenfolge">Die exakte Lösch-Reihenfolge (Destruktions-Reihenfolge)</a></h4>
 <p>Rust räumt den Speicher nach absolut deterministischen Regeln auf:</p>
 <ol>
@@ -704,10 +681,10 @@ impl Drop for Dateischreiber {
 <li><strong>Struktur-Felder</strong>: Werden in der Reihenfolge ihrer Deklaration innerhalb der <code>struct</code>-Definition zerstört.</li>
 <li><strong>Enum-Varianten</strong>: Wenn eine Enum-Variable überschrieben oder fallen gelassen wird, werden die in der jeweiligen variante gekapselten Daten gelöscht.</li>
 </ol>
-<hr>
-<h2 id="drei-praktische-übungen"><a class="header" href="#drei-praktische-übungen">Drei praktische Übungen</a></h2>
+<hr />
+<h2 id="drei-praktische-Übungen"><a class="header" href="#drei-praktische-Übungen">Drei praktische Übungen</a></h2>
 <p>Nutzen Sie diese Übungen, um Ihre praktischen Fähigkeiten zu testen.</p>
-<h3 id="übung-1-leicht-syntax-festigen-und-den-copy-trait-anwenden"><a class="header" href="#übung-1-leicht-syntax-festigen-und-den-copy-trait-anwenden">Übung 1 (Leicht): Syntax festigen und den <code>Copy</code>-Trait anwenden</a></h3>
+<h3 id="Übung-1-leicht-syntax-festigen-und-den-copy-trait-anwenden"><a class="header" href="#Übung-1-leicht-syntax-festigen-und-den-copy-trait-anwenden">Übung 1 (Leicht): Syntax festigen und den <code>Copy</code>-Trait anwenden</a></h3>
 <p><strong>Hintergrund</strong>: Sie verwalten ein System für 2D-Grafiken. Sie haben eine Struktur <code>Punkt</code>, die zwei Koordinaten enthält.</p>
 <p><strong>Anforderung</strong>:</p>
 <ol>
@@ -716,18 +693,15 @@ impl Drop for Dateischreiber {
 <li>Fügen Sie die notwendigen Attribute hinzu, damit der Code ohne Move-Semantik (d.h. über Copy-Semantik) kompiliert.</li>
 </ol>
 <p><strong>Erwartete Funktionssignatur</strong>:</p>
-<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>#[derive(Debug, Copy, Clone)]
+<pre><code class="language-rust">#[derive(Debug, Copy, Clone)]
 struct Punkt {
     x: i32,
     y: i32,
-}
-<span class="boring">}</span></code></pre>
+}</code></pre>
 <p><strong>Lösungshinweis (Hint)</strong>:
 Nutzen Sie das Attribut <code>#[derive(Debug, Copy, Clone)]</code> über Ihrer Struktur. Bedenken Sie, dass <code>Copy</code> immer voraussetzt, dass auch <code>Clone</code> implementiert ist.</p>
-<hr>
-<h3 id="übung-2-mittel-logik-erweitern-und-ownership-transfer-umsetzen"><a class="header" href="#übung-2-mittel-logik-erweitern-und-ownership-transfer-umsetzen">Übung 2 (Mittel): Logik erweitern und Ownership-Transfer umsetzen</a></h3>
+<hr />
+<h3 id="Übung-2-mittel-logik-erweitern-und-ownership-transfer-umsetzen"><a class="header" href="#Übung-2-mittel-logik-erweitern-und-ownership-transfer-umsetzen">Übung 2 (Mittel): Logik erweitern und Ownership-Transfer umsetzen</a></h3>
 <p><strong>Hintergrund</strong>: Sie bauen ein einfaches Buch-Verwaltungssystem für eine Bibliothek.</p>
 <p><strong>Anforderung</strong>:</p>
 <ol>
@@ -736,14 +710,11 @@ Nutzen Sie das Attribut <code>#[derive(Debug, Copy, Clone)]</code> über Ihrer S
 <li>Verwenden Sie Shadowing in der <code>main</code>-Funktion, um das veränderte Buch aufzufangen.</li>
 </ol>
 <p><strong>Erwartete Funktionssignatur</strong>:</p>
-<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>fn leihe_aus(buch: Buch) -&gt; Buch
-<span class="boring">}</span></code></pre>
+<pre><code class="language-rust">fn leihe_aus(buch: Buch) -&gt; Buch</code></pre>
 <p><strong>Lösungshinweis (Hint)</strong>:
 Da <code>String</code> kein <code>Copy</code>-Typ ist, wird beim Aufruf von <code>leihe_aus(mein_buch)</code> das Eigentum übertragen. Sie müssen das Buch in der Funktion als <code>mut buch</code> deklarieren, um das Feld zu ändern, und es am Ende ohne Semikolon zurückgeben.</p>
-<hr>
-<h3 id="übung-3-schwer-transferleistung-und-inventar-management"><a class="header" href="#übung-3-schwer-transferleistung-und-inventar-management">Übung 3 (Schwer): Transferleistung und Inventar-Management</a></h3>
+<hr />
+<h3 id="Übung-3-schwer-transferleistung-und-inventar-management"><a class="header" href="#Übung-3-schwer-transferleistung-und-inventar-management">Übung 3 (Schwer): Transferleistung und Inventar-Management</a></h3>
 <p><strong>Hintergrund</strong>: Sie entwickeln ein Spiel-Inventar. Gegenstände können von einem Inventar in ein anderes verschoben werden.</p>
 <p><strong>Anforderung</strong>:</p>
 <ol>
@@ -759,52 +730,46 @@ Da <code>String</code> kein <code>Copy</code>-Typ ist, wird beim Aufruf von <cod
 <li>Der gesamte Vorgang muss ohne die Verwendung von <code>.clone()</code> auf dem <code>String</code> des Gegenstands auskommen.</li>
 </ol>
 <p><strong>Erwartete Funktionssignatur</strong>:</p>
-<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>fn uebergebe_gegenstand(mut inv: Inventar, index: usize) -&gt; (Gegenstand, Inventar)
-<span class="boring">}</span></code></pre>
+<pre><code class="language-rust">fn uebergebe_gegenstand(mut inv: Inventar, index: usize) -&gt; (Gegenstand, Inventar)</code></pre>
 <p><strong>Lösungshinweis (Hint)</strong>:
 Nutzen Sie die Methode <code>inv.gegenstaende.remove(index)</code>. Diese Methode entfernt das Element aus dem Vektor und verschiebt dessen Ownership direkt an den Aufrufer, ohne dass die anderen Elemente oder der String geklont werden müssen. Das restliche Inventar ist danach immer noch valide und kann im Tupel zurückgegeben werden.</p>
-<hr>
+<hr />
 <h2 id="lernstrategie-selbsteinschätzung--merkzettel"><a class="header" href="#lernstrategie-selbsteinschätzung--merkzettel">Lernstrategie, Selbsteinschätzung &amp; Merkzettel</a></h2>
 <h3 id="spickzettel--merkzettel-cheat-sheet"><a class="header" href="#spickzettel--merkzettel-cheat-sheet">Spickzettel / Merkzettel (Cheat Sheet)</a></h3>
-<div class="table-wrapper">
-<table>
-<thead>
-<tr><th style="text-align: left">Konzept</th><th style="text-align: left">Syntax-Beispiel</th><th style="text-align: left">Speicher-Effekt</th><th style="text-align: left">Typen-Voraussetzung</th></tr>
-</thead>
-<tbody>
+<div class="table-wrapper"><table><thead><tr><th style="text-align: left">Konzept</th><th style="text-align: left">Syntax-Beispiel</th><th style="text-align: left">Speicher-Effekt</th><th style="text-align: left">Typen-Voraussetzung</th></tr></thead><tbody>
 <tr><td style="text-align: left"><strong>Move</strong></td><td style="text-align: left"><code>let y = x;</code></td><td style="text-align: left">Stack-Metadaten werden kopiert, <code>x</code> wird ungültig.</td><td style="text-align: left">Typen ohne <code>Copy</code>-Trait (z. B. <code>String</code>, <code>Vec</code>)</td></tr>
 <tr><td style="text-align: left"><strong>Copy</strong></td><td style="text-align: left"><code>let y = x;</code></td><td style="text-align: left">Vollständige, implizite Stack-Kopie. Beide bleiben gültig.</td><td style="text-align: left">Typen mit <code>Copy</code>-Trait (z. B. <code>i32</code>, <code>bool</code>, <code>char</code>)</td></tr>
 <tr><td style="text-align: left"><strong>Clone</strong></td><td style="text-align: left"><code>let y = x.clone();</code></td><td style="text-align: left">Explizite tiefe Kopie. Heap-Daten werden dupliziert.</td><td style="text-align: left">Typen mit <code>Clone</code>-Trait</td></tr>
 <tr><td style="text-align: left"><strong>Drop</strong></td><td style="text-align: left"><code>drop(x);</code></td><td style="text-align: left">Vorzeitige manuelle Freigabe der Heap-Ressourcen.</td><td style="text-align: left">Jeder Typ (wird vom Compiler am Scope-Ende generiert)</td></tr>
-</tbody>
-</table>
+</tbody></table>
 </div>
-<hr>
+<hr />
 <h3 id="active-recall-verständnisfragen"><a class="header" href="#active-recall-verständnisfragen">Active Recall (Verständnisfragen)</a></h3>
 <p>Formulieren Sie die Antworten auf diese Fragen im Kopf oder schriftlich:</p>
 <ol>
 <li>Warum darf eine Struktur nicht gleichzeitig den <code>Copy</code>-Trait und den <code>Drop</code>-Trait implementieren?</li>
 <li>Welche Daten werden bei einem Move eines <code>String</code>-Objekts auf dem Stack kopiert, und was passiert mit den Daten auf dem Heap?</li>
 <li>Wie unterscheidet sich die Methode <code>clone_from</code> funktionell von der Methode <code>clone</code> und welchen Performance-Vorteil bietet sie?</li>
-<li>Was versteht man unter einem “Partial Move” und in welchen Situationen führt er dazu, dass ein Objekt nicht mehr als Ganzes verwendet werden darf?</li>
+<li>Was versteht man unter einem "Partial Move" und in welchen Situationen führt er dazu, dass ein Objekt nicht mehr als Ganzes verwendet werden darf?</li>
 </ol>
-<hr>
+<hr />
 <h3 id="die-feynman-methode"><a class="header" href="#die-feynman-methode">Die Feynman-Methode</a></h3>
-<p>Erklären Sie das Gesetz 2 von Ownership (“Es kann immer nur einen Besitzer gleichzeitig geben”) einem Programmier-Anfänger, der bisher nur mit Python oder JavaScript gearbeitet hat. Verwenden Sie dabei maximal drei einfache Sätze und verzichten Sie auf komplizierten Fachjargon.</p>
-<hr>
+<p>Erklären Sie das Gesetz 2 von Ownership ("Es kann immer nur einen Besitzer gleichzeitig geben") einem Programmier-Anfänger, der bisher nur mit Python oder JavaScript gearbeitet hat. Verwenden Sie dabei maximal drei einfache Sätze und verzichten Sie auf komplizierten Fachjargon.</p>
+<hr />
 <h3 id="gezielte-fehlerprovokation"><a class="header" href="#gezielte-fehlerprovokation">Gezielte Fehlerprovokation</a></h3>
 <p>Schreiben Sie ein kurzes Programm, in dem Sie absichtlich versuchen, aus einer Struktur, die Sie nur als unveränderliche Referenz vorliegen haben, ein nicht-kopierbares Feld herauszubewegen. Analysieren Sie die Fehlermeldung <code>E0507</code> und erklären Sie, wie Sie diesen Fehler beheben können.</p>
-<hr>
+<hr />
 <h3 id="metakognitiver-selbsttest"><a class="header" href="#metakognitiver-selbsttest">Metakognitiver Selbsttest</a></h3>
-<p>Wechseln Sie erst zum nächsten Kapitel (Referenzen &amp; Borrowing), wenn Sie folgende Checkliste mit “Ja” beantworten können:</p>
+<p>Wechseln Sie erst zum nächsten Kapitel (Referenzen &amp; Borrowing), wenn Sie folgende Checkliste mit "Ja" beantworten können:</p>
 <ul>
-<li><input disabled="" type="checkbox"> Ich kann erklären, warum Rusts Move-Semantik eine Zeitkomplexität von $O(1)$ hat, während ein Clone typischerweise $O(N)$ benötigt.</li>
-<li><input disabled="" type="checkbox"> Ich verstehe den Unterschied zwischen Stack-Metadaten (Pointer, Length, Capacity) und den eigentlichen Heap-Daten eines Strings.</li>
-<li><input disabled="" type="checkbox"> Ich weiß, wie ich den Compiler-Fehler <code>use of moved value</code> behebe, ohne blind überall <code>.clone()</code> einzufügen.</li>
+<li><input disabled="" type="checkbox"/>
+Ich kann erklären, warum Rusts Move-Semantik eine Zeitkomplexität von $O(1)$ hat, während ein Clone typischerweise $O(N)$ benötigt.</li>
+<li><input disabled="" type="checkbox"/>
+Ich verstehe den Unterschied zwischen Stack-Metadaten (Pointer, Length, Capacity) und den eigentlichen Heap-Daten eines Strings.</li>
+<li><input disabled="" type="checkbox"/>
+Ich weiß, wie ich den Compiler-Fehler <code>use of moved value</code> behebe, ohne blind überall <code>.clone()</code> einzufügen.</li>
 </ul>
-<hr>
+<hr />
 <h2 id="zusammenfassung"><a class="header" href="#zusammenfassung">Zusammenfassung</a></h2>
 <ul>
 <li><strong>Ownership</strong> ist Rusts compilezeit-basiertes System zur speichereffizienten und sicheren Ressourcenverwaltung ohne Garbage Collector.</li>
@@ -813,7 +778,7 @@ Nutzen Sie die Methode <code>inv.gegenstaende.remove(index)</code>. Diese Method
 <li><strong>Copy-Semantik</strong> dupliziert Werte implizit auf dem Stack, ist auf einfache Typen mit fester Größe beschränkt und schließt sich mit <code>Drop</code> gegenseitig aus.</li>
 <li><strong>Clone</strong> ermöglicht eine explizite Deep Copy von Heap-Daten, wobei <code>clone_from</code> eine wichtige Optimierung zur Wiederverwendung bestehender Speicherpuffer darstellt.</li>
 </ul>
-<hr>
+<hr />
 <p><strong>Lizenz- und Attributionshinweis</strong>:
 Teile dieses Kapitels basieren auf Übersetzungen und didaktischen Anpassungen des offiziellen Buches <a href="https://doc.rust-lang.org/book/">The Rust Programming Language</a> von Steve Klabnik und Carol Nichols (sowie Beiträgen der Rust-Community), lizenziert unter <a href="https://opensource.org/licenses/MIT">MIT</a> und <a href="https://www.apache.org/licenses/LICENSE-2.0">Apache 2.0</a>.</p>
 
@@ -822,11 +787,11 @@ Teile dieses Kapitels basieren auf Übersetzungen und didaktischen Anpassungen d
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
                             <a rel="prev" href="17.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
-                                <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
+                                <i class="fa fa-angle-left"></i>
                             </a>
 
                             <a rel="next prefetch" href="19.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
-                                <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
+                                <i class="fa fa-angle-right"></i>
                             </a>
 
                         <div style="clear: both"></div>
@@ -836,21 +801,16 @@ Teile dieses Kapitels basieren auf Übersetzungen und didaktischen Anpassungen d
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
                     <a rel="prev" href="17.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
-                        <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
+                        <i class="fa fa-angle-left"></i>
                     </a>
 
                     <a rel="next prefetch" href="19.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
-                        <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
+                        <i class="fa fa-angle-right"></i>
                     </a>
             </nav>
 
         </div>
 
-        <template id=fa-eye><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M288 32c-80.8 0-145.5 36.8-192.6 80.6C48.6 156 17.3 208 2.5 243.7c-3.3 7.9-3.3 16.7 0 24.6C17.3 304 48.6 356 95.4 399.4C142.5 443.2 207.2 480 288 480s145.5-36.8 192.6-80.6c46.8-43.5 78.1-95.4 93-131.1c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C433.5 68.8 368.8 32 288 32zM432 256c0 79.5-64.5 144-144 144s-144-64.5-144-144s64.5-144 144-144s144 64.5 144 144zM288 192c0 35.3-28.7 64-64 64c-11.5 0-22.3-3-31.6-8.4c-.2 2.8-.4 5.5-.4 8.4c0 53 43 96 96 96s96-43 96-96s-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6z"/></svg></span></template>
-        <template id=fa-eye-slash><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M38.8 5.1C28.4-3.1 13.3-1.2 5.1 9.2S-1.2 34.7 9.2 42.9l592 464c10.4 8.2 25.5 6.3 33.7-4.1s6.3-25.5-4.1-33.7L525.6 386.7c39.6-40.6 66.4-86.1 79.9-118.4c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C465.5 68.8 400.8 32 320 32c-68.2 0-125 26.3-169.3 60.8L38.8 5.1zM223.1 149.5C248.6 126.2 282.7 112 320 112c79.5 0 144 64.5 144 144c0 24.9-6.3 48.3-17.4 68.7L408 294.5c5.2-11.8 8-24.8 8-38.5c0-53-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6c0 10.2-2.4 19.8-6.6 28.3l-90.3-70.8zm223.1 298L373 389.9c-16.4 6.5-34.3 10.1-53 10.1c-79.5 0-144-64.5-144-144c0-6.9 .5-13.6 1.4-20.2L83.1 161.5C60.3 191.2 44 220.8 34.5 243.7c-3.3 7.9-3.3 16.7 0 24.6c14.9 35.7 46.2 87.7 93 131.1C174.5 443.2 239.2 480 320 480c47.8 0 89.9-12.9 126.2-32.5z"/></svg></span></template>
-        <template id=fa-copy><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M502.6 70.63l-61.25-61.25C435.4 3.371 427.2 0 418.7 0H255.1c-35.35 0-64 28.66-64 64l.0195 256C192 355.4 220.7 384 256 384h192c35.2 0 64-28.8 64-64V93.25C512 84.77 508.6 76.63 502.6 70.63zM464 320c0 8.836-7.164 16-16 16H255.1c-8.838 0-16-7.164-16-16L239.1 64.13c0-8.836 7.164-16 16-16h128L384 96c0 17.67 14.33 32 32 32h47.1V320zM272 448c0 8.836-7.164 16-16 16H63.1c-8.838 0-16-7.164-16-16L47.98 192.1c0-8.836 7.164-16 16-16H160V128H63.99c-35.35 0-64 28.65-64 64l.0098 256C.002 483.3 28.66 512 64 512h192c35.2 0 64-28.8 64-64v-32h-47.1L272 448z"/></svg></span></template>
-        <template id=fa-play><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80V432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"/></svg></span></template>
-        <template id=fa-clock-rotate-left><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M75 75L41 41C25.9 25.9 0 36.6 0 57.9V168c0 13.3 10.7 24 24 24H134.1c21.4 0 32.1-25.9 17-41l-30.8-30.8C155 85.5 203 64 256 64c106 0 192 86 192 192s-86 192-192 192c-40.8 0-78.6-12.7-109.7-34.4c-14.5-10.1-34.4-6.6-44.6 7.9s-6.6 34.4 7.9 44.6C151.2 495 201.7 512 256 512c141.4 0 256-114.6 256-256S397.4 0 256 0C185.3 0 121.3 28.7 75 75zm181 53c-13.3 0-24 10.7-24 24V256c0 6.4 2.5 12.5 7 17l72 72c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-65-65V152c0-13.3-10.7-24-24-24z"/></svg></span></template>
 
 
 
@@ -859,17 +819,17 @@ Teile dieses Kapitels basieren auf Übersetzungen und didaktischen Anpassungen d
         </script>
 
 
-        <script src="elasticlunr-ef4e11c1.min.js"></script>
-        <script src="mark-09e88c2c.min.js"></script>
-        <script src="searcher-09f2665d.js"></script>
+        <script src="elasticlunr.min.js"></script>
+        <script src="mark.min.js"></script>
+        <script src="searcher.js"></script>
 
-        <script src="clipboard-1626706a.min.js"></script>
-        <script src="highlight-abc7f01d.js"></script>
-        <script src="book-c22b7243.js"></script>
+        <script src="clipboard.min.js"></script>
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
 
         <!-- Custom JS scripts -->
-        <script src="mermaid-eefea253.min.js"></script>
-        <script src="mermaid-init-ccf746f1.js"></script>
+        <script src="mermaid.min.js"></script>
+        <script src="mermaid-init.js"></script>
 
 
 

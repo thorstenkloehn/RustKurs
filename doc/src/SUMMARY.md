@@ -29,4 +29,6 @@
 - [Kapitel 25: Der Slice-Typ (Slices)](25.md)
 - [Kapitel 26: KI-Agenten & autonome Software-Ingenieure](26.md)
 - [Kapitel 27: Eigene Datentypen mit Structs (Strukturen) strukturieren](27.md)
+- [Kapitel 28: Enums und Pattern Matching](28.md)
+
 

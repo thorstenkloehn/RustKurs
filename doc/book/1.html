@@ -7,25 +7,26 @@
 
 
         <!-- Custom HTML head -->
-
+        
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="theme-color" content="#ffffff">
 
-        <link rel="icon" href="favicon-de23e50b.svg">
-        <link rel="shortcut icon" href="favicon-8114d1fc.png">
-        <link rel="stylesheet" href="css/variables-8adf115d.css">
-        <link rel="stylesheet" href="css/general-0392ca55.css">
-        <link rel="stylesheet" href="css/chrome-fc474251.css">
-        <link rel="stylesheet" href="css/print-9e4910d8.css" media="print">
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
 
         <!-- Fonts -->
-        <link rel="stylesheet" href="fonts/fonts-9644e21d.css">
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
 
         <!-- Highlight.js Stylesheets -->
-        <link rel="stylesheet" id="mdbook-highlight-css" href="highlight-493f70e1.css">
-        <link rel="stylesheet" id="mdbook-tomorrow-night-css" href="tomorrow-night-4c0ae647.css">
-        <link rel="stylesheet" id="mdbook-ayu-highlight-css" href="ayu-highlight-3fdfc3ac.css">
+        <link rel="stylesheet" id="highlight-css" href="highlight.css">
+        <link rel="stylesheet" id="tomorrow-night-css" href="tomorrow-night.css">
+        <link rel="stylesheet" id="ayu-highlight-css" href="ayu-highlight.css">
 
         <!-- Custom theme stylesheets -->
 
@@ -35,10 +36,10 @@
             const path_to_root = "";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "searchindex-fc688792.js";
+            window.path_to_searchindex_js = "searchindex.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="toc-dedbbe6e.js"></script>
+        <script src="toc.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -52,7 +53,7 @@
             </div>
         </div>
     </div>
-    <div id="mdbook-body-container">
+    <div id="body-container">
         <!-- Work around some values being stored in localStorage wrapped in quotes -->
         <script>
             try {
@@ -81,12 +82,12 @@
             html.classList.add("js");
         </script>
 
-        <input type="checkbox" id="mdbook-sidebar-toggle-anchor" class="hidden">
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
 
         <!-- Hide / unhide sidebar before it is displayed -->
         <script>
             let sidebar = null;
-            const sidebar_toggle = document.getElementById("mdbook-sidebar-toggle-anchor");
+            const sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
             if (document.body.clientWidth >= 1080) {
                 try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
                 sidebar = sidebar || 'visible';
@@ -101,39 +102,39 @@
             }
         </script>
 
-        <nav id="mdbook-sidebar" class="sidebar" aria-label="Table of contents">
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <!-- populated by js -->
             <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
             <noscript>
                 <iframe class="sidebar-iframe-outer" src="toc.html"></iframe>
             </noscript>
-            <div id="mdbook-sidebar-resize-handle" class="sidebar-resize-handle">
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
                 <div class="sidebar-resize-indicator"></div>
             </div>
         </nav>
 
-        <div id="mdbook-page-wrapper" class="page-wrapper">
+        <div id="page-wrapper" class="page-wrapper">
 
             <div class="page">
-                <div id="mdbook-menu-bar-hover-placeholder"></div>
-                <div id="mdbook-menu-bar" class="menu-bar sticky">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
                     <div class="left-buttons">
-                        <label id="mdbook-sidebar-toggle" class="icon-button" for="mdbook-sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="mdbook-sidebar">
-                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"/></svg></span>
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
                         </label>
-                        <button id="mdbook-theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="mdbook-theme-list">
-                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M371.3 367.1c27.3-3.9 51.9-19.4 67.2-42.9L600.2 74.1c12.6-19.5 9.4-45.3-7.6-61.2S549.7-4.4 531.1 9.6L294.4 187.2c-24 18-38.2 46.1-38.4 76.1L371.3 367.1zm-19.6 25.4l-116-104.4C175.9 290.3 128 339.6 128 400c0 3.9 .2 7.8 .6 11.6c1.8 17.5-10.2 36.4-27.8 36.4H96c-17.7 0-32 14.3-32 32s14.3 32 32 32H240c61.9 0 112-50.1 112-112c0-2.5-.1-5-.2-7.5z"/></svg></span>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
                         </button>
-                        <ul id="mdbook-theme-list" class="theme-popup" aria-label="Themes" role="menu">
-                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-default_theme">Auto</button></li>
-                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-light">Light</button></li>
-                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-rust">Rust</button></li>
-                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-coal">Coal</button></li>
-                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-navy">Navy</button></li>
-                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-ayu">Ayu</button></li>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="default_theme">Auto</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
                         </ul>
-                        <button id="mdbook-search-toggle" class="icon-button" type="button" title="Search (`/`)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="/ s" aria-controls="mdbook-searchbar">
-                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352c79.5 0 144-64.5 144-144s-64.5-144-144-144S64 128.5 64 208s64.5 144 144 144z"/></svg></span>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search (`/`)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="/ s" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
                         </button>
                     </div>
 
@@ -141,43 +142,43 @@
 
                     <div class="right-buttons">
                         <a href="print.html" title="Print this book" aria-label="Print this book">
-                            <span class=fa-svg id="print-button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M128 0C92.7 0 64 28.7 64 64v96h64V64H354.7L384 93.3V160h64V93.3c0-17-6.7-33.3-18.7-45.3L400 18.7C388 6.7 371.7 0 354.7 0H128zM384 352v32 64H128V384 368 352H384zm64 32h32c17.7 0 32-14.3 32-32V256c0-35.3-28.7-64-64-64H64c-35.3 0-64 28.7-64 64v96c0 17.7 14.3 32 32 32H64v64c0 35.3 28.7 64 64 64H384c35.3 0 64-28.7 64-64V384zm-16-88c-13.3 0-24-10.7-24-24s10.7-24 24-24s24 10.7 24 24s-10.7 24-24 24z"/></svg></span>
+                            <i id="print-button" class="fa fa-print"></i>
                         </a>
 
                     </div>
                 </div>
 
-                <div id="mdbook-search-wrapper" class="hidden">
-                    <form id="mdbook-searchbar-outer" class="searchbar-outer">
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
                         <div class="search-wrapper">
-                            <input type="search" id="mdbook-searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="mdbook-searchresults-outer" aria-describedby="searchresults-header">
+                            <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
                             <div class="spinner-wrapper">
-                                <span class=fa-svg id="fa-spin"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M304 48c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zm0 416c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zM48 304c26.5 0 48-21.5 48-48s-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48zm464-48c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zM142.9 437c18.7-18.7 18.7-49.1 0-67.9s-49.1-18.7-67.9 0s-18.7 49.1 0 67.9s49.1 18.7 67.9 0zm0-294.2c18.7-18.7 18.7-49.1 0-67.9S93.7 56.2 75 75s-18.7 49.1 0 67.9s49.1 18.7 67.9 0zM369.1 437c18.7 18.7 49.1 18.7 67.9 0s18.7-49.1 0-67.9s-49.1-18.7-67.9 0s-18.7 49.1 0 67.9z"/></svg></span>
+                                <i class="fa fa-spinner fa-spin"></i>
                             </div>
                         </div>
                     </form>
-                    <div id="mdbook-searchresults-outer" class="searchresults-outer hidden">
-                        <div id="mdbook-searchresults-header" class="searchresults-header"></div>
-                        <ul id="mdbook-searchresults">
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
                         </ul>
                     </div>
                 </div>
 
                 <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
                 <script>
-                    document.getElementById('mdbook-sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
-                    document.getElementById('mdbook-sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
-                    Array.from(document.querySelectorAll('#mdbook-sidebar a')).forEach(function(link) {
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
                         link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
                     });
                 </script>
 
-                <div id="mdbook-content" class="content">
+                <div id="content" class="content">
                     <main>
                         <h1 id="kapitel-1-was-ist-rust"><a class="header" href="#kapitel-1-was-ist-rust">Kapitel 1: Was ist Rust?</a></h1>
 <p>Die Wahl der richtigen Programmiersprache bestimmt maßgeblich die Architektur, Sicherheit und Performance eines Softwaresystems. Seit Jahrzehnten steht die Softwareentwicklung vor einem scheinbaren Widerspruch: Entweder entscheidet man sich für maximale Performance und direkte Hardwarekontrolle (wie in C oder C++), nimmt dabei jedoch das Risiko schwerwiegender Speicherfehler in Kauf. Oder man wählt maximale Sicherheit und Entwicklungsgeschwindigkeit (wie in Java, C# oder Go), zahlt dafür jedoch einen Preis in Form von Laufzeit-Overhead und unvorhersehbaren Pausen durch eine automatische Speicherbereinigung (Garbage Collection).</p>
 <p>Rust wurde entwickelt, um dieses Dilemma aufzulösen. Dieses Kapitel führt Sie in die Ursprünge, die Kernkonzepte und die Philosophie dieser modernen Systemprogrammiersprache ein.</p>
-<hr>
+<hr />
 <h2 id="1-lernziele--lernplan"><a class="header" href="#1-lernziele--lernplan">1. Lernziele &amp; Lernplan</a></h2>
 <h3 id="lernziele"><a class="header" href="#lernziele">Lernziele</a></h3>
 <ul>
@@ -189,18 +190,28 @@
 </ul>
 <h3 id="lernplan"><a class="header" href="#lernplan">Lernplan</a></h3>
 <ul>
-<li><input disabled="" type="checkbox"> <strong>2. Die Definition</strong>: Präzise Begriffsbestimmung von Rust, Einblick in seine Entstehung und die Definition der Kernziele der Sprache (Abschnitt 1.1).</li>
-<li><input disabled="" type="checkbox"> <strong>3. Das Problem &amp; Die Motivation</strong>: Detaillierter Vergleich mit anderen Sprachfamilien, Analyse klassischer Speicher- und Nebenläufigkeitsfehler (Abschnitt 1.3).</li>
-<li><input disabled="" type="checkbox"> <strong>4. Der naive Versuch</strong>: Demonstration eines typischen Speicherfehlers anhand eines fehlerhaften C-Programms und des konzeptionell analogen Versuchs in Rust.</li>
-<li><input disabled="" type="checkbox"> <strong>5. Die Anatomie des Fehlers</strong>: Zeile-für-Zeile-Analyse des naiven Versuchs auf Hardware-Ebene (Stack-Verhalten) sowie die Interpretation der Compiler-Fehlermeldungen.</li>
-<li><input disabled="" type="checkbox"> <strong>6. Die Lösung</strong>: Implementierung des sicheren Beispiels in Rust, Erläuterung der statischen Typprüfung und des Konzepts der Zero-Cost Abstractions (Abschnitt 1.2).</li>
-<li><input disabled="" type="checkbox"> <strong>7. Kleines Tutorial</strong>: Schritt-für-Schritt-Entwicklung eines einfachen, typsicheren Konsolenprogramms zur Demonstration des EVA-Prinzips.</li>
-<li><input disabled="" type="checkbox"> <strong>8. Mentale Modelle &amp; Deep Dive</strong>: Visualisierung des Speichers (Stack vs. Heap), Erörterung der Anwendungsgebiete (Abschnitt 1.4) und eine lückenlose API-Referenz der fundamentalen Basismethoden.</li>
-<li><input disabled="" type="checkbox"> <strong>9. Drei praktische Übungen</strong>: Programmier- und Analyseaufgaben mit ansteigendem Schwierigkeitsgrad (Leicht, Mittel, Schwer) inklusive Hilfestellungen.</li>
-<li><input disabled="" type="checkbox"> <strong>10. Lernstrategie, Selbsteinschätzung &amp; Merkzettel</strong>: Ein Spickzettel für den Schnellzugriff, Verständnisfragen zur Metakognition und strukturierte Selbsttests.</li>
-<li><input disabled="" type="checkbox"> <strong>11. Zusammenfassung</strong>: Kompakter Überblick über die Kernpunkte des Kapitels.</li>
+<li><input disabled="" type="checkbox"/>
+<strong>2. Die Definition</strong>: Präzise Begriffsbestimmung von Rust, Einblick in seine Entstehung und die Definition der Kernziele der Sprache (Abschnitt 1.1).</li>
+<li><input disabled="" type="checkbox"/>
+<strong>3. Das Problem &amp; Die Motivation</strong>: Detaillierter Vergleich mit anderen Sprachfamilien, Analyse klassischer Speicher- und Nebenläufigkeitsfehler (Abschnitt 1.3).</li>
+<li><input disabled="" type="checkbox"/>
+<strong>4. Der naive Versuch</strong>: Demonstration eines typischen Speicherfehlers anhand eines fehlerhaften C-Programms und des konzeptionell analogen Versuchs in Rust.</li>
+<li><input disabled="" type="checkbox"/>
+<strong>5. Die Anatomie des Fehlers</strong>: Zeile-für-Zeile-Analyse des naiven Versuchs auf Hardware-Ebene (Stack-Verhalten) sowie die Interpretation der Compiler-Fehlermeldungen.</li>
+<li><input disabled="" type="checkbox"/>
+<strong>6. Die Lösung</strong>: Implementierung des sicheren Beispiels in Rust, Erläuterung der statischen Typprüfung und des Konzepts der Zero-Cost Abstractions (Abschnitt 1.2).</li>
+<li><input disabled="" type="checkbox"/>
+<strong>7. Kleines Tutorial</strong>: Schritt-für-Schritt-Entwicklung eines einfachen, typsicheren Konsolenprogramms zur Demonstration des EVA-Prinzips.</li>
+<li><input disabled="" type="checkbox"/>
+<strong>8. Mentale Modelle &amp; Deep Dive</strong>: Visualisierung des Speichers (Stack vs. Heap), Erörterung der Anwendungsgebiete (Abschnitt 1.4) und eine lückenlose API-Referenz der fundamentalen Basismethoden.</li>
+<li><input disabled="" type="checkbox"/>
+<strong>9. Drei praktische Übungen</strong>: Programmier- und Analyseaufgaben mit ansteigendem Schwierigkeitsgrad (Leicht, Mittel, Schwer) inklusive Hilfestellungen.</li>
+<li><input disabled="" type="checkbox"/>
+<strong>10. Lernstrategie, Selbsteinschätzung &amp; Merkzettel</strong>: Ein Spickzettel für den Schnellzugriff, Verständnisfragen zur Metakognition und strukturierte Selbsttests.</li>
+<li><input disabled="" type="checkbox"/>
+<strong>11. Zusammenfassung</strong>: Kompakter Überblick über die Kernpunkte des Kapitels.</li>
 </ul>
-<hr>
+<hr />
 <h2 id="2-die-definition"><a class="header" href="#2-die-definition">2. Die Definition</a></h2>
 <ul>
 <li><strong>Rust</strong>: Eine statisch typisierte, kompilierte Multi-Paradigmen-Systemprogrammiersprache, die sich auf Speichersicherheit, Ausführungsgeschwindigkeit und datenrennenfreie Nebenläufigkeit konzentriert. Sie erreicht diese Garantien ohne die Verwendung eines Garbage Collectors (GC) oder einer virtuellen Laufzeitumgebung (Runtime VM), indem sie den Lebenszyklus von Ressourcen zur Kompilierzeit über ein strenges Regelwerk (Ownership-System) analysiert.</li>
@@ -241,16 +252,16 @@ Rust-Code kompiliert direkt in nativen Maschinencode über das LLVM-Compiler-Bac
 Das Schreiben von Multithreaded-Programmen ist in vielen Sprachen extrem fehleranfällig. Wenn zwei Threads gleichzeitig auf denselben Speicher zugreifen und mindestens einer davon schreibt, entsteht ein Datenrennen (Data Race). Rust verhindert dies durch sein Typsystem. Das Konzept von Ownership und Borrowing stellt sicher, dass Daten entweder von einem einzelnen Thread exklusiv verändert werden können oder von mehreren Threads schreibgeschützt geteilt werden. Diese Garantien werden vollständig zur Kompilierzeit überprüft. Entwickler können somit parallelisierte Algorithmen implementieren, ohne Angst vor unvorhersehbaren Race Conditions haben zu müssen.</li>
 </ol>
 <h3 id="alltagsnahe-analogie"><a class="header" href="#alltagsnahe-analogie">Alltagsnahe Analogie</a></h3>
-<blockquote class="blockquote-tag blockquote-tag-note">
-<p class="blockquote-tag-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>Note</p>
-<p><strong>Die Sicherheitsinspektor-Metapher</strong>: Stellen Sie sich vor, Sie möchten ein großes Gebäude errichten (ein Softwareprojekt).</p>
+<blockquote>
+<p>[!NOTE]
+<strong>Die Sicherheitsinspektor-Metapher</strong>: Stellen Sie sich vor, Sie möchten ein großes Gebäude errichten (ein Softwareprojekt).</p>
 <ul>
 <li><strong>Der C/C++-Ansatz</strong>: Die Arbeiter bauen das Haus ohne Bauaufsicht (keine Typprüfung zur Compilezeit). Sie können Wände hochziehen, wo sie wollen. Der Bau ist extrem schnell fertig, aber wenn ein Arbeiter versehentlich ein tragendes Fundament weglässt (ein Speicherfehler), stürzt das Gebäude erst Monate später im laufenden Betrieb ein, wenn Menschen darin wohnen (Laufzeit-Crash).</li>
 <li><strong>Der Java/Go-Ansatz (Garbage Collector)</strong>: Um Einstürze zu verhindern, fährt permanent ein Trupp von Statikern und Aufräumern durch das fertige Haus (der Garbage Collector). Sie prüfen ständig jede Säule und tragen Müll weg. Das Haus ist sicher, aber die Bewohner müssen regelmäßig stehen bleiben und warten, bis die Statiker ihre Arbeit beendet haben (GC-Pausen). Zudem verbrauchen die Statiker viel Platz und Ressourcen (Speicher-Overhead).</li>
 <li><strong>Der Rust-Ansatz</strong>: Bevor auch nur ein einziger Stein gelegt wird, prüft ein extrem penibler Sicherheitsinspektor den gesamten Bauplan (der Rust-Compiler). Er markiert jeden kleinsten Fehler: „Diese Säule wird das Dach in Phase 3 nicht tragen können.“ Der Architekt muss den Plan so lange korrigieren, bis er mathematisch nachweisbar sicher ist. Erst dann wird das Gebäude gebaut. Das fertige Haus benötigt im Betrieb keine Statiker mehr, läuft mit maximaler Effizienz und stürzt niemals ein.</li>
 </ul>
 </blockquote>
-<hr>
+<hr />
 <h2 id="3-das-problem--die-motivation"><a class="header" href="#3-das-problem--die-motivation">3. Das Problem &amp; Die Motivation</a></h2>
 <p>Um die Existenzberechtigung von Rust zu verstehen, müssen wir die Probleme analysieren, mit denen sich Softwareentwickler in anderen Sprachen täglich konfrontieren.</p>
 <h3 id="13-rust-im-sprachenvergleich"><a class="header" href="#13-rust-im-sprachenvergleich">1.3 Rust im Sprachenvergleich</a></h3>
@@ -282,22 +293,16 @@ Der ständige Hintergrundbetrieb des GC verbraucht CPU-Zyklen und damit Energie.
 </ul>
 <p>Rust geht einen anderen Weg. Es nutzt das <strong>RAII-Prinzip</strong> (Resource Acquisition Is Initialization) aus C++, erhebt es aber zum strikten Compiler-Gesetz. Sobald eine Variable ihren Gültigkeitsbereich (Scope) verlässt, fügt der Rust-Compiler an genau dieser Stelle im Maschinencode den Befehl zur Speicherfreigabe ein. Die Freigabe erfolgt somit <strong>deterministisch</strong> (exakt vorhersehbar) und ohne jeden Laufzeit-Overhead.</p>
 <p>Hier ist ein direkter Vergleich der drei Sprachwelten:</p>
-<div class="table-wrapper">
-<table>
-<thead>
-<tr><th style="text-align: left">Eigenschaft</th><th style="text-align: left">C / C++</th><th style="text-align: left">Java / Go / C#</th><th style="text-align: left">Rust</th></tr>
-</thead>
-<tbody>
+<div class="table-wrapper"><table><thead><tr><th style="text-align: left">Eigenschaft</th><th style="text-align: left">C / C++</th><th style="text-align: left">Java / Go / C#</th><th style="text-align: left">Rust</th></tr></thead><tbody>
 <tr><td style="text-align: left"><strong>Speicherverwaltung</strong></td><td style="text-align: left">Manuell</td><td style="text-align: left">Automatisch (Garbage Collector)</td><td style="text-align: left">Automatisch (Compilezeit-RAII)</td></tr>
 <tr><td style="text-align: left"><strong>Speichersicherheit</strong></td><td style="text-align: left">Nein (manuell fehleranfällig)</td><td style="text-align: left">Ja (durch Laufzeit-GC)</td><td style="text-align: left"><strong>Ja (durch Compilezeit-Prüfung)</strong></td></tr>
 <tr><td style="text-align: left"><strong>Laufzeit-Performance</strong></td><td style="text-align: left">Maximal</td><td style="text-align: left">Mittel bis Hoch (GC-Overhead)</td><td style="text-align: left"><strong>Maximal (LLVM-optimiert)</strong></td></tr>
 <tr><td style="text-align: left"><strong>Vorhersehbarkeit (Latenz)</strong></td><td style="text-align: left">Hoch (determinischtisch)</td><td style="text-align: left">Niedrig (unvorhersehbare GC-Pausen)</td><td style="text-align: left"><strong>Hoch (deterministisch)</strong></td></tr>
 <tr><td style="text-align: left"><strong>Speicher-Overhead</strong></td><td style="text-align: left">Minimal</td><td style="text-align: left">Hoch (GC benötigt Puffer)</td><td style="text-align: left"><strong>Minimal (kein GC)</strong></td></tr>
 <tr><td style="text-align: left"><strong>Fehlervermeidung</strong></td><td style="text-align: left">Erst zur Laufzeit (Tests, Debugging)</td><td style="text-align: left">Zur Laufzeit (Exceptions, GC)</td><td style="text-align: left"><strong>Zur Compilezeit (Borrow Checker)</strong></td></tr>
-</tbody>
-</table>
+</tbody></table>
 </div>
-<hr>
+<hr />
 <h2 id="4-der-naive-versuch"><a class="header" href="#4-der-naive-versuch">4. Der naive Versuch</a></h2>
 <p>Um den Kontrast zwischen traditioneller Speicherverwaltung und der Funktionsweise von Rust zu demonstrieren, betrachten wir ein klassisches Speicherproblem: den <strong>Dangling Pointer</strong> (einen Zeiger, der ins Leere zeigt).</p>
 <p>Wir schreiben eine Funktion, die eine Zahl im Speicher anlegen und einen Zeiger darauf zurückgeben soll. Nach Beendigung der Funktion wird der Speicher der lokalen Variablen jedoch abgebaut. Der zurückgegebene Zeiger zeigt auf einen ungültigen Speicherbereich.</p>
@@ -328,7 +333,7 @@ int main() {
 </code></pre>
 <h3 id="der-naive-versuch-in-rust"><a class="header" href="#der-naive-versuch-in-rust">Der naive Versuch in Rust</a></h3>
 <p>Ein Programmierer, der neu bei Rust ist, versucht nun instinktiv, denselben Algorithmus in Rust zu schreiben:</p>
-<pre class="playground"><code class="language-rust edition2021">// Diese Funktion soll eine Referenz auf eine Zahl zurückgeben
+<pre><code class="language-rust">// Diese Funktion soll eine Referenz auf eine Zahl zurückgeben
 fn get_dangling_pointer() -&gt; &amp;i32 {
     let local_val: i32 = 42;
     &amp;local_val // FEHLER: Wir versuchen, eine Referenz auf einen lokalen Wert zurückzugeben
@@ -339,7 +344,7 @@ fn main() {
     println!("Wert hinter ptr: {}", ptr);
 }</code></pre>
 <p>Dieser naive Versuch kompiliert in Rust nicht. Der Compiler erkennt das Sicherheitsrisiko sofort und bricht den Build-Vorgang mit einer detaillierten Fehlermeldung ab.</p>
-<hr>
+<hr />
 <h2 id="5-die-anatomie-des-fehlers"><a class="header" href="#5-die-anatomie-des-fehlers">5. Die Anatomie des Fehlers</a></h2>
 <h3 id="compiler-feedback-des-rust-compilers"><a class="header" href="#compiler-feedback-des-rust-compilers">Compiler-Feedback des Rust-Compilers</a></h3>
 <p>Wenn wir versuchen, den obigen Rust-Code zu kompilieren, verweigert der Compiler den Dienst und gibt folgende Fehlermeldung aus:</p>
@@ -391,7 +396,7 @@ Sobald die Funktion <code>get_dangling_pointer</code> endet, verschiebt die CPU 
 <li><strong>Der illegale Zugriff</strong>:
 Die Variable <code>ptr</code> in <code>main</code> hält nun die Adresse <code>0x7FFF</code>. Würde das Programm nun versuchen, den Wert an <code>0x7FFF</code> zu lesen, würde es nicht mehr die <code>42</code> auslesen, sondern die überschriebenen Daten der <code>println!</code>-Funktion oder zufälligen Speichermüll. In C führt dies zu schwer zu findenden Bugs. In Rust verhindert der Compiler diesen Speicherzugriff bereits beim Kompilieren.</li>
 </ol>
-<hr>
+<hr />
 <h2 id="6-die-lösung"><a class="header" href="#6-die-lösung">6. Die Lösung</a></h2>
 <p>Um dieses Problem zu lösen, müssen wir das Konzept von <strong>Ownership</strong> (Besitz) verstehen. In Rust hat jeder Wert zu jedem Zeitpunkt genau einen Besitzer (eine Variable). Verlässt dieser Besitzer seinen Gültigkeitsbereich, wird der Wert zerstört.</p>
 <p>Wenn wir Daten aus einer Funktion zurückgeben wollen, haben wir zwei sichere Möglichkeiten:</p>
@@ -401,7 +406,7 @@ Die Variable <code>ptr</code> in <code>main</code> hält nun die Adresse <code>0
 </ol>
 <h3 id="lösung-1-rückgabe-per-wert-move-semantik"><a class="header" href="#lösung-1-rückgabe-per-wert-move-semantik">Lösung 1: Rückgabe per Wert (Move-Semantik)</a></h3>
 <p>Die einfachste und performanteste Lösung in Rust ist die Rückgabe des Werts selbst. Der Besitz an der Zahl <code>42</code> wird dabei von der Funktion an die Variable <code>ptr</code> in <code>main</code> übertragen.</p>
-<pre class="playground"><code class="language-rust edition2021">// Die Funktion gibt nun den Wert direkt zurück (i32 statt &amp;i32)
+<pre><code class="language-rust">// Die Funktion gibt nun den Wert direkt zurück (i32 statt &amp;i32)
 fn get_safe_value() -&gt; i32 {
     let local_val: i32 = 42;
     local_val // Der Wert wird aus der Funktion heraus "bewegt" (Move)
@@ -413,7 +418,7 @@ fn main() {
 }</code></pre>
 <h3 id="lösung-2-sichere-heap-allokation-mit-boxt"><a class="header" href="#lösung-2-sichere-heap-allokation-mit-boxt">Lösung 2: Sichere Heap-Allokation mit <code>Box&lt;T&gt;</code></a></h3>
 <p>Möchten wir den Wert explizit im Heap-Speicher ablegen und eine Referenzstruktur behalten, nutzen wir <code>Box&lt;T&gt;</code>. Die <code>Box</code> ist ein Smart Pointer, der die Daten auf dem Heap speichert. Wenn die <code>Box</code> in <code>main</code> ihren Scope verlässt, wird der Heap-Speicher automatisch freigegeben.</p>
-<pre class="playground"><code class="language-rust edition2021">// Die Box alloziiert Speicher auf dem Heap und hält die Adresse.
+<pre><code class="language-rust">// Die Box alloziiert Speicher auf dem Heap und hält die Adresse.
 fn get_heap_value() -&gt; Box&lt;i32&gt; {
     let val_on_heap = Box::new(42); // 42 wird auf dem Heap gespeichert
     val_on_heap // Die Box (Besitz des Heap-Speichers) wird zurückgegeben
@@ -445,7 +450,7 @@ Die Funktion <code>get_heap_value</code> benötigt keine Parameter. Sie startet 
 </ol>
 </li>
 </ul>
-<hr>
+<hr />
 <h3 id="12-technische-kernkonzepte"><a class="header" href="#12-technische-kernkonzepte">1.2 Technische Kernkonzepte</a></h3>
 <p>Die beiden Lösungen demonstrieren zwei fundamentale technische Konzepte von Rust, die tief in der Compiler-Architektur verankert sind.</p>
 <h4 id="121-statische-typprüfung"><a class="header" href="#121-statische-typprüfung">1.2.1 Statische Typprüfung</a></h4>
@@ -455,15 +460,9 @@ Die Funktion <code>get_heap_value</code> benötigt keine Parameter. Sie startet 
 <li><strong>Stark</strong>: Der Compiler erlaubt keine impliziten Typkonvertierungen. In C können Sie ein <code>char</code> (1 Byte) problemlos zu einem <code>int</code> (4 Bytes) addieren oder einen Zeiger blind in eine Zahl casten. Rust verbietet dies strengstens, um Programmierfehler auszuschließen. Jede Konvertierung muss explizit deklariert werden.</li>
 </ul>
 <p>Dank des Mechanismus der <strong>Typinferenz</strong> müssen Sie jedoch nicht jeden Typ manuell deklarieren. Der Rust-Compiler ist intelligent genug, den Typ einer Variablen anhand ihrer Zuweisung und Verwendung zu erraten:</p>
-<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>let x = 42; // Der Compiler erkennt automatisch, dass x den Typ i32 hat
-<span class="boring">}</span></code></pre>
+<pre><code class="language-rust">let x = 42; // Der Compiler erkennt automatisch, dass x den Typ i32 hat</code></pre>
 <p>Möchten Sie den Typ explizit vorgeben, nutzen Sie die Typannotation mit einem Doppelpunkt:</p>
-<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>let x: u64 = 42; // Explizite Zuweisung als vorzeichenloser 64-Bit-Integer
-<span class="boring">}</span></code></pre>
+<pre><code class="language-rust">let x: u64 = 42; // Explizite Zuweisung als vorzeichenloser 64-Bit-Integer</code></pre>
 <p>Diese statische Typprüfung sorgt dafür, dass logische Typkonflikte (z. B. der Versuch, eine Zeichenkette mit einer Zahl zu multiplizieren) bereits vor der Code-Ausführung erkannt und korrigiert werden müssen.</p>
 <h4 id="122-zero-cost-abstractions"><a class="header" href="#122-zero-cost-abstractions">1.2.2 Zero-Cost Abstractions</a></h4>
 <p>Eines der wichtigsten Versprechen von Rust lautet: <strong>„Zero-Cost Abstractions“</strong> (kostenfreie Abstraktionen). Dieses Prinzip wurde ursprünglich von Bjarne Stroustrup (dem Erfinder von C++) formuliert und besagt:</p>
@@ -482,20 +481,20 @@ Kleine Funktionen (wie z. B. der Zugriff auf ein Element über einen Iterator) w
 Schleifen über feste Bereiche werden vom Compiler in lineare Befehlssequenzen zerlegt, um Sprungbefehle auf CPU-Ebene zu minimieren und die CPU-Pipeline optimal auszulasten.</li>
 </ul>
 <p>Durch diese Techniken läuft ein hochgradig abstrakt geschriebenes Rust-Programm (z. B. unter Verwendung von funktionalen Ketten wie <code>.iter().filter().map()</code>) exakt so schnell wie eine manuell optimierte, iterative Schleife in C.</p>
-<hr>
+<hr />
 <h2 id="7-kleines-tutorial"><a class="header" href="#7-kleines-tutorial">7. Kleines Tutorial</a></h2>
 <p>Wir entwickeln nun Schritt für Schritt ein kleines, interaktives Konsolenprogramm. Das Programm liest den Namen eines Benutzers und sein Geburtsjahr ein, berechnet sein Alter und gibt eine personalisierte Meldung aus.</p>
 <p>Dieses Tutorial demonstriert das <strong>EVA-Prinzip</strong> (Eingabe, Verarbeitung, Ausgabe), die Typkonvertierung und die grundlegende Syntax von Rust.</p>
 <h3 id="schritt-1-das-grundgerüst-erstellen"><a class="header" href="#schritt-1-das-grundgerüst-erstellen">Schritt 1: Das Grundgerüst erstellen</a></h3>
 <p>Jedes ausführbare Rust-Programm beginnt mit die Funktion <code>main</code>. Diese Funktion ist der Einstiegspunkt für das Betriebssystem. Wir importieren zudem das Ein-/Ausgabemodul <code>io</code> aus der Standardbibliothek (<code>std</code>).</p>
-<pre class="playground"><code class="language-rust edition2021">use std::io; // Importiert das Eingabe-/Ausgabe-Modul
+<pre><code class="language-rust">use std::io; // Importiert das Eingabe-/Ausgabe-Modul
 
 fn main() {
     println!("Willkommen beim Rust-Altersrechner!");
 }</code></pre>
 <h3 id="schritt-2-den-namen-einlesen-eingabe"><a class="header" href="#schritt-2-den-namen-einlesen-eingabe">Schritt 2: Den Namen einlesen (Eingabe)</a></h3>
 <p>Wir erstellen einen veränderbaren String (<code>String::new()</code>), um den Namen des Benutzers zu speichern. Mit <code>io::stdin().read_line()</code> lesen wir die Eingabe von der Tastatur ein.</p>
-<pre class="playground"><code class="language-rust edition2021">use std::io;
+<pre><code class="language-rust">use std::io;
 
 fn main() {
     println!("Willkommen beim Rust-Altersrechner!");
@@ -519,7 +518,7 @@ fn main() {
 }</code></pre>
 <h3 id="schritt-3-das-geburtsjahr-einlesen-und-parsen-eingabe--verarbeitung"><a class="header" href="#schritt-3-das-geburtsjahr-einlesen-und-parsen-eingabe--verarbeitung">Schritt 3: Das Geburtsjahr einlesen und parsen (Eingabe &amp; Verarbeitung)</a></h3>
 <p>Nun lesen wir das Geburtsjahr als String ein und konvertieren (parsen) es in eine Ganzzahl des Typs <code>i32</code>.</p>
-<pre class="playground"><code class="language-rust edition2021">use std::io;
+<pre><code class="language-rust">use std::io;
 
 fn main() {
     println!("Willkommen beim Rust-Altersrechner!");
@@ -566,7 +565,7 @@ Hier nutzen wir <strong>Shadowing</strong> (Beschattung). Wir deklarieren eine n
 <li><code>let geburtsjahr: i32 = jahr_str.trim().parse().expect(...);</code>:
 Wir rufen <code>.parse()</code> auf dem bereinigten String auf. Der Compiler weiß durch die explizite Typannotation <code>: i32</code>, in welchen Zieltyp der String konvertiert werden soll. Schlägt das Parsen fehl (weil der Benutzer z. B. „einhundert“ statt „100“ eingegeben hat), bricht <code>.expect</code> das Programm kontrolliert ab.</li>
 </ol>
-<hr>
+<hr />
 <h2 id="8-mentale-modelle--deep-dive"><a class="header" href="#8-mentale-modelle--deep-dive">8. Mentale Modelle &amp; Deep Dive</a></h2>
 <p>Um fehlerfreien Code in Rust zu schreiben, müssen wir zwei mentale Modelle verinnerlichen: den Aufbau des Arbeitsspeichers und die Struktur des Ökosystems.</p>
 <h3 id="das-speicherlayout-stack-vs-heap"><a class="header" href="#das-speicherlayout-stack-vs-heap">Das Speicherlayout (Stack vs. Heap)</a></h3>
@@ -617,7 +616,7 @@ Wir rufen <code>.parse()</code> auf dem bereinigten String auf. Der Compiler wei
 </ul>
 </li>
 </ul>
-<h3 id="14-anwendungsgebiete-und-ökosystem"><a class="header" href="#14-anwendungsgebiete-und-ökosystem">1.4 Anwendungsgebiete und Ökosystem</a></h3>
+<h3 id="14-anwendungsgebiete-und-Ökosystem"><a class="header" href="#14-anwendungsgebiete-und-Ökosystem">1.4 Anwendungsgebiete und Ökosystem</a></h3>
 <p>Rust ist keine Nischensprache mehr, sondern hat sich fest in der IT-Industrie etabliert.</p>
 <h4 id="141-system---netzwerkprogrammierung"><a class="header" href="#141-system---netzwerkprogrammierung">1.4.1 System- &amp; Netzwerkprogrammierung</a></h4>
 <p>Dies ist das klassische Terrain von Rust. Überall dort, wo maximale Performance, niedrige Latenz und absolute Zuverlässigkeit gefordert sind, ersetzt Rust zunehmend C und C++.</p>
@@ -636,16 +635,13 @@ WebAssembly ist ein Standard, der es ermöglicht, Code in Webbrowsern mit nahezu
 <li><strong>Embedded Systems (Eingebettete Systeme)</strong>:
 In der Welt der Mikrocontroller (z. B. ARM Cortex-M, RISC-V) zählt jedes Byte Arbeitsspeicher. Rust bietet eine offizielle Unterstützung für „Bare-Metal“-Programmierung (<code>#[no_std]</code>). Das bedeutet, dass der Code ohne ein zugrundeliegendes Betriebssystem direkt auf der Hardware läuft. Der Borrow Checker verhindert hier folgenschwere Fehler wie Speicherüberläufe, die in Steuergeräten von Autos, medizinischen Geräten oder IoT-Sensoren katastrophale Folgen haben könnten.</li>
 </ul>
-<hr>
+<hr />
 <h3 id="exhaustive-api-reference-lückenlos"><a class="header" href="#exhaustive-api-reference-lückenlos">Exhaustive API-Reference (Lückenlos)</a></h3>
 <p>In diesem Abschnitt dokumentieren wir die fundamentalen Standardbibliotheksfunktionen, die für die Veranschaulichung der Typprüfung, Speichergrößenbestimmung und Heap-Allokation in Kapitel 1 verwendet wurden.</p>
 <h4 id="1-stdanytype_name"><a class="header" href="#1-stdanytype_name">1. <code>std::any::type_name</code></a></h4>
 <ul>
 <li><strong>Signatur</strong>:
-<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>pub const fn type_name&lt;T&gt;() -&gt; &amp;'static str
-<span class="boring">}</span></code></pre>
+<pre><code class="language-rust">pub const fn type_name&lt;T&gt;() -&gt; &amp;'static str</code></pre>
 </li>
 <li><strong>Parameter</strong>:
 Die Funktion benötigt keine Laufzeit-Parameter. Sie nutzt einen generischen Typparameter <code>T</code>, der zur Compilezeit aufgelöst wird.</li>
@@ -654,20 +650,14 @@ Die Funktion benötigt keine Laufzeit-Parameter. Sie nutzt einen generischen Typ
 <li><strong>Sicherheitsaspekte &amp; Panics</strong>:
 Diese Funktion ist als <code>const fn</code> deklariert und kann zur Compilezeit ausgewertet werden. Sie stürzt unter keinen Umständen abstürzen.</li>
 <li><strong>Kurzbeispiel</strong>:
-<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>let x = 42.0f64;
-println!("Typ von x: {}", std::any::type_name::&lt;f64&gt;()); // Ausgabe: "f64"
-<span class="boring">}</span></code></pre>
+<pre><code class="language-rust">let x = 42.0f64;
+println!("Typ von x: {}", std::any::type_name::&lt;f64&gt;()); // Ausgabe: "f64"</code></pre>
 </li>
 </ul>
 <h4 id="2-stdmemsize_of"><a class="header" href="#2-stdmemsize_of">2. <code>std::mem::size_of</code></a></h4>
 <ul>
 <li><strong>Signatur</strong>:
-<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>pub const fn size_of&lt;T&gt;() -&gt; usize
-<span class="boring">}</span></code></pre>
+<pre><code class="language-rust">pub const fn size_of&lt;T&gt;() -&gt; usize</code></pre>
 </li>
 <li><strong>Parameter</strong>:
 Keine Laufzeit-Parameter. Die Typauflösung erfolgt vollständig zur Compilezeit über den generischen Typparameter <code>T</code>.</li>
@@ -676,20 +666,14 @@ Keine Laufzeit-Parameter. Die Typauflösung erfolgt vollständig zur Compilezeit
 <li><strong>Sicherheitsaspekte &amp; Panics</strong>:
 Panikt nie. Die Größe wird vom Compiler berechnet und als Konstante in den Maschinencode eingefügt.</li>
 <li><strong>Kurzbeispiel</strong>:
-<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>let groese = std::mem::size_of::&lt;i32&gt;();
-println!("Ein i32 belegt {} Bytes auf dem Stack.", groese); // Ausgabe: 4
-<span class="boring">}</span></code></pre>
+<pre><code class="language-rust">let groese = std::mem::size_of::&lt;i32&gt;();
+println!("Ein i32 belegt {} Bytes auf dem Stack.", groese); // Ausgabe: 4</code></pre>
 </li>
 </ul>
 <h4 id="3-stdboxedboxnew"><a class="header" href="#3-stdboxedboxnew">3. <code>std::boxed::Box::new</code></a></h4>
 <ul>
 <li><strong>Signatur</strong>:
-<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>pub fn new(x: T) -&gt; Box&lt;T&gt;
-<span class="boring">}</span></code></pre>
+<pre><code class="language-rust">pub fn new(x: T) -&gt; Box&lt;T&gt;</code></pre>
 </li>
 <li><strong>Parameter</strong>:
 <ul>
@@ -701,16 +685,13 @@ println!("Ein i32 belegt {} Bytes auf dem Stack.", groese); // Ausgabe: 4
 <li><strong>Sicherheitsaspekte &amp; Panics</strong>:
 Die Allokation kann zu einem Programmabsturz (OOM - Out of Memory) führen, wenn das System über keinen freien Arbeitsspeicher mehr verfügt. Dies ist jedoch auf modernen Betriebssystemen extrem selten.</li>
 <li><strong>Kurzbeispiel</strong>:
-<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>let heap_zahl = Box::new(100u8);
-println!("Wert auf dem Heap: {}", *heap_zahl); // Ausgabe: 100
-<span class="boring">}</span></code></pre>
+<pre><code class="language-rust">let heap_zahl = Box::new(100u8);
+println!("Wert auf dem Heap: {}", *heap_zahl); // Ausgabe: 100</code></pre>
 </li>
 </ul>
-<hr>
-<h2 id="9-drei-praktische-übungen"><a class="header" href="#9-drei-praktische-übungen">9. Drei praktische Übungen</a></h2>
-<h3 id="übung-1-speicherfehler-in-c-code-analysieren-leicht"><a class="header" href="#übung-1-speicherfehler-in-c-code-analysieren-leicht">Übung 1: Speicherfehler in C-Code analysieren (Leicht)</a></h3>
+<hr />
+<h2 id="9-drei-praktische-Übungen"><a class="header" href="#9-drei-praktische-Übungen">9. Drei praktische Übungen</a></h2>
+<h3 id="Übung-1-speicherfehler-in-c-code-analysieren-leicht"><a class="header" href="#Übung-1-speicherfehler-in-c-code-analysieren-leicht">Übung 1: Speicherfehler in C-Code analysieren (Leicht)</a></h3>
 <p><strong>Aufgabe</strong>:
 Betrachten Sie das folgende C-Code-Snippet. Analysieren Sie den Code und identifizieren Sie den Speicherfehler. Erklären Sie, warum dieser Fehler auftritt und wie der Rust-Compiler ein äquivalentes Programm bereits zur Compilezeit stoppen würde.</p>
 <pre><code class="language-c">#include &lt;stdlib.h&gt;
@@ -730,39 +711,33 @@ int main() {
 <li><strong>Lösungshinweis (Hint)</strong>:
 Achten Sie darauf, wann der Speicher mit <code>free()</code> freigegeben wird und wann das Programm versucht, auf den Inhalt von <code>array</code> zuzugreifen. In Rust würde dieser Fehler unter die Kategorie „Use-After-Free“ fallen. Denken Sie an das Ownership-Gesetz.</li>
 </ul>
-<hr>
-<h3 id="übung-2-statische-typprüfung-simulieren-mittel"><a class="header" href="#übung-2-statische-typprüfung-simulieren-mittel">Übung 2: Statische Typprüfung simulieren (Mittel)</a></h3>
+<hr />
+<h3 id="Übung-2-statische-typprüfung-simulieren-mittel"><a class="header" href="#Übung-2-statische-typprüfung-simulieren-mittel">Übung 2: Statische Typprüfung simulieren (Mittel)</a></h3>
 <p><strong>Aufgabe</strong>:
 Schreiben Sie ein kleines Rust-Programm (oder skizzieren Sie den Code), das zeigt, wie streng die Typkonvertierung in Rust ist. Versuchen Sie, eine Variable des Typs <code>i32</code> (32-Bit Integer) und eine Variable des Typs <code>f64</code> (64-Bit Fließkommazahl) ohne explizite Konvertierung zu addieren. Dokumentieren Sie die Fehlermeldung des Compilers und beheben Sie den Fehler mithilfe des <code>as</code>-Operators zur expliziten Konvertierung.</p>
 <ul>
 <li><strong>Lösungshinweis (Hint)</strong>:
 Der Rust-Compiler erlaubt keine arithmetischen Operationen zwischen unterschiedlichen Typen. Sie müssen eine der Variablen konvertieren, z. B. <code>let summe = x as f64 + y;</code>.</li>
 </ul>
-<hr>
-<h3 id="übung-3-speichermodell-zeichnen--box-größen-ermitteln-schwer"><a class="header" href="#übung-3-speichermodell-zeichnen--box-größen-ermitteln-schwer">Übung 3: Speichermodell zeichnen &amp; Box-Größen ermitteln (Schwer)</a></h3>
+<hr />
+<h3 id="Übung-3-speichermodell-zeichnen--box-größen-ermitteln-schwer"><a class="header" href="#Übung-3-speichermodell-zeichnen--box-größen-ermitteln-schwer">Übung 3: Speichermodell zeichnen &amp; Box-Größen ermitteln (Schwer)</a></h3>
 <p><strong>Aufgabe</strong>:
 Schreiben Sie ein Rust-Programm, das die Größe einer <code>Box&lt;i32&gt;</code> und die Größe eines normalen <code>i32</code>-Werts auf dem Stack ermittelt. Nutzen Sie dafür die Funktion <code>std::mem::size_of</code>. Erklären Sie das Ergebnis anhand des Speicherlayouts (Stack vs. Heap). Warum unterscheidet sich die Größe der Box auf dem Stack nicht, selbst wenn Sie den Wert in der Box verändern oder vergrößern?</p>
 <ul>
 <li><strong>Lösungshinweis (Hint)</strong>:
 Denken Sie daran, dass eine <code>Box</code> auf dem Stack lediglich ein Zeiger (Speicheradresse) ist. Auf einem 64-Bit-Betriebssystem ist jede Speicheradresse genau 8 Bytes groß, unabhängig davon, wie groß die Daten auf dem Heap sind, auf die sie verweist.</li>
 </ul>
-<hr>
+<hr />
 <h2 id="10-lernstrategie-selbsteinschätzung--merkzettel"><a class="header" href="#10-lernstrategie-selbsteinschätzung--merkzettel">10. Lernstrategie, Selbsteinschätzung &amp; Merkzettel</a></h2>
 <h3 id="spickzettel-cheat-sheet"><a class="header" href="#spickzettel-cheat-sheet">Spickzettel (Cheat Sheet)</a></h3>
-<div class="table-wrapper">
-<table>
-<thead>
-<tr><th style="text-align: left">Befehl / Syntax</th><th style="text-align: left">Beschreibung</th><th style="text-align: left">Beispiel</th></tr>
-</thead>
-<tbody>
+<div class="table-wrapper"><table><thead><tr><th style="text-align: left">Befehl / Syntax</th><th style="text-align: left">Beschreibung</th><th style="text-align: left">Beispiel</th></tr></thead><tbody>
 <tr><td style="text-align: left"><code>let x = 5;</code></td><td style="text-align: left">Deklaration einer unveränderlichen Variable</td><td style="text-align: left"><code>let mut age = 25;</code></td></tr>
 <tr><td style="text-align: left"><code>let mut x = 5;</code></td><td style="text-align: left">Deklaration einer veränderbaren Variable</td><td style="text-align: left"><code>age = 26;</code></td></tr>
 <tr><td style="text-align: left"><code>Box::new(x)</code></td><td style="text-align: left">Alloziert Speicher auf dem Heap für <code>x</code></td><td style="text-align: left"><code>let b = Box::new(42);</code></td></tr>
 <tr><td style="text-align: left"><code>as</code></td><td style="text-align: left">Operator für explizite Typkonvertierung</td><td style="text-align: left"><code>let y = x as f64;</code></td></tr>
 <tr><td style="text-align: left"><code>std::mem::size_of::&lt;T&gt;()</code></td><td style="text-align: left">Ermittelt die Stack-Größe des Typs <code>T</code> in Bytes</td><td style="text-align: left"><code>size_of::&lt;Box&lt;i32&gt;&gt;()</code></td></tr>
 <tr><td style="text-align: left"><code>std::any::type_name::&lt;T&gt;()</code></td><td style="text-align: left">Gibt den Namen des Typs <code>T</code> als Text zurück</td><td style="text-align: left"><code>type_name::&lt;f32&gt;()</code></td></tr>
-</tbody>
-</table>
+</tbody></table>
 </div>
 <h3 id="active-recall-verständnisfragen"><a class="header" href="#active-recall-verständnisfragen">Active Recall (Verständnisfragen)</a></h3>
 <ol>
@@ -789,11 +764,14 @@ Denken Sie daran, dass eine <code>Box</code> auf dem Stack lediglich ein Zeiger 
 <h3 id="metakognitiver-selbsttest"><a class="header" href="#metakognitiver-selbsttest">Metakognitiver Selbsttest</a></h3>
 <p>Wechseln Sie erst zu <a href="file:///home/thorsten/RustKurs/doc/src/2.md">Kapitel 2: Installation &amp; Systemkonfiguration</a>, wenn Sie:</p>
 <ul>
-<li><input disabled="" type="checkbox"> Den genauen Unterschied zwischen Stack und Heap erklären können.</li>
-<li><input disabled="" type="checkbox"> Verstanden haben, warum C/C++-Code anfällig für Use-After-Free-Fehler ist.</li>
-<li><input disabled="" type="checkbox"> Begreifen, warum Rust keinen Garbage Collector benötigt, um speichersicher zu sein.</li>
+<li><input disabled="" type="checkbox"/>
+Den genauen Unterschied zwischen Stack und Heap erklären können.</li>
+<li><input disabled="" type="checkbox"/>
+Verstanden haben, warum C/C++-Code anfällig für Use-After-Free-Fehler ist.</li>
+<li><input disabled="" type="checkbox"/>
+Begreifen, warum Rust keinen Garbage Collector benötigt, um speichersicher zu sein.</li>
 </ul>
-<hr>
+<hr />
 <h2 id="11-zusammenfassung"><a class="header" href="#11-zusammenfassung">11. Zusammenfassung</a></h2>
 <ul>
 <li><strong>Evolution</strong>: Rust wurde von Graydon Hoare initiiert und ab 2009 von Mozilla gesponsert, um eine sichere, parallele Browser-Engine (Servo) zu entwickeln.</li>
@@ -803,7 +781,7 @@ Denken Sie daran, dass eine <code>Box</code> auf dem Stack lediglich ein Zeiger 
 <li><strong>Typsystem</strong>: Die statische und starke Typprüfung verhindert logische Typkonflikte und Programmierfehler vor der Ausführung.</li>
 <li><strong>Einsatzbereiche</strong>: Typische Anwendungsgebiete sind die System- und Netzwerkprogrammierung, WebAssembly im Browser sowie ressourcensparende Embedded Systems.</li>
 </ul>
-<hr>
+<hr />
 <p><strong>Lizenz- und Attributionshinweis</strong>:
 Teile dieses Kapitels basieren auf Übersetzungen und didaktischen Anpassungen des offiziellen Buches <a href="https://doc.rust-lang.org/book/">The Rust Programming Language</a> von Steve Klabnik und Carol Nichols (sowie Beiträgen der Rust-Community), lizenziert unter <a href="https://opensource.org/licenses/MIT">MIT</a> und <a href="https://www.apache.org/licenses/LICENSE-2.0">Apache 2.0</a>.</p>
 
@@ -812,11 +790,11 @@ Teile dieses Kapitels basieren auf Übersetzungen und didaktischen Anpassungen d
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
                             <a rel="prev" href="index.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
-                                <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
+                                <i class="fa fa-angle-left"></i>
                             </a>
 
                             <a rel="next prefetch" href="2.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
-                                <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
+                                <i class="fa fa-angle-right"></i>
                             </a>
 
                         <div style="clear: both"></div>
@@ -826,21 +804,16 @@ Teile dieses Kapitels basieren auf Übersetzungen und didaktischen Anpassungen d
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
                     <a rel="prev" href="index.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
-                        <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
+                        <i class="fa fa-angle-left"></i>
                     </a>
 
                     <a rel="next prefetch" href="2.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
-                        <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
+                        <i class="fa fa-angle-right"></i>
                     </a>
             </nav>
 
         </div>
 
-        <template id=fa-eye><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M288 32c-80.8 0-145.5 36.8-192.6 80.6C48.6 156 17.3 208 2.5 243.7c-3.3 7.9-3.3 16.7 0 24.6C17.3 304 48.6 356 95.4 399.4C142.5 443.2 207.2 480 288 480s145.5-36.8 192.6-80.6c46.8-43.5 78.1-95.4 93-131.1c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C433.5 68.8 368.8 32 288 32zM432 256c0 79.5-64.5 144-144 144s-144-64.5-144-144s64.5-144 144-144s144 64.5 144 144zM288 192c0 35.3-28.7 64-64 64c-11.5 0-22.3-3-31.6-8.4c-.2 2.8-.4 5.5-.4 8.4c0 53 43 96 96 96s96-43 96-96s-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6z"/></svg></span></template>
-        <template id=fa-eye-slash><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M38.8 5.1C28.4-3.1 13.3-1.2 5.1 9.2S-1.2 34.7 9.2 42.9l592 464c10.4 8.2 25.5 6.3 33.7-4.1s6.3-25.5-4.1-33.7L525.6 386.7c39.6-40.6 66.4-86.1 79.9-118.4c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C465.5 68.8 400.8 32 320 32c-68.2 0-125 26.3-169.3 60.8L38.8 5.1zM223.1 149.5C248.6 126.2 282.7 112 320 112c79.5 0 144 64.5 144 144c0 24.9-6.3 48.3-17.4 68.7L408 294.5c5.2-11.8 8-24.8 8-38.5c0-53-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6c0 10.2-2.4 19.8-6.6 28.3l-90.3-70.8zm223.1 298L373 389.9c-16.4 6.5-34.3 10.1-53 10.1c-79.5 0-144-64.5-144-144c0-6.9 .5-13.6 1.4-20.2L83.1 161.5C60.3 191.2 44 220.8 34.5 243.7c-3.3 7.9-3.3 16.7 0 24.6c14.9 35.7 46.2 87.7 93 131.1C174.5 443.2 239.2 480 320 480c47.8 0 89.9-12.9 126.2-32.5z"/></svg></span></template>
-        <template id=fa-copy><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M502.6 70.63l-61.25-61.25C435.4 3.371 427.2 0 418.7 0H255.1c-35.35 0-64 28.66-64 64l.0195 256C192 355.4 220.7 384 256 384h192c35.2 0 64-28.8 64-64V93.25C512 84.77 508.6 76.63 502.6 70.63zM464 320c0 8.836-7.164 16-16 16H255.1c-8.838 0-16-7.164-16-16L239.1 64.13c0-8.836 7.164-16 16-16h128L384 96c0 17.67 14.33 32 32 32h47.1V320zM272 448c0 8.836-7.164 16-16 16H63.1c-8.838 0-16-7.164-16-16L47.98 192.1c0-8.836 7.164-16 16-16H160V128H63.99c-35.35 0-64 28.65-64 64l.0098 256C.002 483.3 28.66 512 64 512h192c35.2 0 64-28.8 64-64v-32h-47.1L272 448z"/></svg></span></template>
-        <template id=fa-play><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80V432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"/></svg></span></template>
-        <template id=fa-clock-rotate-left><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M75 75L41 41C25.9 25.9 0 36.6 0 57.9V168c0 13.3 10.7 24 24 24H134.1c21.4 0 32.1-25.9 17-41l-30.8-30.8C155 85.5 203 64 256 64c106 0 192 86 192 192s-86 192-192 192c-40.8 0-78.6-12.7-109.7-34.4c-14.5-10.1-34.4-6.6-44.6 7.9s-6.6 34.4 7.9 44.6C151.2 495 201.7 512 256 512c141.4 0 256-114.6 256-256S397.4 0 256 0C185.3 0 121.3 28.7 75 75zm181 53c-13.3 0-24 10.7-24 24V256c0 6.4 2.5 12.5 7 17l72 72c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-65-65V152c0-13.3-10.7-24-24-24z"/></svg></span></template>
 
 
 
@@ -849,17 +822,17 @@ Teile dieses Kapitels basieren auf Übersetzungen und didaktischen Anpassungen d
         </script>
 
 
-        <script src="elasticlunr-ef4e11c1.min.js"></script>
-        <script src="mark-09e88c2c.min.js"></script>
-        <script src="searcher-09f2665d.js"></script>
+        <script src="elasticlunr.min.js"></script>
+        <script src="mark.min.js"></script>
+        <script src="searcher.js"></script>
 
-        <script src="clipboard-1626706a.min.js"></script>
-        <script src="highlight-abc7f01d.js"></script>
-        <script src="book-c22b7243.js"></script>
+        <script src="clipboard.min.js"></script>
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
 
         <!-- Custom JS scripts -->
-        <script src="mermaid-eefea253.min.js"></script>
-        <script src="mermaid-init-ccf746f1.js"></script>
+        <script src="mermaid.min.js"></script>
+        <script src="mermaid-init.js"></script>
 
 
 

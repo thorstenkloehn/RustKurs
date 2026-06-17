@@ -7,25 +7,26 @@
 
 
         <!-- Custom HTML head -->
-
+        
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="theme-color" content="#ffffff">
 
-        <link rel="icon" href="favicon-de23e50b.svg">
-        <link rel="shortcut icon" href="favicon-8114d1fc.png">
-        <link rel="stylesheet" href="css/variables-8adf115d.css">
-        <link rel="stylesheet" href="css/general-0392ca55.css">
-        <link rel="stylesheet" href="css/chrome-fc474251.css">
-        <link rel="stylesheet" href="css/print-9e4910d8.css" media="print">
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
 
         <!-- Fonts -->
-        <link rel="stylesheet" href="fonts/fonts-9644e21d.css">
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
 
         <!-- Highlight.js Stylesheets -->
-        <link rel="stylesheet" id="mdbook-highlight-css" href="highlight-493f70e1.css">
-        <link rel="stylesheet" id="mdbook-tomorrow-night-css" href="tomorrow-night-4c0ae647.css">
-        <link rel="stylesheet" id="mdbook-ayu-highlight-css" href="ayu-highlight-3fdfc3ac.css">
+        <link rel="stylesheet" id="highlight-css" href="highlight.css">
+        <link rel="stylesheet" id="tomorrow-night-css" href="tomorrow-night.css">
+        <link rel="stylesheet" id="ayu-highlight-css" href="ayu-highlight.css">
 
         <!-- Custom theme stylesheets -->
 
@@ -35,10 +36,10 @@
             const path_to_root = "";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "searchindex-fc688792.js";
+            window.path_to_searchindex_js = "searchindex.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="toc-dedbbe6e.js"></script>
+        <script src="toc.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -52,7 +53,7 @@
             </div>
         </div>
     </div>
-    <div id="mdbook-body-container">
+    <div id="body-container">
         <!-- Work around some values being stored in localStorage wrapped in quotes -->
         <script>
             try {
@@ -81,12 +82,12 @@
             html.classList.add("js");
         </script>
 
-        <input type="checkbox" id="mdbook-sidebar-toggle-anchor" class="hidden">
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
 
         <!-- Hide / unhide sidebar before it is displayed -->
         <script>
             let sidebar = null;
-            const sidebar_toggle = document.getElementById("mdbook-sidebar-toggle-anchor");
+            const sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
             if (document.body.clientWidth >= 1080) {
                 try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
                 sidebar = sidebar || 'visible';
@@ -101,39 +102,39 @@
             }
         </script>
 
-        <nav id="mdbook-sidebar" class="sidebar" aria-label="Table of contents">
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <!-- populated by js -->
             <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
             <noscript>
                 <iframe class="sidebar-iframe-outer" src="toc.html"></iframe>
             </noscript>
-            <div id="mdbook-sidebar-resize-handle" class="sidebar-resize-handle">
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
                 <div class="sidebar-resize-indicator"></div>
             </div>
         </nav>
 
-        <div id="mdbook-page-wrapper" class="page-wrapper">
+        <div id="page-wrapper" class="page-wrapper">
 
             <div class="page">
-                <div id="mdbook-menu-bar-hover-placeholder"></div>
-                <div id="mdbook-menu-bar" class="menu-bar sticky">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
                     <div class="left-buttons">
-                        <label id="mdbook-sidebar-toggle" class="icon-button" for="mdbook-sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="mdbook-sidebar">
-                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"/></svg></span>
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
                         </label>
-                        <button id="mdbook-theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="mdbook-theme-list">
-                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M371.3 367.1c27.3-3.9 51.9-19.4 67.2-42.9L600.2 74.1c12.6-19.5 9.4-45.3-7.6-61.2S549.7-4.4 531.1 9.6L294.4 187.2c-24 18-38.2 46.1-38.4 76.1L371.3 367.1zm-19.6 25.4l-116-104.4C175.9 290.3 128 339.6 128 400c0 3.9 .2 7.8 .6 11.6c1.8 17.5-10.2 36.4-27.8 36.4H96c-17.7 0-32 14.3-32 32s14.3 32 32 32H240c61.9 0 112-50.1 112-112c0-2.5-.1-5-.2-7.5z"/></svg></span>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
                         </button>
-                        <ul id="mdbook-theme-list" class="theme-popup" aria-label="Themes" role="menu">
-                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-default_theme">Auto</button></li>
-                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-light">Light</button></li>
-                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-rust">Rust</button></li>
-                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-coal">Coal</button></li>
-                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-navy">Navy</button></li>
-                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-ayu">Ayu</button></li>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="default_theme">Auto</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
                         </ul>
-                        <button id="mdbook-search-toggle" class="icon-button" type="button" title="Search (`/`)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="/ s" aria-controls="mdbook-searchbar">
-                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352c79.5 0 144-64.5 144-144s-64.5-144-144-144S64 128.5 64 208s64.5 144 144 144z"/></svg></span>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search (`/`)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="/ s" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
                         </button>
                     </div>
 
@@ -141,42 +142,42 @@
 
                     <div class="right-buttons">
                         <a href="print.html" title="Print this book" aria-label="Print this book">
-                            <span class=fa-svg id="print-button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M128 0C92.7 0 64 28.7 64 64v96h64V64H354.7L384 93.3V160h64V93.3c0-17-6.7-33.3-18.7-45.3L400 18.7C388 6.7 371.7 0 354.7 0H128zM384 352v32 64H128V384 368 352H384zm64 32h32c17.7 0 32-14.3 32-32V256c0-35.3-28.7-64-64-64H64c-35.3 0-64 28.7-64 64v96c0 17.7 14.3 32 32 32H64v64c0 35.3 28.7 64 64 64H384c35.3 0 64-28.7 64-64V384zm-16-88c-13.3 0-24-10.7-24-24s10.7-24 24-24s24 10.7 24 24s-10.7 24-24 24z"/></svg></span>
+                            <i id="print-button" class="fa fa-print"></i>
                         </a>
 
                     </div>
                 </div>
 
-                <div id="mdbook-search-wrapper" class="hidden">
-                    <form id="mdbook-searchbar-outer" class="searchbar-outer">
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
                         <div class="search-wrapper">
-                            <input type="search" id="mdbook-searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="mdbook-searchresults-outer" aria-describedby="searchresults-header">
+                            <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
                             <div class="spinner-wrapper">
-                                <span class=fa-svg id="fa-spin"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M304 48c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zm0 416c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zM48 304c26.5 0 48-21.5 48-48s-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48zm464-48c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zM142.9 437c18.7-18.7 18.7-49.1 0-67.9s-49.1-18.7-67.9 0s-18.7 49.1 0 67.9s49.1 18.7 67.9 0zm0-294.2c18.7-18.7 18.7-49.1 0-67.9S93.7 56.2 75 75s-18.7 49.1 0 67.9s49.1 18.7 67.9 0zM369.1 437c18.7 18.7 49.1 18.7 67.9 0s18.7-49.1 0-67.9s-49.1-18.7-67.9 0s-18.7 49.1 0 67.9z"/></svg></span>
+                                <i class="fa fa-spinner fa-spin"></i>
                             </div>
                         </div>
                     </form>
-                    <div id="mdbook-searchresults-outer" class="searchresults-outer hidden">
-                        <div id="mdbook-searchresults-header" class="searchresults-header"></div>
-                        <ul id="mdbook-searchresults">
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
                         </ul>
                     </div>
                 </div>
 
                 <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
                 <script>
-                    document.getElementById('mdbook-sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
-                    document.getElementById('mdbook-sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
-                    Array.from(document.querySelectorAll('#mdbook-sidebar a')).forEach(function(link) {
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
                         link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
                     });
                 </script>
 
-                <div id="mdbook-content" class="content">
+                <div id="content" class="content">
                     <main>
                         <h1 id="kapitel-6-skalare--primitive-datentypen"><a class="header" href="#kapitel-6-skalare--primitive-datentypen">Kapitel 6: Skalare &amp; primitive Datentypen</a></h1>
 <p>Im Verlauf dieses Kapitels werden wir die fundamentalen Bausteine der Rust-Typisierung kennenlernen: die primitiven und skalaren Datentypen. Diese Typen sind direkt auf Hardware-Ebene abgebildet und bilden die Basis für jede komplexe Datenstruktur in Rust.</p>
-<hr>
+<hr />
 <h2 id="601-lernziele--lernplan"><a class="header" href="#601-lernziele--lernplan">6.0.1 Lernziele &amp; Lernplan</a></h2>
 <h3 id="lernziele"><a class="header" href="#lernziele">Lernziele</a></h3>
 <ul>
@@ -194,7 +195,7 @@
 <li><strong>Sichere Typkonvertierung</strong>: Der <code>as</code>-Operator, seine Funktionsweise und seine Risiken.</li>
 <li><strong>Praktische Anwendung &amp; Vertiefung</strong>: Ein Schritt-für-Schritt-Tutorial, vertiefende Speicherdiagramme und drei praktische Programmierübungen.</li>
 </ol>
-<hr>
+<hr />
 <h2 id="602-die-definition"><a class="header" href="#602-die-definition">6.0.2 Die Definition</a></h2>
 <ul>
 <li><strong>Skalarer Datentyp</strong>: Ein Typ, der einen einzelnen, atomaren Wert repräsentiert. Rust besitzt vier primäre skalare Typen: Ganzzahlen, Fließkommazahlen, Booleans und Zeichen.</li>
@@ -206,9 +207,9 @@
 <li><strong>Zeichen (char)</strong>: Ein Datentyp, der einen einzelnen Unicode-Skalarwert repräsentiert und im Speicher immer exakt 4 Bytes belegt.</li>
 <li><strong>Typkonvertierung (Casting)</strong>: Die explizite Umwandlung eines Wertes von einem Quell-Datentyp in einen Ziel-Datentyp. In Rust wird dies primär über das Schlüsselwort <code>as</code> gesteuert.</li>
 </ul>
-<hr>
+<hr />
 <h2 id="603-das-problem--die-motivation"><a class="header" href="#603-das-problem--die-motivation">6.0.3 Das Problem &amp; Die Motivation</a></h2>
-<p>In dynamischen oder stark abstrahierenden Programmiersprachen (wie Python oder JavaScript) müssen sich Entwickler selten Gedanken über die physikalische Bitbreite einer Zahl oder den physischen Speicherbedarf eines Zeichens machen. Zahlen sind dort meist generische “Numbers” (die intern als 64-Bit-Fließkommazahlen implementiert sind), und Zeichenketten sind dynamische, abstrakte Heap-Objekte.</p>
+<p>In dynamischen oder stark abstrahierenden Programmiersprachen (wie Python oder JavaScript) müssen sich Entwickler selten Gedanken über die physikalische Bitbreite einer Zahl oder den physischen Speicherbedarf eines Zeichens machen. Zahlen sind dort meist generische "Numbers" (die intern als 64-Bit-Fließkommazahlen implementiert sind), und Zeichenketten sind dynamische, abstrakte Heap-Objekte.</p>
 <p>Dieser Komfort hat in der Systemprogrammierung jedoch drei gravierende Nachteile:</p>
 <ol>
 <li><strong>Performance-Verlust</strong>: Die Verwendung von Allzweck-Typen führt zu ineffizienter Speichernutzung und langsamerer CPU-Verarbeitung, da die zugrundeliegende Prozessorhardware nicht optimal ausgelastet wird. Ein Prozessor rechnet mit 32-Bit- oder 64-Bit-Ganzzahlen auf Registerebene um ein Vielfaches schneller als mit dynamisch allozierten Fließkommaobjekten.</li>
@@ -216,10 +217,10 @@
 <li><strong>Plattforminkompatibilität</strong>: Wenn Indizes oder Adressen nicht exakt an die Systemarchitektur angepasst sind, kann ein Programm auf einem 32-Bit-Embedded-System abstürzen, während es auf einem 64-Bit-Server fehlerfrei läuft.</li>
 </ol>
 <p>Rust löst dieses Problem durch kompromisslose Präzision. Es verlangt von Ihnen als Entwickler, explizit festzulegen, wie viele Bits verwendet werden sollen, ob eine Zahl negativ sein darf und wie Konvertierungen stattfinden. Dadurch garantiert Rust maximale Hardwarenähe und Performance bei gleichzeitiger Speizersicherheit zur Compilezeit.</p>
-<hr>
+<hr />
 <h2 id="604-der-naive-versuch-der-fehlerhafte-code"><a class="header" href="#604-der-naive-versuch-der-fehlerhafte-code">6.0.4 Der naive Versuch (Der fehlerhafte Code)</a></h2>
 <p>Wir betrachten ein Szenario, in dem ein Entwickler versucht, zwei unterschiedliche Ganzzahltypen direkt miteinander zu addieren (implizite Konvertierung) und gleichzeitig einen Wert über die Grenze eines 8-Bit-Integers hinaus ansteigen lässt.</p>
-<pre class="playground"><code class="language-rust edition2021">fn main() {
+<pre><code class="language-rust">fn main() {
     // Ein naiver Versuch, unterschiedliche Ganzzahltypen zu mischen
     let kleine_zahl: u8 = 200;
     let grosse_zahl: u16 = 1000;
@@ -235,7 +236,7 @@
     println!("Ergebnis: {}", ergebnis);
     println!("Overflow Versuch: {}", overflow_versuch);
 }</code></pre>
-<hr>
+<hr />
 <h2 id="605-die-anatomie-des-fehlers"><a class="header" href="#605-die-anatomie-des-fehlers">6.0.5 Die Anatomie des Fehlers</a></h2>
 <p>Wenn wir versuchen, diesen Code mit <code>cargo check</code> zu prüfen, scheitert der Vorgang sofort an Versuch 1.</p>
 <h3 id="51-der-compiler-fehler-bei-impliziter-typkonvertierung"><a class="header" href="#51-der-compiler-fehler-bei-impliziter-typkonvertierung">5.1 Der Compiler-Fehler bei impliziter Typkonvertierung</a></h3>
@@ -252,10 +253,10 @@ help: you can cast a `u16` to a `u8`, but this may lose precision
   |                                  ~~~~~~~~~~~~~~~~~
 </code></pre>
 <p><strong>Analyse des Compilers</strong>:
-Rust führt ausnahmslos <strong>keine</strong> implizite Typkonvertierung (“Implicit Coercion”) bei numerischen Primitiven durch. Selbst wenn die Konvertierung völlig verlustfrei wäre (wie die Erweiterung von <code>u8</code> auf <code>u16</code>), zwingt uns Rust zu syntaktischer Klarheit. Dies verhindert subtile Fehler, bei denen Entwickler unabsichtlich Präzision verlieren oder falsche Annahmen über den Typ von Berechnungsergebnissen treffen.</p>
+Rust führt ausnahmslos <strong>keine</strong> implizite Typkonvertierung ("Implicit Coercion") bei numerischen Primitiven durch. Selbst wenn die Konvertierung völlig verlustfrei wäre (wie die Erweiterung von <code>u8</code> auf <code>u16</code>), zwingt uns Rust zu syntaktischer Klarheit. Dies verhindert subtile Fehler, bei denen Entwickler unabsichtlich Präzision verlieren oder falsche Annahmen über den Typ von Berechnungsergebnissen treffen.</p>
 <h3 id="52-das-laufzeitverhalten-bei-integer-overflow"><a class="header" href="#52-das-laufzeitverhalten-bei-integer-overflow">5.2 Das Laufzeitverhalten bei Integer Overflow</a></h3>
 <p>Nehmen wir an, wir entfernen Versuch 1, um das Verhalten von Versuch 2 zu untersuchen:</p>
-<pre class="playground"><code class="language-rust edition2021">fn main() {
+<pre><code class="language-rust">fn main() {
     let kleine_zahl: u8 = 200;
     let overflow_versuch: u8 = kleine_zahl + 60;
     println!("Overflow Versuch: {}", overflow_versuch);
@@ -281,9 +282,9 @@ Im Binärformat sieht die Berechnung wie folgt aus:</p>
 <p>Das Ergebnis <code>260</code> benötigt 9 Bits (<code>1 0000 0100</code>). Da ein <code>u8</code> jedoch nur 8 Bits speichern kann, wird das höchstwertige Bit (das 9. Bit ganz links) abgeschnitten (Bit-Truncation). Übrig bleibt <code>00000100</code>, was dezimal <code>4</code> entspricht.</p>
 <ul>
 <li>Im <strong>Debug-Modus</strong> fügt der Compiler bei jeder arithmetischen Operation Prüfungen hinzu. Erkennt das Programm zur Laufzeit, dass ein Überlauf stattfindet, stürzt es mit einer kontrollierten <em>Panic</em> ab, um die Weiterverarbeitung von korrupten Daten zu verhindern.</li>
-<li>Im <strong>Release-Modus</strong> (<code>cargo run --release</code>) werden diese Checks aus Performance-Gründen deaktiviert. Hier findet ein sogenanntes <strong>Zweierkomplement-Wrapping</strong> statt. Das Ergebnis “wickelt” sich um den Wertebereich herum, so dass <code>200 + 60</code> zu <code>4</code> wird. Dies kann zu extrem schwer auffindbaren logischen Fehlern in Produktionsanwendungen führen!</li>
+<li>Im <strong>Release-Modus</strong> (<code>cargo run --release</code>) werden diese Checks aus Performance-Gründen deaktiviert. Hier findet ein sogenanntes <strong>Zweierkomplement-Wrapping</strong> statt. Das Ergebnis "wickelt" sich um den Wertebereich herum, so dass <code>200 + 60</code> zu <code>4</code> wird. Dies kann zu extrem schwer auffindbaren logischen Fehlern in Produktionsanwendungen führen!</li>
 </ul>
-<hr>
+<hr />
 <h2 id="606-die-lösung"><a class="header" href="#606-die-lösung">6.0.6 Die Lösung</a></h2>
 <p>Die Lösung besteht darin:</p>
 <ol>
@@ -308,7 +309,7 @@ AUSGABE:
     Gib das sichere Overflow-Ergebnis aus.
 </code></pre>
 <h3 id="der-sichere-rust-code"><a class="header" href="#der-sichere-rust-code">Der sichere Rust-Code</a></h3>
-<pre class="playground"><code class="language-rust edition2021">fn main() {
+<pre><code class="language-rust">fn main() {
     // EINGABE
     let kleine_zahl: u8 = 200;
     let grosse_zahl: u16 = 1000;
@@ -336,21 +337,16 @@ AUSGABE:
 <li><strong>Zeile 12 (Verarbeitung)</strong>: Hier wird die Methode <code>checked_add</code> auf <code>kleine_zahl</code> mit dem Argument <code>60</code> aufgerufen. Sie prüft zur Laufzeit, ob <code>200 + 60</code> in ein <code>u8</code> passt. Da <code>260 &gt; 255</code>, schlägt die Operation fehl und gibt <code>None</code> (von Typ <code>Option&lt;u8&gt;</code>) zurück. Dies verhindert den Absturz des Programms und ermöglicht eine kontrollierte Reaktion.</li>
 <li><strong>Zeile 15-20 (Ausgabe)</strong>: Das mathematische Ergebnis <code>1200</code> wird auf der Konsole ausgegeben. Über ein <code>match</code>-Pattern wird geprüft, ob die sichere Addition geklappt hat. Da sie fehlgeschlagen ist (<code>None</code>), wird der Fehler-Zweig ausgeführt und der Text <code>"Fehler: Die Addition führte zu einem Integer Overflow!"</code> auf dem Bildschirm ausgegeben. Das Programm läuft stabil weiter.</li>
 </ul>
-<hr>
+<hr />
 <h2 id="61-ganzzahlige-datentypen"><a class="header" href="#61-ganzzahlige-datentypen">6.1 Ganzzahlige Datentypen</a></h2>
 <h3 id="611-integertypen"><a class="header" href="#611-integertypen">6.1.1 Integertypen</a></h3>
 <p>Ganzzahlige Typen (Integers) repräsentieren mathematisch ganze Zahlen (Zahlen ohne Nachkommastellen). In Rust werden diese Typen anhand von zwei Dimensionen unterschieden: <strong>Vorzeichen</strong> und <strong>Bitbreite</strong>.</p>
 <h4 id="vorzeichenbehaftet-signed-integers"><a class="header" href="#vorzeichenbehaftet-signed-integers">Vorzeichenbehaftet (Signed Integers)</a></h4>
-<p>Vorzeichenbehaftete Ganzzahlen (Kennbuchstabe <code>i</code> für “integer”) können sowohl positive als auch negative Werte sowie die Null darstellen. Sie werden auf Hardwareebene im <strong>Zweierkomplement (Two’s Complement)</strong> gespeichert. Das signifikanteste Bit (das Bit ganz links, das MSB) dient dabei als Vorzeichen-Bit. Ist dieses Bit <code>0</code>, handelt es sich um eine positive Zahl; ist es <code>1</code>, um eine negative Zahl. Das Zweierkomplement erlaubt es Prozessoren, Additionen und Subtraktionen über dieselbe Hardware-Logik auszuführen.</p>
+<p>Vorzeichenbehaftete Ganzzahlen (Kennbuchstabe <code>i</code> für "integer") können sowohl positive als auch negative Werte sowie die Null darstellen. Sie werden auf Hardwareebene im <strong>Zweierkomplement (Two's Complement)</strong> gespeichert. Das signifikanteste Bit (das Bit ganz links, das MSB) dient dabei als Vorzeichen-Bit. Ist dieses Bit <code>0</code>, handelt es sich um eine positive Zahl; ist es <code>1</code>, um eine negative Zahl. Das Zweierkomplement erlaubt es Prozessoren, Additionen und Subtraktionen über dieselbe Hardware-Logik auszuführen.</p>
 <h4 id="vorzeichenlos-unsigned-integers"><a class="header" href="#vorzeichenlos-unsigned-integers">Vorzeichenlos (Unsigned Integers)</a></h4>
-<p>Vorzeichenlose Ganzzahlen (Kennbuchstabe <code>u</code> für “unsigned”) können ausschließlich nicht-negative Werte (0 und positive Zahlen) darstellen. Da kein Bit für das Vorzeichen benötigt wird, steht die gesamte Bitbreite für den Betrag der Zahl zur Verfügung. Der maximale Wert einer vorzeichenlosen Zahl ist daher doppelt so groß wie der einer vorzeichenbehafteten Zahl gleicher Bitbreite plus eins.</p>
+<p>Vorzeichenlose Ganzzahlen (Kennbuchstabe <code>u</code> für "unsigned") können ausschließlich nicht-negative Werte (0 und positive Zahlen) darstellen. Da kein Bit für das Vorzeichen benötigt wird, steht die gesamte Bitbreite für den Betrag der Zahl zur Verfügung. Der maximale Wert einer vorzeichenlosen Zahl ist daher doppelt so groß wie der einer vorzeichenbehafteten Zahl gleicher Bitbreite plus eins.</p>
 <h4 id="die-wertebereiche-im-detail"><a class="header" href="#die-wertebereiche-im-detail">Die Wertebereiche im Detail</a></h4>
-<div class="table-wrapper">
-<table>
-<thead>
-<tr><th style="text-align: left">Typ (Signed)</th><th style="text-align: left">Typ (Unsigned)</th><th style="text-align: left">Bitbreite</th><th style="text-align: left">Speichergröße</th><th style="text-align: left">Wertebereich (Formel)</th><th style="text-align: left">Wertebereich (Numerisch)</th></tr>
-</thead>
-<tbody>
+<div class="table-wrapper"><table><thead><tr><th style="text-align: left">Typ (Signed)</th><th style="text-align: left">Typ (Unsigned)</th><th style="text-align: left">Bitbreite</th><th style="text-align: left">Speichergröße</th><th style="text-align: left">Wertebereich (Formel)</th><th style="text-align: left">Wertebereich (Numerisch)</th></tr></thead><tbody>
 <tr><td style="text-align: left"><code>i8</code></td><td style="text-align: left">-</td><td style="text-align: left">8 Bit</td><td style="text-align: left">1 Byte</td><td style="text-align: left"><code>-2^7</code> bis <code>2^7 - 1</code></td><td style="text-align: left"><code>-128</code> bis <code>127</code></td></tr>
 <tr><td style="text-align: left">-</td><td style="text-align: left"><code>u8</code></td><td style="text-align: left">8 Bit</td><td style="text-align: left">1 Byte</td><td style="text-align: left"><code>0</code> bis <code>2^8 - 1</code></td><td style="text-align: left"><code>0</code> bis <code>255</code></td></tr>
 <tr><td style="text-align: left"><code>i16</code></td><td style="text-align: left">-</td><td style="text-align: left">16 Bit</td><td style="text-align: left">2 Bytes</td><td style="text-align: left"><code>-2^15</code> bis <code>2^15 - 1</code></td><td style="text-align: left"><code>-32.768</code> bis <code>32.767</code></td></tr>
@@ -361,8 +357,7 @@ AUSGABE:
 <tr><td style="text-align: left">-</td><td style="text-align: left"><code>u64</code></td><td style="text-align: left">64 Bit</td><td style="text-align: left">8 Bytes</td><td style="text-align: left"><code>0</code> bis <code>2^64 - 1</code></td><td style="text-align: left"><code>0</code> bis ca. <code>18,4</code> Trillionen</td></tr>
 <tr><td style="text-align: left"><code>i128</code></td><td style="text-align: left">-</td><td style="text-align: left">128 Bit</td><td style="text-align: left">16 Bytes</td><td style="text-align: left"><code>-2^127</code> bis <code>2^127 - 1</code></td><td style="text-align: left">Astronomisch groß</td></tr>
 <tr><td style="text-align: left">-</td><td style="text-align: left"><code>u128</code></td><td style="text-align: left">128 Bit</td><td style="text-align: left">16 Bytes</td><td style="text-align: left"><code>0</code> bis <code>2^128 - 1</code></td><td style="text-align: left">Astronomisch groß</td></tr>
-</tbody>
-</table>
+</tbody></table>
 </div>
 <h4 id="standardtyp-in-rust"><a class="header" href="#standardtyp-in-rust">Standardtyp in Rust</a></h4>
 <p>Wenn Sie einer Variablen eine Ganzzahl zuweisen, ohne deren Typ explizit zu deklarieren (z. B. <code>let x = 42;</code>), weist Rust dieser Variablen standardmäßig den Typ <strong><code>i32</code></strong>. Dieser Typ stellt auf modernen CPUs in der Regel die beste Balance zwischen Berechnungsgeschwindigkeit und Wertebereich dar.</p>
@@ -421,7 +416,7 @@ AUSGABE:
 </ul>
 </li>
 </ol>
-<hr>
+<hr />
 <h2 id="62-weitere-primitive-typen"><a class="header" href="#62-weitere-primitive-typen">6.2 Weitere primitive Typen</a></h2>
 <h3 id="621-fließkommazahlen"><a class="header" href="#621-fließkommazahlen">6.2.1 Fließkommazahlen</a></h3>
 <p>Fließkommazahlen (Floats) repräsentieren reelle Zahlen mit Nachkommastellen. Rust bietet zwei Typen nach dem Industriestandard <strong>IEEE-754</strong>:</p>
@@ -433,16 +428,16 @@ AUSGABE:
 <p>Wird kein Typ explizit angegeben (z. B. <code>let pi = 3.14159;</code>), wählt Rust automatisch <strong><code>f64</code></strong>. Auf modernen 64-Bit-Prozessoren sind Berechnungen mit <code>f64</code> in der Regel genauso schnell wie mit <code>f32</code>, bieten aber eine drastisch höhere Präzision und minimieren Rundungsfehler.</p>
 <h4 id="präzisionsverlust-und-rundungsfehler"><a class="header" href="#präzisionsverlust-und-rundungsfehler">Präzisionsverlust und Rundungsfehler</a></h4>
 <p>Da Fließkommazahlen im Binärsystem dargestellt werden, können periodische Brüche des Dezimalsystems (wie <code>0.1</code> oder <code>0.2</code>) nicht exakt im binären RAM abgebildet werden. Dies führt zu minimalen Rundungsdifferenzen.</p>
-<pre class="playground"><code class="language-rust edition2021">fn main() {
+<pre><code class="language-rust">fn main() {
     let a = 0.1;
     let b = 0.2;
     println!("a + b == 0.3? {}", a + b == 0.3); // Ausgabe: false
     println!("Tatsächlicher Wert von a + b: {:.20}", a + b); 
     // Ausgabe: 0.30000000000000004441
 }</code></pre>
-<blockquote class="blockquote-tag blockquote-tag-warning">
-<p class="blockquote-tag-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M6.457 1.047c.659-1.234 2.427-1.234 3.086 0l6.082 11.378A1.75 1.75 0 0 1 14.082 15H1.918a1.75 1.75 0 0 1-1.543-2.575Zm1.763.707a.25.25 0 0 0-.44 0L1.698 13.132a.25.25 0 0 0 .22.368h12.164a.25.25 0 0 0 .22-.368Zm.53 3.996v2.5a.75.75 0 0 1-1.5 0v-2.5a.75.75 0 0 1 1.5 0ZM9 11a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"></path></svg>Warning</p>
-<p>Vergleichen Sie Fließkommazahlen niemals direkt mit dem Gleichheitsoperator <code>==</code>. Prüfen Sie stattdessen, ob die absolute Differenz der beiden Zahlen kleiner als ein sehr kleiner Schwellenwert (Epsilon, z. B. <code>1e-10</code>) ist.</p>
+<blockquote>
+<p>[!WARNING]
+Vergleichen Sie Fließkommazahlen niemals direkt mit dem Gleichheitsoperator <code>==</code>. Prüfen Sie stattdessen, ob die absolute Differenz der beiden Zahlen kleiner als ein sehr kleiner Schwellenwert (Epsilon, z. B. <code>1e-10</code>) ist.</p>
 </blockquote>
 <h4 id="spezielle-zustände"><a class="header" href="#spezielle-zustände">Spezielle Zustände</a></h4>
 <ul>
@@ -468,7 +463,7 @@ AUSGABE:
 </ul>
 </li>
 </ul>
-<hr>
+<hr />
 <h2 id="63-typkonvertierung"><a class="header" href="#63-typkonvertierung">6.3 Typkonvertierung</a></h2>
 <h3 id="631-der-as-operator"><a class="header" href="#631-der-as-operator">6.3.1 Der as-Operator</a></h3>
 <p>Rust verlangt für alle Typumwandlungen bei primitiven numerischen Typen eine explizite Anweisung im Quellcode. Hierzu wird das Schlüsselwort <code>as</code> verwendet.
@@ -495,7 +490,7 @@ AUSGABE:
 <li><code>let y = x as i32;</code> // y ist 99</li>
 <li>Sollte der Float-Wert den maximal darstellbaren Bereich des Integers überschreiten (oder <code>NaN</code>/<code>INFINITY</code> sein), liefert der Cast seit Rust 1.45 das Sättigungs-Limit des Zieltyps (z. B. <code>i32::MAX</code> oder <code>i32::MIN</code>).</li>
 </ul>
-<hr>
+<hr />
 <h2 id="607-kleines-tutorial-schritt-für-schritt-praxis"><a class="header" href="#607-kleines-tutorial-schritt-für-schritt-praxis">6.0.7 Kleines Tutorial (Schritt-für-Schritt-Praxis)</a></h2>
 <p>Wir erstellen ein kleines, praxisnahes Mini-Projekt: Einen <strong>Sensordaten-Prozessor</strong>. Dieser simuliert das Einlesen von analogen Sensordaten (als <code>u16</code>), rechnet sie in physikalische Fließkommawerte um, wendet einen Skalierungsfaktor an, prüft auf Messbereichs-Überläufe und gibt die Werte sauber formatiert aus.</p>
 <h3 id="schritt-1-projektstruktur-anlegen"><a class="header" href="#schritt-1-projektstruktur-anlegen">Schritt 1: Projektstruktur anlegen</a></h3>
@@ -504,7 +499,7 @@ AUSGABE:
 </code></pre>
 <h3 id="schritt-2-den-code-implementieren"><a class="header" href="#schritt-2-den-code-implementieren">Schritt 2: Den Code implementieren</a></h3>
 <p>Ersetzen Sie den Inhalt der Datei <code>src/main.rs</code> vollständig durch folgenden Code:</p>
-<pre class="playground"><code class="language-rust edition2021">fn main() {
+<pre><code class="language-rust">fn main() {
     // 1. EINGABE: Rohdaten eines analogen 12-Bit-Sensors (Bereich: 0 bis 4095)
     let raw_analog_value: u16 = 3850;
     let scaling_factor: f64 = 1.25;
@@ -559,7 +554,7 @@ Füllstand: 94 %
 Kritischer Zustand: true
 WARNUNG: Indexüberlauf der Messung blockiert!
 </code></pre>
-<hr>
+<hr />
 <h2 id="608-mentale-modelle--deep-dive"><a class="header" href="#608-mentale-modelle--deep-dive">6.0.8 Mentale Modelle &amp; Deep Dive</a></h2>
 <h3 id="81-speicherdiagramme"><a class="header" href="#81-speicherdiagramme">8.1 Speicherdiagramme</a></h3>
 <h4 id="diagramm-1-u8-vs-i8-speicherbelegung"><a class="header" href="#diagramm-1-u8-vs-i8-speicherbelegung">Diagramm 1: <code>u8</code> vs <code>i8</code> Speicherbelegung</a></h4>
@@ -636,7 +631,7 @@ WARNUNG: Indexüberlauf der Messung blockiert!
                     | 0 0 0 0 0 0 1 0 |  --&gt; Dezimal: 2
                     +-----------------+
 </code></pre>
-<hr>
+<hr />
 <h3 id="82-ausführliche-methoden--und-api-referenz"><a class="header" href="#82-ausführliche-methoden--und-api-referenz">8.2 Ausführliche Methoden- und API-Referenz</a></h3>
 <h4 id="821-ganzzahlige-methoden-beispielhaft-für-alle-ganzzahlen"><a class="header" href="#821-ganzzahlige-methoden-beispielhaft-für-alle-ganzzahlen">8.2.1 Ganzzahlige Methoden (Beispielhaft für alle Ganzzahlen)</a></h4>
 <h5 id="1-checked_add"><a class="header" href="#1-checked_add">1. <code>checked_add</code></a></h5>
@@ -651,12 +646,9 @@ WARNUNG: Indexüberlauf der Messung blockiert!
 <li><strong>Rückgabetyp</strong>: <code>Option&lt;Self&gt;</code>. Liefert <code>Some(Summe)</code> bei erfolgreicher Berechnung, andernfalls <code>None</code> bei einem Überlauf.</li>
 <li><strong>Sicherheitsaspekte &amp; Panics</strong>: Diese Methode stürzt niemals ab (keine Panics).</li>
 <li><strong>Minicode-Beispiel</strong>:
-<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>let a: u8 = 250;
+<pre><code class="language-rust">let a: u8 = 250;
 assert_eq!(a.checked_add(10), None);
-assert_eq!(a.checked_add(5), Some(255));
-<span class="boring">}</span></code></pre>
+assert_eq!(a.checked_add(5), Some(255));</code></pre>
 </li>
 </ul>
 <h5 id="2-checked_sub"><a class="header" href="#2-checked_sub">2. <code>checked_sub</code></a></h5>
@@ -671,11 +663,8 @@ assert_eq!(a.checked_add(5), Some(255));
 <li><strong>Rückgabetyp</strong>: <code>Option&lt;Self&gt;</code>. Liefert <code>Some(Differenz)</code> oder <code>None</code> bei Unterlauf (z. B. wenn das Ergebnis negativ würde bei unsigned Typen).</li>
 <li><strong>Sicherheitsaspekte &amp; Panics</strong>: Keine Panics.</li>
 <li><strong>Minicode-Beispiel</strong>:
-<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>let a: u8 = 5;
-assert_eq!(a.checked_sub(10), None);
-<span class="boring">}</span></code></pre>
+<pre><code class="language-rust">let a: u8 = 5;
+assert_eq!(a.checked_sub(10), None);</code></pre>
 </li>
 </ul>
 <h5 id="3-checked_mul"><a class="header" href="#3-checked_mul">3. <code>checked_mul</code></a></h5>
@@ -690,11 +679,8 @@ assert_eq!(a.checked_sub(10), None);
 <li><strong>Rückgabetyp</strong>: <code>Option&lt;Self&gt;</code>. <code>Some(Produkt)</code> oder <code>None</code> bei Überlauf.</li>
 <li><strong>Sicherheitsaspekte &amp; Panics</strong>: Keine Panics.</li>
 <li><strong>Minicode-Beispiel</strong>:
-<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>let a: u8 = 100;
-assert_eq!(a.checked_mul(3), None);
-<span class="boring">}</span></code></pre>
+<pre><code class="language-rust">let a: u8 = 100;
+assert_eq!(a.checked_mul(3), None);</code></pre>
 </li>
 </ul>
 <h5 id="4-checked_div"><a class="header" href="#4-checked_div">4. <code>checked_div</code></a></h5>
@@ -709,11 +695,8 @@ assert_eq!(a.checked_mul(3), None);
 <li><strong>Rückgabetyp</strong>: <code>Option&lt;Self&gt;</code>. <code>Some(Quotient)</code> oder <code>None</code> bei einer Division durch Null oder bei Überlauf (z. B. <code>i32::MIN / -1</code>).</li>
 <li><strong>Sicherheitsaspekte &amp; Panics</strong>: Keine Panics (im Gegensatz zum standardmäßigen <code>/</code>-Operator, der bei Division durch Null panict!).</li>
 <li><strong>Minicode-Beispiel</strong>:
-<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>let a: i32 = 10;
-assert_eq!(a.checked_div(0), None);
-<span class="boring">}</span></code></pre>
+<pre><code class="language-rust">let a: i32 = 10;
+assert_eq!(a.checked_div(0), None);</code></pre>
 </li>
 </ul>
 <h5 id="5-wrapping_add"><a class="header" href="#5-wrapping_add">5. <code>wrapping_add</code></a></h5>
@@ -728,11 +711,8 @@ assert_eq!(a.checked_div(0), None);
 <li><strong>Rückgabetyp</strong>: <code>Self</code>. Das mathematisch gewrappte Ergebnis.</li>
 <li><strong>Sicherheitsaspekte &amp; Panics</strong>: Keine Panics.</li>
 <li><strong>Minicode-Beispiel</strong>:
-<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>let a: u8 = 255;
-assert_eq!(a.wrapping_add(1), 0);
-<span class="boring">}</span></code></pre>
+<pre><code class="language-rust">let a: u8 = 255;
+assert_eq!(a.wrapping_add(1), 0);</code></pre>
 </li>
 </ul>
 <h5 id="6-wrapping_sub"><a class="header" href="#6-wrapping_sub">6. <code>wrapping_sub</code></a></h5>
@@ -747,11 +727,8 @@ assert_eq!(a.wrapping_add(1), 0);
 <li><strong>Rückgabetyp</strong>: <code>Self</code>. Das gewrappte Ergebnis.</li>
 <li><strong>Sicherheitsaspekte &amp; Panics</strong>: Keine Panics.</li>
 <li><strong>Minicode-Beispiel</strong>:
-<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>let a: u8 = 0;
-assert_eq!(a.wrapping_sub(1), 255);
-<span class="boring">}</span></code></pre>
+<pre><code class="language-rust">let a: u8 = 0;
+assert_eq!(a.wrapping_sub(1), 255);</code></pre>
 </li>
 </ul>
 <h5 id="7-saturating_add"><a class="header" href="#7-saturating_add">7. <code>saturating_add</code></a></h5>
@@ -766,11 +743,8 @@ assert_eq!(a.wrapping_sub(1), 255);
 <li><strong>Rückgabetyp</strong>: <code>Self</code>. Das am Limit gedeckelte Ergebnis.</li>
 <li><strong>Sicherheitsaspekte &amp; Panics</strong>: Keine Panics.</li>
 <li><strong>Minicode-Beispiel</strong>:
-<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>let a: u8 = 200;
-assert_eq!(a.saturating_add(100), 255);
-<span class="boring">}</span></code></pre>
+<pre><code class="language-rust">let a: u8 = 200;
+assert_eq!(a.saturating_add(100), 255);</code></pre>
 </li>
 </ul>
 <h5 id="8-saturating_sub"><a class="header" href="#8-saturating_sub">8. <code>saturating_sub</code></a></h5>
@@ -785,11 +759,8 @@ assert_eq!(a.saturating_add(100), 255);
 <li><strong>Rückgabetyp</strong>: <code>Self</code>. Das am Minimalwert gedeckelte Ergebnis.</li>
 <li><strong>Sicherheitsaspekte &amp; Panics</strong>: Keine Panics.</li>
 <li><strong>Minicode-Beispiel</strong>:
-<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>let a: u8 = 10;
-assert_eq!(a.saturating_sub(20), 0);
-<span class="boring">}</span></code></pre>
+<pre><code class="language-rust">let a: u8 = 10;
+assert_eq!(a.saturating_sub(20), 0);</code></pre>
 </li>
 </ul>
 <h5 id="9-overflowing_add"><a class="header" href="#9-overflowing_add">9. <code>overflowing_add</code></a></h5>
@@ -804,11 +775,8 @@ assert_eq!(a.saturating_sub(20), 0);
 <li><strong>Rückgabetyp</strong>: <code>(Self, bool)</code>. Ein Tupel mit dem gewrappten Ergebnis und einem Boolean, der anzeigt, ob ein Überlauf stattgefunden hat.</li>
 <li><strong>Sicherheitsaspekte &amp; Panics</strong>: Keine Panics.</li>
 <li><strong>Minicode-Beispiel</strong>:
-<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>let a: u8 = 255;
-assert_eq!(a.overflowing_add(1), (0, true));
-<span class="boring">}</span></code></pre>
+<pre><code class="language-rust">let a: u8 = 255;
+assert_eq!(a.overflowing_add(1), (0, true));</code></pre>
 </li>
 </ul>
 <h5 id="10-pow"><a class="header" href="#10-pow">10. <code>pow</code></a></h5>
@@ -823,11 +791,8 @@ assert_eq!(a.overflowing_add(1), (0, true));
 <li><strong>Rückgabetyp</strong>: <code>Self</code>. Die Potenz <code>self^exp</code>.</li>
 <li><strong>Sicherheitsaspekte &amp; Panics</strong>: Panict im Debug-Modus, wenn das Ergebnis den Wertebereich überschreitet.</li>
 <li><strong>Minicode-Beispiel</strong>:
-<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>let base: u32 = 2;
-assert_eq!(base.pow(8), 256);
-<span class="boring">}</span></code></pre>
+<pre><code class="language-rust">let base: u32 = 2;
+assert_eq!(base.pow(8), 256);</code></pre>
 </li>
 </ul>
 <h5 id="11-abs"><a class="header" href="#11-abs">11. <code>abs</code></a></h5>
@@ -841,14 +806,11 @@ assert_eq!(base.pow(8), 256);
 <li><strong>Rückgabetyp</strong>: <code>Self</code>. Der absolute Betrag der Zahl.</li>
 <li><strong>Sicherheitsaspekte &amp; Panics</strong>: Panict, wenn <code>self == Self::MIN</code> aufgerufen wird, da der positive Wert nicht im signed Wertebereich dargestellt werden kann (z. B. <code>-128i8</code> kann nicht als <code>+128i8</code> gespeichert werden, da <code>i8</code> nur bis <code>127</code> reicht).</li>
 <li><strong>Minicode-Beispiel</strong>:
-<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>let a: i32 = -5;
-assert_eq!(a.abs(), 5);
-<span class="boring">}</span></code></pre>
+<pre><code class="language-rust">let a: i32 = -5;
+assert_eq!(a.abs(), 5);</code></pre>
 </li>
 </ul>
-<hr>
+<hr />
 <h4 id="822-fließkommamethoden-beispielhaft-für-f64"><a class="header" href="#822-fließkommamethoden-beispielhaft-für-f64">8.2.2 Fließkommamethoden (Beispielhaft für <code>f64</code>)</a></h4>
 <h5 id="1-floor"><a class="header" href="#1-floor">1. <code>floor</code></a></h5>
 <ul>
@@ -861,11 +823,8 @@ assert_eq!(a.abs(), 5);
 <li><strong>Rückgabetyp</strong>: <code>Self</code>. Die größte Ganzzahl kleiner oder gleich <code>self</code>.</li>
 <li><strong>Sicherheitsaspekte &amp; Panics</strong>: Keine Panics.</li>
 <li><strong>Minicode-Beispiel</strong>:
-<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>let val: f64 = 3.9;
-assert_eq!(val.floor(), 3.0);
-<span class="boring">}</span></code></pre>
+<pre><code class="language-rust">let val: f64 = 3.9;
+assert_eq!(val.floor(), 3.0);</code></pre>
 </li>
 </ul>
 <h5 id="2-ceil"><a class="header" href="#2-ceil">2. <code>ceil</code></a></h5>
@@ -879,11 +838,8 @@ assert_eq!(val.floor(), 3.0);
 <li><strong>Rückgabetyp</strong>: <code>Self</code>. Die kleinste Ganzzahl größer oder gleich <code>self</code>.</li>
 <li><strong>Sicherheitsaspekte &amp; Panics</strong>: Keine Panics.</li>
 <li><strong>Minicode-Beispiel</strong>:
-<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>let val: f64 = 3.1;
-assert_eq!(val.ceil(), 4.0);
-<span class="boring">}</span></code></pre>
+<pre><code class="language-rust">let val: f64 = 3.1;
+assert_eq!(val.ceil(), 4.0);</code></pre>
 </li>
 </ul>
 <h5 id="3-round"><a class="header" href="#3-round">3. <code>round</code></a></h5>
@@ -897,11 +853,8 @@ assert_eq!(val.ceil(), 4.0);
 <li><strong>Rückgabetyp</strong>: <code>Self</code>. Der mathematisch gerundete Wert (Nachkommastelle <code>&gt;= 0.5</code> rundet auf).</li>
 <li><strong>Sicherheitsaspekte &amp; Panics</strong>: Keine Panics.</li>
 <li><strong>Minicode-Beispiel</strong>:
-<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>let val: f64 = 3.5;
-assert_eq!(val.round(), 4.0);
-<span class="boring">}</span></code></pre>
+<pre><code class="language-rust">let val: f64 = 3.5;
+assert_eq!(val.round(), 4.0);</code></pre>
 </li>
 </ul>
 <h5 id="4-is_nan"><a class="header" href="#4-is_nan">4. <code>is_nan</code></a></h5>
@@ -915,11 +868,8 @@ assert_eq!(val.round(), 4.0);
 <li><strong>Rückgabetyp</strong>: <code>bool</code>. <code>true</code>, wenn der Wert <code>NaN</code> ist.</li>
 <li><strong>Sicherheitsaspekte &amp; Panics</strong>: Keine Panics.</li>
 <li><strong>Minicode-Beispiel</strong>:
-<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>let val = f64::NAN;
-assert!(val.is_nan());
-<span class="boring">}</span></code></pre>
+<pre><code class="language-rust">let val = f64::NAN;
+assert!(val.is_nan());</code></pre>
 </li>
 </ul>
 <h5 id="5-is_infinite"><a class="header" href="#5-is_infinite">5. <code>is_infinite</code></a></h5>
@@ -933,11 +883,8 @@ assert!(val.is_nan());
 <li><strong>Rückgabetyp</strong>: <code>bool</code>. <code>true</code>, wenn der Wert positiv oder negativ unendlich ist.</li>
 <li><strong>Sicherheitsaspekte &amp; Panics</strong>: Keine Panics.</li>
 <li><strong>Minicode-Beispiel</strong>:
-<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>let val = 1.0f64 / 0.0f64;
-assert!(val.is_infinite());
-<span class="boring">}</span></code></pre>
+<pre><code class="language-rust">let val = 1.0f64 / 0.0f64;
+assert!(val.is_infinite());</code></pre>
 </li>
 </ul>
 <h5 id="6-fract"><a class="header" href="#6-fract">6. <code>fract</code></a></h5>
@@ -951,14 +898,11 @@ assert!(val.is_infinite());
 <li><strong>Rückgabetyp</strong>: <code>Self</code>. Der Nachkommateil der Zahl.</li>
 <li><strong>Sicherheitsaspekte &amp; Panics</strong>: Keine Panics.</li>
 <li><strong>Minicode-Beispiel</strong>:
-<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>let val: f64 = 3.1415;
-assert!((val.fract() - 0.1415).abs() &lt; 1e-10);
-<span class="boring">}</span></code></pre>
+<pre><code class="language-rust">let val: f64 = 3.1415;
+assert!((val.fract() - 0.1415).abs() &lt; 1e-10);</code></pre>
 </li>
 </ul>
-<hr>
+<hr />
 <h4 id="823-boolean-methoden"><a class="header" href="#823-boolean-methoden">8.2.3 Boolean-Methoden</a></h4>
 <h5 id="1-then"><a class="header" href="#1-then">1. <code>then</code></a></h5>
 <ul>
@@ -972,12 +916,9 @@ assert!((val.fract() - 0.1415).abs() &lt; 1e-10);
 <li><strong>Rückgabetyp</strong>: <code>Option&lt;T&gt;</code>. Gibt <code>Some(f())</code> zurück, wenn <code>self</code> wahr ist, ansonsten <code>None</code>.</li>
 <li><strong>Sicherheitsaspekte &amp; Panics</strong>: Keine Panics, es sei denn, die ausgeführte Closure selbst wirft eine Panic.</li>
 <li><strong>Minicode-Beispiel</strong>:
-<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>let active = true;
+<pre><code class="language-rust">let active = true;
 let value = active.then(|| 42);
-assert_eq!(value, Some(42));
-<span class="boring">}</span></code></pre>
+assert_eq!(value, Some(42));</code></pre>
 </li>
 </ul>
 <h5 id="2-then_some"><a class="header" href="#2-then_some">2. <code>then_some</code></a></h5>
@@ -992,15 +933,12 @@ assert_eq!(value, Some(42));
 <li><strong>Rückgabetyp</strong>: <code>Option&lt;T&gt;</code>. Liefert <code>Some(t)</code> oder <code>None</code>.</li>
 <li><strong>Sicherheitsaspekte &amp; Panics</strong>: Keine Panics.</li>
 <li><strong>Minicode-Beispiel</strong>:
-<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>let enabled = false;
+<pre><code class="language-rust">let enabled = false;
 let widget = enabled.then_some("Button");
-assert_eq!(widget, None);
-<span class="boring">}</span></code></pre>
+assert_eq!(widget, None);</code></pre>
 </li>
 </ul>
-<hr>
+<hr />
 <h4 id="824-zeichen-methoden-char"><a class="header" href="#824-zeichen-methoden-char">8.2.4 Zeichen-Methoden (<code>char</code>)</a></h4>
 <h5 id="1-is_alphabetic"><a class="header" href="#1-is_alphabetic">1. <code>is_alphabetic</code></a></h5>
 <ul>
@@ -1013,13 +951,10 @@ assert_eq!(widget, None);
 <li><strong>Rückgabetyp</strong>: <code>bool</code>. <code>true</code>, wenn das Zeichen ein Buchstabe im Unicode-Standard ist.</li>
 <li><strong>Sicherheitsaspekte &amp; Panics</strong>: Keine Panics.</li>
 <li><strong>Minicode-Beispiel</strong>:
-<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>let c = '🦀';
+<pre><code class="language-rust">let c = '🦀';
 assert!(!c.is_alphabetic());
 let letter = 'ä';
-assert!(letter.is_alphabetic());
-<span class="boring">}</span></code></pre>
+assert!(letter.is_alphabetic());</code></pre>
 </li>
 </ul>
 <h5 id="2-is_numeric"><a class="header" href="#2-is_numeric">2. <code>is_numeric</code></a></h5>
@@ -1033,11 +968,8 @@ assert!(letter.is_alphabetic());
 <li><strong>Rückgabetyp</strong>: <code>bool</code>. <code>true</code>, wenn das Zeichen eine Ziffer oder ein numerischer Wert im Unicode-Standard ist.</li>
 <li><strong>Sicherheitsaspekte &amp; Panics</strong>: Keine Panics.</li>
 <li><strong>Minicode-Beispiel</strong>:
-<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>let c = '9';
-assert!(c.is_numeric());
-<span class="boring">}</span></code></pre>
+<pre><code class="language-rust">let c = '9';
+assert!(c.is_numeric());</code></pre>
 </li>
 </ul>
 <h5 id="3-is_whitespace"><a class="header" href="#3-is_whitespace">3. <code>is_whitespace</code></a></h5>
@@ -1051,11 +983,8 @@ assert!(c.is_numeric());
 <li><strong>Rückgabetyp</strong>: <code>bool</code>. <code>true</code>, wenn das Zeichen ein Whitespace (Leerzeichen, Tabulator, Zeilenumbruch etc.) ist.</li>
 <li><strong>Sicherheitsaspekte &amp; Panics</strong>: Keine Panics.</li>
 <li><strong>Minicode-Beispiel</strong>:
-<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>let c = '\n';
-assert!(c.is_whitespace());
-<span class="boring">}</span></code></pre>
+<pre><code class="language-rust">let c = '\n';
+assert!(c.is_whitespace());</code></pre>
 </li>
 </ul>
 <h5 id="4-to_uppercase"><a class="header" href="#4-to_uppercase">4. <code>to_uppercase</code></a></h5>
@@ -1069,12 +998,9 @@ assert!(c.is_whitespace());
 <li><strong>Rückgabetyp</strong>: <code>ToUppercase</code> (ein Iterator über <code>char</code>-Werte). Da manche Unicode-Zeichen beim Großschreiben in mehrere Zeichen zerfallen (z. B. das deutsche <code>'ß'</code> wird zu <code>'S'</code> und <code>'S'</code>), gibt Rust hier einen Iterator zurück.</li>
 <li><strong>Sicherheitsaspekte &amp; Panics</strong>: Keine Panics.</li>
 <li><strong>Minicode-Beispiel</strong>:
-<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>let c = 'ß';
+<pre><code class="language-rust">let c = 'ß';
 let upper: String = c.to_uppercase().collect();
-assert_eq!(upper, "SS");
-<span class="boring">}</span></code></pre>
+assert_eq!(upper, "SS");</code></pre>
 </li>
 </ul>
 <h5 id="5-len_utf8"><a class="header" href="#5-len_utf8">5. <code>len_utf8</code></a></h5>
@@ -1088,17 +1014,14 @@ assert_eq!(upper, "SS");
 <li><strong>Rückgabetyp</strong>: <code>usize</code>. Gibt die Anzahl an Bytes zurück, die das Zeichen im UTF-8-Format belegt (Bereich: 1 bis 4).</li>
 <li><strong>Sicherheitsaspekte &amp; Panics</strong>: Keine Panics.</li>
 <li><strong>Minicode-Beispiel</strong>:
-<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>assert_eq!('A'.len_utf8(), 1);
+<pre><code class="language-rust">assert_eq!('A'.len_utf8(), 1);
 assert_eq!('ä'.len_utf8(), 2);
-assert_eq!('🦀'.len_utf8(), 4);
-<span class="boring">}</span></code></pre>
+assert_eq!('🦀'.len_utf8(), 4);</code></pre>
 </li>
 </ul>
-<hr>
-<h2 id="609-drei-praktische-übungen"><a class="header" href="#609-drei-praktische-übungen">6.0.9 Drei praktische Übungen</a></h2>
-<h3 id="übung-1-leicht-sichere-temperaturkonvertierung"><a class="header" href="#übung-1-leicht-sichere-temperaturkonvertierung">Übung 1 (Leicht): Sichere Temperaturkonvertierung</a></h3>
+<hr />
+<h2 id="609-drei-praktische-Übungen"><a class="header" href="#609-drei-praktische-Übungen">6.0.9 Drei praktische Übungen</a></h2>
+<h3 id="Übung-1-leicht-sichere-temperaturkonvertierung"><a class="header" href="#Übung-1-leicht-sichere-temperaturkonvertierung">Übung 1 (Leicht): Sichere Temperaturkonvertierung</a></h3>
 <p><strong>Aufgabenstellung</strong>:
 Schreiben Sie ein Programm, das eine Temperatur in Grad Celsius (als <code>f64</code>) in Fahrenheit umrechnet. Das Programm soll die Eingabe und Ausgabe auf der Konsole formatiert ausgeben. Falls der Wert unter dem absoluten Nullpunkt (<code>-273.15 °C</code>) liegt, soll ein Fehler gemeldet werden.
 <em>Formel</em>: <code>Fahrenheit = Celsius * 1.8 + 32.0</code></p>
@@ -1109,8 +1032,8 @@ Schreiben Sie ein Programm, das eine Temperatur in Grad Celsius (als <code>f64</
 </ul>
 <p><strong>Lösungshinweis</strong>:
 Prüfen Sie zuerst mit einer <code>if</code>-Verzweigung, ob <code>celsius &lt; -273.15</code> gilt. Falls ja, geben Sie <code>None</code> zurück, andernfalls <code>Some(berechneter_wert)</code>.</p>
-<hr>
-<h3 id="übung-2-mittel-sicherer-ringpuffer-indexrechner"><a class="header" href="#übung-2-mittel-sicherer-ringpuffer-indexrechner">Übung 2 (Mittel): Sicherer Ringpuffer-Indexrechner</a></h3>
+<hr />
+<h3 id="Übung-2-mittel-sicherer-ringpuffer-indexrechner"><a class="header" href="#Übung-2-mittel-sicherer-ringpuffer-indexrechner">Übung 2 (Mittel): Sicherer Ringpuffer-Indexrechner</a></h3>
 <p><strong>Aufgabenstellung</strong>:
 In der Embedded-Programmierung werden Ringpuffer (Circular Buffers) häufig verwendet. Schreiben Sie eine Funktion, die einen aktuellen Index (<code>usize</code>), einen Offset (<code>usize</code>) und die Puffergröße (<code>usize</code>) nimmt und den neuen Index nach der Bewegung berechnet. Wenn ein Index-Überlauf auf CPU-Ebene stattfinden würde (z. B. bei sehr großen Indizes), soll das Programm kontrolliert reagieren, anstatt abzustürzen.</p>
 <p><strong>Anforderungen</strong>:</p>
@@ -1120,8 +1043,8 @@ In der Embedded-Programmierung werden Ringpuffer (Circular Buffers) häufig verw
 </ul>
 <p><strong>Lösungshinweis</strong>:
 Nutzen Sie <code>current.checked_add(offset)</code>. Führen Sie auf das Ergebnis (falls vorhanden) den Modulo-Operator <code>% buffer_size</code> aus.</p>
-<hr>
-<h3 id="übung-3-schwer-ein-robuster-binärer-datenparser"><a class="header" href="#übung-3-schwer-ein-robuster-binärer-datenparser">Übung 3 (Schwer): Ein robuster binärer Datenparser</a></h3>
+<hr />
+<h3 id="Übung-3-schwer-ein-robuster-binärer-datenparser"><a class="header" href="#Übung-3-schwer-ein-robuster-binärer-datenparser">Übung 3 (Schwer): Ein robuster binärer Datenparser</a></h3>
 <p><strong>Aufgabenstellung</strong>:
 Sie erhalten als Eingabe ein binäres Paket aus einem Netzwerk-Stream als Byte-Array <code>[u8; 4]</code>.
 Das Paket ist wie folgt aufgebaut:</p>
@@ -1139,23 +1062,17 @@ Das Paket ist wie folgt aufgebaut:</p>
 </ul>
 <p><strong>Lösungshinweis</strong>:
 Um Bit-Flags zu prüfen, nutzen Sie den bitweisen Und-Operator <code>&amp;</code>. Zum Beispiel: <code>let is_active = (status_byte &amp; 0b0000_0001) != 0;</code>.</p>
-<hr>
+<hr />
 <h2 id="6010-lernstrategie-selbsteinschätzung--merkzettel"><a class="header" href="#6010-lernstrategie-selbsteinschätzung--merkzettel">6.0.10 Lernstrategie, Selbsteinschätzung &amp; Merkzettel</a></h2>
 <h3 id="spickzettel-cheat-sheet"><a class="header" href="#spickzettel-cheat-sheet">Spickzettel (Cheat Sheet)</a></h3>
-<div class="table-wrapper">
-<table>
-<thead>
-<tr><th style="text-align: left">Konzept</th><th style="text-align: left">Syntax</th><th style="text-align: left">Beispiel</th></tr>
-</thead>
-<tbody>
+<div class="table-wrapper"><table><thead><tr><th style="text-align: left">Konzept</th><th style="text-align: left">Syntax</th><th style="text-align: left">Beispiel</th></tr></thead><tbody>
 <tr><td style="text-align: left"><strong>Typannotation</strong></td><td style="text-align: left"><code>let name: typ = wert;</code></td><td style="text-align: left"><code>let x: u32 = 100;</code></td></tr>
 <tr><td style="text-align: left"><strong>Typ-Suffix</strong></td><td style="text-align: left"><code>let name = wertyyp;</code></td><td style="text-align: left"><code>let x = 100u32;</code></td></tr>
 <tr><td style="text-align: left"><strong>Expliziter Cast</strong></td><td style="text-align: left"><code>ausdruck as ziel_typ</code></td><td style="text-align: left"><code>let y = x as f64;</code></td></tr>
 <tr><td style="text-align: left"><strong>Zusatzzeichen</strong></td><td style="text-align: left"><code>_</code> als Trenner</td><td style="text-align: left"><code>let x = 1_000_000_u64;</code></td></tr>
 <tr><td style="text-align: left"><strong>Sichere Addition</strong></td><td style="text-align: left"><code>a.checked_add(b)</code></td><td style="text-align: left"><code>let sum = 200_u8.checked_add(60);</code></td></tr>
 <tr><td style="text-align: left"><strong>Unicode Zeichen</strong></td><td style="text-align: left"><code>let c: char = '...';</code></td><td style="text-align: left"><code>let c: char = '🦀';</code></td></tr>
-</tbody>
-</table>
+</tbody></table>
 </div>
 <h3 id="active-recall-verständnisfragen"><a class="header" href="#active-recall-verständnisfragen">Active Recall (Verständnisfragen)</a></h3>
 <ol>
@@ -1179,12 +1096,16 @@ Um Bit-Flags zu prüfen, nutzen Sie den bitweisen Und-Operator <code>&amp;</code
 <h3 id="metakognitiver-selbsttest"><a class="header" href="#metakognitiver-selbsttest">Metakognitiver Selbsttest</a></h3>
 <p>Wechseln Sie erst zum nächsten Kapitel (<a href="file:///home/thorsten/RustKurs/doc/src/7.md">Kapitel 7: Übungsprojekt</a>), wenn Sie:</p>
 <ul>
-<li><input disabled="" type="checkbox"> Den Unterschied zwischen <code>checked_*</code>, <code>wrapping_*</code> und <code>saturating_*</code> erklären können.</li>
-<li><input disabled="" type="checkbox"> Verstanden haben, warum Fließkommazahlen-Vergleiche mit <code>==</code> instabil sind.</li>
-<li><input disabled="" type="checkbox"> Wissen, wofür <code>usize</code> und <code>isize</code> gedacht sind.</li>
-<li><input disabled="" type="checkbox"> Den Unterschied in der Syntax von Zeichen (<code>'x'</code>) und Strings (<code>"x"</code>) verinnerlicht haben.</li>
+<li><input disabled="" type="checkbox"/>
+Den Unterschied zwischen <code>checked_*</code>, <code>wrapping_*</code> und <code>saturating_*</code> erklären können.</li>
+<li><input disabled="" type="checkbox"/>
+Verstanden haben, warum Fließkommazahlen-Vergleiche mit <code>==</code> instabil sind.</li>
+<li><input disabled="" type="checkbox"/>
+Wissen, wofür <code>usize</code> und <code>isize</code> gedacht sind.</li>
+<li><input disabled="" type="checkbox"/>
+Den Unterschied in der Syntax von Zeichen (<code>'x'</code>) und Strings (<code>"x"</code>) verinnerlicht haben.</li>
 </ul>
-<hr>
+<hr />
 <h2 id="6011-zusammenfassung"><a class="header" href="#6011-zusammenfassung">6.0.11 Zusammenfassung</a></h2>
 <ul>
 <li><strong>Strikte Typsicherheit</strong>: Rust führt keine implizite Typkonvertierung durch. Jede Konvertierung zwischen numerischen Typen muss explizit mit dem <code>as</code>-Operator oder über API-Methoden vorgenommen werden.</li>
@@ -1199,7 +1120,7 @@ Um Bit-Flags zu prüfen, nutzen Sie den bitweisen Und-Operator <code>&amp;</code
 </ul>
 </li>
 </ul>
-<hr>
+<hr />
 <p><strong>Lizenz- und Attributionshinweis</strong>:
 Teile dieses Kapitels basieren auf Übersetzungen und didaktischen Anpassungen des offiziellen Buches <a href="https://doc.rust-lang.org/book/">The Rust Programming Language</a> von Steve Klabnik und Carol Nichols (sowie Beiträgen der Rust-Community), lizenziert unter <a href="https://opensource.org/licenses/MIT">MIT</a> und <a href="https://www.apache.org/licenses/LICENSE-2.0">Apache 2.0</a>.</p>
 
@@ -1208,11 +1129,11 @@ Teile dieses Kapitels basieren auf Übersetzungen und didaktischen Anpassungen d
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
                             <a rel="prev" href="5.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
-                                <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
+                                <i class="fa fa-angle-left"></i>
                             </a>
 
                             <a rel="next prefetch" href="7.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
-                                <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
+                                <i class="fa fa-angle-right"></i>
                             </a>
 
                         <div style="clear: both"></div>
@@ -1222,21 +1143,16 @@ Teile dieses Kapitels basieren auf Übersetzungen und didaktischen Anpassungen d
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
                     <a rel="prev" href="5.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
-                        <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
+                        <i class="fa fa-angle-left"></i>
                     </a>
 
                     <a rel="next prefetch" href="7.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
-                        <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
+                        <i class="fa fa-angle-right"></i>
                     </a>
             </nav>
 
         </div>
 
-        <template id=fa-eye><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M288 32c-80.8 0-145.5 36.8-192.6 80.6C48.6 156 17.3 208 2.5 243.7c-3.3 7.9-3.3 16.7 0 24.6C17.3 304 48.6 356 95.4 399.4C142.5 443.2 207.2 480 288 480s145.5-36.8 192.6-80.6c46.8-43.5 78.1-95.4 93-131.1c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C433.5 68.8 368.8 32 288 32zM432 256c0 79.5-64.5 144-144 144s-144-64.5-144-144s64.5-144 144-144s144 64.5 144 144zM288 192c0 35.3-28.7 64-64 64c-11.5 0-22.3-3-31.6-8.4c-.2 2.8-.4 5.5-.4 8.4c0 53 43 96 96 96s96-43 96-96s-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6z"/></svg></span></template>
-        <template id=fa-eye-slash><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M38.8 5.1C28.4-3.1 13.3-1.2 5.1 9.2S-1.2 34.7 9.2 42.9l592 464c10.4 8.2 25.5 6.3 33.7-4.1s6.3-25.5-4.1-33.7L525.6 386.7c39.6-40.6 66.4-86.1 79.9-118.4c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C465.5 68.8 400.8 32 320 32c-68.2 0-125 26.3-169.3 60.8L38.8 5.1zM223.1 149.5C248.6 126.2 282.7 112 320 112c79.5 0 144 64.5 144 144c0 24.9-6.3 48.3-17.4 68.7L408 294.5c5.2-11.8 8-24.8 8-38.5c0-53-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6c0 10.2-2.4 19.8-6.6 28.3l-90.3-70.8zm223.1 298L373 389.9c-16.4 6.5-34.3 10.1-53 10.1c-79.5 0-144-64.5-144-144c0-6.9 .5-13.6 1.4-20.2L83.1 161.5C60.3 191.2 44 220.8 34.5 243.7c-3.3 7.9-3.3 16.7 0 24.6c14.9 35.7 46.2 87.7 93 131.1C174.5 443.2 239.2 480 320 480c47.8 0 89.9-12.9 126.2-32.5z"/></svg></span></template>
-        <template id=fa-copy><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M502.6 70.63l-61.25-61.25C435.4 3.371 427.2 0 418.7 0H255.1c-35.35 0-64 28.66-64 64l.0195 256C192 355.4 220.7 384 256 384h192c35.2 0 64-28.8 64-64V93.25C512 84.77 508.6 76.63 502.6 70.63zM464 320c0 8.836-7.164 16-16 16H255.1c-8.838 0-16-7.164-16-16L239.1 64.13c0-8.836 7.164-16 16-16h128L384 96c0 17.67 14.33 32 32 32h47.1V320zM272 448c0 8.836-7.164 16-16 16H63.1c-8.838 0-16-7.164-16-16L47.98 192.1c0-8.836 7.164-16 16-16H160V128H63.99c-35.35 0-64 28.65-64 64l.0098 256C.002 483.3 28.66 512 64 512h192c35.2 0 64-28.8 64-64v-32h-47.1L272 448z"/></svg></span></template>
-        <template id=fa-play><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80V432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"/></svg></span></template>
-        <template id=fa-clock-rotate-left><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M75 75L41 41C25.9 25.9 0 36.6 0 57.9V168c0 13.3 10.7 24 24 24H134.1c21.4 0 32.1-25.9 17-41l-30.8-30.8C155 85.5 203 64 256 64c106 0 192 86 192 192s-86 192-192 192c-40.8 0-78.6-12.7-109.7-34.4c-14.5-10.1-34.4-6.6-44.6 7.9s-6.6 34.4 7.9 44.6C151.2 495 201.7 512 256 512c141.4 0 256-114.6 256-256S397.4 0 256 0C185.3 0 121.3 28.7 75 75zm181 53c-13.3 0-24 10.7-24 24V256c0 6.4 2.5 12.5 7 17l72 72c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-65-65V152c0-13.3-10.7-24-24-24z"/></svg></span></template>
 
 
 
@@ -1245,17 +1161,17 @@ Teile dieses Kapitels basieren auf Übersetzungen und didaktischen Anpassungen d
         </script>
 
 
-        <script src="elasticlunr-ef4e11c1.min.js"></script>
-        <script src="mark-09e88c2c.min.js"></script>
-        <script src="searcher-09f2665d.js"></script>
+        <script src="elasticlunr.min.js"></script>
+        <script src="mark.min.js"></script>
+        <script src="searcher.js"></script>
 
-        <script src="clipboard-1626706a.min.js"></script>
-        <script src="highlight-abc7f01d.js"></script>
-        <script src="book-c22b7243.js"></script>
+        <script src="clipboard.min.js"></script>
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
 
         <!-- Custom JS scripts -->
-        <script src="mermaid-eefea253.min.js"></script>
-        <script src="mermaid-init-ccf746f1.js"></script>
+        <script src="mermaid.min.js"></script>
+        <script src="mermaid-init.js"></script>
 
 
 

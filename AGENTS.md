@@ -39,7 +39,7 @@
 - [Ch25: Der Slice-Typ (Slices)](25.md) -> [25.mp4](25.mp4) (Video & Audio fertig)
 - [Ch26: KI-Agenten & autonome Software-Ingenieure](26.md) -> [26.mp4](26.mp4) (Video & Audio fertig)
 - [Ch27: Eigene Datentypen mit Structs (Strukturen) strukturieren](27.md) -> [27.mp4](27.mp4) (Video & Audio fertig)
-
+- [Ch28: Enums und Pattern Matching](28.md) -> [28.mp4](28.mp4) (Video & Audio fertig)
 
 ---
 

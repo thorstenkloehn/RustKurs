@@ -7,25 +7,26 @@
 
 
         <!-- Custom HTML head -->
-
+        
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="theme-color" content="#ffffff">
 
-        <link rel="icon" href="favicon-de23e50b.svg">
-        <link rel="shortcut icon" href="favicon-8114d1fc.png">
-        <link rel="stylesheet" href="css/variables-8adf115d.css">
-        <link rel="stylesheet" href="css/general-0392ca55.css">
-        <link rel="stylesheet" href="css/chrome-fc474251.css">
-        <link rel="stylesheet" href="css/print-9e4910d8.css" media="print">
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
 
         <!-- Fonts -->
-        <link rel="stylesheet" href="fonts/fonts-9644e21d.css">
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
 
         <!-- Highlight.js Stylesheets -->
-        <link rel="stylesheet" id="mdbook-highlight-css" href="highlight-493f70e1.css">
-        <link rel="stylesheet" id="mdbook-tomorrow-night-css" href="tomorrow-night-4c0ae647.css">
-        <link rel="stylesheet" id="mdbook-ayu-highlight-css" href="ayu-highlight-3fdfc3ac.css">
+        <link rel="stylesheet" id="highlight-css" href="highlight.css">
+        <link rel="stylesheet" id="tomorrow-night-css" href="tomorrow-night.css">
+        <link rel="stylesheet" id="ayu-highlight-css" href="ayu-highlight.css">
 
         <!-- Custom theme stylesheets -->
 
@@ -35,10 +36,10 @@
             const path_to_root = "";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "searchindex-fc688792.js";
+            window.path_to_searchindex_js = "searchindex.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="toc-dedbbe6e.js"></script>
+        <script src="toc.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -52,7 +53,7 @@
             </div>
         </div>
     </div>
-    <div id="mdbook-body-container">
+    <div id="body-container">
         <!-- Work around some values being stored in localStorage wrapped in quotes -->
         <script>
             try {
@@ -81,12 +82,12 @@
             html.classList.add("js");
         </script>
 
-        <input type="checkbox" id="mdbook-sidebar-toggle-anchor" class="hidden">
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
 
         <!-- Hide / unhide sidebar before it is displayed -->
         <script>
             let sidebar = null;
-            const sidebar_toggle = document.getElementById("mdbook-sidebar-toggle-anchor");
+            const sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
             if (document.body.clientWidth >= 1080) {
                 try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
                 sidebar = sidebar || 'visible';
@@ -101,39 +102,39 @@
             }
         </script>
 
-        <nav id="mdbook-sidebar" class="sidebar" aria-label="Table of contents">
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <!-- populated by js -->
             <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
             <noscript>
                 <iframe class="sidebar-iframe-outer" src="toc.html"></iframe>
             </noscript>
-            <div id="mdbook-sidebar-resize-handle" class="sidebar-resize-handle">
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
                 <div class="sidebar-resize-indicator"></div>
             </div>
         </nav>
 
-        <div id="mdbook-page-wrapper" class="page-wrapper">
+        <div id="page-wrapper" class="page-wrapper">
 
             <div class="page">
-                <div id="mdbook-menu-bar-hover-placeholder"></div>
-                <div id="mdbook-menu-bar" class="menu-bar sticky">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
                     <div class="left-buttons">
-                        <label id="mdbook-sidebar-toggle" class="icon-button" for="mdbook-sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="mdbook-sidebar">
-                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"/></svg></span>
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
                         </label>
-                        <button id="mdbook-theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="mdbook-theme-list">
-                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M371.3 367.1c27.3-3.9 51.9-19.4 67.2-42.9L600.2 74.1c12.6-19.5 9.4-45.3-7.6-61.2S549.7-4.4 531.1 9.6L294.4 187.2c-24 18-38.2 46.1-38.4 76.1L371.3 367.1zm-19.6 25.4l-116-104.4C175.9 290.3 128 339.6 128 400c0 3.9 .2 7.8 .6 11.6c1.8 17.5-10.2 36.4-27.8 36.4H96c-17.7 0-32 14.3-32 32s14.3 32 32 32H240c61.9 0 112-50.1 112-112c0-2.5-.1-5-.2-7.5z"/></svg></span>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
                         </button>
-                        <ul id="mdbook-theme-list" class="theme-popup" aria-label="Themes" role="menu">
-                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-default_theme">Auto</button></li>
-                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-light">Light</button></li>
-                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-rust">Rust</button></li>
-                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-coal">Coal</button></li>
-                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-navy">Navy</button></li>
-                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-ayu">Ayu</button></li>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="default_theme">Auto</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
                         </ul>
-                        <button id="mdbook-search-toggle" class="icon-button" type="button" title="Search (`/`)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="/ s" aria-controls="mdbook-searchbar">
-                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352c79.5 0 144-64.5 144-144s-64.5-144-144-144S64 128.5 64 208s64.5 144 144 144z"/></svg></span>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search (`/`)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="/ s" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
                         </button>
                     </div>
 
@@ -141,43 +142,43 @@
 
                     <div class="right-buttons">
                         <a href="print.html" title="Print this book" aria-label="Print this book">
-                            <span class=fa-svg id="print-button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M128 0C92.7 0 64 28.7 64 64v96h64V64H354.7L384 93.3V160h64V93.3c0-17-6.7-33.3-18.7-45.3L400 18.7C388 6.7 371.7 0 354.7 0H128zM384 352v32 64H128V384 368 352H384zm64 32h32c17.7 0 32-14.3 32-32V256c0-35.3-28.7-64-64-64H64c-35.3 0-64 28.7-64 64v96c0 17.7 14.3 32 32 32H64v64c0 35.3 28.7 64 64 64H384c35.3 0 64-28.7 64-64V384zm-16-88c-13.3 0-24-10.7-24-24s10.7-24 24-24s24 10.7 24 24s-10.7 24-24 24z"/></svg></span>
+                            <i id="print-button" class="fa fa-print"></i>
                         </a>
 
                     </div>
                 </div>
 
-                <div id="mdbook-search-wrapper" class="hidden">
-                    <form id="mdbook-searchbar-outer" class="searchbar-outer">
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
                         <div class="search-wrapper">
-                            <input type="search" id="mdbook-searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="mdbook-searchresults-outer" aria-describedby="searchresults-header">
+                            <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
                             <div class="spinner-wrapper">
-                                <span class=fa-svg id="fa-spin"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M304 48c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zm0 416c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zM48 304c26.5 0 48-21.5 48-48s-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48zm464-48c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zM142.9 437c18.7-18.7 18.7-49.1 0-67.9s-49.1-18.7-67.9 0s-18.7 49.1 0 67.9s49.1 18.7 67.9 0zm0-294.2c18.7-18.7 18.7-49.1 0-67.9S93.7 56.2 75 75s-18.7 49.1 0 67.9s49.1 18.7 67.9 0zM369.1 437c18.7 18.7 49.1 18.7 67.9 0s18.7-49.1 0-67.9s-49.1-18.7-67.9 0s-18.7 49.1 0 67.9z"/></svg></span>
+                                <i class="fa fa-spinner fa-spin"></i>
                             </div>
                         </div>
                     </form>
-                    <div id="mdbook-searchresults-outer" class="searchresults-outer hidden">
-                        <div id="mdbook-searchresults-header" class="searchresults-header"></div>
-                        <ul id="mdbook-searchresults">
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
                         </ul>
                     </div>
                 </div>
 
                 <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
                 <script>
-                    document.getElementById('mdbook-sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
-                    document.getElementById('mdbook-sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
-                    Array.from(document.querySelectorAll('#mdbook-sidebar a')).forEach(function(link) {
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
                         link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
                     });
                 </script>
 
-                <div id="mdbook-content" class="content">
+                <div id="content" class="content">
                     <main>
-                        <h1 id="kapitel-7-übungsprojekt-terminal-interaktion--datenverarbeitung"><a class="header" href="#kapitel-7-übungsprojekt-terminal-interaktion--datenverarbeitung">Kapitel 7: Übungsprojekt (Terminal-Interaktion &amp; Datenverarbeitung)</a></h1>
+                        <h1 id="kapitel-7-Übungsprojekt-terminal-interaktion--datenverarbeitung"><a class="header" href="#kapitel-7-Übungsprojekt-terminal-interaktion--datenverarbeitung">Kapitel 7: Übungsprojekt (Terminal-Interaktion &amp; Datenverarbeitung)</a></h1>
 <p>In diesem Kapitel führen wir Ihr erlerntes Wissen über Variablen, Datentypen und Zuweisungen in einem praxisnahen Übungsprojekt zusammen. Sie werden lernen, wie Sie ein interaktives Terminal-Programm von Grund auf planen, strukturieren und robust gegen Falscheingaben absichern.</p>
 <p>Dieses Kapitel baut die Brücke von der reinen Theorie hin zur praxisgerechten Anwendungsentwicklung unter Berücksichtigung bewährter Software-Architekturmuster.</p>
-<hr>
+<hr />
 <h2 id="1-lernziele--lernplan"><a class="header" href="#1-lernziele--lernplan">1. Lernziele &amp; Lernplan</a></h2>
 <h3 id="lernziele"><a class="header" href="#lernziele">Lernziele</a></h3>
 <ul>
@@ -189,13 +190,20 @@
 </ul>
 <h3 id="lernplan"><a class="header" href="#lernplan">Lernplan</a></h3>
 <ul>
-<li><input disabled="" type="checkbox"> <strong>2. Die Definition</strong>: Formale Begriffsbestimmung von Ablaufplanung, dem EVA-Prinzip und Terminal-I/O.</li>
-<li><input disabled="" type="checkbox"> <strong>3. Das Problem &amp; Die Motivation</strong>: Warum ungefilterter Input in echten Programmen ein Sicherheits- und Stabilitätsrisiko darstellt.</li>
-<li><input disabled="" type="checkbox"> <strong>4. Der naive Versuch</strong>: Ein typischer, unvollständiger Code zum Einlesen und Konvertieren von Terminal-Eingaben.</li>
-<li><input disabled="" type="checkbox"> <strong>5. Die Anatomie des Fehlers</strong>: Analyse der Compiler-Meldungen und die Ursachen für Laufzeit-Panics bei Newlines.</li>
-<li><input disabled="" type="checkbox"> <strong>6. Die Lösung</strong>: Ein vollständiger, robuster Code mit sauberer Trennung nach dem EVA-Prinzip.</li>
-<li><input disabled="" type="checkbox"> <strong>7. Kleines Tutorial</strong>: Schritt-für-Schritt-Entwicklung eines interaktiven Kreisberechnungs-Werkzeugs.</li>
-<li><input disabled="" type="checkbox"> <strong>8. Mentale Modelle &amp; Deep Dive</strong>:
+<li><input disabled="" type="checkbox"/>
+<strong>2. Die Definition</strong>: Formale Begriffsbestimmung von Ablaufplanung, dem EVA-Prinzip und Terminal-I/O.</li>
+<li><input disabled="" type="checkbox"/>
+<strong>3. Das Problem &amp; Die Motivation</strong>: Warum ungefilterter Input in echten Programmen ein Sicherheits- und Stabilitätsrisiko darstellt.</li>
+<li><input disabled="" type="checkbox"/>
+<strong>4. Der naive Versuch</strong>: Ein typischer, unvollständiger Code zum Einlesen und Konvertieren von Terminal-Eingaben.</li>
+<li><input disabled="" type="checkbox"/>
+<strong>5. Die Anatomie des Fehlers</strong>: Analyse der Compiler-Meldungen und die Ursachen für Laufzeit-Panics bei Newlines.</li>
+<li><input disabled="" type="checkbox"/>
+<strong>6. Die Lösung</strong>: Ein vollständiger, robuster Code mit sauberer Trennung nach dem EVA-Prinzip.</li>
+<li><input disabled="" type="checkbox"/>
+<strong>7. Kleines Tutorial</strong>: Schritt-für-Schritt-Entwicklung eines interaktiven Kreisberechnungs-Werkzeugs.</li>
+<li><input disabled="" type="checkbox"/>
+<strong>8. Mentale Modelle &amp; Deep Dive</strong>:
 <ul>
 <li><strong>7.1 Systemarchitektur &amp; Ablaufplanung</strong>
 <ul>
@@ -211,11 +219,14 @@
 </li>
 </ul>
 </li>
-<li><input disabled="" type="checkbox"> <strong>9. Drei praktische Übungen</strong>: Programmieraufgaben mit ansteigendem Schwierigkeitsgrad (Leicht, Mittel, Schwer) inklusive Hilfestellungen.</li>
-<li><input disabled="" type="checkbox"> <strong>10. Lernstrategie, Selbsteinschätzung &amp; Merkzettel</strong>: Active Recall, Spickzettel, Fehlerprovokation und Selbsttest.</li>
-<li><input disabled="" type="checkbox"> <strong>11. Zusammenfassung</strong>: Kernpunkte auf einen Blick.</li>
+<li><input disabled="" type="checkbox"/>
+<strong>9. Drei praktische Übungen</strong>: Programmieraufgaben mit ansteigendem Schwierigkeitsgrad (Leicht, Mittel, Schwer) inklusive Hilfestellungen.</li>
+<li><input disabled="" type="checkbox"/>
+<strong>10. Lernstrategie, Selbsteinschätzung &amp; Merkzettel</strong>: Active Recall, Spickzettel, Fehlerprovokation und Selbsttest.</li>
+<li><input disabled="" type="checkbox"/>
+<strong>11. Zusammenfassung</strong>: Kernpunkte auf einen Blick.</li>
 </ul>
-<hr>
+<hr />
 <h2 id="2-die-definition"><a class="header" href="#2-die-definition">2. Die Definition</a></h2>
 <p>Bevor wir mit dem eigentlichen Projekt starten, definieren wir die grundlegenden Fachbegriffe, die für das Verständnis der Systemarchitektur und der praktischen Umsetzung unerlässlich sind:</p>
 <ul>
@@ -225,7 +236,7 @@
 <li><strong>Terminal-I/O</strong>: Die Interaktion mit dem Anwender über die Befehlszeilenschnittstelle (Command Line Interface, CLI). Der Begriff bezeichnet das Einlesen von Tastatureingaben (Standard Input, <code>stdin</code>) und das Schreiben von Textausgaben in das Terminal-Fenster (Standard Output, <code>stdout</code>).</li>
 <li><strong>Daten-Validierung</strong>: Der Prozess, bei dem eingehende, potenziell fehlerhafte Rohdaten überprüft, bereinigt und in einen für das System nutzbaren Zielzustand (z. B. einen numerischen Datentyp) überführt werden. Sie stellt die erste Schutzmauer gegen Laufzeitabstürze dar.</li>
 </ul>
-<hr>
+<hr />
 <h2 id="3-das-problem--die-motivation"><a class="header" href="#3-das-problem--die-motivation">3. Das Problem &amp; Die Motivation</a></h2>
 <p>In den vorherigen Kapiteln haben wir Variablen deklariert und mit Literalen (festen Werten im Code) gearbeitet. In realen Programmen stammen Daten jedoch fast nie aus dem Quellcode selbst, sondern werden zur Laufzeit von außen zugeführt – sei es durch Tastatureingaben, Dateien oder Netzwerkschnittstellen.</p>
 <p>Das führt zu einer zentralen Herausforderung in der Softwareentwicklung: <strong>Wir können den Eingaben des Benutzers niemals vertrauen.</strong></p>
@@ -238,10 +249,10 @@
 <li>Eingaben filtert, analysiert und Fehlermeldungen verständlich zurückgibt.</li>
 <li>Erst nach erfolgreicher Validierung mit der Verarbeitung beginnt.</li>
 </ol>
-<hr>
+<hr />
 <h2 id="4-der-naive-versuch"><a class="header" href="#4-der-naive-versuch">4. Der naive Versuch</a></h2>
 <p>Der folgende Code zeigt den naiven Versuch eines Anfängers, ein interaktives Programm zu schreiben, das eine Temperatur in Celsius über das Terminal einliest, in eine Fließkommazahl konvertiert, umrechnet und das Ergebnis ausgibt.</p>
-<pre class="playground"><code class="language-rust edition2021">use std::io;
+<pre><code class="language-rust">use std::io;
 
 fn main() {
     println!("=== Celsius in Fahrenheit Konverter ===");
@@ -262,7 +273,7 @@ fn main() {
     println!("Das Ergebnis lautet: {} °Fahrenheit", fahrenheit);
 }</code></pre>
 <p>Wenn Sie diesen Code in einem Cargo-Projekt anlegen und mit <code>cargo run</code> ausführen, werden Sie feststellen, dass der Compiler zwar Warnungen ausgibt, das Programm aber startet. Sobald Sie jedoch eine Zahl eingeben und mit Enter bestätigen, stürzt das Programm abstürzen.</p>
-<hr>
+<hr />
 <h2 id="5-die-anatomie-des-fehlers"><a class="header" href="#5-die-anatomie-des-fehlers">5. Die Anatomie des Fehlers</a></h2>
 <h3 id="was-sagt-der-compiler"><a class="header" href="#was-sagt-der-compiler">Was sagt der Compiler?</a></h3>
 <p>Bereits beim Kompilieren des naiven Versuchs gibt der Rust-Compiler eine Warnung aus:</p>
@@ -276,7 +287,7 @@ fn main() {
 </code></pre>
 <h4 id="erklärung-der-warnung"><a class="header" href="#erklärung-der-warnung">Erklärung der Warnung</a></h4>
 <p>Die Methode <code>read_line</code> gibt einen Wert vom Typ <code>Result&lt;usize, std::io::Error&gt;</code> zurück. Dieser signalisiert, ob das Einlesen vom Betriebssystem erfolgreich war oder ob ein Hardware- oder Stream-Fehler aufgetreten ist. Rust warnt uns nachdrücklich, dass wir dieses potenzielle Fehlersignal ignorieren.</p>
-<hr>
+<hr />
 <h3 id="was-passiert-zur-laufzeit"><a class="header" href="#was-passiert-zur-laufzeit">Was passiert zur Laufzeit?</a></h3>
 <p>Führen wir das Programm aus und geben die Zahl <code>25</code> ein, stürzt das Programm sofort nach dem Drücken der Enter-Taste ab:</p>
 <pre><code class="language-text">=== Celsius in Fahrenheit Konverter ===
@@ -309,10 +320,10 @@ Die Methode <code>parse::&lt;f64&gt;()</code> versucht, den gesamten Inhalt des 
 </li>
 <li>
 <p><strong>Die ungeschützte Entpackung</strong>:
-Der Aufruf von <code>.unwrap()</code> ist eine explizite Anweisung an die Laufzeitumgebung: <em>“Gib mir den erfolgreichen Wert. Wenn ein Fehler vorliegt, stürze sofort mit einer Panik ab!”</em> Da ein Fehler vorliegt, crasht das Programm unkontrolliert.</p>
+Der Aufruf von <code>.unwrap()</code> ist eine explizite Anweisung an die Laufzeitumgebung: <em>"Gib mir den erfolgreichen Wert. Wenn ein Fehler vorliegt, stürze sofort mit einer Panik ab!"</em> Da ein Fehler vorliegt, crasht das Programm unkontrolliert.</p>
 </li>
 </ol>
-<hr>
+<hr />
 <h2 id="6-die-lösung"><a class="header" href="#6-die-lösung">6. Die Lösung</a></h2>
 <p>Um diese Fehler robust zu beheben, müssen wir:</p>
 <ol>
@@ -322,7 +333,7 @@ Der Aufruf von <code>.unwrap()</code> ist eine explizite Anweisung an die Laufze
 <li>Den Code strukturell in die Phasen Eingabe, Verarbeitung und Ausgabe aufteilen.</li>
 </ol>
 <p>Hier ist die robuste Implementierung:</p>
-<pre class="playground"><code class="language-rust edition2021">use std::io::{self, Write};
+<pre><code class="language-rust">use std::io::{self, Write};
 
 fn main() {
     println!("=== Robustes Celsius in Fahrenheit Konversions-Tool ===");
@@ -408,7 +419,7 @@ Die Funktion <code>read_terminal_input</code> kapselt den I/O-Zugriff. Sie forde
 <li><strong>Ausgabe (Output)</strong>:
 Die Funktion <code>print_fahrenheit_result</code> übernimmt die Darstellung. Mit <code>{:.2}</code> begrenzen wir die Fließkommazahlen-Ausgabe auf exakt zwei Nachkommastellen.</li>
 </ul>
-<hr>
+<hr />
 <h2 id="7-kleines-tutorial-entwicklung-eines-interaktiven-kreisrechners"><a class="header" href="#7-kleines-tutorial-entwicklung-eines-interaktiven-kreisrechners">7. Kleines Tutorial: Entwicklung eines interaktiven Kreisrechners</a></h2>
 <p>Um die erlernten Konzepte in einer realistischen Praxisanwendung zu vertiefen, entwickeln wir nun Schritt für Schritt ein interaktives Kreisberechnungs-Werkzeug. Das Tool soll in einer Endlosschleife laufen und den Radius eines Kreises abfragen, um dessen Fläche und Umfang zu berechnen. Erst die Eingabe von <code>"exit"</code> beendet das Programm.</p>
 <h3 id="schritt-1-das-projekt-setup"><a class="header" href="#schritt-1-das-projekt-setup">Schritt 1: Das Projekt-Setup</a></h3>
@@ -419,9 +430,7 @@ cd kreis_rechner
 <p>Öffnen Sie die Datei <code>src/main.rs</code> in Ihrem Editor.</p>
 <h3 id="schritt-2-hilfsfunktion-für-die-terminal-eingabe-schreiben"><a class="header" href="#schritt-2-hilfsfunktion-für-die-terminal-eingabe-schreiben">Schritt 2: Hilfsfunktion für die Terminal-Eingabe schreiben</a></h3>
 <p>Zuerst schreiben wir die Funktion, die das Einlesen und das Flushen von <code>stdout</code> übernimmt. Sie gibt das rohe Ergebnis zurück.</p>
-<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>use std::io::{self, Write};
+<pre><code class="language-rust">use std::io::{self, Write};
 
 fn read_line(prompt: &amp;str) -&gt; String {
     print!("{}", prompt);
@@ -433,21 +442,17 @@ fn read_line(prompt: &amp;str) -&gt; String {
         .expect("Fehler beim Lesen der Zeile");
     
     input
-}
-<span class="boring">}</span></code></pre>
+}</code></pre>
 <h3 id="schritt-3-berechnungslogik-implementieren"><a class="header" href="#schritt-3-berechnungslogik-implementieren">Schritt 3: Berechnungslogik implementieren</a></h3>
 <p>Wir erstellen eine Strukturierte Logik für die Berechnungen. Da wir mit Kreisberechnungen arbeiten, nutzen wir die Konstante <code>std::f64::consts::PI</code> der Standardbibliothek.</p>
-<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>fn berechne_kreis(radius: f64) -&gt; (f64, f64) {
+<pre><code class="language-rust">fn berechne_kreis(radius: f64) -&gt; (f64, f64) {
     let flaeche = std::f64::consts::PI * radius * radius;
     let umfang = 2.0 * std::f64::consts::PI * radius;
     (flaeche, umfang)
-}
-<span class="boring">}</span></code></pre>
+}</code></pre>
 <h3 id="schritt-4-die-interaktive-programmschleife-in-main"><a class="header" href="#schritt-4-die-interaktive-programmschleife-in-main">Schritt 4: Die interaktive Programmschleife in <code>main</code></a></h3>
 <p>Nun fügen wir die Schleife (<code>loop</code>) und die Validierung in der <code>main</code>-Funktion zusammen. Wenn der Benutzer eine ungültige Zahl eingibt, soll das Programm nicht abstürzen, sondern eine verständliche Fehlermeldung ausgeben und erneut fragen.</p>
-<pre class="playground"><code class="language-rust edition2021">fn main() {
+<pre><code class="language-rust">fn main() {
     println!("========================================");
     println!("       KREISBERECHNUNGS-WERKZEUG        ");
     println!("========================================");
@@ -488,10 +493,10 @@ fn read_line(prompt: &amp;str) -&gt; String {
     }
 }</code></pre>
 <p>Starten Sie das Programm mit <code>cargo run</code>. Testen Sie Fehleingaben wie <code>"hallo"</code>, negative Zahlen oder die bloße Enter-Taste, um die Robustheit des Systems zu überprüfen.</p>
-<hr>
+<hr />
 <h2 id="8-mentale-modelle--deep-dive"><a class="header" href="#8-mentale-modelle--deep-dive">8. Mentale Modelle &amp; Deep Dive</a></h2>
 <p>Um ein tiefgreifendes Verständnis der Systemarchitektur und der I/O-Verarbeitung zu entwickeln, betrachten wir die technischen Hintergründe und das Speicherverhalten im Detail.</p>
-<hr>
+<hr />
 <h3 id="71-systemarchitektur--ablaufplanung"><a class="header" href="#71-systemarchitektur--ablaufplanung">7.1 Systemarchitektur &amp; Ablaufplanung</a></h3>
 <h4 id="711-pseudocode-konstruktion"><a class="header" href="#711-pseudocode-konstruktion">7.1.1 Pseudocode-Konstruktion</a></h4>
 <p>Vor dem Schreiben von Code in einer komplexen Systemsprache wie Rust ist es ratsam, den Algorithmus logisch im Kopf oder als Text zu strukturieren. Dies schützt Sie vor Logikfehlern (z. B. Deadlocks oder unendlichen Schleifen) und hilft, den Speicherfluss (Besitzverhältnisse) vorauszuplanen.</p>
@@ -519,7 +524,7 @@ fn read_line(prompt: &amp;str) -&gt; String {
             WEITER mit nächstem Schleifendurchlauf
 </code></pre>
 <p>Dieser Pseudocode trennt den logischen Ablauf von der syntaktischen Komplexität Rusts (wie Fehlerbehandlung via <code>Result</code> oder Zeilenpuffer-Flushing).</p>
-<hr>
+<hr />
 <h4 id="712-das-eva-prinzip"><a class="header" href="#712-das-eva-prinzip">7.1.2 Das EVA-Prinzip</a></h4>
 <p>Das EVA-Prinzip ist eine Architektur-Richtlinie, die darauf abzielt, die Kopplung von Softwarekomponenten zu minimieren und die Kohäsion zu maximieren.</p>
 <ul>
@@ -527,17 +532,16 @@ fn read_line(prompt: &amp;str) -&gt; String {
 <li><strong>Lose Kopplung</strong>: Die Komponenten wissen so wenig wie möglich voneinander. Die Berechnungsfunktion benötigt keine Kenntnis darüber, ob die Daten aus dem Terminal, einer Netzwerkverbindung oder einer Textdatei stammen.</li>
 </ul>
 <h5 id="visualisierung-des-datenflusses"><a class="header" href="#visualisierung-des-datenflusses">Visualisierung des Datenflusses:</a></h5>
-<pre class="mermaid">graph TD
+<pre><code class="language-mermaid">graph TD
     A[Terminal-Tastatur] --&gt;|Rohdaten: String| B[Eingabe-Modul: read_line]
     B --&gt;|trim &amp; parse| C[Validierungs-Modul]
     C --&gt;|Fehler| D[Fehler-Ausgabe]
     C --&gt;|Erfolg: f64| E[Verarbeitungs-Modul: berechne_kreis]
     E --&gt;|Ergebnis-Tupel: f64, f64| F[Ausgabe-Modul: println!]
     F --&gt;|Formatierter Text| G[Terminal-Bildschirm]
-</pre>
-
+</code></pre>
 <p>Dieses Design macht Ihren Code testbar. Da das Verarbeitungsmodul eine reine Funktion (Pure Function) ist, können Sie Unit-Tests dafür schreiben, ohne Tastatureingaben simulieren zu müssen.</p>
-<hr>
+<hr />
 <h3 id="72-praktische-implementierung"><a class="header" href="#72-praktische-implementierung">7.2 Praktische Implementierung</a></h3>
 <h4 id="721-terminal-io"><a class="header" href="#721-terminal-io">7.2.1 Terminal-I/O</a></h4>
 <p>Das Betriebssystem stellt dem ausgeführten Prozess drei Standard-Datenströme (Streams) zur Verfügung:</p>
@@ -555,37 +559,28 @@ fn read_line(prompt: &amp;str) -&gt; String {
 <li>Der Puffer explizit durch <code>flush()</code> geleert wird.</li>
 </ul>
 <p>Da wir bei interaktiven Abfragen (z. B. <code>Radius eingeben: </code>) keinen Zeilenumbruch erzeugen möchten (damit der Benutzer in derselben Zeile tippen kann), müssen wir <code>io::stdout().flush()</code> manuell aufrufen.</p>
-<hr>
+<hr />
 <h4 id="722-daten-validierung"><a class="header" href="#722-daten-validierung">7.2.2 Daten-Validierung</a></h4>
 <h5 id="die-methode-trim"><a class="header" href="#die-methode-trim">Die Methode <code>trim()</code></a></h5>
 <p>Die Methode <code>trim()</code> ist auf dem Typ <code>str</code> definiert. Sie sucht nach Unicode-Whitespaces (Leerzeichen, Tabulatoren, Newlines wie <code>\n</code> und <code>\r\n</code>) am Anfang und Ende des Strings und gibt ein String-Slice (<code>&amp;str</code>) zurück, das diesen Bereich ausschneidet.</p>
-<blockquote class="blockquote-tag blockquote-tag-important">
-<p class="blockquote-tag-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 1.75C0 .784.784 0 1.75 0h12.5C15.216 0 16 .784 16 1.75v9.5A1.75 1.75 0 0 1 14.25 13H8.06l-2.573 2.573A1.458 1.458 0 0 1 3 14.543V13H1.75A1.75 1.75 0 0 1 0 11.25Zm1.75-.25a.25.25 0 0 0-.25.25v9.5c0 .138.112.25.25.25h2a.75.75 0 0 1 .75.75v2.19l2.72-2.72a.749.749 0 0 1 .53-.22h6.5a.25.25 0 0 0 .25-.25v-9.5a.25.25 0 0 0-.25-.25Zm7 2.25v2.5a.75.75 0 0 1-1.5 0v-2.5a.75.75 0 0 1 1.5 0ZM9 9a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"></path></svg>Important</p>
-<p><code>trim()</code> kopiert keine Daten im Speicher! Es erzeugt lediglich einen neuen Fat Pointer auf dem Stack, dessen Startadresse hinter die führenden Whitespaces verschoben wurde und dessen Länge um die überflüssigen Zeichen gekürzt ist. Dies ist eine hocheffiziente Zero-Cost-Abstraktion.</p>
+<blockquote>
+<p>[!IMPORTANT]
+<code>trim()</code> kopiert keine Daten im Speicher! Es erzeugt lediglich einen neuen Fat Pointer auf dem Stack, dessen Startadresse hinter die führenden Whitespaces verschoben wurde und dessen Länge um die überflüssigen Zeichen gekürzt ist. Dies ist eine hocheffiziente Zero-Cost-Abstraktion.</p>
 </blockquote>
 <h5 id="die-generische-methode-parse"><a class="header" href="#die-generische-methode-parse">Die generische Methode <code>parse()</code></a></h5>
 <p>Die Signatur von <code>parse</code> in der Standardbibliothek lautet:</p>
-<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>pub fn parse&lt;F: FromStr&gt;(&amp;self) -&gt; Result&lt;F, F::Err&gt;
-<span class="boring">}</span></code></pre>
+<pre><code class="language-rust">pub fn parse&lt;F: FromStr&gt;(&amp;self) -&gt; Result&lt;F, F::Err&gt;</code></pre>
 <p>Da <code>parse</code> generisch über dem Rückgabetyp <code>F</code> ist (wobei <code>F</code> das Trait <code>FromStr</code> implementieren muss), weiß die Methode zunächst nicht, in welchen Typ sie konvertieren soll. Wir müssen dies dem Compiler mitteilen. Dies kann auf zwei Arten geschehen:</p>
 <ol>
 <li><strong>Durch explizite Typannotation</strong>:
-<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>let val: f64 = cleaned.parse().unwrap();
-<span class="boring">}</span></code></pre>
+<pre><code class="language-rust">let val: f64 = cleaned.parse().unwrap();</code></pre>
 </li>
 <li><strong>Durch den Turbofisch-Operator <code>::&lt;T&gt;</code></strong>:
-<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>let val = cleaned.parse::&lt;f64&gt;().unwrap();
-<span class="boring">}</span></code></pre>
+<pre><code class="language-rust">let val = cleaned.parse::&lt;f64&gt;().unwrap();</code></pre>
 </li>
 </ol>
 <p>Der Turbofisch-Operator ist in Ausdrücken oft lesbarer, da er den Typ direkt an die Methode bindet.</p>
-<hr>
+<hr />
 <h3 id="exhaustive-api-referenz-der-beteiligten-standardbibliotheksmethoden"><a class="header" href="#exhaustive-api-referenz-der-beteiligten-standardbibliotheksmethoden">Exhaustive API-Referenz der beteiligten Standardbibliotheksmethoden</a></h3>
 <p>Um Ihnen die Arbeit mit Terminal-I/O und Validierung zu erleichtern, sind im Folgenden alle relevanten Funktionen und Methoden der Standardbibliothek detailliert dokumentiert.</p>
 <h4 id="1-stdiostdin"><a class="header" href="#1-stdiostdin">1. <code>std::io::stdin</code></a></h4>
@@ -596,10 +591,7 @@ fn read_line(prompt: &amp;str) -&gt; String {
 <li><strong>Rückgabetyp</strong>: <code>std::io::Stdin</code> (Struktur, die das Handle repräsentiert).</li>
 <li><strong>Panics</strong>: Keine.</li>
 <li><strong>Kurzbeispiel</strong>:
-<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>let stdin_handle = std::io::stdin();
-<span class="boring">}</span></code></pre>
+<pre><code class="language-rust">let stdin_handle = std::io::stdin();</code></pre>
 </li>
 </ul>
 <h4 id="2-stdiostdinread_line"><a class="header" href="#2-stdiostdinread_line">2. <code>std::io::Stdin::read_line</code></a></h4>
@@ -614,11 +606,8 @@ fn read_line(prompt: &amp;str) -&gt; String {
 <li><strong>Rückgabetyp</strong>: <code>Result&lt;usize, std::io::Error&gt;</code>. Im Erfolgsfall (<code>Ok(n)</code>) wird die Anzahl der gelesenen Bytes (inklusive des Newline-Zeichens) zurückgegeben. Bei einem I/O-Fehler wird <code>Err</code> zurückgegeben.</li>
 <li><strong>Panics</strong>: Panickt, wenn die eingelesenen Bytes keine gültige UTF-8-Zeichenkette ergeben.</li>
 <li><strong>Kurzbeispiel</strong>:
-<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>let mut input = String::new();
-std::io::stdin().read_line(&amp;mut input).unwrap();
-<span class="boring">}</span></code></pre>
+<pre><code class="language-rust">let mut input = String::new();
+std::io::stdin().read_line(&amp;mut input).unwrap();</code></pre>
 </li>
 </ul>
 <h4 id="3-stdiostdout"><a class="header" href="#3-stdiostdout">3. <code>std::io::stdout</code></a></h4>
@@ -629,10 +618,7 @@ std::io::stdin().read_line(&amp;mut input).unwrap();
 <li><strong>Rückgabetyp</strong>: <code>std::io::Stdout</code> (Struktur, die das Ausgabe-Handle repräsentiert).</li>
 <li><strong>Panics</strong>: Keine.</li>
 <li><strong>Kurzbeispiel</strong>:
-<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>let stdout_handle = std::io::stdout();
-<span class="boring">}</span></code></pre>
+<pre><code class="language-rust">let stdout_handle = std::io::stdout();</code></pre>
 </li>
 </ul>
 <h4 id="4-stdiowriteflush"><a class="header" href="#4-stdiowriteflush">4. <code>std::io::Write::flush</code></a></h4>
@@ -643,11 +629,8 @@ std::io::stdin().read_line(&amp;mut input).unwrap();
 <li><strong>Rückgabetyp</strong>: <code>Result&lt;(), std::io::Error&gt;</code>. <code>Ok(())</code> bei Erfolg, <code>Err</code> bei Schreibfehlern.</li>
 <li><strong>Panics</strong>: Keine.</li>
 <li><strong>Kurzbeispiel</strong>:
-<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>use std::io::Write;
-std::io::stdout().flush().unwrap();
-<span class="boring">}</span></code></pre>
+<pre><code class="language-rust">use std::io::Write;
+std::io::stdout().flush().unwrap();</code></pre>
 </li>
 </ul>
 <h4 id="5-strtrim"><a class="header" href="#5-strtrim">5. <code>str::trim</code></a></h4>
@@ -658,11 +641,8 @@ std::io::stdout().flush().unwrap();
 <li><strong>Rückgabetyp</strong>: <code>&amp;str</code> (Ein neues String-Slice, das auf den bereinigten Ausschnitt zeigt).</li>
 <li><strong>Panics</strong>: Keine.</li>
 <li><strong>Kurzbeispiel</strong>:
-<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>let text = "  hallo \n";
-assert_eq!(text.trim(), "hallo");
-<span class="boring">}</span></code></pre>
+<pre><code class="language-rust">let text = "  hallo \n";
+assert_eq!(text.trim(), "hallo");</code></pre>
 </li>
 </ul>
 <h4 id="6-strparse"><a class="header" href="#6-strparse">6. <code>str::parse</code></a></h4>
@@ -673,15 +653,12 @@ assert_eq!(text.trim(), "hallo");
 <li><strong>Rückgabetyp</strong>: <code>Result&lt;F, F::Err&gt;</code>. Gibt bei Erfolg den konvertierten Typ in der <code>Ok</code>-Variante zurück, andernfalls den spezifischen Parsing-Fehler in der <code>Err</code>-Variante.</li>
 <li><strong>Panics</strong>: Keine. Die Fehlerbehandlung erfolgt explizit über den Rückgabetyp.</li>
 <li><strong>Kurzbeispiel</strong>:
-<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>let number: i32 = "42".parse().unwrap();
-<span class="boring">}</span></code></pre>
+<pre><code class="language-rust">let number: i32 = "42".parse().unwrap();</code></pre>
 </li>
 </ul>
-<hr>
-<h2 id="9-drei-praktische-übungen"><a class="header" href="#9-drei-praktische-übungen">9. Drei praktische Übungen</a></h2>
-<h3 id="übung-1-leicht-absicherung-des-absoluten-nullpunkts"><a class="header" href="#übung-1-leicht-absicherung-des-absoluten-nullpunkts">Übung 1 (Leicht): Absicherung des absoluten Nullpunkts</a></h3>
+<hr />
+<h2 id="9-drei-praktische-Übungen"><a class="header" href="#9-drei-praktische-Übungen">9. Drei praktische Übungen</a></h2>
+<h3 id="Übung-1-leicht-absicherung-des-absoluten-nullpunkts"><a class="header" href="#Übung-1-leicht-absicherung-des-absoluten-nullpunkts">Übung 1 (Leicht): Absicherung des absoluten Nullpunkts</a></h3>
 <ul>
 <li><strong>Aufgabe</strong>: Erweitern Sie den korrekten Celsius-Fahrenheit-Konverter aus <strong>Abschnitt 6</strong> so, dass er keine Temperaturen unter dem absoluten Nullpunkt von <code>-273.15 °C</code> akzeptiert.</li>
 <li><strong>Anforderungen</strong>:
@@ -692,8 +669,8 @@ assert_eq!(text.trim(), "hallo");
 </li>
 <li><strong>Lösungshinweis (Hint)</strong>: Fügen Sie in <code>parse_celsius_value</code> oder nach dem Erhalt des Werts in <code>main</code> eine <code>if</code>-Bedingung ein, die prüft, ob <code>celsius &lt; ABSOLUTER_NULLPUNKT</code> gilt, und geben Sie in diesem Fall ein <code>Err(..)</code> zurück.</li>
 </ul>
-<hr>
-<h3 id="übung-2-mittel-robustes-währungsumrechnungs-tool"><a class="header" href="#übung-2-mittel-robustes-währungsumrechnungs-tool">Übung 2 (Mittel): Robustes Währungsumrechnungs-Tool</a></h3>
+<hr />
+<h3 id="Übung-2-mittel-robustes-währungsumrechnungs-tool"><a class="header" href="#Übung-2-mittel-robustes-währungsumrechnungs-tool">Übung 2 (Mittel): Robustes Währungsumrechnungs-Tool</a></h3>
 <ul>
 <li><strong>Aufgabe</strong>: Schreiben Sie ein interaktives CLI-Programm, das den Benutzer nach einem Euro-Betrag fragt, diesen in US-Dollar umrechnet und das Ergebnis ausgibt.</li>
 <li><strong>Anforderungen</strong>:
@@ -705,8 +682,8 @@ assert_eq!(text.trim(), "hallo");
 </li>
 <li><strong>Lösungshinweis (Hint)</strong>: Nutzen Sie eine <code>loop</code>-Schleife. Wenn die Validierung fehlschlägt, geben Sie die Fehlermeldung aus und rufen Sie <code>continue</code> auf, um die Schleife von vorne zu starten. Erst bei einer erfolgreichen Validierung weisen Sie das Ergebnis einer Variablen zu und brechen die Schleife mit <code>break</code> ab.</li>
 </ul>
-<hr>
-<h3 id="übung-3-schwer-der-mini-taschenrechner"><a class="header" href="#übung-3-schwer-der-mini-taschenrechner">Übung 3 (Schwer): Der Mini-Taschenrechner</a></h3>
+<hr />
+<h3 id="Übung-3-schwer-der-mini-taschenrechner"><a class="header" href="#Übung-3-schwer-der-mini-taschenrechner">Übung 3 (Schwer): Der Mini-Taschenrechner</a></h3>
 <ul>
 <li><strong>Aufgabe</strong>: Erstellen Sie einen interaktiven Rechner, der drei separate Eingaben vom Benutzer über das Terminal einliest:
 <ol>
@@ -726,37 +703,28 @@ assert_eq!(text.trim(), "hallo");
 <ul>
 <li>Für den Operator können Sie den Typ <code>char</code> parsen oder direkt auf dem bereinigten <code>&amp;str</code> arbeiten.</li>
 <li>Verwenden Sie ein <code>match</code> auf dem Operator, um die jeweilige Berechnung auszuführen:
-<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>match operator {
+<pre><code class="language-rust">match operator {
     '+' =&gt; Ok(num1 + num2),
     // ...
     '/' =&gt; if num2 == 0.0 { Err("Division durch Null!") } else { Ok(num1 / num2) }
     _ =&gt; Err("Ungültiger Operator!")
-}
-<span class="boring">}</span></code></pre>
+}</code></pre>
 </li>
 </ul>
 </li>
 </ul>
-<hr>
+<hr />
 <h2 id="10-lernstrategie-selbsteinschätzung--merkzettel"><a class="header" href="#10-lernstrategie-selbsteinschätzung--merkzettel">10. Lernstrategie, Selbsteinschätzung &amp; Merkzettel</a></h2>
 <h3 id="spickzettel-cheat-sheet"><a class="header" href="#spickzettel-cheat-sheet">Spickzettel (Cheat Sheet)</a></h3>
-<div class="table-wrapper">
-<table>
-<thead>
-<tr><th style="text-align: left">Aktion</th><th style="text-align: left">Rust-Syntax</th><th style="text-align: left">Beschreibung</th></tr>
-</thead>
-<tbody>
+<div class="table-wrapper"><table><thead><tr><th style="text-align: left">Aktion</th><th style="text-align: left">Rust-Syntax</th><th style="text-align: left">Beschreibung</th></tr></thead><tbody>
 <tr><td style="text-align: left"><strong>I/O-Handle holen</strong></td><td style="text-align: left"><code>let stdin = std::io::stdin();</code></td><td style="text-align: left">Erstellt ein Handle auf die Standardeingabe.</td></tr>
 <tr><td style="text-align: left"><strong>Zeile einlesen</strong></td><td style="text-align: left"><code>stdin.read_line(&amp;mut buffer);</code></td><td style="text-align: left">Schreibt Terminal-Eingabe inkl. <code>\n</code> in den Puffer.</td></tr>
 <tr><td style="text-align: left"><strong>Stdout leeren</strong></td><td style="text-align: left"><code>std::io::stdout().flush();</code></td><td style="text-align: left">Zwingt das Terminal, gepufferten Text sofort anzuzeigen.</td></tr>
 <tr><td style="text-align: left"><strong>Whitespace entfernen</strong></td><td style="text-align: left"><code>let cleaned = input.trim();</code></td><td style="text-align: left">Schneidet Newlines, Tabs und Leerzeichen ab (Zero-Cost).</td></tr>
 <tr><td style="text-align: left"><strong>Typ konvertieren</strong></td><td style="text-align: left"><code>let num = cleaned.parse::&lt;f64&gt;();</code></td><td style="text-align: left">Konvertiert einen String in ein <code>f64</code>. Gibt ein <code>Result</code> zurück.</td></tr>
-</tbody>
-</table>
+</tbody></table>
 </div>
-<hr>
+<hr />
 <h3 id="active-recall-verständnisfragen"><a class="header" href="#active-recall-verständnisfragen">Active Recall (Verständnisfragen)</a></h3>
 <ol>
 <li><strong>Frage</strong>: Warum führt die Eingabe von <code>"10"</code> bei einem naiven <code>read_line</code> und direktem <code>parse</code> ohne <code>trim</code> zu einem Fehler?
@@ -775,21 +743,24 @@ assert_eq!(text.trim(), "hallo");
 </ul>
 </li>
 </ol>
-<hr>
+<hr />
 <h3 id="feynman-methode"><a class="header" href="#feynman-methode">Feynman-Methode</a></h3>
 <p>Erklären Sie einem Programmier-Anfänger in drei einfachen Sätzen, warum Rust uns zwingt, beim Parsen einer Zahl mit dem Typ <code>Result</code> zu arbeiten, anstatt uns direkt die Zahl zurückzugeben.</p>
-<hr>
+<hr />
 <h3 id="gezielte-fehlerprovokation-compiler-guided-learning"><a class="header" href="#gezielte-fehlerprovokation-compiler-guided-learning">Gezielte Fehlerprovokation (Compiler-Guided Learning)</a></h3>
 <p>Nehmen Sie den funktionierenden Lösungscode aus <strong>Abschnitt 6</strong> und entfernen Sie in der Funktion <code>parse_celsius_value</code> den Aufruf <code>.trim()</code>. Starten Sie das Programm mit <code>cargo run</code> und geben Sie eine gültige Zahl ein. Beobachten Sie die Ausgabe und analysieren Sie, wie der Validierungsfehler nun ausgelöst wird.</p>
-<hr>
+<hr />
 <h3 id="metakognitiver-selbsttest"><a class="header" href="#metakognitiver-selbsttest">Metakognitiver Selbsttest</a></h3>
 <p>Wechseln Sie erst zu Kapitel 8, wenn Sie:</p>
 <ul>
-<li><input disabled="" type="checkbox"> Verstanden haben, warum <code>read_line</code> einen String mutiert, statt ihn als Rückgabetyp zu liefern.</li>
-<li><input disabled="" type="checkbox"> Den Unterschied zwischen I/O-Fehlern (z. B. Stream abgebrochen) und Validierungsfehlern (z. B. Text statt Zahl eingegeben) erklären können.</li>
-<li><input disabled="" type="checkbox"> In der Lage sind, eine Eingabeschleife zu schreiben, die den Benutzer so lange nach Daten fragt, bis die Eingabe gültig ist.</li>
+<li><input disabled="" type="checkbox"/>
+Verstanden haben, warum <code>read_line</code> einen String mutiert, statt ihn als Rückgabetyp zu liefern.</li>
+<li><input disabled="" type="checkbox"/>
+Den Unterschied zwischen I/O-Fehlern (z. B. Stream abgebrochen) und Validierungsfehlern (z. B. Text statt Zahl eingegeben) erklären können.</li>
+<li><input disabled="" type="checkbox"/>
+In der Lage sind, eine Eingabeschleife zu schreiben, die den Benutzer so lange nach Daten fragt, bis die Eingabe gültig ist.</li>
 </ul>
-<hr>
+<hr />
 <h2 id="11-zusammenfassung"><a class="header" href="#11-zusammenfassung">11. Zusammenfassung</a></h2>
 <ul>
 <li><strong>Systemarchitektur</strong> beginnt vor dem Code. Pseudocode hilft, logische Verzweigungen zu strukturieren und das Ownership-Modell im Voraus zu planen.</li>
@@ -798,7 +769,7 @@ assert_eq!(text.trim(), "hallo");
 <li>Die Methode <strong><code>trim()</code></strong> ist unverzichtbar, um diese Steuerzeichen effizient (ohne Kopier-Overhead) zu entfernen.</li>
 <li>Die Methode <strong><code>parse()</code></strong> benötigt eine explizite Typangabe (oder den Turbofisch <code>parse::&lt;T&gt;()</code>) und gibt immer ein <code>Result</code> zurück, um Parsing-Fehler sicher abzufangen.</li>
 </ul>
-<hr>
+<hr />
 <p><strong>Lizenz- und Attributionshinweis</strong>:
 Teile dieses Kapitels basieren auf Übersetzungen und didaktischen Anpassungen des offiziellen Buches <a href="https://doc.rust-lang.org/book/">The Rust Programming Language</a> von Steve Klabnik und Carol Nichols (sowie Beiträgen der Rust-Community), lizenziert unter <a href="https://opensource.org/licenses/MIT">MIT</a> und <a href="https://www.apache.org/licenses/LICENSE-2.0">Apache 2.0</a>.</p>
 
@@ -807,11 +778,11 @@ Teile dieses Kapitels basieren auf Übersetzungen und didaktischen Anpassungen d
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
                             <a rel="prev" href="6.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
-                                <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
+                                <i class="fa fa-angle-left"></i>
                             </a>
 
                             <a rel="next prefetch" href="8.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
-                                <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
+                                <i class="fa fa-angle-right"></i>
                             </a>
 
                         <div style="clear: both"></div>
@@ -821,21 +792,16 @@ Teile dieses Kapitels basieren auf Übersetzungen und didaktischen Anpassungen d
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
                     <a rel="prev" href="6.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
-                        <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
+                        <i class="fa fa-angle-left"></i>
                     </a>
 
                     <a rel="next prefetch" href="8.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
-                        <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
+                        <i class="fa fa-angle-right"></i>
                     </a>
             </nav>
 
         </div>
 
-        <template id=fa-eye><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M288 32c-80.8 0-145.5 36.8-192.6 80.6C48.6 156 17.3 208 2.5 243.7c-3.3 7.9-3.3 16.7 0 24.6C17.3 304 48.6 356 95.4 399.4C142.5 443.2 207.2 480 288 480s145.5-36.8 192.6-80.6c46.8-43.5 78.1-95.4 93-131.1c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C433.5 68.8 368.8 32 288 32zM432 256c0 79.5-64.5 144-144 144s-144-64.5-144-144s64.5-144 144-144s144 64.5 144 144zM288 192c0 35.3-28.7 64-64 64c-11.5 0-22.3-3-31.6-8.4c-.2 2.8-.4 5.5-.4 8.4c0 53 43 96 96 96s96-43 96-96s-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6z"/></svg></span></template>
-        <template id=fa-eye-slash><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M38.8 5.1C28.4-3.1 13.3-1.2 5.1 9.2S-1.2 34.7 9.2 42.9l592 464c10.4 8.2 25.5 6.3 33.7-4.1s6.3-25.5-4.1-33.7L525.6 386.7c39.6-40.6 66.4-86.1 79.9-118.4c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C465.5 68.8 400.8 32 320 32c-68.2 0-125 26.3-169.3 60.8L38.8 5.1zM223.1 149.5C248.6 126.2 282.7 112 320 112c79.5 0 144 64.5 144 144c0 24.9-6.3 48.3-17.4 68.7L408 294.5c5.2-11.8 8-24.8 8-38.5c0-53-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6c0 10.2-2.4 19.8-6.6 28.3l-90.3-70.8zm223.1 298L373 389.9c-16.4 6.5-34.3 10.1-53 10.1c-79.5 0-144-64.5-144-144c0-6.9 .5-13.6 1.4-20.2L83.1 161.5C60.3 191.2 44 220.8 34.5 243.7c-3.3 7.9-3.3 16.7 0 24.6c14.9 35.7 46.2 87.7 93 131.1C174.5 443.2 239.2 480 320 480c47.8 0 89.9-12.9 126.2-32.5z"/></svg></span></template>
-        <template id=fa-copy><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M502.6 70.63l-61.25-61.25C435.4 3.371 427.2 0 418.7 0H255.1c-35.35 0-64 28.66-64 64l.0195 256C192 355.4 220.7 384 256 384h192c35.2 0 64-28.8 64-64V93.25C512 84.77 508.6 76.63 502.6 70.63zM464 320c0 8.836-7.164 16-16 16H255.1c-8.838 0-16-7.164-16-16L239.1 64.13c0-8.836 7.164-16 16-16h128L384 96c0 17.67 14.33 32 32 32h47.1V320zM272 448c0 8.836-7.164 16-16 16H63.1c-8.838 0-16-7.164-16-16L47.98 192.1c0-8.836 7.164-16 16-16H160V128H63.99c-35.35 0-64 28.65-64 64l.0098 256C.002 483.3 28.66 512 64 512h192c35.2 0 64-28.8 64-64v-32h-47.1L272 448z"/></svg></span></template>
-        <template id=fa-play><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80V432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"/></svg></span></template>
-        <template id=fa-clock-rotate-left><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M75 75L41 41C25.9 25.9 0 36.6 0 57.9V168c0 13.3 10.7 24 24 24H134.1c21.4 0 32.1-25.9 17-41l-30.8-30.8C155 85.5 203 64 256 64c106 0 192 86 192 192s-86 192-192 192c-40.8 0-78.6-12.7-109.7-34.4c-14.5-10.1-34.4-6.6-44.6 7.9s-6.6 34.4 7.9 44.6C151.2 495 201.7 512 256 512c141.4 0 256-114.6 256-256S397.4 0 256 0C185.3 0 121.3 28.7 75 75zm181 53c-13.3 0-24 10.7-24 24V256c0 6.4 2.5 12.5 7 17l72 72c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-65-65V152c0-13.3-10.7-24-24-24z"/></svg></span></template>
 
 
 
@@ -844,17 +810,17 @@ Teile dieses Kapitels basieren auf Übersetzungen und didaktischen Anpassungen d
         </script>
 
 
-        <script src="elasticlunr-ef4e11c1.min.js"></script>
-        <script src="mark-09e88c2c.min.js"></script>
-        <script src="searcher-09f2665d.js"></script>
+        <script src="elasticlunr.min.js"></script>
+        <script src="mark.min.js"></script>
+        <script src="searcher.js"></script>
 
-        <script src="clipboard-1626706a.min.js"></script>
-        <script src="highlight-abc7f01d.js"></script>
-        <script src="book-c22b7243.js"></script>
+        <script src="clipboard.min.js"></script>
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
 
         <!-- Custom JS scripts -->
-        <script src="mermaid-eefea253.min.js"></script>
-        <script src="mermaid-init-ccf746f1.js"></script>
+        <script src="mermaid.min.js"></script>
+        <script src="mermaid-init.js"></script>
 
 
 

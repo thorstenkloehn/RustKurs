@@ -7,25 +7,26 @@
 
 
         <!-- Custom HTML head -->
-
+        
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="theme-color" content="#ffffff">
 
-        <link rel="icon" href="favicon-de23e50b.svg">
-        <link rel="shortcut icon" href="favicon-8114d1fc.png">
-        <link rel="stylesheet" href="css/variables-8adf115d.css">
-        <link rel="stylesheet" href="css/general-0392ca55.css">
-        <link rel="stylesheet" href="css/chrome-fc474251.css">
-        <link rel="stylesheet" href="css/print-9e4910d8.css" media="print">
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
 
         <!-- Fonts -->
-        <link rel="stylesheet" href="fonts/fonts-9644e21d.css">
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
 
         <!-- Highlight.js Stylesheets -->
-        <link rel="stylesheet" id="mdbook-highlight-css" href="highlight-493f70e1.css">
-        <link rel="stylesheet" id="mdbook-tomorrow-night-css" href="tomorrow-night-4c0ae647.css">
-        <link rel="stylesheet" id="mdbook-ayu-highlight-css" href="ayu-highlight-3fdfc3ac.css">
+        <link rel="stylesheet" id="highlight-css" href="highlight.css">
+        <link rel="stylesheet" id="tomorrow-night-css" href="tomorrow-night.css">
+        <link rel="stylesheet" id="ayu-highlight-css" href="ayu-highlight.css">
 
         <!-- Custom theme stylesheets -->
 
@@ -35,10 +36,10 @@
             const path_to_root = "";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "searchindex-fc688792.js";
+            window.path_to_searchindex_js = "searchindex.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="toc-dedbbe6e.js"></script>
+        <script src="toc.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -52,7 +53,7 @@
             </div>
         </div>
     </div>
-    <div id="mdbook-body-container">
+    <div id="body-container">
         <!-- Work around some values being stored in localStorage wrapped in quotes -->
         <script>
             try {
@@ -81,12 +82,12 @@
             html.classList.add("js");
         </script>
 
-        <input type="checkbox" id="mdbook-sidebar-toggle-anchor" class="hidden">
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
 
         <!-- Hide / unhide sidebar before it is displayed -->
         <script>
             let sidebar = null;
-            const sidebar_toggle = document.getElementById("mdbook-sidebar-toggle-anchor");
+            const sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
             if (document.body.clientWidth >= 1080) {
                 try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
                 sidebar = sidebar || 'visible';
@@ -101,39 +102,39 @@
             }
         </script>
 
-        <nav id="mdbook-sidebar" class="sidebar" aria-label="Table of contents">
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <!-- populated by js -->
             <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
             <noscript>
                 <iframe class="sidebar-iframe-outer" src="toc.html"></iframe>
             </noscript>
-            <div id="mdbook-sidebar-resize-handle" class="sidebar-resize-handle">
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
                 <div class="sidebar-resize-indicator"></div>
             </div>
         </nav>
 
-        <div id="mdbook-page-wrapper" class="page-wrapper">
+        <div id="page-wrapper" class="page-wrapper">
 
             <div class="page">
-                <div id="mdbook-menu-bar-hover-placeholder"></div>
-                <div id="mdbook-menu-bar" class="menu-bar sticky">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
                     <div class="left-buttons">
-                        <label id="mdbook-sidebar-toggle" class="icon-button" for="mdbook-sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="mdbook-sidebar">
-                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"/></svg></span>
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
                         </label>
-                        <button id="mdbook-theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="mdbook-theme-list">
-                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M371.3 367.1c27.3-3.9 51.9-19.4 67.2-42.9L600.2 74.1c12.6-19.5 9.4-45.3-7.6-61.2S549.7-4.4 531.1 9.6L294.4 187.2c-24 18-38.2 46.1-38.4 76.1L371.3 367.1zm-19.6 25.4l-116-104.4C175.9 290.3 128 339.6 128 400c0 3.9 .2 7.8 .6 11.6c1.8 17.5-10.2 36.4-27.8 36.4H96c-17.7 0-32 14.3-32 32s14.3 32 32 32H240c61.9 0 112-50.1 112-112c0-2.5-.1-5-.2-7.5z"/></svg></span>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
                         </button>
-                        <ul id="mdbook-theme-list" class="theme-popup" aria-label="Themes" role="menu">
-                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-default_theme">Auto</button></li>
-                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-light">Light</button></li>
-                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-rust">Rust</button></li>
-                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-coal">Coal</button></li>
-                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-navy">Navy</button></li>
-                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-ayu">Ayu</button></li>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="default_theme">Auto</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
                         </ul>
-                        <button id="mdbook-search-toggle" class="icon-button" type="button" title="Search (`/`)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="/ s" aria-controls="mdbook-searchbar">
-                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352c79.5 0 144-64.5 144-144s-64.5-144-144-144S64 128.5 64 208s64.5 144 144 144z"/></svg></span>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search (`/`)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="/ s" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
                         </button>
                     </div>
 
@@ -141,43 +142,43 @@
 
                     <div class="right-buttons">
                         <a href="print.html" title="Print this book" aria-label="Print this book">
-                            <span class=fa-svg id="print-button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M128 0C92.7 0 64 28.7 64 64v96h64V64H354.7L384 93.3V160h64V93.3c0-17-6.7-33.3-18.7-45.3L400 18.7C388 6.7 371.7 0 354.7 0H128zM384 352v32 64H128V384 368 352H384zm64 32h32c17.7 0 32-14.3 32-32V256c0-35.3-28.7-64-64-64H64c-35.3 0-64 28.7-64 64v96c0 17.7 14.3 32 32 32H64v64c0 35.3 28.7 64 64 64H384c35.3 0 64-28.7 64-64V384zm-16-88c-13.3 0-24-10.7-24-24s10.7-24 24-24s24 10.7 24 24s-10.7 24-24 24z"/></svg></span>
+                            <i id="print-button" class="fa fa-print"></i>
                         </a>
 
                     </div>
                 </div>
 
-                <div id="mdbook-search-wrapper" class="hidden">
-                    <form id="mdbook-searchbar-outer" class="searchbar-outer">
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
                         <div class="search-wrapper">
-                            <input type="search" id="mdbook-searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="mdbook-searchresults-outer" aria-describedby="searchresults-header">
+                            <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
                             <div class="spinner-wrapper">
-                                <span class=fa-svg id="fa-spin"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M304 48c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zm0 416c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zM48 304c26.5 0 48-21.5 48-48s-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48zm464-48c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zM142.9 437c18.7-18.7 18.7-49.1 0-67.9s-49.1-18.7-67.9 0s-18.7 49.1 0 67.9s49.1 18.7 67.9 0zm0-294.2c18.7-18.7 18.7-49.1 0-67.9S93.7 56.2 75 75s-18.7 49.1 0 67.9s49.1 18.7 67.9 0zM369.1 437c18.7 18.7 49.1 18.7 67.9 0s18.7-49.1 0-67.9s-49.1-18.7-67.9 0s-18.7 49.1 0 67.9z"/></svg></span>
+                                <i class="fa fa-spinner fa-spin"></i>
                             </div>
                         </div>
                     </form>
-                    <div id="mdbook-searchresults-outer" class="searchresults-outer hidden">
-                        <div id="mdbook-searchresults-header" class="searchresults-header"></div>
-                        <ul id="mdbook-searchresults">
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
                         </ul>
                     </div>
                 </div>
 
                 <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
                 <script>
-                    document.getElementById('mdbook-sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
-                    document.getElementById('mdbook-sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
-                    Array.from(document.querySelectorAll('#mdbook-sidebar a')).forEach(function(link) {
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
                         link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
                     });
                 </script>
 
-                <div id="mdbook-content" class="content">
+                <div id="content" class="content">
                     <main>
                         <h1 id="kapitel-9-zusammenfassung-variablen--typen"><a class="header" href="#kapitel-9-zusammenfassung-variablen--typen">Kapitel 9: Zusammenfassung Variablen &amp; Typen</a></h1>
 <p>Dieses Kapitel bildet die Brücke zwischen den Grundlagen der Variablen deklaration und der tieferen Ebene der Systemarchitektur. Nachdem Sie in den vorangegangenen Kapiteln (siehe <a href="file:///home/thorsten/RustKurs/doc/src/5.md">Kapitel 5</a>, <a href="file:///home/thorsten/RustKurs/doc/src/6.md">Kapitel 6</a>, <a href="file:///home/thorsten/RustKurs/doc/src/7.md">Kapitel 7</a> und <a href="file:///home/thorsten/RustKurs/doc/src/8.md">Kapitel 8</a>) Variablen, Kontrollstrukturen, Skalartypen sowie Arrays und Tupel kennengelernt haben, führen wir dieses Wissen nun zusammen.</p>
 <p>Wir betrachten hierbei nicht nur die syntaktischen Unterschiede im direkten Vergleich, sondern dringen tief in die physische Speicherverwaltung vor. Sie werden lernen, wie der Rust-Compiler Daten auf der Hardware anordnet, warum das CPU-Alignment für die Performance entscheidend ist und wie Sie Speicherverschwendung durch Padding-Bytes vermeiden.</p>
-<hr>
+<hr />
 <h2 id="1-lernziele--lernplan"><a class="header" href="#1-lernziele--lernplan">1. Lernziele &amp; Lernplan</a></h2>
 <h3 id="lernziele"><a class="header" href="#lernziele">Lernziele</a></h3>
 <ul>
@@ -188,29 +189,44 @@
 </ul>
 <h3 id="lernplan"><a class="header" href="#lernplan">Lernplan</a></h3>
 <ul>
-<li><input disabled="" type="checkbox"> <strong>2. Die Definition</strong>: Formale Begriffsbestimmung von Variablen, Skalartypen, Arrays, Tupeln und dem Unit-Typ.</li>
-<li><input disabled="" type="checkbox"> <strong>9.1 Syntaktisches Cheat-Sheet</strong>:
+<li><input disabled="" type="checkbox"/>
+<strong>2. Die Definition</strong>: Formale Begriffsbestimmung von Variablen, Skalartypen, Arrays, Tupeln und dem Unit-Typ.</li>
+<li><input disabled="" type="checkbox"/>
+<strong>9.1 Syntaktisches Cheat-Sheet</strong>:
 <ul>
-<li><input disabled="" type="checkbox"> <strong>9.1.1 Gegenüberstellung</strong>: Direkter Vergleich von Syntax, Eigenschaften und Zuweisungsverhalten im Code.</li>
+<li><input disabled="" type="checkbox"/>
+<strong>9.1.1 Gegenüberstellung</strong>: Direkter Vergleich von Syntax, Eigenschaften und Zuweisungsverhalten im Code.</li>
 </ul>
 </li>
-<li><input disabled="" type="checkbox"> <strong>3. Das Problem &amp; Die Motivation</strong>: Warum ein unzureichendes Verständnis von Datentypen zu ineffizientem Speicherlayout, Cache-Misses und Systemabstürzen führt.</li>
-<li><input disabled="" type="checkbox"> <strong>4. Der naive Versuch</strong>: Ein fehlerhafter Rust-Code, der unsichere Indexierung und arithmetische Überläufe provoziert.</li>
-<li><input disabled="" type="checkbox"> <strong>5. Die Anatomie des Fehlers</strong>: Analyse der Fehlermeldungen und Untersuchung des Fehlverhaltens auf Ebene des Hardwarespeichers.</li>
-<li><input disabled="" type="checkbox"> <strong>6. Die Lösung</strong>: Implementierung eines robusten Codes unter Einhaltung des EVA-Prinzips (Eingabe, Verarbeitung, Ausgabe).</li>
-<li><input disabled="" type="checkbox"> <strong>7. Kleines Tutorial</strong>: Schritt-für-Schritt-Aufbau eines strukturierten GPS- und Telemetrie-Decoders.</li>
-<li><input disabled="" type="checkbox"> <strong>8. Mentale Modelle &amp; Deep Dive</strong>: Visualisierung des Speichers und fortgeschrittene Konzepte (Auto-Traits <code>Send</code> und <code>Sync</code>, LLVM-Optimierungen).</li>
-<li><input disabled="" type="checkbox"> <strong>9.2 Physischer Speicherbedarf</strong>:
+<li><input disabled="" type="checkbox"/>
+<strong>3. Das Problem &amp; Die Motivation</strong>: Warum ein unzureichendes Verständnis von Datentypen zu ineffizientem Speicherlayout, Cache-Misses und Systemabstürzen führt.</li>
+<li><input disabled="" type="checkbox"/>
+<strong>4. Der naive Versuch</strong>: Ein fehlerhafter Rust-Code, der unsichere Indexierung und arithmetische Überläufe provoziert.</li>
+<li><input disabled="" type="checkbox"/>
+<strong>5. Die Anatomie des Fehlers</strong>: Analyse der Fehlermeldungen und Untersuchung des Fehlverhaltens auf Ebene des Hardwarespeichers.</li>
+<li><input disabled="" type="checkbox"/>
+<strong>6. Die Lösung</strong>: Implementierung eines robusten Codes unter Einhaltung des EVA-Prinzips (Eingabe, Verarbeitung, Ausgabe).</li>
+<li><input disabled="" type="checkbox"/>
+<strong>7. Kleines Tutorial</strong>: Schritt-für-Schritt-Aufbau eines strukturierten GPS- und Telemetrie-Decoders.</li>
+<li><input disabled="" type="checkbox"/>
+<strong>8. Mentale Modelle &amp; Deep Dive</strong>: Visualisierung des Speichers und fortgeschrittene Konzepte (Auto-Traits <code>Send</code> und <code>Sync</code>, LLVM-Optimierungen).</li>
+<li><input disabled="" type="checkbox"/>
+<strong>9.2 Physischer Speicherbedarf</strong>:
 <ul>
-<li><input disabled="" type="checkbox"> <strong>9.2.1 Datengrößen</strong>: Detaillierte Speicherbelegung und umfassender Deep Dive in Speicher-Alignment und Padding mit ASCII-Diagrammen.</li>
+<li><input disabled="" type="checkbox"/>
+<strong>9.2.1 Datengrößen</strong>: Detaillierte Speicherbelegung und umfassender Deep Dive in Speicher-Alignment und Padding mit ASCII-Diagrammen.</li>
 </ul>
 </li>
-<li><input disabled="" type="checkbox"> <strong>Exhaustive API-Reference</strong>: Vollständige Dokumentation wichtiger Standardbibliotheksmethoden für Integers, Floats, Chars und Arrays inklusive Signatur, Panics und Beispielen.</li>
-<li><input disabled="" type="checkbox"> <strong>9. Drei praktische Übungen</strong>: Programmieraufgaben (Leicht, Mittel, Schwer) zur Festigung des Wissens mit ausführlichen Lösungshinweisen.</li>
-<li><input disabled="" type="checkbox"> <strong>10. Lernstrategie, Selbsteinschätzung &amp; Merkzettel</strong>: Feynman-Methode, Fehlerprovokation und Selbsttest.</li>
-<li><input disabled="" type="checkbox"> <strong>11. Zusammenfassung</strong>: Der Kern des Kapitels im kompakten Überblick.</li>
+<li><input disabled="" type="checkbox"/>
+<strong>Exhaustive API-Reference</strong>: Vollständige Dokumentation wichtiger Standardbibliotheksmethoden für Integers, Floats, Chars und Arrays inklusive Signatur, Panics und Beispielen.</li>
+<li><input disabled="" type="checkbox"/>
+<strong>9. Drei praktische Übungen</strong>: Programmieraufgaben (Leicht, Mittel, Schwer) zur Festigung des Wissens mit ausführlichen Lösungshinweisen.</li>
+<li><input disabled="" type="checkbox"/>
+<strong>10. Lernstrategie, Selbsteinschätzung &amp; Merkzettel</strong>: Feynman-Methode, Fehlerprovokation und Selbsttest.</li>
+<li><input disabled="" type="checkbox"/>
+<strong>11. Zusammenfassung</strong>: Der Kern des Kapitels im kompakten Überblick.</li>
 </ul>
-<hr>
+<hr />
 <h2 id="2-die-definition"><a class="header" href="#2-die-definition">2. Die Definition</a></h2>
 <p>Um eine präzise Grundlage für die anschließende Syntaxgegenüberstellung und Speicheranalyse zu schaffen, etablieren wir zunächst die formalen Fachbegriffe:</p>
 <ul>
@@ -227,37 +243,31 @@
 <li><strong>Unit-Typ (<code>()</code>)</strong>: Ein spezielles Tupel ohne Elemente. Es repräsentiert das Fehlen eines Wertes (vergleichbar mit <code>void</code> in anderen Sprachen) und belegt physisch 0 Bytes im Speicher.</li>
 </ul>
 <h3 id="alltagsnahe-metapher"><a class="header" href="#alltagsnahe-metapher">Alltagsnahe Metapher</a></h3>
-<blockquote class="blockquote-tag blockquote-tag-note">
-<p class="blockquote-tag-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>Note</p>
+<blockquote>
+<p>[!NOTE]</p>
 <ul>
 <li><strong>Der Pillen-Organizer (Array)</strong>: Ein Array ist wie ein wöchentlicher Pillen-Organizer. Jedes Fach hat exakt dieselbe Größe, ist fortlaufend nummeriert (Index 0 bis 6) und darf nur denselben Inhalt aufnehmen (z. B. Vitamintabletten). Sie können nicht spontan ein achtes Fach anbauen.</li>
 <li><strong>Das Schweizer Taschenmesser (Tupel)</strong>: Ein Tupel ist wie ein Schweizer Taschenmesser. Es enthält verschiedene Werkzeuge (eine Schere, eine Klinge, eine Feile). Jedes Werkzeug hat eine andere Form, Größe und Funktion (heterogene Typen). Die Zusammensetzung ist fest definiert und kann nicht im Nachhinein verändert werden.</li>
 <li><strong>Der leere Briefumschlag (Unit-Typ <code>()</code>)</strong>: Der Unit-Typ ist wie ein leerer Briefumschlag. Er ist da, um als Umschlag (Typ) zu existieren, enthält aber keine Nachricht (Daten). Er benötigt keinen physischen Platz, transportiert aber die Information: „Ich bin erfolgreich angekommen, aber ich bringe keine Daten mit.“</li>
 </ul>
 </blockquote>
-<hr>
+<hr />
 <h2 id="91-syntaktisches-cheat-sheet"><a class="header" href="#91-syntaktisches-cheat-sheet">9.1 Syntaktisches Cheat-Sheet</a></h2>
 <p>Dieses Cheat-Sheet dient als schnelles Nachschlagewerk für den direkten Vergleich der verschiedenen Variablentypen und Datenstrukturen.</p>
 <h3 id="911-gegenüberstellung"><a class="header" href="#911-gegenüberstellung">9.1.1 Gegenüberstellung</a></h3>
 <p>Die folgende Tabelle vergleicht die wichtigsten Eigenschaften der skalaren und zusammengesetzten Datentypen in Rust:</p>
-<div class="table-wrapper">
-<table>
-<thead>
-<tr><th style="text-align: left">Kriterium</th><th style="text-align: left">Skalare Typen (<code>i32</code>, <code>f64</code>, <code>bool</code>, <code>char</code>)</th><th style="text-align: left">Arrays (<code>[T; N]</code>)</th><th style="text-align: left">Tupel (<code>(T1, T2, ...)</code>)</th></tr>
-</thead>
-<tbody>
+<div class="table-wrapper"><table><thead><tr><th style="text-align: left">Kriterium</th><th style="text-align: left">Skalare Typen (<code>i32</code>, <code>f64</code>, <code>bool</code>, <code>char</code>)</th><th style="text-align: left">Arrays (<code>[T; N]</code>)</th><th style="text-align: left">Tupel (<code>(T1, T2, ...)</code>)</th></tr></thead><tbody>
 <tr><td style="text-align: left"><strong>Typ-Homogenität</strong></td><td style="text-align: left">Ein einzelner Basistyp</td><td style="text-align: left">Streng homogen (nur Elemente vom Typ <code>T</code>)</td><td style="text-align: left">Heterogen (unterschiedliche Typen erlaubt)</td></tr>
 <tr><td style="text-align: left"><strong>Größe zur Laufzeit</strong></td><td style="text-align: left">Fest (1 bis 16 Bytes)</td><td style="text-align: left">Fest (Anzahl $N \times$ Elementgröße)</td><td style="text-align: left">Fest (Summe der Elementgrößen + Padding)</td></tr>
 <tr><td style="text-align: left"><strong>Speicherort</strong></td><td style="text-align: left">Stack (bzw. CPU-Register)</td><td style="text-align: left">Stack (kontinuierlich)</td><td style="text-align: left">Stack (kontinuierlich mit Lücken)</td></tr>
 <tr><td style="text-align: left"><strong>Indexierungs-Syntax</strong></td><td style="text-align: left">Nicht anwendbar</td><td style="text-align: left"><code>array[index]</code> (Laufzeit-Bounds-Check)</td><td style="text-align: left"><code>tupel.0</code>, <code>tupel.1</code> (Compilezeit-statisch)</td></tr>
 <tr><td style="text-align: left"><strong>Zuweisungs-Semantik</strong></td><td style="text-align: left">Immer <code>Copy</code> (Bit-Kopie auf dem Stack)</td><td style="text-align: left"><code>Copy</code> nur, wenn Typ <code>T</code> den <code>Copy</code>-Trait besitzt</td><td style="text-align: left"><code>Copy</code> nur, wenn alle Teil-Typen <code>Copy</code> sind</td></tr>
 <tr><td style="text-align: left"><strong>Häufiger Einsatzzweck</strong></td><td style="text-align: left">Mathematische Berechnungen, Flags</td><td style="text-align: left">Puffer feste Größe, mathematische Vektoren</td><td style="text-align: left">Rückgabe mehrerer Werte aus Funktionen</td></tr>
-</tbody>
-</table>
+</tbody></table>
 </div>
 <h3 id="syntaktischer-codevergleich"><a class="header" href="#syntaktischer-codevergleich">Syntaktischer Codevergleich</a></h3>
 <p>Der folgende Code zeigt die Deklaration, Initialisierung, Modifikation und das Entpacken der Typen im direkten Vergleich:</p>
-<pre class="playground"><code class="language-rust edition2021">fn main() {
+<pre><code class="language-rust">fn main() {
     // ==========================================
     // 1. Skalare Typen
     // ==========================================
@@ -292,7 +302,7 @@
     // Destrukturierung (Entpacken) eines Tupels
     let (id, name, active) = &amp;user_profile;
 }</code></pre>
-<hr>
+<hr />
 <h2 id="3-das-problem--die-motivation"><a class="header" href="#3-das-problem--die-motivation">3. Das Problem &amp; Die Motivation</a></h2>
 <p>In der hardwarenahen Systemprogrammierung ist der effiziente und korrekte Umgang mit dem Speicher von existenzieller Bedeutung. Werden Variablen und Datentypen unüberlegt eingesetzt, entstehen fundamentale Probleme:</p>
 <ol>
@@ -301,7 +311,7 @@
 <li><strong>Laufzeitabstürze durch mangelnde Typen trennung</strong>: Versucht ein Programmierer, heterogene Daten (wie Temperatur, Fehlermeldung und Sensor-ID) in ein einziges homogenes Array zu pressen, scheitert er entweder an den Typgrenzen des Compilers oder erzwingt unsichere Typkonvertierungen (<code>as</code>-Casts), die die Typ sicherheit aushebeln.</li>
 </ol>
 <p>Rust zwingt Entwickler durch sein strenges Typsystem und die Compilezeit-Garantien, diese Aspekte bereits beim Entwurf der Software zu berücksichtigen.</p>
-<hr>
+<hr />
 <h2 id="4-der-naive-versuch"><a class="header" href="#4-der-naive-versuch">4. Der naive Versuch</a></h2>
 <p>Im folgenden Code versucht ein Programmierer, ein einfaches Telemetriesystem zu schreiben. Er begeht dabei drei typische Anfängerfehler:</p>
 <ol>
@@ -309,7 +319,7 @@
 <li>Er verwendet für die Berechnung eines Offsets einen vorzeichenbehafteten 8-Bit-Integer (<code>i8</code>), wodurch ein unkontrollierter Überlauf provoziert wird.</li>
 <li>Er greift über einen dynamisch berechneten Index ungesichert auf ein Array zu.</li>
 </ol>
-<pre class="playground"><code class="language-rust edition2021">// Dieser Code lässt sich teilweise nicht kompilieren und stürzt zur Laufzeit ab!
+<pre><code class="language-rust">// Dieser Code lässt sich teilweise nicht kompilieren und stürzt zur Laufzeit ab!
 fn main() {
     // FEHLER 1: Versuch, heterogene Daten in ein homogenes Array zu zwingen
     // Ein Sensor hat: ID (u8), Temperatur (f32), Status-Flag (bool)
@@ -339,7 +349,7 @@ fn main() {
     let critical_reading = readings[target_index]; 
     println!("Kritischer Messwert: {}", critical_reading);
 }</code></pre>
-<hr>
+<hr />
 <h2 id="5-die-anatomie-des-fehlers"><a class="header" href="#5-die-anatomie-des-fehlers">5. Die Anatomie des Fehlers</a></h2>
 <h3 id="1-compiler-fehler-bei-der-array-deklaration"><a class="header" href="#1-compiler-fehler-bei-der-array-deklaration">1. Compiler-Fehler bei der Array-Deklaration</a></h3>
 <p>Wenn Sie versuchen, die Zeile <code>let raw_sensor_data = [42, 23.5, true];</code> einzukommentieren, bricht der Compiler sofort mit folgendem Fehler ab:</p>
@@ -352,7 +362,7 @@ fn main() {
 help: change the type of the numeric literal or remove the incompatible elements
 </code></pre>
 <p><strong>Ursache</strong>: Ein Rust-Array vom Typ <code>[T; N]</code> erfordert absolute Homogenität. Der Compiler leitet aus dem ersten Element <code>42</code> ab, dass es sich um ein Array aus Integers handelt. Das zweite Element <code>23.5</code> (ein Float) bricht diese Regel fundamental.</p>
-<hr>
+<hr />
 <h3 id="2-laufzeit-absturz-durch-integer-overflow-debug-modus"><a class="header" href="#2-laufzeit-absturz-durch-integer-overflow-debug-modus">2. Laufzeit-Absturz durch Integer-Overflow (Debug-Modus)</a></h3>
 <p>Wird der Array-Fehler behoben, übersetzt der Compiler das Programm im Debug-Profil problemlos. Beim Ausführen stürzt die Applikation jedoch bei der Addition ab:</p>
 <pre><code class="language-text">thread 'main' panicked at src/main.rs:17:19:
@@ -369,7 +379,7 @@ Ein <code>i8</code> belegt genau 1 Byte (8 Bits) auf dem Stack. Der Wertebereich
 <li>Da Rust im <strong>Debug-Modus</strong> standardmäßig auf Überläufe prüft, erkennt es diese mathematische Inkonsistenz und löst eine kontrollierte Panik aus, um zu verhindern, dass die Logik mit korrupten Daten arbeitet.</li>
 <li>Im <strong>Release-Modus</strong> (<code>--release</code>) würde Rust diesen Check aus Performancegründen weglassen. Die Variable <code>temperature</code> würde lautlos auf <code>-126</code> umspringen (<em>Wrapping</em>). Ihr Sensor würde plötzlich frostige Temperaturen statt extremer Hitze melden – ein katastrophaler Logikfehler!</li>
 </ul>
-<hr>
+<hr />
 <h3 id="3-laufzeit-absturz-durch-out-of-bounds-zugriff"><a class="header" href="#3-laufzeit-absturz-durch-out-of-bounds-zugriff">3. Laufzeit-Absturz durch Out-of-Bounds-Zugriff</a></h3>
 <p>Falls der Overflow umgangen wird, stürzt das Programm beim Zugriff <code>readings[target_index]</code> ab:</p>
 <pre><code class="language-text">thread 'main' panicked at src/main.rs:25:28:
@@ -377,7 +387,7 @@ index out of bounds: the len is 5 but the index is 6
 </code></pre>
 <p><strong>Was im Speicher passiert</strong>:
 Das Array <code>readings</code> liegt als kompakter Block von 5 Integers (<code>5 * 4 Bytes = 20 Bytes</code>) auf dem Stack. Ein Zugriff auf Index 6 würde bedeuten, dass das Programm die Startadresse des Arrays nimmt, um 24 Bytes nach vorne springt und dort liegenden Speicher liest. Dieser Speicher gehört jedoch zu anderen Variablen. Um Speicherverletzungen (wie Buffer Overflows, die in C/C++ als Sicherheitslücken ausgenutzt werden) unmöglich zu machen, führt Rust bei jedem Indexzugriff einen impliziten Grenzwert-Check durch (<em>Bounds Checking</em>) und stürzt lieber ab, als unautorisierten Speicher freizugeben.</p>
-<hr>
+<hr />
 <h2 id="6-die-lösung"><a class="header" href="#6-die-lösung">6. Die Lösung</a></h2>
 <p>Um diese Schwachstellen sauber zu beseitigen, wenden wir folgende Techniken an:</p>
 <ol>
@@ -386,7 +396,7 @@ Das Array <code>readings</code> liegt als kompakter Block von 5 Integers (<code>
 <li><strong>Sicherer Array-Zugriff</strong> mittels der <code>.get()</code>-Methode, die ein <code>Option</code>-Objekt zurückgibt.</li>
 </ol>
 <p>Hier ist die fehlerfreie Implementierung nach dem <strong>EVA-Prinzip</strong>:</p>
-<pre class="playground"><code class="language-rust edition2021">fn main() {
+<pre><code class="language-rust">fn main() {
     // =========================================================================
     // EINGABE (Input): Definition der Sensor-ID, des Rohwerts und des Offsets
     // =========================================================================
@@ -455,7 +465,7 @@ Das Array <code>readings</code> liegt als kompakter Block von 5 Integers (<code>
 </ul>
 </li>
 </ul>
-<hr>
+<hr />
 <h2 id="7-kleines-tutorial-gps--und-telemetrie-decoder"><a class="header" href="#7-kleines-tutorial-gps--und-telemetrie-decoder">7. Kleines Tutorial: GPS- und Telemetrie-Decoder</a></h2>
 <p>In diesem Tutorial entwickeln wir einen einfachen Decoder für serielle GPS-Datensätze. Die eingehenden Daten bestehen aus einer festen Byte-Sequenz (Array) und sollen in strukturierte Geokoordinaten (Tupel aus Breitengrad, Längengrad und Satelliten anzahl) übersetzt werden. Dabei nutzen wir Shadowing und Konstanten zur Strukturierung.</p>
 <h3 id="schritt-1-das-projekt-anlegen"><a class="header" href="#schritt-1-das-projekt-anlegen">Schritt 1: Das Projekt anlegen</a></h3>
@@ -464,18 +474,13 @@ Das Array <code>readings</code> liegt als kompakter Block von 5 Integers (<code>
 </code></pre>
 <h3 id="schritt-2-konstanten-und-datenstrukturen-definieren"><a class="header" href="#schritt-2-konstanten-und-datenstrukturen-definieren">Schritt 2: Konstanten und Datenstrukturen definieren</a></h3>
 <p>Öffnen Sie die Datei <code>src/main.rs</code> und definieren Sie die grundlegenden Systemparameter als Konstanten:</p>
-<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>// Die erwartete Paketgröße in Bytes
+<pre><code class="language-rust">// Die erwartete Paketgröße in Bytes
 const RAW_PACKET_SIZE: usize = 8;
 // Der Skalierungsfaktor zur Umwandlung von Rohwerten in echte GPS-Koordinaten
-const COORDINATE_SCALE: f64 = 10_000.0;
-<span class="boring">}</span></code></pre>
+const COORDINATE_SCALE: f64 = 10_000.0;</code></pre>
 <h3 id="schritt-3-die-dekodierungs-logik-implementieren"><a class="header" href="#schritt-3-die-dekodierungs-logik-implementieren">Schritt 3: Die Dekodierungs-Logik implementieren</a></h3>
 <p>Wir schreiben eine Funktion <code>decode_gps_packet</code>, die ein rohes Byte-Array entgegennimmt und ein strukturiertes Tupel zurückgibt. Wir nutzen hierbei Bit-Shifting, um einzelne Bytes zu größeren Integers zusammenzusetzen:</p>
-<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>// Dekodiert ein 8-Byte-Paket in (Latitude, Longitude, Satellites, Valid)
+<pre><code class="language-rust">// Dekodiert ein 8-Byte-Paket in (Latitude, Longitude, Satellites, Valid)
 fn decode_gps_packet(packet: [u8; RAW_PACKET_SIZE]) -&gt; (f64, f64, u8, bool) {
     // Byte 0-2: Breitengrad (Latitude) als u24 (simuliert über u32)
     let raw_lat = ((packet[0] as u32) &lt;&lt; 16) | ((packet[1] as u32) &lt;&lt; 8) | (packet[2] as u32);
@@ -494,11 +499,10 @@ fn decode_gps_packet(packet: [u8; RAW_PACKET_SIZE]) -&gt; (f64, f64, u8, bool) {
     let longitude = (raw_lon as f64) / COORDINATE_SCALE;
 
     (latitude, longitude, satellites, is_valid)
-}
-<span class="boring">}</span></code></pre>
+}</code></pre>
 <h3 id="schritt-4-die-integration-in-der-main-funktion"><a class="header" href="#schritt-4-die-integration-in-der-main-funktion">Schritt 4: Die Integration in der <code>main</code>-Funktion</a></h3>
 <p>Jetzt fügen wir Testdaten ein und verarbeiten diese. Wir nutzen Shadowing, um die dekodierten Rohdaten für die Ausgabe aufzubereiten:</p>
-<pre class="playground"><code class="language-rust edition2021">fn main() {
+<pre><code class="language-rust">fn main() {
     // Ein simuliertes GPS-Rohdatenpaket
     // Latitude-Bytes: [0x07, 0xA1, 0x20] -&gt; 500000 -&gt; 50.0000°
     // Longitude-Bytes: [0x01, 0x86, 0xA0] -&gt; 100000 -&gt; 10.0000°
@@ -523,7 +527,7 @@ fn decode_gps_packet(packet: [u8; RAW_PACKET_SIZE]) -&gt; (f64, f64, u8, bool) {
         println!("--- Warnung: GPS-Signal ungültig! ---");
     }
 }</code></pre>
-<hr>
+<hr />
 <h2 id="8-mentale-modelle--deep-dive"><a class="header" href="#8-mentale-modelle--deep-dive">8. Mentale Modelle &amp; Deep Dive</a></h2>
 <p>Um die Speicherverwaltung von Rust-Typen wirklich zu durchdringen, müssen wir die Abstraktionsebene verlassen und uns ansehen, wie der Compiler die Daten im RAM anordnet.</p>
 <h3 id="heap-vs-stack-bei-primitives"><a class="header" href="#heap-vs-stack-bei-primitives">Heap vs. Stack bei Primitives</a></h3>
@@ -547,16 +551,11 @@ Stack (Variable a)       Stack (Variable b)
 <li><strong><code>Sync</code></strong>: Zeigt an, dass mehrere Threads gleichzeitig über Referenzen auf denselben Wert zugreifen dürfen (<code>&amp;T</code> is <code>Send</code>).</li>
 </ul>
 <p>Da alle hier behandelten skalaren Typen, Arrays und Tupel reine Speicherbereiche ohne geteilte Zeiger oder veränderliche globale Zustände sind, sind sie <strong>vollständig <code>Send</code> und <code>Sync</code></strong>. Sie können diese Daten bedenkenlos zwischen Threads teilen oder verschieben, solange die Standard-Borrowing-Regeln eingehalten werden.</p>
-<hr>
+<hr />
 <h2 id="92-physischer-speicherbedarf"><a class="header" href="#92-physischer-speicherbedarf">9.2 Physischer Speicherbedarf</a></h2>
 <h3 id="921-datengrößen"><a class="header" href="#921-datengrößen">9.2.1 Datengrößen</a></h3>
 <p>Der physische Speicherbedarf eines Datentyps hängt maßgeblich von der Bitbreite der Zielplattform (32-Bit- vs. 64-Bit-CPU) ab. Die folgende Tabelle schlüsselt die exakten Bytegrößen auf:</p>
-<div class="table-wrapper">
-<table>
-<thead>
-<tr><th style="text-align: left">Datentyp</th><th style="text-align: left">Größe auf 32-Bit CPUs</th><th style="text-align: left">Größe auf 64-Bit CPUs</th><th style="text-align: left">Alignment (64-Bit)</th></tr>
-</thead>
-<tbody>
+<div class="table-wrapper"><table><thead><tr><th style="text-align: left">Datentyp</th><th style="text-align: left">Größe auf 32-Bit CPUs</th><th style="text-align: left">Größe auf 64-Bit CPUs</th><th style="text-align: left">Alignment (64-Bit)</th></tr></thead><tbody>
 <tr><td style="text-align: left"><code>i8</code> / <code>u8</code> / <code>bool</code></td><td style="text-align: left">1 Byte</td><td style="text-align: left">1 Byte</td><td style="text-align: left">1 Byte</td></tr>
 <tr><td style="text-align: left"><code>i16</code> / <code>u16</code></td><td style="text-align: left">2 Bytes</td><td style="text-align: left">2 Bytes</td><td style="text-align: left">2 Bytes</td></tr>
 <tr><td style="text-align: left"><code>i32</code> / <code>u32</code> / <code>f32</code></td><td style="text-align: left">4 Bytes</td><td style="text-align: left">4 Bytes</td><td style="text-align: left">4 Bytes</td></tr>
@@ -566,10 +565,9 @@ Stack (Variable a)       Stack (Variable b)
 <tr><td style="text-align: left"><code>isize</code> / <code>usize</code></td><td style="text-align: left"><strong>4 Bytes</strong></td><td style="text-align: left"><strong>8 Bytes</strong></td><td style="text-align: left"><strong>8 Bytes</strong></td></tr>
 <tr><td style="text-align: left"><code>[T; N]</code> (Array)</td><td style="text-align: left">$N \times \text{Größe}(T)$</td><td style="text-align: left">$N \times \text{Größe}(T)$</td><td style="text-align: left">Entspricht Alignment von $T$</td></tr>
 <tr><td style="text-align: left"><code>(T1, T2, ...)</code> (Tupel)</td><td style="text-align: left">Summe der Typen + Padding</td><td style="text-align: left">Summe der Typen + Padding</td><td style="text-align: left">Größtes Alignment der Teil-Typen</td></tr>
-</tbody>
-</table>
+</tbody></table>
 </div>
-<hr>
+<hr />
 <h3 id="deep-dive-speicher-alignment-und-padding"><a class="header" href="#deep-dive-speicher-alignment-und-padding">Deep Dive: Speicher-Alignment und Padding</a></h3>
 <p>Warum ist die Größe eines Tupels wie <code>(u8, u32)</code> nicht einfach 5 Bytes ($1 + 4$), sondern 8 Bytes? Die Antwort liegt im <strong>Speicher-Alignment</strong> (Speicherausrichtung).</p>
 <p>CPUs lesen Daten nicht byteweise, sondern in Speicherworten (z. B. 4 Bytes auf 32-Bit-Systemen oder 8 Bytes auf 64-Bit-Systemen). Wenn ein 4-Byte-Integer (<code>u32</code>) an einer Speicheradresse liegt, die nicht durch 4 teilbar ist (z. B. <code>0x03</code>), muss die CPU zwei Lesezugriffe durchführen und die Bits verschieben. Das kostet Performance. Manche Architekturen (wie ARM) stürzen bei unaligned Zugriffen sogar ab.</p>
@@ -596,7 +594,7 @@ Wert:    [ u8 ]    [  PADDING-BYTE (x3)  ]       [       u32-Wert      ]
 <li>Da die Gesamtgröße eines zusammengesetzten Typs immer ein Vielfaches seines maximalen Alignments (hier 4 Bytes) sein muss, werden am Ende weitere 3 Bytes Padding angehängt.</li>
 <li><strong>Gesamtgröße</strong>: 12 Bytes (obwohl nur 6 Bytes echte Nutzdaten enthalten sind!).</li>
 </ul>
-<hr>
+<hr />
 <h2 id="exhaustive-api-reference"><a class="header" href="#exhaustive-api-reference">Exhaustive API-Reference</a></h2>
 <p>Um die Vorgaben für ein professionelles Lehrbuch zu erfüllen, dokumentieren wir an dieser Stelle die wichtigsten in der Standardbibliothek implementierten Methoden für unsere Kern-Typen lückenlos.</p>
 <h3 id="1-integer-methoden-i32--u32--i8-etc"><a class="header" href="#1-integer-methoden-i32--u32--i8-etc">1. Integer-Methoden (<code>i32</code> / <code>u32</code> / <code>i8</code> etc.)</a></h3>
@@ -607,12 +605,9 @@ Wert:    [ u8 ]    [  PADDING-BYTE (x3)  ]       [       u32-Wert      ]
 <li><strong>Rückgabetyp</strong>: <code>Option&lt;Self&gt;</code>: <code>Some(Ergebnis)</code> bei erfolgreicher Addition, <code>None</code> bei Überlauf.</li>
 <li><strong>Panics</strong>: Keine.</li>
 <li><strong>Beispiel</strong>:
-<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>let x: u8 = 250;
+<pre><code class="language-rust">let x: u8 = 250;
 assert_eq!(x.checked_add(10), None);
-assert_eq!(x.checked_add(5), Some(255));
-<span class="boring">}</span></code></pre>
+assert_eq!(x.checked_add(5), Some(255));</code></pre>
 </li>
 </ul>
 <h4 id="saturating_add"><a class="header" href="#saturating_add"><code>saturating_add</code></a></h4>
@@ -622,11 +617,8 @@ assert_eq!(x.checked_add(5), Some(255));
 <li><strong>Rückgabetyp</strong>: <code>Self</code>: Die Summe, gedeckelt auf das jeweilige Limit des Typs (<code>MAX</code> oder <code>MIN</code>).</li>
 <li><strong>Panics</strong>: Keine.</li>
 <li><strong>Beispiel</strong>:
-<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>let x: u8 = 250;
-assert_eq!(x.saturating_add(20), 255); // Bleibt bei u8::MAX stehen
-<span class="boring">}</span></code></pre>
+<pre><code class="language-rust">let x: u8 = 250;
+assert_eq!(x.saturating_add(20), 255); // Bleibt bei u8::MAX stehen</code></pre>
 </li>
 </ul>
 <h4 id="wrapping_add"><a class="header" href="#wrapping_add"><code>wrapping_add</code></a></h4>
@@ -636,11 +628,8 @@ assert_eq!(x.saturating_add(20), 255); // Bleibt bei u8::MAX stehen
 <li><strong>Rückgabetyp</strong>: <code>Self</code>: Die Summe modulo Wertebereichsgröße (Überlauf-Wrapping).</li>
 <li><strong>Panics</strong>: Keine (auch nicht im Debug-Modus).</li>
 <li><strong>Beispiel</strong>:
-<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>let x: u8 = 255;
-assert_eq!(x.wrapping_add(1), 0);
-<span class="boring">}</span></code></pre>
+<pre><code class="language-rust">let x: u8 = 255;
+assert_eq!(x.wrapping_add(1), 0);</code></pre>
 </li>
 </ul>
 <h4 id="overflowing_add"><a class="header" href="#overflowing_add"><code>overflowing_add</code></a></h4>
@@ -650,11 +639,8 @@ assert_eq!(x.wrapping_add(1), 0);
 <li><strong>Rückgabetyp</strong>: <code>(Self, bool)</code>: Ein Tupel bestehend aus dem (ggf. gewrappten) Wert und einem Boolean, der anzeigt, ob ein Überlauf stattgefunden hat (<code>true</code>).</li>
 <li><strong>Panics</strong>: Keine.</li>
 <li><strong>Beispiel</strong>:
-<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>let x: u8 = 255;
-assert_eq!(x.overflowing_add(1), (0, true));
-<span class="boring">}</span></code></pre>
+<pre><code class="language-rust">let x: u8 = 255;
+assert_eq!(x.overflowing_add(1), (0, true));</code></pre>
 </li>
 </ul>
 <h4 id="abs"><a class="header" href="#abs"><code>abs</code></a></h4>
@@ -664,11 +650,8 @@ assert_eq!(x.overflowing_add(1), (0, true));
 <li><strong>Rückgabetyp</strong>: <code>Self</code>: Der absolute Wert (ohne Vorzeichen).</li>
 <li><strong>Panics</strong>: Stürzt ab, wenn der Wert <code>MIN</code> ist (da der positive Gegenpart von <code>MIN</code> außerhalb des Wertebereichs liegt).</li>
 <li><strong>Beispiel</strong>:
-<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>let x: i32 = -5;
-assert_eq!(x.abs(), 5);
-<span class="boring">}</span></code></pre>
+<pre><code class="language-rust">let x: i32 = -5;
+assert_eq!(x.abs(), 5);</code></pre>
 </li>
 </ul>
 <h4 id="pow"><a class="header" href="#pow"><code>pow</code></a></h4>
@@ -678,11 +661,8 @@ assert_eq!(x.abs(), 5);
 <li><strong>Rückgabetyp</strong>: <code>Self</code>: Die Basis hoch <code>exp</code>.</li>
 <li><strong>Panics</strong>: Stürzt im Debug-Modus ab bei mathematischem Überlauf.</li>
 <li><strong>Beispiel</strong>:
-<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>let base: i32 = 2;
-assert_eq!(base.pow(8), 256);
-<span class="boring">}</span></code></pre>
+<pre><code class="language-rust">let base: i32 = 2;
+assert_eq!(base.pow(8), 256);</code></pre>
 </li>
 </ul>
 <h4 id="to_be_bytes"><a class="header" href="#to_be_bytes"><code>to_be_bytes</code></a></h4>
@@ -692,11 +672,8 @@ assert_eq!(base.pow(8), 256);
 <li><strong>Rückgabetyp</strong>: Ein Byte-Array der Größe <code>N</code> (entsprechend der Typgröße in Bytes) im Big-Endian-Format (wichtig für Netzwerkprotokolle).</li>
 <li><strong>Panics</strong>: Keine.</li>
 <li><strong>Beispiel</strong>:
-<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>let val: u32 = 0x12345678;
-assert_eq!(val.to_be_bytes(), [0x12, 0x34, 0x56, 0x78]);
-<span class="boring">}</span></code></pre>
+<pre><code class="language-rust">let val: u32 = 0x12345678;
+assert_eq!(val.to_be_bytes(), [0x12, 0x34, 0x56, 0x78]);</code></pre>
 </li>
 </ul>
 <h4 id="from_le_bytes"><a class="header" href="#from_le_bytes"><code>from_le_bytes</code></a></h4>
@@ -706,27 +683,21 @@ assert_eq!(val.to_be_bytes(), [0x12, 0x34, 0x56, 0x78]);
 <li><strong>Rückgabetyp</strong>: <code>Self</code>: Der rekonstruierte Integer-Wert.</li>
 <li><strong>Panics</strong>: Keine.</li>
 <li><strong>Beispiel</strong>:
-<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>let bytes = [0x78, 0x56, 0x34, 0x12];
-assert_eq!(u32::from_le_bytes(bytes), 0x12345678);
-<span class="boring">}</span></code></pre>
+<pre><code class="language-rust">let bytes = [0x78, 0x56, 0x34, 0x12];
+assert_eq!(u32::from_le_bytes(bytes), 0x12345678);</code></pre>
 </li>
 </ul>
-<hr>
+<hr />
 <h3 id="2-fließkomma-methoden-f64--f32"><a class="header" href="#2-fließkomma-methoden-f64--f32">2. Fließkomma-Methoden (<code>f64</code> / <code>f32</code>)</a></h3>
 <h4 id="is_nan"><a class="header" href="#is_nan"><code>is_nan</code></a></h4>
 <ul>
 <li><strong>Signatur</strong>: <code>pub fn is_nan(self) -&gt; bool</code></li>
 <li><strong>Parameter</strong>: Keine.</li>
-<li><strong>Rückgabetyp</strong>: <code>bool</code>: <code>true</code>, wenn der Wert “Not a Number” (NaN) ist.</li>
+<li><strong>Rückgabetyp</strong>: <code>bool</code>: <code>true</code>, wenn der Wert "Not a Number" (NaN) ist.</li>
 <li><strong>Panics</strong>: Keine.</li>
 <li><strong>Beispiel</strong>:
-<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>let nan_val = f64::NAN;
-assert!(nan_val.is_nan());
-<span class="boring">}</span></code></pre>
+<pre><code class="language-rust">let nan_val = f64::NAN;
+assert!(nan_val.is_nan());</code></pre>
 </li>
 </ul>
 <h4 id="sqrt"><a class="header" href="#sqrt"><code>sqrt</code></a></h4>
@@ -736,14 +707,11 @@ assert!(nan_val.is_nan());
 <li><strong>Rückgabetyp</strong>: <code>Self</code>: Die Quadratwurzel des Wertes.</li>
 <li><strong>Panics</strong>: Keine (Rückgabe von <code>NaN</code> bei negativen Zahlen).</li>
 <li><strong>Beispiel</strong>:
-<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>let val: f64 = 9.0;
-assert_eq!(val.sqrt(), 3.0);
-<span class="boring">}</span></code></pre>
+<pre><code class="language-rust">let val: f64 = 9.0;
+assert_eq!(val.sqrt(), 3.0);</code></pre>
 </li>
 </ul>
-<hr>
+<hr />
 <h3 id="3-unicode-zeichen-methoden-char"><a class="header" href="#3-unicode-zeichen-methoden-char">3. Unicode-Zeichen-Methoden (<code>char</code>)</a></h3>
 <h4 id="is_alphabetic"><a class="header" href="#is_alphabetic"><code>is_alphabetic</code></a></h4>
 <ul>
@@ -752,11 +720,8 @@ assert_eq!(val.sqrt(), 3.0);
 <li><strong>Rückgabetyp</strong>: <code>bool</code>: <code>true</code>, wenn das Zeichen ein Buchstabe ist.</li>
 <li><strong>Panics</strong>: Keine.</li>
 <li><strong>Beispiel</strong>:
-<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>assert!('a'.is_alphabetic());
-assert!(!'9'.is_alphabetic());
-<span class="boring">}</span></code></pre>
+<pre><code class="language-rust">assert!('a'.is_alphabetic());
+assert!(!'9'.is_alphabetic());</code></pre>
 </li>
 </ul>
 <h4 id="len_utf8"><a class="header" href="#len_utf8"><code>len_utf8</code></a></h4>
@@ -766,14 +731,11 @@ assert!(!'9'.is_alphabetic());
 <li><strong>Rückgabetyp</strong>: <code>usize</code>: Die Anzahl der Bytes, die dieses Zeichen zur UTF-8-Kodierung benötigt (1 bis 4).</li>
 <li><strong>Panics</strong>: Keine.</li>
 <li><strong>Beispiel</strong>:
-<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>assert_eq!('a'.len_utf8(), 1);
-assert_eq!('🦀'.len_utf8(), 4);
-<span class="boring">}</span></code></pre>
+<pre><code class="language-rust">assert_eq!('a'.len_utf8(), 1);
+assert_eq!('🦀'.len_utf8(), 4);</code></pre>
 </li>
 </ul>
-<hr>
+<hr />
 <h3 id="4-array-methoden-bzw-slice-methoden-auf-arrays"><a class="header" href="#4-array-methoden-bzw-slice-methoden-auf-arrays">4. Array-Methoden (bzw. Slice-Methoden auf Arrays)</a></h3>
 <h4 id="len"><a class="header" href="#len"><code>len</code></a></h4>
 <ul>
@@ -782,11 +744,8 @@ assert_eq!('🦀'.len_utf8(), 4);
 <li><strong>Rückgabetyp</strong>: <code>usize</code>: Die Anzahl der Elemente im Array.</li>
 <li><strong>Panics</strong>: Keine.</li>
 <li><strong>Beispiel</strong>:
-<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>let arr = [10, 20, 30];
-assert_eq!(arr.len(), 3);
-<span class="boring">}</span></code></pre>
+<pre><code class="language-rust">let arr = [10, 20, 30];
+assert_eq!(arr.len(), 3);</code></pre>
 </li>
 </ul>
 <h4 id="contains"><a class="header" href="#contains"><code>contains</code></a></h4>
@@ -796,16 +755,13 @@ assert_eq!(arr.len(), 3);
 <li><strong>Rückgabetyp</strong>: <code>bool</code>: <code>true</code>, wenn der Wert im Array enthalten ist.</li>
 <li><strong>Panics</strong>: Keine.</li>
 <li><strong>Beispiel</strong>:
-<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>let arr = [1, 2, 3];
-assert!(arr.contains(&amp;2));
-<span class="boring">}</span></code></pre>
+<pre><code class="language-rust">let arr = [1, 2, 3];
+assert!(arr.contains(&amp;2));</code></pre>
 </li>
 </ul>
-<hr>
-<h2 id="9-drei-praktische-übungen"><a class="header" href="#9-drei-praktische-übungen">9. Drei praktische Übungen</a></h2>
-<h3 id="übung-1-sicheres-sensor-aggregat-schwierigkeit-leicht"><a class="header" href="#übung-1-sicheres-sensor-aggregat-schwierigkeit-leicht">Übung 1: Sicheres Sensor-Aggregat (Schwierigkeit: Leicht)</a></h3>
+<hr />
+<h2 id="9-drei-praktische-Übungen"><a class="header" href="#9-drei-praktische-Übungen">9. Drei praktische Übungen</a></h2>
+<h3 id="Übung-1-sicheres-sensor-aggregat-schwierigkeit-leicht"><a class="header" href="#Übung-1-sicheres-sensor-aggregat-schwierigkeit-leicht">Übung 1: Sicheres Sensor-Aggregat (Schwierigkeit: Leicht)</a></h3>
 <p><strong>Ziel</strong>: Festigung der sicheren Arithmetik-Syntax zur Überlaufvermeidung.</p>
 <ul>
 <li><strong>Anforderung</strong>:
@@ -821,8 +777,8 @@ Schreiben Sie eine Funktion <code>safe_average</code>, die zwei Temperaturen als
 <li><strong>Lösungshinweis (Hint)</strong>:
 Nutzen Sie ein <code>match</code> auf <code>temp1.checked_add(temp2)</code>. Dividieren Sie das Ergebnis im Erfolgsfall durch 2.</li>
 </ul>
-<hr>
-<h3 id="übung-2-zyklischer-ringpuffer-index-schwierigkeit-mittel"><a class="header" href="#übung-2-zyklischer-ringpuffer-index-schwierigkeit-mittel">Übung 2: Zyklischer Ringpuffer-Index (Schwierigkeit: Mittel)</a></h3>
+<hr />
+<h3 id="Übung-2-zyklischer-ringpuffer-index-schwierigkeit-mittel"><a class="header" href="#Übung-2-zyklischer-ringpuffer-index-schwierigkeit-mittel">Übung 2: Zyklischer Ringpuffer-Index (Schwierigkeit: Mittel)</a></h3>
 <p><strong>Ziel</strong>: Praktische Anwendung von Arrays, Tupeln und dem Modulo-Verhalten (<code>wrapping_add</code>).</p>
 <ul>
 <li><strong>Anforderung</strong>:
@@ -837,8 +793,8 @@ In Embedded-Systemen werden Sensorwerte oft in einem zirkulären Array (Ringpuff
 <li><strong>Lösungshinweis (Hint)</strong>:
 Wandeln Sie den Puffer-Index vor dem Zugriff mittels <code>as usize</code> um. Erhöhen Sie den Index mit <code>index.wrapping_add(1)</code> und nehmen Sie das Ergebnis modulo 4 (<code>% 4</code>).</li>
 </ul>
-<hr>
-<h3 id="übung-3-binärer-telemetrie-parser-schwierigkeit-schwer"><a class="header" href="#übung-3-binärer-telemetrie-parser-schwierigkeit-schwer">Übung 3: Binärer Telemetrie-Parser (Schwierigkeit: Schwer)</a></h3>
+<hr />
+<h3 id="Übung-3-binärer-telemetrie-parser-schwierigkeit-schwer"><a class="header" href="#Übung-3-binärer-telemetrie-parser-schwierigkeit-schwer">Übung 3: Binärer Telemetrie-Parser (Schwierigkeit: Schwer)</a></h3>
 <p><strong>Ziel</strong>: Transferleistung zu Speicher-Alignment, Bit-Operationen und Byte-Konvertierungen.</p>
 <ul>
 <li>
@@ -864,13 +820,11 @@ Sie erhalten ein rohes Datenpaket von einem IoT-Temperatursensor als Byte-Array 
 </ul>
 </li>
 </ul>
-<hr>
+<hr />
 <h2 id="10-lernstrategie-selbsteinschätzung--merkzettel"><a class="header" href="#10-lernstrategie-selbsteinschätzung--merkzettel">10. Lernstrategie, Selbsteinschätzung &amp; Merkzettel</a></h2>
 <h3 id="spickzettel--merkzettel-cheat-sheet"><a class="header" href="#spickzettel--merkzettel-cheat-sheet">Spickzettel / Merkzettel (Cheat Sheet)</a></h3>
 <p>Hier ist die wichtigste Syntax für die Deklaration und Initialisierung auf einen glance:</p>
-<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>// Skalare Variablen
+<pre><code class="language-rust">// Skalare Variablen
 let mut steps: u64 = 0;             // Standard-Integer auf Stack
 let price: f64 = 99.99;             // Fließkommazahl IEEE-754
 
@@ -883,8 +837,7 @@ let safe_item = numbers.get(10);    // Sicherer Zugriff (gibt Option&lt;&amp;i32
 // Tupel (Heterogen)
 let record: (u32, f32, char) = (42, 36.6, '🤒');
 let sensor_id = record.0;           // Direktzugriff über Punkt-Syntax
-let (id, temp, symbol) = record;    // Destrukturierung
-<span class="boring">}</span></code></pre>
+let (id, temp, symbol) = record;    // Destrukturierung</code></pre>
 <h3 id="active-recall-selbsttestfragen"><a class="header" href="#active-recall-selbsttestfragen">Active Recall (Selbsttestfragen)</a></h3>
 <ol>
 <li><strong>Frage</strong>: Warum kann man ein Array in Rust nicht dynamisch während der Laufzeit vergrößern?
@@ -924,11 +877,14 @@ let (id, temp, symbol) = record;    // Destrukturierung
 <h3 id="metakognitiver-selbsttest"><a class="header" href="#metakognitiver-selbsttest">Metakognitiver Selbsttest</a></h3>
 <p>Wechseln Sie erst zu <a href="file:///home/thorsten/RustKurs/doc/src/10.md">Kapitel 10 (Funktionen)</a>, wenn Sie:</p>
 <ul>
-<li><input disabled="" type="checkbox"> Den Unterschied zwischen <code>checked_add</code>, <code>saturating_add</code> und <code>wrapping_add</code> im Schlaf erklären können.</li>
-<li><input disabled="" type="checkbox"> Verstanden haben, warum das Tupel <code>(u8, u32)</code> im Speicher 8 Bytes belegt und wie die 3 Padding-Bytes dort hingekommen sind.</li>
-<li><input disabled="" type="checkbox"> Die eckigen Klammern <code>[]</code> (Array) sicher von den runden Klammern <code>()</code> (Tupel/Unit) abgrenzen können.</li>
+<li><input disabled="" type="checkbox"/>
+Den Unterschied zwischen <code>checked_add</code>, <code>saturating_add</code> und <code>wrapping_add</code> im Schlaf erklären können.</li>
+<li><input disabled="" type="checkbox"/>
+Verstanden haben, warum das Tupel <code>(u8, u32)</code> im Speicher 8 Bytes belegt und wie die 3 Padding-Bytes dort hingekommen sind.</li>
+<li><input disabled="" type="checkbox"/>
+Die eckigen Klammern <code>[]</code> (Array) sicher von den runden Klammern <code>()</code> (Tupel/Unit) abgrenzen können.</li>
 </ul>
-<hr>
+<hr />
 <h2 id="11-zusammenfassung"><a class="header" href="#11-zusammenfassung">11. Zusammenfassung</a></h2>
 <ul>
 <li><strong>Skalare vs. Zusammengesetzte Typen</strong>: Skalare Typen (<code>i32</code>, <code>f64</code>, <code>bool</code>, <code>char</code>) speichern Einzelwerte. Arrays (<code>[T; N]</code>) speichern homogene Daten fester Länge. Tupel (<code>(T1, T2, ...)</code>) speichern heterogene Datensätze fester Länge.</li>
@@ -936,7 +892,7 @@ let (id, temp, symbol) = record;    // Destrukturierung
 <li><strong>Speicher-Alignment</strong>: CPUs greifen am effizientesten auf ausgerichtete Adressen zu. Rust fügt automatisch Padding-Bytes ein, um dieses Alignment zu erzwingen. Tupel behalten ihre Definitionsreihenfolge im Speicher bei, was zu ungenutztem Speicherplatz (Padding) führen kann.</li>
 <li><strong>Sicherer Zugriff</strong>: Der direkte Array-Zugriff mit <code>[index]</code> ist crash-gefährdet. Nutzen Sie <code>.get(index)</code> für den sicheren Zugriff, um ein <code>Option</code>-Ergebnis zu erhalten.</li>
 </ul>
-<hr>
+<hr />
 <p><strong>Lizenz- und Attributionshinweis</strong>:
 Teile dieses Kapitels basieren auf Übersetzungen und didaktischen Anpassungen des offiziellen Buches <a href="https://doc.rust-lang.org/book/">The Rust Programming Language</a> von Steve Klabnik und Carol Nichols (sowie Beiträgen der Rust-Community), lizenziert unter <a href="https://opensource.org/licenses/MIT">MIT</a> und <a href="https://www.apache.org/licenses/LICENSE-2.0">Apache 2.0</a>.</p>
 
@@ -945,11 +901,11 @@ Teile dieses Kapitels basieren auf Übersetzungen und didaktischen Anpassungen d
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
                             <a rel="prev" href="8.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
-                                <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
+                                <i class="fa fa-angle-left"></i>
                             </a>
 
                             <a rel="next prefetch" href="10.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
-                                <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
+                                <i class="fa fa-angle-right"></i>
                             </a>
 
                         <div style="clear: both"></div>
@@ -959,21 +915,16 @@ Teile dieses Kapitels basieren auf Übersetzungen und didaktischen Anpassungen d
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
                     <a rel="prev" href="8.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
-                        <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
+                        <i class="fa fa-angle-left"></i>
                     </a>
 
                     <a rel="next prefetch" href="10.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
-                        <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
+                        <i class="fa fa-angle-right"></i>
                     </a>
             </nav>
 
         </div>
 
-        <template id=fa-eye><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M288 32c-80.8 0-145.5 36.8-192.6 80.6C48.6 156 17.3 208 2.5 243.7c-3.3 7.9-3.3 16.7 0 24.6C17.3 304 48.6 356 95.4 399.4C142.5 443.2 207.2 480 288 480s145.5-36.8 192.6-80.6c46.8-43.5 78.1-95.4 93-131.1c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C433.5 68.8 368.8 32 288 32zM432 256c0 79.5-64.5 144-144 144s-144-64.5-144-144s64.5-144 144-144s144 64.5 144 144zM288 192c0 35.3-28.7 64-64 64c-11.5 0-22.3-3-31.6-8.4c-.2 2.8-.4 5.5-.4 8.4c0 53 43 96 96 96s96-43 96-96s-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6z"/></svg></span></template>
-        <template id=fa-eye-slash><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M38.8 5.1C28.4-3.1 13.3-1.2 5.1 9.2S-1.2 34.7 9.2 42.9l592 464c10.4 8.2 25.5 6.3 33.7-4.1s6.3-25.5-4.1-33.7L525.6 386.7c39.6-40.6 66.4-86.1 79.9-118.4c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C465.5 68.8 400.8 32 320 32c-68.2 0-125 26.3-169.3 60.8L38.8 5.1zM223.1 149.5C248.6 126.2 282.7 112 320 112c79.5 0 144 64.5 144 144c0 24.9-6.3 48.3-17.4 68.7L408 294.5c5.2-11.8 8-24.8 8-38.5c0-53-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6c0 10.2-2.4 19.8-6.6 28.3l-90.3-70.8zm223.1 298L373 389.9c-16.4 6.5-34.3 10.1-53 10.1c-79.5 0-144-64.5-144-144c0-6.9 .5-13.6 1.4-20.2L83.1 161.5C60.3 191.2 44 220.8 34.5 243.7c-3.3 7.9-3.3 16.7 0 24.6c14.9 35.7 46.2 87.7 93 131.1C174.5 443.2 239.2 480 320 480c47.8 0 89.9-12.9 126.2-32.5z"/></svg></span></template>
-        <template id=fa-copy><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M502.6 70.63l-61.25-61.25C435.4 3.371 427.2 0 418.7 0H255.1c-35.35 0-64 28.66-64 64l.0195 256C192 355.4 220.7 384 256 384h192c35.2 0 64-28.8 64-64V93.25C512 84.77 508.6 76.63 502.6 70.63zM464 320c0 8.836-7.164 16-16 16H255.1c-8.838 0-16-7.164-16-16L239.1 64.13c0-8.836 7.164-16 16-16h128L384 96c0 17.67 14.33 32 32 32h47.1V320zM272 448c0 8.836-7.164 16-16 16H63.1c-8.838 0-16-7.164-16-16L47.98 192.1c0-8.836 7.164-16 16-16H160V128H63.99c-35.35 0-64 28.65-64 64l.0098 256C.002 483.3 28.66 512 64 512h192c35.2 0 64-28.8 64-64v-32h-47.1L272 448z"/></svg></span></template>
-        <template id=fa-play><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80V432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"/></svg></span></template>
-        <template id=fa-clock-rotate-left><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M75 75L41 41C25.9 25.9 0 36.6 0 57.9V168c0 13.3 10.7 24 24 24H134.1c21.4 0 32.1-25.9 17-41l-30.8-30.8C155 85.5 203 64 256 64c106 0 192 86 192 192s-86 192-192 192c-40.8 0-78.6-12.7-109.7-34.4c-14.5-10.1-34.4-6.6-44.6 7.9s-6.6 34.4 7.9 44.6C151.2 495 201.7 512 256 512c141.4 0 256-114.6 256-256S397.4 0 256 0C185.3 0 121.3 28.7 75 75zm181 53c-13.3 0-24 10.7-24 24V256c0 6.4 2.5 12.5 7 17l72 72c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-65-65V152c0-13.3-10.7-24-24-24z"/></svg></span></template>
 
 
 
@@ -982,17 +933,17 @@ Teile dieses Kapitels basieren auf Übersetzungen und didaktischen Anpassungen d
         </script>
 
 
-        <script src="elasticlunr-ef4e11c1.min.js"></script>
-        <script src="mark-09e88c2c.min.js"></script>
-        <script src="searcher-09f2665d.js"></script>
+        <script src="elasticlunr.min.js"></script>
+        <script src="mark.min.js"></script>
+        <script src="searcher.js"></script>
 
-        <script src="clipboard-1626706a.min.js"></script>
-        <script src="highlight-abc7f01d.js"></script>
-        <script src="book-c22b7243.js"></script>
+        <script src="clipboard.min.js"></script>
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
 
         <!-- Custom JS scripts -->
-        <script src="mermaid-eefea253.min.js"></script>
-        <script src="mermaid-init-ccf746f1.js"></script>
+        <script src="mermaid.min.js"></script>
+        <script src="mermaid-init.js"></script>
 
 
 

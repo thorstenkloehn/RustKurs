@@ -7,25 +7,26 @@
 
 
         <!-- Custom HTML head -->
-
+        
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="theme-color" content="#ffffff">
 
-        <link rel="icon" href="favicon-de23e50b.svg">
-        <link rel="shortcut icon" href="favicon-8114d1fc.png">
-        <link rel="stylesheet" href="css/variables-8adf115d.css">
-        <link rel="stylesheet" href="css/general-0392ca55.css">
-        <link rel="stylesheet" href="css/chrome-fc474251.css">
-        <link rel="stylesheet" href="css/print-9e4910d8.css" media="print">
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
 
         <!-- Fonts -->
-        <link rel="stylesheet" href="fonts/fonts-9644e21d.css">
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
 
         <!-- Highlight.js Stylesheets -->
-        <link rel="stylesheet" id="mdbook-highlight-css" href="highlight-493f70e1.css">
-        <link rel="stylesheet" id="mdbook-tomorrow-night-css" href="tomorrow-night-4c0ae647.css">
-        <link rel="stylesheet" id="mdbook-ayu-highlight-css" href="ayu-highlight-3fdfc3ac.css">
+        <link rel="stylesheet" id="highlight-css" href="highlight.css">
+        <link rel="stylesheet" id="tomorrow-night-css" href="tomorrow-night.css">
+        <link rel="stylesheet" id="ayu-highlight-css" href="ayu-highlight.css">
 
         <!-- Custom theme stylesheets -->
 
@@ -35,10 +36,10 @@
             const path_to_root = "";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "searchindex-fc688792.js";
+            window.path_to_searchindex_js = "searchindex.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="toc-dedbbe6e.js"></script>
+        <script src="toc.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -52,7 +53,7 @@
             </div>
         </div>
     </div>
-    <div id="mdbook-body-container">
+    <div id="body-container">
         <!-- Work around some values being stored in localStorage wrapped in quotes -->
         <script>
             try {
@@ -81,12 +82,12 @@
             html.classList.add("js");
         </script>
 
-        <input type="checkbox" id="mdbook-sidebar-toggle-anchor" class="hidden">
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
 
         <!-- Hide / unhide sidebar before it is displayed -->
         <script>
             let sidebar = null;
-            const sidebar_toggle = document.getElementById("mdbook-sidebar-toggle-anchor");
+            const sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
             if (document.body.clientWidth >= 1080) {
                 try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
                 sidebar = sidebar || 'visible';
@@ -101,39 +102,39 @@
             }
         </script>
 
-        <nav id="mdbook-sidebar" class="sidebar" aria-label="Table of contents">
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <!-- populated by js -->
             <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
             <noscript>
                 <iframe class="sidebar-iframe-outer" src="toc.html"></iframe>
             </noscript>
-            <div id="mdbook-sidebar-resize-handle" class="sidebar-resize-handle">
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
                 <div class="sidebar-resize-indicator"></div>
             </div>
         </nav>
 
-        <div id="mdbook-page-wrapper" class="page-wrapper">
+        <div id="page-wrapper" class="page-wrapper">
 
             <div class="page">
-                <div id="mdbook-menu-bar-hover-placeholder"></div>
-                <div id="mdbook-menu-bar" class="menu-bar sticky">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
                     <div class="left-buttons">
-                        <label id="mdbook-sidebar-toggle" class="icon-button" for="mdbook-sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="mdbook-sidebar">
-                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"/></svg></span>
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
                         </label>
-                        <button id="mdbook-theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="mdbook-theme-list">
-                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M371.3 367.1c27.3-3.9 51.9-19.4 67.2-42.9L600.2 74.1c12.6-19.5 9.4-45.3-7.6-61.2S549.7-4.4 531.1 9.6L294.4 187.2c-24 18-38.2 46.1-38.4 76.1L371.3 367.1zm-19.6 25.4l-116-104.4C175.9 290.3 128 339.6 128 400c0 3.9 .2 7.8 .6 11.6c1.8 17.5-10.2 36.4-27.8 36.4H96c-17.7 0-32 14.3-32 32s14.3 32 32 32H240c61.9 0 112-50.1 112-112c0-2.5-.1-5-.2-7.5z"/></svg></span>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
                         </button>
-                        <ul id="mdbook-theme-list" class="theme-popup" aria-label="Themes" role="menu">
-                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-default_theme">Auto</button></li>
-                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-light">Light</button></li>
-                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-rust">Rust</button></li>
-                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-coal">Coal</button></li>
-                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-navy">Navy</button></li>
-                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-ayu">Ayu</button></li>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="default_theme">Auto</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
                         </ul>
-                        <button id="mdbook-search-toggle" class="icon-button" type="button" title="Search (`/`)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="/ s" aria-controls="mdbook-searchbar">
-                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352c79.5 0 144-64.5 144-144s-64.5-144-144-144S64 128.5 64 208s64.5 144 144 144z"/></svg></span>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search (`/`)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="/ s" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
                         </button>
                     </div>
 
@@ -141,46 +142,46 @@
 
                     <div class="right-buttons">
                         <a href="print.html" title="Print this book" aria-label="Print this book">
-                            <span class=fa-svg id="print-button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M128 0C92.7 0 64 28.7 64 64v96h64V64H354.7L384 93.3V160h64V93.3c0-17-6.7-33.3-18.7-45.3L400 18.7C388 6.7 371.7 0 354.7 0H128zM384 352v32 64H128V384 368 352H384zm64 32h32c17.7 0 32-14.3 32-32V256c0-35.3-28.7-64-64-64H64c-35.3 0-64 28.7-64 64v96c0 17.7 14.3 32 32 32H64v64c0 35.3 28.7 64 64 64H384c35.3 0 64-28.7 64-64V384zm-16-88c-13.3 0-24-10.7-24-24s10.7-24 24-24s24 10.7 24 24s-10.7 24-24 24z"/></svg></span>
+                            <i id="print-button" class="fa fa-print"></i>
                         </a>
 
                     </div>
                 </div>
 
-                <div id="mdbook-search-wrapper" class="hidden">
-                    <form id="mdbook-searchbar-outer" class="searchbar-outer">
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
                         <div class="search-wrapper">
-                            <input type="search" id="mdbook-searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="mdbook-searchresults-outer" aria-describedby="searchresults-header">
+                            <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
                             <div class="spinner-wrapper">
-                                <span class=fa-svg id="fa-spin"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M304 48c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zm0 416c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zM48 304c26.5 0 48-21.5 48-48s-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48zm464-48c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zM142.9 437c18.7-18.7 18.7-49.1 0-67.9s-49.1-18.7-67.9 0s-18.7 49.1 0 67.9s49.1 18.7 67.9 0zm0-294.2c18.7-18.7 18.7-49.1 0-67.9S93.7 56.2 75 75s-18.7 49.1 0 67.9s49.1 18.7 67.9 0zM369.1 437c18.7 18.7 49.1 18.7 67.9 0s18.7-49.1 0-67.9s-49.1-18.7-67.9 0s-18.7 49.1 0 67.9z"/></svg></span>
+                                <i class="fa fa-spinner fa-spin"></i>
                             </div>
                         </div>
                     </form>
-                    <div id="mdbook-searchresults-outer" class="searchresults-outer hidden">
-                        <div id="mdbook-searchresults-header" class="searchresults-header"></div>
-                        <ul id="mdbook-searchresults">
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
                         </ul>
                     </div>
                 </div>
 
                 <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
                 <script>
-                    document.getElementById('mdbook-sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
-                    document.getElementById('mdbook-sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
-                    Array.from(document.querySelectorAll('#mdbook-sidebar a')).forEach(function(link) {
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
                         link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
                     });
                 </script>
 
-                <div id="mdbook-content" class="content">
+                <div id="content" class="content">
                     <main>
                         <h1 id="kapitel-19-referenzen--borrowing-ausleihen"><a class="header" href="#kapitel-19-referenzen--borrowing-ausleihen">Kapitel 19: Referenzen &amp; Borrowing (Ausleihen)</a></h1>
 <p>Das Ownership-System von Rust (siehe <a href="file:///home/thorsten/RustKurs/doc/src/18.md">Kapitel 18</a>) stellt sicher, dass zu jedem Zeitpunkt genau ein Besitzer für jeden Wert im Speicher existiert. Dieses Prinzip verhindert typische Speicherverwaltungsfehler wie Double-Free-Bugs oder Use-After-Free-Sicherheitslücken zur Kompilierzeit. In der praktischen Softwareentwicklung führt diese Striktheit jedoch schnell zu Hürden: Wenn jeder Funktionsaufruf den Besitz an den übergebenen Daten übernimmt, müssten wir Werte ständig als Rückgabewerte zurückgeben, um sie in der aufrufenden Funktion weiterzuverwenden.</p>
 <p>Dieses Kapitel widmet sich der eleganten Lösung dieses Problems: <strong>Referenzen (References)</strong> und dem Prinzip des <strong>Ausleihens (Borrowing)</strong>. Wir untersuchen die zugrunde liegende Syntax, betrachten die physischen Auswirkungen auf Stack und Heap und beleuchten, wie Rust über Typenkompatibilität und die sogenannte <strong>Deref-Coercion</strong> Entwicklern das Leben vereinfacht, ohne die Performance zu beeinträchtigen.</p>
-<hr>
+<hr />
 <h2 id="191-die-ausleihe-syntax"><a class="header" href="#191-die-ausleihe-syntax">19.1 Die Ausleihe-Syntax</a></h2>
 <h3 id="1911-unveränderliche-referenz-t"><a class="header" href="#1911-unveränderliche-referenz-t">19.1.1 Unveränderliche Referenz (&amp;T)</a></h3>
-<p>Eine unveränderliche Referenz (<code>&amp;T</code>) ermöglicht es Ihnen, auf einen Wert zuzugreifen und ihn zu lesen, ohne dessen Eigentum (Ownership) zu übernehmen. Im Systemkontext von Rust wird dieser Vorgang als “unveränderliches Ausleihen” bezeichnet.</p>
+<p>Eine unveränderliche Referenz (<code>&amp;T</code>) ermöglicht es Ihnen, auf einen Wert zuzugreifen und ihn zu lesen, ohne dessen Eigentum (Ownership) zu übernehmen. Im Systemkontext von Rust wird dieser Vorgang als "unveränderliches Ausleihen" bezeichnet.</p>
 <h4 id="die-alltagsanalogie-die-präsenzbibliothek"><a class="header" href="#die-alltagsanalogie-die-präsenzbibliothek">Die Alltagsanalogie: Die Präsenzbibliothek</a></h4>
 <p>Stellen Sie sich ein historisches, wertvolles Buch in einer Präsenzbibliothek vor. Das Buch liegt fest an seinem Platz (Besitzer ist die Bibliothek).</p>
 <ul>
@@ -194,7 +195,7 @@
 <p>Wenn Sie eine unveränderliche Referenz auf eine Variable erzeugen, speichert Rust im Stack-Frame der aktuellen Funktion die Speicheradresse der Zielvariable. Zeigt diese Referenz auf ein Objekt, das wiederum Daten auf dem Heap verwaltet (wie ein <code>String</code> oder ein <code>Vec&lt;T&gt;</code>), zeigt die Referenz auf den Stack-Eintrag der Originalvariable, welche wiederum den echten Zeiger auf den Heap-Speicher hält. Dies wird als Indirektion bezeichnet.</p>
 <h4 id="syntaktische-deklaration-und-nutzung"><a class="header" href="#syntaktische-deklaration-und-nutzung">Syntaktische Deklaration und Nutzung</a></h4>
 <p>Eine unveränderliche Referenz wird durch das Voranstellen des Ampersand-Symbols <code>&amp;</code> vor den Typ deklariert.</p>
-<pre class="playground"><code class="language-rust edition2021">fn main() {
+<pre><code class="language-rust">fn main() {
     let text: String = String::from("Rust-Systemprogrammierung");
     
     // Erstellung einer unveränderlichen Referenz:
@@ -205,7 +206,7 @@
     println!("Ausgelesener Text über Referenz: {}", referenz);
 }</code></pre>
 <p>Da eine unveränderliche Referenz Lesezugriff garantiert, können Sie beliebig viele unveränderliche Referenzen auf den selben Wert gleichzeitig erstellen und im selben Scope halten. Der Compiler stellt sicher, dass während der gesamten Lebenszeit dieser Referenzen der Originalwert nicht verschoben (Move) oder gelöscht werden kann.</p>
-<hr>
+<hr />
 <h3 id="1912-veränderliche-referenz-mut-t"><a class="header" href="#1912-veränderliche-referenz-mut-t">19.1.2 veränderliche Referenz (&amp;mut T)</a></h3>
 <p>Wenn Sie Daten nicht nur auslesen, sondern direkt modifizieren möchten, ohne das Eigentum zu übernehmen, verwenden Sie eine veränderliche Referenz (<code>&amp;mut T</code>).</p>
 <h4 id="die-alltagsanalogie-der-steuerberater"><a class="header" href="#die-alltagsanalogie-der-steuerberater">Die Alltagsanalogie: Der Steuerberater</a></h4>
@@ -224,7 +225,7 @@
 <li>Die zu referenzierende Originalvariable muss explizit als veränderbar (<code>let mut</code>) deklariert sein.</li>
 <li>Die Referenzierung muss mit der Syntax <code>&amp;mut</code> erfolgen.</li>
 </ol>
-<pre class="playground"><code class="language-rust edition2021">fn main() {
+<pre><code class="language-rust">fn main() {
     let mut daten: String = String::from("Kernel");
     
     // Erstellung der veränderlichen Referenz:
@@ -244,7 +245,7 @@
 <li><code>&amp;T</code> implementiert das <code>Copy</code>-Trait. Das bedeutet, wenn Sie eine unveränderliche Referenz einer neuen Variable zuweisen, wird die Adresse kopiert. Beide Variablen sind danach gültig.</li>
 <li><code>&amp;mut T</code> implementiert das <code>Copy</code>-Trait <strong>nicht</strong>. Es besitzt ausschließlich die Move-Semantik. Wenn Sie eine veränderliche Referenz einer anderen Variable zuweisen, wird die Referenz verschoben. Die ursprüngliche Referenzvariable ist danach ungültig. Dadurch garantiert Rust, dass niemals zwei aktive veränderliche Zeiger auf den selben Wert existieren.</li>
 </ul>
-<pre class="playground"><code class="language-rust edition2021">fn main() {
+<pre><code class="language-rust">fn main() {
     let mut wert = 42;
     
     let ref1 = &amp;mut wert;
@@ -253,14 +254,14 @@
     // *ref1 += 1; // ❌ COMPILER-FEHLER: ref1 ist nach dem Move ungültig!
     *ref2 += 1; // 🟢 Erlaubt.
 }</code></pre>
-<hr>
+<hr />
 <h3 id="1913-dereferenzierungs-operator-"><a class="header" href="#1913-dereferenzierungs-operator-">19.1.3 Dereferenzierungs-Operator (*)</a></h3>
-<p>Wenn Sie mit Referenzen arbeiten, halten Sie die Adresse einer Speicherstelle in Händen. Um auf den tatsächlichen Wert zuzugreifen, der an dieser Adresse liegt, müssen Sie die Referenz “verfolgen”. Dieser Vorgang heißt <strong>Dereferenzieren (Dereferencing)</strong> und wird syntaktisch mit dem unären Stern-Operator <code>*</code> eingeleitet.</p>
+<p>Wenn Sie mit Referenzen arbeiten, halten Sie die Adresse einer Speicherstelle in Händen. Um auf den tatsächlichen Wert zuzugreifen, der an dieser Adresse liegt, müssen Sie die Referenz "verfolgen". Dieser Vorgang heißt <strong>Dereferenzieren (Dereferencing)</strong> und wird syntaktisch mit dem unären Stern-Operator <code>*</code> eingeleitet.</p>
 <h4 id="funktionsweise-auf-hardware-ebene"><a class="header" href="#funktionsweise-auf-hardware-ebene">Funktionsweise auf Hardware-Ebene</a></h4>
 <p>Wenn die CPU den Maschinenbefehl zur Dereferenzierung ausführt, lädt sie die im Zeiger gespeicherte Adresse in ein Adressregister und liest anschließend den Speicherinhalt, auf den dieses Register zeigt.</p>
 <h4 id="syntaktische-nutzung"><a class="header" href="#syntaktische-nutzung">Syntaktische Nutzung</a></h4>
 <p>Der <code>*</code>-Operator wird der Referenzvariable vorangestellt:</p>
-<pre class="playground"><code class="language-rust edition2021">fn main() {
+<pre><code class="language-rust">fn main() {
     let x: i32 = 100;
     let r: &amp;i32 = &amp;x;
     
@@ -283,33 +284,27 @@
 <li><strong>Der Dot-Operator (<code>.</code>):</strong> Wenn Sie eine Methode aufrufen oder auf ein Feld einer Struktur zugreifen, dereferenziert Rust die Referenz automatisch, bis sie den Basistyp erreicht. Schreiben Sie <code>objekt.methode()</code>, wandelt Rust dies intern in <code>(*objekt).methode()</code> oder <code>(&amp;mut *objekt).methode()</code> um, je nachdem, welche Signatur die Methode verlangt.</li>
 <li><strong>Formatierungs-Makros:</strong> Makros wie <code>println!</code> oder <code>format!</code> dereferenzieren Argumente implizit für die Textausgabe.</li>
 </ol>
-<hr>
+<hr />
 <h2 id="192-typenkompatibilität"><a class="header" href="#192-typenkompatibilität">19.2 Typenkompatibilität</a></h2>
 <p>In streng typisierten Sprachen müssen Typen bei Funktionsaufrufen oder Zuweisungen exakt übereinstimmen. In Rust würde dies bedeuten, dass eine Funktion, die eine Referenz auf ein String-Slice (<code>&amp;str</code>) erwartet, nicht mit einer Referenz auf ein Heap-String-Objekt (<code>&amp;String</code>) aufgerufen werden kann. Da dies zu extrem unergonomischem Code führen würde, bietet Rust Mechanismen zur impliziten Typenkompatibilität an.</p>
-<hr>
+<hr />
 <h3 id="1921-deref-coercion"><a class="header" href="#1921-deref-coercion">19.2.1 Deref-Coercion</a></h3>
 <p><strong>Deref-Coercion (Deref-Koerzition)</strong> ist eine automatische Konvertierung, die Rust bei Argumenten von Funktionen und Methoden anwendet. Sie greift ein, wenn Sie eine Referenz auf einen Typ <code>T</code> an eine Stelle übergeben, die eine Referenz auf einen Typ <code>U</code> erwartet, sofern <code>T</code> den Trait <code>std::ops::Deref</code> implementiert und dessen Zieltyp (<code>Target</code>) genau <code>U</code> ist.</p>
 <h4 id="der-stdopsderef-trait"><a class="header" href="#der-stdopsderef-trait">Der <code>std::ops::Deref</code> Trait</a></h4>
 <p>Um zu verstehen, wie die Konvertierung abläuft, müssen wir uns den Trait <code>Deref</code> aus der Standardbibliothek ansehen. Die Signatur lautet:</p>
-<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>pub trait Deref {
+<pre><code class="language-rust">pub trait Deref {
     type Target: ?Sized;
 
     fn deref(&amp;self) -&gt; &amp;Self::Target;
-}
-<span class="boring">}</span></code></pre>
+}</code></pre>
 <ul>
 <li><strong><code>type Target</code></strong>: Ein assoziierter Typ, der bestimmt, wohin die Reise beim Dereferenzieren geht. Bei <code>String</code> ist dieser Typ <code>str</code>. Bei <code>Vec&lt;T&gt;</code> ist er <code>[T]</code>.</li>
 <li><strong><code>deref(&amp;self)</code></strong>: Die Methode, die eine unveränderliche Referenz auf das Objekt nimmt und eine unveränderliche Referenz auf den assoziierten Typ <code>Target</code> zurückgibt.</li>
 </ul>
 <p>Es gibt analog dazu den Trait <code>DerefMut</code> für veränderliche Referenzen:</p>
-<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>pub trait DerefMut: Deref {
+<pre><code class="language-rust">pub trait DerefMut: Deref {
     fn deref_mut(&amp;mut self) -&gt; &amp;mut Self::Target;
-}
-<span class="boring">}</span></code></pre>
+}</code></pre>
 <h4 id="der-such--und-auflösungsalgorithmus-des-compilers"><a class="header" href="#der-such--und-auflösungsalgorithmus-des-compilers">Der Such- und Auflösungsalgorithmus des Compilers</a></h4>
 <p>Wenn der Compiler eine Referenz vom Typ <code>&amp;T</code> sieht, aber eine Referenz vom Typ <code>&amp;Target</code> benötigt wird, führt er folgende Schritte aus:</p>
 <ol>
@@ -320,7 +315,7 @@
 <h4 id="warum-deref-coercion-eine-zero-cost-abstraction-ist"><a class="header" href="#warum-deref-coercion-eine-zero-cost-abstraction-ist">Warum Deref-Coercion eine Zero-Cost-Abstraction ist</a></h4>
 <p>Alle Berechnungen und Typtransformationen der Deref-Coercion werden vollständig während der Kompilierung durchgeführt. Zur Laufzeit des Programms gibt es keinen zusätzlichen Performance-Overhead. Der generierte Maschinencode entspricht exakt dem Code, den Sie geschrieben hätten, wenn Sie die Referenzen manuell über mehrere Schritte dereferenziert und neu referenziert hätten.</p>
 <h4 id="code-beispiel-zur-deref-coercion"><a class="header" href="#code-beispiel-zur-deref-coercion">Code-Beispiel zur Deref-Coercion:</a></h4>
-<pre class="playground"><code class="language-rust edition2021">fn gruss_empfaenger(name: &amp;str) {
+<pre><code class="language-rust">fn gruss_empfaenger(name: &amp;str) {
     println!("Hallo, {}!", name);
 }
 
@@ -333,9 +328,9 @@ fn main() {
     // Mit Deref-Coercion reicht die Übergabe der String-Referenz:
     gruss_empfaenger(&amp;name_string); // String implementiert Deref&lt;Target = str&gt;
 }</code></pre>
-<hr>
+<hr />
 <h2 id="1-lernziele--lernplan"><a class="header" href="#1-lernziele--lernplan">1. Lernziele &amp; Lernplan</a></h2>
-<h3 id="lernziele-bloomsche-taxonomie"><a class="header" href="#lernziele-bloomsche-taxonomie">Lernziele (Bloom’sche Taxonomie)</a></h3>
+<h3 id="lernziele-bloomsche-taxonomie"><a class="header" href="#lernziele-bloomsche-taxonomie">Lernziele (Bloom'sche Taxonomie)</a></h3>
 <ul>
 <li><strong>Sie können</strong> den Unterschied im Speicher- und Zugriffsverhalten zwischen unveränderlichen (<code>&amp;T</code>) und veränderlichen (<code>&amp;mut T</code>) Referenzen präzise erklären und diese syntaktisch fehlerfrei in Funktionssignaturen deklarieren.</li>
 <li><strong>Sie können</strong> den Dereferenzierungs-Operator (<code>*</code>) anwenden, um den Wert hinter einer Referenz im Speicher manuell zu lesen oder zu modifizieren.</li>
@@ -343,7 +338,7 @@ fn main() {
 <li><strong>Sie können</strong> die Funktionsweise der Deref-Coercion erklären und eigene Typen entwerfen, die den <code>Deref</code>-Trait implementieren, um eine automatische Typkompatibilität zu gewährleisten.</li>
 </ul>
 <h3 id="lernplan-roter-faden"><a class="header" href="#lernplan-roter-faden">Lernplan (Roter Faden)</a></h3>
-<pre class="mermaid">graph TD
+<pre><code class="language-mermaid">graph TD
     A[19.1 Die Ausleihe-Syntax] --&gt; B[19.1.1 Unveränderliche Referenz]
     B --&gt; C[19.1.2 veränderliche Referenz]
     C --&gt; D[19.1.3 Dereferenzierungs-Operator]
@@ -351,9 +346,8 @@ fn main() {
     E --&gt; F[19.2.1 Deref-Coercion]
     F --&gt; G[Praktisches Tutorial &amp; Deep Dive]
     G --&gt; H[Übungen &amp; Selbsteinschätzung]
-</pre>
-
-<hr>
+</code></pre>
+<hr />
 <h2 id="2-die-definition"><a class="header" href="#2-die-definition">2. Die Definition</a></h2>
 <p>In Rust wird das sichere und effiziente Arbeiten mit Speicheradressen über ein klar definiertem System von Referenzen geregelt:</p>
 <ul>
@@ -362,22 +356,22 @@ fn main() {
 <li><strong>Dereferenzierungs-Operator (<code>*</code>)</strong>: Ein unärer Operator, der es ermöglicht, die Adresse einer Referenz zu verfolgen und direkt auf den dort gespeicherten Wert zuzugreifen.</li>
 <li><strong>Deref-Coercion (Deref-Koerzition)</strong>: Eine implizite Typkonvertierung durch den Rust-Compiler, die eine Referenz auf einen Typen <code>T</code>, der den Trait <code>Deref</code> implementiert, automatisch in eine Referenz auf den Zieltyp <code>Target</code> umwandelt, um Funktionsaufrufe zu vereinfachen.</li>
 </ul>
-<hr>
+<hr />
 <h2 id="3-das-problem--die-motivation"><a class="header" href="#3-das-problem--die-motivation">3. Das Problem &amp; Die Motivation</a></h2>
 <p>Wenn eine Programmiersprache ausschließlich das Konzept der Wertübergabe (Pass-by-Value / Move-Semantik) unterstützt, ergeben sich drei schwerwiegende Probleme:</p>
 <ol>
 <li><strong>Eigentumsverlust (Ownership-Transfer)</strong>: Sobald Daten an eine Funktion übergeben werden, verliert der Aufrufer den Zugriff auf diese Daten. Um die Daten weiter zu nutzen, müsste die Funktion sie mühsam als Teil eines Tupels wieder zurückgeben.</li>
 <li><strong>Kopier- und Allokations-Overhead</strong>: Große Datenstrukturen (z. B. Arrays mit Tausenden von Einträgen oder lange Strings) müssten bei jedem Funktionsaufruf im Speicher tief kopiert (geklont) werden. Dies belastet den Heap-Speicher und reduziert die CPU-Performance durch unnötige Lese- und Schreibzyklen dramatisch.</li>
 <li><strong>Pointer-Unsicherheit</strong>: Sprachen wie C und C++ umgehen diese Probleme mit rohen Zeigern (Raw Pointers). Diese sind jedoch extrem unsicher: Sie können auf ungültigen Speicher zeigen (Dangling Pointers), <code>NULL</code> sein (was zu Abstürzen führt) oder Datenrennen verursachen, wenn mehrere Zeiger parallel auf dieselben veränderlichen Daten zugreifen.</li>
-<li><strong>Garbage Collection Overhead</strong>: Sprachen wie Java, Go oder Python nutzen Referenzen und überlassen die Bereinigung einem Garbage Collector (GC). Dies führt zu unvorhersehbaren Pausen in der Ausführung (“Stop-the-World”-Latenzen) und verbraucht signifikant mehr Arbeitsspeicher.</li>
+<li><strong>Garbage Collection Overhead</strong>: Sprachen wie Java, Go oder Python nutzen Referenzen und überlassen die Bereinigung einem Garbage Collector (GC). Dies führt zu unvorhersehbaren Pausen in der Ausführung ("Stop-the-World"-Latenzen) und verbraucht signifikant mehr Arbeitsspeicher.</li>
 </ol>
 <p>Rust löst diese Konflikte, indem es sichere Zeiger (Referenzen) einführt, deren Einhaltung vom Compiler zur Compilezeit (Borrow Checker) lückenlos verifiziert wird.</p>
-<hr>
+<hr />
 <h2 id="4-der-naive-versuch"><a class="header" href="#4-der-naive-versuch">4. Der naive Versuch</a></h2>
 <p>Im Folgenden betrachten wir zwei naive Versuche, die typische Fallstricke beim Umgang mit Referenzen und Eigentum aufzeigen.</p>
 <h3 id="naiver-versuch-a-datenmodifikation-über-eine-unveränderliche-referenz"><a class="header" href="#naiver-versuch-a-datenmodifikation-über-eine-unveränderliche-referenz">Naiver Versuch A: Datenmodifikation über eine unveränderliche Referenz</a></h3>
 <p>Der Entwickler möchte den Namen eines Servers über eine Referenz ändern, verwendet jedoch die falsche Syntax.</p>
-<pre class="playground"><code class="language-rust edition2021">// Dieser Code lässt sich nicht kompilieren!
+<pre><code class="language-rust">// Dieser Code lässt sich nicht kompilieren!
 fn main() {
     let server_name = String::from("Production_Server");
     
@@ -391,7 +385,7 @@ fn main() {
 }</code></pre>
 <h3 id="naiver-versuch-b-gleichzeitiges-kopieren-einer-veränderlichen-referenz"><a class="header" href="#naiver-versuch-b-gleichzeitiges-kopieren-einer-veränderlichen-referenz">Naiver Versuch B: Gleichzeitiges Kopieren einer veränderlichen Referenz</a></h3>
 <p>Der Entwickler versucht, zwei schreibende Zugriffe parallel zu verwalten, indem er eine veränderliche Referenz einer zweiten Variable zuweist.</p>
-<pre class="playground"><code class="language-rust edition2021">// Dieser Code lässt sich nicht kompilieren!
+<pre><code class="language-rust">// Dieser Code lässt sich nicht kompilieren!
 fn main() {
     let mut datenbank_status = String::from("Aktiv");
     
@@ -406,7 +400,7 @@ fn main() {
     
     println!("Status: {}", datenbank_status);
 }</code></pre>
-<hr>
+<hr />
 <h2 id="5-die-anatomie-des-fehlers"><a class="header" href="#5-die-anatomie-des-fehlers">5. Die Anatomie des Fehlers</a></h2>
 <h3 id="analyse-zu-versuch-a-mutation-über-unveränderliche-referenz"><a class="header" href="#analyse-zu-versuch-a-mutation-über-unveränderliche-referenz">Analyse zu Versuch A: Mutation über unveränderliche Referenz</a></h3>
 <p>Wenn Sie versuchen, Versuch A zu kompilieren, meldet der Rust-Compiler Folgendes:</p>
@@ -437,7 +431,7 @@ fn main() {
 | - Typ: &amp;String (schreibgeschützt)
 +-----------------------------+
 </code></pre>
-<hr>
+<hr />
 <h3 id="analyse-zu-versuch-b-kopieren-einer-veränderlichen-referenz"><a class="header" href="#analyse-zu-versuch-b-kopieren-einer-veränderlichen-referenz">Analyse zu Versuch B: Kopieren einer veränderlichen Referenz</a></h3>
 <p>Wenn Sie versuchen, Versuch B zu kompilieren, meldet der Rust-Compiler:</p>
 <pre><code class="language-text">error[E0382]: use of moved value: `ref_schreiber1`
@@ -461,7 +455,7 @@ fn main() {
 <li>Bei der Zuweisung <code>let ref_schreiber2 = ref_schreiber1;</code> findet daher ein <strong>Move</strong> statt. Die Adresse wird in <code>ref_schreiber2</code> kopiert, während <code>ref_schreiber1</code> vom Compiler als ungültig markiert wird.</li>
 <li>Der anschließende Zugriff auf <code>ref_schreiber1</code> in Zeile 11 ist illegal, da die Gültigkeit der Referenz erloschen ist. Dadurch wird garantiert, dass zu jedem Zeitpunkt maximal ein aktiver Schreibzeiger auf die Daten zugreifen kann.</li>
 </ul>
-<hr>
+<hr />
 <h2 id="6-die-lösung-eva-prinzip"><a class="header" href="#6-die-lösung-eva-prinzip">6. Die Lösung (EVA-Prinzip)</a></h2>
 <p>Um die Probleme korrekt zu lösen, müssen wir die Ausleihe-Syntax und die Aliasing-Garantien von Rust exakt einhalten.</p>
 <h3 id="didaktischer-pseudocode"><a class="header" href="#didaktischer-pseudocode">Didaktischer Pseudocode</a></h3>
@@ -481,7 +475,7 @@ PROZESS StatusVerwaltung:
     AUSGABE: Keine (Seiteneffekt: Originaler Status ist geändert)
 </code></pre>
 <h3 id="korrekter-rust-code"><a class="header" href="#korrekter-rust-code">Korrekter Rust-Code</a></h3>
-<pre class="playground"><code class="language-rust edition2021">fn main() {
+<pre><code class="language-rust">fn main() {
     // Lösung für A: Korrekte Verwendung von &amp;mut
     let mut server_name = String::from("Production_Server");
     
@@ -524,28 +518,23 @@ fn server_aktualisieren(name: &amp;mut String) {
 <li><strong>Verarbeitung (Processing)</strong>: Aufruf der Methode <code>.push_str()</code> auf dem dereferenzierten String-Objekt.</li>
 <li><strong>Ausgabe (Output)</strong>: Keine Rückgabe (<code>()</code>). Als Seiteneffekt (Side Effect) wurden die Daten auf dem Heap direkt modifiziert.</li>
 </ul>
-<hr>
+<hr />
 <h2 id="7-kleines-tutorial-schritt-für-schritt-praxis"><a class="header" href="#7-kleines-tutorial-schritt-für-schritt-praxis">7. Kleines Tutorial (Schritt-für-Schritt-Praxis)</a></h2>
 <p>Wir entwickeln eine kleine, textbasierte Konfigurationsdatenbank für einen Netzwerk-Dienst. Unser Ziel ist es, Einstellungen zu verwalten, Werte über Referenzen auszulesen, Einstellungen veränderlich zu aktualisieren und die automatische Deref-Coercion in der Praxis anzuwenden.</p>
 <h3 id="schritt-1-struktur-definieren"><a class="header" href="#schritt-1-struktur-definieren">Schritt 1: Struktur definieren</a></h3>
 <p>Erstellen Sie eine neue Struktur <code>NetzwerkKonfig</code>, die den Servernamen, die IP-Adresse und den Port speichert.</p>
-<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>struct NetzwerkKonfig {
+<pre><code class="language-rust">struct NetzwerkKonfig {
     server_name: String,
     ip_adresse: String,
     port: u16,
-}
-<span class="boring">}</span></code></pre>
+}</code></pre>
 <h3 id="schritt-2-lese--und-schreibzugriff-implementieren"><a class="header" href="#schritt-2-lese--und-schreibzugriff-implementieren">Schritt 2: Lese- und Schreibzugriff implementieren</a></h3>
 <p>Wir implementieren Methoden im <code>impl</code>-Block von <code>NetzwerkKonfig</code>.</p>
 <ul>
 <li><code>anzeigen(&amp;self)</code>: Liest die Konfiguration unveränderlich aus.</li>
 <li><code>port_aktualisieren(&amp;mut self, neuer_port: u16)</code>: Ändert den Port veränderlich.</li>
 </ul>
-<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>impl NetzwerkKonfig {
+<pre><code class="language-rust">impl NetzwerkKonfig {
     // Unveränderliche Methode (Lesezugriff)
     fn anzeigen(&amp;self) {
         println!("Server: {} | IP: {} | Port: {}", self.server_name, self.ip_adresse, self.port);
@@ -555,19 +544,15 @@ fn server_aktualisieren(name: &amp;mut String) {
     fn port_aktualisieren(&amp;mut self, neuer_port: u16) {
         self.port = neuer_port;
     }
-}
-<span class="boring">}</span></code></pre>
+}</code></pre>
 <h3 id="schritt-3-deref-coercion-demonstrieren"><a class="header" href="#schritt-3-deref-coercion-demonstrieren">Schritt 3: Deref-Coercion demonstrieren</a></h3>
 <p>Wir schreiben eine Hilfsfunktion <code>logge_ip(ip: &amp;str)</code>. Diese erwartet ein String-Slice (<code>&amp;str</code>). Wir wollen ihr jedoch eine Referenz auf das Feld <code>ip_adresse</code> übergeben, welches vom Typ <code>String</code> ist. Rust soll die Typenkompatibilität über die Deref-Coercion automatisch auflösen.</p>
-<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>fn logge_ip(ip: &amp;str) {
+<pre><code class="language-rust">fn logge_ip(ip: &amp;str) {
     println!("[LOG] Verbindung wird aufgebaut zu IP-Adresse: {}", ip);
-}
-<span class="boring">}</span></code></pre>
+}</code></pre>
 <h3 id="schritt-4-das-hauptprogramm-zusammenführen"><a class="header" href="#schritt-4-das-hauptprogramm-zusammenführen">Schritt 4: Das Hauptprogramm zusammenführen</a></h3>
 <p>Verbinden wir alle Teile in der <code>main</code>-Funktion:</p>
-<pre class="playground"><code class="language-rust edition2021">fn main() {
+<pre><code class="language-rust">fn main() {
     // 1. Initialisierung
     let mut config = NetzwerkKonfig {
         server_name: String::from("Gateway_East"),
@@ -590,7 +575,7 @@ fn server_aktualisieren(name: &amp;mut String) {
     // Der Compiler wendet automatisch Deref-Coercion an!
     logge_ip(&amp;config.ip_adresse);
 }</code></pre>
-<hr>
+<hr />
 <h2 id="8-mentale-modelle--deep-dive-hintergrundwissen"><a class="header" href="#8-mentale-modelle--deep-dive-hintergrundwissen">8. Mentale Modelle &amp; Deep Dive (Hintergrundwissen)</a></h2>
 <h3 id="das-physische-speicherlayout-im-detail"><a class="header" href="#das-physische-speicherlayout-im-detail">Das physische Speicherlayout im Detail</a></h3>
 <p>Um zu verstehen, was im Arbeitsspeicher geschieht, betrachten wir die Belegung der Stack-Frames und des Heaps während des Tutorials aus Abschnitt 7.</p>
@@ -631,25 +616,22 @@ Implementiert T std::ops::Deref?
    │
    └─► Nein: Compiler-Fehler (Type Mismatch)
 </code></pre>
-<hr>
+<hr />
 <h3 id="exhaustive-api-reference-der-standardbibliothek-referenz---konvertierungs-traits"><a class="header" href="#exhaustive-api-reference-der-standardbibliothek-referenz---konvertierungs-traits">Exhaustive API-Reference der Standardbibliothek (Referenz- &amp; Konvertierungs-Traits)</a></h3>
 <p>Hier dokumentieren wir die sechs wichtigsten Traits der Standardbibliothek, die das Ausleih- und Dereferenzierungsverhalten von Rust steuern.</p>
 <h4 id="1-stdopsderef"><a class="header" href="#1-stdopsderef">1. <code>std::ops::Deref</code></a></h4>
 <ul>
 <li><strong>Signatur</strong>:
-<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>pub trait Deref {
+<pre><code class="language-rust">pub trait Deref {
     type Target: ?Sized;
     fn deref(&amp;self) -&gt; &amp;Self::Target;
-}
-<span class="boring">}</span></code></pre>
+}</code></pre>
 </li>
 <li><strong>Parameter</strong>: <code>&amp;self</code> (eine unveränderliche Referenz auf das implementierende Objekt).</li>
 <li><strong>Rückgabetyp</strong>: <code>&amp;Self::Target</code> (eine unveränderliche Referenz auf den Zieltyp).</li>
 <li><strong>Sicherheitsaspekte &amp; Panics</strong>: Die Implementierung sollte rein deterministisch sein und niemals panicken oder Seiteneffekte erzeugen, da sie implizit vom Compiler aufgerufen wird.</li>
 <li><strong>Mini-Beispiel</strong>:
-<pre class="playground"><code class="language-rust edition2021">use std::ops::Deref;
+<pre><code class="language-rust">use std::ops::Deref;
 struct Container&lt;T&gt;(T);
 impl&lt;T&gt; Deref for Container&lt;T&gt; {
     type Target = T;
@@ -664,18 +646,15 @@ fn main() {
 <h4 id="2-stdopsderefmut"><a class="header" href="#2-stdopsderefmut">2. <code>std::ops::DerefMut</code></a></h4>
 <ul>
 <li><strong>Signatur</strong>:
-<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>pub trait DerefMut: Deref {
+<pre><code class="language-rust">pub trait DerefMut: Deref {
     fn deref_mut(&amp;mut self) -&gt; &amp;mut Self::Target;
-}
-<span class="boring">}</span></code></pre>
+}</code></pre>
 </li>
 <li><strong>Parameter</strong>: <code>&amp;mut self</code> (eine veränderliche Referenz auf das implementierende Objekt).</li>
 <li><strong>Rückgabetyp</strong>: <code>&amp;mut Self::Target</code> (eine veränderliche Referenz auf den Zieltyp).</li>
 <li><strong>Sicherheitsaspekte &amp; Panics</strong>: Analog zu <code>Deref</code> sollte diese Methode absturzfrei und stabil arbeiten.</li>
 <li><strong>Mini-Beispiel</strong>:
-<pre class="playground"><code class="language-rust edition2021">use std::ops::{Deref, DerefMut};
+<pre><code class="language-rust">use std::ops::{Deref, DerefMut};
 struct Container&lt;T&gt;(T);
 impl&lt;T&gt; Deref for Container&lt;T&gt; {
     type Target = T;
@@ -694,18 +673,15 @@ fn main() {
 <h4 id="3-stdborrowborrow"><a class="header" href="#3-stdborrowborrow">3. <code>std::borrow::Borrow</code></a></h4>
 <ul>
 <li><strong>Signatur</strong>:
-<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>pub trait Borrow&lt;Borrowed: ?Sized&gt; {
+<pre><code class="language-rust">pub trait Borrow&lt;Borrowed: ?Sized&gt; {
     fn borrow(&amp;self) -&gt; &amp;Borrowed;
-}
-<span class="boring">}</span></code></pre>
+}</code></pre>
 </li>
 <li><strong>Parameter</strong>: <code>&amp;self</code> (unveränderliche Referenz).</li>
 <li><strong>Rückgabetyp</strong>: <code>&amp;Borrowed</code> (Referenz auf den geliehenen Typ).</li>
 <li><strong>Sicherheitsaspekte &amp; Panics</strong>: Im Gegensatz zu <code>Deref</code> verlangt <code>Borrow</code>, dass der geliehene Typ dieselbe Hash- und Äquivalenz-Semantik (<code>Eq</code>, <code>Hash</code>) besitzt wie der Ausgangstyp. Wird intensiv in Assoziativspeichern (wie <code>HashMap</code>) verwendet.</li>
 <li><strong>Mini-Beispiel</strong>:
-<pre class="playground"><code class="language-rust edition2021">use std::borrow::Borrow;
+<pre><code class="language-rust">use std::borrow::Borrow;
 fn verarbeite&lt;T: Borrow&lt;str&gt;&gt;(daten: T) {
     assert_eq!(daten.borrow(), "Test");
 }
@@ -718,18 +694,15 @@ fn main() {
 <h4 id="4-stdborrowborrowmut"><a class="header" href="#4-stdborrowborrowmut">4. <code>std::borrow::BorrowMut</code></a></h4>
 <ul>
 <li><strong>Signatur</strong>:
-<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>pub trait BorrowMut&lt;Borrowed: ?Sized&gt;: Borrow&lt;Borrowed&gt; {
+<pre><code class="language-rust">pub trait BorrowMut&lt;Borrowed: ?Sized&gt;: Borrow&lt;Borrowed&gt; {
     fn borrow_mut(&amp;mut self) -&gt; &amp;mut Borrowed;
-}
-<span class="boring">}</span></code></pre>
+}</code></pre>
 </li>
 <li><strong>Parameter</strong>: <code>&amp;mut self</code>.</li>
 <li><strong>Rückgabetyp</strong>: <code>&amp;mut Borrowed</code>.</li>
 <li><strong>Sicherheitsaspekte &amp; Panics</strong>: Gewährleistet konsistente veränderliche Ausleihen unter Beibehaltung der Identitätseigenschaften.</li>
 <li><strong>Mini-Beispiel</strong>:
-<pre class="playground"><code class="language-rust edition2021">use std::borrow::BorrowMut;
+<pre><code class="language-rust">use std::borrow::BorrowMut;
 fn modifiziere&lt;T: BorrowMut&lt;String&gt;&gt;(mut daten: T) {
     daten.borrow_mut().push_str("!");
 }
@@ -743,18 +716,15 @@ fn main() {
 <h4 id="5-stdconvertasref"><a class="header" href="#5-stdconvertasref">5. <code>std::convert::AsRef</code></a></h4>
 <ul>
 <li><strong>Signatur</strong>:
-<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>pub trait AsRef&lt;T: ?Sized&gt; {
+<pre><code class="language-rust">pub trait AsRef&lt;T: ?Sized&gt; {
     fn as_ref(&amp;self) -&gt; &amp;T;
-}
-<span class="boring">}</span></code></pre>
+}</code></pre>
 </li>
 <li><strong>Parameter</strong>: <code>&amp;self</code>.</li>
 <li><strong>Rückgabetyp</strong>: <code>&amp;T</code>.</li>
 <li><strong>Sicherheitsaspekte &amp; Panics</strong>: Dient der reinen Typ-zu-Typ-Referenzkonvertierung. Sehr generisch gehalten, stellt keine Anforderungen an die Gleichheit von Hash-Funktionen.</li>
 <li><strong>Mini-Beispiel</strong>:
-<pre class="playground"><code class="language-rust edition2021">fn print_laenge&lt;T: AsRef&lt;str&gt;&gt;(val: T) {
+<pre><code class="language-rust">fn print_laenge&lt;T: AsRef&lt;str&gt;&gt;(val: T) {
     println!("Länge: {}", val.as_ref().len());
 }
 fn main() {
@@ -766,18 +736,15 @@ fn main() {
 <h4 id="6-stdconvertasmut"><a class="header" href="#6-stdconvertasmut">6. <code>std::convert::AsMut</code></a></h4>
 <ul>
 <li><strong>Signatur</strong>:
-<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>pub trait AsMut&lt;T: ?Sized&gt; {
+<pre><code class="language-rust">pub trait AsMut&lt;T: ?Sized&gt; {
     fn as_mut(&amp;mut self) -&gt; &amp;mut T;
-}
-<span class="boring">}</span></code></pre>
+}</code></pre>
 </li>
 <li><strong>Parameter</strong>: <code>&amp;mut self</code>.</li>
 <li><strong>Rückgabetyp</strong>: <code>&amp;mut T</code>.</li>
 <li><strong>Sicherheitsaspekte &amp; Panics</strong>: Ermöglicht eine billige, veränderliche Typ-zu-Typ-Konvertierung.</li>
 <li><strong>Mini-Beispiel</strong>:
-<pre class="playground"><code class="language-rust edition2021">fn nullstelle&lt;T: AsMut&lt;[i32]&gt;&gt;(mut sammlung: T) {
+<pre><code class="language-rust">fn nullstelle&lt;T: AsMut&lt;[i32]&gt;&gt;(mut sammlung: T) {
     let slice = sammlung.as_mut();
     if !slice.is_empty() {
         slice[0] = 0;
@@ -790,9 +757,9 @@ fn main() {
 }</code></pre>
 </li>
 </ul>
-<hr>
-<h2 id="9-drei-praktische-übungen-herausforderungen"><a class="header" href="#9-drei-praktische-übungen-herausforderungen">9. Drei praktische Übungen (Herausforderungen)</a></h2>
-<h3 id="übung-1-leicht---syntax-festigen-sensor-messung"><a class="header" href="#übung-1-leicht---syntax-festigen-sensor-messung">Übung 1 (Leicht - Syntax festigen): Sensor-Messung</a></h3>
+<hr />
+<h2 id="9-drei-praktische-Übungen-herausforderungen"><a class="header" href="#9-drei-praktische-Übungen-herausforderungen">9. Drei praktische Übungen (Herausforderungen)</a></h2>
+<h3 id="Übung-1-leicht---syntax-festigen-sensor-messung"><a class="header" href="#Übung-1-leicht---syntax-festigen-sensor-messung">Übung 1 (Leicht - Syntax festigen): Sensor-Messung</a></h3>
 <p><strong>Aufgabe</strong>: Schreiben Sie ein Programm, das die Temperatur eines Sensors verwaltet.</p>
 <ol>
 <li>Definieren Sie ein Struct <code>Sensor</code> mit dem Feld <code>temperatur</code> (<code>f32</code>).</li>
@@ -801,17 +768,14 @@ fn main() {
 </ol>
 <ul>
 <li><strong>Erwartete Signaturen</strong>:
-<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>struct Sensor { temperatur: f32 }
+<pre><code class="language-rust">struct Sensor { temperatur: f32 }
 fn lese_temperatur(sensor: &amp;Sensor);
-fn kalibriere_sensor(sensor: &amp;mut Sensor, delta: f32);
-<span class="boring">}</span></code></pre>
+fn kalibriere_sensor(sensor: &amp;mut Sensor, delta: f32);</code></pre>
 </li>
 <li><strong>Lösungshinweis</strong>: Denken Sie daran, dass Sie in <code>kalibriere_sensor</code> den Sensor über die veränderliche Referenz direkt mutieren müssen. Sie benötigen hier keinen Rückgabetyp.</li>
 </ul>
-<hr>
-<h3 id="übung-2-mittel---logik-erweitern-der-smart-warenkorb"><a class="header" href="#übung-2-mittel---logik-erweitern-der-smart-warenkorb">Übung 2 (Mittel - Logik erweitern): Der Smart-Warenkorb</a></h3>
+<hr />
+<h3 id="Übung-2-mittel---logik-erweitern-der-smart-warenkorb"><a class="header" href="#Übung-2-mittel---logik-erweitern-der-smart-warenkorb">Übung 2 (Mittel - Logik erweitern): Der Smart-Warenkorb</a></h3>
 <p><strong>Aufgabe</strong>: Verwalten Sie den Preis eines Warenkorbs.</p>
 <ol>
 <li>Definieren Sie ein Struct <code>Warenkorb</code> mit einem Feld <code>gesamtpreis</code> (<code>f64</code>).</li>
@@ -822,8 +786,8 @@ fn kalibriere_sensor(sensor: &amp;mut Sensor, delta: f32);
 <li><strong>Beispiel-Input</strong>: <code>w1.gesamtpreis = 100.0</code>, <code>w2.gesamtpreis = 120.0</code>, nach 20% Rabatt auf <code>w2</code> sind beide gleich.</li>
 <li><strong>Lösungshinweis</strong>: Übergeben Sie in <code>vergleiche_und_drucke</code> beide Warenkörbe als unveränderliche Referenzen, da die Funktion nur lesend auf die Daten zugreifen muss.</li>
 </ul>
-<hr>
-<h3 id="übung-3-schwer---transferleistung-der-logging-wrapper"><a class="header" href="#übung-3-schwer---transferleistung-der-logging-wrapper">Übung 3 (Schwer - Transferleistung): Der Logging-Wrapper</a></h3>
+<hr />
+<h3 id="Übung-3-schwer---transferleistung-der-logging-wrapper"><a class="header" href="#Übung-3-schwer---transferleistung-der-logging-wrapper">Übung 3 (Schwer - Transferleistung): Der Logging-Wrapper</a></h3>
 <p><strong>Aufgabe</strong>: Erstellen Sie einen eigenen Smart-Pointer namens <code>LoggerBox&lt;T&gt;</code>, der jeden Lesezugriff auf den inneren Wert protokolliert.</p>
 <ol>
 <li>Implementieren Sie das Struct <code>LoggerBox&lt;T&gt;</code>.</li>
@@ -834,23 +798,17 @@ fn kalibriere_sensor(sensor: &amp;mut Sensor, delta: f32);
 <li><strong>Erwarteter Output</strong>: Bei jedem Lesezugriff muss die Info-Meldung auf der Konsole erscheinen.</li>
 <li><strong>Lösungshinweis</strong>: Der assoziierte Typ <code>Target</code> Ihres Traits <code>Deref</code> muss <code>T</code> sein. Die Methode <code>deref(&amp;self)</code> gibt eine unveränderliche Referenz auf den inneren Wert zurück (<code>&amp;self.0</code>).</li>
 </ul>
-<hr>
+<hr />
 <h2 id="10-lernstrategie-selbsteinschätzung--merkzettel"><a class="header" href="#10-lernstrategie-selbsteinschätzung--merkzettel">10. Lernstrategie, Selbsteinschätzung &amp; Merkzettel</a></h2>
 <h3 id="spickzettel-cheat-sheet"><a class="header" href="#spickzettel-cheat-sheet">Spickzettel (Cheat Sheet)</a></h3>
-<div class="table-wrapper">
-<table>
-<thead>
-<tr><th style="text-align: left">Syntax</th><th style="text-align: left">Typbezeichnung</th><th style="text-align: center">Lesezugriff</th><th style="text-align: center">Schreibzugriff</th><th style="text-align: center">Ownership-Transfer</th></tr>
-</thead>
-<tbody>
+<div class="table-wrapper"><table><thead><tr><th style="text-align: left">Syntax</th><th style="text-align: left">Typbezeichnung</th><th style="text-align: center">Lesezugriff</th><th style="text-align: center">Schreibzugriff</th><th style="text-align: center">Ownership-Transfer</th></tr></thead><tbody>
 <tr><td style="text-align: left"><code>&amp;T</code></td><td style="text-align: left">Unveränderliche Referenz</td><td style="text-align: center">Ja</td><td style="text-align: center">Nein</td><td style="text-align: center">Nein</td></tr>
 <tr><td style="text-align: left"><code>&amp;mut T</code></td><td style="text-align: left">Veränderliche Referenz</td><td style="text-align: center">Ja</td><td style="text-align: center">Ja</td><td style="text-align: center">Nein (Move bei Zuweisung)</td></tr>
 <tr><td style="text-align: left"><code>*r</code></td><td style="text-align: left">Dereferenzierung</td><td style="text-align: center">-</td><td style="text-align: center">-</td><td style="text-align: center">Abhängig vom Typ <code>T</code></td></tr>
 <tr><td style="text-align: left"><code>&amp;String</code> -&gt; <code>&amp;str</code></td><td style="text-align: left">Deref-Coercion (implizit)</td><td style="text-align: center">-</td><td style="text-align: center">-</td><td style="text-align: center">Nein</td></tr>
-</tbody>
-</table>
+</tbody></table>
 </div>
-<hr>
+<hr />
 <h3 id="active-recall-selbsttestfragen"><a class="header" href="#active-recall-selbsttestfragen">Active Recall (Selbsttestfragen)</a></h3>
 <ol>
 <li><strong>Frage</strong>: Warum implementiert eine unveränderliche Referenz (<code>&amp;T</code>) das <code>Copy</code>-Trait, eine veränderliche Referenz (<code>&amp;mut T</code>) hingegen nur das <code>Move</code>-Verhalten?</li>
@@ -858,22 +816,26 @@ fn kalibriere_sensor(sensor: &amp;mut Sensor, delta: f32);
 <li><strong>Frage</strong>: Unter welchen Bedingungen wendet der Rust-Compiler die Deref-Coercion auf ein Funktionsargument an?</li>
 <li><strong>Frage</strong>: Kann ein Datenrennen auftreten, wenn ein Programm gleichzeitig zehn unveränderliche Referenzen und null veränderliche Referenzen auf denselben Speicherbereich hält? Begründen Sie Ihre Antwort.</li>
 </ol>
-<hr>
+<hr />
 <h3 id="die-feynman-methode"><a class="header" href="#die-feynman-methode">Die Feynman-Methode</a></h3>
 <p>Erklären Sie einem Programmierer, der nur Java oder Python kennt, in maximal drei einfachen Sätzen, warum Rusts System des Ausleihens (Borrowing) Speicherbereinigungsfehler zur Laufzeit unmöglich macht, ohne dass ein Garbage Collector benötigt wird.</p>
-<hr>
+<hr />
 <h3 id="gezielte-fehlerprovokation-compiler-guided-learning"><a class="header" href="#gezielte-fehlerprovokation-compiler-guided-learning">Gezielte Fehlerprovokation (Compiler-Guided Learning)</a></h3>
 <p>Nehmen Sie den korrekten Lösungscode aus Abschnitt 6 (Lösung A) und entfernen Sie das Schlüsselwort <code>mut</code> aus der Deklaration von <code>server_name</code> in der <code>main</code>-Funktion, während Sie versuchen, weiterhin <code>&amp;mut server_name</code> zu übergeben. Analysieren Sie die Compiler-Fehlermeldung. Welcher Fehler-Code (E-Nummer) wird ausgegeben und welche Hilfestellung gibt Ihnen der Compiler?</p>
-<hr>
+<hr />
 <h3 id="metakognitiver-selbsttest"><a class="header" href="#metakognitiver-selbsttest">Metakognitiver Selbsttest</a></h3>
 <p>Wechseln Sie erst zu <a href="file:///home/thorsten/RustKurs/doc/src/20.md">Kapitel 20</a>, wenn Sie:</p>
 <ul>
-<li><input disabled="" type="checkbox"> Den Unterschied im Speicherbedarf einer Referenz zwischen einer 32-Bit- und einer 64-Bit-Architektur benennen können.</li>
-<li><input disabled="" type="checkbox"> Den Unterschied zwischen <code>&amp;T</code> und <code>&amp;mut T</code> in Bezug auf das <code>Copy</code>-Trait erklären können.</li>
-<li><input disabled="" type="checkbox"> Den Unterschied zwischen dem <code>Deref</code>-Trait und der impliziten Deref-Coercion verstanden haben.</li>
-<li><input disabled="" type="checkbox"> Einen Compiler-Fehler des Typs <code>cannot borrow as mutable</code> ohne fremde Hilfe durch syntaktische Korrekturen auflösen können.</li>
+<li><input disabled="" type="checkbox"/>
+Den Unterschied im Speicherbedarf einer Referenz zwischen einer 32-Bit- und einer 64-Bit-Architektur benennen können.</li>
+<li><input disabled="" type="checkbox"/>
+Den Unterschied zwischen <code>&amp;T</code> und <code>&amp;mut T</code> in Bezug auf das <code>Copy</code>-Trait erklären können.</li>
+<li><input disabled="" type="checkbox"/>
+Den Unterschied zwischen dem <code>Deref</code>-Trait und der impliziten Deref-Coercion verstanden haben.</li>
+<li><input disabled="" type="checkbox"/>
+Einen Compiler-Fehler des Typs <code>cannot borrow as mutable</code> ohne fremde Hilfe durch syntaktische Korrekturen auflösen können.</li>
 </ul>
-<hr>
+<hr />
 <h2 id="11-zusammenfassung"><a class="header" href="#11-zusammenfassung">11. Zusammenfassung</a></h2>
 <ul>
 <li><strong>Referenzen sind sichere Zeiger</strong>: Sie verweisen auf die Speicheradresse einer Variable auf Stack oder Heap, ohne deren Eigentümer zu werden. Eine Referenz ist in Rust niemals null und zeigt niemals auf ungültigen Speicher.</li>
@@ -882,7 +844,7 @@ fn kalibriere_sensor(sensor: &amp;mut Sensor, delta: f32);
 <li><strong>Dereferenzierung (<code>*</code>)</strong>: Ermöglicht das Verfolgen des Zeigers zur Modifikation oder zum Auslesen des darunterliegenden Werts. Bei Methodenaufrufen und dem Zugriff auf Felder nimmt der Dot-Operator (<code>.</code>) die Dereferenzierung automatisch vor.</li>
 <li><strong>Deref-Coercion</strong>: Ermöglicht eine implizite, kostenlose Typkonvertierung von Referenzen zur Compilezeit (z. B. von <code>&amp;String</code> zu <code>&amp;str</code>), sofern der Ausgangstyp den <code>Deref</code>-Trait implementiert.</li>
 </ul>
-<hr>
+<hr />
 <p><strong>Lizenz- und Attributionshinweis</strong>:
 Teile dieses Kapitels basieren auf Übersetzungen und didaktischen Anpassungen des offiziellen Buches <a href="https://doc.rust-lang.org/book/">The Rust Programming Language</a> von Steve Klabnik und Carol Nichols (sowie Beiträgen der Rust-Community), lizenziert unter <a href="https://opensource.org/licenses/MIT">MIT</a> und <a href="https://www.apache.org/licenses/LICENSE-2.0">Apache 2.0</a>.</p>
 
@@ -891,11 +853,11 @@ Teile dieses Kapitels basieren auf Übersetzungen und didaktischen Anpassungen d
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
                             <a rel="prev" href="18.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
-                                <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
+                                <i class="fa fa-angle-left"></i>
                             </a>
 
                             <a rel="next prefetch" href="20.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
-                                <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
+                                <i class="fa fa-angle-right"></i>
                             </a>
 
                         <div style="clear: both"></div>
@@ -905,21 +867,16 @@ Teile dieses Kapitels basieren auf Übersetzungen und didaktischen Anpassungen d
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
                     <a rel="prev" href="18.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
-                        <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
+                        <i class="fa fa-angle-left"></i>
                     </a>
 
                     <a rel="next prefetch" href="20.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
-                        <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
+                        <i class="fa fa-angle-right"></i>
                     </a>
             </nav>
 
         </div>
 
-        <template id=fa-eye><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M288 32c-80.8 0-145.5 36.8-192.6 80.6C48.6 156 17.3 208 2.5 243.7c-3.3 7.9-3.3 16.7 0 24.6C17.3 304 48.6 356 95.4 399.4C142.5 443.2 207.2 480 288 480s145.5-36.8 192.6-80.6c46.8-43.5 78.1-95.4 93-131.1c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C433.5 68.8 368.8 32 288 32zM432 256c0 79.5-64.5 144-144 144s-144-64.5-144-144s64.5-144 144-144s144 64.5 144 144zM288 192c0 35.3-28.7 64-64 64c-11.5 0-22.3-3-31.6-8.4c-.2 2.8-.4 5.5-.4 8.4c0 53 43 96 96 96s96-43 96-96s-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6z"/></svg></span></template>
-        <template id=fa-eye-slash><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M38.8 5.1C28.4-3.1 13.3-1.2 5.1 9.2S-1.2 34.7 9.2 42.9l592 464c10.4 8.2 25.5 6.3 33.7-4.1s6.3-25.5-4.1-33.7L525.6 386.7c39.6-40.6 66.4-86.1 79.9-118.4c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C465.5 68.8 400.8 32 320 32c-68.2 0-125 26.3-169.3 60.8L38.8 5.1zM223.1 149.5C248.6 126.2 282.7 112 320 112c79.5 0 144 64.5 144 144c0 24.9-6.3 48.3-17.4 68.7L408 294.5c5.2-11.8 8-24.8 8-38.5c0-53-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6c0 10.2-2.4 19.8-6.6 28.3l-90.3-70.8zm223.1 298L373 389.9c-16.4 6.5-34.3 10.1-53 10.1c-79.5 0-144-64.5-144-144c0-6.9 .5-13.6 1.4-20.2L83.1 161.5C60.3 191.2 44 220.8 34.5 243.7c-3.3 7.9-3.3 16.7 0 24.6c14.9 35.7 46.2 87.7 93 131.1C174.5 443.2 239.2 480 320 480c47.8 0 89.9-12.9 126.2-32.5z"/></svg></span></template>
-        <template id=fa-copy><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M502.6 70.63l-61.25-61.25C435.4 3.371 427.2 0 418.7 0H255.1c-35.35 0-64 28.66-64 64l.0195 256C192 355.4 220.7 384 256 384h192c35.2 0 64-28.8 64-64V93.25C512 84.77 508.6 76.63 502.6 70.63zM464 320c0 8.836-7.164 16-16 16H255.1c-8.838 0-16-7.164-16-16L239.1 64.13c0-8.836 7.164-16 16-16h128L384 96c0 17.67 14.33 32 32 32h47.1V320zM272 448c0 8.836-7.164 16-16 16H63.1c-8.838 0-16-7.164-16-16L47.98 192.1c0-8.836 7.164-16 16-16H160V128H63.99c-35.35 0-64 28.65-64 64l.0098 256C.002 483.3 28.66 512 64 512h192c35.2 0 64-28.8 64-64v-32h-47.1L272 448z"/></svg></span></template>
-        <template id=fa-play><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80V432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"/></svg></span></template>
-        <template id=fa-clock-rotate-left><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M75 75L41 41C25.9 25.9 0 36.6 0 57.9V168c0 13.3 10.7 24 24 24H134.1c21.4 0 32.1-25.9 17-41l-30.8-30.8C155 85.5 203 64 256 64c106 0 192 86 192 192s-86 192-192 192c-40.8 0-78.6-12.7-109.7-34.4c-14.5-10.1-34.4-6.6-44.6 7.9s-6.6 34.4 7.9 44.6C151.2 495 201.7 512 256 512c141.4 0 256-114.6 256-256S397.4 0 256 0C185.3 0 121.3 28.7 75 75zm181 53c-13.3 0-24 10.7-24 24V256c0 6.4 2.5 12.5 7 17l72 72c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-65-65V152c0-13.3-10.7-24-24-24z"/></svg></span></template>
 
 
 
@@ -928,17 +885,17 @@ Teile dieses Kapitels basieren auf Übersetzungen und didaktischen Anpassungen d
         </script>
 
 
-        <script src="elasticlunr-ef4e11c1.min.js"></script>
-        <script src="mark-09e88c2c.min.js"></script>
-        <script src="searcher-09f2665d.js"></script>
+        <script src="elasticlunr.min.js"></script>
+        <script src="mark.min.js"></script>
+        <script src="searcher.js"></script>
 
-        <script src="clipboard-1626706a.min.js"></script>
-        <script src="highlight-abc7f01d.js"></script>
-        <script src="book-c22b7243.js"></script>
+        <script src="clipboard.min.js"></script>
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
 
         <!-- Custom JS scripts -->
-        <script src="mermaid-eefea253.min.js"></script>
-        <script src="mermaid-init-ccf746f1.js"></script>
+        <script src="mermaid.min.js"></script>
+        <script src="mermaid-init.js"></script>
 
 
 

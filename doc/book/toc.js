@@ -1,0 +1,70 @@
+// Populate the sidebar
+//
+// This is a script, and not included directly in the page, to control the total size of the book.
+// The TOC contains an entry for each page, so if each page includes a copy of the TOC,
+// the total size of the page becomes O(n**2).
+class MDBookSidebarScrollbox extends HTMLElement {
+    constructor() {
+        super();
+    }
+    connectedCallback() {
+        this.innerHTML = '<ol class="chapter"><li class="chapter-item expanded affix "><a href="index.html">Einleitung</a></li><li class="chapter-item expanded "><a href="1.html"><strong aria-hidden="true">1.</strong> Kapitel 1: Was ist Rust?</a></li><li class="chapter-item expanded "><a href="2.html"><strong aria-hidden="true">2.</strong> Kapitel 2: Installation &amp; Systemkonfiguration</a></li><li class="chapter-item expanded "><a href="3.html"><strong aria-hidden="true">3.</strong> Kapitel 3: KI-Assistenten &amp; Tools</a></li><li class="chapter-item expanded "><a href="4.html"><strong aria-hidden="true">4.</strong> Kapitel 4: Erstes Projekt</a></li><li class="chapter-item expanded "><a href="5.html"><strong aria-hidden="true">5.</strong> Kapitel 5: Variablen &amp; Scopes</a></li><li class="chapter-item expanded "><a href="6.html"><strong aria-hidden="true">6.</strong> Kapitel 6: Skalare &amp; zusammengesetzte Typen</a></li><li class="chapter-item expanded "><a href="7.html"><strong aria-hidden="true">7.</strong> Kapitel 7: Übungsprojekt</a></li><li class="chapter-item expanded "><a href="8.html"><strong aria-hidden="true">8.</strong> Kapitel 8: Arrays &amp; Tupel</a></li><li class="chapter-item expanded "><a href="9.html"><strong aria-hidden="true">9.</strong> Kapitel 9: Zusammenfassung Variablen &amp; Typen</a></li><li class="chapter-item expanded "><a href="10.html"><strong aria-hidden="true">10.</strong> Kapitel 10: Funktionen</a></li><li class="chapter-item expanded "><a href="11.html"><strong aria-hidden="true">11.</strong> Kapitel 11: Funktionen Details</a></li><li class="chapter-item expanded "><a href="12.html"><strong aria-hidden="true">12.</strong> Kapitel 12: Operatoren</a></li><li class="chapter-item expanded "><a href="13.html"><strong aria-hidden="true">13.</strong> Kapitel 13: Übungen zu Operatoren</a></li><li class="chapter-item expanded "><a href="14.html"><strong aria-hidden="true">14.</strong> Kapitel 14: Antigravity CLI</a></li><li class="chapter-item expanded "><a href="15.html"><strong aria-hidden="true">15.</strong> Kapitel 15: Kontrollstrukturen</a></li><li class="chapter-item expanded "><a href="16.html"><strong aria-hidden="true">16.</strong> Kapitel 16: Beste Google KI zum Programmieren nutzen</a></li><li class="chapter-item expanded "><a href="17.html"><strong aria-hidden="true">17.</strong> Kapitel 17: Speicherverwaltung und das Ownership-System</a></li><li class="chapter-item expanded "><a href="18.html"><strong aria-hidden="true">18.</strong> Kapitel 18: Was ist Ownership?</a></li><li class="chapter-item expanded "><a href="19.html"><strong aria-hidden="true">19.</strong> Kapitel 19: Referenzen &amp; Borrowing (Ausleihen)</a></li><li class="chapter-item expanded "><a href="20.html"><strong aria-hidden="true">20.</strong> Kapitel 20: Referenzen &amp; Borrowing (Ausleihen) – Grundlagen und Regeln</a></li><li class="chapter-item expanded "><a href="21.html"><strong aria-hidden="true">21.</strong> Kapitel 21: Zusammenfassung &amp; Ausblick</a></li><li class="chapter-item expanded "><a href="22.html"><strong aria-hidden="true">22.</strong> Kapitel 22: Der VS Code Planungs-Workflow</a></li><li class="chapter-item expanded "><a href="23.html"><strong aria-hidden="true">23.</strong> Kapitel 23: Lernstrategie, Lernportale &amp; KI-Prompts</a></li><li class="chapter-item expanded "><a href="24.html"><strong aria-hidden="true">24.</strong> Kapitel 24: Projekt-Professionalisierung &amp; das Antigravity CLI</a></li><li class="chapter-item expanded "><a href="25.html"><strong aria-hidden="true">25.</strong> Kapitel 25: Der Slice-Typ (Slices)</a></li><li class="chapter-item expanded "><a href="26.html"><strong aria-hidden="true">26.</strong> Kapitel 26: KI-Agenten &amp; autonome Software-Ingenieure</a></li><li class="chapter-item expanded "><a href="27.html"><strong aria-hidden="true">27.</strong> Kapitel 27: Eigene Datentypen mit Structs (Strukturen) strukturieren</a></li><li class="chapter-item expanded "><a href="28.html"><strong aria-hidden="true">28.</strong> Kapitel 28: Enums und Pattern Matching</a></li></ol>';
+        // Set the current, active page, and reveal it if it's hidden
+        let current_page = document.location.href.toString().split("#")[0].split("?")[0];
+        if (current_page.endsWith("/")) {
+            current_page += "index.html";
+        }
+        var links = Array.prototype.slice.call(this.querySelectorAll("a"));
+        var l = links.length;
+        for (var i = 0; i < l; ++i) {
+            var link = links[i];
+            var href = link.getAttribute("href");
+            if (href && !href.startsWith("#") && !/^(?:[a-z+]+:)?\/\//.test(href)) {
+                link.href = path_to_root + href;
+            }
+            // The "index" page is supposed to alias the first chapter in the book.
+            if (link.href === current_page || (i === 0 && path_to_root === "" && current_page.endsWith("/index.html"))) {
+                link.classList.add("active");
+                var parent = link.parentElement;
+                if (parent && parent.classList.contains("chapter-item")) {
+                    parent.classList.add("expanded");
+                }
+                while (parent) {
+                    if (parent.tagName === "LI" && parent.previousElementSibling) {
+                        if (parent.previousElementSibling.classList.contains("chapter-item")) {
+                            parent.previousElementSibling.classList.add("expanded");
+                        }
+                    }
+                    parent = parent.parentElement;
+                }
+            }
+        }
+        // Track and set sidebar scroll position
+        this.addEventListener('click', function(e) {
+            if (e.target.tagName === 'A') {
+                sessionStorage.setItem('sidebar-scroll', this.scrollTop);
+            }
+        }, { passive: true });
+        var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+        sessionStorage.removeItem('sidebar-scroll');
+        if (sidebarScrollTop) {
+            // preserve sidebar scroll position when navigating via links within sidebar
+            this.scrollTop = sidebarScrollTop;
+        } else {
+            // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+            var activeSection = document.querySelector('#sidebar .active');
+            if (activeSection) {
+                activeSection.scrollIntoView({ block: 'center' });
+            }
+        }
+        // Toggle buttons
+        var sidebarAnchorToggles = document.querySelectorAll('#sidebar a.toggle');
+        function toggleSection(ev) {
+            ev.currentTarget.parentElement.classList.toggle('expanded');
+        }
+        Array.from(sidebarAnchorToggles).forEach(function (el) {
+            el.addEventListener('click', toggleSection);
+        });
+    }
+}
+window.customElements.define("mdbook-sidebar-scrollbox", MDBookSidebarScrollbox);
