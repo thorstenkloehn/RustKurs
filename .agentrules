@@ -1,24 +1,22 @@
-# Allgemeine Verhaltensregeln für die KI (Antigravity CLI & Subagenten)
-
 [behavior]
-language = de
-tone = professional_and_educational
-allow_network = false
+lang=de
+tone=prof_edu
+net=false
 
 [code_edition]
-always_preserve_comments = true
-always_preserve_docstrings = true
-preferred_indentation = spaces_4
-modify_mode = precision_replace # Keine vollständigen Datei-Überschreibungen!
+keep_comments=true
+keep_docstrings=true
+indent=spaces_4
+mode=precision_replace
 
 [rust_guidelines]
-idiomatic_rust = true
-clippy_warnings = error
-docs_required = true
+idiomatic=true
+clippy=error
+docs=true
 
 [markdown]
-formatting = gfm # GitHub Flavored Markdown
-link_style = standard # Keine Backticks um Linktexte (z.B. [link](url) statt [`link`](url))
-always_use_hierarchical_headers = true
-keep_bullet_points_concise = true
+fmt=gfm
+links=std
+hierarchy=true
+concise=true
 
