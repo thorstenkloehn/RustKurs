@@ -1,47 +1,39 @@
-# Rust-Videokurs für Anfänger
-
-**Tech Stack:** Manim, Pygments, Kokoro-onnx TTS, Blender 3D (2D-Vektor-Animationen, Grease Pencil & Geometry Nodes), Remotion, gesteuert via MCP.
-
-**Status:** Kapitel 1–24 vollständig abgeschlossen (Video & Audio fertig).
+# Rust-Kurs
+**Tech**: Manim, Pygments, Kokoro-TTS, Blender(Grease/Nodes), Remotion, MCP.
+**Status**: Ch1-24 fertig. Book in `doc/` via mdBook generiert/geprüft.
 
 ---
-
-## Subagent
-* Markdown-Datei bearbeiten: Nutze bitte den Subagent -> [markdown.md](markdown.md)
-* Video erstellen : Nutze bitte den Subagent -> [video.md](video.md)
----
-
-## Kapitel & Dateien
-- [Ch1: Was ist Rust?](1.md) -> [1.mp4](1.mp4)
-- [Ch2: Installation](2.md) -> [2.mp4](2.mp4)
-- [Ch3: KI-Assistenten & Tools](3.md) -> [3.mp4](3.mp4)
-- [Ch4: Erstes Projekt](4.md) -> [4.mp4](4.mp4) (Screen)
-- [Ch5: Variablen & Scopes](5.md) -> [5.mp4](5.mp4)
-- [Ch6: Skalare & zusammengesetzte Typen](6.md) -> [6.mp4](6.mp4)
-- [Ch7: Übungsprojekt](7.md) -> [7.mp4](7.mp4) (Screen)
-- [Ch8: Arrays & Tupel](8.md) -> [8.mp4](8.mp4)
-- [Ch9: Zusammenfassung Variablen & Typen](9.md) -> [9.mp4](9.mp4)
-- [Ch10: Funktionen](10.md) -> [10.mp4](10.mp4)
-- [Ch11: Funktionen Details](11.md) -> [11.mp4](11.mp4)
-- [Ch12: Operatoren](12.md) -> [12.mp4](12.mp4)
-- [Ch13: Übungen zu Operatoren](13.md) -> [13.mp4](13.mp4)
-- [Ch14: Antigravity CLI](14.md) -> [14.mp4](14.mp4) (Grammatik überprüft)
-- [Ch15: Kontrollstrukturen](15.md) -> [15.mp4](15.mp4) (Grammatik überprüft)
-- [Ch16: Beste Google KI zum Programmieren nutzen](16.md) -> [16.mp4](16.mp4) (Grammatik überprüft)
-- [Ch17: Speicherverwaltung & Rust Ownership](17.md) -> [17.mp4](17.mp4) (Video & Audio fertig)
-- [Ch18: Was ist Ownership?](18.md) -> [18.mp4](18.mp4) (Video & Audio fertig)
-- [Ch19: Referenzen & Borrowing](19.md) -> [19.mp4](19.mp4) (Video & Audio fertig)
-- [Ch20: Referenzen & Borrowing Grundlagen](20.md) -> [20.mp4](20.mp4) (Video & Audio fertig)
-- [Ch21: Zusammenfassung & Ausblick](21.md) -> [21.mp4](21.mp4) (Video & Audio fertig)
-- [Ch22: Der VS Code Planungs-Workflow](22.md) -> [22.mp4](22.mp4) (Video & Audio fertig)
-- [Ch23: Lernstrategie, Lernportale & KI-Prompts](23.md) -> [23.mp4](23.mp4) (Video & Audio fertig)
-- [Ch24: Projekt-Professionalisierung & das Antigravity CLI](24.md) -> [24.mp4](24.mp4) (Video & Audio fertig)
-- [Ch25: Der Slice-Typ (Slices)](25.md) -> [25.mp4](25.mp4) (Video & Audio fertig)
-- [Ch26: KI-Agenten & autonome Software-Ingenieure](26.md) -> [26.mp4](26.mp4) (Video & Audio fertig)
-- [Ch27: Eigene Datentypen mit Structs (Strukturen) strukturieren](27.md) -> [27.mp4](27.mp4) (Video & Audio fertig)
-- [Ch28: Enums und Pattern Matching](28.md) -> [28.mp4](28.mp4) (Video & Audio fertig)
+## Subagents
+* MD: [markdown.md](markdown.md)
+* Video: [video.md](video.md)
 
 ---
-
-## Rust-Lehrbuch erstellen (mdBook)
-* Alle Kapitel abgeschlossen und als Lehrbuch mit mdBook erfolgreich im Verzeichnis `doc/` erstellt, grammatikalisch geprüft und gebaut.
+## Kapitel
+* Ch1: Was ist Rust? -> [1.mp4](1.mp4)
+* Ch2: Installation -> [2.mp4](2.mp4)
+* Ch3: KI-Tools -> [3.mp4](3.mp4)
+* Ch4: Erstes Projekt -> [4.mp4](4.mp4)
+* Ch5: Variablen/Scopes -> [5.mp4](5.mp4)
+* Ch6: Typen (Skalar/Zusammengesetzt) -> [6.mp4](6.mp4)
+* Ch7: Übung -> [7.mp4](7.mp4)
+* Ch8: Arrays/Tupel -> [8.mp4](8.mp4)
+* Ch9: Recap Variablen/Typen -> [9.mp4](9.mp4)
+* Ch10: Funktionen -> [10.mp4](10.mp4)
+* Ch11: Funktionen Details -> [11.mp4](11.mp4)
+* Ch12: Operatoren -> [12.mp4](12.mp4)
+* Ch13: Übung Operatoren -> [13.mp4](13.mp4)
+* Ch14: Antigravity CLI -> [14.mp4](14.mp4)
+* Ch15: Kontrollstrukturen -> [15.mp4](15.mp4)
+* Ch16: Google KI -> [16.mp4](16.mp4)
+* Ch17: Speicher/Ownership -> [17.mp4](17.mp4)
+* Ch18: Was ist Ownership? -> [18.mp4](18.mp4)
+* Ch19: Referenzen/Borrowing -> [19.mp4](19.mp4)
+* Ch20: Borrowing Basics -> [20.mp4](20.mp4)
+* Ch21: Recap/Ausblick -> [21.mp4](21.mp4)
+* Ch22: VS Code Workflow -> [22.mp4](22.mp4)
+* Ch23: Lernstrategie/Prompts -> [23.mp4](23.mp4)
+* Ch24: Projekt-Prof/CLI -> [24.mp4](24.mp4)
+* Ch25: Slices -> [25.mp4](25.mp4)
+* Ch26: KI-Agenten -> [26.mp4](26.mp4)
+* Ch27: Structs -> [27.mp4](27.mp4)
+* Ch28: Enums/Pattern Matching -> [28.mp4](28.mp4)
