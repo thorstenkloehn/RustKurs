@@ -7,26 +7,25 @@
 
 
         <!-- Custom HTML head -->
-        
+
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="theme-color" content="#ffffff">
 
-        <link rel="icon" href="favicon.svg">
-        <link rel="shortcut icon" href="favicon.png">
-        <link rel="stylesheet" href="css/variables.css">
-        <link rel="stylesheet" href="css/general.css">
-        <link rel="stylesheet" href="css/chrome.css">
-        <link rel="stylesheet" href="css/print.css" media="print">
+        <link rel="icon" href="favicon-de23e50b.svg">
+        <link rel="shortcut icon" href="favicon-8114d1fc.png">
+        <link rel="stylesheet" href="css/variables-8adf115d.css">
+        <link rel="stylesheet" href="css/general-0392ca55.css">
+        <link rel="stylesheet" href="css/chrome-fc474251.css">
+        <link rel="stylesheet" href="css/print-9e4910d8.css" media="print">
 
         <!-- Fonts -->
-        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
-        <link rel="stylesheet" href="fonts/fonts.css">
+        <link rel="stylesheet" href="fonts/fonts-9644e21d.css">
 
         <!-- Highlight.js Stylesheets -->
-        <link rel="stylesheet" id="highlight-css" href="highlight.css">
-        <link rel="stylesheet" id="tomorrow-night-css" href="tomorrow-night.css">
-        <link rel="stylesheet" id="ayu-highlight-css" href="ayu-highlight.css">
+        <link rel="stylesheet" id="mdbook-highlight-css" href="highlight-493f70e1.css">
+        <link rel="stylesheet" id="mdbook-tomorrow-night-css" href="tomorrow-night-4c0ae647.css">
+        <link rel="stylesheet" id="mdbook-ayu-highlight-css" href="ayu-highlight-3fdfc3ac.css">
 
         <!-- Custom theme stylesheets -->
 
@@ -36,10 +35,10 @@
             const path_to_root = "";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "searchindex.js";
+            window.path_to_searchindex_js = "searchindex-34eaf846.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="toc.js"></script>
+        <script src="toc-9a36690f.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -53,7 +52,7 @@
             </div>
         </div>
     </div>
-    <div id="body-container">
+    <div id="mdbook-body-container">
         <!-- Work around some values being stored in localStorage wrapped in quotes -->
         <script>
             try {
@@ -82,12 +81,12 @@
             html.classList.add("js");
         </script>
 
-        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+        <input type="checkbox" id="mdbook-sidebar-toggle-anchor" class="hidden">
 
         <!-- Hide / unhide sidebar before it is displayed -->
         <script>
             let sidebar = null;
-            const sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            const sidebar_toggle = document.getElementById("mdbook-sidebar-toggle-anchor");
             if (document.body.clientWidth >= 1080) {
                 try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
                 sidebar = sidebar || 'visible';
@@ -102,39 +101,39 @@
             }
         </script>
 
-        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+        <nav id="mdbook-sidebar" class="sidebar" aria-label="Table of contents">
             <!-- populated by js -->
             <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
             <noscript>
                 <iframe class="sidebar-iframe-outer" src="toc.html"></iframe>
             </noscript>
-            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+            <div id="mdbook-sidebar-resize-handle" class="sidebar-resize-handle">
                 <div class="sidebar-resize-indicator"></div>
             </div>
         </nav>
 
-        <div id="page-wrapper" class="page-wrapper">
+        <div id="mdbook-page-wrapper" class="page-wrapper">
 
             <div class="page">
-                                <div id="menu-bar-hover-placeholder"></div>
-                <div id="menu-bar" class="menu-bar sticky">
+                <div id="mdbook-menu-bar-hover-placeholder"></div>
+                <div id="mdbook-menu-bar" class="menu-bar sticky">
                     <div class="left-buttons">
-                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
-                            <i class="fa fa-bars"></i>
+                        <label id="mdbook-sidebar-toggle" class="icon-button" for="mdbook-sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="mdbook-sidebar">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"/></svg></span>
                         </label>
-                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
-                            <i class="fa fa-paint-brush"></i>
+                        <button id="mdbook-theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="mdbook-theme-list">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M371.3 367.1c27.3-3.9 51.9-19.4 67.2-42.9L600.2 74.1c12.6-19.5 9.4-45.3-7.6-61.2S549.7-4.4 531.1 9.6L294.4 187.2c-24 18-38.2 46.1-38.4 76.1L371.3 367.1zm-19.6 25.4l-116-104.4C175.9 290.3 128 339.6 128 400c0 3.9 .2 7.8 .6 11.6c1.8 17.5-10.2 36.4-27.8 36.4H96c-17.7 0-32 14.3-32 32s14.3 32 32 32H240c61.9 0 112-50.1 112-112c0-2.5-.1-5-.2-7.5z"/></svg></span>
                         </button>
-                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
-                            <li role="none"><button role="menuitem" class="theme" id="default_theme">Auto</button></li>
-                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
-                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
-                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
-                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
-                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        <ul id="mdbook-theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-default_theme">Auto</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-ayu">Ayu</button></li>
                         </ul>
-                        <button id="search-toggle" class="icon-button" type="button" title="Search (`/`)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="/ s" aria-controls="searchbar">
-                            <i class="fa fa-search"></i>
+                        <button id="mdbook-search-toggle" class="icon-button" type="button" title="Search (`/`)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="/ s" aria-controls="mdbook-searchbar">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352c79.5 0 144-64.5 144-144s-64.5-144-144-144S64 128.5 64 208s64.5 144 144 144z"/></svg></span>
                         </button>
                     </div>
 
@@ -142,43 +141,43 @@
 
                     <div class="right-buttons">
                         <a href="print.html" title="Print this book" aria-label="Print this book">
-                            <i id="print-button" class="fa fa-print"></i>
+                            <span class=fa-svg id="print-button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M128 0C92.7 0 64 28.7 64 64v96h64V64H354.7L384 93.3V160h64V93.3c0-17-6.7-33.3-18.7-45.3L400 18.7C388 6.7 371.7 0 354.7 0H128zM384 352v32 64H128V384 368 352H384zm64 32h32c17.7 0 32-14.3 32-32V256c0-35.3-28.7-64-64-64H64c-35.3 0-64 28.7-64 64v96c0 17.7 14.3 32 32 32H64v64c0 35.3 28.7 64 64 64H384c35.3 0 64-28.7 64-64V384zm-16-88c-13.3 0-24-10.7-24-24s10.7-24 24-24s24 10.7 24 24s-10.7 24-24 24z"/></svg></span>
                         </a>
 
                     </div>
                 </div>
 
-                <div id="search-wrapper" class="hidden">
-                    <form id="searchbar-outer" class="searchbar-outer">
+                <div id="mdbook-search-wrapper" class="hidden">
+                    <form id="mdbook-searchbar-outer" class="searchbar-outer">
                         <div class="search-wrapper">
-                            <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                            <input type="search" id="mdbook-searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="mdbook-searchresults-outer" aria-describedby="searchresults-header">
                             <div class="spinner-wrapper">
-                                <i class="fa fa-spinner fa-spin"></i>
+                                <span class=fa-svg id="fa-spin"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M304 48c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zm0 416c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zM48 304c26.5 0 48-21.5 48-48s-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48zm464-48c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zM142.9 437c18.7-18.7 18.7-49.1 0-67.9s-49.1-18.7-67.9 0s-18.7 49.1 0 67.9s49.1 18.7 67.9 0zm0-294.2c18.7-18.7 18.7-49.1 0-67.9S93.7 56.2 75 75s-18.7 49.1 0 67.9s49.1 18.7 67.9 0zM369.1 437c18.7 18.7 49.1 18.7 67.9 0s18.7-49.1 0-67.9s-49.1-18.7-67.9 0s-18.7 49.1 0 67.9z"/></svg></span>
                             </div>
                         </div>
                     </form>
-                    <div id="searchresults-outer" class="searchresults-outer hidden">
-                        <div id="searchresults-header" class="searchresults-header"></div>
-                        <ul id="searchresults">
+                    <div id="mdbook-searchresults-outer" class="searchresults-outer hidden">
+                        <div id="mdbook-searchresults-header" class="searchresults-header"></div>
+                        <ul id="mdbook-searchresults">
                         </ul>
                     </div>
                 </div>
 
                 <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
                 <script>
-                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
-                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
-                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                    document.getElementById('mdbook-sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('mdbook-sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#mdbook-sidebar a')).forEach(function(link) {
                         link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
                     });
                 </script>
 
-                <div id="content" class="content">
+                <div id="mdbook-content" class="content">
                     <main>
                         <h1 id="kapitel-20-referenzen--borrowing-ausleihen--grundlagen-und-regeln"><a class="header" href="#kapitel-20-referenzen--borrowing-ausleihen--grundlagen-und-regeln">Kapitel 20: Referenzen &amp; Borrowing (Ausleihen) – Grundlagen und Regeln</a></h1>
 <p>In den vorherigen Kapiteln haben wir die Grundlagen der Speicherverwaltung sowie das fundamentale Ownership-System von Rust kennengelernt (siehe <a href="file:///home/thorsten/RustKurs/doc/src/17.md">17.md</a> und <a href="file:///home/thorsten/RustKurs/doc/src/18.md">18.md</a>). Wir haben gesehen, wie Rust durch das Prinzip des einzigen Besitzers Speicherlecks und illegale Zugriffe verhindert. In <a href="file:///home/thorsten/RustKurs/doc/src/19.md">19.md</a> haben wir die Grundlagen von Referenzen und dem Ausleihen (Borrowing) eingeführt.</p>
 <p>Dieses Kapitel vertieft diese Konzepte und widmet sich den strikten Regeln, die der Compiler – namentlich der <strong>Borrow Checker</strong> – zur Absicherung Ihres Codes einsetzt. Wir analysieren die Aliasing-Regeln, die physische Vermeidung von Datenrennen (Data Races) und die Funktionsweise moderner Lebensdauer-Analysen wie den <strong>Non-Lexical Lifetimes (NLL)</strong>. Die didaktischen und strukturellen Vorgaben für dieses Kapitel wurden gemäß den Richtlinien in <a href="file:///home/thorsten/RustKurs/markdown.md">markdown.md</a> und <a href="file:///home/thorsten/RustKurs/AGENTS.md">AGENTS.md</a> umgesetzt.</p>
-<hr />
+<hr>
 <h2 id="1-lernziele--lernplan"><a class="header" href="#1-lernziele--lernplan">1. Lernziele &amp; Lernplan</a></h2>
 <h3 id="lernziele"><a class="header" href="#lernziele">Lernziele</a></h3>
 <ul>
@@ -189,28 +188,18 @@
 </ul>
 <h3 id="lernplan"><a class="header" href="#lernplan">Lernplan</a></h3>
 <ul>
-<li><input disabled="" type="checkbox"/>
-<strong>2. Die Definition</strong>: Präzise Begriffsbestimmung von Aliasing, Datenrennen, Lifetimes und NLL sowie alltagsnahe Metaphern.</li>
-<li><input disabled="" type="checkbox"/>
-<strong>3. Das Problem &amp; Die Motivation</strong>: Analyse von Speicherfehlern durch unkontrolliertes Aliasing und die historische Einschränkung lexikalischer Lebensdauern.</li>
-<li><input disabled="" type="checkbox"/>
-<strong>4. Der naive Versuch</strong>: Ein fehlerhafter, lauffähiger Rust-Code, der die Aliasing-Regel des Borrow Checkers verletzt.</li>
-<li><input disabled="" type="checkbox"/>
-<strong>5. Die Anatomie des Fehlers</strong>: Detaillierte Analyse des Compiler-Fehlerberichts und Speicherlayout-Visualisierung zur Fehlerursache.</li>
-<li><input disabled="" type="checkbox"/>
-<strong>6. Die Lösung</strong>: Implementierung des korrekten Codes, Analyse der Anpassungen und Erklärung nach dem didaktischen EVA-Prinzip.</li>
-<li><input disabled="" type="checkbox"/>
-<strong>7. Kleines Tutorial</strong>: Schritt-für-Schritt-Entwicklung eines sicheren Zustands- und Score-Systems zur Veranschaulichung verschachtelter Ausleihen.</li>
-<li><input disabled="" type="checkbox"/>
-<strong>8. Mentale Modelle &amp; Deep Dive</strong>: Vertiefung der Aliasing-Regeln, der mathematischen Exklusivität, der Funktionsweise des NLL-Algorithmus auf MIR-Ebene (Mid-level Intermediate Representation) und eine lückenlose API-Referenz zu <code>Borrow</code>, <code>Cow</code>, <code>RefCell</code> und Konvertierungen.</li>
-<li><input disabled="" type="checkbox"/>
-<strong>9. Drei praktische Übungen</strong>: Programmieraufgaben mit ansteigendem Schwierigkeitsgrad (Leicht, Mittel, Schwer) inklusive Hilfestellungen.</li>
-<li><input disabled="" type="checkbox"/>
-<strong>10. Lernstrategie, Selbsteinschätzung &amp; Merkzettel</strong>: Cheat Sheet zu den Borrowing-Regeln, Verständnisfragen (Active Recall) und Anleitung zur gezielten Compiler-Fehlerprovokation.</li>
-<li><input disabled="" type="checkbox"/>
-<strong>11. Zusammenfassung</strong>: Kernpunkte des Kapitels im kompakten Überblick.</li>
+<li><input disabled="" type="checkbox"> <strong>2. Die Definition</strong>: Präzise Begriffsbestimmung von Aliasing, Datenrennen, Lifetimes und NLL sowie alltagsnahe Metaphern.</li>
+<li><input disabled="" type="checkbox"> <strong>3. Das Problem &amp; Die Motivation</strong>: Analyse von Speicherfehlern durch unkontrolliertes Aliasing und die historische Einschränkung lexikalischer Lebensdauern.</li>
+<li><input disabled="" type="checkbox"> <strong>4. Der naive Versuch</strong>: Ein fehlerhafter, lauffähiger Rust-Code, der die Aliasing-Regel des Borrow Checkers verletzt.</li>
+<li><input disabled="" type="checkbox"> <strong>5. Die Anatomie des Fehlers</strong>: Detaillierte Analyse des Compiler-Fehlerberichts und Speicherlayout-Visualisierung zur Fehlerursache.</li>
+<li><input disabled="" type="checkbox"> <strong>6. Die Lösung</strong>: Implementierung des korrekten Codes, Analyse der Anpassungen und Erklärung nach dem didaktischen EVA-Prinzip.</li>
+<li><input disabled="" type="checkbox"> <strong>7. Kleines Tutorial</strong>: Schritt-für-Schritt-Entwicklung eines sicheren Zustands- und Score-Systems zur Veranschaulichung verschachtelter Ausleihen.</li>
+<li><input disabled="" type="checkbox"> <strong>8. Mentale Modelle &amp; Deep Dive</strong>: Vertiefung der Aliasing-Regeln, der mathematischen Exklusivität, der Funktionsweise des NLL-Algorithmus auf MIR-Ebene (Mid-level Intermediate Representation) und eine lückenlose API-Referenz zu <code>Borrow</code>, <code>Cow</code>, <code>RefCell</code> und Konvertierungen.</li>
+<li><input disabled="" type="checkbox"> <strong>9. Drei praktische Übungen</strong>: Programmieraufgaben mit ansteigendem Schwierigkeitsgrad (Leicht, Mittel, Schwer) inklusive Hilfestellungen.</li>
+<li><input disabled="" type="checkbox"> <strong>10. Lernstrategie, Selbsteinschätzung &amp; Merkzettel</strong>: Cheat Sheet zu den Borrowing-Regeln, Verständnisfragen (Active Recall) und Anleitung zur gezielten Compiler-Fehlerprovokation.</li>
+<li><input disabled="" type="checkbox"> <strong>11. Zusammenfassung</strong>: Kernpunkte des Kapitels im kompakten Überblick.</li>
 </ul>
-<hr />
+<hr>
 <h2 id="2-die-definition"><a class="header" href="#2-die-definition">2. Die Definition</a></h2>
 <p>Um die Funktionsweise des Borrow Checkers tiefgehend zu verstehen, müssen wir zunächst die Fachterminologie präzise definieren:</p>
 <ul>
@@ -221,17 +210,17 @@
 <li><strong>Non-Lexical Lifetimes (NLL)</strong>: Ein mit Rust 2018 eingeführter Analysealgorithmus. NLL erlaubt es dem Compiler, die Lebensdauer einer Referenz anhand des tatsächlichen Kontrollflusses (wo wird sie letztmalig benutzt?) zu bestimmen, anstatt sie starr an geschweifte Klammern (lexikalische Blöcke <code>{}</code>) zu binden.</li>
 </ul>
 <h3 id="alltagsnahe-metaphern"><a class="header" href="#alltagsnahe-metaphern">Alltagsnahe Metaphern</a></h3>
-<blockquote>
-<p>[!NOTE]
-<strong>Die Präsenzbibliothek (Aliasing-Regel)</strong>:
+<blockquote class="blockquote-tag blockquote-tag-note">
+<p class="blockquote-tag-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>Note</p>
+<p><strong>Die Präsenzbibliothek (Aliasing-Regel)</strong>:
 Stellen Sie sich ein wertvolles Buch in einer Bibliothek vor (der Speicherwert). Die Bibliothek erlaubt es, dass beliebig viele Besucher gleichzeitig Kopien des Buches an ihren Tischen lesen (unveränderliche Referenzen <code>&amp;T</code>). Da alle nur lesen, stört niemand den anderen. Wenn jedoch ein Lektor Korrekturen im Buch eintragen möchte (veränderliche Referenz <code>&amp;mut T</code>), muss er das Buch exklusiv erhalten. Während er schreibt, darf kein anderer Besucher das Buch lesen, da dieser sonst halbe Sätze oder veraltete Fehler sehen würde. Es gilt: Entweder lesen viele gleichzeitig oder einer schreibt alleine. Niemals beides zusammen.</p>
 </blockquote>
-<blockquote>
-<p>[!TIP]
-<strong>Das geliehene Werkzeug (Lebensdauer &amp; NLL)</strong>:
+<blockquote class="blockquote-tag blockquote-tag-tip">
+<p class="blockquote-tag-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M8 1.5c-2.363 0-4 1.69-4 3.75 0 .984.424 1.625.984 2.304l.214.253c.223.264.47.556.673.848.284.411.537.896.621 1.49a.75.75 0 0 1-1.484.211c-.04-.282-.163-.547-.37-.847a8.456 8.456 0 0 0-.542-.68c-.084-.1-.173-.205-.268-.32C3.201 7.75 2.5 6.766 2.5 5.25 2.5 2.31 4.863 0 8 0s5.5 2.31 5.5 5.25c0 1.516-.701 2.5-1.328 3.259-.095.115-.184.22-.268.319-.207.245-.383.453-.541.681-.208.3-.33.565-.37.847a.751.751 0 0 1-1.485-.212c.084-.593.337-1.078.621-1.489.203-.292.45-.584.673-.848.075-.088.147-.173.213-.253.561-.679.985-1.32.985-2.304 0-2.06-1.637-3.75-4-3.75ZM5.75 12h4.5a.75.75 0 0 1 0 1.5h-4.5a.75.75 0 0 1 0-1.5ZM6 15.25a.75.75 0 0 1 .75-.75h2.5a.75.75 0 0 1 0 1.5h-2.5a.75.75 0 0 1-.75-.75Z"></path></svg>Tip</p>
+<p><strong>Das geliehene Werkzeug (Lebensdauer &amp; NLL)</strong>:
 Vor der Einführung von NLL (lexikalische Lebensdauer) war das Ausleihen einer Bohrmaschine wie ein Vertrag, der besagte: „Sie müssen die Bohrmaschine bis Punkt 18:00 Uhr behalten, selbst wenn Sie Ihr einziges Loch um 10:05 Uhr gebohrt haben.“ Niemand anderes durfte sie in der Zwischenzeit anfassen. Mit NLL ist das System intelligent: Sobald Sie das letzte Loch gebohrt und die Maschine zur Seite gelegt haben (letzte tatsächliche Nutzung im Code), gilt die Ausleihe als beendet. Ihr Nachbar darf die Bohrmaschine sofort ausleihen, selbst wenn es erst 10:06 Uhr ist.</p>
 </blockquote>
-<hr />
+<hr>
 <h2 id="3-das-problem--die-motivation"><a class="header" href="#3-das-problem--die-motivation">3. Das Problem &amp; Die Motivation</a></h2>
 <p>In traditionellen Systemprogrammiersprachen wie C oder C++ hat der Entwickler die vollständige Freiheit über Zeiger (Pointer) und Speicheradressen. Diese Freiheit birgt jedoch immense Risiken. Zwei der schwerwiegendsten Fehlerklassen sind:</p>
 <ol>
@@ -241,18 +230,21 @@ Wenn ein Speicherbereich über eine Referenz gelesen wird, während ein anderer 
 In modernen Multicore-Prozessoren führen Datenrennen dazu, dass CPU-Caches inkonsistent werden. Ein Thread schreibt Daten in den Cache, während ein anderer Thread veraltete Daten aus dem Hauptspeicher liest. Solche Fehler sind nicht-deterministisch; sie treten sporadisch auf und sind extrem schwer zu debuggen oder durch Tests zu reproduzieren.</li>
 </ol>
 <p>Zudem litt die frühe Version von Rust (vor Version 1.31) unter einer Einschränkung: Die Lebensdauer von Referenzen war streng <strong>lexikalisch</strong> definiert. Das bedeutete, dass eine Referenz so lange als „aktiv“ galt, bis der umgebende geschweifte Block <code>{}</code> endete. Entwickler mussten künstliche Hilfsblöcke in ihren Code einbauen, um den Borrow Checker zu beruhigen, was die Lesbarkeit des Codes erheblich verschlechterte:</p>
-<pre><code class="language-rust">// Historisches Rust-Beispiel vor Version 1.31 (Lexikalische Lebensdauer):
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>// Historisches Rust-Beispiel vor Version 1.31 (Lexikalische Lebensdauer):
 let mut x = 5;
 {
     let y = &amp;mut x;
     *y += 1;
 } // y stirbt erst hier. Ohne diese Klammern wäre der folgende Zugriff verboten gewesen!
-let z = &amp;x; </code></pre>
+let z = &amp;x; 
+<span class="boring">}</span></code></pre>
 <p>Die Motivation hinter den modernen Aliasing-Regeln und Non-Lexical Lifetimes (NLL) ist es daher, maximale Speichersicherheit und Datenrennofreiheit zur Compilezeit zu garantieren, während gleichzeitig der Schreibkomfort und die Code-Ästhetik für den Entwickler auf ein Maximum angehoben werden.</p>
-<hr />
+<hr>
 <h2 id="4-der-naive-versuch"><a class="header" href="#4-der-naive-versuch">4. Der naive Versuch</a></h2>
 <p>Der folgende naive Code zeigt den Versuch, einen Spieler-Datensatz auszuwerten. Wir möchten den Namen eines Spielers auslesen und gleichzeitig seinen Punktestand erhöhen. Dabei mischen wir unveränderliche und veränderliche Ausleihen auf denselben Speicherbereich, was die Aliasing-Regeln von Rust verletzt.</p>
-<pre><code class="language-rust">fn main() {
+<pre class="playground"><code class="language-rust edition2021">fn main() {
     // Unser veränderbarer Datenbereich: Ein String, der den Namen des Spielers repräsentiert
     let mut player_name = String::from("Maximilian");
 
@@ -270,7 +262,7 @@ let z = &amp;x; </code></pre>
     // Dieser Zugriff führt zur Verletzung der Aliasing-Regel.
     println!("Spieler-Info: {}", name_ref);
 }</code></pre>
-<hr />
+<hr>
 <h2 id="5-die-anatomie-des-fehlers"><a class="header" href="#5-die-anatomie-des-fehlers">5. Die Anatomie des Fehlers</a></h2>
 <h3 id="compiler-feedback"><a class="header" href="#compiler-feedback">Compiler-Feedback</a></h3>
 <p>Wenn Sie versuchen, das obige Programm zu kompilieren, verweigert der Rust-Compiler die Code-Generierung und gibt folgende detaillierte Fehlermeldung aus:</p>
@@ -318,10 +310,10 @@ let z = &amp;x; </code></pre>
 </li>
 </ol>
 <p>Rust verhindert diese Sicherheitslücke fundamental zur Compilezeit, indem es verbietet, dass ein Schreiber existiert, während noch ein Leser aktiv ist.</p>
-<hr />
+<hr>
 <h2 id="6-die-lösung"><a class="header" href="#6-die-lösung">6. Die Lösung</a></h2>
 <p>Um diesen Fehler zu beheben, müssen wir sicherstellen, dass die Lebensdauer des Lesers (<code>name_ref</code>) beendet ist, bevor wir den Schreiber (<code>modifier_ref</code>) deklarieren. Dank <strong>Non-Lexical Lifetimes (NLL)</strong> müssen wir dafür keine künstlichen Scopes mit geschweiften Klammern <code>{}</code> bauen; es reicht aus, den Zugriff auf den Leser zeitlich vorzuziehen.</p>
-<pre><code class="language-rust">fn main() {
+<pre class="playground"><code class="language-rust edition2021">fn main() {
     let mut player_name = String::from("Maximilian");
 
     // Die unveränderliche Ausleihe (Leser) wird erstellt
@@ -361,23 +353,28 @@ let z = &amp;x; </code></pre>
 </ul>
 </li>
 </ol>
-<hr />
+<hr>
 <h2 id="7-kleines-tutorial-ein-sicheres-score--und-logging-system"><a class="header" href="#7-kleines-tutorial-ein-sicheres-score--und-logging-system">7. Kleines Tutorial: Ein sicheres Score- und Logging-System</a></h2>
 <p>Wir wollen ein kleines, praxisnahes System bauen: Einen <code>ScoreTracker</code>. Dieser soll den Punktestand eines Spielers verwalten, Log-Einträge schreiben und Statistiken ausgeben. Wir werden die Ausleihregeln gezielt anwenden und zeigen, wie wir Konflikte vermeiden.</p>
 <h3 id="schritt-1-die-datenstrukturen-definieren"><a class="header" href="#schritt-1-die-datenstrukturen-definieren">Schritt 1: Die Datenstrukturen definieren</a></h3>
 <p>Wir definieren einen einfachen <code>ScoreTracker</code>, der den Namen des Spielers sowie eine Liste von Punkten speichert.</p>
-<pre><code class="language-rust">struct ScoreTracker {
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>struct ScoreTracker {
     player: String,
     scores: [u32; 3], // Feste Größe von 3 Spielen
     games_played: usize,
-}</code></pre>
+}
+<span class="boring">}</span></code></pre>
 <h3 id="schritt-2-die-methoden-implementieren"><a class="header" href="#schritt-2-die-methoden-implementieren">Schritt 2: Die Methoden implementieren</a></h3>
 <p>Wir implementieren zwei Methoden im <code>impl</code>-Block:</p>
 <ol>
 <li>Eine veränderliche Methode <code>add_score</code>, um einen neuen Punktestand einzutragen.</li>
 <li>Eine unveränderliche Methode <code>calculate_average</code>, um den Durchschnitt zu berechnen.</li>
 </ol>
-<pre><code class="language-rust">impl ScoreTracker {
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>impl ScoreTracker {
     // Benötigt eine veränderliche Referenz, da wir den Zustand manipulieren
     fn add_score(&amp;mut self, score: u32) -&gt; Result&lt;(), &amp;'static str&gt; {
         if self.games_played &gt;= self.scores.len() {
@@ -396,10 +393,11 @@ let z = &amp;x; </code></pre>
         let sum: u32 = self.scores[0..self.games_played].iter().sum();
         sum as f64 / self.games_played as f64
     }
-}</code></pre>
+}
+<span class="boring">}</span></code></pre>
 <h3 id="schritt-3-die-hauptlogik-steuern"><a class="header" href="#schritt-3-die-hauptlogik-steuern">Schritt 3: Die Hauptlogik steuern</a></h3>
 <p>In der <code>main</code>-Funktion orchestrieren wir die Zugriffe. Wir achten penibel darauf, dass wir keine Lese-Referenzen halten, während wir Punkte hinzufügen.</p>
-<pre><code class="language-rust">fn main() {
+<pre class="playground"><code class="language-rust edition2021">fn main() {
     let mut tracker = ScoreTracker {
         player: String::from("Elena"),
         scores: [0; 3],
@@ -438,7 +436,7 @@ let z = &amp;x; </code></pre>
 <li>In Zeile 24 rufen wir <code>tracker.calculate_average()</code> auf. Hier wird eine unveränderliche Referenz <code>&amp;tracker</code> erzeugt. Auch diese erlischt sofort nach dem Aufruf.</li>
 <li>In Zeile 30 rufen wir erneut eine veränderliche Methode auf. Da zu diesem Zeitpunkt keine andere Referenz auf <code>tracker</code> existiert, lässt der Borrow Checker diese Mutation zu.</li>
 </ul>
-<hr />
+<hr>
 <h2 id="8-mentale-modelle--deep-dive"><a class="header" href="#8-mentale-modelle--deep-dive">8. Mentale Modelle &amp; Deep Dive</a></h2>
 <h3 id="201-die-aliasing-regeln-des-borrow-checkers"><a class="header" href="#201-die-aliasing-regeln-des-borrow-checkers">20.1 Die Aliasing-Regeln des Borrow Checkers</a></h3>
 <p>Der Borrow Checker erzwingt ein klares Regelwerk bezüglich Aliasing und Mutation. Dieses lässt sich mathematisch und logisch formalisieren.</p>
@@ -453,13 +451,19 @@ let z = &amp;x; </code></pre>
 </ul>
 </blockquote>
 <p>Diese Regel lässt sich in folgender Wahrheitstabelle veranschaulichen:</p>
-<div class="table-wrapper"><table><thead><tr><th style="text-align: center">Anzahl Leser (<code>&amp;T</code>)</th><th style="text-align: center">Anzahl Schreiber (<code>&amp;mut T</code>)</th><th style="text-align: center">Zustand erlaubt?</th><th style="text-align: left">Grund / Konsequenz</th></tr></thead><tbody>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th style="text-align: center">Anzahl Leser (<code>&amp;T</code>)</th><th style="text-align: center">Anzahl Schreiber (<code>&amp;mut T</code>)</th><th style="text-align: center">Zustand erlaubt?</th><th style="text-align: left">Grund / Konsequenz</th></tr>
+</thead>
+<tbody>
 <tr><td style="text-align: center">0</td><td style="text-align: center">0</td><td style="text-align: center"><strong>Ja</strong></td><td style="text-align: left">Keine aktiven Ausleihen, Besitzer hat vollen Zugriff.</td></tr>
 <tr><td style="text-align: center">1+</td><td style="text-align: center">0</td><td style="text-align: center"><strong>Ja</strong></td><td style="text-align: left">Nur Leser. Daten können gefahrlos parallel ausgelesen werden.</td></tr>
 <tr><td style="text-align: center">0</td><td style="text-align: center">1</td><td style="text-align: center"><strong>Ja</strong></td><td style="text-align: left">Ein exklusiver Schreiber. Modifikation ist sicher, da niemand zuschaut.</td></tr>
 <tr><td style="text-align: center">1+</td><td style="text-align: center">1</td><td style="text-align: center"><strong>Nein</strong></td><td style="text-align: left"><strong>Verboten</strong>. Leser könnten inkonsistente Zustände sehen (Data Race/Use-After-Free).</td></tr>
 <tr><td style="text-align: center">0</td><td style="text-align: center">2+</td><td style="text-align: center"><strong>Nein</strong></td><td style="text-align: left"><strong>Verboten</strong>. Mehrere Schreiber würden sich gegenseitig überschreiben.</td></tr>
-</tbody></table>
+</tbody>
+</table>
 </div>
 <h4 id="2012-vermeidung-von-datenrennen"><a class="header" href="#2012-vermeidung-von-datenrennen">20.1.2 Vermeidung von Datenrennen</a></h4>
 <p>Ein <strong>Datenrennen (Data Race)</strong> ist ein hardwarenahes Problem in der Concurrency. Es unterscheidet sich von einer allgemeinen <strong>Race Condition</strong> (einem logischen Ablaufproblem). Ein Datenrennen ist auf CPU- und Speicher-Ebene definiert durch:</p>
@@ -479,7 +483,7 @@ Durch die Durchsetzung der Aliasing-Regeln auf Typebene garantiert Rust, dass ei
 <li>Wenn Sie eine veränderliche Referenz <code>&amp;mut T</code> an einen Thread übergeben, stellt das Typsystem sicher, dass kein anderer Thread eine Referenz (weder <code>&amp;T</code> noch <code>&amp;mut T</code>) auf diesen Wert besitzt.</li>
 <li>Dies wird über die Auto-Traits <code>Send</code> (Wert darf in einen anderen Thread verschoben werden) und <code>Sync</code> (Referenz darf mit anderen Threads geteilt werden) abgesichert. Da eine <code>&amp;mut T</code> exklusiv ist, ist das Teilen von veränderlichen Daten ohne Thread-Synchronisation (wie z. B. <code>Mutex&lt;T&gt;</code>) unmöglich.</li>
 </ul>
-<hr />
+<hr>
 <h2 id="202-die-lebensdauer-von-referenzen"><a class="header" href="#202-die-lebensdauer-von-referenzen">20.2 Die Lebensdauer von Referenzen</a></h2>
 <p>Die Lebensdauer (Lifetime) einer Referenz ist das Zeitfenster, in dem die Referenz auf eine gültige Speicheradresse zeigt.</p>
 <h4 id="2021-non-lexical-lifetimes-nll"><a class="header" href="#2021-non-lexical-lifetimes-nll">20.2.1 Non-Lexical Lifetimes (NLL)</a></h4>
@@ -504,16 +508,19 @@ Durch die Durchsetzung der Aliasing-Regeln auf Typebene garantiert Rust, dass ei
 }                 --+                     }
 </code></pre>
 <p>Dank NLL versteht der Compiler, dass <code>y</code> in der Zeile nach <code>println!</code> nicht mehr benötigt wird. Der Speicher darf ab diesem Zeitpunkt wieder frei veränderbar ausgeliehen werden.</p>
-<hr />
+<hr>
 <h3 id="exhaustive-api-reference-lückenlos"><a class="header" href="#exhaustive-api-reference-lückenlos">Exhaustive API-Reference (Lückenlos)</a></h3>
 <p>In diesem Abschnitt dokumentieren wir alle relevanten Standardbibliotheks-Traits und Typen, die für das System des Ausleihens, der Konvertierung und der dynamischen Überprüfung der Aliasing-Regeln von Bedeutung sind.</p>
 <h4 id="1-trait-stdborrowborrow"><a class="header" href="#1-trait-stdborrowborrow">1. Trait <code>std::borrow::Borrow</code></a></h4>
 <p>Dieser Trait ermöglicht es, einen Typen als Ausleihe eines anderen Typs zu behandeln. Er wird häufig in assoziativen Containern wie <code>HashMap</code> verwendet, um Schlüssel mit unterschiedlichen Typen (z. B. <code>&amp;str</code> für einen <code>String</code>-Schlüssel) abzufragen, ohne neue Heap-Allokationen durchzuführen.</p>
 <ul>
 <li><strong>Signatur</strong>:
-<pre><code class="language-rust">pub trait Borrow&lt;Borrowed: ?Sized&gt; {
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>pub trait Borrow&lt;Borrowed: ?Sized&gt; {
     fn borrow(&amp;self) -&gt; &amp;Borrowed;
-}</code></pre>
+}
+<span class="boring">}</span></code></pre>
 </li>
 <li><strong>Parameter</strong>:
 <ul>
@@ -531,19 +538,25 @@ Durch die Durchsetzung der Aliasing-Regeln auf Typebene garantiert Rust, dass ei
 </ul>
 </li>
 <li><strong>Mini-Beispiel</strong>:
-<pre><code class="language-rust">use std::borrow::Borrow;
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>use std::borrow::Borrow;
 let s: String = String::from("Rust");
 let r: &amp;str = s.borrow();
-assert_eq!(r, "Rust");</code></pre>
+assert_eq!(r, "Rust");
+<span class="boring">}</span></code></pre>
 </li>
 </ul>
 <h4 id="2-trait-stdborrowborrowmut"><a class="header" href="#2-trait-stdborrowborrowmut">2. Trait <code>std::borrow::BorrowMut</code></a></h4>
 <p>Das veränderliche Gegenstück zu <code>Borrow</code>. Es erlaubt die veränderliche Ausleihe eines inneren Typs.</p>
 <ul>
 <li><strong>Signatur</strong>:
-<pre><code class="language-rust">pub trait BorrowMut&lt;Borrowed: ?Sized&gt;: Borrow&lt;Borrowed&gt; {
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>pub trait BorrowMut&lt;Borrowed: ?Sized&gt;: Borrow&lt;Borrowed&gt; {
     fn borrow_mut(&amp;mut self) -&gt; &amp;mut Borrowed;
-}</code></pre>
+}
+<span class="boring">}</span></code></pre>
 </li>
 <li><strong>Parameter</strong>:
 <ul>
@@ -561,28 +574,37 @@ assert_eq!(r, "Rust");</code></pre>
 </ul>
 </li>
 <li><strong>Mini-Beispiel</strong>:
-<pre><code class="language-rust">use std::borrow::BorrowMut;
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>use std::borrow::BorrowMut;
 let mut x: Vec&lt;i32&gt; = vec![1, 2, 3];
 let s: &amp;mut [i32] = x.borrow_mut();
 s[0] = 9;
-assert_eq!(x[0], 9);</code></pre>
+assert_eq!(x[0], 9);
+<span class="boring">}</span></code></pre>
 </li>
 </ul>
 <h4 id="3-enum-stdborrowcow-clone-on-write"><a class="header" href="#3-enum-stdborrowcow-clone-on-write">3. Enum <code>std::borrow::Cow</code> (Clone-on-Write)</a></h4>
 <p>Ein Smart Pointer, der Daten entweder unveränderlich ausleiht oder bei Bedarf (wenn eine Modifikation ansteht) clont und den Besitz übernimmt. Dies ist extrem nützlich für Performance-Optimierungen.</p>
 <ul>
 <li><strong>Signatur</strong>:
-<pre><code class="language-rust">pub enum Cow&lt;'a, B: ?Sized + 'a&gt; 
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>pub enum Cow&lt;'a, B: ?Sized + 'a&gt; 
 where B: ToOwned {
     Borrowed(&amp;'a B),
     Owned(&lt;B as ToOwned&gt;::Owned),
-}</code></pre>
+}
+<span class="boring">}</span></code></pre>
 </li>
 </ul>
 <h5 id="methode-to_mut-von-cow"><a class="header" href="#methode-to_mut-von-cow">Methode <code>to_mut</code> von <code>Cow</code></a></h5>
 <ul>
 <li><strong>Signatur</strong>:
-<pre><code class="language-rust">pub fn to_mut(&amp;mut self) -&gt; &amp;mut &lt;B as ToOwned&gt;::Owned</code></pre>
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>pub fn to_mut(&amp;mut self) -&gt; &amp;mut &lt;B as ToOwned&gt;::Owned
+<span class="boring">}</span></code></pre>
 </li>
 <li><strong>Parameter</strong>:
 <ul>
@@ -600,16 +622,22 @@ where B: ToOwned {
 </ul>
 </li>
 <li><strong>Mini-Beispiel</strong>:
-<pre><code class="language-rust">use std::borrow::Cow;
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>use std::borrow::Cow;
 let mut cow: Cow&lt;str&gt; = Cow::Borrowed("Hello");
 cow.to_mut().push_str(" World"); // Clont die Daten im Heap
-assert_eq!(cow, "Hello World");</code></pre>
+assert_eq!(cow, "Hello World");
+<span class="boring">}</span></code></pre>
 </li>
 </ul>
 <h5 id="methode-into_owned-von-cow"><a class="header" href="#methode-into_owned-von-cow">Methode <code>into_owned</code> von <code>Cow</code></a></h5>
 <ul>
 <li><strong>Signatur</strong>:
-<pre><code class="language-rust">pub fn into_owned(self) -&gt; &lt;B as ToOwned&gt;::Owned</code></pre>
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>pub fn into_owned(self) -&gt; &lt;B as ToOwned&gt;::Owned
+<span class="boring">}</span></code></pre>
 </li>
 <li><strong>Parameter</strong>:
 <ul>
@@ -627,19 +655,25 @@ assert_eq!(cow, "Hello World");</code></pre>
 </ul>
 </li>
 <li><strong>Mini-Beispiel</strong>:
-<pre><code class="language-rust">use std::borrow::Cow;
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>use std::borrow::Cow;
 let cow: Cow&lt;str&gt; = Cow::Borrowed("Rust");
 let owned: String = cow.into_owned(); // Kein Clonen nötig, wenn bereits Owned
-assert_eq!(owned, "Rust");</code></pre>
+assert_eq!(owned, "Rust");
+<span class="boring">}</span></code></pre>
 </li>
 </ul>
 <h4 id="4-trait-stdconvertasref"><a class="header" href="#4-trait-stdconvertasref">4. Trait <code>std::convert::AsRef</code></a></h4>
 <p>Ein sehr häufig genutzter Trait zur Konvertierung von Referenzen. Er dient dazu, in Funktionsparametern flexibel verschiedene Typen zu akzeptieren, die sich als Referenz auf einen Zieltyp darstellen lassen.</p>
 <ul>
 <li><strong>Signatur</strong>:
-<pre><code class="language-rust">pub trait AsRef&lt;T: ?Sized&gt; {
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>pub trait AsRef&lt;T: ?Sized&gt; {
     fn as_ref(&amp;self) -&gt; &amp;T;
-}</code></pre>
+}
+<span class="boring">}</span></code></pre>
 </li>
 <li><strong>Parameter</strong>:
 <ul>
@@ -657,18 +691,24 @@ assert_eq!(owned, "Rust");</code></pre>
 </ul>
 </li>
 <li><strong>Mini-Beispiel</strong>:
-<pre><code class="language-rust">let s = String::from("Rust");
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let s = String::from("Rust");
 let r: &amp;str = s.as_ref();
-assert_eq!(r, "Rust");</code></pre>
+assert_eq!(r, "Rust");
+<span class="boring">}</span></code></pre>
 </li>
 </ul>
 <h4 id="5-trait-stdconvertasmut"><a class="header" href="#5-trait-stdconvertasmut">5. Trait <code>std::convert::AsMut</code></a></h4>
 <p>Das veränderliche Gegenstück zu <code>AsRef</code>.</p>
 <ul>
 <li><strong>Signatur</strong>:
-<pre><code class="language-rust">pub trait AsMut&lt;T: ?Sized&gt; {
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>pub trait AsMut&lt;T: ?Sized&gt; {
     fn as_mut(&amp;mut self) -&gt; &amp;mut T;
-}</code></pre>
+}
+<span class="boring">}</span></code></pre>
 </li>
 <li><strong>Parameter</strong>:
 <ul>
@@ -686,10 +726,13 @@ assert_eq!(r, "Rust");</code></pre>
 </ul>
 </li>
 <li><strong>Mini-Beispiel</strong>:
-<pre><code class="language-rust">let mut arr = [1, 2, 3];
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let mut arr = [1, 2, 3];
 let slice: &amp;mut [i32] = arr.as_mut();
 slice[0] = 10;
-assert_eq!(arr[0], 10);</code></pre>
+assert_eq!(arr[0], 10);
+<span class="boring">}</span></code></pre>
 </li>
 </ul>
 <h4 id="6-typ-stdcellrefcell-interior-mutability"><a class="header" href="#6-typ-stdcellrefcell-interior-mutability">6. Typ <code>std::cell::RefCell</code> (Interior Mutability)</a></h4>
@@ -697,7 +740,10 @@ assert_eq!(arr[0], 10);</code></pre>
 <h5 id="methode-borrow-von-refcell"><a class="header" href="#methode-borrow-von-refcell">Methode <code>borrow</code> von <code>RefCell</code></a></h5>
 <ul>
 <li><strong>Signatur</strong>:
-<pre><code class="language-rust">pub fn borrow(&amp;self) -&gt; Ref&lt;'_, T&gt;</code></pre>
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>pub fn borrow(&amp;self) -&gt; Ref&lt;'_, T&gt;
+<span class="boring">}</span></code></pre>
 </li>
 <li><strong>Parameter</strong>:
 <ul>
@@ -715,16 +761,22 @@ assert_eq!(arr[0], 10);</code></pre>
 </ul>
 </li>
 <li><strong>Mini-Beispiel</strong>:
-<pre><code class="language-rust">use std::cell::RefCell;
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>use std::cell::RefCell;
 let cell = RefCell::new(5);
 let borrow = cell.borrow(); // Lesezugriff
-assert_eq!(*borrow, 5);</code></pre>
+assert_eq!(*borrow, 5);
+<span class="boring">}</span></code></pre>
 </li>
 </ul>
 <h5 id="methode-borrow_mut-von-refcell"><a class="header" href="#methode-borrow_mut-von-refcell">Methode <code>borrow_mut</code> von <code>RefCell</code></a></h5>
 <ul>
 <li><strong>Signatur</strong>:
-<pre><code class="language-rust">pub fn borrow_mut(&amp;self) -&gt; RefMut&lt;'_, T&gt;</code></pre>
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>pub fn borrow_mut(&amp;self) -&gt; RefMut&lt;'_, T&gt;
+<span class="boring">}</span></code></pre>
 </li>
 <li><strong>Parameter</strong>:
 <ul>
@@ -742,19 +794,25 @@ assert_eq!(*borrow, 5);</code></pre>
 </ul>
 </li>
 <li><strong>Mini-Beispiel</strong>:
-<pre><code class="language-rust">use std::cell::RefCell;
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>use std::cell::RefCell;
 let cell = RefCell::new(5);
 {
     let mut borrow = cell.borrow_mut(); // Schreibzugriff
     *borrow += 5;
 }
-assert_eq!(*cell.borrow(), 10);</code></pre>
+assert_eq!(*cell.borrow(), 10);
+<span class="boring">}</span></code></pre>
 </li>
 </ul>
 <h5 id="methode-try_borrow-von-refcell"><a class="header" href="#methode-try_borrow-von-refcell">Methode <code>try_borrow</code> von <code>RefCell</code></a></h5>
 <ul>
 <li><strong>Signatur</strong>:
-<pre><code class="language-rust">pub fn try_borrow(&amp;self) -&gt; Result&lt;Ref&lt;'_, T&gt;, BorrowError&gt;</code></pre>
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>pub fn try_borrow(&amp;self) -&gt; Result&lt;Ref&lt;'_, T&gt;, BorrowError&gt;
+<span class="boring">}</span></code></pre>
 </li>
 <li><strong>Parameter</strong>:
 <ul>
@@ -772,16 +830,22 @@ assert_eq!(*cell.borrow(), 10);</code></pre>
 </ul>
 </li>
 <li><strong>Mini-Beispiel</strong>:
-<pre><code class="language-rust">use std::cell::RefCell;
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>use std::cell::RefCell;
 let cell = RefCell::new(5);
 let mut _write = cell.borrow_mut();
-assert!(cell.try_borrow().is_err()); // Fehler, da bereits ein Schreiber aktiv ist!</code></pre>
+assert!(cell.try_borrow().is_err()); // Fehler, da bereits ein Schreiber aktiv ist!
+<span class="boring">}</span></code></pre>
 </li>
 </ul>
 <h5 id="methode-try_borrow_mut-von-refcell"><a class="header" href="#methode-try_borrow_mut-von-refcell">Methode <code>try_borrow_mut</code> von <code>RefCell</code></a></h5>
 <ul>
 <li><strong>Signatur</strong>:
-<pre><code class="language-rust">pub fn try_borrow_mut(&amp;self) -&gt; Result&lt;RefMut&lt;'_, T&gt;, BorrowMutError&gt;</code></pre>
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>pub fn try_borrow_mut(&amp;self) -&gt; Result&lt;RefMut&lt;'_, T&gt;, BorrowMutError&gt;
+<span class="boring">}</span></code></pre>
 </li>
 <li><strong>Parameter</strong>:
 <ul>
@@ -799,19 +863,22 @@ assert!(cell.try_borrow().is_err()); // Fehler, da bereits ein Schreiber aktiv i
 </ul>
 </li>
 <li><strong>Mini-Beispiel</strong>:
-<pre><code class="language-rust">use std::cell::RefCell;
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>use std::cell::RefCell;
 let cell = RefCell::new(10);
 let _read = cell.borrow();
-assert!(cell.try_borrow_mut().is_err()); // Fehler, da ein Leser aktiv ist!</code></pre>
+assert!(cell.try_borrow_mut().is_err()); // Fehler, da ein Leser aktiv ist!
+<span class="boring">}</span></code></pre>
 </li>
 </ul>
-<hr />
-<h2 id="9-drei-praktische-Übungen"><a class="header" href="#9-drei-praktische-Übungen">9. Drei praktische Übungen</a></h2>
-<h3 id="Übung-1-leicht---syntax--aliasing-festigen"><a class="header" href="#Übung-1-leicht---syntax--aliasing-festigen">Übung 1 (Leicht - Syntax &amp; Aliasing festigen)</a></h3>
+<hr>
+<h2 id="9-drei-praktische-übungen"><a class="header" href="#9-drei-praktische-übungen">9. Drei praktische Übungen</a></h2>
+<h3 id="übung-1-leicht---syntax--aliasing-festigen"><a class="header" href="#übung-1-leicht---syntax--aliasing-festigen">Übung 1 (Leicht - Syntax &amp; Aliasing festigen)</a></h3>
 <p><strong>Aufgabe</strong>:
 Gegeben ist ein Programm, das die Temperaturwerte einer Wetterstation ausliest und aktualisiert. Der Code kompiliert aufgrund einer Aliasing-Kollision nicht. Korrigieren Sie den Code unter Verwendung der NLL-Regeln, ohne neue geschweifte Klammern oder Scopes einzuführen.</p>
 <p><strong>Ausgangscode</strong>:</p>
-<pre><code class="language-rust">fn main() {
+<pre class="playground"><code class="language-rust edition2021">fn main() {
     let mut temperatures = [18.5, 19.2, 21.0];
     
     let current_temp = &amp;temperatures[1];
@@ -831,13 +898,16 @@ Gegeben ist ein Programm, das die Temperaturwerte einer Wetterstation ausliest u
 <ul>
 <li>Untersuchen Sie, wo <code>current_temp</code> das letzte Mal verwendet wird. Bringen Sie diese Verwendung vor die Deklaration von <code>modifier</code>.</li>
 </ul>
-<hr />
-<h3 id="Übung-2-mittel---logik-erweitern--scoping"><a class="header" href="#Übung-2-mittel---logik-erweitern--scoping">Übung 2 (Mittel - Logik erweitern &amp; Scoping)</a></h3>
+<hr>
+<h3 id="übung-2-mittel---logik-erweitern--scoping"><a class="header" href="#übung-2-mittel---logik-erweitern--scoping">Übung 2 (Mittel - Logik erweitern &amp; Scoping)</a></h3>
 <p><strong>Aufgabe</strong>:
 Schreiben Sie ein kleines Scoreboard-System auf Basis eines Arrays. Implementieren Sie eine Funktion <code>update_highscore</code>, die ein veränderbares Array von drei Scores (<code>&amp;mut [u32; 3]</code>) und einen neuen Score nimmt. Die Funktion soll prüfen, ob der neue Score höher ist als der kleinste Score im Board. Wenn ja, soll der kleinste Score durch den neuen ersetzt und das Array sortiert werden.</p>
 <p>Verwenden Sie innerhalb der Funktion eine saubere Trennung von Lese- und Schreibphasen, um den Borrow Checker zu bedienen.</p>
 <p><strong>Soll-Signatur</strong>:</p>
-<pre><code class="language-rust">fn update_scoreboard(board: &amp;mut [u32; 3], new_score: u32)</code></pre>
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>fn update_scoreboard(board: &amp;mut [u32; 3], new_score: u32)
+<span class="boring">}</span></code></pre>
 <p><strong>Beispiel-Input</strong>:</p>
 <ul>
 <li><code>board</code> = <code>[100, 250, 500]</code></li>
@@ -850,8 +920,8 @@ Schreiben Sie ein kleines Scoreboard-System auf Basis eines Arrays. Implementier
 <li>Verändern Sie das Array im zweiten Schritt, indem Sie den Index veränderlich ansprechen.</li>
 <li>Sortieren Sie das Array am Ende mit der Standardmethode <code>.sort()</code>.</li>
 </ol>
-<hr />
-<h3 id="Übung-3-schwer---transferleistung"><a class="header" href="#Übung-3-schwer---transferleistung">Übung 3 (Schwer - Transferleistung)</a></h3>
+<hr>
+<h3 id="übung-3-schwer---transferleistung"><a class="header" href="#übung-3-schwer---transferleistung">Übung 3 (Schwer - Transferleistung)</a></h3>
 <p><strong>Aufgabe</strong>:
 Entwickeln Sie ein System zur Verwaltung eines Log-Puffers. Da wir noch keine dynamischen Vektoren oder komplexen Struct-Kollektionen im Detail behandelt haben, nutzen wir ein flaches Byte-Array (<code>[u8; 12]</code>) auf dem Stack als Speicher.</p>
 <p>Implementieren Sie ein Struct <code>LogBuffer</code>, das das Array und die aktuelle Schreibe-Position (Anzahl der geschriebenen Bytes) verwaltet.</p>
@@ -864,15 +934,21 @@ Entwickeln Sie ein System zur Verwaltung eines Log-Puffers. Da wir noch keine dy
 <ul>
 <li>Achten Sie darauf, dass der Rückgabetyp von <code>read_all</code> die Lebensdauer des Puffers (<code>&amp;self</code>) einschränkt. Sie können keinen Schreibzugriff (<code>append</code>) durchführen, solange Sie die vom Leser gelieferte Referenz noch verwenden wollen.</li>
 </ul>
-<hr />
+<hr>
 <h2 id="10-lernstrategie-selbsteinschätzung--merkzettel"><a class="header" href="#10-lernstrategie-selbsteinschätzung--merkzettel">10. Lernstrategie, Selbsteinschätzung &amp; Merkzettel</a></h2>
 <h3 id="spickzettel-cheat-sheet"><a class="header" href="#spickzettel-cheat-sheet">Spickzettel (Cheat Sheet)</a></h3>
-<div class="table-wrapper"><table><thead><tr><th style="text-align: left">Konzept</th><th style="text-align: left">Syntax</th><th style="text-align: left">Erlaubte Anzahl</th><th style="text-align: center">Lesezugriff</th><th style="text-align: center">Schreibzugriff</th><th style="text-align: left">Coercion</th></tr></thead><tbody>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th style="text-align: left">Konzept</th><th style="text-align: left">Syntax</th><th style="text-align: left">Erlaubte Anzahl</th><th style="text-align: center">Lesezugriff</th><th style="text-align: center">Schreibzugriff</th><th style="text-align: left">Coercion</th></tr>
+</thead>
+<tbody>
 <tr><td style="text-align: left"><strong>Unveränderliche Referenz</strong></td><td style="text-align: left"><code>&amp;T</code></td><td style="text-align: left">Beliebig viele</td><td style="text-align: center"><strong>Ja</strong></td><td style="text-align: center"><strong>Nein</strong></td><td style="text-align: left">Automatische Umwandlung in allgemeinere Typen</td></tr>
 <tr><td style="text-align: left"><strong>Veränderliche Referenz</strong></td><td style="text-align: left"><code>&amp;mut T</code></td><td style="text-align: left">Exakt eine (1)</td><td style="text-align: center"><strong>Ja</strong></td><td style="text-align: center"><strong>Ja</strong></td><td style="text-align: left">Kann implizit zu <code>&amp;T</code> herabgestuft werden</td></tr>
 <tr><td style="text-align: left"><strong>Aliasing-Ausschluss</strong></td><td style="text-align: left">-</td><td style="text-align: left">Exklusives ODER</td><td style="text-align: center">-</td><td style="text-align: center">-</td><td style="text-align: left"><code>&amp;T</code> und <code>&amp;mut T</code> dürfen sich im Scope nie überlappen</td></tr>
 <tr><td style="text-align: left"><strong>NLL (Non-Lexical Lifetimes)</strong></td><td style="text-align: left">-</td><td style="text-align: left">Zeilenbasiert</td><td style="text-align: center">-</td><td style="text-align: center">-</td><td style="text-align: left">Lebensdauer endet nach der letzten Nutzung</td></tr>
-</tbody></table>
+</tbody>
+</table>
 </div>
 <h3 id="active-recall-verständnisfragen"><a class="header" href="#active-recall-verständnisfragen">Active Recall (Verständnisfragen)</a></h3>
 <ol>
@@ -889,16 +965,12 @@ Analysieren Sie die Compiler-Ausgabe. Welche Fehlernummer (<code>E0xxx</code>) w
 <h3 id="metakognitiver-selbsttest"><a class="header" href="#metakognitiver-selbsttest">Metakognitiver Selbsttest</a></h3>
 <p>Wechseln Sie erst zu <a href="file:///home/thorsten/RustKurs/doc/src/21.md">Kapitel 21: Zusammenfassung &amp; Ausblick</a>, wenn Sie:</p>
 <ul>
-<li><input disabled="" type="checkbox"/>
-Den fundamentalen Sinn hinter der Aliasing-Regel (Leser-Schreiber-Ausschluss) erklären können.</li>
-<li><input disabled="" type="checkbox"/>
-In der Lage sind, eine <code>RefCell</code> zur Umgehung des statischen Borrow Checkers zu nutzen und die damit verbundenen Risiken (Laufzeit-Panics) verstehen.</li>
-<li><input disabled="" type="checkbox"/>
-Den Begriff „Datenrennen“ (Data Race) sauber von einer allgemeinen „Race Condition“ abgrenzen können.</li>
-<li><input disabled="" type="checkbox"/>
-Den Kontrollfluss eines kleinen Programms visuell nachvollziehen und den Endpunkt einer Non-Lexical Lifetime bestimmen können.</li>
+<li><input disabled="" type="checkbox"> Den fundamentalen Sinn hinter der Aliasing-Regel (Leser-Schreiber-Ausschluss) erklären können.</li>
+<li><input disabled="" type="checkbox"> In der Lage sind, eine <code>RefCell</code> zur Umgehung des statischen Borrow Checkers zu nutzen und die damit verbundenen Risiken (Laufzeit-Panics) verstehen.</li>
+<li><input disabled="" type="checkbox"> Den Begriff „Datenrennen“ (Data Race) sauber von einer allgemeinen „Race Condition“ abgrenzen können.</li>
+<li><input disabled="" type="checkbox"> Den Kontrollfluss eines kleinen Programms visuell nachvollziehen und den Endpunkt einer Non-Lexical Lifetime bestimmen können.</li>
 </ul>
-<hr />
+<hr>
 <h2 id="11-zusammenfassung"><a class="header" href="#11-zusammenfassung">11. Zusammenfassung</a></h2>
 <ul>
 <li><strong>Die Aliasing-Regel</strong> ist das Fundament der Speichersicherheit in Rust. Sie verbietet es, Daten zu mutieren (schreiben), solange andere Programmteile lesend oder schreibend darauf zugreifen.</li>
@@ -906,7 +978,7 @@ Den Kontrollfluss eines kleinen Programms visuell nachvollziehen und den Endpunk
 <li><strong>Non-Lexical Lifetimes (NLL)</strong> analysieren den echten Kontrollfluss des Programms. Referenzen sind dadurch nur so lange gesperrt, wie sie tatsächlich im Code verwendet werden. Dies erhöht den Schreibkomfort drastisch.</li>
 <li><strong>RefCell</strong> erlaubt die Umgehung der statischen Regeln durch eine Überprüfung zur Laufzeit, verlagert jedoch die Erkennung von Fehlern in Form von Panics in die Laufzeit.</li>
 </ul>
-<hr />
+<hr>
 <p><strong>Lizenz- und Attributionshinweis</strong>:
 Teile dieses Kapitels basieren auf Übersetzungen und didaktischen Anpassungen des offiziellen Buches <a href="https://doc.rust-lang.org/book/">The Rust Programming Language</a> von Steve Klabnik und Carol Nichols (sowie Beiträgen der Rust-Community), lizenziert unter <a href="https://opensource.org/licenses/MIT">MIT</a> und <a href="https://www.apache.org/licenses/LICENSE-2.0">Apache 2.0</a>.</p>
 
@@ -915,11 +987,11 @@ Teile dieses Kapitels basieren auf Übersetzungen und didaktischen Anpassungen d
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
                             <a rel="prev" href="19.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
-                                <i class="fa fa-angle-left"></i>
+                                <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
                             </a>
 
                             <a rel="next prefetch" href="21.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
-                                <i class="fa fa-angle-right"></i>
+                                <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
                             </a>
 
                         <div style="clear: both"></div>
@@ -929,16 +1001,21 @@ Teile dieses Kapitels basieren auf Übersetzungen und didaktischen Anpassungen d
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
                     <a rel="prev" href="19.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
-                        <i class="fa fa-angle-left"></i>
+                        <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
                     </a>
 
                     <a rel="next prefetch" href="21.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
-                        <i class="fa fa-angle-right"></i>
+                        <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
                     </a>
             </nav>
 
         </div>
 
+        <template id=fa-eye><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M288 32c-80.8 0-145.5 36.8-192.6 80.6C48.6 156 17.3 208 2.5 243.7c-3.3 7.9-3.3 16.7 0 24.6C17.3 304 48.6 356 95.4 399.4C142.5 443.2 207.2 480 288 480s145.5-36.8 192.6-80.6c46.8-43.5 78.1-95.4 93-131.1c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C433.5 68.8 368.8 32 288 32zM432 256c0 79.5-64.5 144-144 144s-144-64.5-144-144s64.5-144 144-144s144 64.5 144 144zM288 192c0 35.3-28.7 64-64 64c-11.5 0-22.3-3-31.6-8.4c-.2 2.8-.4 5.5-.4 8.4c0 53 43 96 96 96s96-43 96-96s-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6z"/></svg></span></template>
+        <template id=fa-eye-slash><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M38.8 5.1C28.4-3.1 13.3-1.2 5.1 9.2S-1.2 34.7 9.2 42.9l592 464c10.4 8.2 25.5 6.3 33.7-4.1s6.3-25.5-4.1-33.7L525.6 386.7c39.6-40.6 66.4-86.1 79.9-118.4c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C465.5 68.8 400.8 32 320 32c-68.2 0-125 26.3-169.3 60.8L38.8 5.1zM223.1 149.5C248.6 126.2 282.7 112 320 112c79.5 0 144 64.5 144 144c0 24.9-6.3 48.3-17.4 68.7L408 294.5c5.2-11.8 8-24.8 8-38.5c0-53-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6c0 10.2-2.4 19.8-6.6 28.3l-90.3-70.8zm223.1 298L373 389.9c-16.4 6.5-34.3 10.1-53 10.1c-79.5 0-144-64.5-144-144c0-6.9 .5-13.6 1.4-20.2L83.1 161.5C60.3 191.2 44 220.8 34.5 243.7c-3.3 7.9-3.3 16.7 0 24.6c14.9 35.7 46.2 87.7 93 131.1C174.5 443.2 239.2 480 320 480c47.8 0 89.9-12.9 126.2-32.5z"/></svg></span></template>
+        <template id=fa-copy><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M502.6 70.63l-61.25-61.25C435.4 3.371 427.2 0 418.7 0H255.1c-35.35 0-64 28.66-64 64l.0195 256C192 355.4 220.7 384 256 384h192c35.2 0 64-28.8 64-64V93.25C512 84.77 508.6 76.63 502.6 70.63zM464 320c0 8.836-7.164 16-16 16H255.1c-8.838 0-16-7.164-16-16L239.1 64.13c0-8.836 7.164-16 16-16h128L384 96c0 17.67 14.33 32 32 32h47.1V320zM272 448c0 8.836-7.164 16-16 16H63.1c-8.838 0-16-7.164-16-16L47.98 192.1c0-8.836 7.164-16 16-16H160V128H63.99c-35.35 0-64 28.65-64 64l.0098 256C.002 483.3 28.66 512 64 512h192c35.2 0 64-28.8 64-64v-32h-47.1L272 448z"/></svg></span></template>
+        <template id=fa-play><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80V432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"/></svg></span></template>
+        <template id=fa-clock-rotate-left><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M75 75L41 41C25.9 25.9 0 36.6 0 57.9V168c0 13.3 10.7 24 24 24H134.1c21.4 0 32.1-25.9 17-41l-30.8-30.8C155 85.5 203 64 256 64c106 0 192 86 192 192s-86 192-192 192c-40.8 0-78.6-12.7-109.7-34.4c-14.5-10.1-34.4-6.6-44.6 7.9s-6.6 34.4 7.9 44.6C151.2 495 201.7 512 256 512c141.4 0 256-114.6 256-256S397.4 0 256 0C185.3 0 121.3 28.7 75 75zm181 53c-13.3 0-24 10.7-24 24V256c0 6.4 2.5 12.5 7 17l72 72c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-65-65V152c0-13.3-10.7-24-24-24z"/></svg></span></template>
 
 
 
@@ -947,17 +1024,17 @@ Teile dieses Kapitels basieren auf Übersetzungen und didaktischen Anpassungen d
         </script>
 
 
-        <script src="elasticlunr.min.js"></script>
-        <script src="mark.min.js"></script>
-        <script src="searcher.js"></script>
+        <script src="elasticlunr-ef4e11c1.min.js"></script>
+        <script src="mark-09e88c2c.min.js"></script>
+        <script src="searcher-09f2665d.js"></script>
 
-        <script src="clipboard.min.js"></script>
-        <script src="highlight.js"></script>
-        <script src="book.js"></script>
+        <script src="clipboard-1626706a.min.js"></script>
+        <script src="highlight-abc7f01d.js"></script>
+        <script src="book-c22b7243.js"></script>
 
         <!-- Custom JS scripts -->
-        <script src="mermaid.min.js"></script>
-        <script src="mermaid-init.js"></script>
+        <script src="mermaid-eefea253.min.js"></script>
+        <script src="mermaid-init-ccf746f1.js"></script>
 
 
 

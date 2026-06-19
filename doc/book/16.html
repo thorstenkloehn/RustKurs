@@ -7,26 +7,25 @@
 
 
         <!-- Custom HTML head -->
-        
+
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="theme-color" content="#ffffff">
 
-        <link rel="icon" href="favicon.svg">
-        <link rel="shortcut icon" href="favicon.png">
-        <link rel="stylesheet" href="css/variables.css">
-        <link rel="stylesheet" href="css/general.css">
-        <link rel="stylesheet" href="css/chrome.css">
-        <link rel="stylesheet" href="css/print.css" media="print">
+        <link rel="icon" href="favicon-de23e50b.svg">
+        <link rel="shortcut icon" href="favicon-8114d1fc.png">
+        <link rel="stylesheet" href="css/variables-8adf115d.css">
+        <link rel="stylesheet" href="css/general-0392ca55.css">
+        <link rel="stylesheet" href="css/chrome-fc474251.css">
+        <link rel="stylesheet" href="css/print-9e4910d8.css" media="print">
 
         <!-- Fonts -->
-        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
-        <link rel="stylesheet" href="fonts/fonts.css">
+        <link rel="stylesheet" href="fonts/fonts-9644e21d.css">
 
         <!-- Highlight.js Stylesheets -->
-        <link rel="stylesheet" id="highlight-css" href="highlight.css">
-        <link rel="stylesheet" id="tomorrow-night-css" href="tomorrow-night.css">
-        <link rel="stylesheet" id="ayu-highlight-css" href="ayu-highlight.css">
+        <link rel="stylesheet" id="mdbook-highlight-css" href="highlight-493f70e1.css">
+        <link rel="stylesheet" id="mdbook-tomorrow-night-css" href="tomorrow-night-4c0ae647.css">
+        <link rel="stylesheet" id="mdbook-ayu-highlight-css" href="ayu-highlight-3fdfc3ac.css">
 
         <!-- Custom theme stylesheets -->
 
@@ -36,10 +35,10 @@
             const path_to_root = "";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "searchindex.js";
+            window.path_to_searchindex_js = "searchindex-34eaf846.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="toc.js"></script>
+        <script src="toc-9a36690f.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -53,7 +52,7 @@
             </div>
         </div>
     </div>
-    <div id="body-container">
+    <div id="mdbook-body-container">
         <!-- Work around some values being stored in localStorage wrapped in quotes -->
         <script>
             try {
@@ -82,12 +81,12 @@
             html.classList.add("js");
         </script>
 
-        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+        <input type="checkbox" id="mdbook-sidebar-toggle-anchor" class="hidden">
 
         <!-- Hide / unhide sidebar before it is displayed -->
         <script>
             let sidebar = null;
-            const sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            const sidebar_toggle = document.getElementById("mdbook-sidebar-toggle-anchor");
             if (document.body.clientWidth >= 1080) {
                 try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
                 sidebar = sidebar || 'visible';
@@ -102,39 +101,39 @@
             }
         </script>
 
-        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+        <nav id="mdbook-sidebar" class="sidebar" aria-label="Table of contents">
             <!-- populated by js -->
             <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
             <noscript>
                 <iframe class="sidebar-iframe-outer" src="toc.html"></iframe>
             </noscript>
-            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+            <div id="mdbook-sidebar-resize-handle" class="sidebar-resize-handle">
                 <div class="sidebar-resize-indicator"></div>
             </div>
         </nav>
 
-        <div id="page-wrapper" class="page-wrapper">
+        <div id="mdbook-page-wrapper" class="page-wrapper">
 
             <div class="page">
-                                <div id="menu-bar-hover-placeholder"></div>
-                <div id="menu-bar" class="menu-bar sticky">
+                <div id="mdbook-menu-bar-hover-placeholder"></div>
+                <div id="mdbook-menu-bar" class="menu-bar sticky">
                     <div class="left-buttons">
-                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
-                            <i class="fa fa-bars"></i>
+                        <label id="mdbook-sidebar-toggle" class="icon-button" for="mdbook-sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="mdbook-sidebar">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"/></svg></span>
                         </label>
-                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
-                            <i class="fa fa-paint-brush"></i>
+                        <button id="mdbook-theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="mdbook-theme-list">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M371.3 367.1c27.3-3.9 51.9-19.4 67.2-42.9L600.2 74.1c12.6-19.5 9.4-45.3-7.6-61.2S549.7-4.4 531.1 9.6L294.4 187.2c-24 18-38.2 46.1-38.4 76.1L371.3 367.1zm-19.6 25.4l-116-104.4C175.9 290.3 128 339.6 128 400c0 3.9 .2 7.8 .6 11.6c1.8 17.5-10.2 36.4-27.8 36.4H96c-17.7 0-32 14.3-32 32s14.3 32 32 32H240c61.9 0 112-50.1 112-112c0-2.5-.1-5-.2-7.5z"/></svg></span>
                         </button>
-                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
-                            <li role="none"><button role="menuitem" class="theme" id="default_theme">Auto</button></li>
-                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
-                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
-                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
-                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
-                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        <ul id="mdbook-theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-default_theme">Auto</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-ayu">Ayu</button></li>
                         </ul>
-                        <button id="search-toggle" class="icon-button" type="button" title="Search (`/`)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="/ s" aria-controls="searchbar">
-                            <i class="fa fa-search"></i>
+                        <button id="mdbook-search-toggle" class="icon-button" type="button" title="Search (`/`)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="/ s" aria-controls="mdbook-searchbar">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352c79.5 0 144-64.5 144-144s-64.5-144-144-144S64 128.5 64 208s64.5 144 144 144z"/></svg></span>
                         </button>
                     </div>
 
@@ -142,52 +141,52 @@
 
                     <div class="right-buttons">
                         <a href="print.html" title="Print this book" aria-label="Print this book">
-                            <i id="print-button" class="fa fa-print"></i>
+                            <span class=fa-svg id="print-button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M128 0C92.7 0 64 28.7 64 64v96h64V64H354.7L384 93.3V160h64V93.3c0-17-6.7-33.3-18.7-45.3L400 18.7C388 6.7 371.7 0 354.7 0H128zM384 352v32 64H128V384 368 352H384zm64 32h32c17.7 0 32-14.3 32-32V256c0-35.3-28.7-64-64-64H64c-35.3 0-64 28.7-64 64v96c0 17.7 14.3 32 32 32H64v64c0 35.3 28.7 64 64 64H384c35.3 0 64-28.7 64-64V384zm-16-88c-13.3 0-24-10.7-24-24s10.7-24 24-24s24 10.7 24 24s-10.7 24-24 24z"/></svg></span>
                         </a>
 
                     </div>
                 </div>
 
-                <div id="search-wrapper" class="hidden">
-                    <form id="searchbar-outer" class="searchbar-outer">
+                <div id="mdbook-search-wrapper" class="hidden">
+                    <form id="mdbook-searchbar-outer" class="searchbar-outer">
                         <div class="search-wrapper">
-                            <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                            <input type="search" id="mdbook-searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="mdbook-searchresults-outer" aria-describedby="searchresults-header">
                             <div class="spinner-wrapper">
-                                <i class="fa fa-spinner fa-spin"></i>
+                                <span class=fa-svg id="fa-spin"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M304 48c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zm0 416c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zM48 304c26.5 0 48-21.5 48-48s-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48zm464-48c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zM142.9 437c18.7-18.7 18.7-49.1 0-67.9s-49.1-18.7-67.9 0s-18.7 49.1 0 67.9s49.1 18.7 67.9 0zm0-294.2c18.7-18.7 18.7-49.1 0-67.9S93.7 56.2 75 75s-18.7 49.1 0 67.9s49.1 18.7 67.9 0zM369.1 437c18.7 18.7 49.1 18.7 67.9 0s18.7-49.1 0-67.9s-49.1-18.7-67.9 0s-18.7 49.1 0 67.9z"/></svg></span>
                             </div>
                         </div>
                     </form>
-                    <div id="searchresults-outer" class="searchresults-outer hidden">
-                        <div id="searchresults-header" class="searchresults-header"></div>
-                        <ul id="searchresults">
+                    <div id="mdbook-searchresults-outer" class="searchresults-outer hidden">
+                        <div id="mdbook-searchresults-header" class="searchresults-header"></div>
+                        <ul id="mdbook-searchresults">
                         </ul>
                     </div>
                 </div>
 
                 <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
                 <script>
-                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
-                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
-                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                    document.getElementById('mdbook-sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('mdbook-sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#mdbook-sidebar a')).forEach(function(link) {
                         link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
                     });
                 </script>
 
-                <div id="content" class="content">
+                <div id="mdbook-content" class="content">
                     <main>
                         <h1 id="kapitel-16-beste-google-ki-zum-programmieren-nutzen"><a class="header" href="#kapitel-16-beste-google-ki-zum-programmieren-nutzen">Kapitel 16: Beste Google KI zum Programmieren nutzen</a></h1>
 <p>Die moderne Softwareentwicklung befindet sich in einem tiefgreifenden Wandel. Künstliche Intelligenz (KI) – insbesondere Large Language Models (LLMs) wie Googles Gemini-Modelle – fungiert heute nicht mehr nur als einfache Autovervollständigung, sondern als hochentwickelter, agentischer Sparringspartner. Im Kontext von Rust ist diese Unterstützung von unschätzbarew Wert. Da Rusts Compiler extrem strikte Regeln bezüglich Typsicherheit, Speicherverwaltung (Ownership, Borrowing) und Thread-Safety durchsetzt, verzeiht die Sprache keine ungenauen Implementierungen.</p>
 <p>Dieses Kapitel zeigt Ihnen im Detail, wie Sie Googles Gemini-Modelle systematisch für zwei der wichtigsten Aufgaben der Software-Professionalisierung einsetzen: das <strong>LLM-gestütztes Refactoring</strong> zur Verbesserung der Codequalität und Performance sowie die <strong>automatisierte, standardkonforme Dokumentationserstellung</strong>.</p>
-<hr />
+<hr>
 <h2 id="161-llm-gestütztes-refactoring"><a class="header" href="#161-llm-gestütztes-refactoring">16.1 LLM-gestütztes Refactoring</a></h2>
 <p>Refactoring bezeichnet die Restrukturierung von bestehendem Quellcode, um dessen Lesbarkeit, Wartbarkeit, Typsicherheit oder Performance zu verbessern, ohne dabei das äußere funktionale Verhalten zu verändern. Während dies in dynamisch typisierten Sprachen oft mit dem Risiko von Laufzeitfehlern verbunden ist, bietet Rust durch sein starkes statisches Typsystem ein Sicherheitsnetz.</p>
 <p>Dennoch stellt die manuelle Umstrukturierung von Rust-Code Entwickler vor Herausforderungen: Oft müssen komplexe Iterator-Ketten entworfen, Lebensdauern (Lifetimes) deklariert oder Datenstrukturen so angepasst werden, dass der Borrow Checker sie akzeptiert. Hier setzt das LLM-gestützte Refactoring an. Durch den gezielten Einsatz von Gemini können Sie ineffizienten Code analysieren, Optimierungspotenziale aufdecken und compiler-konforme Lösungen generieren lassen.</p>
-<hr />
+<hr>
 <h3 id="1611-gemini-prompting-vorlagen"><a class="header" href="#1611-gemini-prompting-vorlagen">16.1.1 Gemini Prompting-Vorlagen</a></h3>
 <p>Um qualitativ hochwertigen Rust-Code aus einem LLM zu erhalten, reicht ein einfacher Befehl wie „Mach diesen Code besser“ meist nicht aus. LLMs neigen bei vagen Prompts dazu, typische Fehlerbilder anderer Programmiersprachen auf Rust zu übertragen. Sie schlagen beispielsweise Lösungen vor, die unnötige Kopiervorgänge (<code>.clone()</code>) enthalten, um Lifetime-Problemen aus dem Weg zu gehen, oder sie verletzen die Aliasing-Regeln des Borrow Checkers.</p>
 <p>Um dies zu verhindern, nutzen wir strukturierte <strong>Prompting-Vorlagen</strong>. Diese Vorlagen geben dem Modell einen klaren Kontext, definieren seine Rolle, setzen technische Leitplanken und erzwingen ein strukturiertes Vorgehen.</p>
 <h4 id="16111-lernziele--lernplan"><a class="header" href="#16111-lernziele--lernplan">16.1.1.1 Lernziele &amp; Lernplan</a></h4>
-<p><strong>Lernziele (Bloom'sche Taxonomie)</strong></p>
+<p><strong>Lernziele (Bloom’sche Taxonomie)</strong></p>
 <ul>
 <li><strong>Sie können</strong> unstrukturierten, ineffizienten oder allokationsintensiven Rust-Code mithilfe von strukturierten Gemini-Prompting-Vorlagen gezielt in performanten, typsicheren und allokationsfreien Code überführen.</li>
 <li><strong>Sie können</strong> Compiler-Fehlermeldungen des Rust Borrow Checkers systematisch analysieren, in den Prompt-Kontext integrieren und Gemini zur Generierung einer architektonisch korrekten Fehlerbehebung bewegen.</li>
@@ -216,7 +215,9 @@
 <h4 id="16114-der-naive-versuch-der-fehlerhafte-code"><a class="header" href="#16114-der-naive-versuch-der-fehlerhafte-code">16.1.1.4 Der naive Versuch (Der fehlerhafte Code)</a></h4>
 <p>Betrachten wir ein typisches Szenario. Wir haben eine Funktion, die eine Logzeile parst, nach einem bestimmten Muster filtert und den relevanten Teil als Zeichenkette zurückgibt.</p>
 <p>Hier ist unser fehlerhafter und ineffizienter Ausgangscode:</p>
-<pre><code class="language-rust">// Dieser Code ist ineffizient, da er bei jedem Aufruf Heap-Allokationen durchführt.
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>// Dieser Code ist ineffizient, da er bei jedem Aufruf Heap-Allokationen durchführt.
 pub fn parse_error_message(log_line: String) -&gt; String {
     let parts: Vec&lt;&amp;str&gt; = log_line.split(" | ").collect();
     if parts.len() &gt;= 3 {
@@ -228,14 +229,17 @@ pub fn parse_error_message(log_line: String) -&gt; String {
         }
     }
     "".to_string()
-}</code></pre>
+}
+<span class="boring">}</span></code></pre>
 <p>Der Entwickler erkennt, dass diese Funktion ineffizient is. Sie nimmt ein <code>String</code>-Objekt an (was den Besitz stiehlt) und gibt ein neues <code>String</code>-Objekt zurück, was eine teure Heap-Allokation bedeutet. Er möchte den Code so abändern, dass stattdessen ressourcenschonende String-Slices (<code>&amp;str</code>) verwendet werden.</p>
 <p>Er stellt nun folgenden <strong>naiven Prompt</strong> an Gemini:</p>
 <blockquote>
 <p>„Refaktoriere diesen Rust-Code, damit er keine Strings mehr klont und stattdessen &amp;str verwendet, um die Performance zu verbessern.“</p>
 </blockquote>
 <p>Gemini liefert daraufhin folgenden Code-Entwurf:</p>
-<pre><code class="language-rust">// Der vom LLM naiv generierte Code-Entwurf
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>// Der vom LLM naiv generierte Code-Entwurf
 pub fn parse_error_message_naive(log_line: &amp;str) -&gt; &amp;str {
     let parts: Vec&lt;&amp;str&gt; = log_line.split(" | ").collect();
     if parts.len() &gt;= 3 {
@@ -246,7 +250,8 @@ pub fn parse_error_message_naive(log_line: &amp;str) -&gt; &amp;str {
         }
     }
     ""
-}</code></pre>
+}
+<span class="boring">}</span></code></pre>
 <p>Dieser Entwurf sieht auf den ersten Blick sauber aus. Es gibt keine <code>.to_string()</code>-Aufrufe mehr und alle Typen wurden auf <code>&amp;str</code> geändert. Doch wenn wir versuchen, diesen Code zu kompilieren, scheitert der Rust-Compiler.</p>
 <h4 id="16115-die-anatomie-des-fehlers"><a class="header" href="#16115-die-anatomie-des-fehlers">16.1.1.5 Die Anatomie des Fehlers</a></h4>
 <p>Beim Versuch, den naiven Entwurf zu übersetzen, bricht der Compiler mit folgendem Fehler ab:</p>
@@ -306,7 +311,9 @@ Compiler-Fehler (falls vorhanden):
 </code></pre>
 <h5 id="der-optimierte-code-nach-dem-refactoring"><a class="header" href="#der-optimierte-code-nach-dem-refactoring">Der optimierte Code nach dem Refactoring</a></h5>
 <p>Wenn wir unseren fehlerhaften Code und die Fehlermeldung in diese Vorlage einsetzen und an Gemini übergeben, erhalten wir folgende korrekte Implementierung:</p>
-<pre><code class="language-rust">/// Parst eine Logzeile und extrahiert die Fehlermeldung, sofern es sich um einen
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>/// Parst eine Logzeile und extrahiert die Fehlermeldung, sofern es sich um einen
 /// Eintrag des Typs "ERROR" handelt.
 ///
 /// # Parameter
@@ -330,7 +337,8 @@ pub fn parse_error_message_optimized&lt;'a&gt;(log_line: &amp;'a str) -&gt; &amp
     }
     
     ""
-}</code></pre>
+}
+<span class="boring">}</span></code></pre>
 <h5 id="analyse-nach-dem-eva-prinzip"><a class="header" href="#analyse-nach-dem-eva-prinzip">Analyse nach dem EVA-Prinzip</a></h5>
 <ol>
 <li><strong>Eingabe (Input)</strong>:
@@ -350,7 +358,7 @@ Die Funktion gibt ein String-Slice zurück, das dieselbe Lebensdauer <code>'a</c
 <code>cd log_processor</code> (Hinweis: Führen Sie Terminal-Aktionen lokal in Ihrem Workspace aus).</p>
 <h5 id="schritt-2-den-unvollständigen-code-schreiben"><a class="header" href="#schritt-2-den-unvollständigen-code-schreiben">Schritt 2: Den unvollständigen Code schreiben</a></h5>
 <p>Öffnen Sie die Datei <code>src/main.rs</code> und fügen Sie folgenden Code ein. Dieser enthält noch ineffiziente Heap-Allokationen durch <code>to_string()</code> und <code>clone()</code>:</p>
-<pre><code class="language-rust">// src/main.rs
+<pre class="playground"><code class="language-rust edition2021">// src/main.rs
 fn process_user_data(data: String) -&gt; String {
     let parts: Vec&lt;String&gt; = data.split(',').map(|s| s.to_string()).collect();
     if parts.len() &gt; 1 &amp;&amp; parts[0] == "ACTIVE" {
@@ -367,7 +375,7 @@ fn main() {
 <h5 id="schritt-3-gemini-zur-optimierung-auffordern"><a class="header" href="#schritt-3-gemini-zur-optimierung-auffordern">Schritt 3: Gemini zur Optimierung auffordern</a></h5>
 <p>Kopieren Sie den Code aus Schritt 2 in die oben definierte <strong>Gemini Prompting-Vorlage für Rust-Refactoring</strong> und senden Sie diese ab.</p>
 <p>Gemini generiert daraufhin einen optimierten Code, der referenzbasiert arbeitet. Ersetzen Sie den Inhalt von <code>src/main.rs</code> durch den generierten Code:</p>
-<pre><code class="language-rust">// src/main.rs (Optimiert)
+<pre class="playground"><code class="language-rust edition2021">// src/main.rs (Optimiert)
 
 /// Extrahiert den Benutzernamen aus einem CSV-Datensatz, wenn der Status "ACTIVE" ist.
 /// Verwendet Referenzen mit expliziten Lebensdauern zur Vermeidung von Heap-Allokationen.
@@ -399,11 +407,11 @@ fn main() {
 <p>Die Ausgabe auf der Konsole lautet:
 <code>Aktiver Benutzer: Max Mustermann</code></p>
 <p>Sie haben erfolgreich ein performantes Refactoring durchgeführt, ohne eine einzige Speicherallokation auf dem Heap zu erzeugen.</p>
-<hr />
+<hr>
 <h2 id="162-dokumentationserstellung"><a class="header" href="#162-dokumentationserstellung">16.2 Dokumentationserstellung</a></h2>
 <p>Ein wichtiger Bestandteil professioneller Softwareentwicklung ist eine saubere, verständliche Dokumentation. Rust besitzt mit <code>rustdoc</code> ein integriertes Werkzeug, das Markdown-Kommentare direkt aus dem Quellcode liest und in eine HTML-Dokumentation übersetzt.</p>
 <p>Die manuelle Erstellung dieser Dokumentation ist oft mühsam, da sie nicht nur den Zweck einer Funktion beschreiben, sondern auch Randfälle (Panics), Fehlerzustände (Errors) und Anwendungsbeispiele (Examples) enthalten sollte. In diesem Abschnitt lernen Sie, wie Sie Gemini einsetzen, um diese Dokumentation automatisiert und standardkonform zu generieren.</p>
-<hr />
+<hr>
 <h3 id="1612-dokumentationserstellung"><a class="header" href="#1612-dokumentationserstellung">16.1.2 Dokumentationserstellung</a></h3>
 <p>Die Generierung von Dokumentation durch KI birgt eine Besonderheit in Rust: <strong>Doc-Tests</strong>. In Rust geschriebene Code-Beispiele innerhalb von Dokumentationskommentaren werden vom Test-Runner (<code>cargo test</code>) automatisch kompiliert und ausgeführt. Wenn eine KI fehlerhaften Code in die Dokumentation schreibt, schlägt Ihr gesamter Testprozess fehl. Daher müssen wir Gemini anweisen, absolut syntaktisch korrekten Testcode zu schreiben.</p>
 <h4 id="16121-mentale-modelle--deep-dive"><a class="header" href="#16121-mentale-modelle--deep-dive">16.1.2.1 Mentale Modelle &amp; Deep Dive</a></h4>
@@ -443,82 +451,103 @@ Code der Funktion:
 </code></pre>
 <h5 id="api-referenz-der-dokumentations-attribute"><a class="header" href="#api-referenz-der-dokumentations-attribute">API-Referenz der Dokumentations-Attribute</a></h5>
 <p>In Rust können Sie die Dokumentationserstellung direkt über Attribute im Quellcode steuern. Hier sind die wichtigsten Attribute der Standardbibliothek, die Sie kennen müssen:</p>
-<hr />
+<hr>
 <h6 id="dochidden"><a class="header" href="#dochidden"><code>#[doc(hidden)]</code></a></h6>
 <ul>
 <li><strong>Beschreibung</strong>: Schließt das markierte Element (Struktur, Funktion, Modul) aus der generierten HTML-Dokumentation aus. Nützlich für interne Implementierungsdetails, die nicht Teil der öffentlichen API sein sollen.</li>
 <li><strong>Beispiel</strong>:
-<pre><code class="language-rust">#[doc(hidden)]
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>#[doc(hidden)]
 pub fn interne_hilfsfunktion() {
     // Diese Funktion wird nicht in der HTML-Doku angezeigt
-}</code></pre>
+}
+<span class="boring">}</span></code></pre>
 </li>
 </ul>
-<hr />
+<hr>
 <h6 id="docinline"><a class="header" href="#docinline"><code>#[doc(inline)]</code></a></h6>
 <ul>
 <li><strong>Beschreibung</strong>: Erzwingt, dass ein importiertes Element (z. B. durch <code>pub use</code>) direkt an dieser Stelle dokumentiert wird, statt nur als Link zur ursprünglichen Definition zu erscheinen.</li>
 <li><strong>Beispiel</strong>:
-<pre><code class="language-rust">#[doc(inline)]
-pub use crate::interner_mod::SpezifischerTyp;</code></pre>
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>#[doc(inline)]
+pub use crate::interner_mod::SpezifischerTyp;
+<span class="boring">}</span></code></pre>
 </li>
 </ul>
-<hr />
+<hr>
 <h6 id="warnmissing_docs-und-denymissing_docs"><a class="header" href="#warnmissing_docs-und-denymissing_docs"><code>#[warn(missing_docs)]</code> und <code>#[deny(missing_docs)]</code></a></h6>
 <ul>
 <li><strong>Beschreibung</strong>: Lints, die den Compiler anweisen, Warnungen oder Fehler auszugeben, wenn ein öffentliches Element (Struktur, Feld, Funktion) keine Dokumentation besitzt.</li>
 <li><strong>Beispiel</strong>:
-<pre><code class="language-rust">#![deny(missing_docs)]
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span>#![deny(missing_docs)]
 
-/// Eine dokumentierte, öffentliche Struktur.
+<span class="boring">fn main() {
+</span>/// Eine dokumentierte, öffentliche Struktur.
 pub struct Config {
     /// Dieses Feld MUSS dokumentiert sein, sonst schlägt die Kompilierung fehl.
     pub port: u16,
-}</code></pre>
+}
+<span class="boring">}</span></code></pre>
 </li>
 </ul>
-<hr />
+<hr>
 <h6 id="doc--"><a class="header" href="#doc--"><code>#[doc = "..."]</code></a></h6>
 <ul>
 <li><strong>Beschreibung</strong>: Die interne Repräsentation von <code>///</code>. Jede Zeile, die mit <code>///</code> beginnt, wird vom Compiler intern in dieses Attribut umgewandelt. Kann für dynamische Makro-Generierung genutzt werden.</li>
 <li><strong>Beispiel</strong>:
-<pre><code class="language-rust">#[doc = "Dies ist ein äquivalenter Dokumentationskommentar."]
-pub fn beispiel_funktion() {}</code></pre>
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>#[doc = "Dies ist ein äquivalenter Dokumentationskommentar."]
+pub fn beispiel_funktion() {}
+<span class="boring">}</span></code></pre>
 </li>
 </ul>
-<hr />
-<h4 id="16122-drei-praktische-Übungen"><a class="header" href="#16122-drei-praktische-Übungen">16.1.2.2 Drei praktische Übungen</a></h4>
+<hr>
+<h4 id="16122-drei-praktische-übungen"><a class="header" href="#16122-drei-praktische-übungen">16.1.2.2 Drei praktische Übungen</a></h4>
 <p>Versuchen Sie, die folgenden Aufgaben selbstständig zu lösen. Nutzen Sie Gemini als Hilfsmittel, indem Sie die gelernten Prompting-Vorlagen anwenden.</p>
-<h5 id="Übung-1-leicht---syntax-festigen"><a class="header" href="#Übung-1-leicht---syntax-festigen">Übung 1 (Leicht - Syntax festigen)</a></h5>
+<h5 id="übung-1-leicht---syntax-festigen"><a class="header" href="#übung-1-leicht---syntax-festigen">Übung 1 (Leicht - Syntax festigen)</a></h5>
 <ul>
 <li><strong>Aufgabe</strong>: Gegeben ist die folgende mathematische Funktion zur Berechnung der Fakultät einer Zahl. Lassen Sie sich von Gemini einen standardkonformen Rustdoc-Kommentar generieren, der ein Anwendungsbeispiel zeigt und dokumentiert, dass die Funktion bei einem Überlauf (Overflow) abstürzt.</li>
 <li><strong>Ausgangscode</strong>:
-<pre><code class="language-rust">pub fn factorial(n: u64) -&gt; u64 {
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>pub fn factorial(n: u64) -&gt; u64 {
     (1..=n).product()
-}</code></pre>
+}
+<span class="boring">}</span></code></pre>
 </li>
 <li><strong>Lösungshinweis</strong>: Kopieren Sie die Funktion in die Dokumentations-Vorlage. Achten Sie darauf, dass im Bereich <code># Panics</code> erwähnt wird, dass <code>factorial(100)</code> aufgrund des Zahlenbereichs von <code>u64</code> zu einem Panic führt (Integer Overflow).</li>
 </ul>
-<h5 id="Übung-2-mittel---logik-erweitern"><a class="header" href="#Übung-2-mittel---logik-erweitern">Übung 2 (Mittel - Logik erweitern)</a></h5>
+<h5 id="übung-2-mittel---logik-erweitern"><a class="header" href="#übung-2-mittel---logik-erweitern">Übung 2 (Mittel - Logik erweitern)</a></h5>
 <ul>
 <li><strong>Aufgabe</strong>: Refaktorieren Sie die folgende Funktion zur Ermittlung des Durchschnitts einer Liste von Zahlen. Die aktuelle Implementierung stürzt ab, wenn die Liste leer ist. Verwenden Sie Gemini, um ein sicheres Refactoring durchzuführen (Rückgabe eines <code>Option&lt;f64&gt;</code>) und lassen Sie die API vollständig dokumentieren.</li>
 <li><strong>Ausgangscode</strong>:
-<pre><code class="language-rust">pub fn average(numbers: &amp;[f64]) -&gt; f64 {
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>pub fn average(numbers: &amp;[f64]) -&gt; f64 {
     let sum: f64 = numbers.iter().sum();
     sum / numbers.len() as f64
-}</code></pre>
+}
+<span class="boring">}</span></code></pre>
 </li>
 <li><strong>Lösungshinweis</strong>: Teilen Sie Gemini im Refactoring-Prompt mit, dass der Fall einer leeren Liste abgefangen werden soll. Das Ergebnis sollte eine Prüfung mittels <code>numbers.is_empty()</code> beinhalten und <code>None</code> zurückgeben, andernfalls <code>Some(sum / len)</code>.</li>
 </ul>
-<h5 id="Übung-3-schwer---transferleistung"><a class="header" href="#Übung-3-schwer---transferleistung">Übung 3 (Schwer - Transferleistung)</a></h5>
+<h5 id="übung-3-schwer---transferleistung"><a class="header" href="#übung-3-schwer---transferleistung">Übung 3 (Schwer - Transferleistung)</a></h5>
 <ul>
 <li><strong>Aufgabe</strong>: Gegeben ist eine unsichere (<code>unsafe</code>) Funktion, die ein Element an einem bestimmten Index im Speicher ausliest, ohne die Grenzen des Arrays zu prüfen. Schreiben Sie eine Prompt-Vorlage, um diese Funktion so zu dokumentieren, dass der <code># Safety</code>-Bereich präzise die Voraussetzungen beschreibt, die erfüllt sein müssen, damit der Aufruf keine Speicherverletzung (Segfault) erzeugt.</li>
 <li><strong>Ausgangscode</strong>:
-<pre><code class="language-rust">/// # Sicherheit
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>/// # Sicherheit
 /// Der Aufrufer muss garantieren, dass der Zeiger gültig ist.
 pub unsafe fn read_value_unchecked(ptr: *const i32, offset: isize) -&gt; i32 {
     *ptr.offset(offset)
-}</code></pre>
+}
+<span class="boring">}</span></code></pre>
 </li>
 <li><strong>Lösungshinweis</strong>: Die Dokumentation muss explizit darauf hinweisen, dass:
 <ol>
@@ -528,16 +557,22 @@ pub unsafe fn read_value_unchecked(ptr: *const i32, offset: isize) -&gt; i32 {
 </ol>
 </li>
 </ul>
-<hr />
+<hr>
 <h3 id="16123-lernstrategie-selbsteinschätzung--merkzettel"><a class="header" href="#16123-lernstrategie-selbsteinschätzung--merkzettel">16.1.2.3 Lernstrategie, Selbsteinschätzung &amp; Merkzettel</a></h3>
 <h4 id="spickzettel-cheat-sheet"><a class="header" href="#spickzettel-cheat-sheet">Spickzettel (Cheat Sheet)</a></h4>
-<div class="table-wrapper"><table><thead><tr><th style="text-align: left">Prompt-Komponente</th><th style="text-align: left">Zweck</th><th style="text-align: left">Best Practice</th></tr></thead><tbody>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th style="text-align: left">Prompt-Komponente</th><th style="text-align: left">Zweck</th><th style="text-align: left">Best Practice</th></tr>
+</thead>
+<tbody>
 <tr><td style="text-align: left"><strong>Rollen-Definition</strong></td><td style="text-align: left">Setzt den Fokus der KI</td><td style="text-align: left">„Senior Rust Core Developer“</td></tr>
 <tr><td style="text-align: left"><strong>Restriktionen</strong></td><td style="text-align: left">Verhindert schlechte Entwürfe</td><td style="text-align: left">„Vermeide Heap-Allokationen, nutze Iteratoren“</td></tr>
 <tr><td style="text-align: left"><strong>Compiler-Feedback</strong></td><td style="text-align: left">Korrigiert logische Fehler</td><td style="text-align: left">Kopieren Sie den gesamten Compiler-Fehlertrace in den Chat</td></tr>
 <tr><td style="text-align: left"><strong><code>/// # Examples</code></strong></td><td style="text-align: left">Erzeugt Doc-Tests</td><td style="text-align: left">Stellen Sie sicher, dass das Beispiel kompilierbar ist</td></tr>
 <tr><td style="text-align: left"><strong><code>#[doc(hidden)]</code></strong></td><td style="text-align: left">Versteckt interne APIs</td><td style="text-align: left">Nutzen Sie dies für Hilfs-Makros oder Test-Hilfen</td></tr>
-</tbody></table>
+</tbody>
+</table>
 </div>
 <h4 id="active-recall-verständnisfragen"><a class="header" href="#active-recall-verständnisfragen">Active Recall (Verständnisfragen)</a></h4>
 <ol>
@@ -553,14 +588,11 @@ pub unsafe fn read_value_unchecked(ptr: *const i32, offset: isize) -&gt; i32 {
 <h4 id="metakognitiver-selbsttest"><a class="header" href="#metakognitiver-selbsttest">Metakognitiver Selbsttest</a></h4>
 <p>Wechseln Sie erst zum nächsten Kapitel, wenn Sie:</p>
 <ul>
-<li><input disabled="" type="checkbox"/>
-Erfolgreich eine Prompt-Vorlage erstellt haben, die aus einem unvollständigen Code-Snippet eine allokationsfreie Rust-Funktion erzeugt.</li>
-<li><input disabled="" type="checkbox"/>
-Einen Doc-Test geschrieben haben, der erfolgreich den Befehl <code>cargo test</code> durchläuft.</li>
-<li><input disabled="" type="checkbox"/>
-Den Unterschied zwischen <code>#[doc(hidden)]</code> und Modul-Sichtbarkeiten (<code>pub(crate)</code>) verstanden haben.</li>
+<li><input disabled="" type="checkbox"> Erfolgreich eine Prompt-Vorlage erstellt haben, die aus einem unvollständigen Code-Snippet eine allokationsfreie Rust-Funktion erzeugt.</li>
+<li><input disabled="" type="checkbox"> Einen Doc-Test geschrieben haben, der erfolgreich den Befehl <code>cargo test</code> durchläuft.</li>
+<li><input disabled="" type="checkbox"> Den Unterschied zwischen <code>#[doc(hidden)]</code> und Modul-Sichtbarkeiten (<code>pub(crate)</code>) verstanden haben.</li>
 </ul>
-<hr />
+<hr>
 <h2 id="16124-zusammenfassung"><a class="header" href="#16124-zusammenfassung">16.1.2.4 Zusammenfassung</a></h2>
 <ul>
 <li><strong>LLM-gestütztes Refactoring</strong> erfordert präzise Rollen- und Regeldefinitionen im Prompt, um typische Anti-Patterns wie unnötiges Klonen (<code>.clone()</code>) zu vermeiden.</li>
@@ -569,7 +601,7 @@ Den Unterschied zwischen <code>#[doc(hidden)]</code> und Modul-Sichtbarkeiten (<
 <li><strong>Rustdoc-Generierung</strong> kann durch LLMs automatisiert werden. Codebeispiele im <code># Examples</code>-Bereich werden von <code>cargo test</code> als vollwertige Tests ausgeführt (Doc-Tests) und müssen daher absolut fehlerfrei sein.</li>
 <li><strong>Compiler-Warnungen zur Dokumentation</strong> lassen sich über Lints wie <code>#![deny(missing_docs)]</code> erzwingen, um eine lückenlose Projektdokumentation zu garantieren.</li>
 </ul>
-<hr />
+<hr>
 <p><strong>Lizenz- und Attributionshinweis</strong>:
 Teile dieses Kapitels basieren auf Übersetzungen und didaktischen Anpassungen des offiziellen Buches <a href="https://doc.rust-lang.org/book/">The Rust Programming Language</a> von Steve Klabnik und Carol Nichols (sowie Beiträgen der Rust-Community), lizenziert unter <a href="https://opensource.org/licenses/MIT">MIT</a> und <a href="https://www.apache.org/licenses/LICENSE-2.0">Apache 2.0</a>.</p>
 
@@ -578,11 +610,11 @@ Teile dieses Kapitels basieren auf Übersetzungen und didaktischen Anpassungen d
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
                             <a rel="prev" href="15.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
-                                <i class="fa fa-angle-left"></i>
+                                <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
                             </a>
 
                             <a rel="next prefetch" href="17.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
-                                <i class="fa fa-angle-right"></i>
+                                <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
                             </a>
 
                         <div style="clear: both"></div>
@@ -592,16 +624,21 @@ Teile dieses Kapitels basieren auf Übersetzungen und didaktischen Anpassungen d
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
                     <a rel="prev" href="15.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
-                        <i class="fa fa-angle-left"></i>
+                        <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
                     </a>
 
                     <a rel="next prefetch" href="17.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
-                        <i class="fa fa-angle-right"></i>
+                        <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
                     </a>
             </nav>
 
         </div>
 
+        <template id=fa-eye><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M288 32c-80.8 0-145.5 36.8-192.6 80.6C48.6 156 17.3 208 2.5 243.7c-3.3 7.9-3.3 16.7 0 24.6C17.3 304 48.6 356 95.4 399.4C142.5 443.2 207.2 480 288 480s145.5-36.8 192.6-80.6c46.8-43.5 78.1-95.4 93-131.1c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C433.5 68.8 368.8 32 288 32zM432 256c0 79.5-64.5 144-144 144s-144-64.5-144-144s64.5-144 144-144s144 64.5 144 144zM288 192c0 35.3-28.7 64-64 64c-11.5 0-22.3-3-31.6-8.4c-.2 2.8-.4 5.5-.4 8.4c0 53 43 96 96 96s96-43 96-96s-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6z"/></svg></span></template>
+        <template id=fa-eye-slash><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M38.8 5.1C28.4-3.1 13.3-1.2 5.1 9.2S-1.2 34.7 9.2 42.9l592 464c10.4 8.2 25.5 6.3 33.7-4.1s6.3-25.5-4.1-33.7L525.6 386.7c39.6-40.6 66.4-86.1 79.9-118.4c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C465.5 68.8 400.8 32 320 32c-68.2 0-125 26.3-169.3 60.8L38.8 5.1zM223.1 149.5C248.6 126.2 282.7 112 320 112c79.5 0 144 64.5 144 144c0 24.9-6.3 48.3-17.4 68.7L408 294.5c5.2-11.8 8-24.8 8-38.5c0-53-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6c0 10.2-2.4 19.8-6.6 28.3l-90.3-70.8zm223.1 298L373 389.9c-16.4 6.5-34.3 10.1-53 10.1c-79.5 0-144-64.5-144-144c0-6.9 .5-13.6 1.4-20.2L83.1 161.5C60.3 191.2 44 220.8 34.5 243.7c-3.3 7.9-3.3 16.7 0 24.6c14.9 35.7 46.2 87.7 93 131.1C174.5 443.2 239.2 480 320 480c47.8 0 89.9-12.9 126.2-32.5z"/></svg></span></template>
+        <template id=fa-copy><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M502.6 70.63l-61.25-61.25C435.4 3.371 427.2 0 418.7 0H255.1c-35.35 0-64 28.66-64 64l.0195 256C192 355.4 220.7 384 256 384h192c35.2 0 64-28.8 64-64V93.25C512 84.77 508.6 76.63 502.6 70.63zM464 320c0 8.836-7.164 16-16 16H255.1c-8.838 0-16-7.164-16-16L239.1 64.13c0-8.836 7.164-16 16-16h128L384 96c0 17.67 14.33 32 32 32h47.1V320zM272 448c0 8.836-7.164 16-16 16H63.1c-8.838 0-16-7.164-16-16L47.98 192.1c0-8.836 7.164-16 16-16H160V128H63.99c-35.35 0-64 28.65-64 64l.0098 256C.002 483.3 28.66 512 64 512h192c35.2 0 64-28.8 64-64v-32h-47.1L272 448z"/></svg></span></template>
+        <template id=fa-play><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80V432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"/></svg></span></template>
+        <template id=fa-clock-rotate-left><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M75 75L41 41C25.9 25.9 0 36.6 0 57.9V168c0 13.3 10.7 24 24 24H134.1c21.4 0 32.1-25.9 17-41l-30.8-30.8C155 85.5 203 64 256 64c106 0 192 86 192 192s-86 192-192 192c-40.8 0-78.6-12.7-109.7-34.4c-14.5-10.1-34.4-6.6-44.6 7.9s-6.6 34.4 7.9 44.6C151.2 495 201.7 512 256 512c141.4 0 256-114.6 256-256S397.4 0 256 0C185.3 0 121.3 28.7 75 75zm181 53c-13.3 0-24 10.7-24 24V256c0 6.4 2.5 12.5 7 17l72 72c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-65-65V152c0-13.3-10.7-24-24-24z"/></svg></span></template>
 
 
 
@@ -610,17 +647,17 @@ Teile dieses Kapitels basieren auf Übersetzungen und didaktischen Anpassungen d
         </script>
 
 
-        <script src="elasticlunr.min.js"></script>
-        <script src="mark.min.js"></script>
-        <script src="searcher.js"></script>
+        <script src="elasticlunr-ef4e11c1.min.js"></script>
+        <script src="mark-09e88c2c.min.js"></script>
+        <script src="searcher-09f2665d.js"></script>
 
-        <script src="clipboard.min.js"></script>
-        <script src="highlight.js"></script>
-        <script src="book.js"></script>
+        <script src="clipboard-1626706a.min.js"></script>
+        <script src="highlight-abc7f01d.js"></script>
+        <script src="book-c22b7243.js"></script>
 
         <!-- Custom JS scripts -->
-        <script src="mermaid.min.js"></script>
-        <script src="mermaid-init.js"></script>
+        <script src="mermaid-eefea253.min.js"></script>
+        <script src="mermaid-init-ccf746f1.js"></script>
 
 
 

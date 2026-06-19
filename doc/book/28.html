@@ -7,26 +7,25 @@
 
 
         <!-- Custom HTML head -->
-        
+
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="theme-color" content="#ffffff">
 
-        <link rel="icon" href="favicon.svg">
-        <link rel="shortcut icon" href="favicon.png">
-        <link rel="stylesheet" href="css/variables.css">
-        <link rel="stylesheet" href="css/general.css">
-        <link rel="stylesheet" href="css/chrome.css">
-        <link rel="stylesheet" href="css/print.css" media="print">
+        <link rel="icon" href="favicon-de23e50b.svg">
+        <link rel="shortcut icon" href="favicon-8114d1fc.png">
+        <link rel="stylesheet" href="css/variables-8adf115d.css">
+        <link rel="stylesheet" href="css/general-0392ca55.css">
+        <link rel="stylesheet" href="css/chrome-fc474251.css">
+        <link rel="stylesheet" href="css/print-9e4910d8.css" media="print">
 
         <!-- Fonts -->
-        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
-        <link rel="stylesheet" href="fonts/fonts.css">
+        <link rel="stylesheet" href="fonts/fonts-9644e21d.css">
 
         <!-- Highlight.js Stylesheets -->
-        <link rel="stylesheet" id="highlight-css" href="highlight.css">
-        <link rel="stylesheet" id="tomorrow-night-css" href="tomorrow-night.css">
-        <link rel="stylesheet" id="ayu-highlight-css" href="ayu-highlight.css">
+        <link rel="stylesheet" id="mdbook-highlight-css" href="highlight-493f70e1.css">
+        <link rel="stylesheet" id="mdbook-tomorrow-night-css" href="tomorrow-night-4c0ae647.css">
+        <link rel="stylesheet" id="mdbook-ayu-highlight-css" href="ayu-highlight-3fdfc3ac.css">
 
         <!-- Custom theme stylesheets -->
 
@@ -36,10 +35,10 @@
             const path_to_root = "";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "searchindex.js";
+            window.path_to_searchindex_js = "searchindex-34eaf846.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="toc.js"></script>
+        <script src="toc-9a36690f.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -53,7 +52,7 @@
             </div>
         </div>
     </div>
-    <div id="body-container">
+    <div id="mdbook-body-container">
         <!-- Work around some values being stored in localStorage wrapped in quotes -->
         <script>
             try {
@@ -82,12 +81,12 @@
             html.classList.add("js");
         </script>
 
-        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+        <input type="checkbox" id="mdbook-sidebar-toggle-anchor" class="hidden">
 
         <!-- Hide / unhide sidebar before it is displayed -->
         <script>
             let sidebar = null;
-            const sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            const sidebar_toggle = document.getElementById("mdbook-sidebar-toggle-anchor");
             if (document.body.clientWidth >= 1080) {
                 try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
                 sidebar = sidebar || 'visible';
@@ -102,39 +101,39 @@
             }
         </script>
 
-        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+        <nav id="mdbook-sidebar" class="sidebar" aria-label="Table of contents">
             <!-- populated by js -->
             <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
             <noscript>
                 <iframe class="sidebar-iframe-outer" src="toc.html"></iframe>
             </noscript>
-            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+            <div id="mdbook-sidebar-resize-handle" class="sidebar-resize-handle">
                 <div class="sidebar-resize-indicator"></div>
             </div>
         </nav>
 
-        <div id="page-wrapper" class="page-wrapper">
+        <div id="mdbook-page-wrapper" class="page-wrapper">
 
             <div class="page">
-                                <div id="menu-bar-hover-placeholder"></div>
-                <div id="menu-bar" class="menu-bar sticky">
+                <div id="mdbook-menu-bar-hover-placeholder"></div>
+                <div id="mdbook-menu-bar" class="menu-bar sticky">
                     <div class="left-buttons">
-                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
-                            <i class="fa fa-bars"></i>
+                        <label id="mdbook-sidebar-toggle" class="icon-button" for="mdbook-sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="mdbook-sidebar">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"/></svg></span>
                         </label>
-                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
-                            <i class="fa fa-paint-brush"></i>
+                        <button id="mdbook-theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="mdbook-theme-list">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M371.3 367.1c27.3-3.9 51.9-19.4 67.2-42.9L600.2 74.1c12.6-19.5 9.4-45.3-7.6-61.2S549.7-4.4 531.1 9.6L294.4 187.2c-24 18-38.2 46.1-38.4 76.1L371.3 367.1zm-19.6 25.4l-116-104.4C175.9 290.3 128 339.6 128 400c0 3.9 .2 7.8 .6 11.6c1.8 17.5-10.2 36.4-27.8 36.4H96c-17.7 0-32 14.3-32 32s14.3 32 32 32H240c61.9 0 112-50.1 112-112c0-2.5-.1-5-.2-7.5z"/></svg></span>
                         </button>
-                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
-                            <li role="none"><button role="menuitem" class="theme" id="default_theme">Auto</button></li>
-                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
-                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
-                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
-                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
-                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        <ul id="mdbook-theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-default_theme">Auto</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-ayu">Ayu</button></li>
                         </ul>
-                        <button id="search-toggle" class="icon-button" type="button" title="Search (`/`)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="/ s" aria-controls="searchbar">
-                            <i class="fa fa-search"></i>
+                        <button id="mdbook-search-toggle" class="icon-button" type="button" title="Search (`/`)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="/ s" aria-controls="mdbook-searchbar">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352c79.5 0 144-64.5 144-144s-64.5-144-144-144S64 128.5 64 208s64.5 144 144 144z"/></svg></span>
                         </button>
                     </div>
 
@@ -142,44 +141,44 @@
 
                     <div class="right-buttons">
                         <a href="print.html" title="Print this book" aria-label="Print this book">
-                            <i id="print-button" class="fa fa-print"></i>
+                            <span class=fa-svg id="print-button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M128 0C92.7 0 64 28.7 64 64v96h64V64H354.7L384 93.3V160h64V93.3c0-17-6.7-33.3-18.7-45.3L400 18.7C388 6.7 371.7 0 354.7 0H128zM384 352v32 64H128V384 368 352H384zm64 32h32c17.7 0 32-14.3 32-32V256c0-35.3-28.7-64-64-64H64c-35.3 0-64 28.7-64 64v96c0 17.7 14.3 32 32 32H64v64c0 35.3 28.7 64 64 64H384c35.3 0 64-28.7 64-64V384zm-16-88c-13.3 0-24-10.7-24-24s10.7-24 24-24s24 10.7 24 24s-10.7 24-24 24z"/></svg></span>
                         </a>
 
                     </div>
                 </div>
 
-                <div id="search-wrapper" class="hidden">
-                    <form id="searchbar-outer" class="searchbar-outer">
+                <div id="mdbook-search-wrapper" class="hidden">
+                    <form id="mdbook-searchbar-outer" class="searchbar-outer">
                         <div class="search-wrapper">
-                            <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                            <input type="search" id="mdbook-searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="mdbook-searchresults-outer" aria-describedby="searchresults-header">
                             <div class="spinner-wrapper">
-                                <i class="fa fa-spinner fa-spin"></i>
+                                <span class=fa-svg id="fa-spin"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M304 48c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zm0 416c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zM48 304c26.5 0 48-21.5 48-48s-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48zm464-48c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zM142.9 437c18.7-18.7 18.7-49.1 0-67.9s-49.1-18.7-67.9 0s-18.7 49.1 0 67.9s49.1 18.7 67.9 0zm0-294.2c18.7-18.7 18.7-49.1 0-67.9S93.7 56.2 75 75s-18.7 49.1 0 67.9s49.1 18.7 67.9 0zM369.1 437c18.7 18.7 49.1 18.7 67.9 0s18.7-49.1 0-67.9s-49.1-18.7-67.9 0s-18.7 49.1 0 67.9z"/></svg></span>
                             </div>
                         </div>
                     </form>
-                    <div id="searchresults-outer" class="searchresults-outer hidden">
-                        <div id="searchresults-header" class="searchresults-header"></div>
-                        <ul id="searchresults">
+                    <div id="mdbook-searchresults-outer" class="searchresults-outer hidden">
+                        <div id="mdbook-searchresults-header" class="searchresults-header"></div>
+                        <ul id="mdbook-searchresults">
                         </ul>
                     </div>
                 </div>
 
                 <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
                 <script>
-                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
-                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
-                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                    document.getElementById('mdbook-sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('mdbook-sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#mdbook-sidebar a')).forEach(function(link) {
                         link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
                     });
                 </script>
 
-                <div id="content" class="content">
+                <div id="mdbook-content" class="content">
                     <main>
                         <h1 id="kapitel-28-enums-und-pattern-matching"><a class="header" href="#kapitel-28-enums-und-pattern-matching">Kapitel 28: Enums und Pattern Matching</a></h1>
 <p>Enums (Aufzählungstypen) und Pattern Matching (Musterabgleich) bilden ein zentrales Fundament der Typsicherheit und Kontrollflusssteuerung in Rust. Während Structs mehrere Werte zu einer logischen Einheit kombinieren (Produkttypen), erlauben es Enums, exklusive Alternativen typsicher auszudrücken (Summentypen). Zusammen mit dem mächtigen Pattern Matching stellt Rust sicher, dass alle fachlichen Fälle lückenlos behandelt werden und ungültige Zustände zur Kompilierzeit unmöglich darstellbar sind.</p>
 <p>Dieses Kapitel bietet eine allumfassende, lückenlose Referenz über alle Facetten von Rust-Enums – von den syntaktischen Grundlagen für Anfänger über fortgeschrittene Speicherverwaltungs- und Nischenoptimierungstechniken bis hin zu systemnahen Details wie Thread-Sicherheit, CPU-Performance und einer exhaustiven API-Referenz des wichtigsten Enums der Standardbibliothek: <code>Option&lt;T&gt;</code>.</p>
 <p>Die didaktischen und strukturellen Vorgaben für dieses Kapitel wurden gemäß den Richtlinien in <a href="file:///home/thorsten/RustKurs/markdown.md">markdown.md</a> und <a href="file:///home/thorsten/RustKurs/AGENTS.md">AGENTS.md</a> umgesetzt.</p>
-<hr />
+<hr>
 <h2 id="1-lernziele--lernplan"><a class="header" href="#1-lernziele--lernplan">1. Lernziele &amp; Lernplan</a></h2>
 <h3 id="lernziele"><a class="header" href="#lernziele">Lernziele</a></h3>
 <ul>
@@ -194,58 +193,48 @@
 </ul>
 <h3 id="lernplan"><a class="header" href="#lernplan">Lernplan</a></h3>
 <ul>
-<li><input disabled="" type="checkbox"/>
-<strong>2. Die Definition</strong>: Begriffsbestimmung von Enums, Varianten und Pattern Matching mit alltagsnahen Analogien.</li>
-<li><input disabled="" type="checkbox"/>
-<strong>3. Das Problem &amp; Die Motivation</strong>: Analyse der Risiken loser Strings, Booleans und von Null-Werten zur Statusmodellierung.</li>
-<li><input disabled="" type="checkbox"/>
-<strong>4. Drei naive Versuche</strong>: Fehlerhafte Codebeispiele zu String-basierten Statusübergängen, unsicherem <code>unwrap()</code> und unvollständigem Matching.</li>
-<li><input disabled="" type="checkbox"/>
-<strong>5. Die Anatomie der Fehler</strong>: Tiefgehende Fehleranalyse der Compiler-Fehlermeldungen und logischen Laufzeitabstürze.</li>
-<li><input disabled="" type="checkbox"/>
-<strong>6. Die Lösung</strong>: Typsichere Modellierung mit einem datentragenden Enum, Methoden und <code>Option&lt;T&gt;</code> inklusive Pseudocode und EVA-Analysen.</li>
-<li><input disabled="" type="checkbox"/>
-<strong>7. Kleines Tutorial</strong>: Schritt-für-Schritt-Entwicklung einer Bestell- und Zahlungslogik unter Verwendung von <code>match</code>, <code>if let</code> und <code>let ... else</code>.</li>
-<li><input disabled="" type="checkbox"/>
-<strong>8. Mentale Modelle &amp; Deep Dive</strong>:
+<li><input disabled="" type="checkbox"> <strong>2. Die Definition</strong>: Begriffsbestimmung von Enums, Varianten und Pattern Matching mit alltagsnahen Analogien.</li>
+<li><input disabled="" type="checkbox"> <strong>3. Das Problem &amp; Die Motivation</strong>: Analyse der Risiken loser Strings, Booleans und von Null-Werten zur Statusmodellierung.</li>
+<li><input disabled="" type="checkbox"> <strong>4. Drei naive Versuche</strong>: Fehlerhafte Codebeispiele zu String-basierten Statusübergängen, unsicherem <code>unwrap()</code> und unvollständigem Matching.</li>
+<li><input disabled="" type="checkbox"> <strong>5. Die Anatomie der Fehler</strong>: Tiefgehende Fehleranalyse der Compiler-Fehlermeldungen und logischen Laufzeitabstürze.</li>
+<li><input disabled="" type="checkbox"> <strong>6. Die Lösung</strong>: Typsichere Modellierung mit einem datentragenden Enum, Methoden und <code>Option&lt;T&gt;</code> inklusive Pseudocode und EVA-Analysen.</li>
+<li><input disabled="" type="checkbox"> <strong>7. Kleines Tutorial</strong>: Schritt-für-Schritt-Entwicklung einer Bestell- und Zahlungslogik unter Verwendung von <code>match</code>, <code>if let</code> und <code>let ... else</code>.</li>
+<li><input disabled="" type="checkbox"> <strong>8. Mentale Modelle &amp; Deep Dive</strong>:
 <ul>
 <li><strong>8.1 Enums als Summentypen</strong>: Logische Abgrenzung von Structs und mathematische Summen- vs. Produktlogik.</li>
 <li><strong>8.2 Speicherlayout &amp; Performance</strong>: Diskriminanten-Byte, maximaler Platzbedarf, Alignment-Füllbytes und Zero-Cost-Nischenoptimierung.</li>
 <li><strong>8.3 Pattern Matching &amp; Exhaustiveness</strong>: Das Prinzip der Vollständigkeit, Wildcards (<code>_</code>), der <code>|</code>-Operator und die Funktionsweise von Bindings (<code>ref</code>/<code>ref mut</code>).</li>
-<li><strong>8.4 Option<T> als sicherer Null-Ersatz</strong>: Warum Rust keine Nullpointer zulässt und wie <code>Option&lt;T&gt;</code> Fehler zur Compilezeit erzwingt.</li>
+<li><strong>8.4 Option<t> als sicherer Null-Ersatz</t></strong>: Warum Rust keine Nullpointer zulässt und wie <code>Option&lt;T&gt;</code> Fehler zur Compilezeit erzwingt.</li>
 <li><strong>8.5 Thread-Safety &amp; Concurrency</strong>: Vererbung von <code>Send</code> und <code>Sync</code> auf Enums.</li>
 <li><strong>8.6 Best Practices &amp; Anti-Patterns</strong>: Typische Design-Empfehlungen für Enums im professionellen Umfeld.</li>
-<li><strong>8.7 Exhaustive API-Reference für Option<T></strong>: Lückenlose Auflistung aller wichtigen <code>Option</code>-Hilfsmethoden mit Signatur, Parametern, Rückgabetyp, Panics und Minicode-Beispielen.</li>
+<li><strong>8.7 Exhaustive API-Reference für Option<t></t></strong>: Lückenlose Auflistung aller wichtigen <code>Option</code>-Hilfsmethoden mit Signatur, Parametern, Rückgabetyp, Panics und Minicode-Beispielen.</li>
 </ul>
 </li>
-<li><input disabled="" type="checkbox"/>
-<strong>9. Drei praktische Übungen</strong>: Detaillierte Programmieraufgaben (Begrüßungssystem, Download-Zustandsprüfer, Rabattfilter) mit APIs, Randfällen und Hilfestellungen.</li>
-<li><input disabled="" type="checkbox"/>
-<strong>10. Lernstrategie, Selbsteinschätzung &amp; Merkzettel</strong>: Ausführlicher Spickzettel, Active Recall, gezielte Compiler-Fehlerprovokation und metakognitiver Selbsttest.</li>
-<li><input disabled="" type="checkbox"/>
-<strong>11. Zusammenfassung</strong>: Kernpunkte kompakt aufbereitet.</li>
+<li><input disabled="" type="checkbox"> <strong>9. Drei praktische Übungen</strong>: Detaillierte Programmieraufgaben (Begrüßungssystem, Download-Zustandsprüfer, Rabattfilter) mit APIs, Randfällen und Hilfestellungen.</li>
+<li><input disabled="" type="checkbox"> <strong>10. Lernstrategie, Selbsteinschätzung &amp; Merkzettel</strong>: Ausführlicher Spickzettel, Active Recall, gezielte Compiler-Fehlerprovokation und metakognitiver Selbsttest.</li>
+<li><input disabled="" type="checkbox"> <strong>11. Zusammenfassung</strong>: Kernpunkte kompakt aufbereitet.</li>
 </ul>
-<hr />
+<hr>
 <h2 id="2-die-definition"><a class="header" href="#2-die-definition">2. Die Definition</a></h2>
 <p>Ein <strong>Enum</strong> (kurz für Enumeration) ist ein selbst definierter Datentyp, der eine feste Menge exklusiver Zustände oder Alternativen – die sogenannten <strong>Varianten</strong> – beschreibt. Ein konkreter Wert des Enums repräsentiert zu jedem Zeitpunkt exakt eine dieser Varianten. Varianten können optional eigene Daten tragen (Tupel-Daten oder benannte Felder).</p>
 <p>Ein <strong>Pattern</strong> (Muster) ist eine syntaktische Struktur, die mit der Form eines Werts verglichen wird. <strong>Pattern Matching</strong> ist der Mechanismus, mit dem Rust prüft, ob ein Wert einem bestimmten Pattern entspricht, und im Erfolgsfall die darin enthaltenen Daten extrahiert (bindet) und einen dedizierten Codezweig ausführt.</p>
 <h3 id="alltagsnahe-analogien"><a class="header" href="#alltagsnahe-analogien">Alltagsnahe Analogien</a></h3>
-<blockquote>
-<p>[!NOTE]
-<strong>Die Ampel-Metapher (Einfaches Enum)</strong>:
+<blockquote class="blockquote-tag blockquote-tag-note">
+<p class="blockquote-tag-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>Note</p>
+<p><strong>Die Ampel-Metapher (Einfaches Enum)</strong>:
 Eine Straßenampel ist ein perfektes Enum. Sie kann rot, gelb oder grün leuchten. Sie kann niemals rot und grün gleichzeitig sein, und es gibt keinen Zustand dazwischen. Jede Farbe signalisiert dem Fahrer eine klare, exklusive Verhaltensregel. Im Code entspricht dies einem Enum ohne zusätzliche Nutzdaten.</p>
 </blockquote>
-<blockquote>
-<p>[!TIP]
-<strong>Die Postfach-Metapher (Option-Enum)</strong>:
+<blockquote class="blockquote-tag blockquote-tag-tip">
+<p class="blockquote-tag-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M8 1.5c-2.363 0-4 1.69-4 3.75 0 .984.424 1.625.984 2.304l.214.253c.223.264.47.556.673.848.284.411.537.896.621 1.49a.75.75 0 0 1-1.484.211c-.04-.282-.163-.547-.37-.847a8.456 8.456 0 0 0-.542-.68c-.084-.1-.173-.205-.268-.32C3.201 7.75 2.5 6.766 2.5 5.25 2.5 2.31 4.863 0 8 0s5.5 2.31 5.5 5.25c0 1.516-.701 2.5-1.328 3.259-.095.115-.184.22-.268.319-.207.245-.383.453-.541.681-.208.3-.33.565-.37.847a.751.751 0 0 1-1.485-.212c.084-.593.337-1.078.621-1.489.203-.292.45-.584.673-.848.075-.088.147-.173.213-.253.561-.679.985-1.32.985-2.304 0-2.06-1.637-3.75-4-3.75ZM5.75 12h4.5a.75.75 0 0 1 0 1.5h-4.5a.75.75 0 0 1 0-1.5ZM6 15.25a.75.75 0 0 1 .75-.75h2.5a.75.75 0 0 1 0 1.5h-2.5a.75.75 0 0 1-.75-.75Z"></path></svg>Tip</p>
+<p><strong>Die Postfach-Metapher (Option-Enum)</strong>:
 Stellen Sie sich ein physisches Postfach vor. Wenn Sie hineinsehen, gibt es genau zwei exklusive Möglichkeiten: Entweder das Fach ist vollkommen leer (<code>None</code>) oder es befindet sich ein konkreter Brief darin (<code>Some(Brief)</code>). Sie können den Brief erst lesen (auspacken), wenn Sie das Postfach geöffnet und den Brief entnommen haben. Das ist das Prinzip von <code>Option&lt;T&gt;</code> in Rust.</p>
 </blockquote>
-<blockquote>
-<p>[!IMPORTANT]
-<strong>Die Paketdienst-Metapher (Enum mit Daten)</strong>:
+<blockquote class="blockquote-tag blockquote-tag-important">
+<p class="blockquote-tag-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 1.75C0 .784.784 0 1.75 0h12.5C15.216 0 16 .784 16 1.75v9.5A1.75 1.75 0 0 1 14.25 13H8.06l-2.573 2.573A1.458 1.458 0 0 1 3 14.543V13H1.75A1.75 1.75 0 0 1 0 11.25Zm1.75-.25a.25.25 0 0 0-.25.25v9.5c0 .138.112.25.25.25h2a.75.75 0 0 1 .75.75v2.19l2.72-2.72a.749.749 0 0 1 .53-.22h6.5a.25.25 0 0 0 .25-.25v-9.5a.25.25 0 0 0-.25-.25Zm7 2.25v2.5a.75.75 0 0 1-1.5 0v-2.5a.75.75 0 0 1 1.5 0ZM9 9a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"></path></svg>Important</p>
+<p><strong>Die Paketdienst-Metapher (Enum mit Daten)</strong>:
 Ein Zustelldienst transportiert Sendungen. Eine Sendung kann ein Brief sein (benötigt nur ein Adressfeld), ein Paket (benötigt Gewicht und Abmessungen) oder eine Palette (benötigt Stellplatz-Koordinaten). Obwohl alle diese Objekte „Sendungen“ sind, tragen sie völlig unterschiedliche Datenstrukturen. Ein Enum gruppiert diese Möglichkeiten unter einem gemeinsamen Typnamen.</p>
 </blockquote>
-<hr />
+<hr>
 <h2 id="3-das-problem--die-motivation"><a class="header" href="#3-das-problem--die-motivation">3. Das Problem &amp; Die Motivation</a></h2>
 <p>In vielen Programmiersprachen werden fachliche Alternativen oder Zustände unzureichend modelliert. Betrachten wir ein typisches Bestellsystem, das vier Zustände abbilden muss:</p>
 <ul>
@@ -255,13 +244,16 @@ Ein Zustelldienst transportiert Sendungen. Eine Sendung kann ein Brief sein (ben
 <li>Eine Bestellung ist fehlgeschlagen (besitzt einen Fehlergrund).</li>
 </ul>
 <p>Ein naiver Entwurf nutzt lose Variablen oder String-Zustandsfelder:</p>
-<pre><code class="language-rust">// Modellierung über ein Struct mit statusfeld
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>// Modellierung über ein Struct mit statusfeld
 struct Bestellung {
     id: u32,
     status: String,        // Erlaubt beliebige Texte: "bezahlt", "offen", "fehlgeschlagen"
     tracking_code: String, // Nur sinnvoll, wenn status == "versendet"
     fehler_grund: String,  // Nur sinnvoll, wenn status == "fehlgeschlagen"
-}</code></pre>
+}
+<span class="boring">}</span></code></pre>
 <p>Dieser Ansatz weist fundamentale Schwachstellen auf:</p>
 <ol>
 <li><strong>Fehlende Typsicherheit</strong>: Der Compiler akzeptiert jeden beliebigen Text für das Feld <code>status</code>. Tippfehler wie <code>"bezhaltt"</code> werden nicht erkannt.</li>
@@ -269,13 +261,13 @@ struct Bestellung {
 <li><strong>Mangelnde Wartbarkeit</strong>: Wird ein neuer Status eingeführt (z. B. <code>"storniert"</code>), muss jede <code>if-else</code>-Kette im gesamten Programm manuell gesucht und erweitert werden. Der Compiler bietet keine Hilfestellung.</li>
 <li><strong>Fehlende Semantik bei Null-Werten</strong>: Um abwesende Werte (wie den Tracking-Code im Zustand <code>"offen"</code>) darzustellen, müssen leere Ersatzwerte (<code>""</code>) oder riskante Null-Zeiger verwendet werden, was zu Laufzeitfehlern führen kann.</li>
 </ol>
-<p>Rust löst dieses Problem durch Enums. Sie erlauben es, Daten so zu modellieren, dass ungültige Zustände syntaktisch gar nicht erst repräsentiert werden können ("Make invalid states unrepresentable").</p>
-<hr />
+<p>Rust löst dieses Problem durch Enums. Sie erlauben es, Daten so zu modellieren, dass ungültige Zustände syntaktisch gar nicht erst repräsentiert werden können (“Make invalid states unrepresentable”).</p>
+<hr>
 <h2 id="4-drei-naive-versuche"><a class="header" href="#4-drei-naive-versuche">4. Drei naive Versuche</a></h2>
 <p>Wir betrachten drei typische Fehlermuster, die bei der Arbeit mit Statusfeldern, optionalen Daten und Pattern Matching in Rust entstehen.</p>
 <h3 id="versuch-1-statusmodellierung-über-lose-strings"><a class="header" href="#versuch-1-statusmodellierung-über-lose-strings">Versuch 1: Statusmodellierung über lose Strings</a></h3>
 <p>Ein Entwickler versucht, die Versandlogik über String-Vergleiche und leere String-Platzhalter abzubilden.</p>
-<pre><code class="language-rust">// Filename: src/main.rs
+<pre class="playground"><code class="language-rust edition2021">// Filename: src/main.rs
 // Dieser Code kompiliert, hat aber schwerwiegende logische Modellierungsfehler!
 fn versand_text(status: &amp;str, tracking_code: &amp;str) -&gt; String {
     if status == "bezahlt" {
@@ -300,7 +292,7 @@ fn main() {
 }</code></pre>
 <h3 id="versuch-2-unsicheres-auspacken-von-optionen-mittels-unwrap"><a class="header" href="#versuch-2-unsicheres-auspacken-von-optionen-mittels-unwrap">Versuch 2: Unsicheres Auspacken von Optionen mittels <code>unwrap</code></a></h3>
 <p>Der Entwickler hat gelernt, dass <code>Option&lt;T&gt;</code> für optionale Daten verwendet werden soll. Er greift jedoch unvorsichtig auf den Inhalt zu.</p>
-<pre><code class="language-rust">// Filename: src/main.rs
+<pre class="playground"><code class="language-rust edition2021">// Filename: src/main.rs
 // Dieser Code kompiliert, stürzt jedoch zur Laufzeit ab (Panic)!
 fn print_tracking_code(code: Option&lt;String&gt;) {
     // Unvorsichtiges Auspacken ohne vorherige Prüfung
@@ -314,7 +306,7 @@ fn main() {
 }</code></pre>
 <h3 id="versuch-3-unvollständiges-pattern-matching-bei-enums"><a class="header" href="#versuch-3-unvollständiges-pattern-matching-bei-enums">Versuch 3: Unvollständiges Pattern Matching bei Enums</a></h3>
 <p>Ein Programmierer definiert ein Enum für das Ampelsystem, vergisst jedoch beim Auswerten eine Variante im <code>match</code>-Block.</p>
-<pre><code class="language-rust">// Filename: src/main.rs
+<pre class="playground"><code class="language-rust edition2021">// Filename: src/main.rs
 // Dieser Code kompiliert NICHT!
 enum Ampel {
     Rot,
@@ -334,7 +326,7 @@ fn main() {
     let s = signal_aktion(Ampel::Gelb);
     println!("{s}");
 }</code></pre>
-<hr />
+<hr>
 <h2 id="5-die-anatomie-der-fehler"><a class="header" href="#5-die-anatomie-der-fehler">5. Die Anatomie der Fehler</a></h2>
 <h3 id="1-analyse-von-versuch-1-logischer-modellierungsfehler"><a class="header" href="#1-analyse-von-versuch-1-logischer-modellierungsfehler">1. Analyse von Versuch 1 (Logischer Modellierungsfehler)</a></h3>
 <p>Der Code kompiliert problemlos, da alle Typen formal korrekt sind. Das Problem liegt im physischen Speicher und der mangelnden Validierung:</p>
@@ -381,7 +373,7 @@ help: ensure that all possible cases are being handled by adding a match arm wit
 <ul>
 <li><strong>Erklärung</strong>: Rust verlangt, dass ein <code>match</code>-Ausdruck <strong>erschöpfend</strong> (exhaustive) ist. Das bedeutet: Jeder theoretisch mögliche Wert des Typs muss abgedeckt werden. Da die Variante <code>Ampel::Gelb</code> im Match-Block fehlt, verweigert der Compiler das Übersetzen. Dies garantiert, dass Sie niemals vergessen können, eine neu hinzugefügte Variante auszuwerten.</li>
 </ul>
-<hr />
+<hr>
 <h2 id="6-die-lösung"><a class="header" href="#6-die-lösung">6. Die Lösung</a></h2>
 <p>Wir präsentieren die korrekten, sicheren Lösungsansätze unter Verwendung von Enums, Pattern Matching und der typsicheren <code>Option&lt;T&gt;</code>-Auswertung.</p>
 <h3 id="didaktischer-pseudocode"><a class="header" href="#didaktischer-pseudocode">Didaktischer Pseudocode</a></h3>
@@ -401,7 +393,7 @@ help: ensure that all possible cases are being handled by adding a match arm wit
    (Der Compiler garantiert, dass alle diese Fälle behandelt werden müssen.)
 </code></pre>
 <h3 id="rust-implementierung"><a class="header" href="#rust-implementierung">Rust-Implementierung</a></h3>
-<pre><code class="language-rust">// Wir erlauben Debug-Ausgaben für unser Enum
+<pre class="playground"><code class="language-rust edition2021">// Wir erlauben Debug-Ausgaben für unser Enum
 #[derive(Debug)]
 enum BestellStatus {
     Offen,
@@ -481,12 +473,14 @@ fn main() {
 </ul>
 </li>
 </ul>
-<hr />
+<hr>
 <h2 id="7-kleines-tutorial-eine-bestelllogik-bauen"><a class="header" href="#7-kleines-tutorial-eine-bestelllogik-bauen">7. Kleines Tutorial: Eine Bestelllogik bauen</a></h2>
 <p>In diesem Tutorial implementieren wir eine zustandsgesteuerte Bestellabwicklung. Wir verbinden dabei Enums für Zahlungen und Aktionen mit Scopes, Optionals, <code>if let</code> und <code>let ... else</code>.</p>
 <h3 id="schritt-1-fachliche-typen-und-zustände-definieren"><a class="header" href="#schritt-1-fachliche-typen-und-zustände-definieren">Schritt 1: Fachliche Typen und Zustände definieren</a></h3>
 <p>Wir legen fest, welche Zahlungszustände eintreten können und welche Folgeaktionen unser System daraufhin ausführen muss.</p>
-<pre><code class="language-rust">#[derive(Debug)]
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>#[derive(Debug)]
 enum Zahlung {
     Offen,
     Bezahlt { betrag_cent: u32 },
@@ -498,19 +492,25 @@ enum FolgeAktion {
     ZahlungsErinnerungSenden,
     VersandVorbereiten { betrag_cent: u32 },
     SupportAlarmieren(String),
-}</code></pre>
+}
+<span class="boring">}</span></code></pre>
 <h3 id="schritt-2-entscheidungslogik-mit-match"><a class="header" href="#schritt-2-entscheidungslogik-mit-match">Schritt 2: Entscheidungslogik mit <code>match</code></a></h3>
 <p>Wir schreiben eine reine Funktion, die eine <code>Zahlung</code> entgegennimmt (Ownership übernimmt) und die logisch folgende <code>FolgeAktion</code> ermittelt.</p>
-<pre><code class="language-rust">fn verarbeite_zahlung(zahlung: Zahlung) -&gt; FolgeAktion {
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>fn verarbeite_zahlung(zahlung: Zahlung) -&gt; FolgeAktion {
     match zahlung {
         Zahlung::Offen =&gt; FolgeAktion::ZahlungsErinnerungSenden,
         Zahlung::Bezahlt { betrag_cent } =&gt; FolgeAktion::VersandVorbereiten { betrag_cent },
         Zahlung::Abgelehnt { grund } =&gt; FolgeAktion::SupportAlarmieren(grund),
     }
-}</code></pre>
+}
+<span class="boring">}</span></code></pre>
 <h3 id="schritt-3-gekapselte-bestellung-mit-optionalem-gutschein"><a class="header" href="#schritt-3-gekapselte-bestellung-mit-optionalem-gutschein">Schritt 3: Gekapselte Bestellung mit optionalem Gutschein</a></h3>
 <p>Wir definieren ein Bestell-Struct, das eine Bestellnummer und einen optionalen Gutscheincode aufweist.</p>
-<pre><code class="language-rust">struct Bestellung {
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>struct Bestellung {
     id: u32,
     gutschein: Option&lt;String&gt;,
 }
@@ -522,18 +522,24 @@ fn rabatt_information(bestellung: &amp;Bestellung) -&gt; String {
         Some(code) =&gt; format!("Bestellung {} nutzt Rabattcode: {code}", bestellung.id),
         None =&gt; format!("Bestellung {} nutzt keinen Rabattcode.", bestellung.id),
     }
-}</code></pre>
+}
+<span class="boring">}</span></code></pre>
 <h3 id="schritt-4-selektives-pattern-matching-mit-if-let"><a class="header" href="#schritt-4-selektives-pattern-matching-mit-if-let">Schritt 4: Selektives Pattern Matching mit <code>if let</code></a></h3>
 <p>Manchmal interessiert uns nur eine einzige Variante eines Enums, während alle anderen ignoriert werden können. Hierfür nutzen wir die kompakte <code>if let</code>-Syntax.</p>
-<pre><code class="language-rust">fn bewerbe_gutschein(bestellung: &amp;Bestellung) {
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>fn bewerbe_gutschein(bestellung: &amp;Bestellung) {
     // Wir reagieren nur, wenn tatsächlich ein Gutschein existiert
     if let Some(code) = &amp;bestellung.gutschein {
         println!("Sende personalisierte Werbung für Code: {code}");
     }
-}</code></pre>
+}
+<span class="boring">}</span></code></pre>
 <h3 id="schritt-5-frühes-aussteigen-mit-let--else"><a class="header" href="#schritt-5-frühes-aussteigen-mit-let--else">Schritt 5: Frühes Aussteigen mit <code>let ... else</code></a></h3>
 <p>Wenn wir eine Funktion früh beenden wollen, falls eine Bedingung (ein Pattern) nicht erfüllt ist, ist <code>let ... else</code> die am besten lesbare Wahl. Sie hält den Hauptpfad der Funktion linksbündig (Flache Hierarchie).</p>
-<pre><code class="language-rust">fn extrahiere_aktiven_gutschein(bestellung: &amp;Bestellung) -&gt; Option&lt;String&gt; {
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>fn extrahiere_aktiven_gutschein(bestellung: &amp;Bestellung) -&gt; Option&lt;String&gt; {
     // Wenn das Pattern Some(code) nicht passt, MUSS der else-Block den Kontrollfluss verlassen!
     let Some(code) = &amp;bestellung.gutschein else {
         println!("Kein Gutschein vorhanden. Breche Suche ab.");
@@ -542,10 +548,11 @@ fn rabatt_information(bestellung: &amp;Bestellung) -&gt; String {
 
     // Hier ist 'code' im gesamten äußeren Funktionsscope verfügbar!
     Some(code.to_uppercase())
-}</code></pre>
+}
+<span class="boring">}</span></code></pre>
 <h3 id="schritt-6-integration-in-die-main"><a class="header" href="#schritt-6-integration-in-die-main">Schritt 6: Integration in die <code>main</code></a></h3>
 <p>Wir fügen alle Bausteine zusammen und testen die Logik.</p>
-<pre><code class="language-rust">fn main() {
+<pre class="playground"><code class="language-rust edition2021">fn main() {
     // 1. Zahlungen verarbeiten
     let z1 = Zahlung::Bezahlt { betrag_cent: 4990 };
     let action = verarbeite_zahlung(z1);
@@ -564,7 +571,7 @@ fn rabatt_information(bestellung: &amp;Bestellung) -&gt; String {
         println!("Verarbeiteter Code: {upper_code}");
     }
 }</code></pre>
-<hr />
+<hr>
 <h2 id="8-mentale-modelle--deep-dive"><a class="header" href="#8-mentale-modelle--deep-dive">8. Mentale Modelle &amp; Deep Dive</a></h2>
 <h3 id="81-enums-als-summentypen"><a class="header" href="#81-enums-als-summentypen">8.1 Enums als Summentypen</a></h3>
 <p>In der Informatik und Typentheorie unterscheidet man Datenstrukturen nach der Anzahl ihrer Kombinationsmöglichkeiten (Kardinalität):</p>
@@ -596,7 +603,7 @@ Enum (Summe): Offen ODER Bezahlt ODER Versendet
 <li><strong>Die Nutzdaten (Payload)</strong>: Speicherplatz für die Daten der größten Variante.</li>
 <li><strong>Padding</strong>: Füllbytes, die eingefügt werden, um das Alignment der Nutzdaten einzuhalten.</li>
 </ol>
-<pre><code class="language-rust">use std::mem::size_of;
+<pre class="playground"><code class="language-rust edition2021">use std::mem::size_of;
 
 enum SpeicherTest {
     A,                  // 0 Bytes Nutzdaten
@@ -612,7 +619,7 @@ fn main() {
 <h4 id="die-nischen-optimierung-null-pointer-optimization"><a class="header" href="#die-nischen-optimierung-null-pointer-optimization">Die Nischen-Optimierung (Null Pointer Optimization)</a></h4>
 <p>Rust nutzt ungenutzte Bitmuster (Nischen) von Datentypen, um Speicherplatz einzusparen.
 Eine Referenz <code>&amp;T</code> oder ein intelligenter Zeiger wie <code>Box&lt;T&gt;</code> darf niemals die Speicheradresse <code>0</code> (<code>null</code>) annehmen. Rust nutzt diese ungültige Adresse <code>0</code> intern, um die Variante <code>None</code> eines <code>Option&lt;&amp;T&gt;</code> darzustellen.</p>
-<pre><code class="language-rust">fn main() {
+<pre class="playground"><code class="language-rust edition2021">fn main() {
     // Keine zusätzliche Tag-Größe! Option&lt;&amp;i32&gt; ist exakt so groß wie ein nackter Zeiger &amp;i32.
     println!("Größe &amp;i32: {} Bytes", size_of::&lt;&amp;i32&gt;());                 // 8 Bytes
     println!("Größe Option&lt;&amp;i32&gt;: {} Bytes", size_of::&lt;Option&lt;&amp;i32&gt;&gt;()); // 8 Bytes (Zero-Cost!)
@@ -623,25 +630,31 @@ Eine Referenz <code>&amp;T</code> oder ein intelligenter Zeiger wie <code>Box&lt
 <p>Der Compiler prüft jeden Pfad. Wenn Sie eine Variante vergessen, verweigert das System den Build.</p>
 <h4 id="2-der-sammelarm-wildcard-_"><a class="header" href="#2-der-sammelarm-wildcard-_">2. Der Sammelarm (Wildcard <code>_</code>)</a></h4>
 <p>Der Unterstrich <code>_</code> fängt jeden Wert ab, der von den vorherigen Armen nicht getroffen wurde. Er ignoriert die Daten.</p>
-<blockquote>
-<p>[!WARNING]
-<strong>Vorsicht vor Wildcards bei Domänen-Enums!</strong>
+<blockquote class="blockquote-tag blockquote-tag-warning">
+<p class="blockquote-tag-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M6.457 1.047c.659-1.234 2.427-1.234 3.086 0l6.082 11.378A1.75 1.75 0 0 1 14.082 15H1.918a1.75 1.75 0 0 1-1.543-2.575Zm1.763.707a.25.25 0 0 0-.44 0L1.698 13.132a.25.25 0 0 0 .22.368h12.164a.25.25 0 0 0 .22-.368Zm.53 3.996v2.5a.75.75 0 0 1-1.5 0v-2.5a.75.75 0 0 1 1.5 0ZM9 11a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"></path></svg>Warning</p>
+<p><strong>Vorsicht vor Wildcards bei Domänen-Enums!</strong>
 Wenn Sie ein Enum für geschäftsrelevante Zustände (wie <code>BestellStatus</code>) nutzen, sollten Sie auf den Sammelarm <code>_</code> verzichten. Verwenden Sie stattdessen explizite Varianten-Auflistungen. Fügen Sie später eine neue Variante hinzu, zwingt der Compiler Sie an jeder Stelle im Code zur Anpassung. Mit einem Wildcard <code>_</code> würde der Compiler stumm durchlaufen, was zu unentdeckten Logikfehlern führen kann.</p>
 </blockquote>
 <h4 id="3-der--oder-operator"><a class="header" href="#3-der--oder-operator">3. Der <code>|</code> (Oder)-Operator</a></h4>
 <p>Sie können mehrere Muster in einem einzigen Match-Arm zusammenfassen:</p>
-<pre><code class="language-rust">match status {
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>match status {
     BestellStatus::Offen | BestellStatus::Bezahlt =&gt; println!("Nicht versandbereit"),
     _ =&gt; println!("Versandbereit oder Fehler"),
-}</code></pre>
+}
+<span class="boring">}</span></code></pre>
 <h4 id="4-bindings-ref-und-ref-mut-im-pattern"><a class="header" href="#4-bindings-ref-und-ref-mut-im-pattern">4. Bindings: <code>ref</code> und <code>ref mut</code> im Pattern</a></h4>
 <p>Wenn Sie ein Struct oder Enum destrukturieren und nur Referenzen auf die inneren Felder erhalten möchten, nutzen Sie das standardmäßige Referenz-Matching des Compilers.</p>
-<pre><code class="language-rust">let opt_name = Some(String::from("Alice"));
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let opt_name = Some(String::from("Alice"));
 match &amp;opt_name {
     Some(name) =&gt; println!("Name ist: {name}"), // 'name' wird automatisch als &amp;String gebunden
     None =&gt; {}
 }
-// opt_name ist hier weiterhin gültig, da wir nur referenziert (geliehen) haben!</code></pre>
+// opt_name ist hier weiterhin gültig, da wir nur referenziert (geliehen) haben!
+<span class="boring">}</span></code></pre>
 <h3 id="84-optiont-als-sicherer-null-ersatz"><a class="header" href="#84-optiont-als-sicherer-null-ersatz">8.4 <code>Option&lt;T&gt;</code> als sicherer Null-Ersatz</a></h3>
 <p>In vielen Sprachen existiert das Konzept von <code>null</code> oder <code>nil</code> (z. B. Java, C++, Python). Tony Hoare, der Erfinder der Null-Referenz, nannte dies seinen „Billion Dollar Mistake“.</p>
 <h4 id="das-problem-von-null"><a class="header" href="#das-problem-von-null">Das Problem von <code>null</code>:</a></h4>
@@ -652,10 +665,13 @@ match &amp;opt_name {
 </ul>
 <h4 id="die-rust-lösung"><a class="header" href="#die-rust-lösung">Die Rust-Lösung:</a></h4>
 <p>Es gibt in sicherem Rust keine Null-Zeiger. Ein Wert ist immer gültig. Wenn ein Wert fehlen kann, müssen Sie dies explizit im Typ sichtbar machen. Das geschieht über das Standard-Enum:</p>
-<pre><code class="language-rust">enum Option&lt;T&gt; {
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>enum Option&lt;T&gt; {
     None,
     Some(T),
-}</code></pre>
+}
+<span class="boring">}</span></code></pre>
 <p>Sie können mit einem <code>Option&lt;i32&gt;</code> nicht direkt rechnen. Der Compiler zwingt Sie, die Kapsel über Pattern Matching oder Standardmethoden zu öffnen, bevor Sie an den inneren Wert gelangen.</p>
 <h3 id="85-thread-safety--concurrency"><a class="header" href="#85-thread-safety--concurrency">8.5 Thread-Safety &amp; Concurrency</a></h3>
 <p>Enums besitzen in Rust keine feste Thread-Sicherheit an sich. Ihre Thread-Tauglichkeit wird über die sogenannten Auto-Traits <code>Send</code> und <code>Sync</code> dynamisch abgeleitet.</p>
@@ -673,15 +689,21 @@ Beispiel 2:
   -&gt; Unsafe verliert automatisch die Send/Sync-Eigenschaften.
 </code></pre>
 <h3 id="86-best-practices--anti-patterns"><a class="header" href="#86-best-practices--anti-patterns">8.6 Best Practices &amp; Anti-Patterns</a></h3>
-<div class="table-wrapper"><table><thead><tr><th style="text-align: left">Situation</th><th style="text-align: left">Empfehlung</th><th style="text-align: left">Anti-Pattern</th></tr></thead><tbody>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th style="text-align: left">Situation</th><th style="text-align: left">Empfehlung</th><th style="text-align: left">Anti-Pattern</th></tr>
+</thead>
+<tbody>
 <tr><td style="text-align: left"><strong>Exklusive Zustände</strong></td><td style="text-align: left">Nutzen Sie ein Enum mit Varianten.</td><td style="text-align: left">Lose String-Zustände oder Flag-Booleans.</td></tr>
 <tr><td style="text-align: left"><strong>Optionale Daten</strong></td><td style="text-align: left">Kapseln Sie die Daten direkt in die Variante.</td><td style="text-align: left">Optionale Felder im übergeordneten Struct.</td></tr>
 <tr><td style="text-align: left"><strong>Schnittstellen-Erweiterbarkeit</strong></td><td style="text-align: left">Kennzeichnen Sie öffentliche Bibliotheks-Enums mit <code>#[non_exhaustive]</code>.</td><td style="text-align: left">Direkte Freigabe ohne Wildcard-Zwang.</td></tr>
 <tr><td style="text-align: left"><strong>Fehlerbehandlung</strong></td><td style="text-align: left">Nutzen Sie <code>Option&lt;T&gt;</code> für einfache Abwesenheit und <code>Result&lt;T, E&gt;</code> für Fehler.</td><td style="text-align: left">Verwendung von Fehler-Codes (<code>-1</code>) oder leeren Ersatzstrings.</td></tr>
 <tr><td style="text-align: left"><strong>Kompaktes Matchen</strong></td><td style="text-align: left">Verwenden Sie das <code>matches!</code>-Makro für Booleans.</td><td style="text-align: left">Lange, unleserliche <code>match</code>-Blöcke, die nur <code>true</code>/<code>false</code> liefern.</td></tr>
-</tbody></table>
+</tbody>
+</table>
 </div>
-<hr />
+<hr>
 <h3 id="87-exhaustive-api-reference-für-optiont"><a class="header" href="#87-exhaustive-api-reference-für-optiont">8.7 Exhaustive API-Reference für <code>Option&lt;T&gt;</code></a></h3>
 <p><code>Option&lt;T&gt;</code> ist der meistgenutzte Typ in Rust. Nachfolgend finden Sie eine lückenlose Referenz aller wichtigen Methoden der Standardbibliothek für diesen Typ.</p>
 <h4 id="1-is_some"><a class="header" href="#1-is_some">1. <code>is_some</code></a></h4>
@@ -691,8 +713,11 @@ Beispiel 2:
 <li><strong>Rückgabetyp</strong>: <code>bool</code> (liefert <code>true</code>, wenn die Option <code>Some</code> ist)</li>
 <li><strong>Panics / Sicherheit</strong>: Keine Risiken.</li>
 <li><strong>Code-Beispiel</strong>:
-<pre><code class="language-rust">let x: Option&lt;i32&gt; = Some(2);
-assert_eq!(x.is_some(), true);</code></pre>
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let x: Option&lt;i32&gt; = Some(2);
+assert_eq!(x.is_some(), true);
+<span class="boring">}</span></code></pre>
 </li>
 </ul>
 <h4 id="2-is_none"><a class="header" href="#2-is_none">2. <code>is_none</code></a></h4>
@@ -702,8 +727,11 @@ assert_eq!(x.is_some(), true);</code></pre>
 <li><strong>Rückgabetyp</strong>: <code>bool</code> (liefert <code>true</code>, wenn die Option <code>None</code> ist)</li>
 <li><strong>Panics / Sicherheit</strong>: Keine Risiken.</li>
 <li><strong>Code-Beispiel</strong>:
-<pre><code class="language-rust">let x: Option&lt;i32&gt; = None;
-assert_eq!(x.is_none(), true);</code></pre>
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let x: Option&lt;i32&gt; = None;
+assert_eq!(x.is_none(), true);
+<span class="boring">}</span></code></pre>
 </li>
 </ul>
 <h4 id="3-as_ref"><a class="header" href="#3-as_ref">3. <code>as_ref</code></a></h4>
@@ -713,9 +741,12 @@ assert_eq!(x.is_none(), true);</code></pre>
 <li><strong>Rückgabetyp</strong>: <code>Option&lt;&amp;T&gt;</code> (wandelt Option des Werts in Option der Referenz um)</li>
 <li><strong>Panics / Sicherheit</strong>: Keine Risiken. Verhindert das Bewegen (Move) von Werten.</li>
 <li><strong>Code-Beispiel</strong>:
-<pre><code class="language-rust">let text = Some(String::from("Hallo"));
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let text = Some(String::from("Hallo"));
 let text_ref: Option&lt;&amp;String&gt; = text.as_ref();
-assert!(text_ref.is_some());</code></pre>
+assert!(text_ref.is_some());
+<span class="boring">}</span></code></pre>
 </li>
 </ul>
 <h4 id="4-as_mut"><a class="header" href="#4-as_mut">4. <code>as_mut</code></a></h4>
@@ -725,11 +756,14 @@ assert!(text_ref.is_some());</code></pre>
 <li><strong>Rückgabetyp</strong>: <code>Option&lt;&amp;mut T&gt;</code> (erzeugt eine veränderliche Referenz auf den inneren Wert)</li>
 <li><strong>Panics / Sicherheit</strong>: Keine Risiken.</li>
 <li><strong>Code-Beispiel</strong>:
-<pre><code class="language-rust">let mut x = Some(2);
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let mut x = Some(2);
 if let Some(val) = x.as_mut() {
     *val += 1;
 }
-assert_eq!(x, Some(3));</code></pre>
+assert_eq!(x, Some(3));
+<span class="boring">}</span></code></pre>
 </li>
 </ul>
 <h4 id="5-expect"><a class="header" href="#5-expect">5. <code>expect</code></a></h4>
@@ -739,8 +773,11 @@ assert_eq!(x, Some(3));</code></pre>
 <li><strong>Rückgabetyp</strong>: <code>T</code> (der innere Wert)</li>
 <li><strong>Panics / Sicherheit</strong>: <strong>Stürzt ab (Panic)</strong> mit der Nachricht <code>msg</code>, wenn der Wert <code>None</code> ist. Nur im Testcode oder bei logisch garantierten Zuständen nutzen!</li>
 <li><strong>Code-Beispiel</strong>:
-<pre><code class="language-rust">let x = Some("Wert");
-assert_eq!(x.expect("Sollte da sein"), "Wert");</code></pre>
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let x = Some("Wert");
+assert_eq!(x.expect("Sollte da sein"), "Wert");
+<span class="boring">}</span></code></pre>
 </li>
 </ul>
 <h4 id="6-unwrap"><a class="header" href="#6-unwrap">6. <code>unwrap</code></a></h4>
@@ -750,8 +787,11 @@ assert_eq!(x.expect("Sollte da sein"), "Wert");</code></pre>
 <li><strong>Rückgabetyp</strong>: <code>T</code> (der innere Wert)</li>
 <li><strong>Panics / Sicherheit</strong>: <strong>Stürzt ab (Panic)</strong>, wenn der Wert <code>None</code> ist. In Produktionscode vermeiden!</li>
 <li><strong>Code-Beispiel</strong>:
-<pre><code class="language-rust">let x = Some("Wert");
-assert_eq!(x.unwrap(), "Wert");</code></pre>
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let x = Some("Wert");
+assert_eq!(x.unwrap(), "Wert");
+<span class="boring">}</span></code></pre>
 </li>
 </ul>
 <h4 id="7-unwrap_or"><a class="header" href="#7-unwrap_or">7. <code>unwrap_or</code></a></h4>
@@ -761,8 +801,11 @@ assert_eq!(x.unwrap(), "Wert");</code></pre>
 <li><strong>Rückgabetyp</strong>: <code>T</code> (der innere Wert oder der Standardwert)</li>
 <li><strong>Panics / Sicherheit</strong>: Keine Risiken. Der Standardwert wird sofort evaluiert (unabhängig davon, ob er benötigt wird).</li>
 <li><strong>Code-Beispiel</strong>:
-<pre><code class="language-rust">let x: Option&lt;i32&gt; = None;
-assert_eq!(x.unwrap_or(42), 42);</code></pre>
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let x: Option&lt;i32&gt; = None;
+assert_eq!(x.unwrap_or(42), 42);
+<span class="boring">}</span></code></pre>
 </li>
 </ul>
 <h4 id="8-unwrap_or_else"><a class="header" href="#8-unwrap_or_else">8. <code>unwrap_or_else</code></a></h4>
@@ -772,8 +815,11 @@ assert_eq!(x.unwrap_or(42), 42);</code></pre>
 <li><strong>Rückgabetyp</strong>: <code>T</code> (der innere Wert oder das Ergebnis der Funktion <code>f</code>)</li>
 <li><strong>Panics / Sicherheit</strong>: Keine Risiken. Die Funktion wird nur ausgeführt (lazy evaluation), wenn die Option tatsächlich <code>None</code> ist.</li>
 <li><strong>Code-Beispiel</strong>:
-<pre><code class="language-rust">let x: Option&lt;i32&gt; = None;
-assert_eq!(x.unwrap_or_else(|| 20 + 22), 42);</code></pre>
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let x: Option&lt;i32&gt; = None;
+assert_eq!(x.unwrap_or_else(|| 20 + 22), 42);
+<span class="boring">}</span></code></pre>
 </li>
 </ul>
 <h4 id="9-unwrap_or_default"><a class="header" href="#9-unwrap_or_default">9. <code>unwrap_or_default</code></a></h4>
@@ -783,8 +829,11 @@ assert_eq!(x.unwrap_or_else(|| 20 + 22), 42);</code></pre>
 <li><strong>Rückgabetyp</strong>: <code>T</code> (der innere Wert oder der Default-Wert des Typs <code>T</code>)</li>
 <li><strong>Panics / Sicherheit</strong>: Keine Risiken. Setzt voraus, dass der Typ <code>T</code> das <code>Default</code>-Trait implementiert.</li>
 <li><strong>Code-Beispiel</strong>:
-<pre><code class="language-rust">let x: Option&lt;i32&gt; = None;
-assert_eq!(x.unwrap_or_default(), 0); // 0 ist der Standard für i32</code></pre>
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let x: Option&lt;i32&gt; = None;
+assert_eq!(x.unwrap_or_default(), 0); // 0 ist der Standard für i32
+<span class="boring">}</span></code></pre>
 </li>
 </ul>
 <h4 id="10-map"><a class="header" href="#10-map">10. <code>map</code></a></h4>
@@ -794,9 +843,12 @@ assert_eq!(x.unwrap_or_default(), 0); // 0 ist der Standard für i32</code></pre
 <li><strong>Rückgabetyp</strong>: <code>Option&lt;U&gt;</code> (wird auf den inneren Wert angewendet, <code>None</code> bleibt <code>None</code>)</li>
 <li><strong>Panics / Sicherheit</strong>: Keine Risiken.</li>
 <li><strong>Code-Beispiel</strong>:
-<pre><code class="language-rust">let x = Some("Text");
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let x = Some("Text");
 let laenge = x.map(|s| s.len());
-assert_eq!(laenge, Some(4));</code></pre>
+assert_eq!(laenge, Some(4));
+<span class="boring">}</span></code></pre>
 </li>
 </ul>
 <h4 id="11-map_or"><a class="header" href="#11-map_or">11. <code>map_or</code></a></h4>
@@ -806,8 +858,11 @@ assert_eq!(laenge, Some(4));</code></pre>
 <li><strong>Rückgabetyp</strong>: <code>U</code> (das Ergebnis von <code>f</code> oder der Standardwert)</li>
 <li><strong>Panics / Sicherheit</strong>: Keine Risiken.</li>
 <li><strong>Code-Beispiel</strong>:
-<pre><code class="language-rust">let x = Some("Text");
-assert_eq!(x.map_or(0, |s| s.len()), 4);</code></pre>
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let x = Some("Text");
+assert_eq!(x.map_or(0, |s| s.len()), 4);
+<span class="boring">}</span></code></pre>
 </li>
 </ul>
 <h4 id="12-map_or_else"><a class="header" href="#12-map_or_else">12. <code>map_or_else</code></a></h4>
@@ -817,8 +872,11 @@ assert_eq!(x.map_or(0, |s| s.len()), 4);</code></pre>
 <li><strong>Rückgabetyp</strong>: <code>U</code></li>
 <li><strong>Panics / Sicherheit</strong>: Keine Risiken.</li>
 <li><strong>Code-Beispiel</strong>:
-<pre><code class="language-rust">let x: Option&lt;&amp;str&gt; = None;
-assert_eq!(x.map_or_else(|| 0, |s| s.len()), 0);</code></pre>
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let x: Option&lt;&amp;str&gt; = None;
+assert_eq!(x.map_or_else(|| 0, |s| s.len()), 0);
+<span class="boring">}</span></code></pre>
 </li>
 </ul>
 <h4 id="13-ok_or"><a class="header" href="#13-ok_or">13. <code>ok_or</code></a></h4>
@@ -828,9 +886,12 @@ assert_eq!(x.map_or_else(|| 0, |s| s.len()), 0);</code></pre>
 <li><strong>Rückgabetyp</strong>: <code>Result&lt;T, E&gt;</code> (wandelt <code>Some(v)</code> in <code>Ok(v)</code> und <code>None</code> in <code>Err(err)</code> um)</li>
 <li><strong>Panics / Sicherheit</strong>: Keine Risiken.</li>
 <li><strong>Code-Beispiel</strong>:
-<pre><code class="language-rust">let x = Some("Erfolg");
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let x = Some("Erfolg");
 let res: Result&lt;&amp;str, &amp;str&gt; = x.ok_or("Fehler");
-assert_eq!(res, Ok("Erfolg"));</code></pre>
+assert_eq!(res, Ok("Erfolg"));
+<span class="boring">}</span></code></pre>
 </li>
 </ul>
 <h4 id="14-and_then"><a class="header" href="#14-and_then">14. <code>and_then</code></a></h4>
@@ -840,9 +901,12 @@ assert_eq!(res, Ok("Erfolg"));</code></pre>
 <li><strong>Rückgabetyp</strong>: <code>Option&lt;U&gt;</code> (Verhindert verschachtelte <code>Option&lt;Option&lt;U&gt;&gt;</code>-Strukturen beim Chaining)</li>
 <li><strong>Panics / Sicherheit</strong>: Keine Risiken.</li>
 <li><strong>Code-Beispiel</strong>:
-<pre><code class="language-rust">let x = Some("42");
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let x = Some("42");
 let zahl = x.and_then(|s| s.parse::&lt;i32&gt;().ok());
-assert_eq!(zahl, Some(42));</code></pre>
+assert_eq!(zahl, Some(42));
+<span class="boring">}</span></code></pre>
 </li>
 </ul>
 <h4 id="15-filter"><a class="header" href="#15-filter">15. <code>filter</code></a></h4>
@@ -852,9 +916,12 @@ assert_eq!(zahl, Some(42));</code></pre>
 <li><strong>Rückgabetyp</strong>: <code>Option&lt;T&gt;</code> (behält den Wert nur, wenn die Prüfung <code>true</code> liefert, sonst <code>None</code>)</li>
 <li><strong>Panics / Sicherheit</strong>: Keine Risiken.</li>
 <li><strong>Code-Beispiel</strong>:
-<pre><code class="language-rust">let x = Some(10);
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let x = Some(10);
 let gefiltert = x.filter(|n| n % 2 == 0);
-assert_eq!(gefiltert, Some(10));</code></pre>
+assert_eq!(gefiltert, Some(10));
+<span class="boring">}</span></code></pre>
 </li>
 </ul>
 <h4 id="16-or"><a class="header" href="#16-or">16. <code>or</code></a></h4>
@@ -864,9 +931,12 @@ assert_eq!(gefiltert, Some(10));</code></pre>
 <li><strong>Rückgabetyp</strong>: <code>Option&lt;T&gt;</code> (gibt <code>self</code> zurück, falls <code>Some</code>, andernfalls <code>optb</code>)</li>
 <li><strong>Panics / Sicherheit</strong>: Keine Risiken.</li>
 <li><strong>Code-Beispiel</strong>:
-<pre><code class="language-rust">let x = None;
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let x = None;
 let y = Some(5);
-assert_eq!(x.or(y), Some(5));</code></pre>
+assert_eq!(x.or(y), Some(5));
+<span class="boring">}</span></code></pre>
 </li>
 </ul>
 <h4 id="17-or_else"><a class="header" href="#17-or_else">17. <code>or_else</code></a></h4>
@@ -876,8 +946,11 @@ assert_eq!(x.or(y), Some(5));</code></pre>
 <li><strong>Rückgabetyp</strong>: <code>Option&lt;T&gt;</code></li>
 <li><strong>Panics / Sicherheit</strong>: Keine Risiken.</li>
 <li><strong>Code-Beispiel</strong>:
-<pre><code class="language-rust">let x = None;
-assert_eq!(x.or_else(|| Some(10)), Some(10));</code></pre>
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let x = None;
+assert_eq!(x.or_else(|| Some(10)), Some(10));
+<span class="boring">}</span></code></pre>
 </li>
 </ul>
 <h4 id="18-take"><a class="header" href="#18-take">18. <code>take</code></a></h4>
@@ -887,10 +960,13 @@ assert_eq!(x.or_else(|| Some(10)), Some(10));</code></pre>
 <li><strong>Rückgabetyp</strong>: <code>Option&lt;T&gt;</code> (entnimmt den Wert aus dem Original-Speicherplatz und hinterlässt dort <code>None</code>)</li>
 <li><strong>Panics / Sicherheit</strong>: Keine Risiken. Extrem wichtig bei der Arbeit mit veränderlichen Referenzen, um Daten ohne Verletzung der Aliasing-Regeln zu verschieben.</li>
 <li><strong>Code-Beispiel</strong>:
-<pre><code class="language-rust">let mut x = Some(123);
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let mut x = Some(123);
 let y = x.take();
 assert_eq!(x, None);
-assert_eq!(y, Some(123));</code></pre>
+assert_eq!(y, Some(123));
+<span class="boring">}</span></code></pre>
 </li>
 </ul>
 <h4 id="19-replace"><a class="header" href="#19-replace">19. <code>replace</code></a></h4>
@@ -900,10 +976,13 @@ assert_eq!(y, Some(123));</code></pre>
 <li><strong>Rückgabetyp</strong>: <code>Option&lt;T&gt;</code> (ersetzt den aktuellen Wert durch <code>value</code> und gibt die alte Option zurück)</li>
 <li><strong>Panics / Sicherheit</strong>: Keine Risiken.</li>
 <li><strong>Code-Beispiel</strong>:
-<pre><code class="language-rust">let mut x = Some(2);
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let mut x = Some(2);
 let alt = x.replace(5);
 assert_eq!(x, Some(5));
-assert_eq!(alt, Some(2));</code></pre>
+assert_eq!(alt, Some(2));
+<span class="boring">}</span></code></pre>
 </li>
 </ul>
 <h4 id="20-zip"><a class="header" href="#20-zip">20. <code>zip</code></a></h4>
@@ -913,9 +992,12 @@ assert_eq!(alt, Some(2));</code></pre>
 <li><strong>Rückgabetyp</strong>: <code>Option&lt;(T, U)&gt;</code> (kombiniert zwei Optionen zu einer Option, die ein Tupel enthält)</li>
 <li><strong>Panics / Sicherheit</strong>: Keine Risiken.</li>
 <li><strong>Code-Beispiel</strong>:
-<pre><code class="language-rust">let x = Some(1);
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let x = Some(1);
 let y = Some("eins");
-assert_eq!(x.zip(y), Some((1, "eins")));</code></pre>
+assert_eq!(x.zip(y), Some((1, "eins")));
+<span class="boring">}</span></code></pre>
 </li>
 </ul>
 <h4 id="21-flatten"><a class="header" href="#21-flatten">21. <code>flatten</code></a></h4>
@@ -925,13 +1007,16 @@ assert_eq!(x.zip(y), Some((1, "eins")));</code></pre>
 <li><strong>Rückgabetyp</strong>: <code>Option&lt;U&gt;</code> (entfernt eine Verschachtelungsebene)</li>
 <li><strong>Panics / Sicherheit</strong>: Keine Risiken.</li>
 <li><strong>Code-Beispiel</strong>:
-<pre><code class="language-rust">let x = Some(Some(6));
-assert_eq!(x.flatten(), Some(6));</code></pre>
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let x = Some(Some(6));
+assert_eq!(x.flatten(), Some(6));
+<span class="boring">}</span></code></pre>
 </li>
 </ul>
-<hr />
-<h2 id="9-drei-praktische-Übungen"><a class="header" href="#9-drei-praktische-Übungen">9. Drei praktische Übungen</a></h2>
-<h3 id="Übung-1-leicht---syntax-festigen"><a class="header" href="#Übung-1-leicht---syntax-festigen">Übung 1 (Leicht - Syntax festigen)</a></h3>
+<hr>
+<h2 id="9-drei-praktische-übungen"><a class="header" href="#9-drei-praktische-übungen">9. Drei praktische Übungen</a></h2>
+<h3 id="übung-1-leicht---syntax-festigen"><a class="header" href="#übung-1-leicht---syntax-festigen">Übung 1 (Leicht - Syntax festigen)</a></h3>
 <ul>
 <li>
 <p><strong>Aufgabe</strong>:
@@ -963,7 +1048,7 @@ Definieren Sie das Enum <code>Rolle</code> mit drei Varianten:</p>
 Nutzen Sie ein <code>match</code> über die Referenz <code>rolle</code>. Da Sie eine Referenz matchen, werden die String-Variablen standardmäßig als Referenz gebunden. Verwenden Sie den <code>&amp;</code>-Operator oder verlassen Sie sich auf das automatische Referenzierungsverhalten des Compilers.</p>
 </li>
 </ul>
-<h3 id="Übung-2-mittel---logik-erweitern"><a class="header" href="#Übung-2-mittel---logik-erweitern">Übung 2 (Mittel - Logik erweitern)</a></h3>
+<h3 id="übung-2-mittel---logik-erweitern"><a class="header" href="#übung-2-mittel---logik-erweitern">Übung 2 (Mittel - Logik erweitern)</a></h3>
 <ul>
 <li>
 <p><strong>Aufgabe</strong>:
@@ -1001,17 +1086,20 @@ Modellieren Sie einen Datei-Download-Prozess über das Enum <code>DownloadStatus
 Für <code>ist_fertig</code> können Sie das kompakte Makro <code>matches!(status, DownloadStatus::Fertig { .. })</code> verwenden, um sich Schreibarbeit zu sparen.</p>
 </li>
 </ul>
-<h3 id="Übung-3-schwer---transferleistung"><a class="header" href="#Übung-3-schwer---transferleistung">Übung 3 (Schwer - Transferleistung)</a></h3>
+<h3 id="übung-3-schwer---transferleistung"><a class="header" href="#übung-3-schwer---transferleistung">Übung 3 (Schwer - Transferleistung)</a></h3>
 <ul>
 <li>
 <p><strong>Aufgabe</strong>:
 Implementieren Sie ein Rabatt-Filtersystem für einen Online-Shop. Wir definieren das Enum <code>Rabatt</code>:</p>
-<pre><code class="language-rust">#[derive(Debug, PartialEq, Clone)]
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>#[derive(Debug, PartialEq, Clone)]
 enum Rabatt {
     Prozent(u8),
     Festbetrag(u32), // Angabe in Cent
     Ungueltig(String),
-}</code></pre>
+}
+<span class="boring">}</span></code></pre>
 <p>Schreiben Sie eine Funktion <code>erster_gueltiger(rabatte: &amp;[Rabatt]) -&gt; Option&lt;&amp;Rabatt&gt;</code>, die den ersten gültigen Rabatt aus einer Liste auswählt.</p>
 </li>
 <li>
@@ -1035,20 +1123,26 @@ enum Rabatt {
 Iterieren Sie mit einer Schleife über das Slice <code>&amp;[Rabatt]</code>. Nutzen Sie ein Pattern Matching mit sogenannten <em>Match Guards</em> (z. B. <code>Rabatt::Prozent(wert) if *wert &gt;= 1 &amp;&amp; *wert &lt;= 100 =&gt; Some(rabatt)</code>), um die numerischen Werte direkt im Match-Arm abzuprüfen. Achten Sie auf die Dereferenzierung bei Guards, da Sie über Referenzen iterieren.</p>
 </li>
 </ul>
-<hr />
+<hr>
 <h2 id="10-lernstrategie-selbsteinschätzung--merkzettel"><a class="header" href="#10-lernstrategie-selbsteinschätzung--merkzettel">10. Lernstrategie, Selbsteinschätzung &amp; Merkzettel</a></h2>
 <h3 id="spickzettel-cheat-sheet"><a class="header" href="#spickzettel-cheat-sheet">Spickzettel (Cheat Sheet)</a></h3>
-<div class="table-wrapper"><table><thead><tr><th style="text-align: left">Aufgabe</th><th style="text-align: left">Syntax</th><th style="text-align: left">Beschreibung</th></tr></thead><tbody>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th style="text-align: left">Aufgabe</th><th style="text-align: left">Syntax</th><th style="text-align: left">Beschreibung</th></tr>
+</thead>
+<tbody>
 <tr><td style="text-align: left"><strong>Enum deklarieren</strong></td><td style="text-align: left"><code>enum Status { A, B(u32) }</code></td><td style="text-align: left">Definiert einen Summentyp mit Varianten</td></tr>
 <tr><td style="text-align: left"><strong>Instanz erstellen</strong></td><td style="text-align: left"><code>let x = Status::B(42);</code></td><td style="text-align: left">Erzeugt einen Wert des Enums</td></tr>
 <tr><td style="text-align: left"><strong>Vollständiges Match</strong></td><td style="text-align: left"><code>match x { Status::A =&gt; 0, Status::B(n) =&gt; n }</code></td><td style="text-align: left">Prüft erschöpfend alle Varianten</td></tr>
 <tr><td style="text-align: left"><strong>matches! Makro</strong></td><td style="text-align: left"><code>let b = matches!(x, Status::B(_));</code></td><td style="text-align: left">Liefert kompakt <code>true</code> oder <code>false</code></td></tr>
 <tr><td style="text-align: left"><strong>if let Verzweigung</strong></td><td style="text-align: left"><code>if let Status::B(n) = x { ... }</code></td><td style="text-align: left">Reagiert nur auf eine einzige Variante</td></tr>
-<tr><td style="text-align: left"><strong>let ... else Ausstieg</strong></td><td style="text-align: left"><code>let Status::B(n) = x else { return; };</code></td><td style="text-align: left">Bricht den Fluss ab, falls Pattern nicht passt</td></tr>
+<tr><td style="text-align: left"><strong>let … else Ausstieg</strong></td><td style="text-align: left"><code>let Status::B(n) = x else { return; };</code></td><td style="text-align: left">Bricht den Fluss ab, falls Pattern nicht passt</td></tr>
 <tr><td style="text-align: left"><strong>Option-Verpackung</strong></td><td style="text-align: left"><code>let opt: Option&lt;i32&gt; = Some(5);</code></td><td style="text-align: left">Verpackt einen vorhandenen Wert</td></tr>
 <tr><td style="text-align: left"><strong>Option-Leerraum</strong></td><td style="text-align: left"><code>let opt: Option&lt;i32&gt; = None;</code></td><td style="text-align: left">Signalisiert das Fehlen eines Werts</td></tr>
 <tr><td style="text-align: left"><strong>Standard-Ausweichwert</strong></td><td style="text-align: left"><code>let val = opt.unwrap_or(0);</code></td><td style="text-align: left">Entpackt oder liefert sicheren Default</td></tr>
-</tbody></table>
+</tbody>
+</table>
 </div>
 <h3 id="active-recall-verständnisfragen"><a class="header" href="#active-recall-verständnisfragen">Active Recall (Verständnisfragen)</a></h3>
 <ol>
@@ -1074,30 +1168,24 @@ Iterieren Sie mit einer Schleife über das Slice <code>&amp;[Rabatt]</code>. Nut
 <h3 id="metakognitiver-selbsttest"><a class="header" href="#metakognitiver-selbsttest">Metakognitiver Selbsttest</a></h3>
 <p>Wechseln Sie erst zu Kapitel 29, wenn Sie:</p>
 <ul>
-<li><input disabled="" type="checkbox"/>
-Den Unterschied zwischen Summentypen (Enums) und Produkttypen (Structs) fehlerfrei erklären können.</li>
-<li><input disabled="" type="checkbox"/>
-Ein Enum mit mindestens vier verschiedenen Varianten (inklusive benannten Feldern) definieren und instanziieren können.</li>
-<li><input disabled="" type="checkbox"/>
-Einen <code>match</code>-Block über ein Enum schreiben können, ohne den Compilerfehler wegen fehlender Abdeckung zu erzeugen.</li>
-<li><input disabled="" type="checkbox"/>
-Den Unterschied zwischen <code>unwrap()</code>, <code>unwrap_or()</code> und <code>unwrap_or_else()</code> erklären können.</li>
-<li><input disabled="" type="checkbox"/>
-<code>if let</code> und <code>let ... else</code> in den passenden Szenarien anwenden können.</li>
-<li><input disabled="" type="checkbox"/>
-Verstanden haben, was die Nischen-Optimierung (Null Pointer Optimization) bedeutet und wie sie Speicher spart.</li>
+<li><input disabled="" type="checkbox"> Den Unterschied zwischen Summentypen (Enums) und Produkttypen (Structs) fehlerfrei erklären können.</li>
+<li><input disabled="" type="checkbox"> Ein Enum mit mindestens vier verschiedenen Varianten (inklusive benannten Feldern) definieren und instanziieren können.</li>
+<li><input disabled="" type="checkbox"> Einen <code>match</code>-Block über ein Enum schreiben können, ohne den Compilerfehler wegen fehlender Abdeckung zu erzeugen.</li>
+<li><input disabled="" type="checkbox"> Den Unterschied zwischen <code>unwrap()</code>, <code>unwrap_or()</code> und <code>unwrap_or_else()</code> erklären können.</li>
+<li><input disabled="" type="checkbox"> <code>if let</code> und <code>let ... else</code> in den passenden Szenarien anwenden können.</li>
+<li><input disabled="" type="checkbox"> Verstanden haben, was die Nischen-Optimierung (Null Pointer Optimization) bedeutet und wie sie Speicher spart.</li>
 </ul>
-<hr />
+<hr>
 <h2 id="11-zusammenfassung"><a class="header" href="#11-zusammenfassung">11. Zusammenfassung</a></h2>
 <ul>
 <li><strong>Enums (Summentypen)</strong> beschreiben eine exklusive Auswahl aus einer festen Menge von Varianten. Sie sind das primäre Werkzeug zur Zustands- und Alternativen-Modellierung.</li>
 <li><strong>Datentragende Varianten</strong> erlauben es, Nutzdaten direkt an den Zustand zu binden, zu dem sie fachlich gehören (z. B. ein Tracking-Code nur bei <code>Versendet</code>).</li>
 <li><strong>Pattern Matching (<code>match</code>)</strong> erzwingt die vollständige und lückenlose Auswertung aller Fälle zur Compilezeit. Es minimiert Logikfehler bei der Code-Wartung.</li>
-<li><strong>Option<T></strong> ersetzt die unsichere Null-Referenz. Rust-Code kann optionale Werte nicht versehentlich nutzen, ohne sie vorher explizit entpackt zu haben.</li>
+<li><strong>Option<t></t></strong> ersetzt die unsichere Null-Referenz. Rust-Code kann optionale Werte nicht versehentlich nutzen, ohne sie vorher explizit entpackt zu haben.</li>
 <li><strong>Kompakte Syntax-Alternativen</strong>: <code>if let</code> filtert gezielt auf einen interessanten Fall. <code>let ... else</code> filtert das falsche Pattern frühzeitig aus und hält den Code flach.</li>
 <li><strong>Zero-Cost-Abstraktion</strong>: Dank der Nischen-Optimierung belegen Typen wie <code>Option&lt;&amp;T&gt;</code> exakt denselben Speicherplatz wie ein einfacher Zeiger (<code>8 Bytes</code> auf 64-Bit Systemen).</li>
 </ul>
-<hr />
+<hr>
 <p><strong>Lizenz- und Attributionshinweis</strong>:
 Teile dieses Kapitels basieren auf Übersetzungen und didaktischen Anpassungen des offiziellen Buches <a href="https://doc.rust-lang.org/book/">The Rust Programming Language</a> von Steve Klabnik und Carol Nichols (sowie Beiträgen der Rust-Community), lizenziert unter <a href="https://opensource.org/licenses/MIT">MIT</a> und <a href="https://www.apache.org/licenses/LICENSE-2.0">Apache 2.0</a>.</p>
 
@@ -1106,9 +1194,12 @@ Teile dieses Kapitels basieren auf Übersetzungen und didaktischen Anpassungen d
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
                             <a rel="prev" href="27.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
-                                <i class="fa fa-angle-left"></i>
+                                <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
                             </a>
 
+                            <a rel="next prefetch" href="Benutzer/impressum.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
+                            </a>
 
                         <div style="clear: both"></div>
                     </nav>
@@ -1117,13 +1208,21 @@ Teile dieses Kapitels basieren auf Übersetzungen und didaktischen Anpassungen d
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
                     <a rel="prev" href="27.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
-                        <i class="fa fa-angle-left"></i>
+                        <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
                     </a>
 
+                    <a rel="next prefetch" href="Benutzer/impressum.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
+                    </a>
             </nav>
 
         </div>
 
+        <template id=fa-eye><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M288 32c-80.8 0-145.5 36.8-192.6 80.6C48.6 156 17.3 208 2.5 243.7c-3.3 7.9-3.3 16.7 0 24.6C17.3 304 48.6 356 95.4 399.4C142.5 443.2 207.2 480 288 480s145.5-36.8 192.6-80.6c46.8-43.5 78.1-95.4 93-131.1c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C433.5 68.8 368.8 32 288 32zM432 256c0 79.5-64.5 144-144 144s-144-64.5-144-144s64.5-144 144-144s144 64.5 144 144zM288 192c0 35.3-28.7 64-64 64c-11.5 0-22.3-3-31.6-8.4c-.2 2.8-.4 5.5-.4 8.4c0 53 43 96 96 96s96-43 96-96s-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6z"/></svg></span></template>
+        <template id=fa-eye-slash><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M38.8 5.1C28.4-3.1 13.3-1.2 5.1 9.2S-1.2 34.7 9.2 42.9l592 464c10.4 8.2 25.5 6.3 33.7-4.1s6.3-25.5-4.1-33.7L525.6 386.7c39.6-40.6 66.4-86.1 79.9-118.4c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C465.5 68.8 400.8 32 320 32c-68.2 0-125 26.3-169.3 60.8L38.8 5.1zM223.1 149.5C248.6 126.2 282.7 112 320 112c79.5 0 144 64.5 144 144c0 24.9-6.3 48.3-17.4 68.7L408 294.5c5.2-11.8 8-24.8 8-38.5c0-53-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6c0 10.2-2.4 19.8-6.6 28.3l-90.3-70.8zm223.1 298L373 389.9c-16.4 6.5-34.3 10.1-53 10.1c-79.5 0-144-64.5-144-144c0-6.9 .5-13.6 1.4-20.2L83.1 161.5C60.3 191.2 44 220.8 34.5 243.7c-3.3 7.9-3.3 16.7 0 24.6c14.9 35.7 46.2 87.7 93 131.1C174.5 443.2 239.2 480 320 480c47.8 0 89.9-12.9 126.2-32.5z"/></svg></span></template>
+        <template id=fa-copy><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M502.6 70.63l-61.25-61.25C435.4 3.371 427.2 0 418.7 0H255.1c-35.35 0-64 28.66-64 64l.0195 256C192 355.4 220.7 384 256 384h192c35.2 0 64-28.8 64-64V93.25C512 84.77 508.6 76.63 502.6 70.63zM464 320c0 8.836-7.164 16-16 16H255.1c-8.838 0-16-7.164-16-16L239.1 64.13c0-8.836 7.164-16 16-16h128L384 96c0 17.67 14.33 32 32 32h47.1V320zM272 448c0 8.836-7.164 16-16 16H63.1c-8.838 0-16-7.164-16-16L47.98 192.1c0-8.836 7.164-16 16-16H160V128H63.99c-35.35 0-64 28.65-64 64l.0098 256C.002 483.3 28.66 512 64 512h192c35.2 0 64-28.8 64-64v-32h-47.1L272 448z"/></svg></span></template>
+        <template id=fa-play><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80V432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"/></svg></span></template>
+        <template id=fa-clock-rotate-left><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M75 75L41 41C25.9 25.9 0 36.6 0 57.9V168c0 13.3 10.7 24 24 24H134.1c21.4 0 32.1-25.9 17-41l-30.8-30.8C155 85.5 203 64 256 64c106 0 192 86 192 192s-86 192-192 192c-40.8 0-78.6-12.7-109.7-34.4c-14.5-10.1-34.4-6.6-44.6 7.9s-6.6 34.4 7.9 44.6C151.2 495 201.7 512 256 512c141.4 0 256-114.6 256-256S397.4 0 256 0C185.3 0 121.3 28.7 75 75zm181 53c-13.3 0-24 10.7-24 24V256c0 6.4 2.5 12.5 7 17l72 72c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-65-65V152c0-13.3-10.7-24-24-24z"/></svg></span></template>
 
 
 
@@ -1132,17 +1231,17 @@ Teile dieses Kapitels basieren auf Übersetzungen und didaktischen Anpassungen d
         </script>
 
 
-        <script src="elasticlunr.min.js"></script>
-        <script src="mark.min.js"></script>
-        <script src="searcher.js"></script>
+        <script src="elasticlunr-ef4e11c1.min.js"></script>
+        <script src="mark-09e88c2c.min.js"></script>
+        <script src="searcher-09f2665d.js"></script>
 
-        <script src="clipboard.min.js"></script>
-        <script src="highlight.js"></script>
-        <script src="book.js"></script>
+        <script src="clipboard-1626706a.min.js"></script>
+        <script src="highlight-abc7f01d.js"></script>
+        <script src="book-c22b7243.js"></script>
 
         <!-- Custom JS scripts -->
-        <script src="mermaid.min.js"></script>
-        <script src="mermaid-init.js"></script>
+        <script src="mermaid-eefea253.min.js"></script>
+        <script src="mermaid-init-ccf746f1.js"></script>
 
 
 

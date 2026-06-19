@@ -8,6 +8,10 @@
 * Video: [video.md](video.md)
 
 ---
+## Benutzer
+* Benutzer/: Enthält rechtliche Dokumente wie [impressum.md](Benutzer/impressum.md) und [datenschutz.md](Benutzer/datenschutz.md).
+
+---
 ## Kapitel
 * Ch1: Was ist Rust? -> [1.mp4](1.mp4)
 * Ch2: Installation -> [2.mp4](2.mp4)

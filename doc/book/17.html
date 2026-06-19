@@ -7,26 +7,25 @@
 
 
         <!-- Custom HTML head -->
-        
+
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="theme-color" content="#ffffff">
 
-        <link rel="icon" href="favicon.svg">
-        <link rel="shortcut icon" href="favicon.png">
-        <link rel="stylesheet" href="css/variables.css">
-        <link rel="stylesheet" href="css/general.css">
-        <link rel="stylesheet" href="css/chrome.css">
-        <link rel="stylesheet" href="css/print.css" media="print">
+        <link rel="icon" href="favicon-de23e50b.svg">
+        <link rel="shortcut icon" href="favicon-8114d1fc.png">
+        <link rel="stylesheet" href="css/variables-8adf115d.css">
+        <link rel="stylesheet" href="css/general-0392ca55.css">
+        <link rel="stylesheet" href="css/chrome-fc474251.css">
+        <link rel="stylesheet" href="css/print-9e4910d8.css" media="print">
 
         <!-- Fonts -->
-        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
-        <link rel="stylesheet" href="fonts/fonts.css">
+        <link rel="stylesheet" href="fonts/fonts-9644e21d.css">
 
         <!-- Highlight.js Stylesheets -->
-        <link rel="stylesheet" id="highlight-css" href="highlight.css">
-        <link rel="stylesheet" id="tomorrow-night-css" href="tomorrow-night.css">
-        <link rel="stylesheet" id="ayu-highlight-css" href="ayu-highlight.css">
+        <link rel="stylesheet" id="mdbook-highlight-css" href="highlight-493f70e1.css">
+        <link rel="stylesheet" id="mdbook-tomorrow-night-css" href="tomorrow-night-4c0ae647.css">
+        <link rel="stylesheet" id="mdbook-ayu-highlight-css" href="ayu-highlight-3fdfc3ac.css">
 
         <!-- Custom theme stylesheets -->
 
@@ -36,10 +35,10 @@
             const path_to_root = "";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "searchindex.js";
+            window.path_to_searchindex_js = "searchindex-34eaf846.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="toc.js"></script>
+        <script src="toc-9a36690f.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -53,7 +52,7 @@
             </div>
         </div>
     </div>
-    <div id="body-container">
+    <div id="mdbook-body-container">
         <!-- Work around some values being stored in localStorage wrapped in quotes -->
         <script>
             try {
@@ -82,12 +81,12 @@
             html.classList.add("js");
         </script>
 
-        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+        <input type="checkbox" id="mdbook-sidebar-toggle-anchor" class="hidden">
 
         <!-- Hide / unhide sidebar before it is displayed -->
         <script>
             let sidebar = null;
-            const sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            const sidebar_toggle = document.getElementById("mdbook-sidebar-toggle-anchor");
             if (document.body.clientWidth >= 1080) {
                 try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
                 sidebar = sidebar || 'visible';
@@ -102,39 +101,39 @@
             }
         </script>
 
-        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+        <nav id="mdbook-sidebar" class="sidebar" aria-label="Table of contents">
             <!-- populated by js -->
             <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
             <noscript>
                 <iframe class="sidebar-iframe-outer" src="toc.html"></iframe>
             </noscript>
-            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+            <div id="mdbook-sidebar-resize-handle" class="sidebar-resize-handle">
                 <div class="sidebar-resize-indicator"></div>
             </div>
         </nav>
 
-        <div id="page-wrapper" class="page-wrapper">
+        <div id="mdbook-page-wrapper" class="page-wrapper">
 
             <div class="page">
-                                <div id="menu-bar-hover-placeholder"></div>
-                <div id="menu-bar" class="menu-bar sticky">
+                <div id="mdbook-menu-bar-hover-placeholder"></div>
+                <div id="mdbook-menu-bar" class="menu-bar sticky">
                     <div class="left-buttons">
-                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
-                            <i class="fa fa-bars"></i>
+                        <label id="mdbook-sidebar-toggle" class="icon-button" for="mdbook-sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="mdbook-sidebar">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"/></svg></span>
                         </label>
-                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
-                            <i class="fa fa-paint-brush"></i>
+                        <button id="mdbook-theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="mdbook-theme-list">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M371.3 367.1c27.3-3.9 51.9-19.4 67.2-42.9L600.2 74.1c12.6-19.5 9.4-45.3-7.6-61.2S549.7-4.4 531.1 9.6L294.4 187.2c-24 18-38.2 46.1-38.4 76.1L371.3 367.1zm-19.6 25.4l-116-104.4C175.9 290.3 128 339.6 128 400c0 3.9 .2 7.8 .6 11.6c1.8 17.5-10.2 36.4-27.8 36.4H96c-17.7 0-32 14.3-32 32s14.3 32 32 32H240c61.9 0 112-50.1 112-112c0-2.5-.1-5-.2-7.5z"/></svg></span>
                         </button>
-                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
-                            <li role="none"><button role="menuitem" class="theme" id="default_theme">Auto</button></li>
-                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
-                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
-                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
-                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
-                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        <ul id="mdbook-theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-default_theme">Auto</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-ayu">Ayu</button></li>
                         </ul>
-                        <button id="search-toggle" class="icon-button" type="button" title="Search (`/`)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="/ s" aria-controls="searchbar">
-                            <i class="fa fa-search"></i>
+                        <button id="mdbook-search-toggle" class="icon-button" type="button" title="Search (`/`)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="/ s" aria-controls="mdbook-searchbar">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352c79.5 0 144-64.5 144-144s-64.5-144-144-144S64 128.5 64 208s64.5 144 144 144z"/></svg></span>
                         </button>
                     </div>
 
@@ -142,42 +141,42 @@
 
                     <div class="right-buttons">
                         <a href="print.html" title="Print this book" aria-label="Print this book">
-                            <i id="print-button" class="fa fa-print"></i>
+                            <span class=fa-svg id="print-button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M128 0C92.7 0 64 28.7 64 64v96h64V64H354.7L384 93.3V160h64V93.3c0-17-6.7-33.3-18.7-45.3L400 18.7C388 6.7 371.7 0 354.7 0H128zM384 352v32 64H128V384 368 352H384zm64 32h32c17.7 0 32-14.3 32-32V256c0-35.3-28.7-64-64-64H64c-35.3 0-64 28.7-64 64v96c0 17.7 14.3 32 32 32H64v64c0 35.3 28.7 64 64 64H384c35.3 0 64-28.7 64-64V384zm-16-88c-13.3 0-24-10.7-24-24s10.7-24 24-24s24 10.7 24 24s-10.7 24-24 24z"/></svg></span>
                         </a>
 
                     </div>
                 </div>
 
-                <div id="search-wrapper" class="hidden">
-                    <form id="searchbar-outer" class="searchbar-outer">
+                <div id="mdbook-search-wrapper" class="hidden">
+                    <form id="mdbook-searchbar-outer" class="searchbar-outer">
                         <div class="search-wrapper">
-                            <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                            <input type="search" id="mdbook-searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="mdbook-searchresults-outer" aria-describedby="searchresults-header">
                             <div class="spinner-wrapper">
-                                <i class="fa fa-spinner fa-spin"></i>
+                                <span class=fa-svg id="fa-spin"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M304 48c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zm0 416c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zM48 304c26.5 0 48-21.5 48-48s-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48zm464-48c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zM142.9 437c18.7-18.7 18.7-49.1 0-67.9s-49.1-18.7-67.9 0s-18.7 49.1 0 67.9s49.1 18.7 67.9 0zm0-294.2c18.7-18.7 18.7-49.1 0-67.9S93.7 56.2 75 75s-18.7 49.1 0 67.9s49.1 18.7 67.9 0zM369.1 437c18.7 18.7 49.1 18.7 67.9 0s18.7-49.1 0-67.9s-49.1-18.7-67.9 0s-18.7 49.1 0 67.9z"/></svg></span>
                             </div>
                         </div>
                     </form>
-                    <div id="searchresults-outer" class="searchresults-outer hidden">
-                        <div id="searchresults-header" class="searchresults-header"></div>
-                        <ul id="searchresults">
+                    <div id="mdbook-searchresults-outer" class="searchresults-outer hidden">
+                        <div id="mdbook-searchresults-header" class="searchresults-header"></div>
+                        <ul id="mdbook-searchresults">
                         </ul>
                     </div>
                 </div>
 
                 <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
                 <script>
-                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
-                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
-                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                    document.getElementById('mdbook-sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('mdbook-sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#mdbook-sidebar a')).forEach(function(link) {
                         link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
                     });
                 </script>
 
-                <div id="content" class="content">
+                <div id="mdbook-content" class="content">
                     <main>
                         <h1 id="kapitel-17-speicherverwaltung-und-das-ownership-system"><a class="header" href="#kapitel-17-speicherverwaltung-und-das-ownership-system">Kapitel 17: Speicherverwaltung und das Ownership-System</a></h1>
 <p>Jedes lauffähige Computerprogramm muss Daten im Arbeitsspeicher (RAM) ablegen, verarbeiten und wieder löschen. Wie eine Programmiersprache diese fundamentale Interaktion mit der Hardware orchestriert, entscheidet maßgeblich über ihre Ausführungsgeschwindigkeit, ihren Speicherbedarf und ihre Robustheit gegenüber Sicherheitslücken. Rust geht hierbei einen revolutionären Weg: das <strong>Ownership-System</strong>. Um dieses System und seine Funktionsweise in den folgenden Kapiteln wirklich zu durchdringen, müssen wir zuerst verstehen, wie die zugrundeliegende Computerhardware den Speicher strukturiert und welche Konzepte zur Speicherverwaltung existieren.</p>
-<hr />
+<hr>
 <h2 id="1-lernziele--lernplan"><a class="header" href="#1-lernziele--lernplan">1. Lernziele &amp; Lernplan</a></h2>
 <h3 id="lernziele"><a class="header" href="#lernziele">Lernziele</a></h3>
 <ul>
@@ -188,32 +187,20 @@
 </ul>
 <h3 id="lernplan"><a class="header" href="#lernplan">Lernplan</a></h3>
 <ul>
-<li><input disabled="" type="checkbox"/>
-<strong>2. Die Definition</strong>: Formale Begriffserklärung und die Schreibtisch-Mietlager-Analogie.</li>
-<li><input disabled="" type="checkbox"/>
-<strong>3. Das Problem &amp; Die Motivation</strong>: Von-Neumann-Architektur, CPU-Caches und die Notwendigkeit von Speichersicherheit.</li>
-<li><input disabled="" type="checkbox"/>
-<strong>4. Der naive Versuch</strong>: Ein fehlerhafter Rust-Code, der versucht, eine Referenz auf eine lokale Stack-Variable zurückzugeben.</li>
-<li><input disabled="" type="checkbox"/>
-<strong>5. Die Anatomie des Fehlers</strong>: Analyse der Fehlermeldung und Visualisierung des abgeräumten Stack Frames (RSP-Register).</li>
-<li><input disabled="" type="checkbox"/>
-<strong>6. Die Lösung</strong>: Implementierung mittels Move-Semantik und Heap-Boxen sowie das EVA-Prinzip.</li>
-<li><input disabled="" type="checkbox"/>
-<strong>7. Kleines Tutorial</strong>: Praktische Visualisierung von echten Hardware-Speicheradressen auf Stack und Heap.</li>
-<li><input disabled="" type="checkbox"/>
-<strong>8. 17.1 Hardware-Speicherstruktur</strong>: Tiefer Einblick in Stack-Speicher, Heap-Speicher und die Verknüpfung über Pointer.</li>
-<li><input disabled="" type="checkbox"/>
-<strong>9. 17.2 Speicherverwaltungskonzepte im Vergleich</strong>: Analyse von C/C++ (Manuell), Java/Go (Garbage Collector) und C++/Rust (RAII).</li>
-<li><input disabled="" type="checkbox"/>
-<strong>10. API-Referenz der Speicherverwaltung</strong>: Dokumentation von <code>std::mem</code> und <code>Box&lt;T&gt;</code>.</li>
-<li><input disabled="" type="checkbox"/>
-<strong>11. Drei praktische Übungen</strong>: Leicht, Mittel und Schwer mit Blueprints und Lösungshinweisen.</li>
-<li><input disabled="" type="checkbox"/>
-<strong>12. Lernstrategie, Selbsteinschätzung &amp; Merkzettel</strong>: Aktives Lernen und Fehlerprovokation.</li>
-<li><input disabled="" type="checkbox"/>
-<strong>13. Zusammenfassung</strong>: Die wichtigsten Erkenntnisse im Überblick.</li>
+<li><input disabled="" type="checkbox"> <strong>2. Die Definition</strong>: Formale Begriffserklärung und die Schreibtisch-Mietlager-Analogie.</li>
+<li><input disabled="" type="checkbox"> <strong>3. Das Problem &amp; Die Motivation</strong>: Von-Neumann-Architektur, CPU-Caches und die Notwendigkeit von Speichersicherheit.</li>
+<li><input disabled="" type="checkbox"> <strong>4. Der naive Versuch</strong>: Ein fehlerhafter Rust-Code, der versucht, eine Referenz auf eine lokale Stack-Variable zurückzugeben.</li>
+<li><input disabled="" type="checkbox"> <strong>5. Die Anatomie des Fehlers</strong>: Analyse der Fehlermeldung und Visualisierung des abgeräumten Stack Frames (RSP-Register).</li>
+<li><input disabled="" type="checkbox"> <strong>6. Die Lösung</strong>: Implementierung mittels Move-Semantik und Heap-Boxen sowie das EVA-Prinzip.</li>
+<li><input disabled="" type="checkbox"> <strong>7. Kleines Tutorial</strong>: Praktische Visualisierung von echten Hardware-Speicheradressen auf Stack und Heap.</li>
+<li><input disabled="" type="checkbox"> <strong>8. 17.1 Hardware-Speicherstruktur</strong>: Tiefer Einblick in Stack-Speicher, Heap-Speicher und die Verknüpfung über Pointer.</li>
+<li><input disabled="" type="checkbox"> <strong>9. 17.2 Speicherverwaltungskonzepte im Vergleich</strong>: Analyse von C/C++ (Manuell), Java/Go (Garbage Collector) und C++/Rust (RAII).</li>
+<li><input disabled="" type="checkbox"> <strong>10. API-Referenz der Speicherverwaltung</strong>: Dokumentation von <code>std::mem</code> und <code>Box&lt;T&gt;</code>.</li>
+<li><input disabled="" type="checkbox"> <strong>11. Drei praktische Übungen</strong>: Leicht, Mittel und Schwer mit Blueprints und Lösungshinweisen.</li>
+<li><input disabled="" type="checkbox"> <strong>12. Lernstrategie, Selbsteinschätzung &amp; Merkzettel</strong>: Aktives Lernen und Fehlerprovokation.</li>
+<li><input disabled="" type="checkbox"> <strong>13. Zusammenfassung</strong>: Die wichtigsten Erkenntnisse im Überblick.</li>
 </ul>
-<hr />
+<hr>
 <h2 id="2-die-definition"><a class="header" href="#2-die-definition">2. Die Definition</a></h2>
 <p>Um die technische Diskussion auf eine solide Basis zu stellen, definieren wir die Kernbegriffe der Speicherverwaltung präzise:</p>
 <ul>
@@ -221,23 +208,23 @@
 <li><strong>Stack (Stapel)</strong>: Ein hochgradig strukturierter, linearer Speicherbereich, der nach dem LIFO-Prinzip (Last-In, First-Out) arbeitet. Seine Größe wird zur Compilezeit bestimmt. Er dient der Verwaltung von Funktionsaufrufen und lokalen Variablen.</li>
 <li><strong>Heap (Haufen)</strong>: Ein unstrukturierter, dynamischer Speicherbereich für Daten, deren Größe sich zur Laufzeit ändern kann oder erst dann bekannt ist. Der Zugriff erfolgt über Speicheradressen (Pointer).</li>
 <li><strong>Pointer (Zeiger)</strong>: Eine Variable auf dem Stack, die als Wert eine Speicheradresse enthält, welche auf einen anderen Ort im RAM (meist auf den Heap) verweist.</li>
-<li><strong>Deallokation (Freigabe)</strong>: Der Prozess, bei dem ein zuvor angeforderter Speicherbereich im RAM wieder als "frei" markiert wird, damit er für andere Daten wiederverwendet werden kann.</li>
+<li><strong>Deallokation (Freigabe)</strong>: Der Prozess, bei dem ein zuvor angeforderter Speicherbereich im RAM wieder als “frei” markiert wird, damit er für andere Daten wiederverwendet werden kann.</li>
 <li><strong>Garbage Collector (GC)</strong>: Ein Laufzeitprogramm, das während der Programmausführung den Heap periodisch nach nicht mehr erreichbaren Objekten durchsucht und deren Speicher automatisch freigibt.</li>
 <li><strong>RAII (Resource Acquisition Is Initialization)</strong>: Ein Programmierparadigma, bei dem die Bindung einer Ressource (z. B. Speicher, Dateihandles) fest an die Lebensdauer eines Objekts auf dem Stack gekoppelt ist. Beim Verlassen des Scopes gibt der Destruktor die Ressource automatisch frei.</li>
 <li><strong>Ownership (Besitzrecht)</strong>: Rusts proprietäres Speichersicherheitsmodell, bei dem jeder Wert im Speicher zu jedem Zeitpunkt exakt eine Besitzer-Variable auf dem Stack besitzt. Verlässt diese Variable ihren Scope, wird der Speicher automatisch freigegeben.</li>
 </ul>
 <h3 id="die-alltagsanalogie-der-schreibtisch-und-das-mietlager"><a class="header" href="#die-alltagsanalogie-der-schreibtisch-und-das-mietlager">Die Alltagsanalogie: Der Schreibtisch und das Mietlager</a></h3>
-<blockquote>
-<p>[!NOTE]
-<strong>Das Schreibtisch-Mietlager-Modell</strong>:
+<blockquote class="blockquote-tag blockquote-tag-note">
+<p class="blockquote-tag-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>Note</p>
+<p><strong>Das Schreibtisch-Mietlager-Modell</strong>:
 Stellen Sie sich Ihre tägliche Arbeit an einem physischen Büroarbeitsplatz vor:</p>
 <ul>
 <li><strong>Der Stack ist Ihr Schreibtisch</strong>: Er ist direkt vor Ihnen, extrem schnell zugänglich, hat aber eine sehr begrenzte Fläche. Alles, was Sie dort ablegen (Notizzettel, Stifte), hat eine feste Größe und ist sofort griffbereit. Wenn Sie mit einer Aufgabe fertig sind, räumen Sie die darauf bezogenen Notizzettel einfach auf einen Stapel und werfen den gesamten Stapel weg (LIFO-Prinzip).</li>
 <li><strong>Der Heap ist ein externes Mietlager (Self-Storage)</strong>: Wenn Sie an einem riesigen Archiv oder großen Ordnern arbeiten, die nicht auf Ihren Schreibtisch passen, mieten Sie eine Box im Lagerhaus an. Das Einlagern und Holen dauert deutlich länger, da Sie erst zum Lagerhaus fahren müssen.</li>
-<li><strong>Der Pointer ist der Mietbeleg</strong>: Auf Ihrem Schreibtisch (Stack) liegt lediglich ein kleiner Zettel mit der Lagernummer (z. B. "Box 402, Regal B"). Der Zettel hat eine feste Größe (z. B. 10x5 cm) und passt problemlos auf den Schreibtisch. Wenn Sie den Zettel verlieren oder wegwerfen, aber die Box im Lagerhaus nicht kündigen, blockieren Sie das Lagerhaus dauerhaft mit Müll (Memory Leak). Wenn Sie die Box kündigen, aber später versuchen, mit einer Kopie des Belegs dorthin zu fahren, greifen Sie auf fremdes Eigentum zu (Dangling Pointer).</li>
+<li><strong>Der Pointer ist der Mietbeleg</strong>: Auf Ihrem Schreibtisch (Stack) liegt lediglich ein kleiner Zettel mit der Lagernummer (z. B. “Box 402, Regal B”). Der Zettel hat eine feste Größe (z. B. 10x5 cm) und passt problemlos auf den Schreibtisch. Wenn Sie den Zettel verlieren oder wegwerfen, aber die Box im Lagerhaus nicht kündigen, blockieren Sie das Lagerhaus dauerhaft mit Müll (Memory Leak). Wenn Sie die Box kündigen, aber später versuchen, mit einer Kopie des Belegs dorthin zu fahren, greifen Sie auf fremdes Eigentum zu (Dangling Pointer).</li>
 </ul>
 </blockquote>
-<hr />
+<hr>
 <h2 id="3-das-problem--die-motivation"><a class="header" href="#3-das-problem--die-motivation">3. Das Problem &amp; Die Motivation</a></h2>
 <p>Computer basieren auf der Von-Neumann-Architektur, bei der Programmcodes und Daten gemeinsam im selben physikalischen Arbeitsspeicher liegen. Die CPU greift über den Systembus auf den RAM zu. Da der RAM physikalisch weit von den Rechenkernen entfernt ist, dauert ein direkter RAM-Zugriff im Vergleich zu Taktzyklen der CPU extrem lange (ca. 200 bis 300 CPU-Taktzyklen).</p>
 <p>Um diese Latenz zu überbrücken, besitzen moderne CPUs hierarchische Caches (L1, L2 und L3). L1-Caches sind extrem klein (oft nur 32 KB bis 64 KB pro Kern), laufen aber mit voller CPU-Geschwindigkeit. Daten auf dem Stack liegen im Speicher direkt hintereinander. Wenn die CPU auf eine Stack-Variable zugreift, lädt sie automatisch den gesamten umgebenden Speicherblock in den L1-Cache (räumliche Lokalität). Ein Zugriff auf den Heap hingegen erfordert das Verfolgen eines Pointers. Das führt dazu, dass die CPU an eine völlig andere Adresse im RAM springen muss. Dies verursacht fast immer einen sogenannten <strong>Cache Miss</strong> (Cache-Fehlzugriff), wodurch die CPU warten muss, bis die Daten aus dem langsamen Hauptspeicher geholt wurden.</p>
@@ -247,7 +234,7 @@ Stellen Sie sich Ihre tägliche Arbeit an einem physischen Büroarbeitsplatz vor
 <li><strong>Keine Performance-Einbußen</strong>: Rust soll die maximale Ausführungsgeschwindigkeit von C und C++ bieten (Zero-Cost Abstractions).</li>
 <li><strong>Absolute Sicherheit</strong>: Der Compiler muss mathematisch garantieren, dass zur Laufzeit keine Speicherfehler auftreten können.</li>
 </ol>
-<hr />
+<hr>
 <h2 id="4-der-naive-versuch"><a class="header" href="#4-der-naive-versuch">4. Der naive Versuch</a></h2>
 <p>Ein klassisches Problem der Speicherverwaltung ist die Entstehung von hängenden Zeigern (Dangling Pointers). Dies passiert, wenn ein Zeiger auf eine Speicheradresse verweist, die bereits freigegeben wurde.</p>
 <p>Der folgende naive Versuch zeigt, wie ein Entwickler instinktiv versuchen könnte, in einer Rust-Funktion eine lokale Variable auf dem Stack zu erstellen und eine Referenz auf diese Variable an die aufrufende Funktion zurückzugeben.</p>
@@ -261,7 +248,7 @@ FUNKTION main()
     DRUCKE DEN WERT AN DER ADRESSE zeiger
 </code></pre>
 <h3 id="der-fehlerhafte-rust-code"><a class="header" href="#der-fehlerhafte-rust-code">Der fehlerhafte Rust-Code</a></h3>
-<pre><code class="language-rust">// Dieser Code lässt sich NICHT kompilieren!
+<pre class="playground"><code class="language-rust edition2021">// Dieser Code lässt sich NICHT kompilieren!
 fn get_dangling_reference() -&gt; &amp;i32 {
     let local_value = 42; // Variable wird auf dem Stack dieser Funktion angelegt
     &amp;local_value          // Versuch, eine Referenz auf die Stack-Variable zurückzugeben
@@ -271,7 +258,7 @@ fn main() {
     let reference = get_dangling_reference();
     println!("Der Wert an der Adresse ist: {}", reference);
 }</code></pre>
-<hr />
+<hr>
 <h2 id="5-die-anatomie-des-fehlers"><a class="header" href="#5-die-anatomie-des-fehlers">5. Die Anatomie des Fehlers</a></h2>
 <h3 id="das-compiler-feedback"><a class="header" href="#das-compiler-feedback">Das Compiler-Feedback</a></h3>
 <p>Versuchen wir, diesen Code mit <code>cargo check</code> zu prüfen, blockiert uns der Rust-Compiler sofort mit einer unmissverständlichen Fehlermeldung:</p>
@@ -310,14 +297,14 @@ Der Stack Pointer (RSP) wird zurückgesetzt. Der Speicherbereich wird freigegebe
 <li><strong>Funktionsaufruf</strong>: Wenn <code>main</code> die Funktion <code>get_dangling_reference</code> aufruft, wird ein neuer Stack Frame (Aktivierungsblock) für diese Funktion auf dem Stack erstellt. Der Stack Pointer (RSP-Register der CPU) verschiebt sich nach unten, um Platz für lokale Variablen zu schaffen.</li>
 <li><strong>Variablenbindung</strong>: Die Variable <code>local_value</code> wird auf der Adresse <code>0x7fffffff48</code> abgelegt und mit dem Wert <code>42</code> initialisiert.</li>
 <li><strong>Funktionsende (Return)</strong>: Die Funktion versucht, die Speicheradresse <code>0x7fffffff48</code> an <code>main</code> zurückzugeben. Genau jetzt räumt die CPU die Funktion auf. Der Stack Pointer (RSP) wird einfach wieder nach oben geschoben (auf <code>0x7fffffff50</code>).</li>
-<li><strong>Das Sicherheitsrisiko</strong>: Der Stack Frame von <code>get_dangling_reference</code> ist nun physikalisch "ungültig" und für das Betriebssystem zur Überschreibung freigegeben. Würde <code>main</code> nun versuchen, über den Zeiger <code>0x7fffffff48</code> auf den Wert zuzugreifen (Dereferenzierung), könnte dort noch die <code>42</code> stehen. Sobald jedoch eine andere Funktion aufgerufen wird, überschreibt deren Stack Frame diesen Bereich. Unser Programm würde plötzlich völlig unvorhersehbare Werte lesen oder abstürzen. Das ist <strong>Undefined Behavior</strong>.</li>
+<li><strong>Das Sicherheitsrisiko</strong>: Der Stack Frame von <code>get_dangling_reference</code> ist nun physikalisch “ungültig” und für das Betriebssystem zur Überschreibung freigegeben. Würde <code>main</code> nun versuchen, über den Zeiger <code>0x7fffffff48</code> auf den Wert zuzugreifen (Dereferenzierung), könnte dort noch die <code>42</code> stehen. Sobald jedoch eine andere Funktion aufgerufen wird, überschreibt deren Stack Frame diesen Bereich. Unser Programm würde plötzlich völlig unvorhersehbare Werte lesen oder abstürzen. Das ist <strong>Undefined Behavior</strong>.</li>
 </ol>
-<hr />
+<hr>
 <h2 id="6-die-lösung"><a class="header" href="#6-die-lösung">6. Die Lösung</a></h2>
 <p>Um dieses Problem zu lösen, müssen wir dafür sorgen, dass die Daten entweder kopiert werden (so dass <code>main</code> eine eigene, lokale Kopie auf ihrem Stack erhält) oder dass die Daten auf dem Heap alloziiert werden, wo sie unabhängig von Funktions-Scopes überleben können.</p>
 <h3 id="option-1-rückgabe-des-werts-selbst-movecopy"><a class="header" href="#option-1-rückgabe-des-werts-selbst-movecopy">Option 1: Rückgabe des Werts selbst (Move/Copy)</a></h3>
 <p>Wenn wir die Referenz (<code>&amp;</code>) weglassen, geben wir das Eigentum (Ownership) am Wert selbst zurück. Da <code>i32</code> ein einfacher Typ mit fester Größe ist, wird der Wert bei der Rückgabe im Speicher kopiert.</p>
-<pre><code class="language-rust">fn get_safe_value() -&gt; i32 {
+<pre class="playground"><code class="language-rust edition2021">fn get_safe_value() -&gt; i32 {
     let local_value = 42; 
     local_value // Wert wird kopiert und das Eigentum an main übergeben
 }
@@ -328,7 +315,7 @@ fn main() {
 }</code></pre>
 <h3 id="option-2-allokation-auf-dem-heap-mit-boxt"><a class="header" href="#option-2-allokation-auf-dem-heap-mit-boxt">Option 2: Allokation auf dem Heap mit <code>Box&lt;T&gt;</code></a></h3>
 <p>Wenn es sich um größere Datenstrukturen handelt, die wir nicht kopieren wollen, allozieren wir sie mit dem Smart Pointer <code>Box&lt;T&gt;</code> auf dem Heap. Der Zeiger auf dem Stack besitzt die Heap-Daten und wird an <code>main</code> übergeben.</p>
-<pre><code class="language-rust">fn get_heap_value() -&gt; Box&lt;i32&gt; {
+<pre class="playground"><code class="language-rust edition2021">fn get_heap_value() -&gt; Box&lt;i32&gt; {
     let local_value = Box::new(42); // 42 wird auf dem Heap gespeichert
     local_value // Box (Pointer) wird per Move an den Aufrufer übergeben
 }
@@ -343,7 +330,7 @@ fn main() {
 <li><strong>Verarbeitung (Processing)</strong>: <code>Box::new(42)</code> fordert über den Heap-Allokator Speicher für ein <code>i32</code> (4 Bytes) auf dem Heap an. Die Zahl <code>42</code> wird in diesen Heap-Speicher geschrieben. Auf dem Stack der Funktion wird eine <code>Box</code>-Struktur angelegt, die die Heap-Speicheradresse enthält.</li>
 <li><strong>Ausgabe (Output)</strong>: Die Funktion gibt den Typ <code>Box&lt;i32&gt;</code> zurück. Das Ownership (Besitzrecht) für diesen Zeiger und die damit verbundenen Heap-Daten wird an die Variable <code>heap_box</code> in <code>main</code> übergeben.</li>
 </ol>
-<hr />
+<hr>
 <h2 id="7-kleines-tutorial-hardware-speicheradressen-visualisieren"><a class="header" href="#7-kleines-tutorial-hardware-speicheradressen-visualisieren">7. Kleines Tutorial: Hardware-Speicheradressen visualisieren</a></h2>
 <p>In diesem Tutorial schreiben wir ein lauffähiges Rust-Programm, das die echten physikalischen Speicheradressen unserer Variablen zur Laufzeit ausgibt. Dadurch machen wir den Unterschied zwischen Stack und Heap für Sie direkt sichtbar.</p>
 <h3 id="schritt-1-neues-cargo-projekt-anlegen"><a class="header" href="#schritt-1-neues-cargo-projekt-anlegen">Schritt 1: Neues Cargo-Projekt anlegen</a></h3>
@@ -353,7 +340,7 @@ cd memory_explorer
 </code></pre>
 <h3 id="schritt-2-quellcode-schreiben"><a class="header" href="#schritt-2-quellcode-schreiben">Schritt 2: Quellcode schreiben</a></h3>
 <p>Ersetzen Sie den Inhalt von <code>src/main.rs</code> durch den folgenden vollständigen Programmcode:</p>
-<pre><code class="language-rust">fn main() {
+<pre class="playground"><code class="language-rust edition2021">fn main() {
     // 1. Zwei Variablen direkt auf dem Stack deklarieren
     let stack_var_a: i32 = 100;
     let stack_var_b: i32 = 200;
@@ -397,10 +384,10 @@ Adresse des Zeigers heap_box_b selbst (Stack): 0x7ffcd36f8758
 <li><strong>Heap-Ziele</strong>: Die tatsächlichen Werte (300 und 400) liegen an den Adressen <code>0x55b1dfa52b80</code> und <code>0x55b1dfa52ba0</code>. Dies ist ein völlig anderer, deutlich niedrigerer Adressbereich. Die Differenz beträgt hier 32 Bytes (<code>0x20</code> in Hexadezimal), was auf das interne Padding und Metadaten-Management des Standard-Heap-Allokators (<code>jemalloc</code> bzw. System-Allokator) zurückzuführen ist.</li>
 <li><strong>Box-Zeiger selbst</strong>: Die Zeiger, die auf die Heap-Adressen verweisen, liegen selbst wieder auf dem Stack im Hochadressbereich (<code>0x7ffcd36f8750</code> und <code>0x7ffcd36f8758</code>). Der Abstand beträgt exakt 8 Bytes, was der Größe eines Pointers auf einem 64-Bit-System entspricht.</li>
 </ol>
-<hr />
+<hr>
 <h2 id="171-hardware-speicherstruktur"><a class="header" href="#171-hardware-speicherstruktur">17.1 Hardware-Speicherstruktur</a></h2>
 <p>Um zu verstehen, warum Rust den Speicher so verwaltet, wie es das tut, müssen wir uns die Funktionsweise der Hardware genauer ansehen.</p>
-<pre><code class="language-mermaid">graph TD
+<pre class="mermaid">graph TD
     RAM[Arbeitsspeicher RAM] --&gt; Stack[Stack LIFO]
     RAM --&gt; Heap[Heap Dynamisch]
     Stack --&gt; StackPtr[RSP Register / Extrem schnell]
@@ -408,7 +395,8 @@ Adresse des Zeigers heap_box_b selbst (Stack): 0x7ffcd36f8758
     Heap --&gt; HeapPtr[Zugriff via Pointer / Langsamer]
     Heap --&gt; HeapAlloc[Speicherallokator / Fragmentierung]
     StackPtr -. Zeigt auf .-&gt; Heap
-</code></pre>
+</pre>
+
 <h3 id="1711-stack-speicher"><a class="header" href="#1711-stack-speicher">17.1.1 Stack-Speicher</a></h3>
 <p>Der Stack ist ein kontinuierlicher Speicherbereich im Arbeitsspeicher, der direkt von der CPU verwaltet wird. Er arbeitet nach dem <strong>LIFO-Prinzip</strong> (Last-In, First-Out). Ein neuer Wert wird oben auf den Stapel gelegt (push), und der oberste Wert wird als erstes wieder entfernt (pop).</p>
 <ul>
@@ -423,7 +411,7 @@ Adresse des Zeigers heap_box_b selbst (Stack): 0x7ffcd36f8758
 <li><strong>Der Allokationsprozess</strong>: Wenn ein Programm Speicher auf dem Heap anfordert, ruft es den System-Allokator (z. B. <code>malloc</code> in C oder Rusts Standard-Allokator) auf. Dieser muss eine freie Speicherstelle auf dem Heap finden, die groß genug ist, um die Daten aufzunehmen. Dazu durchsucht der Allokator Tabellen oder verkettete Listen freier Speicherblöcke (Freilisten). Dies erfordert Suchzeit und ist daher um ein Vielfaches langsamer als die Stack-Allokation.</li>
 <li><strong>Systemaufrufe</strong>: Hat der Allokator keinen passenden freien Block mehr in seinem reservierten Bereich, muss er das Betriebssystem über teure Systemaufrufe (wie <code>brk</code>/<code>sbrk</code> oder <code>mmap</code> unter Linux) anweisen, den Heap-Bereich des Prozesses zu vergrößern. Dies erfordert einen Kontextwechsel in den Kernel-Modus, was extrem viel Rechenzeit kostet.</li>
 <li><strong>Speicherfragmentierung</strong>: Da Speicherblöcke auf dem Heap in beliebiger Reihenfolge alloziiert und freigegeben werden, entstehen Lücken (Fragmentierung). Es kann passieren, dass insgesamt zwar noch 100 MB Heap-Speicher frei sind, diese aber in Form von Millionen winziger Lücken verstreut sind. Versucht das Programm dann, einen zusammenhängenden Block von 10 MB anzufordern, scheitert die Allokation, obwohl theoretisch genug Speicher da wäre.</li>
-<li><strong>Latenz &amp; Cache-Misses</strong>: Um auf Heap-Daten zuzugreifen, muss die CPU zuerst die Adresse auf dem Stack lesen und anschließend im RAM an diese Adresse springen. Dieses "Pointer Chasing" führt fast immer dazu, dass die CPU-Pipeline ins Stocken gerät, weil die Daten nicht im L1-Cache vorliegen (Cache Miss).</li>
+<li><strong>Latenz &amp; Cache-Misses</strong>: Um auf Heap-Daten zuzugreifen, muss die CPU zuerst die Adresse auf dem Stack lesen und anschließend im RAM an diese Adresse springen. Dieses “Pointer Chasing” führt fast immer dazu, dass die CPU-Pipeline ins Stocken gerät, weil die Daten nicht im L1-Cache vorliegen (Cache Miss).</li>
 </ul>
 <h3 id="1713-pointer-verbindung"><a class="header" href="#1713-pointer-verbindung">17.1.3 Pointer-Verbindung</a></h3>
 <p>Der Stack und der Heap sind in der Praxis eng miteinander verwoben. Datenstrukturen, die dynamisch wachsen (wie <code>String</code> oder <code>Vec</code>), speichern ihre eigentlichen Daten auf dem Heap, halten aber einen fest strukturieten Deskriptor (den Zeiger) auf dem Stack.</p>
@@ -451,17 +439,23 @@ Neben normalen Pointern nutzt Rust sogenannte Fat Pointer. Diese sind nicht 8, s
 <li>Einer Speicheradresse (8 Bytes)</li>
 <li>Zusätzlichen Metadaten (8 Bytes): Bei Slices (z. B. <code>&amp;str</code> oder <code>&amp;[T]</code>) ist dies die Länge des Slices. Bei Trait-Objekten (z. B. <code>&amp;dyn MyTrait</code>) ist dies ein Zeiger auf eine virtuelle Methodentabelle (vtable), die die Funktionszeiger der konkreten Implementierung enthält.</li>
 </ul>
-<hr />
+<hr>
 <h2 id="172-speicherverwaltungskonzepte-im-vergleich"><a class="header" href="#172-speicherverwaltungskonzepte-im-vergleich">17.2 Speicherverwaltungskonzepte im Vergleich</a></h2>
 <p>Im Laufe der Informatikgeschichte haben sich verschiedene Ansätze etabliert, um den Heap-Speicher zu verwalten. Jedes Konzept besitzt fundamentale Trade-offs.</p>
-<div class="table-wrapper"><table><thead><tr><th style="text-align: left">Kriterium</th><th style="text-align: left">Manuell (C / C++)</th><th style="text-align: left">Garbage Collector (Java / Go)</th><th style="text-align: left">RAII / Ownership (Rust)</th></tr></thead><tbody>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th style="text-align: left">Kriterium</th><th style="text-align: left">Manuell (C / C++)</th><th style="text-align: left">Garbage Collector (Java / Go)</th><th style="text-align: left">RAII / Ownership (Rust)</th></tr>
+</thead>
+<tbody>
 <tr><td style="text-align: left"><strong>Allokation</strong></td><td style="text-align: left">Explizit (<code>malloc</code> / <code>new</code>)</td><td style="text-align: left">Explizit (<code>new</code> / Garbage Collector)</td><td style="text-align: left">Explizit (<code>Box::new</code> / implizit)</td></tr>
 <tr><td style="text-align: left"><strong>Deallokation</strong></td><td style="text-align: left">Manuell (<code>free</code> / <code>delete</code>)</td><td style="text-align: left">Automatisch durch Hintergrund-Thread</td><td style="text-align: left">Automatisch an Scope-Enden (Drop)</td></tr>
 <tr><td style="text-align: left"><strong>Laufzeit-Overhead</strong></td><td style="text-align: left">Keiner (maximal effizient)</td><td style="text-align: left">Hoch (GC-Pausen, CPU-Last)</td><td style="text-align: left">Keiner (Zero-Cost)</td></tr>
 <tr><td style="text-align: left"><strong>Speicher-Overhead</strong></td><td style="text-align: left">Keiner</td><td style="text-align: left">Hoch (oft 2x bis 3x des Netto-Bedarfs)</td><td style="text-align: left">Keiner</td></tr>
 <tr><td style="text-align: left"><strong>Sicherheit</strong></td><td style="text-align: left">Sehr unsicher (manuelle Fehler)</td><td style="text-align: left">Sicher vor Speicherfehlern</td><td style="text-align: left">Sicher vor Speicherfehlern</td></tr>
 <tr><td style="text-align: left"><strong>Determinismus</strong></td><td style="text-align: left">Deterministisch</td><td style="text-align: left">Nicht-deterministisch (GC-Lauf unklar)</td><td style="text-align: left">Deterministisch</td></tr>
-</tbody></table>
+</tbody>
+</table>
 </div>
 <h3 id="1721-manuelle-freigabe-cc"><a class="header" href="#1721-manuelle-freigabe-cc">17.2.1 Manuelle Freigabe (C/C++)</a></h3>
 <p>In Systemprogrammiersprachen wie C fordert der Entwickler Speicher explizit über <code>malloc</code> (Memory Allocation) auf dem Heap an und muss diesen Speicher über <code>free</code> wieder freigeben.</p>
@@ -496,7 +490,7 @@ void double_free_example() {
 <h3 id="1722-garbage-collector-javago"><a class="header" href="#1722-garbage-collector-javago">17.2.2 Garbage Collector (Java/Go)</a></h3>
 <p>Um Entwickler von der fehleranfälligen manuellen Freigabe zu entlasten, nutzen Sprachen wie Java, Python, C# und Go einen Garbage Collector.</p>
 <ul>
-<li><strong>Funktionsweise (Tracing GC)</strong>: Das Programm läuft in einer virtuellen Maschine oder mit einer Laufzeitumgebung (Runtime). Ein separater Thread (der Garbage Collector) wacht in regelmäßigen Abständen auf, stoppt unter Umständen das eigentliche Programm (<strong>Stop-the-World Pauses</strong>) und durchläuft alle aktiven Variablen auf dem Stack (die Roots). Er markiert alle vom Stack aus erreichbaren Heap-Objekte. Alle nicht markierten Objekte gelten als "Müll" und werden gelöscht (Mark-and-Sweep).</li>
+<li><strong>Funktionsweise (Tracing GC)</strong>: Das Programm läuft in einer virtuellen Maschine oder mit einer Laufzeitumgebung (Runtime). Ein separater Thread (der Garbage Collector) wacht in regelmäßigen Abständen auf, stoppt unter Umständen das eigentliche Programm (<strong>Stop-the-World Pauses</strong>) und durchläuft alle aktiven Variablen auf dem Stack (die Roots). Er markiert alle vom Stack aus erreichbaren Heap-Objekte. Alle nicht markierten Objekte gelten als “Müll” und werden gelöscht (Mark-and-Sweep).</li>
 <li><strong>Nachteile</strong>:
 <ol>
 <li><strong>GC-Pausen</strong>: Für extrem zeitkritische Anwendungen (z. B. Robotik, Fahrzeugsteuerung, Audiosignalverarbeitung oder High-Frequency-Trading) sind GC-Pausen inakzeptabel. Ein kurzes Stocken von 50 Millisekunden kann fatale Folgen haben.</li>
@@ -519,7 +513,7 @@ void double_free_example() {
 <p>Da Stack-Scopes deterministisch feststehen, ist die Freigabe der Ressource absolut deterministisch und geschieht ohne jeglichen Laufzeit-Overhead zur Compilezeit.</p>
 <p><strong>Rusts Weiterentwicklung</strong>:
 Rust perfektioniert das RAII-Konzept, indem es dieses über sein Ownership-System strikt erzwingt. In C++ ist RAII optional – Entwickler können immer noch rohe Pointer verwenden und Speicherfehler verursachen. In Rust ist RAII über das <strong>Drop-Trait</strong> fest in das Typsystem integriert. Der Compiler erlaubt es schlichtweg nicht, das RAII-Muster zu umgehen.</p>
-<hr />
+<hr>
 <h2 id="10-api-referenz-der-speicherverwaltung"><a class="header" href="#10-api-referenz-der-speicherverwaltung">10. API-Referenz der Speicherverwaltung</a></h2>
 <p>Die Rust-Standardbibliothek bietet im Modul <code>std::mem</code> sowie über den Typen <code>Box&lt;T&gt;</code> Werkzeuge zur expliziten Kontrolle und Abfrage des Speicherlayouts.</p>
 <h3 id="1-stdmemsize_of"><a class="header" href="#1-stdmemsize_of">1. <code>std::mem::size_of</code></a></h3>
@@ -530,8 +524,11 @@ Rust perfektioniert das RAII-Konzept, indem es dieses über sein Ownership-Syste
 <li><strong>Rückgabetyp</strong>: <code>usize</code> (Größe in Bytes).</li>
 <li><strong>Panics</strong>: Keine.</li>
 <li><strong>Kurzbeispiel</strong>:
-<pre><code class="language-rust">let size = std::mem::size_of::&lt;i32&gt;();
-assert_eq!(size, 4); // i32 belegt immer 4 Bytes</code></pre>
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let size = std::mem::size_of::&lt;i32&gt;();
+assert_eq!(size, 4); // i32 belegt immer 4 Bytes
+<span class="boring">}</span></code></pre>
 </li>
 </ul>
 <h3 id="2-stdmemalign_of"><a class="header" href="#2-stdmemalign_of">2. <code>std::mem::align_of</code></a></h3>
@@ -542,8 +539,11 @@ assert_eq!(size, 4); // i32 belegt immer 4 Bytes</code></pre>
 <li><strong>Rückgabetyp</strong>: <code>usize</code>.</li>
 <li><strong>Panics</strong>: Keine.</li>
 <li><strong>Kurzbeispiel</strong>:
-<pre><code class="language-rust">let alignment = std::mem::align_of::&lt;u64&gt;();
-assert_eq!(alignment, 8); // u64 muss auf Adressen liegen, die durch 8 teilbar sind</code></pre>
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let alignment = std::mem::align_of::&lt;u64&gt;();
+assert_eq!(alignment, 8); // u64 muss auf Adressen liegen, die durch 8 teilbar sind
+<span class="boring">}</span></code></pre>
 </li>
 </ul>
 <h3 id="3-stdmemdrop"><a class="header" href="#3-stdmemdrop">3. <code>std::mem::drop</code></a></h3>
@@ -554,9 +554,12 @@ assert_eq!(alignment, 8); // u64 muss auf Adressen liegen, die durch 8 teilbar s
 <li><strong>Rückgabetyp</strong>: <code>()</code> (Unit-Typ).</li>
 <li><strong>Panics</strong>: Keine.</li>
 <li><strong>Kurzbeispiel</strong>:
-<pre><code class="language-rust">let my_string = String::from("Temporär");
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let my_string = String::from("Temporär");
 std::mem::drop(my_string);
-// my_string ist ab hier ungültig und nicht mehr verwendbar!</code></pre>
+// my_string ist ab hier ungültig und nicht mehr verwendbar!
+<span class="boring">}</span></code></pre>
 </li>
 </ul>
 <h3 id="4-stdmemforget"><a class="header" href="#4-stdmemforget">4. <code>std::mem::forget</code></a></h3>
@@ -567,8 +570,11 @@ std::mem::drop(my_string);
 <li><strong>Rückgabetyp</strong>: <code>()</code>.</li>
 <li><strong>Panics</strong>: Keine.</li>
 <li><strong>Kurzbeispiel</strong>:
-<pre><code class="language-rust">let my_box = Box::new(42);
-std::mem::forget(my_box); // Der Heap-Speicher der Box wird NIE wieder freigegeben.</code></pre>
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let my_box = Box::new(42);
+std::mem::forget(my_box); // Der Heap-Speicher der Box wird NIE wieder freigegeben.
+<span class="boring">}</span></code></pre>
 </li>
 </ul>
 <h3 id="5-boxtnew"><a class="header" href="#5-boxtnew">5. <code>Box&lt;T&gt;::new</code></a></h3>
@@ -579,8 +585,11 @@ std::mem::forget(my_box); // Der Heap-Speicher der Box wird NIE wieder freigegeb
 <li><strong>Rückgabetyp</strong>: <code>Box&lt;T&gt;</code> (Besitzerzeiger auf den Heap).</li>
 <li><strong>Panics</strong>: Kann zum Programmabbruch (Abort) führen, falls der Heap-Speicher des Betriebssystems erschöpft ist (OOM - Out Of Memory).</li>
 <li><strong>Kurzbeispiel</strong>:
-<pre><code class="language-rust">let heap_num = Box::new(100);
-assert_eq!(*heap_num, 100);</code></pre>
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let heap_num = Box::new(100);
+assert_eq!(*heap_num, 100);
+<span class="boring">}</span></code></pre>
 </li>
 </ul>
 <h3 id="6-boxtinto_raw"><a class="header" href="#6-boxtinto_raw">6. <code>Box&lt;T&gt;::into_raw</code></a></h3>
@@ -591,9 +600,12 @@ assert_eq!(*heap_num, 100);</code></pre>
 <li><strong>Rückgabetyp</strong>: <code>*mut T</code> (roher Zeiger).</li>
 <li><strong>Panics</strong>: Keine.</li>
 <li><strong>Kurzbeispiel</strong>:
-<pre><code class="language-rust">let my_box = Box::new(10);
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let my_box = Box::new(10);
 let raw_ptr: *mut i32 = Box::into_raw(my_box);
-// raw_ptr muss manuell über Box::from_raw wieder in Empfang genommen werden!</code></pre>
+// raw_ptr muss manuell über Box::from_raw wieder in Empfang genommen werden!
+<span class="boring">}</span></code></pre>
 </li>
 </ul>
 <h3 id="7-boxtfrom_raw"><a class="header" href="#7-boxtfrom_raw">7. <code>Box&lt;T&gt;::from_raw</code></a></h3>
@@ -605,16 +617,19 @@ let raw_ptr: *mut i32 = Box::into_raw(my_box);
 <li><strong>Rückgabetyp</strong>: <code>Box&lt;T&gt;</code>.</li>
 <li><strong>Panics</strong>: Keine.</li>
 <li><strong>Kurzbeispiel</strong>:
-<pre><code class="language-rust">let my_box = Box::new(50);
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let my_box = Box::new(50);
 let raw_ptr = Box::into_raw(my_box);
 // Das Zurückholen muss in einem unsafe-Block geschehen:
 let original_box = unsafe { Box::from_raw(raw_ptr) };
-assert_eq!(*original_box, 50);</code></pre>
+assert_eq!(*original_box, 50);
+<span class="boring">}</span></code></pre>
 </li>
 </ul>
-<hr />
-<h2 id="11-drei-praktische-Übungen"><a class="header" href="#11-drei-praktische-Übungen">11. Drei praktische Übungen</a></h2>
-<h3 id="Übung-1-leicht-physikalische-typgrößen-untersuchen"><a class="header" href="#Übung-1-leicht-physikalische-typgrößen-untersuchen">Übung 1 (Leicht): Physikalische Typgrößen untersuchen</a></h3>
+<hr>
+<h2 id="11-drei-praktische-übungen"><a class="header" href="#11-drei-praktische-übungen">11. Drei praktische Übungen</a></h2>
+<h3 id="übung-1-leicht-physikalische-typgrößen-untersuchen"><a class="header" href="#übung-1-leicht-physikalische-typgrößen-untersuchen">Übung 1 (Leicht): Physikalische Typgrößen untersuchen</a></h3>
 <ul>
 <li><strong>Ziel</strong>: Ermitteln Sie die genaue Byte-Belegung verschiedener Datentypen auf Ihrem System, um den Unterschied zwischen Stack-Größe und Heap-Metadaten zu begreifen.</li>
 <li><strong>Anforderungen</strong>:
@@ -625,13 +640,13 @@ assert_eq!(*original_box, 50);</code></pre>
 </ol>
 </li>
 <li><strong>Blueprint</strong>:
-<pre><code class="language-rust">fn main() {
+<pre class="playground"><code class="language-rust edition2021">fn main() {
     // Ihre Implementierung hier...
 }</code></pre>
 </li>
 <li><strong>Lösungshinweis</strong>: Denken Sie daran, dass <code>std::mem::size_of::&lt;T&gt;()</code> den Typ als generische Variable erwartet. Ein <code>String</code> hat immer eine feste Größe von 24 Bytes auf dem Stack, unabhängig von der Länge des Textes, der auf dem Heap liegt!</li>
 </ul>
-<h3 id="Übung-2-mittel-eine-eigene-raii-ressource-implementieren"><a class="header" href="#Übung-2-mittel-eine-eigene-raii-ressource-implementieren">Übung 2 (Mittel): Eine eigene RAII-Ressource implementieren</a></h3>
+<h3 id="übung-2-mittel-eine-eigene-raii-ressource-implementieren"><a class="header" href="#übung-2-mittel-eine-eigene-raii-ressource-implementieren">Übung 2 (Mittel): Eine eigene RAII-Ressource implementieren</a></h3>
 <ul>
 <li><strong>Ziel</strong>: Verstehen Sie den deterministischen Ablauf des <code>Drop</code>-Traits, indem Sie eine Struktur schreiben, die eine Ressource simuliert, die explizit beim Verlassen des Scopes geschlossen werden muss.</li>
 <li><strong>Anforderungen</strong>:
@@ -642,16 +657,19 @@ assert_eq!(*original_box, 50);</code></pre>
 </ol>
 </li>
 <li><strong>Blueprint</strong>:
-<pre><code class="language-rust">struct DatabaseConnection {
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>struct DatabaseConnection {
     connection_id: u32,
     is_active: bool,
 }
 
-// Implementieren Sie das Drop-Trait für DatabaseConnection</code></pre>
+// Implementieren Sie das Drop-Trait für DatabaseConnection
+<span class="boring">}</span></code></pre>
 </li>
 <li><strong>Lösungshinweis</strong>: Das <code>Drop</code>-Trait verlangt die Implementierung von <code>fn drop(&amp;mut self)</code>. Beachten Sie, dass Sie <code>drop</code> niemals manuell aufrufen dürfen; der Aufruf geschieht vollautomatisch durch den Compiler am Ende des Scopes.</li>
 </ul>
-<h3 id="Übung-3-schwer-einen-rudimentären-arena-allokator-simulieren"><a class="header" href="#Übung-3-schwer-einen-rudimentären-arena-allokator-simulieren">Übung 3 (Schwer): Einen rudimentären Arena-Allokator simulieren</a></h3>
+<h3 id="übung-3-schwer-einen-rudimentären-arena-allokator-simulieren"><a class="header" href="#übung-3-schwer-einen-rudimentären-arena-allokator-simulieren">Übung 3 (Schwer): Einen rudimentären Arena-Allokator simulieren</a></h3>
 <ul>
 <li><strong>Ziel</strong>: Um zu verstehen, wie Heap-Speicherplatz reserviert wird, simulieren Sie einen einfachen Arena-Allokator. Dieser vergibt fortlaufend Teilstücke aus einem festen Speicherbereich.</li>
 <li><strong>Anforderungen</strong>:
@@ -662,7 +680,9 @@ assert_eq!(*original_box, 50);</code></pre>
 </ol>
 </li>
 <li><strong>Blueprint</strong>:
-<pre><code class="language-rust">struct Arena {
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>struct Arena {
     buffer: [u8; 1024],
     position: usize,
 }
@@ -678,20 +698,27 @@ impl Arena {
     fn alloc(&amp;mut self, size: usize) -&gt; Result&lt;*mut u8, &amp;'static str&gt; {
         // Ihre Implementierung hier...
     }
-}</code></pre>
+}
+<span class="boring">}</span></code></pre>
 </li>
 <li><strong>Lösungshinweis</strong>: Sie müssen den rohen Zeiger des Puffers an der aktuellen Position ermitteln. Nutzen Sie dafür <code>.as_mut_ptr()</code> auf dem Puffer-Array und verschieben Sie den Zeiger mit der Methode <code>add()</code>. Vorsicht: Die Verwendung von rohen Zeigern und <code>add</code> erfordert das Schlüsselwort <code>unsafe</code>!</li>
 </ul>
-<hr />
+<hr>
 <h2 id="12-lernstrategie-selbsteinschätzung--merkzettel"><a class="header" href="#12-lernstrategie-selbsteinschätzung--merkzettel">12. Lernstrategie, Selbsteinschätzung &amp; Merkzettel</a></h2>
 <h3 id="spickzettel--merkzettel-cheat-sheet"><a class="header" href="#spickzettel--merkzettel-cheat-sheet">Spickzettel / Merkzettel (Cheat Sheet)</a></h3>
-<div class="table-wrapper"><table><thead><tr><th style="text-align: left">Eigenschaft / Typ</th><th style="text-align: left">Stack (Stapel)</th><th style="text-align: left">Heap (Haufen)</th></tr></thead><tbody>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th style="text-align: left">Eigenschaft / Typ</th><th style="text-align: left">Stack (Stapel)</th><th style="text-align: left">Heap (Haufen)</th></tr>
+</thead>
+<tbody>
 <tr><td style="text-align: left"><strong>Allokation</strong></td><td style="text-align: left">Extrem schnell (Subtraktion RSP)</td><td style="text-align: left">Langsamer (Suchvorgang in Freilisten)</td></tr>
 <tr><td style="text-align: left"><strong>Größenbeschränkung</strong></td><td style="text-align: left">Fest / Bekannt zur Compilezeit</td><td style="text-align: left">Dynamisch wachsende Daten zur Laufzeit</td></tr>
 <tr><td style="text-align: left"><strong>Lebensdauer</strong></td><td style="text-align: left">Streng an Scopes <code>{ }</code> gekoppelt</td><td style="text-align: left">Unabhängig von Scopes (RAII gesteuert)</td></tr>
 <tr><td style="text-align: left"><strong>CPU-Cache</strong></td><td style="text-align: left">Sehr hohe Cache-Lokalität</td><td style="text-align: left">Häufige Cache Misses (Pointer-Sprünge)</td></tr>
 <tr><td style="text-align: left"><strong>Typische Typen</strong></td><td style="text-align: left"><code>i32</code>, <code>f64</code>, <code>bool</code>, <code>char</code>, <code>[i32; 10]</code></td><td style="text-align: left"><code>String</code>, <code>Vec&lt;T&gt;</code>, <code>Box&lt;T&gt;</code>, <code>HashMap</code></td></tr>
-</tbody></table>
+</tbody>
+</table>
 </div>
 <h3 id="active-recall-verständnisfragen"><a class="header" href="#active-recall-verständnisfragen">Active Recall (Verständnisfragen)</a></h3>
 <ol>
@@ -723,14 +750,11 @@ impl Arena {
 <h3 id="metakognitiver-selbsttest"><a class="header" href="#metakognitiver-selbsttest">Metakognitiver Selbsttest</a></h3>
 <p>Fahren Sie erst mit Kapitel 18 fort, wenn Sie:</p>
 <ul>
-<li><input disabled="" type="checkbox"/>
-Die physikalischen Unterschiede von Stack und Heap fehlerfrei erklären können.</li>
-<li><input disabled="" type="checkbox"/>
-Verstanden haben, warum Pointer-Verbindungen Latenz erzeugen (Cache Misses).</li>
-<li><input disabled="" type="checkbox"/>
-Den genauen Unterschied zwischen manueller Freigabe (C), GC (Java) und RAII (Rust) verinnerlicht haben.</li>
+<li><input disabled="" type="checkbox"> Die physikalischen Unterschiede von Stack und Heap fehlerfrei erklären können.</li>
+<li><input disabled="" type="checkbox"> Verstanden haben, warum Pointer-Verbindungen Latenz erzeugen (Cache Misses).</li>
+<li><input disabled="" type="checkbox"> Den genauen Unterschied zwischen manueller Freigabe (C), GC (Java) und RAII (Rust) verinnerlicht haben.</li>
 </ul>
-<hr />
+<hr>
 <h2 id="13-zusammenfassung"><a class="header" href="#13-zusammenfassung">13. Zusammenfassung</a></h2>
 <ul>
 <li><strong>Speicherstruktur</strong>: Stack speichert strukturierte LIFO-Daten extrem schnell und cache-freundlich. Heap speichert flexible, dynamisch große Daten über Zeiger.</li>
@@ -738,7 +762,7 @@ Den genauen Unterschied zwischen manueller Freigabe (C), GC (Java) und RAII (Rus
 <li><strong>Garbage Collector</strong>: Bietet Sicherheit vor Speicherfehlern, erzeugt aber unvorhersehbare Pausen und signifikanten Speicher-Overhead.</li>
 <li><strong>RAII &amp; Drop</strong>: Rust nutzt das RAII-Paradigma. Ressourcen werden exakt an Scopes gekoppelt. Beim Verlassen wird Speicher deterministisch freigegeben – sicher wie Java und schnell wie C.</li>
 </ul>
-<hr />
+<hr>
 <p><strong>Lizenz- und Attributionshinweis</strong>:
 Teile dieses Kapitels basieren auf Übersetzungen und didaktischen Anpassungen des offiziellen Buches <a href="https://doc.rust-lang.org/book/">The Rust Programming Language</a> von Steve Klabnik und Carol Nichols (sowie Beiträgen der Rust-Community), lizenziert unter <a href="https://opensource.org/licenses/MIT">MIT</a> und <a href="https://www.apache.org/licenses/LICENSE-2.0">Apache 2.0</a>.</p>
 
@@ -747,11 +771,11 @@ Teile dieses Kapitels basieren auf Übersetzungen und didaktischen Anpassungen d
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
                             <a rel="prev" href="16.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
-                                <i class="fa fa-angle-left"></i>
+                                <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
                             </a>
 
                             <a rel="next prefetch" href="18.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
-                                <i class="fa fa-angle-right"></i>
+                                <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
                             </a>
 
                         <div style="clear: both"></div>
@@ -761,16 +785,21 @@ Teile dieses Kapitels basieren auf Übersetzungen und didaktischen Anpassungen d
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
                     <a rel="prev" href="16.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
-                        <i class="fa fa-angle-left"></i>
+                        <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
                     </a>
 
                     <a rel="next prefetch" href="18.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
-                        <i class="fa fa-angle-right"></i>
+                        <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
                     </a>
             </nav>
 
         </div>
 
+        <template id=fa-eye><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M288 32c-80.8 0-145.5 36.8-192.6 80.6C48.6 156 17.3 208 2.5 243.7c-3.3 7.9-3.3 16.7 0 24.6C17.3 304 48.6 356 95.4 399.4C142.5 443.2 207.2 480 288 480s145.5-36.8 192.6-80.6c46.8-43.5 78.1-95.4 93-131.1c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C433.5 68.8 368.8 32 288 32zM432 256c0 79.5-64.5 144-144 144s-144-64.5-144-144s64.5-144 144-144s144 64.5 144 144zM288 192c0 35.3-28.7 64-64 64c-11.5 0-22.3-3-31.6-8.4c-.2 2.8-.4 5.5-.4 8.4c0 53 43 96 96 96s96-43 96-96s-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6z"/></svg></span></template>
+        <template id=fa-eye-slash><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M38.8 5.1C28.4-3.1 13.3-1.2 5.1 9.2S-1.2 34.7 9.2 42.9l592 464c10.4 8.2 25.5 6.3 33.7-4.1s6.3-25.5-4.1-33.7L525.6 386.7c39.6-40.6 66.4-86.1 79.9-118.4c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C465.5 68.8 400.8 32 320 32c-68.2 0-125 26.3-169.3 60.8L38.8 5.1zM223.1 149.5C248.6 126.2 282.7 112 320 112c79.5 0 144 64.5 144 144c0 24.9-6.3 48.3-17.4 68.7L408 294.5c5.2-11.8 8-24.8 8-38.5c0-53-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6c0 10.2-2.4 19.8-6.6 28.3l-90.3-70.8zm223.1 298L373 389.9c-16.4 6.5-34.3 10.1-53 10.1c-79.5 0-144-64.5-144-144c0-6.9 .5-13.6 1.4-20.2L83.1 161.5C60.3 191.2 44 220.8 34.5 243.7c-3.3 7.9-3.3 16.7 0 24.6c14.9 35.7 46.2 87.7 93 131.1C174.5 443.2 239.2 480 320 480c47.8 0 89.9-12.9 126.2-32.5z"/></svg></span></template>
+        <template id=fa-copy><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M502.6 70.63l-61.25-61.25C435.4 3.371 427.2 0 418.7 0H255.1c-35.35 0-64 28.66-64 64l.0195 256C192 355.4 220.7 384 256 384h192c35.2 0 64-28.8 64-64V93.25C512 84.77 508.6 76.63 502.6 70.63zM464 320c0 8.836-7.164 16-16 16H255.1c-8.838 0-16-7.164-16-16L239.1 64.13c0-8.836 7.164-16 16-16h128L384 96c0 17.67 14.33 32 32 32h47.1V320zM272 448c0 8.836-7.164 16-16 16H63.1c-8.838 0-16-7.164-16-16L47.98 192.1c0-8.836 7.164-16 16-16H160V128H63.99c-35.35 0-64 28.65-64 64l.0098 256C.002 483.3 28.66 512 64 512h192c35.2 0 64-28.8 64-64v-32h-47.1L272 448z"/></svg></span></template>
+        <template id=fa-play><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80V432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"/></svg></span></template>
+        <template id=fa-clock-rotate-left><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M75 75L41 41C25.9 25.9 0 36.6 0 57.9V168c0 13.3 10.7 24 24 24H134.1c21.4 0 32.1-25.9 17-41l-30.8-30.8C155 85.5 203 64 256 64c106 0 192 86 192 192s-86 192-192 192c-40.8 0-78.6-12.7-109.7-34.4c-14.5-10.1-34.4-6.6-44.6 7.9s-6.6 34.4 7.9 44.6C151.2 495 201.7 512 256 512c141.4 0 256-114.6 256-256S397.4 0 256 0C185.3 0 121.3 28.7 75 75zm181 53c-13.3 0-24 10.7-24 24V256c0 6.4 2.5 12.5 7 17l72 72c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-65-65V152c0-13.3-10.7-24-24-24z"/></svg></span></template>
 
 
 
@@ -779,17 +808,17 @@ Teile dieses Kapitels basieren auf Übersetzungen und didaktischen Anpassungen d
         </script>
 
 
-        <script src="elasticlunr.min.js"></script>
-        <script src="mark.min.js"></script>
-        <script src="searcher.js"></script>
+        <script src="elasticlunr-ef4e11c1.min.js"></script>
+        <script src="mark-09e88c2c.min.js"></script>
+        <script src="searcher-09f2665d.js"></script>
 
-        <script src="clipboard.min.js"></script>
-        <script src="highlight.js"></script>
-        <script src="book.js"></script>
+        <script src="clipboard-1626706a.min.js"></script>
+        <script src="highlight-abc7f01d.js"></script>
+        <script src="book-c22b7243.js"></script>
 
         <!-- Custom JS scripts -->
-        <script src="mermaid.min.js"></script>
-        <script src="mermaid-init.js"></script>
+        <script src="mermaid-eefea253.min.js"></script>
+        <script src="mermaid-init-ccf746f1.js"></script>
 
 
 

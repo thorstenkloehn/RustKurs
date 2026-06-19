@@ -7,26 +7,25 @@
 
 
         <!-- Custom HTML head -->
-        
+
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="theme-color" content="#ffffff">
 
-        <link rel="icon" href="favicon.svg">
-        <link rel="shortcut icon" href="favicon.png">
-        <link rel="stylesheet" href="css/variables.css">
-        <link rel="stylesheet" href="css/general.css">
-        <link rel="stylesheet" href="css/chrome.css">
-        <link rel="stylesheet" href="css/print.css" media="print">
+        <link rel="icon" href="favicon-de23e50b.svg">
+        <link rel="shortcut icon" href="favicon-8114d1fc.png">
+        <link rel="stylesheet" href="css/variables-8adf115d.css">
+        <link rel="stylesheet" href="css/general-0392ca55.css">
+        <link rel="stylesheet" href="css/chrome-fc474251.css">
+        <link rel="stylesheet" href="css/print-9e4910d8.css" media="print">
 
         <!-- Fonts -->
-        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
-        <link rel="stylesheet" href="fonts/fonts.css">
+        <link rel="stylesheet" href="fonts/fonts-9644e21d.css">
 
         <!-- Highlight.js Stylesheets -->
-        <link rel="stylesheet" id="highlight-css" href="highlight.css">
-        <link rel="stylesheet" id="tomorrow-night-css" href="tomorrow-night.css">
-        <link rel="stylesheet" id="ayu-highlight-css" href="ayu-highlight.css">
+        <link rel="stylesheet" id="mdbook-highlight-css" href="highlight-493f70e1.css">
+        <link rel="stylesheet" id="mdbook-tomorrow-night-css" href="tomorrow-night-4c0ae647.css">
+        <link rel="stylesheet" id="mdbook-ayu-highlight-css" href="ayu-highlight-3fdfc3ac.css">
 
         <!-- Custom theme stylesheets -->
 
@@ -36,10 +35,10 @@
             const path_to_root = "";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "searchindex.js";
+            window.path_to_searchindex_js = "searchindex-34eaf846.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="toc.js"></script>
+        <script src="toc-9a36690f.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -53,7 +52,7 @@
             </div>
         </div>
     </div>
-    <div id="body-container">
+    <div id="mdbook-body-container">
         <!-- Work around some values being stored in localStorage wrapped in quotes -->
         <script>
             try {
@@ -82,12 +81,12 @@
             html.classList.add("js");
         </script>
 
-        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+        <input type="checkbox" id="mdbook-sidebar-toggle-anchor" class="hidden">
 
         <!-- Hide / unhide sidebar before it is displayed -->
         <script>
             let sidebar = null;
-            const sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            const sidebar_toggle = document.getElementById("mdbook-sidebar-toggle-anchor");
             if (document.body.clientWidth >= 1080) {
                 try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
                 sidebar = sidebar || 'visible';
@@ -102,39 +101,39 @@
             }
         </script>
 
-        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+        <nav id="mdbook-sidebar" class="sidebar" aria-label="Table of contents">
             <!-- populated by js -->
             <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
             <noscript>
                 <iframe class="sidebar-iframe-outer" src="toc.html"></iframe>
             </noscript>
-            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+            <div id="mdbook-sidebar-resize-handle" class="sidebar-resize-handle">
                 <div class="sidebar-resize-indicator"></div>
             </div>
         </nav>
 
-        <div id="page-wrapper" class="page-wrapper">
+        <div id="mdbook-page-wrapper" class="page-wrapper">
 
             <div class="page">
-                                <div id="menu-bar-hover-placeholder"></div>
-                <div id="menu-bar" class="menu-bar sticky">
+                <div id="mdbook-menu-bar-hover-placeholder"></div>
+                <div id="mdbook-menu-bar" class="menu-bar sticky">
                     <div class="left-buttons">
-                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
-                            <i class="fa fa-bars"></i>
+                        <label id="mdbook-sidebar-toggle" class="icon-button" for="mdbook-sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="mdbook-sidebar">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"/></svg></span>
                         </label>
-                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
-                            <i class="fa fa-paint-brush"></i>
+                        <button id="mdbook-theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="mdbook-theme-list">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M371.3 367.1c27.3-3.9 51.9-19.4 67.2-42.9L600.2 74.1c12.6-19.5 9.4-45.3-7.6-61.2S549.7-4.4 531.1 9.6L294.4 187.2c-24 18-38.2 46.1-38.4 76.1L371.3 367.1zm-19.6 25.4l-116-104.4C175.9 290.3 128 339.6 128 400c0 3.9 .2 7.8 .6 11.6c1.8 17.5-10.2 36.4-27.8 36.4H96c-17.7 0-32 14.3-32 32s14.3 32 32 32H240c61.9 0 112-50.1 112-112c0-2.5-.1-5-.2-7.5z"/></svg></span>
                         </button>
-                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
-                            <li role="none"><button role="menuitem" class="theme" id="default_theme">Auto</button></li>
-                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
-                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
-                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
-                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
-                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        <ul id="mdbook-theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-default_theme">Auto</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-ayu">Ayu</button></li>
                         </ul>
-                        <button id="search-toggle" class="icon-button" type="button" title="Search (`/`)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="/ s" aria-controls="searchbar">
-                            <i class="fa fa-search"></i>
+                        <button id="mdbook-search-toggle" class="icon-button" type="button" title="Search (`/`)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="/ s" aria-controls="mdbook-searchbar">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352c79.5 0 144-64.5 144-144s-64.5-144-144-144S64 128.5 64 208s64.5 144 144 144z"/></svg></span>
                         </button>
                     </div>
 
@@ -142,44 +141,44 @@
 
                     <div class="right-buttons">
                         <a href="print.html" title="Print this book" aria-label="Print this book">
-                            <i id="print-button" class="fa fa-print"></i>
+                            <span class=fa-svg id="print-button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M128 0C92.7 0 64 28.7 64 64v96h64V64H354.7L384 93.3V160h64V93.3c0-17-6.7-33.3-18.7-45.3L400 18.7C388 6.7 371.7 0 354.7 0H128zM384 352v32 64H128V384 368 352H384zm64 32h32c17.7 0 32-14.3 32-32V256c0-35.3-28.7-64-64-64H64c-35.3 0-64 28.7-64 64v96c0 17.7 14.3 32 32 32H64v64c0 35.3 28.7 64 64 64H384c35.3 0 64-28.7 64-64V384zm-16-88c-13.3 0-24-10.7-24-24s10.7-24 24-24s24 10.7 24 24s-10.7 24-24 24z"/></svg></span>
                         </a>
 
                     </div>
                 </div>
 
-                <div id="search-wrapper" class="hidden">
-                    <form id="searchbar-outer" class="searchbar-outer">
+                <div id="mdbook-search-wrapper" class="hidden">
+                    <form id="mdbook-searchbar-outer" class="searchbar-outer">
                         <div class="search-wrapper">
-                            <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                            <input type="search" id="mdbook-searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="mdbook-searchresults-outer" aria-describedby="searchresults-header">
                             <div class="spinner-wrapper">
-                                <i class="fa fa-spinner fa-spin"></i>
+                                <span class=fa-svg id="fa-spin"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M304 48c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zm0 416c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zM48 304c26.5 0 48-21.5 48-48s-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48zm464-48c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zM142.9 437c18.7-18.7 18.7-49.1 0-67.9s-49.1-18.7-67.9 0s-18.7 49.1 0 67.9s49.1 18.7 67.9 0zm0-294.2c18.7-18.7 18.7-49.1 0-67.9S93.7 56.2 75 75s-18.7 49.1 0 67.9s49.1 18.7 67.9 0zM369.1 437c18.7 18.7 49.1 18.7 67.9 0s18.7-49.1 0-67.9s-49.1-18.7-67.9 0s-18.7 49.1 0 67.9z"/></svg></span>
                             </div>
                         </div>
                     </form>
-                    <div id="searchresults-outer" class="searchresults-outer hidden">
-                        <div id="searchresults-header" class="searchresults-header"></div>
-                        <ul id="searchresults">
+                    <div id="mdbook-searchresults-outer" class="searchresults-outer hidden">
+                        <div id="mdbook-searchresults-header" class="searchresults-header"></div>
+                        <ul id="mdbook-searchresults">
                         </ul>
                     </div>
                 </div>
 
                 <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
                 <script>
-                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
-                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
-                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                    document.getElementById('mdbook-sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('mdbook-sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#mdbook-sidebar a')).forEach(function(link) {
                         link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
                     });
                 </script>
 
-                <div id="content" class="content">
+                <div id="mdbook-content" class="content">
                     <main>
                         <h1 id="kapitel-27-eigene-datentypen-mit-structs-strukturen-strukturieren"><a class="header" href="#kapitel-27-eigene-datentypen-mit-structs-strukturen-strukturieren">Kapitel 27: Eigene Datentypen mit Structs (Strukturen) strukturieren</a></h1>
 <p>Strukturen, kurz <strong>Structs</strong>, bilden das Fundament der Datenmodellierung in Rust. Sie ermöglichen es Ihnen, mehrere zusammengehörige Werte unterschiedlicher Typen zu einer logischen Einheit zusammenzufassen. Während in vielen objektorientierten Sprachen Daten und Verhalten in Klassen verschmolzen sind, trennt Rust diese Aspekte strikt: Structs definieren das reine Speicherlayout der Daten, während das Verhalten über <code>impl</code>-Blöcke (Implementierungen) nachträglich an die Typen gebunden wird.</p>
 <p>Dieses Kapitel bietet eine allumfassende, lückenlose Referenz über alle Facetten von Rust-Strukturen – von den syntaktischen Grundlagen für Anfänger über fortgeschrittene Speicherverwaltungs- und Kapselungstechniken bis hin zu systemnahen Details wie Byte-Alignment, Compiler-Layout-Optimierungen, Thread-Sicherheit und manuellen Trait-Implementierungen auf Profi-Niveau.</p>
 <p>Die didaktischen und strukturellen Vorgaben für dieses Kapitel wurden gemäß den Richtlinien in <a href="file:///home/thorsten/RustKurs/markdown.md">markdown.md</a> und <a href="file:///home/thorsten/RustKurs/AGENTS.md">AGENTS.md</a> umgesetzt.</p>
-<hr />
+<hr>
 <h2 id="1-lernziele--lernplan"><a class="header" href="#1-lernziele--lernplan">1. Lernziele &amp; Lernplan</a></h2>
 <h3 id="lernziele"><a class="header" href="#lernziele">Lernziele</a></h3>
 <ul>
@@ -197,20 +196,13 @@
 </ul>
 <h3 id="lernplan"><a class="header" href="#lernplan">Lernplan</a></h3>
 <ul>
-<li><input disabled="" type="checkbox"/>
-<strong>2. Die Definition</strong>: Begriffsbestimmung von Structs, den drei Varianten (Klassisch, Tuple, Unit-like) und alltagsnahe Metapher.</li>
-<li><input disabled="" type="checkbox"/>
-<strong>3. Das Problem &amp; Die Motivation</strong>: Detaillierte Gegenüberstellung von losen Variablen, Tupeln und Structs in puncto Typsicherheit, Wartbarkeit und Speicherverwaltung.</li>
-<li><input disabled="" type="checkbox"/>
-<strong>4. Drei naive Versuche</strong>: Fehlerhafter Code zu Referenzen ohne Lifetimes, partieller Mutabilität und selbst-referenzierenden Datenstrukturen.</li>
-<li><input disabled="" type="checkbox"/>
-<strong>5. Die Anatomie der Fehler</strong>: Tiefgehende Fehleranalyse der Compiler-Fehlermeldungen und Erklärung der Speicherbarrieren des Borrow Checkers.</li>
-<li><input disabled="" type="checkbox"/>
-<strong>6. Die Lösung</strong>: Implementierung mit besitzenden Daten, Instanz-Mutabilität, Lifetimes und der Auflösung von Selbst-Referenzierung via Indizes. Enthält Pseudocode und EVA-Analysen.</li>
-<li><input disabled="" type="checkbox"/>
-<strong>7. Kleines Tutorial</strong>: Schritt-für-Schritt-Entwicklung einer 2D-Physik-Engine zur Demonstration von Komposition, Methoden, Konstruktoren und Kapselung.</li>
-<li><input disabled="" type="checkbox"/>
-<strong>8. Mentale Modelle &amp; Deep Dive</strong>:
+<li><input disabled="" type="checkbox"> <strong>2. Die Definition</strong>: Begriffsbestimmung von Structs, den drei Varianten (Klassisch, Tuple, Unit-like) und alltagsnahe Metapher.</li>
+<li><input disabled="" type="checkbox"> <strong>3. Das Problem &amp; Die Motivation</strong>: Detaillierte Gegenüberstellung von losen Variablen, Tupeln und Structs in puncto Typsicherheit, Wartbarkeit und Speicherverwaltung.</li>
+<li><input disabled="" type="checkbox"> <strong>4. Drei naive Versuche</strong>: Fehlerhafter Code zu Referenzen ohne Lifetimes, partieller Mutabilität und selbst-referenzierenden Datenstrukturen.</li>
+<li><input disabled="" type="checkbox"> <strong>5. Die Anatomie der Fehler</strong>: Tiefgehende Fehleranalyse der Compiler-Fehlermeldungen und Erklärung der Speicherbarrieren des Borrow Checkers.</li>
+<li><input disabled="" type="checkbox"> <strong>6. Die Lösung</strong>: Implementierung mit besitzenden Daten, Instanz-Mutabilität, Lifetimes und der Auflösung von Selbst-Referenzierung via Indizes. Enthält Pseudocode und EVA-Analysen.</li>
+<li><input disabled="" type="checkbox"> <strong>7. Kleines Tutorial</strong>: Schritt-für-Schritt-Entwicklung einer 2D-Physik-Engine zur Demonstration von Komposition, Methoden, Konstruktoren und Kapselung.</li>
+<li><input disabled="" type="checkbox"> <strong>8. Mentale Modelle &amp; Deep Dive</strong>:
 <ul>
 <li><strong>8.1 Speicherlayout &amp; Repräsentationen</strong>: Alignment, Padding, repr-Attribute, Zero-Sized Types und Nischen-Optimierung.</li>
 <li><strong>8.2 Generische Structs, Lifetimes &amp; PhantomData</strong>: Typparameter, Lebensdauern, Monomorphisierung und Varianz-Bindung.</li>
@@ -222,55 +214,64 @@
 <li><strong>8.8 Exhaustive API-Reference &amp; Trait-Implementierung</strong>: Manuelle Implementierung von <code>Default</code>, <code>Clone</code>, <code>PartialEq</code>, <code>From</code>, <code>Deref</code>/<code>DerefMut</code>, <code>Display</code>, <code>PartialOrd</code>/<code>Ord</code> und <code>Hash</code>.</li>
 </ul>
 </li>
-<li><input disabled="" type="checkbox"/>
-<strong>9. Drei praktische Übungen</strong>: Detaillierte Programmieraufgaben (Buchdatenformatierer, Bankkonto-Manager, 3D-Vektor-Bibliothek) mit APIs, Randfällen und Hilfestellungen.</li>
-<li><input disabled="" type="checkbox"/>
-<strong>10. Lernstrategie, Selbsteinschätzung &amp; Merkzettel</strong>: Ausführlicher Spickzettel, Active Recall, gezielte Compiler-Fehlerprovokation und metakognitiver Selbsttest.</li>
-<li><input disabled="" type="checkbox"/>
-<strong>11. Zusammenfassung</strong>: Kernpunkte kompakt aufbereitet.</li>
+<li><input disabled="" type="checkbox"> <strong>9. Drei praktische Übungen</strong>: Detaillierte Programmieraufgaben (Buchdatenformatierer, Bankkonto-Manager, 3D-Vektor-Bibliothek) mit APIs, Randfällen und Hilfestellungen.</li>
+<li><input disabled="" type="checkbox"> <strong>10. Lernstrategie, Selbsteinschätzung &amp; Merkzettel</strong>: Ausführlicher Spickzettel, Active Recall, gezielte Compiler-Fehlerprovokation und metakognitiver Selbsttest.</li>
+<li><input disabled="" type="checkbox"> <strong>11. Zusammenfassung</strong>: Kernpunkte kompakt aufbereitet.</li>
 </ul>
-<hr />
+<hr>
 <h2 id="2-die-definition"><a class="header" href="#2-die-definition">2. Die Definition</a></h2>
 <p>Ein <strong>Struct</strong> ist ein zusammengesetzter Datentyp, der es Ihnen erlaubt, mehrere Werte unterschiedlicher Typen zu einer neuen, benannten Einheit zu kombinieren. In Rust sind Structs reine Datencontainer ohne inhärentes Verhalten. Verhalten wird ausschließlich außerhalb der Datenstruktur über das Schlüsselwort <code>impl</code> definiert.</p>
 <p>Rust bietet drei verschiedene syntaktische Ausprägungen von Strukturen:</p>
 <h3 id="1-klassisches-struct-named-field-struct"><a class="header" href="#1-klassisches-struct-named-field-struct">1. Klassisches Struct (Named-Field Struct)</a></h3>
 <p>Besitzt benannte Felder. Jedes Feld ist über einen Bezeichner (Identifier) und einen expliziten Typ definiert. Dies ist das Standardwerkzeug für komplexe Domänenmodelle, da der Zugriff über den Feldnamen maximale Klarheit bietet.</p>
-<pre><code class="language-rust">struct User {
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>struct User {
     username: String,
     email: String,
     sign_in_count: u64,
     active: bool,
-}</code></pre>
+}
+<span class="boring">}</span></code></pre>
 <h3 id="2-tuple-struct"><a class="header" href="#2-tuple-struct">2. Tuple-Struct</a></h3>
 <p>Besitzt einen Namen für den Gesamttyp, aber die einzelnen Felder sind namenlos. Die Felder werden über ihre Position (Index <code>0</code>, <code>1</code>, <code>2</code> etc.) angesprochen. Tuple-Structs sind ideal, um einfache Datenstrukturen abzubilden, bei denen die Bedeutung der Felder aus ihrer Reihenfolge hervorgeht, oder um das <em>Newtype-Pattern</em> zu realisieren (Erstellung eines typsicheren Wrappers um einen primitiven Typ).</p>
-<pre><code class="language-rust">struct Color(i32, i32, i32); // RGB-Farbwert
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>struct Color(i32, i32, i32); // RGB-Farbwert
 struct Point(f64, f64, f64); // 3D-Koordinate
-struct Inches(f64);          // Newtype-Pattern zur Verhinderung von Einheiten-Verwechslung</code></pre>
+struct Inches(f64);          // Newtype-Pattern zur Verhinderung von Einheiten-Verwechslung
+<span class="boring">}</span></code></pre>
 <h3 id="3-unit-like-struct"><a class="header" href="#3-unit-like-struct">3. Unit-Like Struct</a></h3>
 <p>Besitzt keinerlei Felder und verbraucht im fertigen Programm 0 Bytes Speicherplatz (Zero-Sized Type, ZST). Es verhält sich syntaktisch wie das leere Tupel <code>()</code>. Unit-Like Structs werden verwendet, um Zustände abzubilden (z. B. in Zustandsautomaten/State Pattern) oder um Traits auf einem Typ zu implementieren, der selbst keinen internen Zustand benötigt.</p>
-<pre><code class="language-rust">struct AlwaysEqual; // Repräsentiert eine logische Regel für Testzwecke
-struct JsonFormatter; // Reine Struktur zur Gruppierung von Formatierungs-Methoden</code></pre>
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>struct AlwaysEqual; // Repräsentiert eine logische Regel für Testzwecke
+struct JsonFormatter; // Reine Struktur zur Gruppierung von Formatierungs-Methoden
+<span class="boring">}</span></code></pre>
 <h3 id="alltagsnahe-analogien"><a class="header" href="#alltagsnahe-analogien">Alltagsnahe Analogien</a></h3>
-<blockquote>
-<p>[!NOTE]
-<strong>Die Schablonen-Metapher (Klassisches Struct)</strong>: Ein Steuerformular ist ein klassisches Struct. Es enthält feste, vorgedruckte Felder wie „Steuernummer“, „Bruttoeinkommen“ und „Kirchensteuer“. Jedes Feld verlangt einen bestimmten Datentyp. Solange das Formular leer ist, entspricht es der <strong>Struct-Definition</strong>. Sobald Sie Ihre konkreten Daten eintragen, halten Sie eine <strong>Instanz</strong> des Formulars in den Händen, die Sie einreichen (Ownership übertragen) oder kopieren können.</p>
+<blockquote class="blockquote-tag blockquote-tag-note">
+<p class="blockquote-tag-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>Note</p>
+<p><strong>Die Schablonen-Metapher (Klassisches Struct)</strong>: Ein Steuerformular ist ein klassisches Struct. Es enthält feste, vorgedruckte Felder wie „Steuernummer“, „Bruttoeinkommen“ und „Kirchensteuer“. Jedes Feld verlangt einen bestimmten Datentyp. Solange das Formular leer ist, entspricht es der <strong>Struct-Definition</strong>. Sobald Sie Ihre konkreten Daten eintragen, halten Sie eine <strong>Instanz</strong> des Formulars in den Händen, die Sie einreichen (Ownership übertragen) oder kopieren können.</p>
 </blockquote>
-<blockquote>
-<p>[!TIP]
-<strong>Die Briefumschlag-Metapher (Tuple-Struct / Newtype)</strong>: Stellen Sie sich vor, Sie stecken eine Zahl (z. B. <code>150.0</code>) in einen Umschlag, auf dem draußen in großen Buchstaben „Euro“ steht, und eine andere Zahl in einen Umschlag, auf dem „US-Dollar“ steht. Obwohl sich in beiden Umschlägen gewöhnliches Papiergeld (Gleitkommazahlen) befindet, können Sie die Umschläge nicht versehentlich zusammenzählen oder verwechseln. Das Tuple-Struct ist der schützende Briefumschlag um Ihre Rohdaten.</p>
+<blockquote class="blockquote-tag blockquote-tag-tip">
+<p class="blockquote-tag-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M8 1.5c-2.363 0-4 1.69-4 3.75 0 .984.424 1.625.984 2.304l.214.253c.223.264.47.556.673.848.284.411.537.896.621 1.49a.75.75 0 0 1-1.484.211c-.04-.282-.163-.547-.37-.847a8.456 8.456 0 0 0-.542-.68c-.084-.1-.173-.205-.268-.32C3.201 7.75 2.5 6.766 2.5 5.25 2.5 2.31 4.863 0 8 0s5.5 2.31 5.5 5.25c0 1.516-.701 2.5-1.328 3.259-.095.115-.184.22-.268.319-.207.245-.383.453-.541.681-.208.3-.33.565-.37.847a.751.751 0 0 1-1.485-.212c.084-.593.337-1.078.621-1.489.203-.292.45-.584.673-.848.075-.088.147-.173.213-.253.561-.679.985-1.32.985-2.304 0-2.06-1.637-3.75-4-3.75ZM5.75 12h4.5a.75.75 0 0 1 0 1.5h-4.5a.75.75 0 0 1 0-1.5ZM6 15.25a.75.75 0 0 1 .75-.75h2.5a.75.75 0 0 1 0 1.5h-2.5a.75.75 0 0 1-.75-.75Z"></path></svg>Tip</p>
+<p><strong>Die Briefumschlag-Metapher (Tuple-Struct / Newtype)</strong>: Stellen Sie sich vor, Sie stecken eine Zahl (z. B. <code>150.0</code>) in einen Umschlag, auf dem draußen in großen Buchstaben „Euro“ steht, und eine andere Zahl in einen Umschlag, auf dem „US-Dollar“ steht. Obwohl sich in beiden Umschlägen gewöhnliches Papiergeld (Gleitkommazahlen) befindet, können Sie die Umschläge nicht versehentlich zusammenzählen oder verwechseln. Das Tuple-Struct ist der schützende Briefumschlag um Ihre Rohdaten.</p>
 </blockquote>
-<blockquote>
-<p>[!IMPORTANT]
-<strong>Die Stempel-Metapher (Unit-Like Struct)</strong>: Ein Unit-Like Struct verhält sich wie ein physischer Stempel. Der Stempel selbst enthält keine variablen Daten, aber er hinterlässt einen Abdruck (eine Typinformation) auf einem Dokument. Er dient dem Compiler als reines Signal: „Dieses Objekt existiert und verhält sich nach der Regel X“.</p>
+<blockquote class="blockquote-tag blockquote-tag-important">
+<p class="blockquote-tag-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 1.75C0 .784.784 0 1.75 0h12.5C15.216 0 16 .784 16 1.75v9.5A1.75 1.75 0 0 1 14.25 13H8.06l-2.573 2.573A1.458 1.458 0 0 1 3 14.543V13H1.75A1.75 1.75 0 0 1 0 11.25Zm1.75-.25a.25.25 0 0 0-.25.25v9.5c0 .138.112.25.25.25h2a.75.75 0 0 1 .75.75v2.19l2.72-2.72a.749.749 0 0 1 .53-.22h6.5a.25.25 0 0 0 .25-.25v-9.5a.25.25 0 0 0-.25-.25Zm7 2.25v2.5a.75.75 0 0 1-1.5 0v-2.5a.75.75 0 0 1 1.5 0ZM9 9a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"></path></svg>Important</p>
+<p><strong>Die Stempel-Metapher (Unit-Like Struct)</strong>: Ein Unit-Like Struct verhält sich wie ein physischer Stempel. Der Stempel selbst enthält keine variablen Daten, aber er hinterlässt einen Abdruck (eine Typinformation) auf einem Dokument. Er dient dem Compiler als reines Signal: „Dieses Objekt existiert und verhält sich nach der Regel X“.</p>
 </blockquote>
-<hr />
+<hr>
 <h2 id="3-das-problem--die-motivation"><a class="header" href="#3-das-problem--die-motivation">3. Das Problem &amp; Die Motivation</a></h2>
 <p>Warum reichen uns primitive Typen und Tupel in der Softwareentwicklung nicht aus? Um dies zu verdeutlichen, vergleichen wir drei Ansätze zur Modellierung einer geografischen Position.</p>
 <h3 id="1-lose-variablen"><a class="header" href="#1-lose-variablen">1. Lose Variablen</a></h3>
 <p>Wir speichern die Koordinaten und den Namen der Position in einzelnen Variablen:</p>
-<pre><code class="language-rust">let pos_latitude = 48.8584;
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let pos_latitude = 48.8584;
 let pos_longitude = 2.2945;
-let pos_name = String::from("Eiffelturm");</code></pre>
+let pos_name = String::from("Eiffelturm");
+<span class="boring">}</span></code></pre>
 <ul>
 <li><strong>Mangelnde Kohäsion</strong>: Der Compiler weiß nicht, dass diese Variablen zusammengehören. Sie können versehentlich <code>pos_latitude</code> mit der Geometrie eines anderen Ortes kombinieren.</li>
 <li><strong>API-Explosion</strong>: Beim Übergeben der Daten an Funktionen wächst die Parameterliste unkontrolliert an:
@@ -278,26 +279,35 @@ let pos_name = String::from("Eiffelturm");</code></pre>
 </ul>
 <h3 id="2-tupel"><a class="header" href="#2-tupel">2. Tupel</a></h3>
 <p>Wir gruppieren die Werte in einem namenlosen Tupel:</p>
-<pre><code class="language-rust">let position = (48.8584, 2.2945, String::from("Eiffelturm"));</code></pre>
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let position = (48.8584, 2.2945, String::from("Eiffelturm"));
+<span class="boring">}</span></code></pre>
 <ul>
 <li><strong>Unleserlichkeit</strong>: Der Zugriff erfolgt über <code>position.0</code> und <code>position.1</code>. Ohne Dokumentation ist unklar, ob Index <code>0</code> die Breite oder die Länge repräsentiert.</li>
 <li><strong>Keine Typsicherheit</strong>: Ein Tupel vom Typ <code>(f64, f64, String)</code> ist strukturell identisch mit einem Tupel, das das Gewicht, den Preis und die Marke eines Kaffees beschreibt: <code>(250.0, 4.99, String::from("Arabica"))</code>. Eine Funktion zur Distanzberechnung würde das Kaffee-Tupel annehmen und mathematisch unsinnige Werte berechnen.</li>
 </ul>
 <h3 id="detaillierter-vergleich-der-datenstrukturen"><a class="header" href="#detaillierter-vergleich-der-datenstrukturen">Detaillierter Vergleich der Datenstrukturen</a></h3>
-<div class="table-wrapper"><table><thead><tr><th style="text-align: left">Kriterium</th><th style="text-align: left">Lose Variablen</th><th style="text-align: left">Tupel (<code>(T, U)</code>)</th><th style="text-align: left">Structs (<code>struct</code>)</th></tr></thead><tbody>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th style="text-align: left">Kriterium</th><th style="text-align: left">Lose Variablen</th><th style="text-align: left">Tupel (<code>(T, U)</code>)</th><th style="text-align: left">Structs (<code>struct</code>)</th></tr>
+</thead>
+<tbody>
 <tr><td style="text-align: left"><strong>Typidentität</strong></td><td style="text-align: left">Nein (nur Basis-Typen)</td><td style="text-align: left">Nein (nur strukturelle Identität)</td><td style="text-align: left"><strong>Ja</strong> (eindeutiger, neuer Typ)</td></tr>
 <tr><td style="text-align: left"><strong>Feld-Semantik</strong></td><td style="text-align: left">Nein</td><td style="text-align: left">Nein (Zugriff über numerischen Index)</td><td style="text-align: left"><strong>Ja</strong> (Zugriff über Bezeichner)</td></tr>
 <tr><td style="text-align: left"><strong>Kapselung (Kapselbar)</strong></td><td style="text-align: left">Nein</td><td style="text-align: left">Nein</td><td style="text-align: left"><strong>Ja</strong> (über Sichtbarkeit <code>pub</code>)</td></tr>
 <tr><td style="text-align: left"><strong>Methodenbindung</strong></td><td style="text-align: left">Nein</td><td style="text-align: left">Nein</td><td style="text-align: left"><strong>Ja</strong> (über <code>impl</code>-Blöcke)</td></tr>
 <tr><td style="text-align: left"><strong>Speicher-Overhead</strong></td><td style="text-align: left">Keiner</td><td style="text-align: left">Keiner</td><td style="text-align: left"><strong>Keiner</strong> (Zero-Cost)</td></tr>
-</tbody></table>
+</tbody>
+</table>
 </div>
-<hr />
+<hr>
 <h2 id="4-drei-naive-versuche"><a class="header" href="#4-drei-naive-versuche">4. Drei naive Versuche</a></h2>
 <p>Wir betrachten drei typische Fehlermuster, die Entwickler beim Entwurf von Strukturen in Rust machen.</p>
 <h3 id="versuch-1-referenzen-ohne-lebensdauer-annotationen"><a class="header" href="#versuch-1-referenzen-ohne-lebensdauer-annotationen">Versuch 1: Referenzen ohne Lebensdauer-Annotationen</a></h3>
 <p>Ein Programmierer möchte Heap-Allokationen vermeiden und speichert String-Slices (<code>&amp;str</code>) direkt im Struct, um auf String-Literale oder externe Daten zu zeigen.</p>
-<pre><code class="language-rust">// Filename: src/main.rs
+<pre class="playground"><code class="language-rust edition2021">// Filename: src/main.rs
 // Dieser Code kompiliert NICHT!
 struct User {
     username: &amp;str, 
@@ -314,22 +324,28 @@ fn main() {
 }</code></pre>
 <h3 id="versuch-2-deklaration-von-partieller-mutabilität"><a class="header" href="#versuch-2-deklaration-von-partieller-mutabilität">Versuch 2: Deklaration von partieller Mutabilität</a></h3>
 <p>Ein Entwickler möchte sicherstellen, dass der Benutzername unveränderlich bleibt, die E-Mail-Adresse jedoch geändert werden darf. Er versucht, das Feld im Struct als veränderbar zu markieren.</p>
-<pre><code class="language-rust">// Filename: src/main.rs
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>// Filename: src/main.rs
 // Dieser Code kompiliert NICHT!
 struct User {
     username: String,
     mut email: String, // Versuch der partiellen Mutabilität
     active: bool,
-}</code></pre>
+}
+<span class="boring">}</span></code></pre>
 <h3 id="versuch-3-das-selbst-referenzierende-struct"><a class="header" href="#versuch-3-das-selbst-referenzierende-struct">Versuch 3: Das selbst-referenzierende Struct</a></h3>
 <p>Ein Entwickler möchte ein Struct erstellen, das einen String besitzt, und gleichzeitig eine Referenz auf einen Teil dieses Strings im selben Struct speichern (z. B. für einen Parser).</p>
-<pre><code class="language-rust">// Filename: src/main.rs
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>// Filename: src/main.rs
 // Dieser Code kompiliert NICHT!
 struct Parser {
     source: String,
     current_token: &amp;str, // Zeigt auf einen Teilbereich von "source"
-}</code></pre>
-<hr />
+}
+<span class="boring">}</span></code></pre>
+<hr>
 <h2 id="5-die-anatomie-der-fehler"><a class="header" href="#5-die-anatomie-der-fehler">5. Die Anatomie der Fehler</a></h2>
 <h3 id="1-analyse-von-versuch-1-fehlende-lifetimes"><a class="header" href="#1-analyse-von-versuch-1-fehlende-lifetimes">1. Analyse von Versuch 1 (Fehlende Lifetimes)</a></h3>
 <p>Der Compiler verweigert die Arbeit mit folgender Meldung:</p>
@@ -367,7 +383,7 @@ struct Parser {
 <ul>
 <li><strong>Erklärung</strong>: Würde Rust selbst-referenzierende Structs ohne Weiteres erlauben, würde eine Speicherkatastrophe drohen. Wenn das Struct <code>Parser</code> im Speicher verschoben wird (z. B. durch Übergabe an eine Funktion oder Rückgabe aus einer Funktion), ändert sich seine physische Adresse im Stack. Der Zeiger <code>current_token</code> würde jedoch weiterhin auf die alte, nun ungültige Stack-Adresse zeigen. Dies würde zu einem schweren Speicherfehler (Use-After-Free) führen. Rusts Borrow Checker verhindert dies fundamental.</li>
 </ul>
-<hr />
+<hr>
 <h2 id="6-die-lösung"><a class="header" href="#6-die-lösung">6. Die Lösung</a></h2>
 <p>Wir präsentieren die korrekten, sicheren Lösungsansätze für die drei typischen Fehlerszenarien.</p>
 <h3 id="didaktischer-pseudocode"><a class="header" href="#didaktischer-pseudocode">Didaktischer Pseudocode</a></h3>
@@ -384,7 +400,7 @@ struct Parser {
    Nutze stattdessen Indizes (z. B. usize für Start- und Endposition) als relative Verweise.
 </code></pre>
 <h3 id="rust-implementierung"><a class="header" href="#rust-implementierung">Rust-Implementierung</a></h3>
-<pre><code class="language-rust">// Lösung 1: Benutzung von Lifetimes für referenzierende Structs
+<pre class="playground"><code class="language-rust edition2021">// Lösung 1: Benutzung von Lifetimes für referenzierende Structs
 struct BorrowedUser&lt;'a&gt; {
     username: &amp;'a str, // Das Struct darf nicht länger leben als diese Referenz
     active: bool,
@@ -441,28 +457,36 @@ fn main() {
 </ul>
 </li>
 </ul>
-<hr />
+<hr>
 <h2 id="7-kleines-tutorial-entwicklung-einer-2d-physik-engine"><a class="header" href="#7-kleines-tutorial-entwicklung-einer-2d-physik-engine">7. Kleines Tutorial: Entwicklung einer 2D-Physik-Engine</a></h2>
 <p>In diesem Tutorial entwickeln wir ein modulares Physik-System für eine 2D-Simulation. Wir demonstrieren dabei die Konzepte der Komposition (Structs in Structs), Methodenimplementierung, Datenkapselung und die Anwendung von assoziierten Konstruktoren.</p>
 <h3 id="schritt-1-definition-der-geometrischen-basistypen-tuple-structs"><a class="header" href="#schritt-1-definition-der-geometrischen-basistypen-tuple-structs">Schritt 1: Definition der geometrischen Basistypen (Tuple-Structs)</a></h3>
 <p>Wir erstellen zwei Tuple-Structs für Koordinaten und Geschwindigkeiten. Durch die separaten Typen verhindern wir, dass Positionen und Geschwindigkeiten versehentlich verwechselt werden.</p>
-<pre><code class="language-rust">#[derive(Debug, Clone, Copy)]
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>#[derive(Debug, Clone, Copy)]
 struct Point2D(f64, f64); // X- und Y-Koordinate
 
 #[derive(Debug, Clone, Copy)]
-struct Velocity2D(f64, f64); // Vx- und Vy-Geschwindigkeit (m/s)</code></pre>
+struct Velocity2D(f64, f64); // Vx- und Vy-Geschwindigkeit (m/s)
+<span class="boring">}</span></code></pre>
 <h3 id="schritt-2-komposition-des-hauptobjekts-klassisches-struct"><a class="header" href="#schritt-2-komposition-des-hauptobjekts-klassisches-struct">Schritt 2: Komposition des Hauptobjekts (Klassisches Struct)</a></h3>
 <p>Wir erstellen ein Struct <code>Particle</code>, das die zuvor definierten Tuple-Structs enthält. Das ist ein klassisches Beispiel für <strong>Komposition</strong> (Zusammensetzung komplexer Typen aus einfachen Bausteinen).</p>
-<pre><code class="language-rust">#[derive(Debug, Clone)]
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>#[derive(Debug, Clone)]
 struct Particle {
     name: String,
     position: Point2D,
     velocity: Velocity2D,
     mass: f64,
-}</code></pre>
+}
+<span class="boring">}</span></code></pre>
 <h3 id="schritt-3-konstruktor-und-datenkapselung-im-impl-block"><a class="header" href="#schritt-3-konstruktor-und-datenkapselung-im-impl-block">Schritt 3: Konstruktor und Datenkapselung im <code>impl</code>-Block</a></h3>
 <p>Wir binden das Verhalten an unser <code>Particle</code>. Wir deklarieren den Konstruktor <code>new</code> als assoziierte Funktion. Aus Sicherheitsgründen machen wir die Felder des Particles privat und erlauben den Zugriff nur über kontrollierte Methoden.</p>
-<pre><code class="language-rust">impl Particle {
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>impl Particle {
     // Assoziierte Funktion (Konstruktor)
     // Nutzt Field Init Shorthand für mass
     fn new(name: String, position: Point2D, velocity: Velocity2D, mass: f64) -&gt; Self {
@@ -486,10 +510,13 @@ struct Particle {
     fn mass(&amp;self) -&gt; f64 {
         self.mass
     }
-}</code></pre>
+}
+<span class="boring">}</span></code></pre>
 <h3 id="schritt-4-implementierung-von-verändernden-methoden"><a class="header" href="#schritt-4-implementierung-von-verändernden-methoden">Schritt 4: Implementierung von verändernden Methoden</a></h3>
 <p>Wir fügen eine Methode <code>update_position</code> hinzu, die die Position des Partikels basierend auf seiner Geschwindigkeit und einem Zeitschritt <code>dt</code> verändert. Da sich die Position ändert, benötigen wir eine veränderliche Ausleihe (<code>&amp;mut self</code>).</p>
-<pre><code class="language-rust">impl Particle {
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>impl Particle {
     // Simuliert einen Zeitschritt (dt in Sekunden)
     fn update_position(&amp;mut self, dt: f64) {
         let new_x = self.position.0 + (self.velocity.0 * dt);
@@ -508,10 +535,11 @@ struct Particle {
         
         self.velocity = Velocity2D(new_vx, new_vy);
     }
-}</code></pre>
+}
+<span class="boring">}</span></code></pre>
 <h3 id="schritt-5-integration-und-simulation-in-main"><a class="header" href="#schritt-5-integration-und-simulation-in-main">Schritt 5: Integration und Simulation in <code>main</code></a></h3>
 <p>Wir führen nun eine kurze physikalische Simulation in der <code>main</code>-Funktion aus. Dabei nutzen wir auch die Struct-Update-Syntax (<code>..</code>), um ein schwereres Klon-Partikel zu erstellen.</p>
-<pre><code class="language-rust">fn main() {
+<pre class="playground"><code class="language-rust edition2021">fn main() {
     // 1. Initialisierung der Physik-Objekte
     let start_pos = Point2D(0.0, 0.0);
     let start_vel = Velocity2D(10.0, 5.0);
@@ -545,7 +573,7 @@ struct Particle {
     println!("Nach Simulation p1 (Position): {:?}", p1.position());
     println!("Nach Simulation p2 (Position): {:?}", p2.position());
 }</code></pre>
-<hr />
+<hr>
 <h2 id="8-mentale-modelle--deep-dive"><a class="header" href="#8-mentale-modelle--deep-dive">8. Mentale Modelle &amp; Deep Dive</a></h2>
 <h3 id="81-speicherlayout--repräsentation"><a class="header" href="#81-speicherlayout--repräsentation">8.1 Speicherlayout &amp; Repräsentation</a></h3>
 <p>Wie genau ordnet Rust Ihre Datenstrukturen physisch im RAM an? Dies wird durch die Datenausrichtung (Alignment) und die vom Compiler gewählte Repräsentation gesteuert.</p>
@@ -559,40 +587,52 @@ struct Particle {
 <p>Sie können das Speicherlayout Ihres Structs über Attribute direkt beeinflussen:</p>
 <h5 id="1-reprrust-standard"><a class="header" href="#1-reprrust-standard">1. <code>#[repr(Rust)]</code> (Standard)</a></h5>
 <p>Der Compiler darf die Reihenfolge der Felder frei vertauschen, um das Padding zu minimieren.</p>
-<pre><code class="language-rust">struct RustLayout {
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>struct RustLayout {
     a: u8,   // 1 Byte
     b: u64,  // 8 Bytes
     c: u16,  // 2 Bytes
-}</code></pre>
+}
+<span class="boring">}</span></code></pre>
 <p><em>Speichergröße</em>: <strong>16 Bytes</strong> (optimiert durch Umsortierung zu <code>b</code> -&gt; <code>c</code> -&gt; <code>a</code> + 5 Bytes Padding).</p>
 <h5 id="2-reprc"><a class="header" href="#2-reprc">2. <code>#[repr(C)]</code></a></h5>
 <p>Zwingt den Compiler, die Felder exakt in der Reihenfolge abzubringen, in der sie im Code deklariert wurden. Unverzichtbar für FFI (Foreign Function Interface) beim Aufruf von C-Bibliotheken.</p>
-<pre><code class="language-rust">#[repr(C)]
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>#[repr(C)]
 struct CLayout {
     a: u8,   // 1 Byte
     // 7 Bytes Padding
     b: u64,  // 8 Bytes
     c: u16,  // 2 Bytes
     // 6 Bytes Padding am Ende (für Array-Alignment)
-}</code></pre>
+}
+<span class="boring">}</span></code></pre>
 <p><em>Speichergröße</em>: <strong>24 Bytes</strong> (Ineffizient, aber kompatibel mit C).</p>
 <h5 id="3-reprpacked"><a class="header" href="#3-reprpacked">3. <code>#[repr(packed)]</code></a></h5>
 <p>Entfernt jegliches Padding. Alle Felder liegen ohne Lücken hintereinander im Speicher.</p>
-<pre><code class="language-rust">#[repr(packed)]
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>#[repr(packed)]
 struct PackedLayout {
     a: u8,   // 1 Byte
     b: u64,  // 8 Bytes (liegt unaligned im Speicher!)
     c: u16,  // 2 Bytes
-}</code></pre>
+}
+<span class="boring">}</span></code></pre>
 <p><em>Speichergröße</em>: <strong>11 Bytes</strong> ($1 + 8 + 2$).</p>
-<blockquote>
-<p>[!CAUTION]
-<strong>Hohes Risiko!</strong> Der Zugriff auf unaligned Felder (wie <code>b</code>) kann zu CPU-Ausnahmen führen. Zudem ist es in Rust <strong>strengstens verboten</strong> und gilt als <em>Undefined Behavior</em>, eine Referenz (<code>&amp;b</code>) auf ein unaligned Feld in einem gepackten Struct zu erstellen, da Referenzen in Rust zwingend aligned sein müssen!</p>
+<blockquote class="blockquote-tag blockquote-tag-caution">
+<p class="blockquote-tag-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M4.47.22A.749.749 0 0 1 5 0h6c.199 0 .389.079.53.22l4.25 4.25c.141.14.22.331.22.53v6a.749.749 0 0 1-.22.53l-4.25 4.25A.749.749 0 0 1 11 16H5a.749.749 0 0 1-.53-.22L.22 11.53A.749.749 0 0 1 0 11V5c0-.199.079-.389.22-.53Zm.84 1.28L1.5 5.31v5.38l3.81 3.81h5.38l3.81-3.81V5.31L10.69 1.5ZM8 4a.75.75 0 0 1 .75.75v3.5a.75.75 0 0 1-1.5 0v-3.5A.75.75 0 0 1 8 4Zm0 8a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>Caution</p>
+<p><strong>Hohes Risiko!</strong> Der Zugriff auf unaligned Felder (wie <code>b</code>) kann zu CPU-Ausnahmen führen. Zudem ist es in Rust <strong>strengstens verboten</strong> und gilt als <em>Undefined Behavior</em>, eine Referenz (<code>&amp;b</code>) auf ein unaligned Feld in einem gepackten Struct zu erstellen, da Referenzen in Rust zwingend aligned sein müssen!</p>
 </blockquote>
 <h5 id="4-reprtransparent"><a class="header" href="#4-reprtransparent">4. <code>#[repr(transparent)]</code></a></h5>
 <p>Erlaubt es, ein Struct zu definieren, das genau ein nicht-Zero-Sized-Feld besitzt. Es garantiert, dass das Struct im Speicher exakt dieselbe Repräsentation und Größe aufweist wie das innenliegende Feld. Ideal für typsichere Wrapper.</p>
-<pre><code class="language-rust">#[repr(transparent)]
-struct Wrapper(u32); // Garantiert exakt dieselbe Repräsentation wie u32</code></pre>
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>#[repr(transparent)]
+struct Wrapper(u32); // Garantiert exakt dieselbe Repräsentation wie u32
+<span class="boring">}</span></code></pre>
 <h4 id="zero-sized-types-zsts"><a class="header" href="#zero-sized-types-zsts">Zero-Sized Types (ZSTs)</a></h4>
 <p>Unit-Like Structs (wie <code>struct Empty;</code>) belegen <strong>0 Bytes</strong> Speicher.</p>
 <ul>
@@ -602,16 +642,21 @@ struct Wrapper(u32); // Garantiert exakt dieselbe Repräsentation wie u32</code>
 </ul>
 <h4 id="nischen-optimierung-null-pointer-optimization"><a class="header" href="#nischen-optimierung-null-pointer-optimization">Nischen-Optimierung (Null Pointer Optimization)</a></h4>
 <p>Rust nutzt ungenutzte Bitmuster (Nischen) von Typen zur Speicheroptimierung. Besitzt ein Struct ein Feld, das keinen Nullwert annehmen darf (z. B. <code>NonNull&lt;T&gt;</code> oder <code>Box&lt;T&gt;</code>), und verpacken Sie dieses Struct in ein <code>Option</code>, nutzt der Compiler den Wert <code>0</code> für das <code>None</code>-Element.</p>
-<pre><code class="language-rust">struct MyNode {
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>struct MyNode {
     next: Box&lt;MyNode&gt;, // Box ist ein Non-Null-Zeiger
-}</code></pre>
+}
+<span class="boring">}</span></code></pre>
 <p>Die Größe von <code>Option&lt;MyNode&gt;</code> ist physisch identisch mit der Größe von <code>MyNode</code> allein (8 Bytes). Es wird kein zusätzliches Tag-Byte für das <code>Option</code> benötigt.</p>
-<hr />
+<hr>
 <h3 id="82-generische-structs-lifetimes--phantomdata"><a class="header" href="#82-generische-structs-lifetimes--phantomdata">8.2 Generische Structs, Lifetimes &amp; PhantomData</a></h3>
 <p>Wenn Strukturen flexibel auf verschiedene Datentypen oder temporäre Speicherbereiche reagieren müssen, kommen Generics und Lifetimes zum Einsatz.</p>
 <h4 id="generische-strukturen"><a class="header" href="#generische-strukturen">Generische Strukturen</a></h4>
 <p>Sie können Typparameter in spitzen Klammern definieren:</p>
-<pre><code class="language-rust">struct Wrapper&lt;T&gt; {
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>struct Wrapper&lt;T&gt; {
     value: T,
 }
 
@@ -619,29 +664,38 @@ impl&lt;T&gt; Wrapper&lt;T&gt; {
     fn new(value: T) -&gt; Self {
         Self { value }
     }
-}</code></pre>
+}
+<span class="boring">}</span></code></pre>
 <ul>
 <li><strong>Monomorphisierung</strong>: Rust erzeugt beim Kompilieren für jede konkrete Instanziierung (z. B. <code>Wrapper&lt;i32&gt;</code>, <code>Wrapper&lt;String&gt;</code>) eine eigene Kopie des Maschinencodes. Dies bedeutet: Keine Performanceverluste zur Laufzeit (Zero-Cost).</li>
 </ul>
 <h4 id="structs-mit-lebensdauern-lifetimes"><a class="header" href="#structs-mit-lebensdauern-lifetimes">Structs mit Lebensdauern (Lifetimes)</a></h4>
 <p>Soll ein Struct temporäre Referenzen halten, müssen Sie die Lebensdauer über Parameter deklarieren:</p>
-<pre><code class="language-rust">struct Preview&lt;'a&gt; {
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>struct Preview&lt;'a&gt; {
     content: &amp;'a str, // Das Struct darf nicht länger leben als diese Textquelle
-}</code></pre>
+}
+<span class="boring">}</span></code></pre>
 <h4 id="phantomdata"><a class="header" href="#phantomdata">PhantomData</a></h4>
 <p>Manchmal müssen Sie einen generischen Typ oder eine Lebensdauer im Struct deklarieren, obwohl das Feld diesen Typ nicht direkt nutzt (z. B. bei der Interaktion mit Rohzeigern im Systemcode). Da Rust ungenutzte Generics verbietet, müssen Sie <code>std::marker::PhantomData</code> verwenden:</p>
-<pre><code class="language-rust">use std::marker::PhantomData;
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>use std::marker::PhantomData;
 
 struct RawWrapper&lt;T&gt; {
     ptr: *mut u8,       // Unbemaßter Speicherbereich
     _marker: PhantomData&lt;T&gt;, // Weist dem Compiler an, den Typ T logisch zu binden
-}</code></pre>
+}
+<span class="boring">}</span></code></pre>
 <p><code>PhantomData</code> belegt physisch <strong>0 Bytes</strong> im Speicher, steuert jedoch die logische Ownership-Prüfung des Compilers und bestimmt die sogenannte <strong>Varianz</strong> des Typs.</p>
-<hr />
+<hr>
 <h3 id="83-fortgeschrittene-entwurfsmuster"><a class="header" href="#83-fortgeschrittene-entwurfsmuster">8.3 Fortgeschrittene Entwurfsmuster</a></h3>
 <h4 id="1-das-builder-pattern"><a class="header" href="#1-das-builder-pattern">1. Das Builder-Pattern</a></h4>
 <p>Wenn Strukturen viele optionale Felder besitzen oder die Konstruktion komplex ist, ist ein Konstruktor mit 15 Parametern unleserlich. Das Builder-Pattern löst dies durch eine fließende Schnittstelle (Fluent API).</p>
-<pre><code class="language-rust">// Das eigentliche Struct (Felder sind privat)
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>// Das eigentliche Struct (Felder sind privat)
 #[derive(Debug)]
 struct Connection {
     host: String,
@@ -704,19 +758,23 @@ impl ConnectionBuilder {
             keep_alive,
         })
     }
-}</code></pre>
+}
+<span class="boring">}</span></code></pre>
 <h4 id="2-das-attribut-non_exhaustive"><a class="header" href="#2-das-attribut-non_exhaustive">2. Das Attribut <code>#[non_exhaustive]</code></a></h4>
 <p>Wenn Sie eine Bibliothek schreiben und ein Struct veröffentlichen, dürfen Sie später keine neuen Felder hinzufügen, ohne den Code der Bibliotheksnutzer zu beschädigen (da deren Instanziierungen oder Pattern Matches dann unvollständig wären).</p>
 <p>Über das Attribut <code>#[non_exhaustive]</code> verbieten Sie die direkte Instanziierung und das erschöpfende Pattern Matching außerhalb Ihres eigenen Crates:</p>
-<pre><code class="language-rust">#[non_exhaustive]
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>#[non_exhaustive]
 pub struct Config {
     pub api_key: String,
-}</code></pre>
+}
+<span class="boring">}</span></code></pre>
 <p>Nutzer der Bibliothek müssen dieses Struct nun zwingend über einen von Ihnen bereitgestellten Konstruktor erstellen und beim Pattern Matching einen Wildcard-Zweig (<code>_</code>) verwenden. Dies sichert die zukünftige Erweiterbarkeit (Abwärtskompatibilität).</p>
 <h4 id="3-das-type-state-pattern-zustandskontrolle-zur-kompilierzeit"><a class="header" href="#3-das-type-state-pattern-zustandskontrolle-zur-kompilierzeit">3. Das Type-State-Pattern (Zustandskontrolle zur Kompilierzeit)</a></h4>
 <p>Dies ist eines der mächtigsten Entwurfsmuster in Rust. Es nutzt das Typsystem, um sicherzustellen, dass Methoden nur in bestimmten logischen Zuständen aufgerufen werden können. Ein Verstoß führt zu einem Compilerfehler.</p>
 <p>Wir modellieren einen <code>HttpRequest</code>:</p>
-<pre><code class="language-rust">// 1. Definition der logischen Zustände als Unit-Like Structs
+<pre class="playground"><code class="language-rust edition2021">// 1. Definition der logischen Zustände als Unit-Like Structs
 struct Draft;
 struct Configured;
 
@@ -773,7 +831,7 @@ fn main() {
     // Dies ist nun erlaubt:
     configured_request.send();
 }</code></pre>
-<hr />
+<hr>
 <h2 id="84-interior-mutability-in-structs"><a class="header" href="#84-interior-mutability-in-structs">8.4 Interior Mutability in Structs</a></h2>
 <p>Normalerweise verbietet Rust jeglichen verändernden Zugriff auf Felder, wenn das übergeordnete Struct nicht als veränderbar (<code>mut</code>) deklariert ist. Über <strong>Interior Mutability</strong> (Innere Veränderlichkeit) können Sie diese Barriere gezielt durchbrechen. Dies ist nützlich für Caches, Lock-Verwaltungen oder interne Zähler.</p>
 <h4 id="die-werkzeuge"><a class="header" href="#die-werkzeuge">Die Werkzeuge</a></h4>
@@ -781,7 +839,9 @@ fn main() {
 <li><strong><code>Cell&lt;T&gt;</code></strong>: Ermöglicht das Ändern von Werten durch Kopieren (<code>Copy</code>-Typen erforderlich). Verursacht keinerlei Laufzeit-Overhead.</li>
 <li><strong><code>RefCell&lt;T&gt;</code></strong>: Verwaltet die Borrow-Regeln zur Laufzeit statt zur Kompilierzeit. Ermöglicht veränderliche Ausleihen auf Heap-Daten auch bei unmutablen Objekten. Stürzt bei Missbrauch zur Laufzeit ab (Panic).</li>
 </ul>
-<pre><code class="language-rust">use std::cell::RefCell;
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>use std::cell::RefCell;
 
 struct Cache {
     data: String,
@@ -798,11 +858,12 @@ impl Cache {
         
         &amp;self.data
     }
-}</code></pre>
-<hr />
+}
+<span class="boring">}</span></code></pre>
+<hr>
 <h2 id="85-destrukturierung--pattern-matching"><a class="header" href="#85-destrukturierung--pattern-matching">8.5 Destrukturierung &amp; Pattern Matching</a></h2>
 <p>Sie können Structs über Pattern Matching zerlegen, um an die inneren Werte zu gelangen.</p>
-<pre><code class="language-rust">struct Point { x: i32, y: i32 }
+<pre class="playground"><code class="language-rust edition2021">struct Point { x: i32, y: i32 }
 
 fn main() {
     let p = Point { x: 10, y: 20 };
@@ -819,7 +880,7 @@ fn main() {
     // 4. Binden über Referenzen im Pattern Matching (wichtig vor Edition 2018)
     let Point { ref x, ref mut y } = p;
 }</code></pre>
-<hr />
+<hr>
 <h2 id="86-thread-safety--concurrency"><a class="header" href="#86-thread-safety--concurrency">8.6 Thread-Safety &amp; Concurrency</a></h2>
 <p>Rust nutzt das Typsystem, um Concurrency-Fehler (Datenrennen / Data Races) zur Kompilierzeit zu verhindern. Die beiden Auto-Traits <code>Send</code> und <code>Sync</code> spielen dabei die entscheidende Rolle.</p>
 <h4 id="automatische-ableitung-auto-traits"><a class="header" href="#automatische-ableitung-auto-traits">Automatische Ableitung (Auto-Traits)</a></h4>
@@ -830,7 +891,7 @@ fn main() {
 </ol>
 <h4 id="shared-mutable-state-in-strukturen-multi-threading"><a class="header" href="#shared-mutable-state-in-strukturen-multi-threading">Shared Mutable State in Strukturen (Multi-Threading)</a></h4>
 <p>Wenn Sie Datenstrukturen zwischen Threads teilen und mutieren möchten, müssen Sie Thread-Safe Wrapper wie <code>Arc</code> (Atomarer Referenzzähler) und <code>Mutex</code> (Wechselseitiger Ausschluss) im Struct kombinieren.</p>
-<pre><code class="language-rust">use std::sync::{Arc, Mutex};
+<pre class="playground"><code class="language-rust edition2021">use std::sync::{Arc, Mutex};
 use std::thread;
 
 struct ThreadSafeCounter {
@@ -877,25 +938,31 @@ fn main() {
 
     println!("Finale Zählung: {}", counter.get_value()); // Gibt 10 aus
 }</code></pre>
-<hr />
+<hr>
 <h3 id="87-performance--cpu-architektur"><a class="header" href="#87-performance--cpu-architektur">8.7 Performance &amp; CPU-Architektur</a></h3>
 <p>Der Aufbau Ihrer Datenstrukturen hat massiven Einfluss auf die CPU-Cache-Effizienz und die Ausnutzung von Registern.</p>
 <h4 id="cache-locality-aos-vs-soa"><a class="header" href="#cache-locality-aos-vs-soa">Cache Locality: AoS vs. SoA</a></h4>
 <p>CPUs lesen Daten nicht byteweise, sondern in sogenannten Cache-Lines (meist 64 Bytes am Stück). Liegen Daten, die nacheinander verarbeitet werden, hintereinander im Speicher, profitiert das Programm von der Cache-Lokalität.</p>
 <h5 id="1-aos-array-of-structures---klassischer-rust-ansatz"><a class="header" href="#1-aos-array-of-structures---klassischer-rust-ansatz">1. AoS (Array of Structures) - Klassischer Rust-Ansatz</a></h5>
-<pre><code class="language-rust">struct Point { x: f32, y: f32, z: f32 }
-let points: Vec&lt;Point&gt; = vec![Point { x: 1.0, y: 2.0, z: 3.0 }; 1000];</code></pre>
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>struct Point { x: f32, y: f32, z: f32 }
+let points: Vec&lt;Point&gt; = vec![Point { x: 1.0, y: 2.0, z: 3.0 }; 1000];
+<span class="boring">}</span></code></pre>
 <ul>
 <li><strong>Verhalten im Speicher</strong>:
 <code>[x1, y1, z1, x2, y2, z2, x3, y3, z3, ...]</code></li>
 <li><strong>Einsatzbereich</strong>: Ideal, wenn Sie immer alle Koordinaten eines einzelnen Punktes gleichzeitig verarbeiten müssen.</li>
 </ul>
 <h5 id="2-soa-structure-of-arrays---datenorientierter-ansatz-dop"><a class="header" href="#2-soa-structure-of-arrays---datenorientierter-ansatz-dop">2. SoA (Structure of Arrays) - Datenorientierter Ansatz (DOP)</a></h5>
-<pre><code class="language-rust">struct Points {
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>struct Points {
     x: Vec&lt;f32&gt;,
     y: Vec&lt;f32&gt;,
     z: Vec&lt;f32&gt;,
-}</code></pre>
+}
+<span class="boring">}</span></code></pre>
 <ul>
 <li><strong>Verhalten im Speicher</strong>:
 Drei separate Speicherbereiche: <code>[x1, x2, x3, ...]</code>, <code>[y1, y2, y3, ...]</code>, <code>[z1, z2, z3, ...]</code></li>
@@ -903,19 +970,24 @@ Drei separate Speicherbereiche: <code>[x1, x2, x3, ...]</code>, <code>[y1, y2, y
 </ul>
 <h4 id="cpu-register-mapping"><a class="header" href="#cpu-register-mapping">CPU-Register-Mapping</a></h4>
 <p>Kleine Structs (z. B. ein Tuple-Struct wie <code>struct Point(f32, f32)</code>) belegen genau 8 Bytes Speicher. Der Rust-Compiler ist intelligent genug, um beim Aufruf von Funktionen eine solche Struktur nicht auf den Stack zu legen, sondern sie direkt in ein einzelnes 64-Bit-Register der CPU zu mappen. Der Methodenaufruf ist somit physisch identisch mit der Übergabe einer primitiven Ganzzahl – es entsteht keinerlei Speicher-Overhead.</p>
-<hr />
+<hr>
 <h3 id="88-exhaustive-api-reference--manuelle-trait-implementierung"><a class="header" href="#88-exhaustive-api-reference--manuelle-trait-implementierung">8.8 Exhaustive API-Reference &amp; Manuelle Trait-Implementierung</a></h3>
 <p>In diesem Abschnitt lernen Sie, wie Sie die wichtigsten Traits der Standardbibliothek ohne das <code>#[derive]</code>-Hilfswerkzeug manuell für Ihre Structs implementieren. Dies ist notwendig, um Standardwerte anzupassen, spezielle Vergleichslogiken zu hinterlegen oder Smart-Pointer-Verhalten zu implementieren.</p>
 <p>Wir nutzen als Referenz-Struct:</p>
-<pre><code class="language-rust">struct CustomBuffer {
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>struct CustomBuffer {
     data: Vec&lt;u8&gt;,
     capacity: usize,
-}</code></pre>
-<hr />
+}
+<span class="boring">}</span></code></pre>
+<hr>
 <h4 id="1-trait-default"><a class="header" href="#1-trait-default">1. Trait <code>Default</code></a></h4>
 <p>Ermöglicht das Erstellen einer Instanz mit vordefinierten Standardwerten.</p>
 <h5 id="manuelle-implementierung"><a class="header" href="#manuelle-implementierung">Manuelle Implementierung:</a></h5>
-<pre><code class="language-rust">impl Default for CustomBuffer {
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>impl Default for CustomBuffer {
     // Gibt eine Standard-Instanz zurück
     fn default() -&gt; Self {
         Self {
@@ -923,12 +995,15 @@ Drei separate Speicherbereiche: <code>[x1, x2, x3, ...]</code>, <code>[y1, y2, y
             capacity: 1024, // Eigener Standardwert statt 0
         }
     }
-}</code></pre>
-<hr />
+}
+<span class="boring">}</span></code></pre>
+<hr>
 <h4 id="2-trait-clone"><a class="header" href="#2-trait-clone">2. Trait <code>Clone</code></a></h4>
 <p>Ermöglicht das explizite Duplizieren des Objekts.</p>
 <h5 id="manuelle-implementierung-1"><a class="header" href="#manuelle-implementierung-1">Manuelle Implementierung:</a></h5>
-<pre><code class="language-rust">impl Clone for CustomBuffer {
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>impl Clone for CustomBuffer {
     // Führt eine tiefe Kopie der Daten aus
     fn clone(&amp;self) -&gt; Self {
         Self {
@@ -936,24 +1011,30 @@ Drei separate Speicherbereiche: <code>[x1, x2, x3, ...]</code>, <code>[y1, y2, y
             capacity: self.capacity, // Kopieren des primitiven Typs
         }
     }
-}</code></pre>
-<hr />
+}
+<span class="boring">}</span></code></pre>
+<hr>
 <h4 id="3-trait-partialeq"><a class="header" href="#3-trait-partialeq">3. Trait <code>PartialEq</code></a></h4>
 <p>Erlaubt den logischen Vergleich zweier Instanzen mittels <code>==</code>.</p>
 <h5 id="manuelle-implementierung-2"><a class="header" href="#manuelle-implementierung-2">Manuelle Implementierung:</a></h5>
 <p>Wir möchten, dass zwei Puffer als gleich gelten, wenn sie dieselbe Kapazität haben, unabhängig vom aktuellen Inhalt der Daten.</p>
-<pre><code class="language-rust">impl PartialEq for CustomBuffer {
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>impl PartialEq for CustomBuffer {
     // Vergleichsfunktion
     fn eq(&amp;self, other: &amp;Self) -&gt; bool {
         self.capacity == other.capacity
     }
-}</code></pre>
-<hr />
+}
+<span class="boring">}</span></code></pre>
+<hr>
 <h4 id="4-trait-fromt-konvertierung"><a class="header" href="#4-trait-fromt-konvertierung">4. Trait <code>From&lt;T&gt;</code> (Konvertierung)</a></h4>
 <p>Ermöglicht die typsichere Umwandlung eines Fremdtyps in Ihr Struct. Rust implementiert automatisch das Gegenstück <code>Into&lt;T&gt;</code> für Sie, sobald Sie <code>From</code> deklarieren.</p>
 <h5 id="manuelle-implementierung-3"><a class="header" href="#manuelle-implementierung-3">Manuelle Implementierung:</a></h5>
 <p>Wir konvertieren ein einfaches Byte-Array in ein <code>CustomBuffer</code>.</p>
-<pre><code class="language-rust">impl From&lt;Vec&lt;u8&gt;&gt; for CustomBuffer {
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>impl From&lt;Vec&lt;u8&gt;&gt; for CustomBuffer {
     // Konvertiert einen Vektor direkt
     fn from(vector: Vec&lt;u8&gt;) -&gt; Self {
         let cap = vector.len();
@@ -962,11 +1043,14 @@ Drei separate Speicherbereiche: <code>[x1, x2, x3, ...]</code>, <code>[y1, y2, y
             capacity: cap,
         }
     }
-}</code></pre>
-<hr />
+}
+<span class="boring">}</span></code></pre>
+<hr>
 <h4 id="5-traits-deref-und-derefmut-smart-pointer-verhalten"><a class="header" href="#5-traits-deref-und-derefmut-smart-pointer-verhalten">5. Traits <code>Deref</code> und <code>DerefMut</code> (Smart Pointer Verhalten)</a></h4>
 <p>Ermöglichen es Ihrem Struct, sich wie ein Smart Pointer zu verhalten. Wenn Sie den Dereferenzierungs-Operator <code>*</code> anwenden oder Methoden des inneren Typs aufrufen, leitet Rust den Aufruf automatisch weiter.</p>
-<pre><code class="language-rust">use std::ops::{Deref, DerefMut};
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>use std::ops::{Deref, DerefMut};
 
 impl Deref for CustomBuffer {
     type Target = Vec&lt;u8&gt;; // Zieltyp der Dereferenzierung
@@ -982,12 +1066,15 @@ impl DerefMut for CustomBuffer {
     fn deref_mut(&amp;mut self) -&gt; &amp;mut Self::Target {
         &amp;mut self.data
     }
-}</code></pre>
-<hr />
+}
+<span class="boring">}</span></code></pre>
+<hr>
 <h4 id="6-trait-display"><a class="header" href="#6-trait-display">6. Trait <code>Display</code></a></h4>
 <p>Ermöglicht eine benutzerfreundliche Ausgabe (für Endanwender), im Gegensatz zu <code>Debug</code>, das für Entwickler gedacht ist.</p>
 <h5 id="manuelle-implementierung-4"><a class="header" href="#manuelle-implementierung-4">Manuelle Implementierung:</a></h5>
-<pre><code class="language-rust">use std::fmt;
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>use std::fmt;
 
 impl fmt::Display for CustomBuffer {
     // Formatiert das Struct für Endbenutzer
@@ -999,12 +1086,15 @@ impl fmt::Display for CustomBuffer {
             self.capacity
         )
     }
-}</code></pre>
-<hr />
+}
+<span class="boring">}</span></code></pre>
+<hr>
 <h4 id="7-traits-partialord--ord-manuelle-sortierung--vergleich"><a class="header" href="#7-traits-partialord--ord-manuelle-sortierung--vergleich">7. Traits <code>PartialOrd</code> &amp; <code>Ord</code> (Manuelle Sortierung &amp; Vergleich)</a></h4>
 <p>Erlauben es, Objekte der Größe nach zu vergleichen und zu sortieren (z. B. für Sortieralgorithmen).
 Wir implementieren dies für ein Struct <code>Player</code>, das nach seiner Punktzahl sortiert werden soll.</p>
-<pre><code class="language-rust">struct Player {
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>struct Player {
     name: String,
     score: u32,
 }
@@ -1031,48 +1121,58 @@ impl Ord for Player {
     fn cmp(&amp;self, other: &amp;Self) -&gt; std::cmp::Ordering {
         self.score.cmp(&amp;other.score) // Nutzt die eingebaute Sortierung von u32
     }
-}</code></pre>
+}
+<span class="boring">}</span></code></pre>
 <h5 id="anwendung-im-code"><a class="header" href="#anwendung-im-code">Anwendung im Code:</a></h5>
-<pre><code class="language-rust">let mut lobby = vec![
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let mut lobby = vec![
     Player { name: String::from("Alice"), score: 50 },
     Player { name: String::from("Bob"), score: 120 },
     Player { name: String::from("Charlie"), score: 10 },
 ];
 
 lobby.sort(); // Sortiert die Spieler aufsteigend nach ihrer score!
-assert_eq!(lobby[0].name, "Charlie");</code></pre>
-<hr />
+assert_eq!(lobby[0].name, "Charlie");
+<span class="boring">}</span></code></pre>
+<hr>
 <h4 id="8-trait-hash-manuelles-hashen"><a class="header" href="#8-trait-hash-manuelles-hashen">8. Trait <code>Hash</code> (Manuelles Hashen)</a></h4>
 <p>Erlaubt das Berechnen eines Hashwerts für Ihr Struct, um es in HashMaps abzulegen.</p>
 <h5 id="manuelle-implementierung-5"><a class="header" href="#manuelle-implementierung-5">Manuelle Implementierung:</a></h5>
-<pre><code class="language-rust">use std::hash::{Hash, Hasher};
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>use std::hash::{Hash, Hasher};
 
 impl Hash for Player {
     fn hash&lt;H: Hasher&gt;(&amp;self, state: &amp;mut H) {
         self.name.hash(state);  // Hasht den Namen
         self.score.hash(state); // Hasht die Punktzahl
     }
-}</code></pre>
-<hr />
-<h2 id="9-drei-praktische-Übungen"><a class="header" href="#9-drei-praktische-Übungen">9. Drei praktische Übungen</a></h2>
-<h3 id="Übung-1-leicht-buchdaten-formatieren-und-standardwerte-setzen"><a class="header" href="#Übung-1-leicht-buchdaten-formatieren-und-standardwerte-setzen">Übung 1 (Leicht): Buchdaten formatieren und Standardwerte setzen</a></h3>
+}
+<span class="boring">}</span></code></pre>
+<hr>
+<h2 id="9-drei-praktische-übungen"><a class="header" href="#9-drei-praktische-übungen">9. Drei praktische Übungen</a></h2>
+<h3 id="übung-1-leicht-buchdaten-formatieren-und-standardwerte-setzen"><a class="header" href="#übung-1-leicht-buchdaten-formatieren-und-standardwerte-setzen">Übung 1 (Leicht): Buchdaten formatieren und Standardwerte setzen</a></h3>
 <h4 id="aufgabenstellung"><a class="header" href="#aufgabenstellung">Aufgabenstellung</a></h4>
 <p>Erstellen Sie ein klassisches Struct <code>Book</code> mit den Feldern <code>title</code> (String), <code>author</code> (String) und <code>pages</code> (u32).</p>
 <ol>
-<li>Implementieren Sie das Trait <code>Default</code> manuell für <code>Book</code>. Ein Standardbuch soll den Titel <em>"Unbekannt"</em>, den Autor <em>"Anonym"</em> und <code>0</code> Seiten haben.</li>
-<li>Implementieren Sie eine Methode <code>format_description(&amp;self) -&gt; String</code>, die eine Beschreibung im Format <em>"Titel von Autor (Seiten Seiten)"</em> zurückgibt.</li>
+<li>Implementieren Sie das Trait <code>Default</code> manuell für <code>Book</code>. Ein Standardbuch soll den Titel <em>“Unbekannt”</em>, den Autor <em>“Anonym”</em> und <code>0</code> Seiten haben.</li>
+<li>Implementieren Sie eine Methode <code>format_description(&amp;self) -&gt; String</code>, die eine Beschreibung im Format <em>“Titel von Autor (Seiten Seiten)”</em> zurückgibt.</li>
 </ol>
 <h4 id="api-vorgabe"><a class="header" href="#api-vorgabe">API-Vorgabe</a></h4>
-<pre><code class="language-rust">struct Book {
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>struct Book {
     title: String,
     author: String,
     pages: u32,
-}</code></pre>
+}
+<span class="boring">}</span></code></pre>
 <ul>
 <li><strong>Lösungshinweis (Hint)</strong>: Das manuelle <code>Default</code>-Trait benötigt die Signatur <code>fn default() -&gt; Self</code>. Verwenden Sie für die Beschreibung das <code>format!</code>-Makro.</li>
 </ul>
-<hr />
-<h3 id="Übung-2-mittel-bankkonto-mit-transaktionshistorie"><a class="header" href="#Übung-2-mittel-bankkonto-mit-transaktionshistorie">Übung 2 (Mittel): Bankkonto mit Transaktionshistorie</a></h3>
+<hr>
+<h3 id="übung-2-mittel-bankkonto-mit-transaktionshistorie"><a class="header" href="#übung-2-mittel-bankkonto-mit-transaktionshistorie">Übung 2 (Mittel): Bankkonto mit Transaktionshistorie</a></h3>
 <h4 id="aufgabenstellung-1"><a class="header" href="#aufgabenstellung-1">Aufgabenstellung</a></h4>
 <p>Entwickeln Sie ein System zur Verwaltung eines Bankkontos.</p>
 <ul>
@@ -1087,16 +1187,19 @@ impl Hash for Player {
 </li>
 </ul>
 <h4 id="api-vorgabe-1"><a class="header" href="#api-vorgabe-1">API-Vorgabe</a></h4>
-<pre><code class="language-rust">struct BankAccount {
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>struct BankAccount {
     owner: String,
     balance: f64,
     transactions: Vec&lt;f64&gt;,
-}</code></pre>
+}
+<span class="boring">}</span></code></pre>
 <ul>
 <li><strong>Lösungshinweis (Hint)</strong>: Nutzen Sie <code>self.transactions.push(...)</code> zur Protokollierung. Achten Sie auf die korrekte Prüfung <code>self.balance &gt;= amount</code> bei der Abhebung.</li>
 </ul>
-<hr />
-<h3 id="Übung-3-schwer-typsichere-3d-vektor-mathematik"><a class="header" href="#Übung-3-schwer-typsichere-3d-vektor-mathematik">Übung 3 (Schwer): Typsichere 3D-Vektor-Mathematik</a></h3>
+<hr>
+<h3 id="übung-3-schwer-typsichere-3d-vektor-mathematik"><a class="header" href="#übung-3-schwer-typsichere-3d-vektor-mathematik">Übung 3 (Schwer): Typsichere 3D-Vektor-Mathematik</a></h3>
 <h4 id="aufgabenstellung-2"><a class="header" href="#aufgabenstellung-2">Aufgabenstellung</a></h4>
 <p>Erstellen Sie eine mathematische Bibliothek für dreidimensionale Vektoren.</p>
 <ul>
@@ -1111,14 +1214,19 @@ impl Hash for Player {
 </li>
 </ul>
 <h4 id="api-vorgabe-2"><a class="header" href="#api-vorgabe-2">API-Vorgabe</a></h4>
-<pre><code class="language-rust">struct Vector3D(f64, f64, f64);</code></pre>
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>struct Vector3D(f64, f64, f64);
+<span class="boring">}</span></code></pre>
 <ul>
 <li><strong>Lösungshinweis (Hint)</strong>: Für den <code>PartialEq</code>-Vergleich berechnen Sie die Differenz der Längen beider Vektoren: <code>(len1 - len2).abs() &lt; 1e-9</code>. Für die Wurzelberechnung nutzen Sie <code>.sqrt()</code>.</li>
 </ul>
-<hr />
+<hr>
 <h2 id="10-lernstrategie-selbsteinschätzung--merkzettel"><a class="header" href="#10-lernstrategie-selbsteinschätzung--merkzettel">10. Lernstrategie, Selbsteinschätzung &amp; Merkzettel</a></h2>
 <h3 id="spickzettel-syntax-referenz"><a class="header" href="#spickzettel-syntax-referenz">Spickzettel (Syntax-Referenz)</a></h3>
-<pre><code class="language-rust">// 1. Deklaration der drei Varianten
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>// 1. Deklaration der drei Varianten
 struct Classic { x: i32 }
 struct Tuple(i32, f32);
 struct Unit;
@@ -1151,7 +1259,8 @@ impl Classic {
     
     // Methode (Besitz konsumieren)
     fn consume(self) { println!("Weg ist x: {}", self.x); }
-}</code></pre>
+}
+<span class="boring">}</span></code></pre>
 <h3 id="active-recall-selbstprüfung"><a class="header" href="#active-recall-selbstprüfung">Active Recall (Selbstprüfung)</a></h3>
 <ol>
 <li>Warum führt das Speichern eines String-Slices (<code>&amp;str</code>) in einem Struct ohne Lebensdauerspezifikation (<code>&lt;'a&gt;</code>) zu einem Compilerfehler? Welche Gefahr im Speicher wird dadurch gebannt?</li>
@@ -1177,14 +1286,11 @@ impl Classic {
 <h3 id="metakognitiver-selbsttest"><a class="header" href="#metakognitiver-selbsttest">Metakognitiver Selbsttest</a></h3>
 <p>Wechseln Sie erst zum nächsten Kapitel, wenn Sie:</p>
 <ul>
-<li><input disabled="" type="checkbox"/>
-Den Unterschied zwischen stack-basiertem Kopieren (<code>Copy</code>) und heap-basiertem Klonen (<code>Clone</code>) bei Strukturen lückenlos erklären können.</li>
-<li><input disabled="" type="checkbox"/>
-Die manuelle Implementierung des <code>Default</code>-Traits ohne Compilerhilfe fehlerfrei schreiben können.</li>
-<li><input disabled="" type="checkbox"/>
-Das EVA-Prinzip auf den Aufruf einer mutable Methode anwenden können.</li>
+<li><input disabled="" type="checkbox"> Den Unterschied zwischen stack-basiertem Kopieren (<code>Copy</code>) und heap-basiertem Klonen (<code>Clone</code>) bei Strukturen lückenlos erklären können.</li>
+<li><input disabled="" type="checkbox"> Die manuelle Implementierung des <code>Default</code>-Traits ohne Compilerhilfe fehlerfrei schreiben können.</li>
+<li><input disabled="" type="checkbox"> Das EVA-Prinzip auf den Aufruf einer mutable Methode anwenden können.</li>
 </ul>
-<hr />
+<hr>
 <h2 id="11-zusammenfassung"><a class="header" href="#11-zusammenfassung">11. Zusammenfassung</a></h2>
 <ol>
 <li><strong>Structs</strong> dienen zur Gruppierung logisch zusammengehöriger Daten in benannten Typen.</li>
@@ -1200,7 +1306,7 @@ Das EVA-Prinzip auf den Aufruf einer mutable Methode anwenden können.</li>
 <li>Über <strong>Interior Mutability</strong> (<code>Cell</code>, <code>RefCell</code>) kann die Unveränderbarkeit von Structs in sicheren Nischen kontrolliert durchbrochen werden.</li>
 <li>Standard-Traits können über <code>#[derive]</code> generiert werden. Wichtige Traits wie <code>Default</code>, <code>Clone</code>, <code>From</code> oder <code>Deref</code>, <code>Ord</code>, <code>Hash</code> können aber auch für feineres Verhalten manuell implementiert werden.</li>
 </ol>
-<hr />
+<hr>
 <p><strong>Lizenz- und Attributionshinweis</strong>:
 Teile dieses Kapitels basieren auf Übersetzungen und didaktischen Anpassungen des offiziellen Buches <a href="https://doc.rust-lang.org/book/">The Rust Programming Language</a> von Steve Klabnik und Carol Nichols (sowie Beiträgen der Rust-Community), lizenziert unter <a href="https://opensource.org/licenses/MIT">MIT</a> und <a href="https://www.apache.org/licenses/LICENSE-2.0">Apache 2.0</a>.</p>
 
@@ -1209,11 +1315,11 @@ Teile dieses Kapitels basieren auf Übersetzungen und didaktischen Anpassungen d
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
                             <a rel="prev" href="26.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
-                                <i class="fa fa-angle-left"></i>
+                                <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
                             </a>
 
                             <a rel="next prefetch" href="28.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
-                                <i class="fa fa-angle-right"></i>
+                                <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
                             </a>
 
                         <div style="clear: both"></div>
@@ -1223,16 +1329,21 @@ Teile dieses Kapitels basieren auf Übersetzungen und didaktischen Anpassungen d
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
                     <a rel="prev" href="26.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
-                        <i class="fa fa-angle-left"></i>
+                        <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
                     </a>
 
                     <a rel="next prefetch" href="28.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
-                        <i class="fa fa-angle-right"></i>
+                        <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
                     </a>
             </nav>
 
         </div>
 
+        <template id=fa-eye><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M288 32c-80.8 0-145.5 36.8-192.6 80.6C48.6 156 17.3 208 2.5 243.7c-3.3 7.9-3.3 16.7 0 24.6C17.3 304 48.6 356 95.4 399.4C142.5 443.2 207.2 480 288 480s145.5-36.8 192.6-80.6c46.8-43.5 78.1-95.4 93-131.1c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C433.5 68.8 368.8 32 288 32zM432 256c0 79.5-64.5 144-144 144s-144-64.5-144-144s64.5-144 144-144s144 64.5 144 144zM288 192c0 35.3-28.7 64-64 64c-11.5 0-22.3-3-31.6-8.4c-.2 2.8-.4 5.5-.4 8.4c0 53 43 96 96 96s96-43 96-96s-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6z"/></svg></span></template>
+        <template id=fa-eye-slash><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M38.8 5.1C28.4-3.1 13.3-1.2 5.1 9.2S-1.2 34.7 9.2 42.9l592 464c10.4 8.2 25.5 6.3 33.7-4.1s6.3-25.5-4.1-33.7L525.6 386.7c39.6-40.6 66.4-86.1 79.9-118.4c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C465.5 68.8 400.8 32 320 32c-68.2 0-125 26.3-169.3 60.8L38.8 5.1zM223.1 149.5C248.6 126.2 282.7 112 320 112c79.5 0 144 64.5 144 144c0 24.9-6.3 48.3-17.4 68.7L408 294.5c5.2-11.8 8-24.8 8-38.5c0-53-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6c0 10.2-2.4 19.8-6.6 28.3l-90.3-70.8zm223.1 298L373 389.9c-16.4 6.5-34.3 10.1-53 10.1c-79.5 0-144-64.5-144-144c0-6.9 .5-13.6 1.4-20.2L83.1 161.5C60.3 191.2 44 220.8 34.5 243.7c-3.3 7.9-3.3 16.7 0 24.6c14.9 35.7 46.2 87.7 93 131.1C174.5 443.2 239.2 480 320 480c47.8 0 89.9-12.9 126.2-32.5z"/></svg></span></template>
+        <template id=fa-copy><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M502.6 70.63l-61.25-61.25C435.4 3.371 427.2 0 418.7 0H255.1c-35.35 0-64 28.66-64 64l.0195 256C192 355.4 220.7 384 256 384h192c35.2 0 64-28.8 64-64V93.25C512 84.77 508.6 76.63 502.6 70.63zM464 320c0 8.836-7.164 16-16 16H255.1c-8.838 0-16-7.164-16-16L239.1 64.13c0-8.836 7.164-16 16-16h128L384 96c0 17.67 14.33 32 32 32h47.1V320zM272 448c0 8.836-7.164 16-16 16H63.1c-8.838 0-16-7.164-16-16L47.98 192.1c0-8.836 7.164-16 16-16H160V128H63.99c-35.35 0-64 28.65-64 64l.0098 256C.002 483.3 28.66 512 64 512h192c35.2 0 64-28.8 64-64v-32h-47.1L272 448z"/></svg></span></template>
+        <template id=fa-play><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80V432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"/></svg></span></template>
+        <template id=fa-clock-rotate-left><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M75 75L41 41C25.9 25.9 0 36.6 0 57.9V168c0 13.3 10.7 24 24 24H134.1c21.4 0 32.1-25.9 17-41l-30.8-30.8C155 85.5 203 64 256 64c106 0 192 86 192 192s-86 192-192 192c-40.8 0-78.6-12.7-109.7-34.4c-14.5-10.1-34.4-6.6-44.6 7.9s-6.6 34.4 7.9 44.6C151.2 495 201.7 512 256 512c141.4 0 256-114.6 256-256S397.4 0 256 0C185.3 0 121.3 28.7 75 75zm181 53c-13.3 0-24 10.7-24 24V256c0 6.4 2.5 12.5 7 17l72 72c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-65-65V152c0-13.3-10.7-24-24-24z"/></svg></span></template>
 
 
 
@@ -1241,17 +1352,17 @@ Teile dieses Kapitels basieren auf Übersetzungen und didaktischen Anpassungen d
         </script>
 
 
-        <script src="elasticlunr.min.js"></script>
-        <script src="mark.min.js"></script>
-        <script src="searcher.js"></script>
+        <script src="elasticlunr-ef4e11c1.min.js"></script>
+        <script src="mark-09e88c2c.min.js"></script>
+        <script src="searcher-09f2665d.js"></script>
 
-        <script src="clipboard.min.js"></script>
-        <script src="highlight.js"></script>
-        <script src="book.js"></script>
+        <script src="clipboard-1626706a.min.js"></script>
+        <script src="highlight-abc7f01d.js"></script>
+        <script src="book-c22b7243.js"></script>
 
         <!-- Custom JS scripts -->
-        <script src="mermaid.min.js"></script>
-        <script src="mermaid-init.js"></script>
+        <script src="mermaid-eefea253.min.js"></script>
+        <script src="mermaid-init-ccf746f1.js"></script>
 
 
 

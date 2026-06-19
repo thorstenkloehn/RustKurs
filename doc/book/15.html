@@ -7,26 +7,25 @@
 
 
         <!-- Custom HTML head -->
-        
+
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="theme-color" content="#ffffff">
 
-        <link rel="icon" href="favicon.svg">
-        <link rel="shortcut icon" href="favicon.png">
-        <link rel="stylesheet" href="css/variables.css">
-        <link rel="stylesheet" href="css/general.css">
-        <link rel="stylesheet" href="css/chrome.css">
-        <link rel="stylesheet" href="css/print.css" media="print">
+        <link rel="icon" href="favicon-de23e50b.svg">
+        <link rel="shortcut icon" href="favicon-8114d1fc.png">
+        <link rel="stylesheet" href="css/variables-8adf115d.css">
+        <link rel="stylesheet" href="css/general-0392ca55.css">
+        <link rel="stylesheet" href="css/chrome-fc474251.css">
+        <link rel="stylesheet" href="css/print-9e4910d8.css" media="print">
 
         <!-- Fonts -->
-        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
-        <link rel="stylesheet" href="fonts/fonts.css">
+        <link rel="stylesheet" href="fonts/fonts-9644e21d.css">
 
         <!-- Highlight.js Stylesheets -->
-        <link rel="stylesheet" id="highlight-css" href="highlight.css">
-        <link rel="stylesheet" id="tomorrow-night-css" href="tomorrow-night.css">
-        <link rel="stylesheet" id="ayu-highlight-css" href="ayu-highlight.css">
+        <link rel="stylesheet" id="mdbook-highlight-css" href="highlight-493f70e1.css">
+        <link rel="stylesheet" id="mdbook-tomorrow-night-css" href="tomorrow-night-4c0ae647.css">
+        <link rel="stylesheet" id="mdbook-ayu-highlight-css" href="ayu-highlight-3fdfc3ac.css">
 
         <!-- Custom theme stylesheets -->
 
@@ -36,10 +35,10 @@
             const path_to_root = "";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "searchindex.js";
+            window.path_to_searchindex_js = "searchindex-34eaf846.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="toc.js"></script>
+        <script src="toc-9a36690f.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -53,7 +52,7 @@
             </div>
         </div>
     </div>
-    <div id="body-container">
+    <div id="mdbook-body-container">
         <!-- Work around some values being stored in localStorage wrapped in quotes -->
         <script>
             try {
@@ -82,12 +81,12 @@
             html.classList.add("js");
         </script>
 
-        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+        <input type="checkbox" id="mdbook-sidebar-toggle-anchor" class="hidden">
 
         <!-- Hide / unhide sidebar before it is displayed -->
         <script>
             let sidebar = null;
-            const sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            const sidebar_toggle = document.getElementById("mdbook-sidebar-toggle-anchor");
             if (document.body.clientWidth >= 1080) {
                 try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
                 sidebar = sidebar || 'visible';
@@ -102,39 +101,39 @@
             }
         </script>
 
-        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+        <nav id="mdbook-sidebar" class="sidebar" aria-label="Table of contents">
             <!-- populated by js -->
             <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
             <noscript>
                 <iframe class="sidebar-iframe-outer" src="toc.html"></iframe>
             </noscript>
-            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+            <div id="mdbook-sidebar-resize-handle" class="sidebar-resize-handle">
                 <div class="sidebar-resize-indicator"></div>
             </div>
         </nav>
 
-        <div id="page-wrapper" class="page-wrapper">
+        <div id="mdbook-page-wrapper" class="page-wrapper">
 
             <div class="page">
-                                <div id="menu-bar-hover-placeholder"></div>
-                <div id="menu-bar" class="menu-bar sticky">
+                <div id="mdbook-menu-bar-hover-placeholder"></div>
+                <div id="mdbook-menu-bar" class="menu-bar sticky">
                     <div class="left-buttons">
-                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
-                            <i class="fa fa-bars"></i>
+                        <label id="mdbook-sidebar-toggle" class="icon-button" for="mdbook-sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="mdbook-sidebar">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"/></svg></span>
                         </label>
-                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
-                            <i class="fa fa-paint-brush"></i>
+                        <button id="mdbook-theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="mdbook-theme-list">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M371.3 367.1c27.3-3.9 51.9-19.4 67.2-42.9L600.2 74.1c12.6-19.5 9.4-45.3-7.6-61.2S549.7-4.4 531.1 9.6L294.4 187.2c-24 18-38.2 46.1-38.4 76.1L371.3 367.1zm-19.6 25.4l-116-104.4C175.9 290.3 128 339.6 128 400c0 3.9 .2 7.8 .6 11.6c1.8 17.5-10.2 36.4-27.8 36.4H96c-17.7 0-32 14.3-32 32s14.3 32 32 32H240c61.9 0 112-50.1 112-112c0-2.5-.1-5-.2-7.5z"/></svg></span>
                         </button>
-                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
-                            <li role="none"><button role="menuitem" class="theme" id="default_theme">Auto</button></li>
-                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
-                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
-                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
-                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
-                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        <ul id="mdbook-theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-default_theme">Auto</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-ayu">Ayu</button></li>
                         </ul>
-                        <button id="search-toggle" class="icon-button" type="button" title="Search (`/`)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="/ s" aria-controls="searchbar">
-                            <i class="fa fa-search"></i>
+                        <button id="mdbook-search-toggle" class="icon-button" type="button" title="Search (`/`)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="/ s" aria-controls="mdbook-searchbar">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352c79.5 0 144-64.5 144-144s-64.5-144-144-144S64 128.5 64 208s64.5 144 144 144z"/></svg></span>
                         </button>
                     </div>
 
@@ -142,43 +141,43 @@
 
                     <div class="right-buttons">
                         <a href="print.html" title="Print this book" aria-label="Print this book">
-                            <i id="print-button" class="fa fa-print"></i>
+                            <span class=fa-svg id="print-button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M128 0C92.7 0 64 28.7 64 64v96h64V64H354.7L384 93.3V160h64V93.3c0-17-6.7-33.3-18.7-45.3L400 18.7C388 6.7 371.7 0 354.7 0H128zM384 352v32 64H128V384 368 352H384zm64 32h32c17.7 0 32-14.3 32-32V256c0-35.3-28.7-64-64-64H64c-35.3 0-64 28.7-64 64v96c0 17.7 14.3 32 32 32H64v64c0 35.3 28.7 64 64 64H384c35.3 0 64-28.7 64-64V384zm-16-88c-13.3 0-24-10.7-24-24s10.7-24 24-24s24 10.7 24 24s-10.7 24-24 24z"/></svg></span>
                         </a>
 
                     </div>
                 </div>
 
-                <div id="search-wrapper" class="hidden">
-                    <form id="searchbar-outer" class="searchbar-outer">
+                <div id="mdbook-search-wrapper" class="hidden">
+                    <form id="mdbook-searchbar-outer" class="searchbar-outer">
                         <div class="search-wrapper">
-                            <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                            <input type="search" id="mdbook-searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="mdbook-searchresults-outer" aria-describedby="searchresults-header">
                             <div class="spinner-wrapper">
-                                <i class="fa fa-spinner fa-spin"></i>
+                                <span class=fa-svg id="fa-spin"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M304 48c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zm0 416c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zM48 304c26.5 0 48-21.5 48-48s-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48zm464-48c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zM142.9 437c18.7-18.7 18.7-49.1 0-67.9s-49.1-18.7-67.9 0s-18.7 49.1 0 67.9s49.1 18.7 67.9 0zm0-294.2c18.7-18.7 18.7-49.1 0-67.9S93.7 56.2 75 75s-18.7 49.1 0 67.9s49.1 18.7 67.9 0zM369.1 437c18.7 18.7 49.1 18.7 67.9 0s18.7-49.1 0-67.9s-49.1-18.7-67.9 0s-18.7 49.1 0 67.9z"/></svg></span>
                             </div>
                         </div>
                     </form>
-                    <div id="searchresults-outer" class="searchresults-outer hidden">
-                        <div id="searchresults-header" class="searchresults-header"></div>
-                        <ul id="searchresults">
+                    <div id="mdbook-searchresults-outer" class="searchresults-outer hidden">
+                        <div id="mdbook-searchresults-header" class="searchresults-header"></div>
+                        <ul id="mdbook-searchresults">
                         </ul>
                     </div>
                 </div>
 
                 <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
                 <script>
-                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
-                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
-                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                    document.getElementById('mdbook-sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('mdbook-sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#mdbook-sidebar a')).forEach(function(link) {
                         link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
                     });
                 </script>
 
-                <div id="content" class="content">
+                <div id="mdbook-content" class="content">
                     <main>
                         <h1 id="kapitel-15-kontrollstrukturen--bedingte-ausdrücke-und-schleifensysteme"><a class="header" href="#kapitel-15-kontrollstrukturen--bedingte-ausdrücke-und-schleifensysteme">Kapitel 15: Kontrollstrukturen – Bedingte Ausdrücke und Schleifensysteme</a></h1>
 <p>Kontrollstrukturen bilden das logische Nervensystem jeder Programmiersprache. Ohne sie würden Programme deterministisch und linear Zeile für Zeile abgearbeitet werden. Erst durch Verzweigungen und Schleifen erlangt Software die Fähigkeit, dynamisch auf unterschiedliche Daten, Benutzereingaben und Systemzustände zu reagieren.</p>
 <p>In Rust sind Kontrollstrukturen jedoch nicht nur einfache Ablaufanweisungen wie in C, C++ oder Java. Sie sind tief in das Typsystem und das Ownership-Modell integriert. Die Trennung zwischen Anweisungen (Statements) und wertabgebenden Ausdrücken (Expressions) führt dazu, dass Verzweigungen und Schleifen Werte zurückliefern können. In diesem Kapitel werden wir die theoretischen Grundlagen, die hardwarenahen Auswirkungen und die fortgeschrittenen Steuerungsmuster von Bedingungen und Schleifen in Rust detailliert analysieren.</p>
-<hr />
+<hr>
 <h2 id="1-lernziele--lernplan"><a class="header" href="#1-lernziele--lernplan">1. Lernziele &amp; Lernplan</a></h2>
 <h3 id="lernziele"><a class="header" href="#lernziele">Lernziele</a></h3>
 <ul>
@@ -190,20 +189,13 @@
 </ul>
 <h3 id="lernplan"><a class="header" href="#lernplan">Lernplan</a></h3>
 <ul>
-<li><input disabled="" type="checkbox"/>
-<strong>2. Die Definition</strong>: Präzise Begriffsbestimmung der Kontrollstrukturen, Abgrenzung von Statements und Expressions sowie alltagsnahe Metaphern.</li>
-<li><input disabled="" type="checkbox"/>
-<strong>3. Das Problem &amp; Die Motivation</strong>: Nachteile klassischer imperativer Kontrollstrukturen, Risiken durch uninitialisierte Variablen und das Problem unübersichtlicher Flag-Kaskaden bei verschachtelten Schleifen.</li>
-<li><input disabled="" type="checkbox"/>
-<strong>4. Der naive Versuch</strong>: Zwei fehlerhafte Rust-Codes, die Typinkonsistenz in einem <code>if</code>-Ausdruck und ein unübersichtliches Boolean-Flag-Konstrukt zur Schleifensteuerung zeigen.</li>
-<li><input disabled="" type="checkbox"/>
-<strong>5. Die Anatomie des Fehlers</strong>: Detaillierte Analyse der Compiler-Fehlermeldungen, Erklärung des Stack-Layouts und der CPU-Instruktionskosten.</li>
-<li><input disabled="" type="checkbox"/>
-<strong>6. Die Lösung</strong>: Implementierung der korrekten, idiomatischen Rust-Muster unter Anwendung des EVA-Prinzips.</li>
-<li><input disabled="" type="checkbox"/>
-<strong>7. Kleines Tutorial</strong>: Schritt-für-Schritt-Entwicklung einer interaktiven Systemsteuerung für eine virtuelle Fertigungsanlage.</li>
-<li><input disabled="" type="checkbox"/>
-<strong>8. Mentale Modelle &amp; Deep Dive</strong>:
+<li><input disabled="" type="checkbox"> <strong>2. Die Definition</strong>: Präzise Begriffsbestimmung der Kontrollstrukturen, Abgrenzung von Statements und Expressions sowie alltagsnahe Metaphern.</li>
+<li><input disabled="" type="checkbox"> <strong>3. Das Problem &amp; Die Motivation</strong>: Nachteile klassischer imperativer Kontrollstrukturen, Risiken durch uninitialisierte Variablen und das Problem unübersichtlicher Flag-Kaskaden bei verschachtelten Schleifen.</li>
+<li><input disabled="" type="checkbox"> <strong>4. Der naive Versuch</strong>: Zwei fehlerhafte Rust-Codes, die Typinkonsistenz in einem <code>if</code>-Ausdruck und ein unübersichtliches Boolean-Flag-Konstrukt zur Schleifensteuerung zeigen.</li>
+<li><input disabled="" type="checkbox"> <strong>5. Die Anatomie des Fehlers</strong>: Detaillierte Analyse der Compiler-Fehlermeldungen, Erklärung des Stack-Layouts und der CPU-Instruktionskosten.</li>
+<li><input disabled="" type="checkbox"> <strong>6. Die Lösung</strong>: Implementierung der korrekten, idiomatischen Rust-Muster unter Anwendung des EVA-Prinzips.</li>
+<li><input disabled="" type="checkbox"> <strong>7. Kleines Tutorial</strong>: Schritt-für-Schritt-Entwicklung einer interaktiven Systemsteuerung für eine virtuelle Fertigungsanlage.</li>
+<li><input disabled="" type="checkbox"> <strong>8. Mentale Modelle &amp; Deep Dive</strong>:
 <ul>
 <li><strong>15.1 Bedingte Ausdrücke</strong>
 <ul>
@@ -221,14 +213,11 @@
 <li><strong>Exhaustive API-Reference</strong>: Umfassende Dokumentation der Iterator- und Range-Methoden der Standardbibliothek.</li>
 </ul>
 </li>
-<li><input disabled="" type="checkbox"/>
-<strong>9. Drei praktische Übungen</strong>: Programmieraufgaben mit steigendem Schwierigkeitsgrad (Leicht, Mittel, Schwer) mit Lösungshinweisen.</li>
-<li><input disabled="" type="checkbox"/>
-<strong>10. Lernstrategie, Selbsteinschätzung &amp; Merkzettel</strong>: Syntaktischer Spickzettel, Active Recall, gezielte Fehlerprovokation und Selbsttest.</li>
-<li><input disabled="" type="checkbox"/>
-<strong>11. Zusammenfassung</strong>: Kernpunkte auf einen Blick.</li>
+<li><input disabled="" type="checkbox"> <strong>9. Drei praktische Übungen</strong>: Programmieraufgaben mit steigendem Schwierigkeitsgrad (Leicht, Mittel, Schwer) mit Lösungshinweisen.</li>
+<li><input disabled="" type="checkbox"> <strong>10. Lernstrategie, Selbsteinschätzung &amp; Merkzettel</strong>: Syntaktischer Spickzettel, Active Recall, gezielte Fehlerprovokation und Selbsttest.</li>
+<li><input disabled="" type="checkbox"> <strong>11. Zusammenfassung</strong>: Kernpunkte auf einen Blick.</li>
 </ul>
-<hr />
+<hr>
 <h2 id="2-die-definition"><a class="header" href="#2-die-definition">2. Die Definition</a></h2>
 <ul>
 <li><strong>Bedingter Ausdruck (Conditional Expression)</strong>: Eine Struktur, die den Kontrollfluss eines Programms basierend auf dem Wahrheitswert (<code>bool</code>) einer Bedingung in verschiedene Pfade verzweigt. Da es sich in Rust um einen Ausdruck (Expression) handelt, wertet sich der ausgeführte Zweig zu einem konkreten Wert aus, der einer Variablen zugewiesen oder als Argument übergeben werden kann.</li>
@@ -244,17 +233,17 @@
 <li><strong>Schleifen-Labels (Loop Labels)</strong>: Mit einem Apostroph eingeleitete Bezeichner (z. B. <code>'outer</code>), die einer Schleife vorangestellt werden. Sie erlauben es den Anweisungen <code>break</code> und <code>continue</code>, sich explizit auf eine bestimmte äußere Schleife in einer verschachtelten Struktur zu beziehen.</li>
 </ul>
 <h3 id="alltagsnahe-metaphern"><a class="header" href="#alltagsnahe-metaphern">Alltagsnahe Metaphern</a></h3>
-<blockquote>
-<p>[!NOTE]
-<strong>Die Bahngleis-Weiche (Bedingter Ausdruck)</strong>:
-Stellen Sie sich eine Schienenweiche vor, auf die ein Zug (der Kontrollfluss) zufährt. Die Weiche wird durch einen Sensor (die Bedingung) gesteuert. Zeigt der Sensor "Grün" (<code>true</code>), fährt der Zug auf Gleis A ein. Zeigt er "Rot" (<code>false</code>), fährt er auf Gleis B. Am Ende der Gleise wartet ein Bahnhof, der den Zug entlädt. Egal welchen Weg der Zug genommen hat, er bringt am Bahnhof eine Ladung (den Rückgabewert) an. Wichtig ist: Beide Gleise müssen im selben Bahnhof enden (Typkonsistenz) – es ist physikalisch unmöglich, dass Gleis A einen Güterzug im Hamburger Hafen entlädt, während Gleis B ein U-Boot im Bodensee absetzt.</p>
+<blockquote class="blockquote-tag blockquote-tag-note">
+<p class="blockquote-tag-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>Note</p>
+<p><strong>Die Bahngleis-Weiche (Bedingter Ausdruck)</strong>:
+Stellen Sie sich eine Schienenweiche vor, auf die ein Zug (der Kontrollfluss) zufährt. Die Weiche wird durch einen Sensor (die Bedingung) gesteuert. Zeigt der Sensor “Grün” (<code>true</code>), fährt der Zug auf Gleis A ein. Zeigt er “Rot” (<code>false</code>), fährt er auf Gleis B. Am Ende der Gleise wartet ein Bahnhof, der den Zug entlädt. Egal welchen Weg der Zug genommen hat, er bringt am Bahnhof eine Ladung (den Rückgabewert) an. Wichtig ist: Beide Gleise müssen im selben Bahnhof enden (Typkonsistenz) – es ist physikalisch unmöglich, dass Gleis A einen Güterzug im Hamburger Hafen entlädt, während Gleis B ein U-Boot im Bodensee absetzt.</p>
 </blockquote>
-<blockquote>
-<p>[!TIP]
-<strong>Der Kreisverkehr mit Ausfahrt-Tickets (Schleifen und Labels)</strong>:
-Eine Schleife ist wie ein Kreisverkehr. Eine einfache <code>while</code>-Schleife prüft bei jeder Runde an der Einfahrt, ob noch Benzin im Tank ist. Ein <code>loop</code> fährt einfach so lange im Kreis, bis der Beifahrer ruft: "Halt! Hier ist unsere Ausfahrt!" (<code>break</code>). Wenn Sie nun mehrere Kreisverkehre ineinander verschachtelt haben (z. B. ein innerer Kreisel zur Verteilung in einem Industriegebiet, das wiederum in einem großen Autobahn-Verteilerkreisel liegt), können Sie mithilfe von Schildern (Labels) festlegen, dass ein Ausfahrt-Ticket an der innersten Kreuzung Sie direkt aus dem gesamten äußeren Autobahnkreisel herausleitet, anstatt Sie nur eine Ebene höher zu befördern.</p>
+<blockquote class="blockquote-tag blockquote-tag-tip">
+<p class="blockquote-tag-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M8 1.5c-2.363 0-4 1.69-4 3.75 0 .984.424 1.625.984 2.304l.214.253c.223.264.47.556.673.848.284.411.537.896.621 1.49a.75.75 0 0 1-1.484.211c-.04-.282-.163-.547-.37-.847a8.456 8.456 0 0 0-.542-.68c-.084-.1-.173-.205-.268-.32C3.201 7.75 2.5 6.766 2.5 5.25 2.5 2.31 4.863 0 8 0s5.5 2.31 5.5 5.25c0 1.516-.701 2.5-1.328 3.259-.095.115-.184.22-.268.319-.207.245-.383.453-.541.681-.208.3-.33.565-.37.847a.751.751 0 0 1-1.485-.212c.084-.593.337-1.078.621-1.489.203-.292.45-.584.673-.848.075-.088.147-.173.213-.253.561-.679.985-1.32.985-2.304 0-2.06-1.637-3.75-4-3.75ZM5.75 12h4.5a.75.75 0 0 1 0 1.5h-4.5a.75.75 0 0 1 0-1.5ZM6 15.25a.75.75 0 0 1 .75-.75h2.5a.75.75 0 0 1 0 1.5h-2.5a.75.75 0 0 1-.75-.75Z"></path></svg>Tip</p>
+<p><strong>Der Kreisverkehr mit Ausfahrt-Tickets (Schleifen und Labels)</strong>:
+Eine Schleife ist wie ein Kreisverkehr. Eine einfache <code>while</code>-Schleife prüft bei jeder Runde an der Einfahrt, ob noch Benzin im Tank ist. Ein <code>loop</code> fährt einfach so lange im Kreis, bis der Beifahrer ruft: “Halt! Hier ist unsere Ausfahrt!” (<code>break</code>). Wenn Sie nun mehrere Kreisverkehre ineinander verschachtelt haben (z. B. ein innerer Kreisel zur Verteilung in einem Industriegebiet, das wiederum in einem großen Autobahn-Verteilerkreisel liegt), können Sie mithilfe von Schildern (Labels) festlegen, dass ein Ausfahrt-Ticket an der innersten Kreuzung Sie direkt aus dem gesamten äußeren Autobahnkreisel herausleitet, anstatt Sie nur eine Ebene höher zu befördern.</p>
 </blockquote>
-<hr />
+<hr>
 <h2 id="3-das-problem--die-motivation"><a class="header" href="#3-das-problem--die-motivation">3. Das Problem &amp; Die Motivation</a></h2>
 <p>In traditionellen, imperativen Programmiersprachen wie C oder C++ bergen Kontrollstrukturen erhebliche Risiken für die Code-Sicherheit und Lesbarkeit:</p>
 <ol>
@@ -292,12 +281,12 @@ Manuelle Index-Iterationen (wie <code>for (int i = 0; i &lt; len; i++)</code>) z
 <li>Schleifen-Labels erlauben den direkten Ausbruch aus beliebig tief verschachtelten Strukturen.</li>
 <li><code>for</code>-Schleifen arbeiten mit sicheren Iteratoren, wodurch der Compiler das speichergefährdende Bounds Checking zur Laufzeit vollständig wegoptimieren kann.</li>
 </ul>
-<hr />
+<hr>
 <h2 id="4-der-naive-versuch"><a class="header" href="#4-der-naive-versuch">4. Der naive Versuch</a></h2>
 <p>Wir betrachten zwei naive Implementierungen, die typische Fallstricke beim Umgang mit Rusts Kontrollstrukturen aufzeigen.</p>
 <h3 id="naiver-versuch-1-typinkonsistenz-in-bedingten-ausdrücken"><a class="header" href="#naiver-versuch-1-typinkonsistenz-in-bedingten-ausdrücken">Naiver Versuch 1: Typinkonsistenz in bedingten Ausdrücken</a></h3>
 <p>Hier versucht ein Programmierer, eine Variable basierend auf einer Konfigurationsprüfung entweder mit einer Ganzzahl oder mit einer Fehlermeldung zu initialisieren.</p>
-<pre><code class="language-rust">fn main() {
+<pre class="playground"><code class="language-rust edition2021">fn main() {
     let system_aktiv = true;
 
     // Der Compiler soll das Ergebnis direkt zuweisen
@@ -311,7 +300,7 @@ Manuelle Index-Iterationen (wie <code>for (int i = 0; i &lt; len; i++)</code>) z
 }</code></pre>
 <h3 id="naiver-versuch-2-verschachtelter-schleifenabbruch-mit-boolean-flags"><a class="header" href="#naiver-versuch-2-verschachtelter-schleifenabbruch-mit-boolean-flags">Naiver Versuch 2: Verschachtelter Schleifenabbruch mit Boolean-Flags</a></h3>
 <p>Hier wird versucht, einen Wert in einer Matrix zu suchen. Um aus beiden Schleifen auszubrechen, wird ein veränderbares Flag auf dem Stack verwaltet.</p>
-<pre><code class="language-rust">fn main() {
+<pre class="playground"><code class="language-rust edition2021">fn main() {
     let matrix = [
         [1, 2, 3],
         [4, 5, 6],
@@ -335,7 +324,7 @@ Manuelle Index-Iterationen (wie <code>for (int i = 0; i &lt; len; i++)</code>) z
 
     println!("Wert gefunden: {}", gefunden);
 }</code></pre>
-<hr />
+<hr>
 <h2 id="5-die-anatomie-des-fehlers"><a class="header" href="#5-die-anatomie-des-fehlers">5. Die Anatomie des Fehlers</a></h2>
 <h3 id="anatomie-zu-naiver-versuch-1-typinkonsistenz"><a class="header" href="#anatomie-zu-naiver-versuch-1-typinkonsistenz">Anatomie zu Naiver Versuch 1 (Typinkonsistenz)</a></h3>
 <p>Wenn wir versuchen, den ersten naiven Code zu kompilieren, verweigert der Compiler den Dienst mit folgender Fehlermeldung:</p>
@@ -378,12 +367,12 @@ Stack-Zuweisung für `status_code`:
 <li><strong>Kognitive Komplexität</strong>: Der Code wird unübersichtlich. Wenn drei oder vier Schleifenebenen verschachtelt sind, bläht sich das Abprüfen der Flags extrem auf.</li>
 <li><strong>Fehlende Ownership-Garantien</strong>: Das Flag <code>gefunden</code> muss mutable sein (<code>mut gefunden</code>). Dadurch besteht die Gefahr, dass es an anderer Stelle im Schleifenkörper versehentlich verändert wird, was schwer zu findende logische Laufzeitfehler (Bugs) provoziert.</li>
 </ol>
-<hr />
+<hr>
 <h2 id="6-die-lösung"><a class="header" href="#6-die-lösung">6. Die Lösung</a></h2>
 <p>Wir beheben die Probleme des naiven Versuchs auf elegante, sichere und idiomatische Weise.</p>
 <h3 id="lösung-für-1-typkonsistente-verzweigung-und-strukturierte-rückgabe"><a class="header" href="#lösung-für-1-typkonsistente-verzweigung-und-strukturierte-rückgabe">Lösung für 1: Typkonsistente Verzweigung und strukturierte Rückgabe</a></h3>
 <p>Wir nutzen ein Enum, um die unterschiedlichen Zustände typisiert abzubilden. Dadurch bleibt die Typkonsistenz des <code>if</code>-Ausdrucks gewahrt, während wir semantisch reichhaltige Daten zurückgeben.</p>
-<pre><code class="language-rust">// Wir definieren einen sauberen, typisierten Zustand
+<pre class="playground"><code class="language-rust edition2021">// Wir definieren einen sauberen, typisierten Zustand
 #[derive(Debug)]
 enum SystemStatus {
     Aktiv(i32),       // Code bei Erfolg
@@ -408,7 +397,7 @@ fn main() {
 }</code></pre>
 <h3 id="lösung-für-2-direkter-schleifenabbruch-mit-loop-labels"><a class="header" href="#lösung-für-2-direkter-schleifenabbruch-mit-loop-labels">Lösung für 2: Direkter Schleifenabbruch mit Loop-Labels</a></h3>
 <p>Wir verwenden ein Schleifen-Label <code>'suche</code>, um direkt aus der inneren Schleife die äußere Schleife abzubrechen. Es ist kein Boolean-Flag und keine zusätzliche Prüfung mehr nötig.</p>
-<pre><code class="language-rust">fn main() {
+<pre class="playground"><code class="language-rust edition2021">fn main() {
     let matrix = [
         [1, 2, 3],
         [4, 5, 6],
@@ -458,7 +447,7 @@ fn main() {
 </li>
 <li><strong>Ausgabe (Output)</strong>: Das Programm führt die darauffolgende Match-Verzweigung aus und gibt das Ergebnis aus. Es wurde kein einziges Hilfs-Flag benötigt.</li>
 </ul>
-<hr />
+<hr>
 <h2 id="7-kleines-tutorial-die-steuerung-einer-fertigungsanlage"><a class="header" href="#7-kleines-tutorial-die-steuerung-einer-fertigungsanlage">7. Kleines Tutorial: Die Steuerung einer Fertigungsanlage</a></h2>
 <p>In diesem Tutorial entwickeln wir die Firmware-Simulation einer Fertigungsanlage. Das System steuert eine Temperaturüberwachung und das sequentielle Befüllen von Behältern. Wir nutzen hierbei wertrückgebende <code>if</code>-Ausdrücke, Endlosschleifen mit Wertrückgabe bei Abbruch, bedingte <code>while</code>-Schleifen für Füllvorgänge und Zählschleifen zur Qualitätskontrolle.</p>
 <h3 id="schritt-1-das-projekt-anlegen"><a class="header" href="#schritt-1-das-projekt-anlegen">Schritt 1: Das Projekt anlegen</a></h3>
@@ -467,7 +456,7 @@ fn main() {
 </code></pre>
 <h3 id="schritt-2-die-steuerungslogik-implementieren"><a class="header" href="#schritt-2-die-steuerungslogik-implementieren">Schritt 2: Die Steuerungslogik implementieren</a></h3>
 <p>Ersetzen Sie den Inhalt von <code>src/main.rs</code> mit folgendem Code:</p>
-<pre><code class="language-rust">// main.rs - Steuerung einer virtuellen Fertigungsanlage
+<pre class="playground"><code class="language-rust edition2021">// main.rs - Steuerung einer virtuellen Fertigungsanlage
 
 #[derive(Debug, PartialEq)]
 enum MaschinenStatus {
@@ -557,26 +546,32 @@ fn main() {
         _ =&gt; {}
     }
 }</code></pre>
-<h3 id="schritt-3-ausführen-und-Überprüfen"><a class="header" href="#schritt-3-ausführen-und-Überprüfen">Schritt 3: Ausführen und Überprüfen</a></h3>
+<h3 id="schritt-3-ausführen-und-überprüfen"><a class="header" href="#schritt-3-ausführen-und-überprüfen">Schritt 3: Ausführen und Überprüfen</a></h3>
 <p>Starten Sie das Programm in Ihrem Terminal:</p>
 <pre><code class="language-bash">cargo run
 </code></pre>
 <p>Das Programm simuliert den Durchlauf, befüllt die Behälter und bricht bei Auftreten des simulierten Sensorfehlers (Sensor 4 meldet <code>false</code>) die Sensorprüfung vorzeitig ab. Durch die thermische Belastung steigt die Temperatur, bis das System im vierten Durchlauf die 100°C-Marke überschreitet, in die Überhitzung läuft und die Hauptschleife mit <code>MaschinenStatus::Notaus</code> abbricht.</p>
-<hr />
+<hr>
 <h2 id="8-mentale-modelle--deep-dive"><a class="header" href="#8-mentale-modelle--deep-dive">8. Mentale Modelle &amp; Deep Dive</a></h2>
 <h3 id="151-bedingte-ausdrücke"><a class="header" href="#151-bedingte-ausdrücke">15.1 Bedingte Ausdrücke</a></h3>
 <h4 id="1511-if-verzweigungen-und-die-eliminierung-des-ternären-operators"><a class="header" href="#1511-if-verzweigungen-und-die-eliminierung-des-ternären-operators">15.1.1 if-Verzweigungen und die Eliminierung des ternären Operators</a></h4>
 <p>In vielen C-basierten Sprachen existiert zur schnellen Zuweisung der ternäre Operator: <code>x = bedingung ? a : b;</code>. In Rust gibt es diesen Operator nicht. Er ist syntaktisch redundant, da <code>if</code> in Rust ein vollständiger Ausdruck ist:</p>
-<pre><code class="language-rust">let x = if bedingung { a } else { b };</code></pre>
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let x = if bedingung { a } else { b };
+<span class="boring">}</span></code></pre>
 <p>Diese Syntax ist weitaus lesbarer und lässt sich nahtlos auf mehrere Zweige (<code>else if</code>) erweitern, ohne an Lesbarkeit zu verlieren.</p>
 <h5 id="typkonsistenz-und-divergenz"><a class="header" href="#typkonsistenz-und-divergenz">Typkonsistenz und Divergenz</a></h5>
 <p>Wenn ein <code>if</code>-Ausdruck einen Wert zurückgibt, müssen alle Pfade denselben Typ evaluieren. Was passiert jedoch, wenn ein Pfad die Ausführung abbricht (z. B. durch <code>panic!</code>, <code>return</code> oder <code>break</code>)?</p>
-<pre><code class="language-rust">let divisor = 0;
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let divisor = 0;
 let ergebnis = if divisor != 0 {
     100 / divisor
 } else {
     panic!("Division durch Null!"); // Welchen Typ gibt panic! zurück?
-};</code></pre>
+};
+<span class="boring">}</span></code></pre>
 <p>Dieser Code kompiliert einwandfrei. Der Grund liegt im sogenannten <strong>Never-Type <code>!</code></strong> (auch Divergenz-Typ genannt). Ausdrücke, die das Programm beenden, den aktuellen Thread einfrieren oder den Kontrollfluss umleiten (wie <code>panic!</code>, <code>exit</code> oder <code>return</code>), evaluieren zum Typ <code>!</code>.</p>
 <p>Der Compiler erlaubt es, den Typ <code>!</code> implizit in jeden beliebigen anderen Typ umzuwandeln (Coercion). Dadurch ist die Typkonsistenz des <code>if</code>-Ausdrucks formal gewahrt.</p>
 <h5 id="hardware-ebene-branch-prediction-und-branchless-programming"><a class="header" href="#hardware-ebene-branch-prediction-und-branchless-programming">Hardware-Ebene: Branch Prediction und Branchless Programming</a></h5>
@@ -586,20 +581,25 @@ let ergebnis = if divisor != 0 {
 <li><em>Fehlvorhersage (Branch Misprediction)</em>: Die CPU muss die bereits geladenen Instruktionen verwerfen (Pipeline Flush) und die Instruktionen des tatsächlichen Pfades neu laden. Das kostet ca. 10 bis 20 CPU-Zyklen.</li>
 </ul>
 <p>Der Rust-Compiler und das LLVM-Backend versuchen daher, einfache <code>if-else</code>-Zuweisungen in <strong>Branchless Code (sprungfreien Code)</strong> zu übersetzen. Statt eines Sprungsbefehls (<code>jmp</code> in x86-Assembler) nutzt der Compiler CPU-Instruktionen wie <code>cmov</code> (Conditional Move) oder bitweise Arithmetik.</p>
-<pre><code class="language-rust">// Rust-Code:
-let x = if a &lt; b { a } else { b };</code></pre>
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>// Rust-Code:
+let x = if a &lt; b { a } else { b };
+<span class="boring">}</span></code></pre>
 <p>Wird vom Compiler oft in eine einzige x86-Instruktion übersetzt:</p>
 <pre><code class="language-assembly">cmp eax, ebx
 cmovg eax, ebx  ; Wenn eax &gt; ebx, kopiere ebx in eax
 </code></pre>
 <p>Es findet kein Sprung statt, wodurch Pipeline-Stalls hardwareseitig komplett ausgeschlossen werden.</p>
-<hr />
+<hr>
 <h3 id="152-schleifensysteme"><a class="header" href="#152-schleifensysteme">15.2 Schleifensysteme</a></h3>
 <h4 id="1521-die-endlosschleife-loop-und-statische-analyse"><a class="header" href="#1521-die-endlosschleife-loop-und-statische-analyse">15.2.1 Die Endlosschleife (<code>loop</code>) und statische Analyse</a></h4>
 <p>Ein häufiges Muster in der Systemprogrammierung ist die Endlosschleife. In C schreibt man meist <code>while (1)</code> oder <code>for (;;)</code>. Rust bietet hierfür das explizite Schlüsselwort <code>loop</code>.</p>
 <h5 id="loop-vs-while-true"><a class="header" href="#loop-vs-while-true">Loop vs. While True</a></h5>
 <p>Für den Programmierer scheinen <code>loop</code> und <code>while true</code> identisch zu sein. Für den Rust-Compiler besteht jedoch ein fundamentaler Unterschied im Bereich der Kontrollfluss-Analyse (Control Flow Analysis):</p>
-<pre><code class="language-rust">// Beispiel A: loop
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>// Beispiel A: loop
 let x: i32;
 loop {
     x = 42;
@@ -613,28 +613,35 @@ while true {
     y = 42;
     break;
 }
-println!("{}", y); // FEHLER! Compiler meldet: "use of possibly-uninitialized variable: `y`"</code></pre>
+println!("{}", y); // FEHLER! Compiler meldet: "use of possibly-uninitialized variable: `y`"
+<span class="boring">}</span></code></pre>
 <p><em>Warum scheitert <code>while true</code>?</em>
-Die Bedingung einer <code>while</code>-Schleife wird zur Laufzeit ausgewertet. Der Compiler führt bei <code>while</code> keine statische Analyse der Wahrheitswerte durch (er optimiert sie zwar später weg, aber die Typprüfung findet davor statt). Für den Compiler besteht bei <code>while</code> immer die theoretische Möglichkeit, dass die Schleife niemals betreten wird (falls die Bedingung direkt <code>false</code> ist). Daher gilt die Variable <code>y</code> nach der Schleife als "möglicherweise uninitialisiert".
+Die Bedingung einer <code>while</code>-Schleife wird zur Laufzeit ausgewertet. Der Compiler führt bei <code>while</code> keine statische Analyse der Wahrheitswerte durch (er optimiert sie zwar später weg, aber die Typprüfung findet davor statt). Für den Compiler besteht bei <code>while</code> immer die theoretische Möglichkeit, dass die Schleife niemals betreten wird (falls die Bedingung direkt <code>false</code> ist). Daher gilt die Variable <code>y</code> nach der Schleife als “möglicherweise uninitialisiert”.
 <code>loop</code> hingegen ist syntaktisch als Endlosschleife definiert. Der Compiler garantiert, dass der Block mindestens einmal durchlaufen wird. Daher gilt <code>x</code> nach dem Ausbruch per <code>break</code> als sicher initialisiert.</p>
 <h5 id="loop-als-wertrückgebender-ausdruck"><a class="header" href="#loop-als-wertrückgebender-ausdruck">Loop als wertrückgebender Ausdruck</a></h5>
 <p>In Rust kann <code>loop</code> einen Wert über das <code>break</code>-Schlüsselwort zurückgeben:</p>
-<pre><code class="language-rust">let mut counter = 0;
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let mut counter = 0;
 let ergebnis = loop {
     counter += 1;
     if counter == 10 {
         break counter * 2; // Wertübergabe bei Schleifenabbruch!
     }
-}; // ergebnis ist nun 20</code></pre>
+}; // ergebnis ist nun 20
+<span class="boring">}</span></code></pre>
 <p>Dies ist besonders nützlich bei Retry-Operationen (z. B. das Abfragen eines Netzwerk-Sockets, bis Daten eintreffen).</p>
-<hr />
+<hr>
 <h4 id="1522-die-bedingte-schleife-while"><a class="header" href="#1522-die-bedingte-schleife-while">15.2.2 Die bedingte Schleife (<code>while</code>)</a></h4>
 <p>Die <code>while</code>-Schleife ist die klassische Schleife mit Eintrittsbedingung. Sie gibt im Gegensatz zu <code>loop</code> niemals Werte zurück. Ihr Rückgabetyp ist immer <code>()</code>.</p>
-<pre><code class="language-rust">while bedingung {
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>while bedingung {
     // Code
-}</code></pre>
+}
+<span class="boring">}</span></code></pre>
 <p><em>Wichtig</em>: Da die Bedingung vor jedem Durchlauf geprüft wird, kann die Schleife auch 0-mal ausgeführt werden. Aus diesem Grund kann kein benutzerdefinierter Typ zurückgegeben werden, da im Falle von 0 Durchläufen kein Wert zur Zuweisung existieren würde.</p>
-<hr />
+<hr>
 <h4 id="1523-die-zählschleife-for-und-die-magie-der-iteratoren"><a class="header" href="#1523-die-zählschleife-for-und-die-magie-der-iteratoren">15.2.3 Die Zählschleife (<code>for</code>) und die Magie der Iteratoren</a></h4>
 <p>Die <code>for</code>-Schleife in Rust is syntaktischer Zucker für die Arbeit mit Iteratoren. Es gibt in Rust keine klassische C-Schleife der Form <code>for (int i = 0; i &lt; 10; i++)</code>.</p>
 <h5 id="syntax-und-ranges"><a class="header" href="#syntax-und-ranges">Syntax und Ranges</a></h5>
@@ -643,17 +650,26 @@ let ergebnis = loop {
 <li><code>a..b</code> (Exklusive Range: von <code>a</code> bis <code>b-1</code>, Typ <code>std::ops::Range</code>)</li>
 <li><code>a..=b</code> (Inklusive Range: von <code>a</code> bis <code>b</code>, Typ <code>std::ops::RangeInclusive</code>)</li>
 </ul>
-<pre><code class="language-rust">for i in 0..5 {
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>for i in 0..5 {
     // i nimmt nacheinander die Werte 0, 1, 2, 3, 4 an
-}</code></pre>
+}
+<span class="boring">}</span></code></pre>
 <h5 id="der-blick-unter-die-haube-das-intoiterator-trait"><a class="header" href="#der-blick-unter-die-haube-das-intoiterator-trait">Der Blick unter die Haube: Das <code>IntoIterator</code>-Trait</a></h5>
 <p>Wenn Sie schreiben:</p>
-<pre><code class="language-rust">for element in kollektion { ... }</code></pre>
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>for element in kollektion { ... }
+<span class="boring">}</span></code></pre>
 <p>Übersetzt der Compiler dies im Hintergrund in ein Konstrukt, das den Iterator konsumiert:</p>
-<pre><code class="language-rust">let mut iterator = IntoIterator::into_iter(kollektion);
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let mut iterator = IntoIterator::into_iter(kollektion);
 while let Some(element) = iterator.next() {
     // Schleifenkörper
-}</code></pre>
+}
+<span class="boring">}</span></code></pre>
 <p>Das bedeutet, dass <code>for</code>-Schleifen direkt mit dem Ownership-System verknüpft sind. Je nachdem, wie Sie die Kollektion übergeben, ändern sich die Besitzverhältnisse:</p>
 <ol>
 <li><code>for item in &amp;kollektion</code>: Ruft <code>.iter()</code> auf. Leiht die Elemente unveränderlich aus.</li>
@@ -670,20 +686,25 @@ for (int i = 0; i &lt; array.length(); i++) {
 <p>In Rust wird bei der Nutzung von <code>for element in array.iter()</code> der Iterator direkt vom Compiler analysiert. Da der Iterator die Länge des Arrays exakt kennt und sich nicht von außen manipulieren lässt, garantiert der Compiler zur Compilezeit, dass kein Index-Zugriff außerhalb der Grenzen stattfinden kann.</p>
 <p><strong>Die Folge</strong>: Der LLVM-Compiler entfernt alle Laufzeit-Grenzprüfungen (Bounds Checks) vollständig aus der Schleife. Das macht Rust-Schleifen in vielen Fällen performanter als äquivalenten C++-Code.</p>
 <p>Zusätzlich wendet LLVM Optimierungen wie <strong>Loop Unrolling (Schleifenentrollung)</strong> an. Dabei wird der Schleifenkörper bei bekannten, kleinen Ranges im Maschinencode dupliziert, um die Sprunginstruktionen komplett einzusparen:</p>
-<pre><code class="language-rust">// Rust-Code:
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>// Rust-Code:
 for i in 0..3 {
     mach_etwas(i);
-}</code></pre>
+}
+<span class="boring">}</span></code></pre>
 <p>Wird im Maschinencode zu:</p>
 <pre><code class="language-assembly">; Entrollte Schleife ohne Sprung-Instruktionen:
 call mach_etwas(0)
 call mach_etwas(1)
 call mach_etwas(2)
 </code></pre>
-<hr />
+<hr>
 <h4 id="1524-labels--schleifensteuerung"><a class="header" href="#1524-labels--schleifensteuerung">15.2.4 Labels &amp; Schleifensteuerung</a></h4>
 <p>Schleifen-Labels ermöglichen es, komplexe Sprungstrukturen flach und verständlich abzubilden. Ein Label wird mit einem einfachen Anführungszeichen eingeleitet und mit einem Doppelpunkt abgeschlossen. Es wird direkt vor der jeweiligen Schleife deklariert.</p>
-<pre><code class="language-rust">'aeussere_schleife: loop {
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>'aeussere_schleife: loop {
     'innere_schleife: for x in 0..10 {
         if x == 5 {
             // Beendet nicht 'innere_schleife, sondern die äußere loop!
@@ -694,14 +715,15 @@ call mach_etwas(2)
             continue 'aeussere_schleife;
         }
     }
-}</code></pre>
+}
+<span class="boring">}</span></code></pre>
 <h5 id="syntaktische-regeln"><a class="header" href="#syntaktische-regeln">Syntaktische Regeln</a></h5>
 <ul>
 <li>Labels folgen den Benennungsregeln für Bezeichner (Schlangenschrift, lowercase).</li>
 <li>Ein Label kann nur auf direkt darauf folgende Schleifen (<code>loop</code>, <code>while</code>, <code>for</code>) angewendet werden. Es kann nicht für freistehende Codeblöcke <code>{}</code> genutzt werden.</li>
 <li><code>break</code> mit Rückgabewert kann mit Labels kombiniert werden: <code>break 'label wert;</code>.</li>
 </ul>
-<hr />
+<hr>
 <h3 id="exhaustive-api-reference-lückenlos"><a class="header" href="#exhaustive-api-reference-lückenlos">Exhaustive API-Reference (Lückenlos)</a></h3>
 <p>In diesem Abschnitt werden alle relevanten Standardbibliotheks-Methoden für Iteratoren und Ranges dokumentiert, die zur Steuerung und Auswertung von Schleifen in Rust unerlässlich sind.</p>
 <h4 id="1-stditeriteratornext"><a class="header" href="#1-stditeriteratornext">1. <code>std::iter::Iterator::next</code></a></h4>
@@ -711,10 +733,13 @@ call mach_etwas(2)
 <li><strong>Rückgabetyp</strong>: <code>Option&lt;Self::Item&gt;</code>. Gibt <code>Some(item)</code> zurück, wenn ein weiteres Element existiert, andernfalls <code>None</code>.</li>
 <li><strong>Sicherheitsaspekte &amp; Panics</strong>: Panikt nie. Mutiert den internen Zustand des Iterators (erhöht den internen Index).</li>
 <li><strong>Kurzbeispiel</strong>:
-<pre><code class="language-rust">let mut iter = [10, 20].iter();
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let mut iter = [10, 20].iter();
 assert_eq!(iter.next(), Some(&amp;10));
 assert_eq!(iter.next(), Some(&amp;20));
-assert_eq!(iter.next(), None);</code></pre>
+assert_eq!(iter.next(), None);
+<span class="boring">}</span></code></pre>
 </li>
 </ul>
 <h4 id="2-stditeriteratorenumerate"><a class="header" href="#2-stditeriteratorenumerate">2. <code>std::iter::Iterator::enumerate</code></a></h4>
@@ -724,10 +749,13 @@ assert_eq!(iter.next(), None);</code></pre>
 <li><strong>Rückgabetyp</strong>: Ein Iterator vom Typ <code>Enumerate</code>, der Tupel der Form <code>(usize, Self::Item)</code> liefert.</li>
 <li><strong>Sicherheitsaspekte &amp; Panics</strong>: Panikt nie. Der Index beginnt bei <code>0</code> und erhöht sich um <code>1</code> bei jedem Aufruf.</li>
 <li><strong>Kurzbeispiel</strong>:
-<pre><code class="language-rust">let elemente = ["a", "b"];
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let elemente = ["a", "b"];
 let mut iter = elemente.iter().enumerate();
 assert_eq!(iter.next(), Some((0, &amp;"a")));
-assert_eq!(iter.next(), Some((1, &amp;"b")));</code></pre>
+assert_eq!(iter.next(), Some((1, &amp;"b")));
+<span class="boring">}</span></code></pre>
 </li>
 </ul>
 <h4 id="3-stditeriteratorstep_by"><a class="header" href="#3-stditeriteratorstep_by">3. <code>std::iter::Iterator::step_by</code></a></h4>
@@ -737,11 +765,14 @@ assert_eq!(iter.next(), Some((1, &amp;"b")));</code></pre>
 <li><strong>Rückgabetyp</strong>: Ein neuer Iterator, der nur jedes <code>step</code>-te Element ausgibt.</li>
 <li><strong>Sicherheitsaspekte &amp; Panics</strong>: Panikt, wenn <code>step == 0</code>.</li>
 <li><strong>Kurzbeispiel</strong>:
-<pre><code class="language-rust">let mut iter = (0..10).step_by(3);
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let mut iter = (0..10).step_by(3);
 assert_eq!(iter.next(), Some(0));
 assert_eq!(iter.next(), Some(3));
 assert_eq!(iter.next(), Some(6));
-assert_eq!(iter.next(), Some(9));</code></pre>
+assert_eq!(iter.next(), Some(9));
+<span class="boring">}</span></code></pre>
 </li>
 </ul>
 <h4 id="4-stditeriteratorrev"><a class="header" href="#4-stditeriteratorrev">4. <code>std::iter::Iterator::rev</code></a></h4>
@@ -751,10 +782,13 @@ assert_eq!(iter.next(), Some(9));</code></pre>
 <li><strong>Rückgabetyp</strong>: Ein umgekehrter Iterator. Erfordert, dass der zugrundeliegende Iterator das Trait <code>DoubleEndedIterator</code> implementiert (z. B. Ranges oder Array-Iteratoren).</li>
 <li><strong>Sicherheitsaspekte &amp; Panics</strong>: Panikt nie.</li>
 <li><strong>Kurzbeispiel</strong>:
-<pre><code class="language-rust">let mut iter = (1..4).rev();
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let mut iter = (1..4).rev();
 assert_eq!(iter.next(), Some(3));
 assert_eq!(iter.next(), Some(2));
-assert_eq!(iter.next(), Some(1));</code></pre>
+assert_eq!(iter.next(), Some(1));
+<span class="boring">}</span></code></pre>
 </li>
 </ul>
 <h4 id="5-stditeriteratorzip"><a class="header" href="#5-stditeriteratorzip">5. <code>std::iter::Iterator::zip</code></a></h4>
@@ -764,12 +798,15 @@ assert_eq!(iter.next(), Some(1));</code></pre>
 <li><strong>Rückgabetyp</strong>: Ein Iterator, der Paare <code>(A, B)</code> liefert, bis einer der beiden Iteratoren erschöpft ist.</li>
 <li><strong>Sicherheitsaspekte &amp; Panics</strong>: Panikt nie.</li>
 <li><strong>Kurzbeispiel</strong>:
-<pre><code class="language-rust">let a = [1, 2];
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let a = [1, 2];
 let b = ['x', 'y', 'z'];
 let mut iter = a.iter().zip(b.iter());
 assert_eq!(iter.next(), Some((&amp;1, &amp;'x')));
 assert_eq!(iter.next(), Some((&amp;2, &amp;'y')));
-assert_eq!(iter.next(), None); // 'z' wird ignoriert, da 'a' kürzer ist</code></pre>
+assert_eq!(iter.next(), None); // 'z' wird ignoriert, da 'a' kürzer ist
+<span class="boring">}</span></code></pre>
 </li>
 </ul>
 <h4 id="6-stditeriteratorfilter"><a class="header" href="#6-stditeriteratorfilter">6. <code>std::iter::Iterator::filter</code></a></h4>
@@ -779,10 +816,13 @@ assert_eq!(iter.next(), None); // 'z' wird ignoriert, da 'a' kürzer ist</code><
 <li><strong>Rückgabetyp</strong>: Ein gefilterter Iterator.</li>
 <li><strong>Sicherheitsaspekte &amp; Panics</strong>: Panikt nie (es sei denn, die Closure provoziert eine Panik).</li>
 <li><strong>Kurzbeispiel</strong>:
-<pre><code class="language-rust">let mut iter = (1..5).filter(|x| x % 2 == 0);
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let mut iter = (1..5).filter(|x| x % 2 == 0);
 assert_eq!(iter.next(), Some(2));
 assert_eq!(iter.next(), Some(4));
-assert_eq!(iter.next(), None);</code></pre>
+assert_eq!(iter.next(), None);
+<span class="boring">}</span></code></pre>
 </li>
 </ul>
 <h4 id="7-stditeriteratormap"><a class="header" href="#7-stditeriteratormap">7. <code>std::iter::Iterator::map</code></a></h4>
@@ -792,10 +832,13 @@ assert_eq!(iter.next(), None);</code></pre>
 <li><strong>Rückgabetyp</strong>: Ein Iterator, der die transformierten Werte vom Typ <code>B</code> liefert.</li>
 <li><strong>Sicherheitsaspekte &amp; Panics</strong>: Panikt nie.</li>
 <li><strong>Kurzbeispiel</strong>:
-<pre><code class="language-rust">let mut iter = (1..4).map(|x| x * 10);
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let mut iter = (1..4).map(|x| x * 10);
 assert_eq!(iter.next(), Some(10));
 assert_eq!(iter.next(), Some(20));
-assert_eq!(iter.next(), Some(30));</code></pre>
+assert_eq!(iter.next(), Some(30));
+<span class="boring">}</span></code></pre>
 </li>
 </ul>
 <h4 id="8-stditeriteratortake"><a class="header" href="#8-stditeriteratortake">8. <code>std::iter::Iterator::take</code></a></h4>
@@ -805,10 +848,13 @@ assert_eq!(iter.next(), Some(30));</code></pre>
 <li><strong>Rückgabetyp</strong>: Ein Iterator, der maximal <code>n</code> Elemente liefert.</li>
 <li><strong>Sicherheitsaspekte &amp; Panics</strong>: Panikt nie.</li>
 <li><strong>Kurzbeispiel</strong>:
-<pre><code class="language-rust">let mut iter = (1..100).take(2);
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let mut iter = (1..100).take(2);
 assert_eq!(iter.next(), Some(1));
 assert_eq!(iter.next(), Some(2));
-assert_eq!(iter.next(), None);</code></pre>
+assert_eq!(iter.next(), None);
+<span class="boring">}</span></code></pre>
 </li>
 </ul>
 <h4 id="9-stditeriteratorskip"><a class="header" href="#9-stditeriteratorskip">9. <code>std::iter::Iterator::skip</code></a></h4>
@@ -818,10 +864,13 @@ assert_eq!(iter.next(), None);</code></pre>
 <li><strong>Rückgabetyp</strong>: Ein Iterator, der die ersten <code>n</code> Elemente verwirft.</li>
 <li><strong>Sicherheitsaspekte &amp; Panics</strong>: Panikt nie.</li>
 <li><strong>Kurzbeispiel</strong>:
-<pre><code class="language-rust">let mut iter = (1..5).skip(2);
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let mut iter = (1..5).skip(2);
 assert_eq!(iter.next(), Some(3));
 assert_eq!(iter.next(), Some(4));
-assert_eq!(iter.next(), None);</code></pre>
+assert_eq!(iter.next(), None);
+<span class="boring">}</span></code></pre>
 </li>
 </ul>
 <h4 id="10-stditeriteratorany"><a class="header" href="#10-stditeriteratorany">10. <code>std::iter::Iterator::any</code></a></h4>
@@ -831,8 +880,11 @@ assert_eq!(iter.next(), None);</code></pre>
 <li><strong>Rückgabetyp</strong>: <code>bool</code>. Gibt sofort <code>true</code> zurück, wenn ein Element das Prädikat erfüllt (Kurzschlussauswertung).</li>
 <li><strong>Sicherheitsaspekte &amp; Panics</strong>: Panikt nie.</li>
 <li><strong>Kurzbeispiel</strong>:
-<pre><code class="language-rust">let mut iter = [1, 2, 3].iter();
-assert!(iter.any(|&amp;x| x == 2));</code></pre>
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let mut iter = [1, 2, 3].iter();
+assert!(iter.any(|&amp;x| x == 2));
+<span class="boring">}</span></code></pre>
 </li>
 </ul>
 <h4 id="11-stditeriteratorall"><a class="header" href="#11-stditeriteratorall">11. <code>std::iter::Iterator::all</code></a></h4>
@@ -842,8 +894,11 @@ assert!(iter.any(|&amp;x| x == 2));</code></pre>
 <li><strong>Rückgabetyp</strong>: <code>bool</code>. Gibt <code>false</code> zurück, sobald ein Element das Prädikat nicht erfüllt.</li>
 <li><strong>Sicherheitsaspekte &amp; Panics</strong>: Panikt nie.</li>
 <li><strong>Kurzbeispiel</strong>:
-<pre><code class="language-rust">let mut iter = [2, 4, 6].iter();
-assert!(iter.all(|&amp;x| x % 2 == 0));</code></pre>
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let mut iter = [2, 4, 6].iter();
+assert!(iter.all(|&amp;x| x % 2 == 0));
+<span class="boring">}</span></code></pre>
 </li>
 </ul>
 <h4 id="12-stditeriteratorposition"><a class="header" href="#12-stditeriteratorposition">12. <code>std::iter::Iterator::position</code></a></h4>
@@ -853,8 +908,11 @@ assert!(iter.all(|&amp;x| x % 2 == 0));</code></pre>
 <li><strong>Rückgabetyp</strong>: <code>Option&lt;usize&gt;</code>. Gibt den ersten Index zurück, der das Kriterium erfüllt.</li>
 <li><strong>Sicherheitsaspekte &amp; Panics</strong>: Panikt nie.</li>
 <li><strong>Kurzbeispiel</strong>:
-<pre><code class="language-rust">let mut iter = ['a', 'b', 'c'].iter();
-assert_eq!(iter.position(|&amp;x| x == 'b'), Some(1));</code></pre>
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let mut iter = ['a', 'b', 'c'].iter();
+assert_eq!(iter.position(|&amp;x| x == 'b'), Some(1));
+<span class="boring">}</span></code></pre>
 </li>
 </ul>
 <h4 id="13-stditeriteratorcount"><a class="header" href="#13-stditeriteratorcount">13. <code>std::iter::Iterator::count</code></a></h4>
@@ -864,8 +922,11 @@ assert_eq!(iter.position(|&amp;x| x == 'b'), Some(1));</code></pre>
 <li><strong>Rückgabetyp</strong>: <code>usize</code> (Gesamtanzahl der Elemente).</li>
 <li><strong>Sicherheitsaspekte &amp; Panics</strong>: Panikt nie. Kann bei unendlichen Iteratoren (z. B. <code>0..</code>) blockieren.</li>
 <li><strong>Kurzbeispiel</strong>:
-<pre><code class="language-rust">let anzahl = (0..5).count(); // 5
-assert_eq!(anzahl, 5);</code></pre>
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let anzahl = (0..5).count(); // 5
+assert_eq!(anzahl, 5);
+<span class="boring">}</span></code></pre>
 </li>
 </ul>
 <h4 id="14-stditeriteratorsum"><a class="header" href="#14-stditeriteratorsum">14. <code>std::iter::Iterator::sum</code></a></h4>
@@ -875,8 +936,11 @@ assert_eq!(anzahl, 5);</code></pre>
 <li><strong>Rückgabetyp</strong>: Die Summe aller Elemente vom Typ <code>S</code> (z. B. <code>i32</code>, <code>f64</code>).</li>
 <li><strong>Sicherheitsaspekte &amp; Panics</strong>: Kann bei Integer-Überlauf im Debug-Modus panizieren.</li>
 <li><strong>Kurzbeispiel</strong>:
-<pre><code class="language-rust">let summe: i32 = (1..5).sum(); // 1 + 2 + 3 + 4 = 10
-assert_eq!(summe, 10);</code></pre>
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let summe: i32 = (1..5).sum(); // 1 + 2 + 3 + 4 = 10
+assert_eq!(summe, 10);
+<span class="boring">}</span></code></pre>
 </li>
 </ul>
 <h4 id="15-stditeriteratorproduct"><a class="header" href="#15-stditeriteratorproduct">15. <code>std::iter::Iterator::product</code></a></h4>
@@ -886,8 +950,11 @@ assert_eq!(summe, 10);</code></pre>
 <li><strong>Rückgabetyp</strong>: Das Produkt aller Elemente.</li>
 <li><strong>Sicherheitsaspekte &amp; Panics</strong>: Kann bei Integer-Überlauf im Debug-Modus panizieren.</li>
 <li><strong>Kurzbeispiel</strong>:
-<pre><code class="language-rust">let produkt: i32 = (1..5).product(); // 1 * 2 * 3 * 4 = 24
-assert_eq!(produkt, 24);</code></pre>
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let produkt: i32 = (1..5).product(); // 1 * 2 * 3 * 4 = 24
+assert_eq!(produkt, 24);
+<span class="boring">}</span></code></pre>
 </li>
 </ul>
 <h4 id="16-stditeriteratorcollect"><a class="header" href="#16-stditeriteratorcollect">16. <code>std::iter::Iterator::collect</code></a></h4>
@@ -897,8 +964,11 @@ assert_eq!(produkt, 24);</code></pre>
 <li><strong>Rückgabetyp</strong>: Eine Kollektion vom Typ <code>B</code> (z. B. <code>Vec&lt;T&gt;</code>, <code>HashMap&lt;K, V&gt;</code>).</li>
 <li><strong>Sicherheitsaspekte &amp; Panics</strong>: Panikt nie, alloziiert Speicher auf dem Heap.</li>
 <li><strong>Kurzbeispiel</strong>:
-<pre><code class="language-rust">let v: Vec&lt;i32&gt; = (1..4).collect();
-assert_eq!(v, vec![1, 2, 3]);</code></pre>
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let v: Vec&lt;i32&gt; = (1..4).collect();
+assert_eq!(v, vec![1, 2, 3]);
+<span class="boring">}</span></code></pre>
 </li>
 </ul>
 <h4 id="17-stditeriteratorcycle"><a class="header" href="#17-stditeriteratorcycle">17. <code>std::iter::Iterator::cycle</code></a></h4>
@@ -908,10 +978,13 @@ assert_eq!(v, vec![1, 2, 3]);</code></pre>
 <li><strong>Rückgabetyp</strong>: Ein unendlicher Iterator, der nach Erreichen des Endes wieder von vorne beginnt.</li>
 <li><strong>Sicherheitsaspekte &amp; Panics</strong>: Panikt nie.</li>
 <li><strong>Kurzbeispiel</strong>:
-<pre><code class="language-rust">let mut iter = [1, 2].iter().cycle();
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let mut iter = [1, 2].iter().cycle();
 assert_eq!(iter.next(), Some(&amp;1));
 assert_eq!(iter.next(), Some(&amp;2));
-assert_eq!(iter.next(), Some(&amp;1)); // Wiederholt sich</code></pre>
+assert_eq!(iter.next(), Some(&amp;1)); // Wiederholt sich
+<span class="boring">}</span></code></pre>
 </li>
 </ul>
 <h4 id="18-stditeriteratorpeekable"><a class="header" href="#18-stditeriteratorpeekable">18. <code>std::iter::Iterator::peekable</code></a></h4>
@@ -921,9 +994,12 @@ assert_eq!(iter.next(), Some(&amp;1)); // Wiederholt sich</code></pre>
 <li><strong>Rückgabetyp</strong>: Ein Iterator vom Typ <code>Peekable</code>, der einen Blick auf das nächste Element erlaubt, ohne es zu konsumieren.</li>
 <li><strong>Sicherheitsaspekte &amp; Panics</strong>: Panikt nie.</li>
 <li><strong>Kurzbeispiel</strong>:
-<pre><code class="language-rust">let mut iter = [1, 2].iter().peekable();
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let mut iter = [1, 2].iter().peekable();
 assert_eq!(iter.peek(), Some(&amp;&amp;1));
-assert_eq!(iter.next(), Some(&amp;1)); // Jetzt erst konsumiert</code></pre>
+assert_eq!(iter.next(), Some(&amp;1)); // Jetzt erst konsumiert
+<span class="boring">}</span></code></pre>
 </li>
 </ul>
 <h4 id="19-stditeriteratorchain"><a class="header" href="#19-stditeriteratorchain">19. <code>std::iter::Iterator::chain</code></a></h4>
@@ -933,11 +1009,14 @@ assert_eq!(iter.next(), Some(&amp;1)); // Jetzt erst konsumiert</code></pre>
 <li><strong>Rückgabetyp</strong>: Ein kombinierter Iterator, der zuerst alle Elemente des ersten und danach alle des zweiten Iterators liefert.</li>
 <li><strong>Sicherheitsaspekte &amp; Panics</strong>: Panikt nie.</li>
 <li><strong>Kurzbeispiel</strong>:
-<pre><code class="language-rust">let mut iter = (1..3).chain(8..10);
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let mut iter = (1..3).chain(8..10);
 assert_eq!(iter.next(), Some(1));
 assert_eq!(iter.next(), Some(2));
 assert_eq!(iter.next(), Some(8));
-assert_eq!(iter.next(), Some(9));</code></pre>
+assert_eq!(iter.next(), Some(9));
+<span class="boring">}</span></code></pre>
 </li>
 </ul>
 <h4 id="20-stditeriteratorby_ref"><a class="header" href="#20-stditeriteratorby_ref">20. <code>std::iter::Iterator::by_ref</code></a></h4>
@@ -947,11 +1026,14 @@ assert_eq!(iter.next(), Some(9));</code></pre>
 <li><strong>Rückgabetyp</strong>: Eine veränderliche Referenz auf sich selbst, um Methoden aufzurufen, ohne den Besitz des Iterators abzugeben.</li>
 <li><strong>Sicherheitsaspekte &amp; Panics</strong>: Panikt nie.</li>
 <li><strong>Kurzbeispiel</strong>:
-<pre><code class="language-rust">let mut iter = (1..10);
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let mut iter = (1..10);
 let teilliste: Vec&lt;i32&gt; = iter.by_ref().take(3).collect();
 assert_eq!(teilliste, vec![1, 2, 3]);
 // 'iter' ist danach weiterhin benutzbar und enthält noch 4..10!
-assert_eq!(iter.next(), Some(4));</code></pre>
+assert_eq!(iter.next(), Some(4));
+<span class="boring">}</span></code></pre>
 </li>
 </ul>
 <h4 id="21-stdopsrangecontains"><a class="header" href="#21-stdopsrangecontains">21. <code>std::ops::Range::contains</code></a></h4>
@@ -961,9 +1043,12 @@ assert_eq!(iter.next(), Some(4));</code></pre>
 <li><strong>Rückgabetyp</strong>: <code>bool</code> (<code>true</code>, wenn <code>start &lt;= item &lt; end</code>).</li>
 <li><strong>Sicherheitsaspekte &amp; Panics</strong>: Panikt nie.</li>
 <li><strong>Kurzbeispiel</strong>:
-<pre><code class="language-rust">let range = 1..10;
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let range = 1..10;
 assert!(range.contains(&amp;5));
-assert!(!range.contains(&amp;10)); // Da exklusiv</code></pre>
+assert!(!range.contains(&amp;10)); // Da exklusiv
+<span class="boring">}</span></code></pre>
 </li>
 </ul>
 <h4 id="22-stdopsrangeinclusivecontains"><a class="header" href="#22-stdopsrangeinclusivecontains">22. <code>std::ops::RangeInclusive::contains</code></a></h4>
@@ -973,13 +1058,16 @@ assert!(!range.contains(&amp;10)); // Da exklusiv</code></pre>
 <li><strong>Rückgabetyp</strong>: <code>bool</code> (<code>true</code>, wenn <code>start &lt;= item &lt;= end</code>).</li>
 <li><strong>Sicherheitsaspekte &amp; Panics</strong>: Panikt nie.</li>
 <li><strong>Kurzbeispiel</strong>:
-<pre><code class="language-rust">let range = 1..=10;
-assert!(range.contains(&amp;10)); // Da inklusive</code></pre>
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let range = 1..=10;
+assert!(range.contains(&amp;10)); // Da inklusive
+<span class="boring">}</span></code></pre>
 </li>
 </ul>
-<hr />
-<h2 id="9-drei-praktische-Übungen"><a class="header" href="#9-drei-praktische-Übungen">9. Drei praktische Übungen</a></h2>
-<h3 id="Übung-1-fizzbuzz-modifikation-leicht"><a class="header" href="#Übung-1-fizzbuzz-modifikation-leicht">Übung 1: FizzBuzz-Modifikation (Leicht)</a></h3>
+<hr>
+<h2 id="9-drei-praktische-übungen"><a class="header" href="#9-drei-praktische-übungen">9. Drei praktische Übungen</a></h2>
+<h3 id="übung-1-fizzbuzz-modifikation-leicht"><a class="header" href="#übung-1-fizzbuzz-modifikation-leicht">Übung 1: FizzBuzz-Modifikation (Leicht)</a></h3>
 <p><strong>Problembeschreibung</strong>:
 Schreiben Sie ein Programm, das die Zahlen von 1 bis 50 durchläuft.</p>
 <ul>
@@ -995,8 +1083,8 @@ Schreiben Sie ein Programm, das die Zahlen von 1 bis 50 durchläuft.</p>
 </ul>
 <p><em>Lösungshinweis (Hint)</em>:
 Nutzen Sie den Modulo-Operator <code>%</code> für die Teilbarkeit. Denken Sie daran, dass der am stärksten einschränkende Fall (Teilbarkeit durch 3 und 5) als erster Fall im <code>if</code>-Ausdruck geprüft werden muss.</p>
-<hr />
-<h3 id="Übung-2-optimierte-matrix-suche-mit-labels-mittel"><a class="header" href="#Übung-2-optimierte-matrix-suche-mit-labels-mittel">Übung 2: Optimierte Matrix-Suche mit Labels (Mittel)</a></h3>
+<hr>
+<h3 id="übung-2-optimierte-matrix-suche-mit-labels-mittel"><a class="header" href="#übung-2-optimierte-matrix-suche-mit-labels-mittel">Übung 2: Optimierte Matrix-Suche mit Labels (Mittel)</a></h3>
 <p><strong>Problembeschreibung</strong>:
 Gegeben ist eine quadratische 4x4-Matrix mit Ganzzahlen. Schreiben Sie eine Funktion <code>suche_in_matrix</code>, die nach einer Zielzahl sucht.
 Sobald die Zahl gefunden wird, soll die Suche augenblicklich über ein Schleifen-Label abgebrochen werden. Die Funktion soll ein <code>Option&lt;(usize, usize)&gt;</code> zurückgeben, das die Zeilen- und Spaltenkoordinaten enthält.</p>
@@ -1007,8 +1095,8 @@ Sobald die Zahl gefunden wird, soll die Suche augenblicklich über ein Schleifen
 </ul>
 <p><em>Lösungshinweis (Hint)</em>:
 Versehen Sie die äußere Schleife mit dem Label <code>'zeilen_suche</code>. Nutzen Sie im inneren Schleifenkörper ein <code>break 'zeilen_suche</code>, sobald der Wert matched, um das vorzeitige Verlassen beider Schleifen einzuleiten.</p>
-<hr />
-<h3 id="Übung-3-run-length-encoding-rle-kompressor-schwer"><a class="header" href="#Übung-3-run-length-encoding-rle-kompressor-schwer">Übung 3: Run-Length-Encoding (RLE) Kompressor (Schwer)</a></h3>
+<hr>
+<h3 id="übung-3-run-length-encoding-rle-kompressor-schwer"><a class="header" href="#übung-3-run-length-encoding-rle-kompressor-schwer">Übung 3: Run-Length-Encoding (RLE) Kompressor (Schwer)</a></h3>
 <p><strong>Problembeschreibung</strong>:
 Implementieren Sie einen einfachen Kompressionsalgorithmus (Lauflängenkodierung) für Strings. Das Programm soll eine Zeichenkette (z. B. <code>"AAAAABBBCC"</code>) komprimieren und als codierten String zurückgeben (<code>"A5B3C2"</code>).
 Nutzen Sie hierbei eine <code>while let</code>- oder eine gesteuerte <code>for</code>-Schleife über die Zeichen des Strings und verarbeiten Sie die Übergänge mithilfe von bedingten Ausdrücken und Schleifensteuerung.</p>
@@ -1020,16 +1108,22 @@ Nutzen Sie hierbei eine <code>while let</code>- oder eine gesteuerte <code>for</
 </ul>
 <p><em>Lösungshinweis (Hint)</em>:
 Iterieren Sie über die Zeichen. Speichern Sie das aktuelle Zeichen und einen Zähler. Vergleichen Sie im Schleifenkörper das jeweils nächste Zeichen mit dem aktuellen Zeichen. Bei Übereinstimmung erhöhen Sie den Zähler, andernfalls schreiben Sie das Zeichen und den Zähler in ein Ergebnis-Buffer und setzen den Zähler zurück.</p>
-<hr />
+<hr>
 <h2 id="10-lernstrategie-selbsteinschätzung--merkzettel"><a class="header" href="#10-lernstrategie-selbsteinschätzung--merkzettel">10. Lernstrategie, Selbsteinschätzung &amp; Merkzettel</a></h2>
 <h3 id="spickzettel-cheat-sheet"><a class="header" href="#spickzettel-cheat-sheet">Spickzettel (Cheat Sheet)</a></h3>
-<div class="table-wrapper"><table><thead><tr><th style="text-align: left">Konstrukt</th><th style="text-align: left">Syntaxbeispiel</th><th style="text-align: left">Rückgabetyp</th></tr></thead><tbody>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th style="text-align: left">Konstrukt</th><th style="text-align: left">Syntaxbeispiel</th><th style="text-align: left">Rückgabetyp</th></tr>
+</thead>
+<tbody>
 <tr><td style="text-align: left"><strong><code>if</code> Expression</strong></td><td style="text-align: left"><code>let x = if cond { 5 } else { 10 };</code></td><td style="text-align: left">Konsistenter Typ der Zweige (hier <code>i32</code>)</td></tr>
 <tr><td style="text-align: left"><strong><code>loop</code> mit Wert</strong></td><td style="text-align: left"><code>let x = loop { if cond { break 42; } };</code></td><td style="text-align: left">Typ des Werts hinter <code>break</code> (hier <code>i32</code>)</td></tr>
 <tr><td style="text-align: left"><strong><code>while</code> Schleife</strong></td><td style="text-align: left"><code>while x &lt; 5 { x += 1; }</code></td><td style="text-align: left">Immer <code>()</code></td></tr>
 <tr><td style="text-align: left"><strong><code>for</code> Schleife</strong></td><td style="text-align: left"><code>for i in 0..5 { println!("{}", i); }</code></td><td style="text-align: left">Immer <code>()</code></td></tr>
 <tr><td style="text-align: left"><strong>Loop-Label</strong></td><td style="text-align: left"><code>'outer: loop { break 'outer; }</code></td><td style="text-align: left">Beliebiger Typ bei <code>break 'label wert;</code></td></tr>
-</tbody></table>
+</tbody>
+</table>
 </div>
 <h3 id="active-recall-selbsttest-fragen"><a class="header" href="#active-recall-selbsttest-fragen">Active Recall (Selbsttest-Fragen)</a></h3>
 <ol>
@@ -1058,16 +1152,12 @@ Iterieren Sie über die Zeichen. Speichern Sie das aktuelle Zeichen und einen Z�
 <h3 id="metakognitiver-selbsttest"><a class="header" href="#metakognitiver-selbsttest">Metakognitiver Selbsttest</a></h3>
 <p>Wechseln Sie erst zum nächsten Kapitel, wenn Sie:</p>
 <ul>
-<li><input disabled="" type="checkbox"/>
-Den Unterschied zwischen Expressions und Statements fehlerfrei erklären können.</li>
-<li><input disabled="" type="checkbox"/>
-Die Bedingungen verstanden haben, unter denen der Compiler Typkonsistenz bei Verzweigungen erzwingt.</li>
-<li><input disabled="" type="checkbox"/>
-In der Lage sind, eine verschachtelte Matrix-Suche mit Labels ohne Spickzettel in unter 5 Minuten sauber zu implementieren.</li>
-<li><input disabled="" type="checkbox"/>
-Verstanden haben, warum eine <code>for</code>-Schleife über einen Iterator zur Compilezeit die Notwendigkeit von Laufzeit-Grenzprüfungen (Bounds Checks) aufhebt.</li>
+<li><input disabled="" type="checkbox"> Den Unterschied zwischen Expressions und Statements fehlerfrei erklären können.</li>
+<li><input disabled="" type="checkbox"> Die Bedingungen verstanden haben, unter denen der Compiler Typkonsistenz bei Verzweigungen erzwingt.</li>
+<li><input disabled="" type="checkbox"> In der Lage sind, eine verschachtelte Matrix-Suche mit Labels ohne Spickzettel in unter 5 Minuten sauber zu implementieren.</li>
+<li><input disabled="" type="checkbox"> Verstanden haben, warum eine <code>for</code>-Schleife über einen Iterator zur Compilezeit die Notwendigkeit von Laufzeit-Grenzprüfungen (Bounds Checks) aufhebt.</li>
 </ul>
-<hr />
+<hr>
 <h2 id="11-zusammenfassung"><a class="header" href="#11-zusammenfassung">11. Zusammenfassung</a></h2>
 <ul>
 <li><strong>Ausdrucksorientierung</strong>: Rust ist eine primär ausdrucksbasierte Sprache. Bis auf Deklarationen und Semikolon-Statements geben fast alle Konstrukte (inklusive <code>if</code> und Blöcke) Werte zurück.</li>
@@ -1077,7 +1167,7 @@ Verstanden haben, warum eine <code>for</code>-Schleife über einen Iterator zur 
 <li><strong>Sichere Iteration</strong>: <code>for</code>-Schleifen nutzen das <code>IntoIterator</code>-Trait. Sie machen manuelle Indizes überflüssig, verhindern standardmäßig Out-of-Bounds-Fehler und ermöglichen dem LLVM-Compiler signifikante Optimierungen durch Wegfall von Sicherheitsprüfungen.</li>
 <li><strong>Labels</strong>: Schleifen-Labels (<code>'name:</code>) brechen mit <code>break 'name</code> oder <code>continue 'name</code> gezielt aus verschachtelten Schleifenstrukturen aus, wodurch unübersichtliche Flag-Zustände vermieden werden.</li>
 </ul>
-<hr />
+<hr>
 <p><strong>Lizenz- und Attributionshinweis</strong>:
 Teile dieses Kapitels basieren auf Übersetzungen und didaktischen Anpassungen des offiziellen Buches <a href="https://doc.rust-lang.org/book/">The Rust Programming Language</a> von Steve Klabnik und Carol Nichols (sowie Beiträgen der Rust-Community), lizenziert unter <a href="https://opensource.org/licenses/MIT">MIT</a> und <a href="https://www.apache.org/licenses/LICENSE-2.0">Apache 2.0</a>.</p>
 
@@ -1086,11 +1176,11 @@ Teile dieses Kapitels basieren auf Übersetzungen und didaktischen Anpassungen d
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
                             <a rel="prev" href="14.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
-                                <i class="fa fa-angle-left"></i>
+                                <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
                             </a>
 
                             <a rel="next prefetch" href="16.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
-                                <i class="fa fa-angle-right"></i>
+                                <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
                             </a>
 
                         <div style="clear: both"></div>
@@ -1100,16 +1190,21 @@ Teile dieses Kapitels basieren auf Übersetzungen und didaktischen Anpassungen d
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
                     <a rel="prev" href="14.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
-                        <i class="fa fa-angle-left"></i>
+                        <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
                     </a>
 
                     <a rel="next prefetch" href="16.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
-                        <i class="fa fa-angle-right"></i>
+                        <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
                     </a>
             </nav>
 
         </div>
 
+        <template id=fa-eye><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M288 32c-80.8 0-145.5 36.8-192.6 80.6C48.6 156 17.3 208 2.5 243.7c-3.3 7.9-3.3 16.7 0 24.6C17.3 304 48.6 356 95.4 399.4C142.5 443.2 207.2 480 288 480s145.5-36.8 192.6-80.6c46.8-43.5 78.1-95.4 93-131.1c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C433.5 68.8 368.8 32 288 32zM432 256c0 79.5-64.5 144-144 144s-144-64.5-144-144s64.5-144 144-144s144 64.5 144 144zM288 192c0 35.3-28.7 64-64 64c-11.5 0-22.3-3-31.6-8.4c-.2 2.8-.4 5.5-.4 8.4c0 53 43 96 96 96s96-43 96-96s-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6z"/></svg></span></template>
+        <template id=fa-eye-slash><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M38.8 5.1C28.4-3.1 13.3-1.2 5.1 9.2S-1.2 34.7 9.2 42.9l592 464c10.4 8.2 25.5 6.3 33.7-4.1s6.3-25.5-4.1-33.7L525.6 386.7c39.6-40.6 66.4-86.1 79.9-118.4c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C465.5 68.8 400.8 32 320 32c-68.2 0-125 26.3-169.3 60.8L38.8 5.1zM223.1 149.5C248.6 126.2 282.7 112 320 112c79.5 0 144 64.5 144 144c0 24.9-6.3 48.3-17.4 68.7L408 294.5c5.2-11.8 8-24.8 8-38.5c0-53-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6c0 10.2-2.4 19.8-6.6 28.3l-90.3-70.8zm223.1 298L373 389.9c-16.4 6.5-34.3 10.1-53 10.1c-79.5 0-144-64.5-144-144c0-6.9 .5-13.6 1.4-20.2L83.1 161.5C60.3 191.2 44 220.8 34.5 243.7c-3.3 7.9-3.3 16.7 0 24.6c14.9 35.7 46.2 87.7 93 131.1C174.5 443.2 239.2 480 320 480c47.8 0 89.9-12.9 126.2-32.5z"/></svg></span></template>
+        <template id=fa-copy><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M502.6 70.63l-61.25-61.25C435.4 3.371 427.2 0 418.7 0H255.1c-35.35 0-64 28.66-64 64l.0195 256C192 355.4 220.7 384 256 384h192c35.2 0 64-28.8 64-64V93.25C512 84.77 508.6 76.63 502.6 70.63zM464 320c0 8.836-7.164 16-16 16H255.1c-8.838 0-16-7.164-16-16L239.1 64.13c0-8.836 7.164-16 16-16h128L384 96c0 17.67 14.33 32 32 32h47.1V320zM272 448c0 8.836-7.164 16-16 16H63.1c-8.838 0-16-7.164-16-16L47.98 192.1c0-8.836 7.164-16 16-16H160V128H63.99c-35.35 0-64 28.65-64 64l.0098 256C.002 483.3 28.66 512 64 512h192c35.2 0 64-28.8 64-64v-32h-47.1L272 448z"/></svg></span></template>
+        <template id=fa-play><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80V432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"/></svg></span></template>
+        <template id=fa-clock-rotate-left><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M75 75L41 41C25.9 25.9 0 36.6 0 57.9V168c0 13.3 10.7 24 24 24H134.1c21.4 0 32.1-25.9 17-41l-30.8-30.8C155 85.5 203 64 256 64c106 0 192 86 192 192s-86 192-192 192c-40.8 0-78.6-12.7-109.7-34.4c-14.5-10.1-34.4-6.6-44.6 7.9s-6.6 34.4 7.9 44.6C151.2 495 201.7 512 256 512c141.4 0 256-114.6 256-256S397.4 0 256 0C185.3 0 121.3 28.7 75 75zm181 53c-13.3 0-24 10.7-24 24V256c0 6.4 2.5 12.5 7 17l72 72c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-65-65V152c0-13.3-10.7-24-24-24z"/></svg></span></template>
 
 
 
@@ -1118,17 +1213,17 @@ Teile dieses Kapitels basieren auf Übersetzungen und didaktischen Anpassungen d
         </script>
 
 
-        <script src="elasticlunr.min.js"></script>
-        <script src="mark.min.js"></script>
-        <script src="searcher.js"></script>
+        <script src="elasticlunr-ef4e11c1.min.js"></script>
+        <script src="mark-09e88c2c.min.js"></script>
+        <script src="searcher-09f2665d.js"></script>
 
-        <script src="clipboard.min.js"></script>
-        <script src="highlight.js"></script>
-        <script src="book.js"></script>
+        <script src="clipboard-1626706a.min.js"></script>
+        <script src="highlight-abc7f01d.js"></script>
+        <script src="book-c22b7243.js"></script>
 
         <!-- Custom JS scripts -->
-        <script src="mermaid.min.js"></script>
-        <script src="mermaid-init.js"></script>
+        <script src="mermaid-eefea253.min.js"></script>
+        <script src="mermaid-init-ccf746f1.js"></script>
 
 
 

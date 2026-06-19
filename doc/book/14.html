@@ -7,26 +7,25 @@
 
 
         <!-- Custom HTML head -->
-        
+
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="theme-color" content="#ffffff">
 
-        <link rel="icon" href="favicon.svg">
-        <link rel="shortcut icon" href="favicon.png">
-        <link rel="stylesheet" href="css/variables.css">
-        <link rel="stylesheet" href="css/general.css">
-        <link rel="stylesheet" href="css/chrome.css">
-        <link rel="stylesheet" href="css/print.css" media="print">
+        <link rel="icon" href="favicon-de23e50b.svg">
+        <link rel="shortcut icon" href="favicon-8114d1fc.png">
+        <link rel="stylesheet" href="css/variables-8adf115d.css">
+        <link rel="stylesheet" href="css/general-0392ca55.css">
+        <link rel="stylesheet" href="css/chrome-fc474251.css">
+        <link rel="stylesheet" href="css/print-9e4910d8.css" media="print">
 
         <!-- Fonts -->
-        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
-        <link rel="stylesheet" href="fonts/fonts.css">
+        <link rel="stylesheet" href="fonts/fonts-9644e21d.css">
 
         <!-- Highlight.js Stylesheets -->
-        <link rel="stylesheet" id="highlight-css" href="highlight.css">
-        <link rel="stylesheet" id="tomorrow-night-css" href="tomorrow-night.css">
-        <link rel="stylesheet" id="ayu-highlight-css" href="ayu-highlight.css">
+        <link rel="stylesheet" id="mdbook-highlight-css" href="highlight-493f70e1.css">
+        <link rel="stylesheet" id="mdbook-tomorrow-night-css" href="tomorrow-night-4c0ae647.css">
+        <link rel="stylesheet" id="mdbook-ayu-highlight-css" href="ayu-highlight-3fdfc3ac.css">
 
         <!-- Custom theme stylesheets -->
 
@@ -36,10 +35,10 @@
             const path_to_root = "";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "searchindex.js";
+            window.path_to_searchindex_js = "searchindex-34eaf846.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="toc.js"></script>
+        <script src="toc-9a36690f.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -53,7 +52,7 @@
             </div>
         </div>
     </div>
-    <div id="body-container">
+    <div id="mdbook-body-container">
         <!-- Work around some values being stored in localStorage wrapped in quotes -->
         <script>
             try {
@@ -82,12 +81,12 @@
             html.classList.add("js");
         </script>
 
-        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+        <input type="checkbox" id="mdbook-sidebar-toggle-anchor" class="hidden">
 
         <!-- Hide / unhide sidebar before it is displayed -->
         <script>
             let sidebar = null;
-            const sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            const sidebar_toggle = document.getElementById("mdbook-sidebar-toggle-anchor");
             if (document.body.clientWidth >= 1080) {
                 try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
                 sidebar = sidebar || 'visible';
@@ -102,39 +101,39 @@
             }
         </script>
 
-        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+        <nav id="mdbook-sidebar" class="sidebar" aria-label="Table of contents">
             <!-- populated by js -->
             <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
             <noscript>
                 <iframe class="sidebar-iframe-outer" src="toc.html"></iframe>
             </noscript>
-            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+            <div id="mdbook-sidebar-resize-handle" class="sidebar-resize-handle">
                 <div class="sidebar-resize-indicator"></div>
             </div>
         </nav>
 
-        <div id="page-wrapper" class="page-wrapper">
+        <div id="mdbook-page-wrapper" class="page-wrapper">
 
             <div class="page">
-                                <div id="menu-bar-hover-placeholder"></div>
-                <div id="menu-bar" class="menu-bar sticky">
+                <div id="mdbook-menu-bar-hover-placeholder"></div>
+                <div id="mdbook-menu-bar" class="menu-bar sticky">
                     <div class="left-buttons">
-                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
-                            <i class="fa fa-bars"></i>
+                        <label id="mdbook-sidebar-toggle" class="icon-button" for="mdbook-sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="mdbook-sidebar">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"/></svg></span>
                         </label>
-                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
-                            <i class="fa fa-paint-brush"></i>
+                        <button id="mdbook-theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="mdbook-theme-list">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M371.3 367.1c27.3-3.9 51.9-19.4 67.2-42.9L600.2 74.1c12.6-19.5 9.4-45.3-7.6-61.2S549.7-4.4 531.1 9.6L294.4 187.2c-24 18-38.2 46.1-38.4 76.1L371.3 367.1zm-19.6 25.4l-116-104.4C175.9 290.3 128 339.6 128 400c0 3.9 .2 7.8 .6 11.6c1.8 17.5-10.2 36.4-27.8 36.4H96c-17.7 0-32 14.3-32 32s14.3 32 32 32H240c61.9 0 112-50.1 112-112c0-2.5-.1-5-.2-7.5z"/></svg></span>
                         </button>
-                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
-                            <li role="none"><button role="menuitem" class="theme" id="default_theme">Auto</button></li>
-                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
-                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
-                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
-                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
-                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        <ul id="mdbook-theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-default_theme">Auto</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-ayu">Ayu</button></li>
                         </ul>
-                        <button id="search-toggle" class="icon-button" type="button" title="Search (`/`)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="/ s" aria-controls="searchbar">
-                            <i class="fa fa-search"></i>
+                        <button id="mdbook-search-toggle" class="icon-button" type="button" title="Search (`/`)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="/ s" aria-controls="mdbook-searchbar">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352c79.5 0 144-64.5 144-144s-64.5-144-144-144S64 128.5 64 208s64.5 144 144 144z"/></svg></span>
                         </button>
                     </div>
 
@@ -142,42 +141,42 @@
 
                     <div class="right-buttons">
                         <a href="print.html" title="Print this book" aria-label="Print this book">
-                            <i id="print-button" class="fa fa-print"></i>
+                            <span class=fa-svg id="print-button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M128 0C92.7 0 64 28.7 64 64v96h64V64H354.7L384 93.3V160h64V93.3c0-17-6.7-33.3-18.7-45.3L400 18.7C388 6.7 371.7 0 354.7 0H128zM384 352v32 64H128V384 368 352H384zm64 32h32c17.7 0 32-14.3 32-32V256c0-35.3-28.7-64-64-64H64c-35.3 0-64 28.7-64 64v96c0 17.7 14.3 32 32 32H64v64c0 35.3 28.7 64 64 64H384c35.3 0 64-28.7 64-64V384zm-16-88c-13.3 0-24-10.7-24-24s10.7-24 24-24s24 10.7 24 24s-10.7 24-24 24z"/></svg></span>
                         </a>
 
                     </div>
                 </div>
 
-                <div id="search-wrapper" class="hidden">
-                    <form id="searchbar-outer" class="searchbar-outer">
+                <div id="mdbook-search-wrapper" class="hidden">
+                    <form id="mdbook-searchbar-outer" class="searchbar-outer">
                         <div class="search-wrapper">
-                            <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                            <input type="search" id="mdbook-searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="mdbook-searchresults-outer" aria-describedby="searchresults-header">
                             <div class="spinner-wrapper">
-                                <i class="fa fa-spinner fa-spin"></i>
+                                <span class=fa-svg id="fa-spin"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M304 48c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zm0 416c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zM48 304c26.5 0 48-21.5 48-48s-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48zm464-48c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zM142.9 437c18.7-18.7 18.7-49.1 0-67.9s-49.1-18.7-67.9 0s-18.7 49.1 0 67.9s49.1 18.7 67.9 0zm0-294.2c18.7-18.7 18.7-49.1 0-67.9S93.7 56.2 75 75s-18.7 49.1 0 67.9s49.1 18.7 67.9 0zM369.1 437c18.7 18.7 49.1 18.7 67.9 0s18.7-49.1 0-67.9s-49.1-18.7-67.9 0s-18.7 49.1 0 67.9z"/></svg></span>
                             </div>
                         </div>
                     </form>
-                    <div id="searchresults-outer" class="searchresults-outer hidden">
-                        <div id="searchresults-header" class="searchresults-header"></div>
-                        <ul id="searchresults">
+                    <div id="mdbook-searchresults-outer" class="searchresults-outer hidden">
+                        <div id="mdbook-searchresults-header" class="searchresults-header"></div>
+                        <ul id="mdbook-searchresults">
                         </ul>
                     </div>
                 </div>
 
                 <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
                 <script>
-                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
-                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
-                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                    document.getElementById('mdbook-sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('mdbook-sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#mdbook-sidebar a')).forEach(function(link) {
                         link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
                     });
                 </script>
 
-                <div id="content" class="content">
+                <div id="mdbook-content" class="content">
                     <main>
                         <h1 id="kapitel-14-das-kurs-cli-antigravity-cli"><a class="header" href="#kapitel-14-das-kurs-cli-antigravity-cli">Kapitel 14: Das Kurs-CLI (Antigravity CLI)</a></h1>
 <p>In diesem Kapitel lernen Sie das zentrale Softwarewerkzeug unseres Kurses kennen: das <strong>Kurs-CLI</strong> (Befehlszeilenaufruf: <code>agy</code>). Dieses Tool fungiert als Ihr persönlicher digitaler Tutor. Es automatisiert die Überprüfung Ihrer Übungsaufgaben, fängt Compiler-Fehlermeldungen ab, analysiert logische Abweichungen in Ihren Programmausgaben und gibt Ihnen in Echtzeit präzises Feedback. Die Vermittlung dieses Werkzeugs bereitet Sie optimal auf das professionelle Arbeiten mit autonomen Software-Agenten und modernen CI/CD-Pipelines (Continuous Integration / Continuous Delivery) vor.</p>
-<hr />
+<hr>
 <h2 id="1-lernziele--lernplan"><a class="header" href="#1-lernziele--lernplan">1. Lernziele &amp; Lernplan</a></h2>
 <h3 id="lernziele"><a class="header" href="#lernziele">Lernziele</a></h3>
 <ul>
@@ -188,28 +187,18 @@
 </ul>
 <h3 id="lernplan"><a class="header" href="#lernplan">Lernplan</a></h3>
 <ul>
-<li><input disabled="" type="checkbox"/>
-<strong>2. Die Definition</strong>: 14.1 Das Kurs-CLI und seine Kernbegriffe.</li>
-<li><input disabled="" type="checkbox"/>
-<strong>3. Das Problem &amp; Die Motivation</strong>: Warum die manuelle Überprüfung von Programmausgaben ineffizient und fehleranfällig is.</li>
-<li><input disabled="" type="checkbox"/>
-<strong>4. Der naive Versuch</strong>: Ein fehlerhafter, aber kompilierbares Programm zur Generierung des Einmaleins.</li>
-<li><input disabled="" type="checkbox"/>
-<strong>5. Die Anatomie des Fehlers</strong>: Analyse der fehlerhaften Formatierung und des Verhaltens von Ausgabepuffern im Betriebssystem.</li>
-<li><input disabled="" type="checkbox"/>
-<strong>6. Die Lösung</strong>: 14.1.1 Installation des globalen Tools und 14.1.2 Funktionsweise des Test- und Überprüfungsprozesses.</li>
-<li><input disabled="" type="checkbox"/>
-<strong>7. Kleines Tutorial</strong>: Schritt-für-Schritt-Installation und Validierung einer ersten Übungsaufgabe.</li>
-<li><input disabled="" type="checkbox"/>
-<strong>8. Mentale Modelle &amp; Deep Dive</strong>: Prozess-Sandboxen, IPC und eine exhaustive API-Referenz der Rust-Prozesssteuerung.</li>
-<li><input disabled="" type="checkbox"/>
-<strong>9. Drei praktische Übungen</strong>: Aufgaben zur Festigung (Leicht, Mittel, Schwer) mit vollständigen Lösungshinweisen.</li>
-<li><input disabled="" type="checkbox"/>
-<strong>10. Lernstrategie, Selbsteinschätzung &amp; Merkzettel</strong>: Cheat Sheet, Active-Recall-Fragen und metakognitive Checkliste.</li>
-<li><input disabled="" type="checkbox"/>
-<strong>11. Zusammenfassung</strong>: Die wichtigsten Erkenntnisse im schnellen Überblick.</li>
+<li><input disabled="" type="checkbox"> <strong>2. Die Definition</strong>: 14.1 Das Kurs-CLI und seine Kernbegriffe.</li>
+<li><input disabled="" type="checkbox"> <strong>3. Das Problem &amp; Die Motivation</strong>: Warum die manuelle Überprüfung von Programmausgaben ineffizient und fehleranfällig is.</li>
+<li><input disabled="" type="checkbox"> <strong>4. Der naive Versuch</strong>: Ein fehlerhafter, aber kompilierbares Programm zur Generierung des Einmaleins.</li>
+<li><input disabled="" type="checkbox"> <strong>5. Die Anatomie des Fehlers</strong>: Analyse der fehlerhaften Formatierung und des Verhaltens von Ausgabepuffern im Betriebssystem.</li>
+<li><input disabled="" type="checkbox"> <strong>6. Die Lösung</strong>: 14.1.1 Installation des globalen Tools und 14.1.2 Funktionsweise des Test- und Überprüfungsprozesses.</li>
+<li><input disabled="" type="checkbox"> <strong>7. Kleines Tutorial</strong>: Schritt-für-Schritt-Installation und Validierung einer ersten Übungsaufgabe.</li>
+<li><input disabled="" type="checkbox"> <strong>8. Mentale Modelle &amp; Deep Dive</strong>: Prozess-Sandboxen, IPC und eine exhaustive API-Referenz der Rust-Prozesssteuerung.</li>
+<li><input disabled="" type="checkbox"> <strong>9. Drei praktische Übungen</strong>: Aufgaben zur Festigung (Leicht, Mittel, Schwer) mit vollständigen Lösungshinweisen.</li>
+<li><input disabled="" type="checkbox"> <strong>10. Lernstrategie, Selbsteinschätzung &amp; Merkzettel</strong>: Cheat Sheet, Active-Recall-Fragen und metakognitive Checkliste.</li>
+<li><input disabled="" type="checkbox"> <strong>11. Zusammenfassung</strong>: Die wichtigsten Erkenntnisse im schnellen Überblick.</li>
 </ul>
-<hr />
+<hr>
 <h2 id="2-die-definition-141-das-kurs-cli"><a class="header" href="#2-die-definition-141-das-kurs-cli">2. Die Definition: 14.1 Das Kurs-CLI</a></h2>
 <p>Das <strong>Kurs-CLI</strong> (Command Line Interface, aufrufbar über den Befehl <code>agy</code>) ist ein globales, terminalbasiertes Validierungs- und Entwicklungswerkzeug. Es kombiniert eine interaktive Node.js-Steuerungsschicht für die Benutzeroberfläche (TUI) mit einem in Rust geschriebenen, hochperformanten Testrunner im Hintergrund.</p>
 <p>Die Kernbegriffe des Kurs-CLI sind:</p>
@@ -220,14 +209,14 @@
 <li><strong>Sandbox-Ausführung</strong>: Die Ausführung Ihres Programms in einer isolierten Laufzeitumgebung (unter Linux z. B. mittels Namespaces und Control Groups über Tools wie <code>nsjail</code>), um das Wirtssystem vor Endlosschleifen, übermäßigem Ressourcenverbrauch oder unerlaubten Dateisystemzugriffen zu schützen.</li>
 </ul>
 <h3 id="alltagsnahe-metapher"><a class="header" href="#alltagsnahe-metapher">Alltagsnahe Metapher</a></h3>
-<blockquote>
-<p>[!NOTE]
-<strong>Der Prüfstand in der Autowerkstatt</strong>:
+<blockquote class="blockquote-tag blockquote-tag-note">
+<p class="blockquote-tag-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>Note</p>
+<p><strong>Der Prüfstand in der Autowerkstatt</strong>:
 Stellen Sie sich vor, Sie bauen einen Motor (Ihr Rust-Programm). Anstatt den Motor einfach einzubauen und auf gut Glück auf die Autobahn zu fahren (manueller Test), stellen Sie ihn auf einen digitalisierten Motorenprüfstand (das Kurs-CLI).</p>
 <p>Der Prüfstand dockt Schläuche an die Kraftstoffzufuhr (Stdin) und Sensoren an den Auspuff (Stdout/Stderr) an. Nun startet der Prüfstand ein fest definiertes Testprogramm: Er gibt Gas, simuliert Steigungen und misst exakt die Drehzahl und die Abgaswerte.
 Weichen die Messwerte auch nur minimal von den Sollwerten ab (z. B. eine Fehlzündung oder ein falscher Schadstoffausstoß), bricht der Prüfstand ab und druckt ein präzises Fehlerprotokoll aus. Der Motor läuft zwar physikalisch, entspricht aber nicht den Zulassungsregeln.</p>
 </blockquote>
-<hr />
+<hr>
 <h2 id="3-das-problem--die-motivation"><a class="header" href="#3-das-problem--die-motivation">3. Das Problem &amp; Die Motivation</a></h2>
 <p>Wenn Sie Programmieren lernen, besteht die größte Herausforderung in einer schnellen und präzisen Rückkopplungsschleife (Feedback Loop). Nach dem Schreiben des Codes stellen sich zwei Fragen:</p>
 <ol>
@@ -237,16 +226,16 @@ Weichen die Messwerte auch nur minimal von den Sollwerten ab (z. B. eine Fehlzü
 <p>Ohne ein automatisiertes Kurs-CLI müssten Sie Ihre Programme manuell überprüfen. Dieser manuelle Prozess weist erhebliche Defizite auf:</p>
 <ul>
 <li><strong>Whitespaces und unsichtbare Zeichen</strong>: Computer vergleichen Zeichenketten exakt. Ein fehlendes Leerzeichen am Zeilenende oder die Verwendung eines falschen Zeilenumbruch-Zeichens (<code>\r\n</code> unter Windows vs. <code>\n</code> unter Unix) führt dazu, dass eine Ausgabe für das menschliche Auge korrekt aussieht, maschinell aber fehlerhaft ist.</li>
-<li><strong>Randfälle (Edge Cases)</strong>: Ein manueller Tester neigt dazu, nur die "Schönwetter-Pfade" (Happy Paths) auszuprobieren. Extremwerte (z. B. leere Eingaben, negative Zahlen, Integer-Überläufe) werden oft vergessen.</li>
+<li><strong>Randfälle (Edge Cases)</strong>: Ein manueller Tester neigt dazu, nur die “Schönwetter-Pfade” (Happy Paths) auszuprobieren. Extremwerte (z. B. leere Eingaben, negative Zahlen, Integer-Überläufe) werden oft vergessen.</li>
 <li><strong>Skalierbarkeit</strong>: Jedes Mal, wenn Sie Ihren Code ändern, müssen Sie alle manuellen Testschritte erneut durchführen (Regressionstest). Dies ist zeitraubend und führt dazu, dass Tests vernachlässigt werden.</li>
 <li><strong>Sicherheitsrisiken bei Fehlern</strong>: Endlosschleifen (z. B. <code>loop {}</code> ohne Abbruchbedingung) können ein System zum Absturz bringen oder die CPU blockieren. Ohne eine zeitliche Überwachung (Timeout) und Isolation durch ein Test-Tool müssen Sie Prozesse manuell über System-Monitore beenden.</li>
 </ul>
 <p>Das Kurs-CLI solves diese Probleme, indem es eine standardisierte Test-Infrastruktur bereitstellt, die in Millisekunden Dutzende Testfälle simuliert, Eingaben einspeist, Ausgaben abfängt, Diffs berechnet und Prozesse bei Zeitüberschreitung sicher terminiert.</p>
-<hr />
+<hr>
 <h2 id="4-der-naive-versuch"><a class="header" href="#4-der-naive-versuch">4. Der naive Versuch</a></h2>
 <p>Nehmen wir an, Ihre Aufgabe aus Kapitel 7 lautet: <em>„Schreiben Sie ein Programm, das das kleine Einmaleins (1 bis 10) in einem quadratischen Raster auf der Konsole ausgibt. Jede Zahl muss in einer Spalte mit einer festen Breite von 4 Zeichen rechtsbündig formatiert sein. Jede Zeile muss mit einem harten Zeilenumbruch enden.“</em></p>
 <p>Hier ist der naive Versuch einer Umsetzung in der Datei <code>src/main.rs</code>:</p>
-<pre><code class="language-rust">fn main() {
+<pre class="playground"><code class="language-rust edition2021">fn main() {
     // Äußere Schleife für die Zeilen (1 bis 10)
     for zeile in 1..11 {
         // Innere Schleife für die Spalten (1 bis 10)
@@ -266,8 +255,8 @@ Weichen die Messwerte auch nur minimal von den Sollwerten ab (z. B. eine Fehlzü
 <li>Die Breite der Spalten ist nicht konstant 4 Zeichen. Einstellige Ergebnisse (z. B. <code>1 * 1 = 1</code>) gefolgt von zwei Leerzeichen belegen 3 Zeichen Breite. Zweistellige Ergebnisse (z. B. <code>2 * 5 = 10</code>) belegen 4 Zeichen. Das dreistellige Ergebnis <code>100</code> belegt 5 Zeichen. Das Raster verschiebt sich.</li>
 <li>Am Ende jeder Zeile wird nach der letzten Zahl ebenfalls ein Leerzeichen-Paar gedruckt, bevor der Zeilenumbruch <code>\n</code> erfolgt. Dies erzeugt unnötigen Whitespace am Zeilenende.</li>
 </ol>
-<p>Wenn Sie dieses Programm starten, sieht die Ausgabe im Terminal für Sie vielleicht "akzeptabel" aus. Ein automatisierter Test des Kurs-CLI wird diese Lösung jedoch ablehnen.</p>
-<hr />
+<p>Wenn Sie dieses Programm starten, sieht die Ausgabe im Terminal für Sie vielleicht “akzeptabel” aus. Ein automatisierter Test des Kurs-CLI wird diese Lösung jedoch ablehnen.</p>
+<hr>
 <h2 id="5-die-anatomie-des-fehlers"><a class="header" href="#5-die-anatomie-des-fehlers">5. Die Anatomie des Fehlers</a></h2>
 <h3 id="was-sagt-das-system"><a class="header" href="#was-sagt-das-system">Was sagt das System?</a></h3>
 <p>Wenn Sie die automatisierte Überprüfung des Kurs-CLI über den Befehl <code>agy verify</code> starten, meldet das System einen Fehlschlag:</p>
@@ -319,7 +308,7 @@ Ist:  "10  20  30  40  50  60  70  80  90  100  "
 <li><strong>Pufferung</strong>: Wenn Ihr Programm <code>print!("{}  ", ergebnis)</code> aufruft, werden die Bytes (<code>0x31</code>, <code>0x20</code>, <code>0x20</code> für <code>"1  "</code>) nicht sofort gesendet. Rusts Standardbibliothek verwendet für <code>stdout</code> einen Puffer. Bei interaktiven Terminals ist dieser meist zeilenpuffert (Line-Buffered), d.h. er wird erst beim Auftreten eines Zeilenumbruchs (<code>\n</code>) oder bei explizitem Aufruf von <code>stdout().flush()</code> geleert. Das bedeutet, dass alle Ausgaben einer Zeile gesammelt und als großer Block in die Pipe geschrieben werden.</li>
 <li><strong>Vergleichs-Algorithmus (Diffing)</strong>: Das Kurs-CLI liest das Lese-Ende der Pipe aus, konvertiert die empfangenen Bytes in einen UTF-8-String und teilt diesen anhand der Zeilenumbrüche (<code>\n</code> bzw. <code>\r\n</code>) in ein Array von Zeilen auf. Anschließend vergleicht ein exakter String-Vergleichs-Algorithmus jede Zeile mit der im Testfall hinterlegten Soll-Zeile. Da Ihr naiver Code statische Leerzeichen anhängt, statt eine feste Breite zu erzwingen, stimmen die Längen und die Positionen der Zeichen nicht überein. Das CLI bricht den Testlauf ab und gibt die genaue Differenz aus.</li>
 </ol>
-<hr />
+<hr>
 <h2 id="6-die-lösung"><a class="header" href="#6-die-lösung">6. Die Lösung</a></h2>
 <p>Die Lösung besteht aus zwei Teilen: Zuerst beheben wir den Formatierungsfehler in Rust unter Verwendung des EVA-Prinzips, und danach betrachten wir die Details zur Installation und zum Überprüfungsprozess des Kurs-CLI.</p>
 <h3 id="der-korrekte-rust-code"><a class="header" href="#der-korrekte-rust-code">Der korrekte Rust-Code</a></h3>
@@ -330,7 +319,7 @@ Ist:  "10  20  30  40  50  60  70  80  90  100  "
 <li><strong>Ausgabe (Output)</strong>: Das formatierte Drucken unter Verwendung des Format-Spezifizierers <code>{:4}</code>. Dieser sorgt dafür, dass Rust jede Zahl rechtsbündig in ein Feld von genau 4 Zeichen Breite schreibt. Führende Leerzeichen werden automatisch eingefügt.</li>
 </ul>
 <p>Hier ist der korrigierte Code in <code>src/main.rs</code>:</p>
-<pre><code class="language-rust">use std::io::{self, Write};
+<pre class="playground"><code class="language-rust edition2021">use std::io::{self, Write};
 
 fn main() {
     // 1. Eingabe &amp; Initialisierung (EVA: E)
@@ -358,7 +347,7 @@ fn main() {
         }
     }
 }</code></pre>
-<hr />
+<hr>
 <h3 id="1411-installation"><a class="header" href="#1411-installation">14.1.1 Installation</a></h3>
 <p>Um das Kurs-CLI auf Ihrem System einzurichten, stellt das Kursteam eine automatisierte Installationsroutine zur Verfügung. Diese lädt die passende vorkompilierte Binärdatei für Ihre Systemarchitektur herunter, konfiguriert die Sandbox-Abhängigkeiten und fügt den Suchpfad zu Ihren System-Umgebungsvariablen hinzu.</p>
 <h4 id="systemvoraussetzungen"><a class="header" href="#systemvoraussetzungen">Systemvoraussetzungen</a></h4>
@@ -370,9 +359,9 @@ fn main() {
 <p>Öffnen Sie Ihr Terminal und führen Sie den folgenden Befehl aus:</p>
 <pre><code class="language-bash">curl -fsSL https://antigravity.google/cli/install.sh | bash
 </code></pre>
-<blockquote>
-<p>[!IMPORTANT]
-<strong>Was macht dieses Installationsskript im Detail?</strong></p>
+<blockquote class="blockquote-tag blockquote-tag-important">
+<p class="blockquote-tag-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 1.75C0 .784.784 0 1.75 0h12.5C15.216 0 16 .784 16 1.75v9.5A1.75 1.75 0 0 1 14.25 13H8.06l-2.573 2.573A1.458 1.458 0 0 1 3 14.543V13H1.75A1.75 1.75 0 0 1 0 11.25Zm1.75-.25a.25.25 0 0 0-.25.25v9.5c0 .138.112.25.25.25h2a.75.75 0 0 1 .75.75v2.19l2.72-2.72a.749.749 0 0 1 .53-.22h6.5a.25.25 0 0 0 .25-.25v-9.5a.25.25 0 0 0-.25-.25Zm7 2.25v2.5a.75.75 0 0 1-1.5 0v-2.5a.75.75 0 0 1 1.5 0ZM9 9a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"></path></svg>Important</p>
+<p><strong>Was macht dieses Installationsskript im Detail?</strong></p>
 <ol>
 <li><strong>Architektur-Erkennung</strong>: Es prüft über <code>uname -s</code> und <code>uname -m</code>, welches Betriebssystem und welche CPU-Architektur (z. B. <code>x86_64</code> oder <code>arm64</code>) vorliegen.</li>
 <li><strong>Download</strong>: Es lädt die entsprechende Binärdatei herunter und speichert sie im Benutzerverzeichnis unter <code>~/.local/bin/agy</code>.</li>
@@ -388,9 +377,9 @@ source ~/.zshrc   # Für Zsh-Nutzer
 <p>Starten Sie die PowerShell als Administrator und führen Sie folgenden Befehl aus:</p>
 <pre><code class="language-powershell">irm https://antigravity.google/cli/install.ps1 | iex
 </code></pre>
-<blockquote>
-<p>[!IMPORTANT]
-<strong>Windows-Spezifika</strong>:</p>
+<blockquote class="blockquote-tag blockquote-tag-important">
+<p class="blockquote-tag-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 1.75C0 .784.784 0 1.75 0h12.5C15.216 0 16 .784 16 1.75v9.5A1.75 1.75 0 0 1 14.25 13H8.06l-2.573 2.573A1.458 1.458 0 0 1 3 14.543V13H1.75A1.75 1.75 0 0 1 0 11.25Zm1.75-.25a.25.25 0 0 0-.25.25v9.5c0 .138.112.25.25.25h2a.75.75 0 0 1 .75.75v2.19l2.72-2.72a.749.749 0 0 1 .53-.22h6.5a.25.25 0 0 0 .25-.25v-9.5a.25.25 0 0 0-.25-.25Zm7 2.25v2.5a.75.75 0 0 1-1.5 0v-2.5a.75.75 0 0 1 1.5 0ZM9 9a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"></path></svg>Important</p>
+<p><strong>Windows-Spezifika</strong>:</p>
 <ul>
 <li><code>irm</code> ist das Alias für <code>Invoke-RestMethod</code>, welches das Installationsskript herunterlädt.</li>
 <li><code>iex</code> (<code>Invoke-Expression</code>) führt das heruntergeladene Skript direkt in Ihrer PowerShell-Sitzung aus.</li>
@@ -404,10 +393,10 @@ source ~/.zshrc   # Für Zsh-Nutzer
 <p>Sie sollten eine Bestätigungsausgabe erhalten, die der folgenden ähnelt:</p>
 <pre><code class="language-text">antigravity-cli v2.4.1 (target: x86_64-unknown-linux-gnu, compiled: 2026-05-12)
 </code></pre>
-<hr />
-<h3 id="1412-test--und-Überprüfungsprozess"><a class="header" href="#1412-test--und-Überprüfungsprozess">14.1.2 Test- und Überprüfungsprozess</a></h3>
+<hr>
+<h3 id="1412-test--und-überprüfungsprozess"><a class="header" href="#1412-test--und-überprüfungsprozess">14.1.2 Test- und Überprüfungsprozess</a></h3>
 <p>Sobald das Kurs-CLI global installiert ist, können Sie den automatisierten Überprüfungsprozess für Ihre Übungsaufgaben nutzen. Das CLI navigiert durch Ihr Projekt, analysiert den Code und führt Tests in einer sicheren Umgebung aus.</p>
-<h4 id="der-detaillierte-ablauf-des-Überprüfungsprozesses"><a class="header" href="#der-detaillierte-ablauf-des-Überprüfungsprozesses">Der detaillierte Ablauf des Überprüfungsprozesses</a></h4>
+<h4 id="der-detaillierte-ablauf-des-überprüfungsprozesses"><a class="header" href="#der-detaillierte-ablauf-des-überprüfungsprozesses">Der detaillierte Ablauf des Überprüfungsprozesses</a></h4>
 <p>Wenn Sie in Ihrem Projektverzeichnis den Befehl <code>agy verify</code> eingeben, startet eine fest definierte Kette von Operationen:</p>
 <pre><code>+-----------------------------------------------------------------------------+
 |                            START: agy verify                                |
@@ -484,8 +473,8 @@ Das CLI sendet Testdaten an den Standard-Eingabekanal (<code>stdin</code>) des P
 <li><strong>Ergebnisprotokollierung</strong>:
 War der Test erfolgreich, generiert das CLI ein verschlüsseltes Erfolgs-Token und trägt den Fortschritt automatisch in Ihre lokale <code>AGENTS.md</code> ein, sodass nachfolgende KI-Agenten wissen, dass dieser Lernabschnitt erfolgreich abgeschlossen wurde.</li>
 </ol>
-<hr />
-<h2 id="7-kleines-tutorial-schritt-für-schritt-durch-die-Übungsüberprüfung"><a class="header" href="#7-kleines-tutorial-schritt-für-schritt-durch-die-Übungsüberprüfung">7. Kleines Tutorial: Schritt für Schritt durch die Übungsüberprüfung</a></h2>
+<hr>
+<h2 id="7-kleines-tutorial-schritt-für-schritt-durch-die-übungsüberprüfung"><a class="header" href="#7-kleines-tutorial-schritt-für-schritt-durch-die-übungsüberprüfung">7. Kleines Tutorial: Schritt für Schritt durch die Übungsüberprüfung</a></h2>
 <p>In diesem Tutorial installieren wir das Kurs-CLI, richten ein fehlerhaftes Übungsprojekt ein, lassen den Test scheitern, analysieren den Fehler und führen die Aufgabe zu einem erfolgreichen Abschluss.</p>
 <h3 id="schritt-1-cli-installieren-und-pfad-überprüfen"><a class="header" href="#schritt-1-cli-installieren-und-pfad-überprüfen">Schritt 1: CLI installieren und Pfad überprüfen</a></h3>
 <p>Führen Sie das Installationskommando für Ihr System aus (siehe Abschnitt 6). Nach der Installation überprüfen wir im Terminal, ob das Tool gefunden wird und einsatzbereit ist:</p>
@@ -498,7 +487,7 @@ War der Test erfolgreich, generiert das CLI ein verschlüsseltes Erfolgs-Token u
        - /home/thorsten/RustKurs/AGENTS.md
 [INFO] Aktueller Workspace: /home/thorsten/RustKurs
 </code></pre>
-<h3 id="schritt-2-ein-neues-Übungsverzeichnis-betreten"><a class="header" href="#schritt-2-ein-neues-Übungsverzeichnis-betreten">Schritt 2: Ein neues Übungsverzeichnis betreten</a></h3>
+<h3 id="schritt-2-ein-neues-übungsverzeichnis-betreten"><a class="header" href="#schritt-2-ein-neues-übungsverzeichnis-betreten">Schritt 2: Ein neues Übungsverzeichnis betreten</a></h3>
 <p>Navigieren Sie in den Übungsordner für dieses Kapitel. Wenn dieser noch nicht existiert, erstellen Sie ihn:</p>
 <pre><code class="language-bash">mkdir -p /home/thorsten/RustKurs/Uebung/Uebung_14
 cd /home/thorsten/RustKurs/Uebung/Uebung_14
@@ -506,7 +495,7 @@ cargo init --bin --name uebung_14
 </code></pre>
 <h3 id="schritt-3-einen-fehlerhaften-code-implementieren"><a class="header" href="#schritt-3-einen-fehlerhaften-code-implementieren">Schritt 3: Einen fehlerhaften Code implementieren</a></h3>
 <p>Öffnen Sie <code>src/main.rs</code> in Ihrem Editor und fügen Sie ein Programm ein, das den Benutzer nach seinem Namen fragt und ihn begrüßt. Wir bauen absichtlich einen Fehler ein: Wir vergessen das Ausrufezeichen bei der Begrüßung.</p>
-<pre><code class="language-rust">use std::io::{self, Write};
+<pre class="playground"><code class="language-rust edition2021">use std::io::{self, Write};
 
 fn main() {
     print!("Bitte geben Sie Ihren Namen ein: ");
@@ -535,8 +524,11 @@ fn main() {
 </code></pre>
 <h3 id="schritt-5-den-code-korrigieren-und-erfolgreich-validieren"><a class="header" href="#schritt-5-den-code-korrigieren-und-erfolgreich-validieren">Schritt 5: Den Code korrigieren und erfolgreich validieren</a></h3>
 <p>Ändern Sie die Zeile in <code>src/main.rs</code>, um das Ausrufezeichen hinzuzufügen:</p>
-<pre><code class="language-rust">    // Korrigierte Zeile:
-    println!("Hallo {}!", name);</code></pre>
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>    // Korrigierte Zeile:
+    println!("Hallo {}!", name);
+<span class="boring">}</span></code></pre>
 <p>Starten Sie die Überprüfung erneut:</p>
 <pre><code class="language-bash">agy verify
 </code></pre>
@@ -547,24 +539,30 @@ fn main() {
 [INFO] Fortschritt wurde in /home/thorsten/RustKurs/AGENTS.md aktualisiert.
        Status: Kapitel 14 abgeschlossen.
 </code></pre>
-<hr />
+<hr>
 <h2 id="8-mentale-modelle--deep-dive"><a class="header" href="#8-mentale-modelle--deep-dive">8. Mentale Modelle &amp; Deep Dive</a></h2>
 <h3 id="das-konzept-der-interprozesskommunikation-ipc-über-pipes"><a class="header" href="#das-konzept-der-interprozesskommunikation-ipc-über-pipes">Das Konzept der Interprozesskommunikation (IPC) über Pipes</a></h3>
 <p>Ein wichtiges mentales Modell ist das Verständnis von File-Deskriptoren und Standard-Streams unter Betriebssystemen. Jedes Mal, wenn ein Prozess gestartet wird, stellt das Betriebssystem ihm standardmäßig drei Kanäle (Kanäle zur Außenwelt) zur Verfügung:</p>
-<div class="table-wrapper"><table><thead><tr><th style="text-align: left">Deskriptor</th><th style="text-align: left">Name</th><th style="text-align: left">Standard-Ziel</th><th style="text-align: left">Verwendung in Rust</th></tr></thead><tbody>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th style="text-align: left">Deskriptor</th><th style="text-align: left">Name</th><th style="text-align: left">Standard-Ziel</th><th style="text-align: left">Verwendung in Rust</th></tr>
+</thead>
+<tbody>
 <tr><td style="text-align: left"><code>0</code></td><td style="text-align: left"><code>stdin</code></td><td style="text-align: left">Tastatur (Eingabe)</td><td style="text-align: left"><code>std::io::stdin()</code></td></tr>
 <tr><td style="text-align: left"><code>1</code></td><td style="text-align: left"><code>stdout</code></td><td style="text-align: left">Bildschirm (Ausgabe)</td><td style="text-align: left"><code>print!</code>, <code>println!</code></td></tr>
 <tr><td style="text-align: left"><code>2</code></td><td style="text-align: left"><code>stderr</code></td><td style="text-align: left">Bildschirm (Fehlerausgabe)</td><td style="text-align: left"><code>eprint!</code>, <code>eprintln!</code></td></tr>
-</tbody></table>
+</tbody>
+</table>
 </div>
 <p>Das Kurs-CLI manipuliert diese Deskriptoren vor dem Start Ihres Programms. Es nutzt Systemaufrufe (wie <code>dup2</code> unter Unix), um die Standardkanäle des neu erzeugten Kindprozesses in Puffer-Speicherbereiche des CLI-Elternprozesses umzuleiten.</p>
 <p>Dadurch wird eine <strong>Sandbox</strong> realisiert. Ihr Programm weiß nicht, dass es in einer Sandbox läuft; es schreibt weiterhin naiv auf Deskriptor <code>1</code>. Aber das Betriebssystem leitet die geschriebenen Bytes physikalisch in den Speicher des CLI um, wo sie analysiert werden können.</p>
-<hr />
+<hr>
 <h3 id="exhaustive-api-referenz-der-rust-prozesssteuerung"><a class="header" href="#exhaustive-api-referenz-der-rust-prozesssteuerung">Exhaustive API-Referenz der Rust-Prozesssteuerung</a></h3>
 <p>Wenn Sie ein eigenes CLI-Tool schreiben möchten, das andere Programme steuert und testet, stellt Ihnen die Standardbibliothek von Rust im Modul <code>std::process</code> alle notwendigen Werkzeuge bereit. Im Folgenden werden alle relevanten Typen und Methoden dieses Moduls detailliert dokumentiert.</p>
 <h4 id="1-stdprocesscommand"><a class="header" href="#1-stdprocesscommand">1. <code>std::process::Command</code></a></h4>
 <p>Dieser Struct dient als Builder für die Konfiguration und das Starten von Betriebssystem-Prozessen.</p>
-<hr />
+<hr>
 <h5 id="methode-commandnew"><a class="header" href="#methode-commandnew">Methode: <code>Command::new</code></a></h5>
 <ul>
 <li><strong>Signatur</strong>: <code>pub fn new&lt;S: AsRef&lt;OsStr&gt;&gt;(program: S) -&gt; Command</code></li>
@@ -576,11 +574,14 @@ fn main() {
 <li><strong>Rückgabetyp</strong>: Eine neue <code>Command</code>-Instanz mit Standard-Konfigurationen.</li>
 <li><strong>Sicherheitsaspekte &amp; Panics</strong>: Panikt nicht selbst, aber der spätere Start schlägt fehl, wenn das Programm nicht existiert oder die Berechtigungen fehlen.</li>
 <li><strong>Kurzbeispiel</strong>:
-<pre><code class="language-rust">use std::process::Command;
-let mut cmd = Command::new("cargo");</code></pre>
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>use std::process::Command;
+let mut cmd = Command::new("cargo");
+<span class="boring">}</span></code></pre>
 </li>
 </ul>
-<hr />
+<hr>
 <h5 id="methode-commandarg"><a class="header" href="#methode-commandarg">Methode: <code>Command::arg</code></a></h5>
 <ul>
 <li><strong>Signatur</strong>: <code>pub fn arg&lt;S: AsRef&lt;OsStr&gt;&gt;(&amp;mut self, arg: S) -&gt; &amp;mut Command</code></li>
@@ -592,12 +593,15 @@ let mut cmd = Command::new("cargo");</code></pre>
 <li><strong>Rückgabetyp</strong>: Eine veränderbare Referenz auf sich selbst (<code>&amp;mut Command</code>), um Methoden-Chaining zu ermöglichen.</li>
 <li><strong>Sicherheitsaspekte &amp; Panics</strong>: Argumente werden sicher an das Betriebssystem übergeben. Es besteht keine Gefahr von Command Injection (wie bei Systemaufrufen in C/C++), da Argumente nicht über eine Shell geparst werden.</li>
 <li><strong>Kurzbeispiel</strong>:
-<pre><code class="language-rust">use std::process::Command;
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>use std::process::Command;
 let mut cmd = Command::new("cargo");
-cmd.arg("build").arg("--release");</code></pre>
+cmd.arg("build").arg("--release");
+<span class="boring">}</span></code></pre>
 </li>
 </ul>
-<hr />
+<hr>
 <h5 id="methode-commandargs"><a class="header" href="#methode-commandargs">Methode: <code>Command::args</code></a></h5>
 <ul>
 <li><strong>Signatur</strong>: <code>pub fn args&lt;I, S&gt;(&amp;mut self, args: I) -&gt; &amp;mut Command where I: IntoIterator&lt;Item = S&gt;, S: AsRef&lt;OsStr&gt;</code></li>
@@ -609,12 +613,15 @@ cmd.arg("build").arg("--release");</code></pre>
 <li><strong>Rückgabetyp</strong>: Eine veränderbare Referenz auf sich selbst (<code>&amp;mut Command</code>).</li>
 <li><strong>Sicherheitsaspekte &amp; Panics</strong>: Keine.</li>
 <li><strong>Kurzbeispiel</strong>:
-<pre><code class="language-rust">use std::process::Command;
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>use std::process::Command;
 let mut cmd = Command::new("cargo");
-cmd.args(["test", "--no-run"]);</code></pre>
+cmd.args(["test", "--no-run"]);
+<span class="boring">}</span></code></pre>
 </li>
 </ul>
-<hr />
+<hr>
 <h5 id="methode-commandstdout"><a class="header" href="#methode-commandstdout">Methode: <code>Command::stdout</code></a></h5>
 <ul>
 <li><strong>Signatur</strong>: <code>pub fn stdout&lt;T: Into&lt;Stdio&gt;&gt;(&amp;mut self, cfg: T) -&gt; &amp;mut Command</code></li>
@@ -626,12 +633,15 @@ cmd.args(["test", "--no-run"]);</code></pre>
 <li><strong>Rückgabetyp</strong>: Eine veränderbare Referenz auf sich selbst (<code>&amp;mut Command</code>).</li>
 <li><strong>Sicherheitsaspekte &amp; Panics</strong>: Keine.</li>
 <li><strong>Kurzbeispiel</strong>:
-<pre><code class="language-rust">use std::process::{Command, Stdio};
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>use std::process::{Command, Stdio};
 let mut cmd = Command::new("cargo");
-cmd.stdout(Stdio::piped());</code></pre>
+cmd.stdout(Stdio::piped());
+<span class="boring">}</span></code></pre>
 </li>
 </ul>
-<hr />
+<hr>
 <h5 id="methode-commandoutput"><a class="header" href="#methode-commandoutput">Methode: <code>Command::output</code></a></h5>
 <ul>
 <li><strong>Signatur</strong>: <code>pub fn output(&amp;mut self) -&gt; Result&lt;Output, Error&gt;</code></li>
@@ -639,12 +649,15 @@ cmd.stdout(Stdio::piped());</code></pre>
 <li><strong>Rückgabetyp</strong>: <code>Result&lt;Output, std::io::Error&gt;</code>. Im Erfolgsfall enthält das <code>Output</code>-Objekt den Exit-Status, alle stdout-Bytes und alle stderr-Bytes.</li>
 <li><strong>Sicherheitsaspekte &amp; Panics</strong>: Blockiert den aktuellen Thread vollständig, bis der gestartete Prozess beendet ist. Achtung bei unendlichen Schleifen im Kindprozess: Dies blockiert auch Ihr Hauptprogramm dauerhaft.</li>
 <li><strong>Kurzbeispiel</strong>:
-<pre><code class="language-rust">use std::process::Command;
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>use std::process::Command;
 let output = Command::new("rustc").arg("--version").output().unwrap();
-assert!(output.status.success());</code></pre>
+assert!(output.status.success());
+<span class="boring">}</span></code></pre>
 </li>
 </ul>
-<hr />
+<hr>
 <h5 id="methode-commandstatus"><a class="header" href="#methode-commandstatus">Methode: <code>Command::status</code></a></h5>
 <ul>
 <li><strong>Signatur</strong>: <code>pub fn status(&amp;mut self) -&gt; Result&lt;ExitStatus, Error&gt;</code></li>
@@ -652,12 +665,15 @@ assert!(output.status.success());</code></pre>
 <li><strong>Rückgabetyp</strong>: <code>Result&lt;ExitStatus, std::io::Error&gt;</code>. Gibt nur den Beendigungsstatus zurück, leitet aber stdout und stderr an das übergeordnete Terminal weiter.</li>
 <li><strong>Sicherheitsaspekte &amp; Panics</strong>: Blockiert ebenfalls bis zur Beendigung des Prozesses.</li>
 <li><strong>Kurzbeispiel</strong>:
-<pre><code class="language-rust">use std::process::Command;
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>use std::process::Command;
 let status = Command::new("cargo").arg("check").status().unwrap();
-println!("Kompiliert mit Status: {}", status);</code></pre>
+println!("Kompiliert mit Status: {}", status);
+<span class="boring">}</span></code></pre>
 </li>
 </ul>
-<hr />
+<hr>
 <h5 id="methode-commandspawn"><a class="header" href="#methode-commandspawn">Methode: <code>Command::spawn</code></a></h5>
 <ul>
 <li><strong>Signatur</strong>: <code>pub fn spawn(&amp;mut self) -&gt; Result&lt;Child, Error&gt;</code></li>
@@ -665,14 +681,17 @@ println!("Kompiliert mit Status: {}", status);</code></pre>
 <li><strong>Rückgabetyp</strong>: <code>Result&lt;Child, std::io::Error&gt;</code>. Startet den Prozess asynchron im Hintergrund und gibt ein <code>Child</code>-Handle zurück, mit dem der Prozess kontrolliert werden kann.</li>
 <li><strong>Sicherheitsaspekte &amp; Panics</strong>: Blockiert nicht. Wenn das Kind-Handle fallengelassen wird (<code>drop</code>), läuft der Prozess im Hintergrund weiter. Er wird zum Zombie-Prozess, wenn er endet und nicht über <code>wait()</code> abgerufen wird.</li>
 <li><strong>Kurzbeispiel</strong>:
-<pre><code class="language-rust">use std::process::Command;
-let child = Command::new("cargo").arg("run").spawn().unwrap();</code></pre>
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>use std::process::Command;
+let child = Command::new("cargo").arg("run").spawn().unwrap();
+<span class="boring">}</span></code></pre>
 </li>
 </ul>
-<hr />
+<hr>
 <h4 id="2-stdprocesschild"><a class="header" href="#2-stdprocesschild">2. <code>std::process::Child</code></a></h4>
 <p>Repräsentiert einen im Hintergrund laufenden Prozess.</p>
-<hr />
+<hr>
 <h5 id="methode-childwait"><a class="header" href="#methode-childwait">Methode: <code>Child::wait</code></a></h5>
 <ul>
 <li><strong>Signatur</strong>: <code>pub fn wait(&amp;mut self) -&gt; Result&lt;ExitStatus, Error&gt;</code></li>
@@ -680,12 +699,15 @@ let child = Command::new("cargo").arg("run").spawn().unwrap();</code></pre>
 <li><strong>Rückgabetyp</strong>: <code>Result&lt;ExitStatus, std::io::Error&gt;</code>. Blockiert den aufrufenden Thread, bis der Kindprozess beendet ist, und gibt den Exit-Status zurück. Bereinigt die Systemressourcen des Prozesses.</li>
 <li><strong>Sicherheitsaspekte &amp; Panics</strong>: Zwingend erforderlich, um Zombie-Prozesse unter Unix-Systemen zu vermeiden.</li>
 <li><strong>Kurzbeispiel</strong>:
-<pre><code class="language-rust">use std::process::Command;
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>use std::process::Command;
 let mut child = Command::new("sleep").arg("1").spawn().unwrap();
-let status = child.wait().unwrap();</code></pre>
+let status = child.wait().unwrap();
+<span class="boring">}</span></code></pre>
 </li>
 </ul>
-<hr />
+<hr>
 <h5 id="methode-childkill"><a class="header" href="#methode-childkill">Methode: <code>Child::kill</code></a></h5>
 <ul>
 <li><strong>Signatur</strong>: <code>pub fn kill(&amp;mut self) -&gt; Result&lt;(), Error&gt;</code></li>
@@ -693,12 +715,15 @@ let status = child.wait().unwrap();</code></pre>
 <li><strong>Rückgabetyp</strong>: <code>Result&lt;(), std::io::Error&gt;</code>. Sendet das Signal zum sofortigen Abbruch an den Prozess (unter Unix <code>SIGKILL</code>, unter Windows <code>TerminateProcess</code>).</li>
 <li><strong>Sicherheitsaspekte &amp; Panics</strong>: Der Prozess wird augenblicklich beendet. Eventuell geöffnete Dateien oder Netzwerkverbindungen im Kindprozess werden vom Betriebssystem geschlossen, können aber in unsauberem Zustand verbleiben.</li>
 <li><strong>Kurzbeispiel</strong>:
-<pre><code class="language-rust">use std::process::Command;
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>use std::process::Command;
 let mut child = Command::new("loop_forever").spawn().unwrap();
-child.kill().unwrap();</code></pre>
+child.kill().unwrap();
+<span class="boring">}</span></code></pre>
 </li>
 </ul>
-<hr />
+<hr>
 <h5 id="methode-childwait_with_output"><a class="header" href="#methode-childwait_with_output">Methode: <code>Child::wait_with_output</code></a></h5>
 <ul>
 <li><strong>Signatur</strong>: <code>pub fn wait_with_output(self) -&gt; Result&lt;Output, Error&gt;</code></li>
@@ -710,12 +735,15 @@ child.kill().unwrap();</code></pre>
 <li><strong>Rückgabetyp</strong>: <code>Result&lt;Output, std::io::Error&gt;</code>. Sammelt alle verbleibenden Ausgaben aus den Pipes und beendet die Überwachung.</li>
 <li><strong>Sicherheitsaspekte &amp; Panics</strong>: Verhindert Deadlocks, die auftreten können, wenn der Kindprozess blockiert, weil sein Ausgabepuffer voll ist, während der Elternprozess auf das Ende wartet.</li>
 <li><strong>Kurzbeispiel</strong>:
-<pre><code class="language-rust">use std::process::{Command, Stdio};
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>use std::process::{Command, Stdio};
 let child = Command::new("rustc").arg("--version").stdout(Stdio::piped()).spawn().unwrap();
-let output = child.wait_with_output().unwrap();</code></pre>
+let output = child.wait_with_output().unwrap();
+<span class="boring">}</span></code></pre>
 </li>
 </ul>
-<hr />
+<hr>
 <h4 id="3-stdprocessstdio"><a class="header" href="#3-stdprocessstdio">3. <code>std::process::Stdio</code></a></h4>
 <p>Definiert das Verhalten der Standard-Datenströme eines Kindprozesses.</p>
 <ul>
@@ -723,29 +751,29 @@ let output = child.wait_with_output().unwrap();</code></pre>
 <li><strong><code>Stdio::null()</code></strong>: Leitet den Stream in das Null-Gerät des Betriebssystems um (z. B. <code>/dev/null</code> unter Linux, <code>NUL</code> unter Windows). Alle geschriebenen Daten verpuffen, Eingaben liefern sofort ein EOF (End of File).</li>
 <li><strong><code>Stdio::inherit()</code></strong>: Der Kindprozess erbt die Streams des Elternprozesses. Ausgaben werden direkt in dasselbe Terminal geschrieben.</li>
 </ul>
-<hr />
+<hr>
 <h4 id="4-stdprocessexitstatus"><a class="header" href="#4-stdprocessexitstatus">4. <code>std::process::ExitStatus</code></a></h4>
 <p>Repräsentiert das Ergebnis der Beendigung eines Prozesses.</p>
 <ul>
 <li><strong><code>ExitStatus::success(&amp;self)</code></strong>: Gibt <code>true</code> zurück, wenn der Prozess erfolgreich beendet wurde (Exit-Code <code>0</code>).</li>
 <li><strong><code>ExitStatus::code(&amp;self)</code></strong>: Gibt den tatsächlichen Exit-Code als <code>Option&lt;i32&gt;</code> zurück. Kann unter Unix <code>None</code> sein, wenn der Prozess durch ein Signal (z. B. <code>SIGKILL</code>) gewaltsam beendet wurde.</li>
 </ul>
-<hr />
-<h2 id="9-drei-praktische-Übungen"><a class="header" href="#9-drei-praktische-Übungen">9. Drei praktische Übungen</a></h2>
-<h3 id="Übung-1-leicht-cli-status-auslesen-und-analysieren"><a class="header" href="#Übung-1-leicht-cli-status-auslesen-und-analysieren">Übung 1 (Leicht): CLI-Status auslesen und analysieren</a></h3>
+<hr>
+<h2 id="9-drei-praktische-übungen"><a class="header" href="#9-drei-praktische-übungen">9. Drei praktische Übungen</a></h2>
+<h3 id="übung-1-leicht-cli-status-auslesen-und-analysieren"><a class="header" href="#übung-1-leicht-cli-status-auslesen-und-analysieren">Übung 1 (Leicht): CLI-Status auslesen und analysieren</a></h3>
 <ul>
 <li><strong>Anforderung</strong>: Schreiben Sie ein kurzes Rust-Programm, das das Kurs-CLI aufruft, um dessen Konfiguration und Version im JSON-Format auszulesen. Das Programm soll prüfen, ob der Aufruf erfolgreich war. Wenn ja, soll die rohe JSON-Ausgabe auf der Konsole ausgegeben werden. Wenn nein, soll eine Fehlermeldung ausgegeben werden.</li>
 <li><strong>Erwartete CLI-Befehlskette</strong>: <code>agy inspect --format=json</code></li>
 <li><strong>Lösungshinweis</strong>: Nutzen Sie <code>Command::new("agy")</code> und übergeben Sie die Argumente <code>inspect</code> und <code>--format=json</code>. Fangen Sie die Ausgabe mit <code>output()</code> ab und konvertieren Sie die Bytes in einen UTF-8-String.</li>
 </ul>
-<hr />
-<h3 id="Übung-2-mittel-cargo-test-integration"><a class="header" href="#Übung-2-mittel-cargo-test-integration">Übung 2 (Mittel): Cargo-Test-Integration</a></h3>
+<hr>
+<h3 id="übung-2-mittel-cargo-test-integration"><a class="header" href="#übung-2-mittel-cargo-test-integration">Übung 2 (Mittel): Cargo-Test-Integration</a></h3>
 <ul>
 <li><strong>Anforderung</strong>: Erweitern Sie Ihre Übungsaufgabe 14 so, dass Sie einen echten, automatisierten Unit-Test in den Rust-Code integrieren. Schreiben Sie eine Hilfsfunktion <code>begruessung(name: &amp;str) -&gt; String</code>, die den Begrüßungstext generiert. Schreiben Sie einen Unit-Test unter dem Attribut <code>#[test]</code>, der verifiziert, dass die Eingabe <code>"Thorsten"</code> exakt <code>"Hallo Thorsten!"</code> ergibt. Das Kurs-CLI wird beim Testlauf diesen Test automatisch ausführen.</li>
 <li><strong>Lösungshinweis</strong>: Erstellen Sie ein Test-Modul <code>tests</code> mit der Annotation <code>#[cfg(test)]</code> und einer Testfunktion, die mit <code>assert_eq!</code> arbeitet.</li>
 </ul>
-<hr />
-<h3 id="Übung-3-schwer-ein-eigener-mini-testrunner-in-rust"><a class="header" href="#Übung-3-schwer-ein-eigener-mini-testrunner-in-rust">Übung 3 (Schwer): Ein eigener Mini-Testrunner in Rust</a></h3>
+<hr>
+<h3 id="übung-3-schwer-ein-eigener-mini-testrunner-in-rust"><a class="header" href="#übung-3-schwer-ein-eigener-mini-testrunner-in-rust">Übung 3 (Schwer): Ein eigener Mini-Testrunner in Rust</a></h3>
 <ul>
 <li>
 <p><strong>Anforderung</strong>: Schreiben Sie ein vollständiges, eigenständiges Rust-Programm, das als Mini-Testrunner fungiert. Ihr Programm soll:</p>
@@ -756,7 +784,7 @@ let output = child.wait_with_output().unwrap();</code></pre>
 <li>Dem gestarteten Prozess den String <code>"Peter\n"</code> an seinen <code>stdin</code>-Kanal senden.</li>
 <li>Einen Timeout-Mechanismus implementieren: Wartet maximal 2 Sekunden auf die Beendigung des Prozesses. Läuft er länger, soll er gewaltsam beendet werden (<code>kill</code>).</li>
 <li>Die Ausgabe (<code>stdout</code>) des Prozesses abfangen und prüfen, ob sie die Zeichenkette <code>"Hallo Peter!"</code> enthält.</li>
-<li>Das Ergebnis auf dem Bildschirm ausgeben ("Test BESTANDEN" oder "Test FEHLGESCHLAGEN").</li>
+<li>Das Ergebnis auf dem Bildschirm ausgeben (“Test BESTANDEN” oder “Test FEHLGESCHLAGEN”).</li>
 </ol>
 </li>
 <li>
@@ -764,11 +792,11 @@ let output = child.wait_with_output().unwrap();</code></pre>
 Sie müssen <code>Stdio::piped()</code> für alle drei Streams verwenden. Um Daten an <code>stdin</code> zu senden, greifen Sie auf <code>child.stdin.as_mut()</code> zu und schreiben Sie Bytes hinein. Nutzen Sie einen separaten Thread oder die Methode <code>std::thread::sleep</code>, um den Timeout zu simulieren, falls das Betriebssystem keine asynchronen Timeouts unterstützt.</p>
 </li>
 </ul>
-<hr />
-<h2 id="lösungen-zu-den-Übungen"><a class="header" href="#lösungen-zu-den-Übungen">Lösungen zu den Übungen</a></h2>
+<hr>
+<h2 id="lösungen-zu-den-übungen"><a class="header" href="#lösungen-zu-den-übungen">Lösungen zu den Übungen</a></h2>
 <p>Hier finden Sie die vollständigen, lauffähigen Implementierungen zu den Übungen.</p>
-<h3 id="lösung-zu-Übung-1-leicht"><a class="header" href="#lösung-zu-Übung-1-leicht">Lösung zu Übung 1 (Leicht)</a></h3>
-<pre><code class="language-rust">use std::process::Command;
+<h3 id="lösung-zu-übung-1-leicht"><a class="header" href="#lösung-zu-übung-1-leicht">Lösung zu Übung 1 (Leicht)</a></h3>
+<pre class="playground"><code class="language-rust edition2021">use std::process::Command;
 use std::str;
 
 fn main() {
@@ -808,9 +836,9 @@ fn main() {
         }
     }
 }</code></pre>
-<hr />
-<h3 id="lösung-zu-Übung-2-mittel"><a class="header" href="#lösung-zu-Übung-2-mittel">Lösung zu Übung 2 (Mittel)</a></h3>
-<pre><code class="language-rust">use std::io::{self, Write};
+<hr>
+<h3 id="lösung-zu-übung-2-mittel"><a class="header" href="#lösung-zu-übung-2-mittel">Lösung zu Übung 2 (Mittel)</a></h3>
+<pre class="playground"><code class="language-rust edition2021">use std::io::{self, Write};
 
 // Die ausgelagerte Business-Logik
 pub fn generiere_begruessung(name: &amp;str) -&gt; String {
@@ -852,9 +880,9 @@ mod tests {
         assert_eq!(ergebnis, "Hallo !");
     }
 }</code></pre>
-<hr />
-<h3 id="lösung-zu-Übung-3-schwer"><a class="header" href="#lösung-zu-Übung-3-schwer">Lösung zu Übung 3 (Schwer)</a></h3>
-<pre><code class="language-rust">use std::io::{Read, Write};
+<hr>
+<h3 id="lösung-zu-übung-3-schwer"><a class="header" href="#lösung-zu-übung-3-schwer">Lösung zu Übung 3 (Schwer)</a></h3>
+<pre class="playground"><code class="language-rust edition2021">use std::io::{Read, Write};
 use std::process::{Command, Stdio};
 use std::thread;
 use std::time::Duration;
@@ -954,16 +982,22 @@ fn main() {
         println!("\n&gt;&gt;&gt; Ergebnis: Test FEHLGESCHLAGEN! (Erwarteter String nicht gefunden) &lt;&lt;&lt;");
     }
 }</code></pre>
-<hr />
+<hr>
 <h2 id="10-lernstrategie-selbsteinschätzung--merkzettel"><a class="header" href="#10-lernstrategie-selbsteinschätzung--merkzettel">10. Lernstrategie, Selbsteinschätzung &amp; Merkzettel</a></h2>
 <h3 id="spickzettel-cheat-sheet"><a class="header" href="#spickzettel-cheat-sheet">Spickzettel (Cheat Sheet)</a></h3>
-<div class="table-wrapper"><table><thead><tr><th style="text-align: left">Befehl</th><th style="text-align: left">Parameter / Option</th><th style="text-align: left">Beschreibung</th></tr></thead><tbody>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th style="text-align: left">Befehl</th><th style="text-align: left">Parameter / Option</th><th style="text-align: left">Beschreibung</th></tr>
+</thead>
+<tbody>
 <tr><td style="text-align: left"><code>agy inspect</code></td><td style="text-align: left">Keine</td><td style="text-align: left">Analysiert den aktuellen Workspace und listet aktive Governance-Regeln auf.</td></tr>
 <tr><td style="text-align: left"><code>agy inspect</code></td><td style="text-align: left"><code>--format=json</code></td><td style="text-align: left">Gibt die Workspace-Konfiguration im maschinenlesbaren JSON-Format aus.</td></tr>
 <tr><td style="text-align: left"><code>agy verify</code></td><td style="text-align: left">Keine</td><td style="text-align: left">Startet den automatisierten Kompilierungs-, Linter- und Testlauf für das Projekt.</td></tr>
 <tr><td style="text-align: left"><code>agy verify</code></td><td style="text-align: left"><code>--timeout &lt;ms&gt;</code></td><td style="text-align: left">Definiert ein abweichendes Zeitlimit für die Sandbox-Ausführung (in Millisekunden).</td></tr>
 <tr><td style="text-align: left"><code>agy --version</code></td><td style="text-align: left">Keine</td><td style="text-align: left">Gibt die installierte Versionsnummer des Kurs-CLI und die Zielarchitektur aus.</td></tr>
-</tbody></table>
+</tbody>
+</table>
 </div>
 <h3 id="active-recall-selbsttest"><a class="header" href="#active-recall-selbsttest">Active Recall (Selbsttest)</a></h3>
 <p>Formulieren Sie im Kopf oder schriftlich Antworten auf folgende Fragen:</p>
@@ -986,14 +1020,11 @@ fn main() {
 <h3 id="metakognitiver-selbsttest"><a class="header" href="#metakognitiver-selbsttest">Metakognitiver Selbsttest</a></h3>
 <p>Wechseln Sie erst zum nächsten Kapitel des Lehrbuchs, wenn Sie folgende Checkliste erfolgreich abarbeiten können:</p>
 <ul>
-<li><input disabled="" type="checkbox"/>
-Sie haben das Kurs-CLI global auf Ihrem Betriebssystem installiert und können <code>agy --version</code> ohne Fehler aufrufen.</li>
-<li><input disabled="" type="checkbox"/>
-Sie verstehen den Unterschied zwischen einem Syntax-Fehler (Compiler blockiert) und einem logischen Formatierungsfehler (CLI-Testrunner schlägt fehl).</li>
-<li><input disabled="" type="checkbox"/>
-Sie können erklären, was <code>stdout</code> und <code>stdin</code> sind und wie Daten über Pipes fließen.</li>
+<li><input disabled="" type="checkbox"> Sie haben das Kurs-CLI global auf Ihrem Betriebssystem installiert und können <code>agy --version</code> ohne Fehler aufrufen.</li>
+<li><input disabled="" type="checkbox"> Sie verstehen den Unterschied zwischen einem Syntax-Fehler (Compiler blockiert) und einem logischen Formatierungsfehler (CLI-Testrunner schlägt fehl).</li>
+<li><input disabled="" type="checkbox"> Sie können erklären, was <code>stdout</code> und <code>stdin</code> sind und wie Daten über Pipes fließen.</li>
 </ul>
-<hr />
+<hr>
 <h2 id="11-zusammenfassung"><a class="header" href="#11-zusammenfassung">11. Zusammenfassung</a></h2>
 <ul>
 <li><strong>Das Kurs-CLI</strong> (<code>agy</code>) ist das zentrale Validierungswerkzeug zur automatisierten Bewertung Ihrer Rust-Übungen.</li>
@@ -1009,11 +1040,11 @@ Sie können erklären, was <code>stdout</code> und <code>stdin</code> sind und w
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
                             <a rel="prev" href="13.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
-                                <i class="fa fa-angle-left"></i>
+                                <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
                             </a>
 
                             <a rel="next prefetch" href="15.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
-                                <i class="fa fa-angle-right"></i>
+                                <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
                             </a>
 
                         <div style="clear: both"></div>
@@ -1023,16 +1054,21 @@ Sie können erklären, was <code>stdout</code> und <code>stdin</code> sind und w
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
                     <a rel="prev" href="13.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
-                        <i class="fa fa-angle-left"></i>
+                        <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
                     </a>
 
                     <a rel="next prefetch" href="15.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
-                        <i class="fa fa-angle-right"></i>
+                        <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
                     </a>
             </nav>
 
         </div>
 
+        <template id=fa-eye><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M288 32c-80.8 0-145.5 36.8-192.6 80.6C48.6 156 17.3 208 2.5 243.7c-3.3 7.9-3.3 16.7 0 24.6C17.3 304 48.6 356 95.4 399.4C142.5 443.2 207.2 480 288 480s145.5-36.8 192.6-80.6c46.8-43.5 78.1-95.4 93-131.1c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C433.5 68.8 368.8 32 288 32zM432 256c0 79.5-64.5 144-144 144s-144-64.5-144-144s64.5-144 144-144s144 64.5 144 144zM288 192c0 35.3-28.7 64-64 64c-11.5 0-22.3-3-31.6-8.4c-.2 2.8-.4 5.5-.4 8.4c0 53 43 96 96 96s96-43 96-96s-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6z"/></svg></span></template>
+        <template id=fa-eye-slash><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M38.8 5.1C28.4-3.1 13.3-1.2 5.1 9.2S-1.2 34.7 9.2 42.9l592 464c10.4 8.2 25.5 6.3 33.7-4.1s6.3-25.5-4.1-33.7L525.6 386.7c39.6-40.6 66.4-86.1 79.9-118.4c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C465.5 68.8 400.8 32 320 32c-68.2 0-125 26.3-169.3 60.8L38.8 5.1zM223.1 149.5C248.6 126.2 282.7 112 320 112c79.5 0 144 64.5 144 144c0 24.9-6.3 48.3-17.4 68.7L408 294.5c5.2-11.8 8-24.8 8-38.5c0-53-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6c0 10.2-2.4 19.8-6.6 28.3l-90.3-70.8zm223.1 298L373 389.9c-16.4 6.5-34.3 10.1-53 10.1c-79.5 0-144-64.5-144-144c0-6.9 .5-13.6 1.4-20.2L83.1 161.5C60.3 191.2 44 220.8 34.5 243.7c-3.3 7.9-3.3 16.7 0 24.6c14.9 35.7 46.2 87.7 93 131.1C174.5 443.2 239.2 480 320 480c47.8 0 89.9-12.9 126.2-32.5z"/></svg></span></template>
+        <template id=fa-copy><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M502.6 70.63l-61.25-61.25C435.4 3.371 427.2 0 418.7 0H255.1c-35.35 0-64 28.66-64 64l.0195 256C192 355.4 220.7 384 256 384h192c35.2 0 64-28.8 64-64V93.25C512 84.77 508.6 76.63 502.6 70.63zM464 320c0 8.836-7.164 16-16 16H255.1c-8.838 0-16-7.164-16-16L239.1 64.13c0-8.836 7.164-16 16-16h128L384 96c0 17.67 14.33 32 32 32h47.1V320zM272 448c0 8.836-7.164 16-16 16H63.1c-8.838 0-16-7.164-16-16L47.98 192.1c0-8.836 7.164-16 16-16H160V128H63.99c-35.35 0-64 28.65-64 64l.0098 256C.002 483.3 28.66 512 64 512h192c35.2 0 64-28.8 64-64v-32h-47.1L272 448z"/></svg></span></template>
+        <template id=fa-play><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80V432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"/></svg></span></template>
+        <template id=fa-clock-rotate-left><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M75 75L41 41C25.9 25.9 0 36.6 0 57.9V168c0 13.3 10.7 24 24 24H134.1c21.4 0 32.1-25.9 17-41l-30.8-30.8C155 85.5 203 64 256 64c106 0 192 86 192 192s-86 192-192 192c-40.8 0-78.6-12.7-109.7-34.4c-14.5-10.1-34.4-6.6-44.6 7.9s-6.6 34.4 7.9 44.6C151.2 495 201.7 512 256 512c141.4 0 256-114.6 256-256S397.4 0 256 0C185.3 0 121.3 28.7 75 75zm181 53c-13.3 0-24 10.7-24 24V256c0 6.4 2.5 12.5 7 17l72 72c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-65-65V152c0-13.3-10.7-24-24-24z"/></svg></span></template>
 
 
 
@@ -1041,17 +1077,17 @@ Sie können erklären, was <code>stdout</code> und <code>stdin</code> sind und w
         </script>
 
 
-        <script src="elasticlunr.min.js"></script>
-        <script src="mark.min.js"></script>
-        <script src="searcher.js"></script>
+        <script src="elasticlunr-ef4e11c1.min.js"></script>
+        <script src="mark-09e88c2c.min.js"></script>
+        <script src="searcher-09f2665d.js"></script>
 
-        <script src="clipboard.min.js"></script>
-        <script src="highlight.js"></script>
-        <script src="book.js"></script>
+        <script src="clipboard-1626706a.min.js"></script>
+        <script src="highlight-abc7f01d.js"></script>
+        <script src="book-c22b7243.js"></script>
 
         <!-- Custom JS scripts -->
-        <script src="mermaid.min.js"></script>
-        <script src="mermaid-init.js"></script>
+        <script src="mermaid-eefea253.min.js"></script>
+        <script src="mermaid-init-ccf746f1.js"></script>
 
 
 

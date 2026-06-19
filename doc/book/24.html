@@ -7,26 +7,25 @@
 
 
         <!-- Custom HTML head -->
-        
+
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="theme-color" content="#ffffff">
 
-        <link rel="icon" href="favicon.svg">
-        <link rel="shortcut icon" href="favicon.png">
-        <link rel="stylesheet" href="css/variables.css">
-        <link rel="stylesheet" href="css/general.css">
-        <link rel="stylesheet" href="css/chrome.css">
-        <link rel="stylesheet" href="css/print.css" media="print">
+        <link rel="icon" href="favicon-de23e50b.svg">
+        <link rel="shortcut icon" href="favicon-8114d1fc.png">
+        <link rel="stylesheet" href="css/variables-8adf115d.css">
+        <link rel="stylesheet" href="css/general-0392ca55.css">
+        <link rel="stylesheet" href="css/chrome-fc474251.css">
+        <link rel="stylesheet" href="css/print-9e4910d8.css" media="print">
 
         <!-- Fonts -->
-        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
-        <link rel="stylesheet" href="fonts/fonts.css">
+        <link rel="stylesheet" href="fonts/fonts-9644e21d.css">
 
         <!-- Highlight.js Stylesheets -->
-        <link rel="stylesheet" id="highlight-css" href="highlight.css">
-        <link rel="stylesheet" id="tomorrow-night-css" href="tomorrow-night.css">
-        <link rel="stylesheet" id="ayu-highlight-css" href="ayu-highlight.css">
+        <link rel="stylesheet" id="mdbook-highlight-css" href="highlight-493f70e1.css">
+        <link rel="stylesheet" id="mdbook-tomorrow-night-css" href="tomorrow-night-4c0ae647.css">
+        <link rel="stylesheet" id="mdbook-ayu-highlight-css" href="ayu-highlight-3fdfc3ac.css">
 
         <!-- Custom theme stylesheets -->
 
@@ -36,10 +35,10 @@
             const path_to_root = "";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "searchindex.js";
+            window.path_to_searchindex_js = "searchindex-34eaf846.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="toc.js"></script>
+        <script src="toc-9a36690f.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -53,7 +52,7 @@
             </div>
         </div>
     </div>
-    <div id="body-container">
+    <div id="mdbook-body-container">
         <!-- Work around some values being stored in localStorage wrapped in quotes -->
         <script>
             try {
@@ -82,12 +81,12 @@
             html.classList.add("js");
         </script>
 
-        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+        <input type="checkbox" id="mdbook-sidebar-toggle-anchor" class="hidden">
 
         <!-- Hide / unhide sidebar before it is displayed -->
         <script>
             let sidebar = null;
-            const sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            const sidebar_toggle = document.getElementById("mdbook-sidebar-toggle-anchor");
             if (document.body.clientWidth >= 1080) {
                 try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
                 sidebar = sidebar || 'visible';
@@ -102,39 +101,39 @@
             }
         </script>
 
-        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+        <nav id="mdbook-sidebar" class="sidebar" aria-label="Table of contents">
             <!-- populated by js -->
             <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
             <noscript>
                 <iframe class="sidebar-iframe-outer" src="toc.html"></iframe>
             </noscript>
-            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+            <div id="mdbook-sidebar-resize-handle" class="sidebar-resize-handle">
                 <div class="sidebar-resize-indicator"></div>
             </div>
         </nav>
 
-        <div id="page-wrapper" class="page-wrapper">
+        <div id="mdbook-page-wrapper" class="page-wrapper">
 
             <div class="page">
-                                <div id="menu-bar-hover-placeholder"></div>
-                <div id="menu-bar" class="menu-bar sticky">
+                <div id="mdbook-menu-bar-hover-placeholder"></div>
+                <div id="mdbook-menu-bar" class="menu-bar sticky">
                     <div class="left-buttons">
-                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
-                            <i class="fa fa-bars"></i>
+                        <label id="mdbook-sidebar-toggle" class="icon-button" for="mdbook-sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="mdbook-sidebar">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"/></svg></span>
                         </label>
-                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
-                            <i class="fa fa-paint-brush"></i>
+                        <button id="mdbook-theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="mdbook-theme-list">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M371.3 367.1c27.3-3.9 51.9-19.4 67.2-42.9L600.2 74.1c12.6-19.5 9.4-45.3-7.6-61.2S549.7-4.4 531.1 9.6L294.4 187.2c-24 18-38.2 46.1-38.4 76.1L371.3 367.1zm-19.6 25.4l-116-104.4C175.9 290.3 128 339.6 128 400c0 3.9 .2 7.8 .6 11.6c1.8 17.5-10.2 36.4-27.8 36.4H96c-17.7 0-32 14.3-32 32s14.3 32 32 32H240c61.9 0 112-50.1 112-112c0-2.5-.1-5-.2-7.5z"/></svg></span>
                         </button>
-                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
-                            <li role="none"><button role="menuitem" class="theme" id="default_theme">Auto</button></li>
-                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
-                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
-                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
-                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
-                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        <ul id="mdbook-theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-default_theme">Auto</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-ayu">Ayu</button></li>
                         </ul>
-                        <button id="search-toggle" class="icon-button" type="button" title="Search (`/`)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="/ s" aria-controls="searchbar">
-                            <i class="fa fa-search"></i>
+                        <button id="mdbook-search-toggle" class="icon-button" type="button" title="Search (`/`)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="/ s" aria-controls="mdbook-searchbar">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352c79.5 0 144-64.5 144-144s-64.5-144-144-144S64 128.5 64 208s64.5 144 144 144z"/></svg></span>
                         </button>
                     </div>
 
@@ -142,43 +141,43 @@
 
                     <div class="right-buttons">
                         <a href="print.html" title="Print this book" aria-label="Print this book">
-                            <i id="print-button" class="fa fa-print"></i>
+                            <span class=fa-svg id="print-button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M128 0C92.7 0 64 28.7 64 64v96h64V64H354.7L384 93.3V160h64V93.3c0-17-6.7-33.3-18.7-45.3L400 18.7C388 6.7 371.7 0 354.7 0H128zM384 352v32 64H128V384 368 352H384zm64 32h32c17.7 0 32-14.3 32-32V256c0-35.3-28.7-64-64-64H64c-35.3 0-64 28.7-64 64v96c0 17.7 14.3 32 32 32H64v64c0 35.3 28.7 64 64 64H384c35.3 0 64-28.7 64-64V384zm-16-88c-13.3 0-24-10.7-24-24s10.7-24 24-24s24 10.7 24 24s-10.7 24-24 24z"/></svg></span>
                         </a>
 
                     </div>
                 </div>
 
-                <div id="search-wrapper" class="hidden">
-                    <form id="searchbar-outer" class="searchbar-outer">
+                <div id="mdbook-search-wrapper" class="hidden">
+                    <form id="mdbook-searchbar-outer" class="searchbar-outer">
                         <div class="search-wrapper">
-                            <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                            <input type="search" id="mdbook-searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="mdbook-searchresults-outer" aria-describedby="searchresults-header">
                             <div class="spinner-wrapper">
-                                <i class="fa fa-spinner fa-spin"></i>
+                                <span class=fa-svg id="fa-spin"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M304 48c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zm0 416c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zM48 304c26.5 0 48-21.5 48-48s-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48zm464-48c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zM142.9 437c18.7-18.7 18.7-49.1 0-67.9s-49.1-18.7-67.9 0s-18.7 49.1 0 67.9s49.1 18.7 67.9 0zm0-294.2c18.7-18.7 18.7-49.1 0-67.9S93.7 56.2 75 75s-18.7 49.1 0 67.9s49.1 18.7 67.9 0zM369.1 437c18.7 18.7 49.1 18.7 67.9 0s18.7-49.1 0-67.9s-49.1-18.7-67.9 0s-18.7 49.1 0 67.9z"/></svg></span>
                             </div>
                         </div>
                     </form>
-                    <div id="searchresults-outer" class="searchresults-outer hidden">
-                        <div id="searchresults-header" class="searchresults-header"></div>
-                        <ul id="searchresults">
+                    <div id="mdbook-searchresults-outer" class="searchresults-outer hidden">
+                        <div id="mdbook-searchresults-header" class="searchresults-header"></div>
+                        <ul id="mdbook-searchresults">
                         </ul>
                     </div>
                 </div>
 
                 <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
                 <script>
-                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
-                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
-                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                    document.getElementById('mdbook-sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('mdbook-sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#mdbook-sidebar a')).forEach(function(link) {
                         link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
                     });
                 </script>
 
-                <div id="content" class="content">
+                <div id="mdbook-content" class="content">
                     <main>
                         <h1 id="kapitel-24-projekt-professionalisierung--das-antigravity-cli"><a class="header" href="#kapitel-24-projekt-professionalisierung--das-antigravity-cli">Kapitel 24: Projekt-Professionalisierung &amp; das Antigravity CLI</a></h1>
 <p>Herzlichen Glückwunsch! Sie haben die theoretischen und praktischen Grundlagen von Rust bis hin zu komplexeren Konzepten wie dem Ownership-System, Referenzen und Borrowing gemeistert. Doch mit wachsendem Wissen und größeren Projekten steigt auch die Komplexität. Um den Überblick nicht zu verlieren und die Zusammenarbeit mit modernen künstlichen Intelligenzen (KI) zur Entwicklung von Software zu maximieren, ist eine professionelle Projektorganisation unerlässlich.</p>
 <p>In diesem Kapitel lernen Sie, wie Sie Ihr Rust-Projekt auf ein professionelles Niveau heben. Wir betrachten die vier Säulen der Workspace-Governance (<a href="file:///home/thorsten/RustKurs/AGENTS.md">AGENTS.md</a>, <a href="file:///home/thorsten/RustKurs/skills.md">skills.md</a>, <a href="file:///home/thorsten/RustKurs/.agentrules">.agentrules</a> und <a href="file:///home/thorsten/RustKurs/glossary.md">glossary.md</a>) und steigen tief in die Nutzung des <strong>Antigravity CLI</strong> (<code>agy</code>) ein. Sie erfahren Schritt für Schritt, wie Sie ein neues Unterverzeichnis <code>Tutorial</code> mithilfe der KI-Unterstützung des CLI erstellen, integrieren und verwalten.</p>
-<hr />
+<hr>
 <h2 id="31-lernziele--lernplan"><a class="header" href="#31-lernziele--lernplan">3.1 Lernziele &amp; Lernplan</a></h2>
 <h3 id="lernziele"><a class="header" href="#lernziele">Lernziele</a></h3>
 <ul>
@@ -200,7 +199,7 @@
 <li><strong>Lernstrategie, Selbsteinschätzung &amp; Merkzettel</strong>: Cheat Sheet, Active Recall Fragen, Feynman-Methode und gefundene Fehlerprovokation.</li>
 <li><strong>Zusammenfassung</strong>: Kernpunkte auf einen glance.</li>
 </ol>
-<hr />
+<hr>
 <h2 id="32-die-definition"><a class="header" href="#32-die-definition">3.2 Die Definition</a></h2>
 <p>Für eine präzise technische Grundlage definieren wir die Kernkomponenten des Workflows wie folgt:</p>
 <ul>
@@ -214,19 +213,19 @@
 <p>Stellen Sie sich vor, Sie spielen im Sandkasten Ihres Gartens. Sie können dort Sandburgen bauen, Tunnel graben und Förmchen befüllen. Dies ist Ihr sicherer Workspace. Sie können sich innerhalb des Sandkastens frei bewegen. Die Holzumrandung des Sandkastens ist die Sandbox-Grenze. Sie hindert Sie physisch daran, mit Ihrer Schaufel das Fundament des Nachbarhauses zu untergraben oder Blumenbeete auf der anderen Straßenseite zu zerstören. Wenn Sie versuchen, außerhalb des Sandkastens zu graben, stoßen Sie auf eine unsichtbare, unüberwindbare Wand.</p>
 <h4 id="die-hausordnung-der-wohngemeinschaft-workspace-governance"><a class="header" href="#die-hausordnung-der-wohngemeinschaft-workspace-governance">Die Hausordnung der Wohngemeinschaft (Workspace Governance)</a></h4>
 <p>Die Governance-Dateien verhalten sich wie eine detaillierte Hausordnung in einer Wohngemeinschaft. Sie legt fest, wer für welche Aufgaben zuständig ist (<a href="file:///home/thorsten/RustKurs/AGENTS.md">AGENTS.md</a>), wie bestimmte Küchengeräte (Spezialwerkzeuge) bedient werden müssen (<a href="file:///home/thorsten/RustKurs/skills.md">skills.md</a>), welche Ruhezeiten und Verhaltensregeln gelten (<a href="file:///home/thorsten/RustKurs/.agentrules">.agentrules</a>) und welche Begriffe wir vereinbaren (<a href="file:///home/thorsten/RustKurs/glossary.md">glossary.md</a>), damit keine Missverständnisse entstehen. Jedes WG-Mitglied und jeder Gast (der KI-Agent) muss sich zwingend an diese Regeln halten, um ein geordnetes Zusammenleben zu garantieren.</p>
-<hr />
+<hr>
 <h2 id="33-das-problem--die-motivation"><a class="header" href="#33-das-problem--die-motivation">3.3 Das Problem &amp; Die Motivation</a></h2>
 <p>In der modernen, KI-gestützten Softwareentwicklung treten ohne strikte Governance und Sandbox-Systeme gravierende Probleme auf:</p>
 <ol>
 <li><strong>Kontextdrift &amp; Qualitätsverfall</strong>: Ohne eine klare Strukturierung verliert ein KI-Modell bei langen Interaktionen den Überblick über das Projekt. Es vergisst Stilrichtlinien, führt inkompatible Drittanbieter-Bibliotheken ein oder schreibt Code in einer falschen Rust-Edition.</li>
 <li><strong>Sicherheitsrisiken auf Systemebene</strong>: Ein autonomer Agent, der unkontrolliert Befehle ausführt, kann durch logische Fehler oder böswillige Prompts das Wirtssystem beschädigen. Beispielsweise könnte er versuchen, Systemkonfigurationen zu überschreiben, Ports zu blockieren oder unautorisierte Skripte auszuführen.</li>
 <li><strong>Fehlende Barrieren für Dateizugriffe</strong>: Ohne Sandbox-Einschränkungen besteht die Gefahr, dass ein Agent versehentlich sensible Systemdateien ausliest oder modifiziert, die außerhalb des eigentlichen Projektverzeichnisses liegen.</li>
-<li><strong>Inkonsistente Begriffswelten</strong>: Ohne ein zentrales Glossar übersetzt die KI Fachbegriffe willkürlich. Dies führt in Dokumentationen und Code-Kommentaren zu Verwirrung, da Begriffe wie "Borrowing" oder "Ownership" uneinheitlich verwendet werden.</li>
+<li><strong>Inkonsistente Begriffswelten</strong>: Ohne ein zentrales Glossar übersetzt die KI Fachbegriffe willkürlich. Dies führt in Dokumentationen und Code-Kommentaren zu Verwirrung, da Begriffe wie “Borrowing” oder “Ownership” uneinheitlich verwendet werden.</li>
 </ol>
-<hr />
+<hr>
 <h2 id="34-der-naive-versuch"><a class="header" href="#34-der-naive-versuch">3.4 Der naive Versuch</a></h2>
 <p>Im folgenden vollständigen und syntaktisch korrekten Rust-Code versucht ein Entwickler, einen Eintrag in der systemweiten Konfigurationsdatei <code>/etc/hosts</code> vorzunehmen. Dieser Versuch soll demonstrieren, wie ein unautorisierter Systemzugriff außerhalb des Workspaces aussieht.</p>
-<pre><code class="language-rust">use std::fs::OpenOptions;
+<pre class="playground"><code class="language-rust edition2021">use std::fs::OpenOptions;
 use std::io::Write;
 
 fn main() {
@@ -246,7 +245,7 @@ fn main() {
         }
     }
 }</code></pre>
-<hr />
+<hr>
 <h2 id="35-die-anatomie-des-fehlers"><a class="header" href="#35-die-anatomie-des-fehlers">3.5 Die Anatomie des Fehlers</a></h2>
 <p>Wenn Sie diesen Code innerhalb der Sandbox des Antigravity CLI ausführen (oder wenn ein Agent versucht, diesen Code zu starten), bricht das Programm ab.</p>
 <h3 id="die-exakte-fehlermeldung"><a class="header" href="#die-exakte-fehlermeldung">Die exakte Fehlermeldung</a></h3>
@@ -260,11 +259,11 @@ fn main() {
 <li><strong>User-Namespaces und UID-Mapping</strong>: Der Prozess innerhalb der Sandbox wird einer unprivilegierten Benutzer-ID (UID) auf dem Wirtssystem zugewiesen (z. B. UID <code>999999</code>). Selbst wenn der Prozess innerhalb der Sandbox vorgibt, als <code>root</code> (UID <code>0</code>) zu laufen, besitzt er auf Betriebssystemebene keinerlei Schreibrechte für systemkritische Dateien.</li>
 <li><strong>Kernel-Blockade</strong>: Der Linux-Kernel fängt den Aufruf ab, stellt die fehlende Berechtigung fest und gibt den Fehlercode <code>EACCES</code> (Wert 13, <code>PermissionDenied</code>) zurück. Rust übersetzt diesen Fehler in ein <code>std::io::Error</code> vom Typ <code>PermissionDenied</code>.</li>
 </ol>
-<hr />
+<hr>
 <h2 id="36-die-lösung"><a class="header" href="#36-die-lösung">3.6 Die Lösung</a></h2>
 <p>Die sichere Lösung besteht darin, relative Pfade zu nutzen, die sich dynamisch auf das aktuelle Arbeitsverzeichnis des Workspaces beziehen. Dadurch wird sichergestellt, dass alle Dateioperationen innerhalb der erlaubten Sandbox-Grenzen stattfinden.</p>
 <h3 id="der-sichere-rust-code"><a class="header" href="#der-sichere-rust-code">Der sichere Rust-Code</a></h3>
-<pre><code class="language-rust">use std::env;
+<pre class="playground"><code class="language-rust edition2021">use std::env;
 use std::fs::OpenOptions;
 use std::io::Write;
 use std::path::PathBuf;
@@ -323,7 +322,7 @@ fn main() {
 <ul>
 <li><strong>Zeilen 29–41</strong>: Im Erfolgsfall schreiben wir die Zeichenkette <code>"127.0.0.1 test.local"</code> mittels <code>writeln!</code> in den Puffer. Etwaige Fehler beim tatsächlichen Datentransfer auf das Speichermedium werden abgefangen. War der Schreibvorgang erfolgreich, wird eine Erfolgsmeldung auf der Standardausgabe ausgegeben.</li>
 </ul>
-<hr />
+<hr>
 <h2 id="37-kleines-tutorial"><a class="header" href="#37-kleines-tutorial">3.7 Kleines Tutorial</a></h2>
 <p>Dieses Tutorial führt Sie durch die Schritte zur Erstellung eines Unterprojekts im Ordner <code>Tutorial</code> mithilfe der KI-Unterstützung des Antigravity CLI.</p>
 <h3 id="schritt-1-das-cli-im-workspace-starten"><a class="header" href="#schritt-1-das-cli-im-workspace-starten">Schritt 1: Das CLI im Workspace starten</a></h3>
@@ -348,14 +347,14 @@ agy
 </li>
 <li>Der Agent liest Ihr Feedback, korrigiert den Code in der Sandbox und präsentiert Ihnen den überarbeiteten Entwurf.</li>
 </ol>
-<h3 id="schritt-5-bestätigung-und-Übernahme-proceed"><a class="header" href="#schritt-5-bestätigung-und-Übernahme-proceed">Schritt 5: Bestätigung und Übernahme (Proceed)</a></h3>
+<h3 id="schritt-5-bestätigung-und-übernahme-proceed"><a class="header" href="#schritt-5-bestätigung-und-übernahme-proceed">Schritt 5: Bestätigung und Übernahme (Proceed)</a></h3>
 <p>Wenn Sie den Entwurf geprüft haben und der Code Ihren Anforderungen entspricht, wählen Sie im TUI-Menü die Option <strong>Proceed</strong> aus. Erst jetzt werden die Dateien aus der Sandbox in Ihren echten Workspace geschrieben.</p>
 <h3 id="schritt-6-ausführen-des-projekts-über-das-cli"><a class="header" href="#schritt-6-ausführen-des-projekts-über-das-cli">Schritt 6: Ausführen des Projekts über das CLI</a></h3>
 <p>Sie können das Zahlenratespiel direkt testen, ohne das CLI zu verlassen. Fügen Sie das Präfix <code>!</code> für einen direkten Shell-Befehl ein:</p>
 <pre><code class="language-bash">!cd Tutorial/zahlenraten &amp;&amp; cargo run
 </code></pre>
 <h3 id="der-generierte-code-in-tutorialzahlenratensrcmainrs"><a class="header" href="#der-generierte-code-in-tutorialzahlenratensrcmainrs">Der generierte Code in <code>Tutorial/zahlenraten/src/main.rs</code></a></h3>
-<pre><code class="language-rust">use std::io;
+<pre class="playground"><code class="language-rust edition2021">use std::io;
 use std::cmp::Ordering;
 use rand::Rng;
 
@@ -397,10 +396,10 @@ fn main() {
         }
     }
 }</code></pre>
-<hr />
+<hr>
 <h2 id="38-mentale-modelle--deep-dive"><a class="header" href="#38-mentale-modelle--deep-dive">3.8 Mentale Modelle &amp; Deep Dive</a></h2>
 <h3 id="interaktions-workflow"><a class="header" href="#interaktions-workflow">Interaktions-Workflow</a></h3>
-<pre><code class="language-mermaid">sequenceDiagram
+<pre class="mermaid">sequenceDiagram
     actor Entwickler as Entwickler (TUI)
     participant CLI as Antigravity CLI (agy)
     participant Agent as KI-Agent
@@ -422,8 +421,9 @@ fn main() {
     CLI-&gt;&gt;Entwickler: Zeigt aktualisierte Entwürfe
     Entwickler-&gt;&gt;CLI: Bestätigt mit "Proceed"
     CLI-&gt;&gt;Workspace: Schreibt Dateien auf Host-System
-</code></pre>
-<hr />
+</pre>
+
+<hr>
 <h3 id="die-vier-governance-dateien-im-detail"><a class="header" href="#die-vier-governance-dateien-im-detail">Die vier Governance-Dateien im Detail</a></h3>
 <h4 id="1-agentsmd"><a class="header" href="#1-agentsmd">1. <code>AGENTS.md</code></a></h4>
 <p>Diese Datei dokumentiert die Rollenverteilung, Subagenten-Typen und den aktuellen Projektstatus. Sie dient dem Agenten als Orientierung, damit er weiß, welche Kapitel bereits fertiggestellt sind und welche Aufgaben anstehen.</p>
@@ -512,7 +512,7 @@ fn main() {
 </code></pre>
 </li>
 </ul>
-<hr />
+<hr>
 <h3 id="systemebene-thread-safety--performance"><a class="header" href="#systemebene-thread-safety--performance">Systemebene, Thread-Safety &amp; Performance</a></h3>
 <h4 id="workspace-modi-inherit-share-branch"><a class="header" href="#workspace-modi-inherit-share-branch">Workspace-Modi (<code>inherit</code>, <code>share</code>, <code>branch</code>)</a></h4>
 <ul>
@@ -524,13 +524,13 @@ fn main() {
 <p>Das Antigravity CLI ist in sicherem Rust implementiert. Parallele Subagenten-Sitzungen laufen in voneinander isolierten Betriebssystemprozessen. Eventuelle Race Conditions beim Schreiben auf Dateien werden durch transaktionale Schreibvorgänge und den Einsatz von Dateisperren (<code>flock</code> unter Unix) auf Kernel-Ebene ausgeschlossen.</p>
 <h4 id="performance"><a class="header" href="#performance">Performance</a></h4>
 <p>Das CLI ist als native Binärdatei kompiliert. Durch LLVM-Optimierungen (Release-Profil, Link-Time Optimization <code>lto = true</code>, Reduzierung der Codegen-Units auf <code>1</code>) wird eine minimale Startzeit von unter 5 Millisekunden erreicht. Der Speicherbedarf zur Laufzeit ist extrem gering, da keine virtuellen Maschinen (wie bei Node.js) benötigt werden.</p>
-<hr />
+<hr>
 <h3 id="die-drei-didaktischen-ausbildungsstufen"><a class="header" href="#die-drei-didaktischen-ausbildungsstufen">Die drei didaktischen Ausbildungsstufen</a></h3>
 <h4 id="1-anfänger-niveau-grundlagen"><a class="header" href="#1-anfänger-niveau-grundlagen">1. Anfänger-Niveau (Grundlagen)</a></h4>
 <p>Auf dieser Stufe deklarieren wir Pfade direkt als statische Zeichenketten und wandeln sie in ein <code>Path</code>-Objekt um. Dies zeigt den einfachsten Weg, mit Pfaden im Code zu interagieren.</p>
 <ul>
 <li><strong>Syntax &amp; Deklaration</strong>:
-<pre><code class="language-rust">use std::path::Path;
+<pre class="playground"><code class="language-rust edition2021">use std::path::Path;
 
 fn main() {
     // Deklaration eines unveränderlichen Pfades aus einem String-Literal
@@ -544,7 +544,7 @@ fn main() {
 <p>Fortgeschrittene Anwendungen erfordern die Einbettung von Pfaden in eigene Datenstrukturen und das Handling von Gültigkeitsbereichen (Lifetimes). Hier tritt der Unterschied zwischen der geliehenen Struktur <code>&amp;Path</code> und der besitzenden Struktur <code>PathBuf</code> in den Vordergrund.</p>
 <ul>
 <li><strong>Komposition</strong>:
-<pre><code class="language-rust">use std::path::PathBuf;
+<pre class="playground"><code class="language-rust edition2021">use std::path::PathBuf;
 
 // Ein Struct, das den Pfad besitzt (PathBuf), da die Lebensdauer des Structs
 // nicht an eine externe Referenz gebunden sein soll.
@@ -563,7 +563,7 @@ fn main() {
 </li>
 <li><strong>Stolpersteine &amp; Alias-Probleme</strong>: Ein häufiger Fehler ist die Annahme, dass relative Pfade immer vom Verzeichnis der ausführbaren Datei aus aufgelöst werden. Sie werden jedoch immer vom aktuellen Arbeitsverzeichnis des aufrufenden Prozesses (<code>std::env::current_dir()</code>) aus ausgewertet. Wenn ein Anwender das Programm aus einem anderen Ordner startet, schlagen Dateizugriffe fehl.</li>
 <li><strong>Konvertierungen</strong>:
-<pre><code class="language-rust">use std::path::{Path, PathBuf};
+<pre class="playground"><code class="language-rust edition2021">use std::path::{Path, PathBuf};
 
 fn main() {
     let pfad_ref: &amp;Path = Path::new("daten.txt");
@@ -592,7 +592,7 @@ fn main() {
 </ul>
 </li>
 </ul>
-<hr />
+<hr>
 <h2 id="381-exhaustive-api-reference"><a class="header" href="#381-exhaustive-api-reference">3.8.1 Exhaustive API-Reference</a></h2>
 <p>In diesem Abschnitt werden alle wichtigen Methoden der Typen <code>std::path::Path</code> und <code>std::path::PathBuf</code> lückenlos dokumentiert.</p>
 <h3 id="methoden-von-stdpathpath"><a class="header" href="#methoden-von-stdpathpath">Methoden von <code>std::path::Path</code></a></h3>
@@ -603,8 +603,11 @@ fn main() {
 <li><strong>Rückgabetyp</strong>: <code>&amp;Path</code> (Eine Referenz auf das erstellte Path-Objekt).</li>
 <li><strong>Sicherheitsaspekte &amp; Panics</strong>: Keine. Die Methode allokiert keinen Speicher und validiert nicht, ob der Pfad im Dateisystem existiert.</li>
 <li><strong>Minicode-Beispiel</strong>:
-<pre><code class="language-rust">use std::path::Path;
-let pfad = Path::new("daten.txt");</code></pre>
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>use std::path::Path;
+let pfad = Path::new("daten.txt");
+<span class="boring">}</span></code></pre>
 </li>
 </ul>
 <h4 id="2-as_os_str"><a class="header" href="#2-as_os_str">2. <code>as_os_str</code></a></h4>
@@ -614,9 +617,12 @@ let pfad = Path::new("daten.txt");</code></pre>
 <li><strong>Rückgabetyp</strong>: <code>&amp;OsStr</code> (Die rohe Betriebssystem-Repräsentation des Pfades).</li>
 <li><strong>Sicherheitsaspekte &amp; Panics</strong>: Keine.</li>
 <li><strong>Minicode-Beispiel</strong>:
-<pre><code class="language-rust">use std::path::Path;
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>use std::path::Path;
 let pfad = Path::new("daten.txt");
-let os_str = pfad.as_os_str();</code></pre>
+let os_str = pfad.as_os_str();
+<span class="boring">}</span></code></pre>
 </li>
 </ul>
 <h4 id="3-to_str"><a class="header" href="#3-to_str">3. <code>to_str</code></a></h4>
@@ -626,9 +632,12 @@ let os_str = pfad.as_os_str();</code></pre>
 <li><strong>Rückgabetyp</strong>: <code>Option&lt;&amp;str&gt;</code> (Gibt <code>Some(&amp;str)</code> zurück, falls der Pfad valides UTF-8 ist, andernfalls <code>None</code>).</li>
 <li><strong>Sicherheitsaspekte &amp; Panics</strong>: Keine. Wichtig für die Konvertierung bei Pfaden, die ungültige Unicode-Zeichen enthalten.</li>
 <li><strong>Minicode-Beispiel</strong>:
-<pre><code class="language-rust">use std::path::Path;
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>use std::path::Path;
 let pfad = Path::new("daten.txt");
-let text = pfad.to_str().unwrap();</code></pre>
+let text = pfad.to_str().unwrap();
+<span class="boring">}</span></code></pre>
 </li>
 </ul>
 <h4 id="4-to_string_lossy"><a class="header" href="#4-to_string_lossy">4. <code>to_string_lossy</code></a></h4>
@@ -638,9 +647,12 @@ let text = pfad.to_str().unwrap();</code></pre>
 <li><strong>Rückgabetyp</strong>: <code>Cow&lt;'_, str&gt;</code> (Ein Copy-on-Write-String. Ungültige UTF-8-Zeichen werden durch das Unicode-Ersatzzeichen ersetzt).</li>
 <li><strong>Sicherheitsaspekte &amp; Panics</strong>: Keine.</li>
 <li><strong>Minicode-Beispiel</strong>:
-<pre><code class="language-rust">use std::path::Path;
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>use std::path::Path;
 let pfad = Path::new("daten.txt");
-let string_verlustfrei = pfad.to_string_lossy();</code></pre>
+let string_verlustfrei = pfad.to_string_lossy();
+<span class="boring">}</span></code></pre>
 </li>
 </ul>
 <h4 id="5-is_absolute"><a class="header" href="#5-is_absolute">5. <code>is_absolute</code></a></h4>
@@ -650,9 +662,12 @@ let string_verlustfrei = pfad.to_string_lossy();</code></pre>
 <li><strong>Rückgabetyp</strong>: <code>bool</code> (Gibt <code>true</code> zurück, wenn der Pfad absolut ist, d. h. am System-Wurzelverzeichnis beginnt).</li>
 <li><strong>Sicherheitsaspekte &amp; Panics</strong>: Keine.</li>
 <li><strong>Minicode-Beispiel</strong>:
-<pre><code class="language-rust">use std::path::Path;
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>use std::path::Path;
 let pfad = Path::new("/etc/hosts");
-let absolut = pfad.is_absolute();</code></pre>
+let absolut = pfad.is_absolute();
+<span class="boring">}</span></code></pre>
 </li>
 </ul>
 <h4 id="6-is_relative"><a class="header" href="#6-is_relative">6. <code>is_relative</code></a></h4>
@@ -662,9 +677,12 @@ let absolut = pfad.is_absolute();</code></pre>
 <li><strong>Rückgabetyp</strong>: <code>bool</code> (Gibt <code>true</code> zurück, wenn der Pfad relativ ist).</li>
 <li><strong>Sicherheitsaspekte &amp; Panics</strong>: Keine.</li>
 <li><strong>Minicode-Beispiel</strong>:
-<pre><code class="language-rust">use std::path::Path;
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>use std::path::Path;
 let pfad = Path::new("Tutorial/daten.txt");
-let relativ = pfad.is_relative();</code></pre>
+let relativ = pfad.is_relative();
+<span class="boring">}</span></code></pre>
 </li>
 </ul>
 <h4 id="7-has_root"><a class="header" href="#7-has_root">7. <code>has_root</code></a></h4>
@@ -674,9 +692,12 @@ let relativ = pfad.is_relative();</code></pre>
 <li><strong>Rückgabetyp</strong>: <code>bool</code> (Gibt <code>true</code> zurück, wenn der Pfad ein Stammverzeichnis-Präfix enthält).</li>
 <li><strong>Sicherheitsaspekte &amp; Panics</strong>: Keine.</li>
 <li><strong>Minicode-Beispiel</strong>:
-<pre><code class="language-rust">use std::path::Path;
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>use std::path::Path;
 let pfad = Path::new("/usr/bin");
-let wurzel = pfad.has_root();</code></pre>
+let wurzel = pfad.has_root();
+<span class="boring">}</span></code></pre>
 </li>
 </ul>
 <h4 id="8-parent"><a class="header" href="#8-parent">8. <code>parent</code></a></h4>
@@ -686,9 +707,12 @@ let wurzel = pfad.has_root();</code></pre>
 <li><strong>Rückgabetyp</strong>: <code>Option&lt;&amp;Path&gt;</code> (Gibt den übergeordneten Pfad zurück, oder <code>None</code>, wenn kein übergeordnetes Verzeichnis existiert).</li>
 <li><strong>Sicherheitsaspekte &amp; Panics</strong>: Keine.</li>
 <li><strong>Minicode-Beispiel</strong>:
-<pre><code class="language-rust">use std::path::Path;
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>use std::path::Path;
 let pfad = Path::new("Tutorial/zahlenraten/src");
-let eltern = pfad.parent();</code></pre>
+let eltern = pfad.parent();
+<span class="boring">}</span></code></pre>
 </li>
 </ul>
 <h4 id="9-ancestors"><a class="header" href="#9-ancestors">9. <code>ancestors</code></a></h4>
@@ -698,11 +722,14 @@ let eltern = pfad.parent();</code></pre>
 <li><strong>Rückgabetyp</strong>: <code>Ancestors&lt;'_&gt;</code> (Ein Iterator über alle übergeordneten Verzeichnisse des Pfades).</li>
 <li><strong>Sicherheitsaspekte &amp; Panics</strong>: Keine.</li>
 <li><strong>Minicode-Beispiel</strong>:
-<pre><code class="language-rust">use std::path::Path;
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>use std::path::Path;
 let pfad = Path::new("Tutorial/zahlenraten/src");
 for vorfahre in pfad.ancestors() {
     println!("{:?}", vorfahre);
-}</code></pre>
+}
+<span class="boring">}</span></code></pre>
 </li>
 </ul>
 <h4 id="10-file_name"><a class="header" href="#10-file_name">10. <code>file_name</code></a></h4>
@@ -712,9 +739,12 @@ for vorfahre in pfad.ancestors() {
 <li><strong>Rückgabetyp</strong>: <code>Option&lt;&amp;OsStr&gt;</code> (Der Dateiname oder das letzte Segment des Pfades. Gibt <code>None</code> zurück, falls der Pfad auf <code>..</code> endet).</li>
 <li><strong>Sicherheitsaspekte &amp; Panics</strong>: Keine.</li>
 <li><strong>Minicode-Beispiel</strong>:
-<pre><code class="language-rust">use std::path::Path;
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>use std::path::Path;
 let pfad = Path::new("Tutorial/daten.txt");
-let dateiname = pfad.file_name();</code></pre>
+let dateiname = pfad.file_name();
+<span class="boring">}</span></code></pre>
 </li>
 </ul>
 <h4 id="11-strip_prefix"><a class="header" href="#11-strip_prefix">11. <code>strip_prefix</code></a></h4>
@@ -724,9 +754,12 @@ let dateiname = pfad.file_name();</code></pre>
 <li><strong>Rückgabetyp</strong>: <code>Result&lt;&amp;Path, StripPrefixError&gt;</code> (Der verbleibende Pfad nach Entfernung des Präfixes, oder ein Fehler, falls der Pfad nicht mit dem Präfix beginnt).</li>
 <li><strong>Sicherheitsaspekte &amp; Panics</strong>: Keine.</li>
 <li><strong>Minicode-Beispiel</strong>:
-<pre><code class="language-rust">use std::path::Path;
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>use std::path::Path;
 let pfad = Path::new("Tutorial/zahlenraten/src");
-let rest = pfad.strip_prefix("Tutorial").unwrap();</code></pre>
+let rest = pfad.strip_prefix("Tutorial").unwrap();
+<span class="boring">}</span></code></pre>
 </li>
 </ul>
 <h4 id="12-starts_with"><a class="header" href="#12-starts_with">12. <code>starts_with</code></a></h4>
@@ -736,9 +769,12 @@ let rest = pfad.strip_prefix("Tutorial").unwrap();</code></pre>
 <li><strong>Rückgabetyp</strong>: <code>bool</code> (Gibt <code>true</code> zurück, wenn der Pfad mit dem übergebenen Pfad beginnt).</li>
 <li><strong>Sicherheitsaspekte &amp; Panics</strong>: Keine.</li>
 <li><strong>Minicode-Beispiel</strong>:
-<pre><code class="language-rust">use std::path::Path;
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>use std::path::Path;
 let pfad = Path::new("Tutorial/zahlenraten/src");
-let check = pfad.starts_with("Tutorial");</code></pre>
+let check = pfad.starts_with("Tutorial");
+<span class="boring">}</span></code></pre>
 </li>
 </ul>
 <h4 id="13-ends_with"><a class="header" href="#13-ends_with">13. <code>ends_with</code></a></h4>
@@ -748,9 +784,12 @@ let check = pfad.starts_with("Tutorial");</code></pre>
 <li><strong>Rückgabetyp</strong>: <code>bool</code> (Gibt <code>true</code> zurück, wenn der Pfad mit dem übergebenen Pfad endet).</li>
 <li><strong>Sicherheitsaspekte &amp; Panics</strong>: Keine.</li>
 <li><strong>Minicode-Beispiel</strong>:
-<pre><code class="language-rust">use std::path::Path;
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>use std::path::Path;
 let pfad = Path::new("Tutorial/zahlenraten/src");
-let check = pfad.ends_with("src");</code></pre>
+let check = pfad.ends_with("src");
+<span class="boring">}</span></code></pre>
 </li>
 </ul>
 <h4 id="14-file_stem"><a class="header" href="#14-file_stem">14. <code>file_stem</code></a></h4>
@@ -760,9 +799,12 @@ let check = pfad.ends_with("src");</code></pre>
 <li><strong>Rückgabetyp</strong>: <code>Option&lt;&amp;OsStr&gt;</code> (Gibt den Dateinamen ohne die Erweiterung zurück).</li>
 <li><strong>Sicherheitsaspekte &amp; Panics</strong>: Keine.</li>
 <li><strong>Minicode-Beispiel</strong>:
-<pre><code class="language-rust">use std::path::Path;
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>use std::path::Path;
 let pfad = Path::new("Tutorial/daten.tar.gz");
-let stamm = pfad.file_stem();</code></pre>
+let stamm = pfad.file_stem();
+<span class="boring">}</span></code></pre>
 </li>
 </ul>
 <h4 id="15-extension"><a class="header" href="#15-extension">15. <code>extension</code></a></h4>
@@ -772,9 +814,12 @@ let stamm = pfad.file_stem();</code></pre>
 <li><strong>Rückgabetyp</strong>: <code>Option&lt;&amp;OsStr&gt;</code> (Die Dateiendung, falls vorhanden).</li>
 <li><strong>Sicherheitsaspekte &amp; Panics</strong>: Keine.</li>
 <li><strong>Minicode-Beispiel</strong>:
-<pre><code class="language-rust">use std::path::Path;
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>use std::path::Path;
 let pfad = Path::new("Tutorial/daten.txt");
-let endung = pfad.extension();</code></pre>
+let endung = pfad.extension();
+<span class="boring">}</span></code></pre>
 </li>
 </ul>
 <h4 id="16-join"><a class="header" href="#16-join">16. <code>join</code></a></h4>
@@ -784,9 +829,12 @@ let endung = pfad.extension();</code></pre>
 <li><strong>Rückgabetyp</strong>: <code>PathBuf</code> (Ein neues, eigenständiges Pfadobjekt auf dem Heap).</li>
 <li><strong>Sicherheitsaspekte &amp; Panics</strong>: Keine.</li>
 <li><strong>Minicode-Beispiel</strong>:
-<pre><code class="language-rust">use std::path::Path;
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>use std::path::Path;
 let basis = Path::new("Tutorial");
-let voll = basis.join("zahlenraten");</code></pre>
+let voll = basis.join("zahlenraten");
+<span class="boring">}</span></code></pre>
 </li>
 </ul>
 <h4 id="17-with_file_name"><a class="header" href="#17-with_file_name">17. <code>with_file_name</code></a></h4>
@@ -796,9 +844,12 @@ let voll = basis.join("zahlenraten");</code></pre>
 <li><strong>Rückgabetyp</strong>: <code>PathBuf</code> (Der geänderte Pfad).</li>
 <li><strong>Sicherheitsaspekte &amp; Panics</strong>: Keine.</li>
 <li><strong>Minicode-Beispiel</strong>:
-<pre><code class="language-rust">use std::path::Path;
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>use std::path::Path;
 let pfad = Path::new("Tutorial/daten.txt");
-let neuer_pfad = pfad.with_file_name("daten_neu.txt");</code></pre>
+let neuer_pfad = pfad.with_file_name("daten_neu.txt");
+<span class="boring">}</span></code></pre>
 </li>
 </ul>
 <h4 id="18-with_extension"><a class="header" href="#18-with_extension">18. <code>with_extension</code></a></h4>
@@ -808,9 +859,12 @@ let neuer_pfad = pfad.with_file_name("daten_neu.txt");</code></pre>
 <li><strong>Rückgabetyp</strong>: <code>PathBuf</code> (Der geänderte Pfad).</li>
 <li><strong>Sicherheitsaspekte &amp; Panics</strong>: Keine.</li>
 <li><strong>Minicode-Beispiel</strong>:
-<pre><code class="language-rust">use std::path::Path;
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>use std::path::Path;
 let pfad = Path::new("Tutorial/daten.txt");
-let neuer_pfad = pfad.with_extension("log");</code></pre>
+let neuer_pfad = pfad.with_extension("log");
+<span class="boring">}</span></code></pre>
 </li>
 </ul>
 <h4 id="19-components"><a class="header" href="#19-components">19. <code>components</code></a></h4>
@@ -820,9 +874,12 @@ let neuer_pfad = pfad.with_extension("log");</code></pre>
 <li><strong>Rückgabetyp</strong>: <code>Components&lt;'_&gt;</code> (Ein Iterator über die logischen Segmente des Pfades, z. B. Root, Normal, ParentDir).</li>
 <li><strong>Sicherheitsaspekte &amp; Panics</strong>: Keine.</li>
 <li><strong>Minicode-Beispiel</strong>:
-<pre><code class="language-rust">use std::path::Path;
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>use std::path::Path;
 let pfad = Path::new("/Tutorial/zahlenraten");
-let komponenten = pfad.components();</code></pre>
+let komponenten = pfad.components();
+<span class="boring">}</span></code></pre>
 </li>
 </ul>
 <h4 id="20-iter"><a class="header" href="#20-iter">20. <code>iter</code></a></h4>
@@ -832,9 +889,12 @@ let komponenten = pfad.components();</code></pre>
 <li><strong>Rückgabetyp</strong>: <code>Iter&lt;'_&gt;</code> (Ein Iterator über die Pfadsegmente als <code>OsStr</code>).</li>
 <li><strong>Sicherheitsaspekte &amp; Panics</strong>: Keine.</li>
 <li><strong>Minicode-Beispiel</strong>:
-<pre><code class="language-rust">use std::path::Path;
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>use std::path::Path;
 let pfad = Path::new("Tutorial/zahlenraten");
-let iterator = pfad.iter();</code></pre>
+let iterator = pfad.iter();
+<span class="boring">}</span></code></pre>
 </li>
 </ul>
 <h4 id="21-display"><a class="header" href="#21-display">21. <code>display</code></a></h4>
@@ -844,9 +904,12 @@ let iterator = pfad.iter();</code></pre>
 <li><strong>Rückgabetyp</strong>: <code>Display&lt;'_&gt;</code> (Ein Hilfsobjekt, das das Formatieren und Ausgeben von Pfaden über <code>println!</code> erleichtert).</li>
 <li><strong>Sicherheitsaspekte &amp; Panics</strong>: Keine.</li>
 <li><strong>Minicode-Beispiel</strong>:
-<pre><code class="language-rust">use std::path::Path;
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>use std::path::Path;
 let pfad = Path::new("Tutorial/daten.txt");
-println!("Pfad ist: {}", pfad.display());</code></pre>
+println!("Pfad ist: {}", pfad.display());
+<span class="boring">}</span></code></pre>
 </li>
 </ul>
 <h4 id="22-metadata"><a class="header" href="#22-metadata">22. <code>metadata</code></a></h4>
@@ -856,9 +919,12 @@ println!("Pfad ist: {}", pfad.display());</code></pre>
 <li><strong>Rückgabetyp</strong>: <code>Result&lt;Metadata, Error&gt;</code> (Die Metadaten der Datei, z. B. Dateigröße und Berechtigungen).</li>
 <li><strong>Sicherheitsaspekte &amp; Panics</strong>: Führt E/A-Operationen aus. Löst Fehler aus, wenn die Datei nicht existiert oder die Berechtigungen in der Sandbox fehlen.</li>
 <li><strong>Minicode-Beispiel</strong>:
-<pre><code class="language-rust">use std::path::Path;
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>use std::path::Path;
 let pfad = Path::new("Tutorial/hosts_lokal.txt");
-let daten = pfad.metadata();</code></pre>
+let daten = pfad.metadata();
+<span class="boring">}</span></code></pre>
 </li>
 </ul>
 <h4 id="23-symlink_metadata"><a class="header" href="#23-symlink_metadata">23. <code>symlink_metadata</code></a></h4>
@@ -868,9 +934,12 @@ let daten = pfad.metadata();</code></pre>
 <li><strong>Rückgabetyp</strong>: <code>Result&lt;Metadata, Error&gt;</code> (Die Metadaten. Im Gegensatz zu <code>metadata</code> folgt diese Methode keinen symbolischen Links).</li>
 <li><strong>Sicherheitsaspekte &amp; Panics</strong>: E/A-Operation. Kann in der Sandbox fehlschlagen, wenn der Pfad außerhalb des erlaubten Bereichs liegt.</li>
 <li><strong>Minicode-Beispiel</strong>:
-<pre><code class="language-rust">use std::path::Path;
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>use std::path::Path;
 let pfad = Path::new("Tutorial/symlink");
-let daten = pfad.symlink_metadata();</code></pre>
+let daten = pfad.symlink_metadata();
+<span class="boring">}</span></code></pre>
 </li>
 </ul>
 <h4 id="24-canonicalize"><a class="header" href="#24-canonicalize">24. <code>canonicalize</code></a></h4>
@@ -880,9 +949,12 @@ let daten = pfad.symlink_metadata();</code></pre>
 <li><strong>Rückgabetyp</strong>: <code>Result&lt;PathBuf, Error&gt;</code> (Der absolut aufgelöste, normalisierte Pfad ohne relative Segmente wie <code>.</code> oder <code>..</code>).</li>
 <li><strong>Sicherheitsaspekte &amp; Panics</strong>: E/A-Operation. Schlägt fehl, wenn Teile des Pfades nicht existieren oder außerhalb des Sandbox-Roots liegen.</li>
 <li><strong>Minicode-Beispiel</strong>:
-<pre><code class="language-rust">use std::path::Path;
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>use std::path::Path;
 let pfad = Path::new("Tutorial/../Tutorial/daten.txt");
-let absolut = pfad.canonicalize();</code></pre>
+let absolut = pfad.canonicalize();
+<span class="boring">}</span></code></pre>
 </li>
 </ul>
 <h4 id="25-read_link"><a class="header" href="#25-read_link">25. <code>read_link</code></a></h4>
@@ -892,9 +964,12 @@ let absolut = pfad.canonicalize();</code></pre>
 <li><strong>Rückgabetyp</strong>: <code>Result&lt;PathBuf, Error&gt;</code> (Der Pfad, auf den der symbolische Link verweist).</li>
 <li><strong>Sicherheitsaspekte &amp; Panics</strong>: E/A-Operation. Schlägt fehl, wenn der Pfad kein symbolischer Link ist oder nicht gelesen werden darf.</li>
 <li><strong>Minicode-Beispiel</strong>:
-<pre><code class="language-rust">use std::path::Path;
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>use std::path::Path;
 let pfad = Path::new("Tutorial/link.lnk");
-let ziel = pfad.read_link();</code></pre>
+let ziel = pfad.read_link();
+<span class="boring">}</span></code></pre>
 </li>
 </ul>
 <h4 id="26-read_dir"><a class="header" href="#26-read_dir">26. <code>read_dir</code></a></h4>
@@ -904,9 +979,12 @@ let ziel = pfad.read_link();</code></pre>
 <li><strong>Rückgabetyp</strong>: <code>Result&lt;ReadDir, Error&gt;</code> (Ein Iterator über die Einträge eines Verzeichnisses).</li>
 <li><strong>Sicherheitsaspekte &amp; Panics</strong>: E/A-Operation. Löst einen Fehler aus, wenn der Pfad kein Verzeichnis ist oder Berechtigungen fehlen.</li>
 <li><strong>Minicode-Beispiel</strong>:
-<pre><code class="language-rust">use std::path::Path;
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>use std::path::Path;
 let pfad = Path::new("Tutorial");
-let inhalt = pfad.read_dir();</code></pre>
+let inhalt = pfad.read_dir();
+<span class="boring">}</span></code></pre>
 </li>
 </ul>
 <h4 id="27-exists"><a class="header" href="#27-exists">27. <code>exists</code></a></h4>
@@ -916,8 +994,11 @@ let inhalt = pfad.read_dir();</code></pre>
 <li><strong>Rückgabetyp</strong>: <code>bool</code> (Gibt <code>true</code> zurück, wenn der Pfad im Dateisystem existiert).</li>
 <li><strong>Sicherheitsaspekte &amp; Panics</strong>: Führt im Hintergrund eine E/A-Operation aus. Liefert in der Sandbox für gesperrte Pfade immer <code>false</code> oder einen Zugriffsfehler.</li>
 <li><strong>Minicode-Beispiel</strong>:
-<pre><code class="language-rust">use std::path::Path;
-let existiert = Path::new("Tutorial/daten.txt").exists();</code></pre>
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>use std::path::Path;
+let existiert = Path::new("Tutorial/daten.txt").exists();
+<span class="boring">}</span></code></pre>
 </li>
 </ul>
 <h4 id="28-is_file"><a class="header" href="#28-is_file">28. <code>is_file</code></a></h4>
@@ -927,8 +1008,11 @@ let existiert = Path::new("Tutorial/daten.txt").exists();</code></pre>
 <li><strong>Rückgabetyp</strong>: <code>bool</code> (Gibt <code>true</code> zurück, wenn der Pfad existiert und eine reguläre Datei ist).</li>
 <li><strong>Sicherheitsaspekte &amp; Panics</strong>: E/A-Operation.</li>
 <li><strong>Minicode-Beispiel</strong>:
-<pre><code class="language-rust">use std::path::Path;
-let datei = Path::new("Tutorial/daten.txt").is_file();</code></pre>
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>use std::path::Path;
+let datei = Path::new("Tutorial/daten.txt").is_file();
+<span class="boring">}</span></code></pre>
 </li>
 </ul>
 <h4 id="29-is_dir"><a class="header" href="#29-is_dir">29. <code>is_dir</code></a></h4>
@@ -938,8 +1022,11 @@ let datei = Path::new("Tutorial/daten.txt").is_file();</code></pre>
 <li><strong>Rückgabetyp</strong>: <code>bool</code> (Gibt <code>true</code> zurück, wenn der Pfad existiert und ein Verzeichnis ist).</li>
 <li><strong>Sicherheitsaspekte &amp; Panics</strong>: E/A-Operation.</li>
 <li><strong>Minicode-Beispiel</strong>:
-<pre><code class="language-rust">use std::path::Path;
-let ordner = Path::new("Tutorial").is_dir();</code></pre>
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>use std::path::Path;
+let ordner = Path::new("Tutorial").is_dir();
+<span class="boring">}</span></code></pre>
 </li>
 </ul>
 <h4 id="30-is_symlink"><a class="header" href="#30-is_symlink">30. <code>is_symlink</code></a></h4>
@@ -949,8 +1036,11 @@ let ordner = Path::new("Tutorial").is_dir();</code></pre>
 <li><strong>Rückgabetyp</strong>: <code>bool</code> (Gibt <code>true</code> zurück, wenn der Pfad ein symbolischer Link ist).</li>
 <li><strong>Sicherheitsaspekte &amp; Panics</strong>: E/A-Operation.</li>
 <li><strong>Minicode-Beispiel</strong>:
-<pre><code class="language-rust">use std::path::Path;
-let link = Path::new("Tutorial/symlink").is_symlink();</code></pre>
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>use std::path::Path;
+let link = Path::new("Tutorial/symlink").is_symlink();
+<span class="boring">}</span></code></pre>
 </li>
 </ul>
 <h4 id="31-into_path_buf"><a class="header" href="#31-into_path_buf">31. <code>into_path_buf</code></a></h4>
@@ -960,12 +1050,15 @@ let link = Path::new("Tutorial/symlink").is_symlink();</code></pre>
 <li><strong>Rückgabetyp</strong>: <code>PathBuf</code> (Das konvertierte, besitzende PathBuf-Objekt).</li>
 <li><strong>Sicherheitsaspekte &amp; Panics</strong>: Keine.</li>
 <li><strong>Minicode-Beispiel</strong>:
-<pre><code class="language-rust">use std::path::Path;
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>use std::path::Path;
 let boxed_path: Box&lt;Path&gt; = Path::new("daten.txt").into();
-let pfad_buf = boxed_path.into_path_buf();</code></pre>
+let pfad_buf = boxed_path.into_path_buf();
+<span class="boring">}</span></code></pre>
 </li>
 </ul>
-<hr />
+<hr>
 <h3 id="methoden-von-stdpathpathbuf"><a class="header" href="#methoden-von-stdpathpathbuf">Methoden von <code>std::path::PathBuf</code></a></h3>
 <h4 id="1-new-1"><a class="header" href="#1-new-1">1. <code>new</code></a></h4>
 <ul>
@@ -974,8 +1067,11 @@ let pfad_buf = boxed_path.into_path_buf();</code></pre>
 <li><strong>Rückgabetyp</strong>: <code>PathBuf</code> (Ein leeres, veränderliches Pfadobjekt).</li>
 <li><strong>Sicherheitsaspekte &amp; Panics</strong>: Keine. Allokiert noch keinen Heap-Speicher.</li>
 <li><strong>Minicode-Beispiel</strong>:
-<pre><code class="language-rust">use std::path::PathBuf;
-let mut pfad = PathBuf::new();</code></pre>
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>use std::path::PathBuf;
+let mut pfad = PathBuf::new();
+<span class="boring">}</span></code></pre>
 </li>
 </ul>
 <h4 id="2-with_capacity"><a class="header" href="#2-with_capacity">2. <code>with_capacity</code></a></h4>
@@ -985,8 +1081,11 @@ let mut pfad = PathBuf::new();</code></pre>
 <li><strong>Rückgabetyp</strong>: <code>PathBuf</code> (Ein leeres Pfadobjekt mit reserviertem Speicher).</li>
 <li><strong>Sicherheitsaspekte &amp; Panics</strong>: Löst eine Panic aus, wenn das System keinen Heap-Speicher mehr allokieren kann.</li>
 <li><strong>Minicode-Beispiel</strong>:
-<pre><code class="language-rust">use std::path::PathBuf;
-let pfad = PathBuf::with_capacity(100);</code></pre>
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>use std::path::PathBuf;
+let pfad = PathBuf::with_capacity(100);
+<span class="boring">}</span></code></pre>
 </li>
 </ul>
 <h4 id="3-as_path"><a class="header" href="#3-as_path">3. <code>as_path</code></a></h4>
@@ -996,9 +1095,12 @@ let pfad = PathBuf::with_capacity(100);</code></pre>
 <li><strong>Rückgabetyp</strong>: <code>&amp;Path</code> (Eine geliehene Referenz auf den Pfad).</li>
 <li><strong>Sicherheitsaspekte &amp; Panics</strong>: Keine.</li>
 <li><strong>Minicode-Beispiel</strong>:
-<pre><code class="language-rust">use std::path::PathBuf;
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>use std::path::PathBuf;
 let pfad_buf = PathBuf::from("Tutorial/daten.txt");
-let pfad_ref = pfad_buf.as_path();</code></pre>
+let pfad_ref = pfad_buf.as_path();
+<span class="boring">}</span></code></pre>
 </li>
 </ul>
 <h4 id="4-push"><a class="header" href="#4-push">4. <code>push</code></a></h4>
@@ -1008,9 +1110,12 @@ let pfad_ref = pfad_buf.as_path();</code></pre>
 <li><strong>Rückgabetyp</strong>: Keine.</li>
 <li><strong>Sicherheitsaspekte &amp; Panics</strong>: Kann den Heap-Speicher vergrößern. Falls ein absoluter Pfad übergeben wird, ersetzt dieser den bisherigen Inhalt komplett.</li>
 <li><strong>Minicode-Beispiel</strong>:
-<pre><code class="language-rust">use std::path::PathBuf;
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>use std::path::PathBuf;
 let mut pfad = PathBuf::from("Tutorial");
-pfad.push("zahlenraten");</code></pre>
+pfad.push("zahlenraten");
+<span class="boring">}</span></code></pre>
 </li>
 </ul>
 <h4 id="5-pop"><a class="header" href="#5-pop">5. <code>pop</code></a></h4>
@@ -1020,9 +1125,12 @@ pfad.push("zahlenraten");</code></pre>
 <li><strong>Rückgabetyp</strong>: <code>bool</code> (Gibt <code>true</code> zurück, wenn ein Element erfolgreich entfernt wurde, andernfalls <code>false</code>).</li>
 <li><strong>Sicherheitsaspekte &amp; Panics</strong>: Keine.</li>
 <li><strong>Minicode-Beispiel</strong>:
-<pre><code class="language-rust">use std::path::PathBuf;
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>use std::path::PathBuf;
 let mut pfad = PathBuf::from("Tutorial/zahlenraten");
-let gelöscht = pfad.pop();</code></pre>
+let gelöscht = pfad.pop();
+<span class="boring">}</span></code></pre>
 </li>
 </ul>
 <h4 id="6-set_file_name"><a class="header" href="#6-set_file_name">6. <code>set_file_name</code></a></h4>
@@ -1032,9 +1140,12 @@ let gelöscht = pfad.pop();</code></pre>
 <li><strong>Rückgabetyp</strong>: Keine.</li>
 <li><strong>Sicherheitsaspekte &amp; Panics</strong>: Keine. Wenn der Pfad keinen Dateinamen enthält, wird dieser hinzugefügt.</li>
 <li><strong>Minicode-Beispiel</strong>:
-<pre><code class="language-rust">use std::path::PathBuf;
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>use std::path::PathBuf;
 let mut pfad = PathBuf::from("Tutorial/daten.txt");
-pfad.set_file_name("daten_neu.txt");</code></pre>
+pfad.set_file_name("daten_neu.txt");
+<span class="boring">}</span></code></pre>
 </li>
 </ul>
 <h4 id="7-set_extension"><a class="header" href="#7-set_extension">7. <code>set_extension</code></a></h4>
@@ -1044,9 +1155,12 @@ pfad.set_file_name("daten_neu.txt");</code></pre>
 <li><strong>Rückgabetyp</strong>: <code>bool</code> (Gibt <code>true</code> zurück, falls die Endung erfolgreich aktualisiert oder hinzugefügt wurde. Gibt <code>false</code> zurück, wenn der Pfad keinen Dateinamen besitzt).</li>
 <li><strong>Sicherheitsaspekte &amp; Panics</strong>: Keine.</li>
 <li><strong>Minicode-Beispiel</strong>:
-<pre><code class="language-rust">use std::path::PathBuf;
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>use std::path::PathBuf;
 let mut pfad = PathBuf::from("Tutorial/daten.txt");
-pfad.set_extension("log");</code></pre>
+pfad.set_extension("log");
+<span class="boring">}</span></code></pre>
 </li>
 </ul>
 <h4 id="8-into_boxed_path"><a class="header" href="#8-into_boxed_path">8. <code>into_boxed_path</code></a></h4>
@@ -1056,9 +1170,12 @@ pfad.set_extension("log");</code></pre>
 <li><strong>Rückgabetyp</strong>: <code>Box&lt;Path&gt;</code> (Ein im Heap liegender, nicht mehr vergrößerbarer Pfad).</li>
 <li><strong>Sicherheitsaspekte &amp; Panics</strong>: Keine.</li>
 <li><strong>Minicode-Beispiel</strong>:
-<pre><code class="language-rust">use std::path::PathBuf;
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>use std::path::PathBuf;
 let pfad_buf = PathBuf::from("Tutorial/daten.txt");
-let boxed_path = pfad_buf.into_boxed_path();</code></pre>
+let boxed_path = pfad_buf.into_boxed_path();
+<span class="boring">}</span></code></pre>
 </li>
 </ul>
 <h4 id="9-capacity"><a class="header" href="#9-capacity">9. <code>capacity</code></a></h4>
@@ -1068,9 +1185,12 @@ let boxed_path = pfad_buf.into_boxed_path();</code></pre>
 <li><strong>Rückgabetyp</strong>: <code>usize</code> (Die Anzahl an Bytes, die der Pfad auf dem Heap belegen kann, ohne neu zu allokieren).</li>
 <li><strong>Sicherheitsaspekte &amp; Panics</strong>: Keine.</li>
 <li><strong>Minicode-Beispiel</strong>:
-<pre><code class="language-rust">use std::path::PathBuf;
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>use std::path::PathBuf;
 let pfad = PathBuf::with_capacity(50);
-let kapazität = pfad.capacity();</code></pre>
+let kapazität = pfad.capacity();
+<span class="boring">}</span></code></pre>
 </li>
 </ul>
 <h4 id="10-reserve"><a class="header" href="#10-reserve">10. <code>reserve</code></a></h4>
@@ -1080,9 +1200,12 @@ let kapazität = pfad.capacity();</code></pre>
 <li><strong>Rückgabetyp</strong>: Keine.</li>
 <li><strong>Sicherheitsaspekte &amp; Panics</strong>: Löst eine Panic aus, wenn die Allokation fehlschlägt.</li>
 <li><strong>Minicode-Beispiel</strong>:
-<pre><code class="language-rust">use std::path::PathBuf;
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>use std::path::PathBuf;
 let mut pfad = PathBuf::from("Tutorial");
-pfad.reserve(100);</code></pre>
+pfad.reserve(100);
+<span class="boring">}</span></code></pre>
 </li>
 </ul>
 <h4 id="11-reserve_exact"><a class="header" href="#11-reserve_exact">11. <code>reserve_exact</code></a></h4>
@@ -1092,9 +1215,12 @@ pfad.reserve(100);</code></pre>
 <li><strong>Rückgabetyp</strong>: Keine.</li>
 <li><strong>Sicherheitsaspekte &amp; Panics</strong>: Allokationsfehler führen zur Panic.</li>
 <li><strong>Minicode-Beispiel</strong>:
-<pre><code class="language-rust">use std::path::PathBuf;
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>use std::path::PathBuf;
 let mut pfad = PathBuf::from("Tutorial");
-pfad.reserve_exact(50);</code></pre>
+pfad.reserve_exact(50);
+<span class="boring">}</span></code></pre>
 </li>
 </ul>
 <h4 id="12-shrink_to_fit"><a class="header" href="#12-shrink_to_fit">12. <code>shrink_to_fit</code></a></h4>
@@ -1104,10 +1230,13 @@ pfad.reserve_exact(50);</code></pre>
 <li><strong>Rückgabetyp</strong>: Keine.</li>
 <li><strong>Sicherheitsaspekte &amp; Panics</strong>: Keine. Reduziert die Heap-Kapazität auf die tatsächlich benötigte Länge des Pfades.</li>
 <li><strong>Minicode-Beispiel</strong>:
-<pre><code class="language-rust">use std::path::PathBuf;
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>use std::path::PathBuf;
 let mut pfad = PathBuf::with_capacity(100);
 pfad.push("Tutorial");
-pfad.shrink_to_fit();</code></pre>
+pfad.shrink_to_fit();
+<span class="boring">}</span></code></pre>
 </li>
 </ul>
 <h4 id="13-clear"><a class="header" href="#13-clear">13. <code>clear</code></a></h4>
@@ -1117,40 +1246,54 @@ pfad.shrink_to_fit();</code></pre>
 <li><strong>Rückgabetyp</strong>: Keine.</li>
 <li><strong>Sicherheitsaspekte &amp; Panics</strong>: Keine. Setzt die Länge des Pfades auf 0 zurück, behält jedoch die Heap-Allokation bei.</li>
 <li><strong>Minicode-Beispiel</strong>:
-<pre><code class="language-rust">use std::path::PathBuf;
+<pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>use std::path::PathBuf;
 let mut pfad = PathBuf::from("Tutorial");
-pfad.clear();</code></pre>
+pfad.clear();
+<span class="boring">}</span></code></pre>
 </li>
 </ul>
-<hr />
-<h2 id="39-drei-praktische-Übungen"><a class="header" href="#39-drei-praktische-Übungen">3.9 Drei praktische Übungen</a></h2>
-<h3 id="Übung-1-leicht---syntax-festigen"><a class="header" href="#Übung-1-leicht---syntax-festigen">Übung 1 (Leicht - Syntax festigen)</a></h3>
+<hr>
+<h2 id="39-drei-praktische-übungen"><a class="header" href="#39-drei-praktische-übungen">3.9 Drei praktische Übungen</a></h2>
+<h3 id="übung-1-leicht---syntax-festigen"><a class="header" href="#übung-1-leicht---syntax-festigen">Übung 1 (Leicht - Syntax festigen)</a></h3>
 <ul>
 <li><strong>Anforderung</strong>: Öffnen Sie die Datei <a href="file:///home/thorsten/RustKurs/.agentrules">.agentrules</a> in Ihrem Workspace und fügen Sie im Bereich <code>[markdown]</code> den Parameter <code>enforce_german_sie = true</code> hinzu. Rufen Sie anschließend im Stammverzeichnis das Antigravity CLI mit der Option <code>inspect</code> auf und verifizieren Sie in der Konsolenausgabe, dass das CLI die Konfiguration fehlerfrei eingelesen hat.</li>
 <li><strong>Lösungshinweis</strong>: Die Datei <a href="file:///home/thorsten/RustKurs/.agentrules">.agentrules</a> folgt der INI-Syntax. Der Befehl für das Terminal lautet <code>agy inspect</code>.</li>
 </ul>
-<h3 id="Übung-2-mittel---logik-erweitern"><a class="header" href="#Übung-2-mittel---logik-erweitern">Übung 2 (Mittel - Logik erweitern)</a></h3>
+<h3 id="übung-2-mittel---logik-erweitern"><a class="header" href="#übung-2-mittel---logik-erweitern">Übung 2 (Mittel - Logik erweitern)</a></h3>
 <ul>
 <li><strong>Anforderung</strong>: Schreiben Sie eine Rust-Funktion mit der Signatur <code>fn logge_ereignis(nachricht: &amp;str) -&gt; Result&lt;(), std::io::Error&gt;</code>. Diese Funktion soll eine übergebene Textnachricht an eine Protokolldatei namens <code>app.log</code> anhängen. Der Pfad zu dieser Datei muss sich dynamisch im Unterverzeichnis <code>Tutorial/logs/</code> Ihres Workspaces befinden. Stellen Sie sicher, dass das Verzeichnis <code>logs</code> automatisch angelegt wird, falls es nicht existiert.</li>
 <li><strong>Lösungshinweis</strong>: Verwenden Sie <code>std::env::current_dir()</code>, um den Workspace-Pfad zu ermitteln, <code>std::fs::create_dir_all()</code> zur Verzeichniserstellung und <code>std::fs::OpenOptions</code> mit <code>.create(true).append(true)</code>.</li>
 </ul>
-<h3 id="Übung-3-schwer---transferleistung"><a class="header" href="#Übung-3-schwer---transferleistung">Übung 3 (Schwer - Transferleistung)</a></h3>
+<h3 id="übung-3-schwer---transferleistung"><a class="header" href="#übung-3-schwer---transferleistung">Übung 3 (Schwer - Transferleistung)</a></h3>
 <ul>
 <li><strong>Anforderung</strong>: Erstellen Sie in der Datei <a href="file:///home/thorsten/RustKurs/skills.md">skills.md</a> einen neuen Skill mit der Bezeichnung <code>## Skill: @generate-ascii-log</code>. Formulieren Sie darin präzise didaktische Anweisungen für die KI, wie ein tabellarisches ASCII-Art-Protokoll formatiert werden soll (z. B. Rahmenzeichen, Spaltenbreiten). Schreiben Sie anschließend ein Rust-Programm, das die Datei <a href="file:///home/thorsten/RustKurs/skills.md">skills.md</a> einliest, diesen Skill parst und ein Protokoll ausgibt, das exakt den Regeln entspricht. Fangen Sie Lesefehler ab.</li>
 <li><strong>Lösungshinweis</strong>: Suchen Sie beim zeilenweisen Lesen der Datei <a href="file:///home/thorsten/RustKurs/skills.md">skills.md</a> nach dem Token <code>## Skill: @generate-ascii-log</code>. Nutzen Sie String-Vergleiche, um die nachfolgenden Textzeilen bis zur nächsten Skill-Definition zu extrahieren.</li>
 </ul>
-<hr />
+<hr>
 <h2 id="310-lernstrategie-selbsteinschätzung--merkzettel"><a class="header" href="#310-lernstrategie-selbsteinschätzung--merkzettel">3.10 Lernstrategie, Selbsteinschätzung &amp; Merkzettel</a></h2>
 <h3 id="cli-spickzettel-cheat-sheet"><a class="header" href="#cli-spickzettel-cheat-sheet">CLI-Spickzettel (Cheat Sheet)</a></h3>
 <h4 id="start-optionen"><a class="header" href="#start-optionen">Start-Optionen</a></h4>
-<div class="table-wrapper"><table><thead><tr><th style="text-align: left">Befehl</th><th style="text-align: left">Beschreibung</th></tr></thead><tbody>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th style="text-align: left">Befehl</th><th style="text-align: left">Beschreibung</th></tr>
+</thead>
+<tbody>
 <tr><td style="text-align: left"><code>agy</code></td><td style="text-align: left">Startet die interaktive TUI im aktuellen Verzeichnis.</td></tr>
 <tr><td style="text-align: left"><code>agy inspect</code></td><td style="text-align: left">Analysiert den Workspace und gibt geladene Regeln und Konfigurationen aus.</td></tr>
 <tr><td style="text-align: left"><code>agy plugin import gemini</code></td><td style="text-align: left">Importiert Einstellungen und API-Schlüssel aus einer Gemini-Installation.</td></tr>
-</tbody></table>
+</tbody>
+</table>
 </div>
 <h4 id="slash-befehle-tui"><a class="header" href="#slash-befehle-tui">Slash-Befehle (TUI)</a></h4>
-<div class="table-wrapper"><table><thead><tr><th style="text-align: left">Befehl</th><th style="text-align: left">Beschreibung</th></tr></thead><tbody>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th style="text-align: left">Befehl</th><th style="text-align: left">Beschreibung</th></tr>
+</thead>
+<tbody>
 <tr><td style="text-align: left"><code>/permissions</code></td><td style="text-align: left">Zeigt die Lese- und Schreibrechte des Agenten in der Sandbox an.</td></tr>
 <tr><td style="text-align: left"><code>/skills</code></td><td style="text-align: left">Listet alle geladenen Skills aus <a href="file:///home/thorsten/RustKurs/skills.md">skills.md</a> auf.</td></tr>
 <tr><td style="text-align: left"><code>/rewind</code></td><td style="text-align: left">Springt im Chatverlauf und Kontext des Agenten zurück.</td></tr>
@@ -1159,14 +1302,15 @@ pfad.clear();</code></pre>
 <tr><td style="text-align: left"><code>/fork</code></td><td style="text-align: left">Erstellt einen neuen experimentellen Zweig der aktuellen Sitzung.</td></tr>
 <tr><td style="text-align: left"><code>/exit</code></td><td style="text-align: left">Beendet das Antigravity CLI.</td></tr>
 <tr><td style="text-align: left"><code>!</code></td><td style="text-align: left">Führt einen Shell-Befehl direkt aus (z. B. <code>!cargo build</code>).</td></tr>
-</tbody></table>
+</tbody>
+</table>
 </div>
 <h4 id="tastenkombinationen"><a class="header" href="#tastenkombinationen">Tastenkombinationen</a></h4>
 <ul>
 <li><strong><code>ctrl+r</code></strong>: Öffnet das Review-Panel zur Inspektion von Datei-Entwürfen vor der Freigabe.</li>
 <li><strong><code>ctrl+c</code></strong>: Bricht die aktuelle Generierung oder Befehlsausführung ab.</li>
 </ul>
-<hr />
+<hr>
 <h3 id="active-recall-selbsttestfragen"><a class="header" href="#active-recall-selbsttestfragen">Active Recall (Selbsttestfragen)</a></h3>
 <ol>
 <li><em>Warum scheitert das Öffnen der Datei <code>/etc/hosts</code> in der Sandbox auf Systemebene und wie lautet der zugehörige Linux-Fehlercode?</em></li>
@@ -1175,13 +1319,13 @@ pfad.clear();</code></pre>
 <li><em>Welche Aufgabe übernimmt die Governance-Datei <a href="file:///home/thorsten/RustKurs/glossary.md">glossary.md</a> bei der KI-gestützten Dokumentationserstellung?</em></li>
 <li><em>Mit welcher Tastenkombination öffnen Sie das Review-Panel im Antigravity CLI und wie geben Sie Korrektur-Feedback an den Agenten zurück?</em></li>
 </ol>
-<hr />
+<hr>
 <h3 id="die-feynman-methode"><a class="header" href="#die-feynman-methode">Die Feynman-Methode</a></h3>
 <p>Erklären Sie das Prinzip des Antigravity CLI und der Sandbox einem Anfänger in drei einfachen Sätzen:</p>
 <blockquote>
-<p>Das Antigravity CLI ist ein intelligenter Assistent, mit dem Sie über Befehle direkt an Ihrem Projekt arbeiten können. Damit der Assistent keine Fehler auf Ihrem Computer macht, läuft er in einem geschützten "Sandkasten" (Sandbox), der Zugriffe außerhalb des Projektordners blockiert. So können Sie gefahrlos Code entwickeln, testen und bei Bedarf über ein Review-Fenster korrigieren.</p>
+<p>Das Antigravity CLI ist ein intelligenter Assistent, mit dem Sie über Befehle direkt an Ihrem Projekt arbeiten können. Damit der Assistent keine Fehler auf Ihrem Computer macht, läuft er in einem geschützten “Sandkasten” (Sandbox), der Zugriffe außerhalb des Projektordners blockiert. So können Sie gefahrlos Code entwickeln, testen und bei Bedarf über ein Review-Fenster korrigieren.</p>
 </blockquote>
-<hr />
+<hr>
 <h3 id="gezielte-fehlerprovokation-compiler-guided-learning"><a class="header" href="#gezielte-fehlerprovokation-compiler-guided-learning">Gezielte Fehlerprovokation (Compiler-Guided Learning)</a></h3>
 <p>Führen Sie die folgenden Schritte aus, um eine Sandbox-Verletzung absichtlich zu provozieren:</p>
 <ol>
@@ -1191,20 +1335,16 @@ pfad.clear();</code></pre>
 <li>Analysieren Sie die resultierende <code>PermissionDenied</code>-Fehlermeldung.</li>
 <li>Tippen Sie den Befehl <code>/permissions</code> in das CLI-Eingabefeld, um zu visualisieren, warum der Zugriff blockiert wurde.</li>
 </ol>
-<hr />
+<hr>
 <h3 id="metakognitiver-selbsttest"><a class="header" href="#metakognitiver-selbsttest">Metakognitiver Selbsttest</a></h3>
-<p>Wechseln Sie erst zum nächsten Kapitel (<a href="file:///home/thorsten/RustKurs/25.md">Ch25: Der Slice-Typ (Slices)</a>), wenn Sie folgende Punkte mit "Ja" beantworten können:</p>
+<p>Wechseln Sie erst zum nächsten Kapitel (<a href="file:///home/thorsten/RustKurs/25.md">Ch25: Der Slice-Typ (Slices)</a>), wenn Sie folgende Punkte mit “Ja” beantworten können:</p>
 <ul>
-<li><input disabled="" type="checkbox"/>
-Sie können den Unterschied zwischen <code>&amp;Path</code> und <code>PathBuf</code> bezüglich Speicherallokation und Ownership erklären.</li>
-<li><input disabled="" type="checkbox"/>
-Sie wissen, warum relative Pfade innerhalb eines sandboxed Cargo-Projekts zwingend erforderlich sind.</li>
-<li><input disabled="" type="checkbox"/>
-Sie haben die Governance-Dateien erfolgreich angelegt und über <code>agy inspect</code> verifiziert.</li>
-<li><input disabled="" type="checkbox"/>
-Sie können das Review-Panel (<code>ctrl+r</code>) bedienen und den Feedback-Workflow steuern.</li>
+<li><input disabled="" type="checkbox"> Sie können den Unterschied zwischen <code>&amp;Path</code> und <code>PathBuf</code> bezüglich Speicherallokation und Ownership erklären.</li>
+<li><input disabled="" type="checkbox"> Sie wissen, warum relative Pfade innerhalb eines sandboxed Cargo-Projekts zwingend erforderlich sind.</li>
+<li><input disabled="" type="checkbox"> Sie haben die Governance-Dateien erfolgreich angelegt und über <code>agy inspect</code> verifiziert.</li>
+<li><input disabled="" type="checkbox"> Sie können das Review-Panel (<code>ctrl+r</code>) bedienen und den Feedback-Workflow steuern.</li>
 </ul>
-<hr />
+<hr>
 <h2 id="311-zusammenfassung"><a class="header" href="#311-zusammenfassung">3.11 Zusammenfassung</a></h2>
 <ul>
 <li><strong>Antigravity CLI</strong>: Ein Werkzeug zur lokalen, KI-gestützten Softwareentwicklung innerhalb einer sicheren Sandbox.</li>
@@ -1213,7 +1353,7 @@ Sie können das Review-Panel (<code>ctrl+r</code>) bedienen und den Feedback-Wor
 <li><strong>Review-Workflow</strong>: Ermöglicht eine feingranulare Qualitätskontrolle vorgeschlagener Codeänderungen vor dem physischen Schreiben durch das Drücken von <strong><code>ctrl+r</code></strong> im CLI.</li>
 <li><strong>Speicherverwaltung in Rust</strong>: Pfade werden über die Typen <code>&amp;Path</code> (unkopierbare Referenz, Fat Pointer auf dem Stack) und <code>PathBuf</code> (besitzender Pfad auf dem Heap) abgebildet.</li>
 </ul>
-<hr />
+<hr>
 <p><strong>Lizenz- und Attributionshinweis</strong>:
 Teile dieses Kapitels basieren auf Übersetzungen und didaktischen Anpassungen des offiziellen Buches <a href="https://doc.rust-lang.org/book/">The Rust Programming Language</a> von Steve Klabnik und Carol Nichols (sowie Beiträgen der Rust-Community), lizenziert unter <a href="https://opensource.org/licenses/MIT">MIT</a> und <a href="https://www.apache.org/licenses/LICENSE-2.0">Apache 2.0</a>.</p>
 
@@ -1222,11 +1362,11 @@ Teile dieses Kapitels basieren auf Übersetzungen und didaktischen Anpassungen d
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
                             <a rel="prev" href="23.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
-                                <i class="fa fa-angle-left"></i>
+                                <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
                             </a>
 
                             <a rel="next prefetch" href="25.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
-                                <i class="fa fa-angle-right"></i>
+                                <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
                             </a>
 
                         <div style="clear: both"></div>
@@ -1236,16 +1376,21 @@ Teile dieses Kapitels basieren auf Übersetzungen und didaktischen Anpassungen d
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
                     <a rel="prev" href="23.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
-                        <i class="fa fa-angle-left"></i>
+                        <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
                     </a>
 
                     <a rel="next prefetch" href="25.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
-                        <i class="fa fa-angle-right"></i>
+                        <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
                     </a>
             </nav>
 
         </div>
 
+        <template id=fa-eye><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M288 32c-80.8 0-145.5 36.8-192.6 80.6C48.6 156 17.3 208 2.5 243.7c-3.3 7.9-3.3 16.7 0 24.6C17.3 304 48.6 356 95.4 399.4C142.5 443.2 207.2 480 288 480s145.5-36.8 192.6-80.6c46.8-43.5 78.1-95.4 93-131.1c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C433.5 68.8 368.8 32 288 32zM432 256c0 79.5-64.5 144-144 144s-144-64.5-144-144s64.5-144 144-144s144 64.5 144 144zM288 192c0 35.3-28.7 64-64 64c-11.5 0-22.3-3-31.6-8.4c-.2 2.8-.4 5.5-.4 8.4c0 53 43 96 96 96s96-43 96-96s-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6z"/></svg></span></template>
+        <template id=fa-eye-slash><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M38.8 5.1C28.4-3.1 13.3-1.2 5.1 9.2S-1.2 34.7 9.2 42.9l592 464c10.4 8.2 25.5 6.3 33.7-4.1s6.3-25.5-4.1-33.7L525.6 386.7c39.6-40.6 66.4-86.1 79.9-118.4c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C465.5 68.8 400.8 32 320 32c-68.2 0-125 26.3-169.3 60.8L38.8 5.1zM223.1 149.5C248.6 126.2 282.7 112 320 112c79.5 0 144 64.5 144 144c0 24.9-6.3 48.3-17.4 68.7L408 294.5c5.2-11.8 8-24.8 8-38.5c0-53-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6c0 10.2-2.4 19.8-6.6 28.3l-90.3-70.8zm223.1 298L373 389.9c-16.4 6.5-34.3 10.1-53 10.1c-79.5 0-144-64.5-144-144c0-6.9 .5-13.6 1.4-20.2L83.1 161.5C60.3 191.2 44 220.8 34.5 243.7c-3.3 7.9-3.3 16.7 0 24.6c14.9 35.7 46.2 87.7 93 131.1C174.5 443.2 239.2 480 320 480c47.8 0 89.9-12.9 126.2-32.5z"/></svg></span></template>
+        <template id=fa-copy><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M502.6 70.63l-61.25-61.25C435.4 3.371 427.2 0 418.7 0H255.1c-35.35 0-64 28.66-64 64l.0195 256C192 355.4 220.7 384 256 384h192c35.2 0 64-28.8 64-64V93.25C512 84.77 508.6 76.63 502.6 70.63zM464 320c0 8.836-7.164 16-16 16H255.1c-8.838 0-16-7.164-16-16L239.1 64.13c0-8.836 7.164-16 16-16h128L384 96c0 17.67 14.33 32 32 32h47.1V320zM272 448c0 8.836-7.164 16-16 16H63.1c-8.838 0-16-7.164-16-16L47.98 192.1c0-8.836 7.164-16 16-16H160V128H63.99c-35.35 0-64 28.65-64 64l.0098 256C.002 483.3 28.66 512 64 512h192c35.2 0 64-28.8 64-64v-32h-47.1L272 448z"/></svg></span></template>
+        <template id=fa-play><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80V432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"/></svg></span></template>
+        <template id=fa-clock-rotate-left><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M75 75L41 41C25.9 25.9 0 36.6 0 57.9V168c0 13.3 10.7 24 24 24H134.1c21.4 0 32.1-25.9 17-41l-30.8-30.8C155 85.5 203 64 256 64c106 0 192 86 192 192s-86 192-192 192c-40.8 0-78.6-12.7-109.7-34.4c-14.5-10.1-34.4-6.6-44.6 7.9s-6.6 34.4 7.9 44.6C151.2 495 201.7 512 256 512c141.4 0 256-114.6 256-256S397.4 0 256 0C185.3 0 121.3 28.7 75 75zm181 53c-13.3 0-24 10.7-24 24V256c0 6.4 2.5 12.5 7 17l72 72c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-65-65V152c0-13.3-10.7-24-24-24z"/></svg></span></template>
 
 
 
@@ -1254,17 +1399,17 @@ Teile dieses Kapitels basieren auf Übersetzungen und didaktischen Anpassungen d
         </script>
 
 
-        <script src="elasticlunr.min.js"></script>
-        <script src="mark.min.js"></script>
-        <script src="searcher.js"></script>
+        <script src="elasticlunr-ef4e11c1.min.js"></script>
+        <script src="mark-09e88c2c.min.js"></script>
+        <script src="searcher-09f2665d.js"></script>
 
-        <script src="clipboard.min.js"></script>
-        <script src="highlight.js"></script>
-        <script src="book.js"></script>
+        <script src="clipboard-1626706a.min.js"></script>
+        <script src="highlight-abc7f01d.js"></script>
+        <script src="book-c22b7243.js"></script>
 
         <!-- Custom JS scripts -->
-        <script src="mermaid.min.js"></script>
-        <script src="mermaid-init.js"></script>
+        <script src="mermaid-eefea253.min.js"></script>
+        <script src="mermaid-init-ccf746f1.js"></script>
 
 
 

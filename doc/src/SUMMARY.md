@@ -31,4 +31,5 @@
 - [Kapitel 27: Eigene Datentypen mit Structs (Strukturen) strukturieren](27.md)
 - [Kapitel 28: Enums und Pattern Matching](28.md)
 
-
+- [Impressum](Benutzer/impressum.md)
+- [Datenschutz](Benutzer/datenschutz.md)
